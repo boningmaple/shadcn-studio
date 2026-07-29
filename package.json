@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vp dev --port 3000",
     "generate-routes": "tsr generate",
-    "build": "vp build",
+    "generate:button-code": "node scripts/generate-button-code.ts",
+    "build": "npm run generate:button-code && vp build",
     "preview": "vp preview",
     "prepare": "vp config"
   },
@@ -36,6 +37,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^6.0.1",
+    "shiki": "^4.3.1",
     "typescript": "^6.0.2",
     "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
     "vite-plus": "0.2.6"

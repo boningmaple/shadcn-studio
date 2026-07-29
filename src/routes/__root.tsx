@@ -1,8 +1,8 @@
+import * as React from "react";
+import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { TanStackDevtools } from "@tanstack/react-devtools";
-
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar, appSidebarData } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -37,13 +37,13 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html className="dark" lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
         <SidebarProvider>
-          <AppSidebar />
+          <AppSidebar data={appSidebarData} />
           <SidebarInset>
             <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4">
               <SidebarTrigger />
