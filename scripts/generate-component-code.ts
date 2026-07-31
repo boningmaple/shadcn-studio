@@ -3,10 +3,16 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { codeToHtml } from "shiki";
 
+type DemoFamily = {
+  filenamePattern: RegExp;
+  outputPrefix: string;
+};
+
 type DemoFile = {
   filename: string;
   id: string;
   numericId: number;
+  outputPrefix: string;
 };
 
 type GeneratedFile = {
@@ -20,27 +26,54 @@ const projectRoot = path.resolve(
 );
 const demosDirectory = path.join(projectRoot, "src/components/button");
 const outputDirectory = path.join(projectRoot, "public/generated");
-const demoFilenamePattern = /^button-(0[1-9]|[1-9]\d)\.tsx$/;
-const staleOutputFilenamePattern = /^button-\d+\.json$/;
+const demoFamilies: DemoFamily[] = [
+  {
+    filenamePattern: /^button-(0[1-9]|[1-9]\d)\.tsx$/,
+    outputPrefix: "button",
+  },
+  {
+    filenamePattern: /^toggle-button-(0[1-9]|[1-9]\d)\.tsx$/,
+    outputPrefix: "toggle-button",
+  },
+];
+const staleOutputFilenamePattern =
+  /^(?:button|toggle-button)-(?:0[1-9]|[1-9]\d)\.json$/;
 
-const demoFiles: DemoFile[] = (
-  await readdir(demosDirectory, { withFileTypes: true })
-)
-  .flatMap((entry) => {
-    const match = entry.isFile() && demoFilenamePattern.exec(entry.name);
+const directoryEntries = await readdir(demosDirectory, {
+  withFileTypes: true,
+});
 
-    return match === false || match === null
-      ? []
-      : [{ filename: entry.name, id: match[1], numericId: Number(match[1]) }];
+const demoFiles = demoFamilies
+  .flatMap(({ filenamePattern, outputPrefix }) => {
+    const files: DemoFile[] = directoryEntries.flatMap((entry) => {
+      const match = entry.isFile() && filenamePattern.exec(entry.name);
+
+      return match === false || match === null
+        ? []
+        : [
+            {
+              filename: entry.name,
+              id: match[1],
+              numericId: Number(match[1]),
+              outputPrefix,
+            },
+          ];
+    });
+
+    if (files.length === 0) {
+      throw new Error(`No ${outputPrefix} demos found in ${demosDirectory}`);
+    }
+
+    return files;
   })
-  .sort((left, right) => left.numericId - right.numericId);
-
-if (demoFiles.length === 0) {
-  throw new Error(`No button demos found in ${demosDirectory}`);
-}
+  .sort(
+    (left, right) =>
+      left.outputPrefix.localeCompare(right.outputPrefix) ||
+      left.numericId - right.numericId,
+  );
 
 const generatedFiles: GeneratedFile[] = await Promise.all(
-  demoFiles.map(async ({ filename, id }) => {
+  demoFiles.map(async ({ filename, id, outputPrefix }) => {
     const code = (
       await readFile(path.join(demosDirectory, filename), "utf8")
     ).trimEnd();
@@ -50,7 +83,7 @@ const generatedFiles: GeneratedFile[] = await Promise.all(
     });
 
     return {
-      filename: `button-${id}.json`,
+      filename: `${outputPrefix}-${id}.json`,
       json: `${JSON.stringify({ code, html }, null, 2)}\n`,
     };
   }),
@@ -79,5 +112,5 @@ const staleFiles = (await readdir(outputDirectory, { withFileTypes: true }))
 await Promise.all(staleFiles);
 
 process.stdout.write(
-  `Generated ${generatedFiles.length} button code files in ${outputDirectory}\n`,
+  `Generated ${generatedFiles.length} component code files in ${outputDirectory}\n`,
 );
