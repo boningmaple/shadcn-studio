@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ComponentsAvatarRouteImport } from './routes/components.avatar'
 import { Route as ComponentsBadgeRouteImport } from './routes/components.badge'
 import { Route as ComponentsButtonRouteImport } from './routes/components.button'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
@@ -18,6 +19,11 @@ import { Route as ComponentsToggleButtonRouteImport } from './routes/components.
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsAvatarRoute = ComponentsAvatarRouteImport.update({
+  id: '/components/avatar',
+  path: '/components/avatar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsBadgeRoute = ComponentsBadgeRouteImport.update({
@@ -43,6 +49,7 @@ const ComponentsToggleButtonRoute = ComponentsToggleButtonRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -67,6 +76,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/components/avatar'
     | '/components/badge'
     | '/components/button'
     | '/components/tabs'
@@ -74,6 +84,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/components/avatar'
     | '/components/badge'
     | '/components/button'
     | '/components/tabs'
@@ -81,6 +92,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/components/avatar'
     | '/components/badge'
     | '/components/button'
     | '/components/tabs'
@@ -89,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ComponentsAvatarRoute: typeof ComponentsAvatarRoute
   ComponentsBadgeRoute: typeof ComponentsBadgeRoute
   ComponentsButtonRoute: typeof ComponentsButtonRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
@@ -102,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/avatar': {
+      id: '/components/avatar'
+      path: '/components/avatar'
+      fullPath: '/components/avatar'
+      preLoaderRoute: typeof ComponentsAvatarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/badge': {
@@ -137,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ComponentsAvatarRoute: ComponentsAvatarRoute,
   ComponentsBadgeRoute: ComponentsBadgeRoute,
   ComponentsButtonRoute: ComponentsButtonRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
