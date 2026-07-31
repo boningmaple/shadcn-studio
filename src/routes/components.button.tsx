@@ -14,8 +14,6 @@ import Button07 from "@/components/button/button-07";
 import Button08 from "@/components/button/button-08";
 import Button09 from "@/components/button/button-09";
 import Button10 from "@/components/button/button-10";
-import Button11 from "@/components/button/button-11";
-import Button12 from "@/components/button/button-12";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -25,6 +23,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/components/button")({
   component: ButtonComponentsPage,
@@ -47,12 +46,11 @@ function ButtonComponentsPage() {
     <div className="mx-auto w-full max-w-350 py-6 sm:px-2 sm:py-10">
       <header className="max-w-4xl">
         <h1 className="font-heading text-3xl font-semibold tracking-normal sm:text-4xl">
-          Button Components
+          Button
         </h1>
-        <p className="mt-4 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
-          Explore a focused collection of accessible button patterns built with
-          React Aria, React, and Tailwind CSS. Inspect each example and adapt it
-          for your interface.
+        <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+          Explore a collection of buttons, built with Material Design, React
+          Aria UI, React, and Tailwind CSS.
         </p>
       </header>
 
@@ -82,6 +80,7 @@ type ButtonExample = {
   component: React.ComponentType;
   id: string;
   name: string;
+  wide?: boolean;
 };
 
 function ButtonExampleCard({ example }: { example: ButtonExample }) {
@@ -90,7 +89,10 @@ function ButtonExampleCard({ example }: { example: ButtonExample }) {
   return (
     <article
       aria-label={example.name}
-      className="group/item relative flex min-h-57.5 items-center justify-center border-r border-b border-dashed px-6 py-16"
+      className={cn(
+        "group/item relative flex min-h-57.5 items-center justify-center border-r border-b border-dashed px-6 py-16",
+        example.wide && "sm:col-span-2 lg:col-span-3",
+      )}
     >
       <span className="pointer-events-none absolute top-4 left-4 text-sm text-muted-foreground opacity-0 transition-opacity group-hover/item:opacity-100 [@media(hover:none)]:opacity-100">
         {example.name}
@@ -256,16 +258,49 @@ function isButtonCodePayload(value: unknown): value is ButtonCodePayload {
 }
 
 const buttonExamples: ButtonExample[] = [
-  { component: Button01, id: "01", name: "Button 1" },
-  { component: Button02, id: "02", name: "Button 2" },
-  { component: Button03, id: "03", name: "Button 3" },
-  { component: Button04, id: "04", name: "Button 4" },
-  { component: Button05, id: "05", name: "Button 5" },
-  { component: Button06, id: "06", name: "Button 6" },
-  { component: Button07, id: "07", name: "Button 7" },
-  { component: Button08, id: "08", name: "Button 8" },
-  { component: Button09, id: "09", name: "Button 9" },
-  { component: Button10, id: "10", name: "Button 10" },
-  { component: Button11, id: "11", name: "Button 11" },
-  { component: Button12, id: "12", name: "Button 12" },
+  { component: Button01, id: "01", name: "Material 3 variants", wide: true },
+  {
+    component: Button02,
+    id: "02",
+    name: "Material 3 variants with icon",
+    wide: true,
+  },
+  {
+    component: Button03,
+    id: "03",
+    name: "Elevated button states",
+    wide: true,
+  },
+  {
+    component: Button04,
+    id: "04",
+    name: "Filled button states",
+    wide: true,
+  },
+  {
+    component: Button05,
+    id: "05",
+    name: "Tonal button states",
+    wide: true,
+  },
+  {
+    component: Button06,
+    id: "06",
+    name: "Outlined button states",
+    wide: true,
+  },
+  {
+    component: Button07,
+    id: "07",
+    name: "Text button states",
+    wide: true,
+  },
+  { component: Button08, id: "08", name: "Material 3 shapes", wide: true },
+  { component: Button09, id: "09", name: "Material 3 sizes", wide: true },
+  {
+    component: Button10,
+    id: "10",
+    name: "Material 3 sizes with icon",
+    wide: true,
+  },
 ];
