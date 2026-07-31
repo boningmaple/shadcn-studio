@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComponentsButtonRouteImport } from './routes/components.button'
+import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
 import { Route as ComponentsToggleButtonRouteImport } from './routes/components.toggle-button'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const ComponentsButtonRoute = ComponentsButtonRouteImport.update({
   path: '/components/button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsTabsRoute = ComponentsTabsRouteImport.update({
+  id: '/components/tabs',
+  path: '/components/tabs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsToggleButtonRoute = ComponentsToggleButtonRouteImport.update({
   id: '/components/toggle-button',
   path: '/components/toggle-button',
@@ -32,30 +38,47 @@ const ComponentsToggleButtonRoute = ComponentsToggleButtonRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/components/button' | '/components/toggle-button'
+  fullPaths:
+    | '/'
+    | '/components/button'
+    | '/components/tabs'
+    | '/components/toggle-button'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/components/button' | '/components/toggle-button'
-  id: '__root__' | '/' | '/components/button' | '/components/toggle-button'
+  to:
+    | '/'
+    | '/components/button'
+    | '/components/tabs'
+    | '/components/toggle-button'
+  id:
+    | '__root__'
+    | '/'
+    | '/components/button'
+    | '/components/tabs'
+    | '/components/toggle-button'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ComponentsButtonRoute: typeof ComponentsButtonRoute
+  ComponentsTabsRoute: typeof ComponentsTabsRoute
   ComponentsToggleButtonRoute: typeof ComponentsToggleButtonRoute
 }
 
@@ -75,6 +98,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/tabs': {
+      id: '/components/tabs'
+      path: '/components/tabs'
+      fullPath: '/components/tabs'
+      preLoaderRoute: typeof ComponentsTabsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/toggle-button': {
       id: '/components/toggle-button'
       path: '/components/toggle-button'
@@ -88,6 +118,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ComponentsButtonRoute: ComponentsButtonRoute,
+  ComponentsTabsRoute: ComponentsTabsRoute,
   ComponentsToggleButtonRoute: ComponentsToggleButtonRoute,
 }
 export const routeTree = rootRouteImport

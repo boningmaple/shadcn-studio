@@ -1,18 +1,11 @@
-import { mkdir, readdir, readFile, unlink, writeFile } from "node:fs/promises";
+import { glob, mkdir, readFile, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { codeToHtml } from "shiki";
 
-type DemoFamily = {
-  filenamePattern: RegExp;
-  outputPrefix: string;
-};
-
 type DemoFile = {
-  filename: string;
-  id: string;
-  numericId: number;
-  outputPrefix: string;
+  path: string;
+  outputFilename: string;
 };
 
 type GeneratedFile = {
@@ -20,62 +13,48 @@ type GeneratedFile = {
   json: string;
 };
 
+async function globFiles(pattern: string, cwd: string) {
+  const files: string[] = [];
+
+  for await (const file of glob(pattern, { cwd })) {
+    files.push(file);
+  }
+
+  return files;
+}
+
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
 );
-const demosDirectory = path.join(projectRoot, "src/components/button");
 const outputDirectory = path.join(projectRoot, "public/generated");
-const demoFamilies: DemoFamily[] = [
-  {
-    filenamePattern: /^button-(0[1-9]|[1-9]\d)\.tsx$/,
-    outputPrefix: "button",
-  },
-  {
-    filenamePattern: /^toggle-button-(0[1-9]|[1-9]\d)\.tsx$/,
-    outputPrefix: "toggle-button",
-  },
-];
-const staleOutputFilenamePattern =
-  /^(?:button|toggle-button)-(?:0[1-9]|[1-9]\d)\.json$/;
+const demoPattern = "src/demos/components/**/*.tsx";
+const demoFiles: DemoFile[] = (await globFiles(demoPattern, projectRoot)).map(
+  (demoPath) => ({
+    path: demoPath,
+    outputFilename: `${path.basename(demoPath, path.extname(demoPath))}.json`,
+  }),
+);
 
-const directoryEntries = await readdir(demosDirectory, {
-  withFileTypes: true,
-});
+if (demoFiles.length === 0) {
+  throw new Error(`No component demos found matching ${demoPattern}`);
+}
 
-const demoFiles = demoFamilies
-  .flatMap(({ filenamePattern, outputPrefix }) => {
-    const files: DemoFile[] = directoryEntries.flatMap((entry) => {
-      const match = entry.isFile() && filenamePattern.exec(entry.name);
+const outputFilenames = demoFiles.map(({ outputFilename }) => outputFilename);
+const duplicateOutputFilename = outputFilenames.find(
+  (filename, index) => outputFilenames.indexOf(filename) !== index,
+);
 
-      return match === false || match === null
-        ? []
-        : [
-            {
-              filename: entry.name,
-              id: match[1],
-              numericId: Number(match[1]),
-              outputPrefix,
-            },
-          ];
-    });
-
-    if (files.length === 0) {
-      throw new Error(`No ${outputPrefix} demos found in ${demosDirectory}`);
-    }
-
-    return files;
-  })
-  .sort(
-    (left, right) =>
-      left.outputPrefix.localeCompare(right.outputPrefix) ||
-      left.numericId - right.numericId,
+if (duplicateOutputFilename !== undefined) {
+  throw new Error(
+    `Multiple demos would generate ${duplicateOutputFilename}; demo filenames must be unique`,
   );
+}
 
 const generatedFiles: GeneratedFile[] = await Promise.all(
-  demoFiles.map(async ({ filename, id, outputPrefix }) => {
+  demoFiles.map(async ({ path: demoPath, outputFilename }) => {
     const code = (
-      await readFile(path.join(demosDirectory, filename), "utf8")
+      await readFile(path.join(projectRoot, demoPath), "utf8")
     ).trimEnd();
     const html = await codeToHtml(code, {
       lang: "tsx",
@@ -83,7 +62,7 @@ const generatedFiles: GeneratedFile[] = await Promise.all(
     });
 
     return {
-      filename: `${outputPrefix}-${id}.json`,
+      filename: outputFilename,
       json: `${JSON.stringify({ code, html }, null, 2)}\n`,
     };
   }),
@@ -100,14 +79,9 @@ await Promise.all(
 const generatedFilenames = new Set(
   generatedFiles.map(({ filename }) => filename),
 );
-const staleFiles = (await readdir(outputDirectory, { withFileTypes: true }))
-  .filter(
-    (entry) =>
-      entry.isFile() &&
-      staleOutputFilenamePattern.test(entry.name) &&
-      !generatedFilenames.has(entry.name),
-  )
-  .map((entry) => unlink(path.join(outputDirectory, entry.name)));
+const staleFiles = (await globFiles("*.json", outputDirectory))
+  .filter((filename) => !generatedFilenames.has(filename))
+  .map((filename) => unlink(path.join(outputDirectory, filename)));
 
 await Promise.all(staleFiles);
 

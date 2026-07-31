@@ -24,7 +24,11 @@ npm run build
 |-- src
 |   |-- components
 |   |   |-- app-sidebar.tsx  # main sidebar navigation for the app shell
+|   |   |-- button           # button component implementation and tests
+|   |   |-- tabs             # tabs component implementation and tests
+|   |   |-- toggle-button    # toggle button component implementation and tests
 |   |   `-- ui               # reusable shadcn UI
+|   |-- demos                # copy-and-paste component examples
 |   |-- hooks                # shared React hooks
 |   |-- lib                  # shared utility functions
 |   |-- routes               # TanStack Router file routes

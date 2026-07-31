@@ -1,4 +1,4 @@
-import { ToggleButton } from "@/components/button/toggle-button";
+import { ToggleButton } from "@/components/toggle-button/toggle-button";
 
 export default function ToggleButtonDemo() {
   return (

@@ -6,7 +6,6 @@
     "dev": "vp dev --port 3000",
     "generate-routes": "tsr generate",
     "generate:component-code": "node scripts/generate-component-code.ts",
-    "generate:button-code": "vp run generate:component-code",
     "build": "vp run generate:component-code && vp build",
     "preview": "vp preview",
     "prepare": "vp config"

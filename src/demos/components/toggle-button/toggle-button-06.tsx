@@ -1,4 +1,4 @@
-import { ToggleButton } from "@/components/button/toggle-button";
+import { ToggleButton } from "@/components/toggle-button/toggle-button";
 
 export default function ToggleButtonDemo() {
   return (
@@ -22,30 +22,30 @@ function ToggleButtonStateRow({
         {label}
       </p>
       <div className="flex flex-wrap items-center justify-center gap-4">
-        <ToggleButton isSelected={isSelected} variant="filled">
+        <ToggleButton isSelected={isSelected} variant="outlined">
           Enabled
         </ToggleButton>
-        <ToggleButton isDisabled isSelected={isSelected} variant="filled">
+        <ToggleButton isDisabled isSelected={isSelected} variant="outlined">
           Disabled
         </ToggleButton>
         <ToggleButton
           className="before:opacity-[0.08]"
           isSelected={isSelected}
-          variant="filled"
+          variant="outlined"
         >
           Hovered
         </ToggleButton>
         <ToggleButton
           className="before:opacity-[0.1] outline-2 outline-solid outline-offset-2 outline-[#6750a4] dark:outline-[#d0bcff]"
           isSelected={isSelected}
-          variant="filled"
+          variant="outlined"
         >
           Focused
         </ToggleButton>
         <ToggleButton
           className="rounded-[8px] before:opacity-[0.1] data-selected:rounded-[8px]"
           isSelected={isSelected}
-          variant="filled"
+          variant="outlined"
         >
           Pressed
         </ToggleButton>

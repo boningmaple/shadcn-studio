@@ -152,6 +152,10 @@ export const appSidebarData: AppSidebarData = {
               label: "toggle button",
               to: "/components/toggle-button",
             },
+            {
+              label: "tabs",
+              to: "/components/tabs",
+            },
           ],
         },
       ],

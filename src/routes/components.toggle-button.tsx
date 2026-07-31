@@ -1,18 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import ToggleButton01 from "@/components/button/toggle-button-01";
-import ToggleButton02 from "@/components/button/toggle-button-02";
-import ToggleButton03 from "@/components/button/toggle-button-03";
-import ToggleButton04 from "@/components/button/toggle-button-04";
-import ToggleButton05 from "@/components/button/toggle-button-05";
-import ToggleButton06 from "@/components/button/toggle-button-06";
+import ToggleButton01 from "@/demos/components/toggle-button/toggle-button-01";
+import ToggleButton02 from "@/demos/components/toggle-button/toggle-button-02";
+import ToggleButton03 from "@/demos/components/toggle-button/toggle-button-03";
+import ToggleButton04 from "@/demos/components/toggle-button/toggle-button-04";
+import ToggleButton05 from "@/demos/components/toggle-button/toggle-button-05";
+import ToggleButton06 from "@/demos/components/toggle-button/toggle-button-06";
 import {
   ComponentExamplesPage,
   type ComponentExample,
 } from "@/components/component-examples-page";
 
 export const Route = createFileRoute("/components/toggle-button")({
-  component: ToggleButtonComponentsPage,
+  component: ToggleButtonComponentPage,
   head: () => ({
     meta: [
       {
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/components/toggle-button")({
   }),
 });
 
-function ToggleButtonComponentsPage() {
+function ToggleButtonComponentPage() {
   return (
     <ComponentExamplesPage
       codeArtifactPrefix="toggle-button"

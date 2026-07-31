@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import { toggleButtonVariants } from "@/components/button/toggle-button";
+import { toggleButtonVariants } from "@/components/toggle-button/toggle-button";
 
 describe("toggleButtonVariants", () => {
   it("uses the filled small round defaults", () => {

@@ -1,22 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Button01 from "@/components/button/button-01";
-import Button02 from "@/components/button/button-02";
-import Button03 from "@/components/button/button-03";
-import Button04 from "@/components/button/button-04";
-import Button05 from "@/components/button/button-05";
-import Button06 from "@/components/button/button-06";
-import Button07 from "@/components/button/button-07";
-import Button08 from "@/components/button/button-08";
-import Button09 from "@/components/button/button-09";
-import Button10 from "@/components/button/button-10";
+import Button01 from "@/demos/components/button/button-01";
+import Button02 from "@/demos/components/button/button-02";
+import Button03 from "@/demos/components/button/button-03";
+import Button04 from "@/demos/components/button/button-04";
+import Button05 from "@/demos/components/button/button-05";
+import Button06 from "@/demos/components/button/button-06";
+import Button07 from "@/demos/components/button/button-07";
+import Button08 from "@/demos/components/button/button-08";
+import Button09 from "@/demos/components/button/button-09";
+import Button10 from "@/demos/components/button/button-10";
 import {
   ComponentExamplesPage,
   type ComponentExample,
 } from "@/components/component-examples-page";
 
 export const Route = createFileRoute("/components/button")({
-  component: ButtonComponentsPage,
+  component: ButtonComponentPage,
   head: () => ({
     meta: [
       {
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/components/button")({
   }),
 });
 
-function ButtonComponentsPage() {
+function ButtonComponentPage() {
   return (
     <ComponentExamplesPage
       codeArtifactPrefix="button"

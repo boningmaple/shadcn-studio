@@ -61,27 +61,32 @@ export const toggleButtonVariants = tv({
     size: {
       xs: [
         "h-8 gap-1 px-3 text-sm leading-5 font-medium",
-        "data-pressed:rounded-[8px] data-selected:data-pressed:rounded-[8px]",
+        "data-pressed:rounded-[8px]",
+        "data-selected:data-pressed:rounded-[8px]",
         "[&_svg:not([class*='size-'])]:size-5",
       ],
       sm: [
         "h-10 gap-2 px-4 text-sm leading-5 font-medium",
-        "data-pressed:rounded-[8px] data-selected:data-pressed:rounded-[8px]",
+        "data-pressed:rounded-[8px]",
+        "data-selected:data-pressed:rounded-[8px]",
         "[&_svg:not([class*='size-'])]:size-5",
       ],
       md: [
         "h-14 gap-2 px-6 text-base leading-6 font-medium",
-        "data-pressed:rounded-[12px] data-selected:data-pressed:rounded-[12px]",
+        "data-pressed:rounded-[12px]",
+        "data-selected:data-pressed:rounded-[12px]",
         "[&_svg:not([class*='size-'])]:size-6",
       ],
       lg: [
         "h-24 gap-3 border-2 px-12 text-2xl leading-8 font-normal",
-        "data-pressed:rounded-[16px] data-selected:data-pressed:rounded-[16px]",
+        "data-pressed:rounded-[16px]",
+        "data-selected:data-pressed:rounded-[16px]",
         "[&_svg:not([class*='size-'])]:size-8",
       ],
       xl: [
         "h-34 gap-4 border-[3px] px-16 text-[2rem] leading-10 font-normal",
-        "data-pressed:rounded-[16px] data-selected:data-pressed:rounded-[16px]",
+        "data-pressed:rounded-[16px]",
+        "data-selected:data-pressed:rounded-[16px]",
         "[&_svg:not([class*='size-'])]:size-10",
       ],
     },
