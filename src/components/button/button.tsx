@@ -5,7 +5,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const buttonVariants = tv({
   base: [
     "relative inline-flex shrink-0 items-center justify-center overflow-hidden border border-transparent whitespace-nowrap outline-0 outline-solid outline-offset-0 outline-transparent select-none",
-    "transition-[background-color,border-color,border-radius,box-shadow,color,outline-color,outline-offset,outline-width] duration-200 ease-[cubic-bezier(0.2,0,0,1)]",
+    "transition-[background-color,border-color,border-radius,box-shadow,color,outline-offset,outline-width] duration-200 ease-[cubic-bezier(0.2,0,0,1)]",
     "before:pointer-events-none before:absolute before:inset-0 before:bg-current before:opacity-0 before:transition-opacity before:duration-200 before:ease-[cubic-bezier(0.2,0,0,1)]",
     "data-hovered:before:opacity-[0.08]",
     "data-focus-visible:before:opacity-[0.1]",

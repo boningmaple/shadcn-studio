@@ -22,7 +22,7 @@ describe("buttonVariants", () => {
     const classes = classSet(buttonVariants());
 
     expect(classes).toContain(
-      "transition-[background-color,border-color,border-radius,box-shadow,color,outline-color,outline-offset,outline-width]",
+      "transition-[background-color,border-color,border-radius,box-shadow,color,outline-offset,outline-width]",
     );
     expect(classes).toContain("outline-0");
     expect(classes).toContain("outline-offset-0");
