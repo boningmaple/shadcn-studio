@@ -145,6 +145,10 @@ export const appSidebarData: AppSidebarData = {
           icon: ComponentIcon,
           items: [
             {
+              label: "badge",
+              to: "/components/badge",
+            },
+            {
               label: "button",
               to: "/components/button",
             },

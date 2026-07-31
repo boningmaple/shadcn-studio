@@ -24,6 +24,7 @@ npm run build
 |-- src
 |   |-- components
 |   |   |-- app-sidebar.tsx  # main sidebar navigation for the app shell
+|   |   |-- badge            # Material 3 badge component and tests
 |   |   |-- button           # button component implementation and tests
 |   |   |-- tabs             # tabs component implementation and tests
 |   |   |-- toggle-button    # toggle button component implementation and tests
