@@ -157,6 +157,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/button",
             },
             {
+              label: "chips",
+              to: "/components/chips",
+            },
+            {
               label: "toggle button",
               to: "/components/toggle-button",
             },
