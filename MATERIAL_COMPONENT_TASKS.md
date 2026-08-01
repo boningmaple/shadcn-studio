@@ -121,5 +121,5 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Navigation rail
 - [x] Toolbars
 - [x] App bars
-- [ ] Carousel
+- [x] Carousel
 - [ ] Tooltips

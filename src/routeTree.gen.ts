@@ -17,6 +17,7 @@ import { Route as ComponentsBottomSheetRouteImport } from './routes/components.b
 import { Route as ComponentsButtonRouteImport } from './routes/components.button'
 import { Route as ComponentsButtonGroupRouteImport } from './routes/components.button-group'
 import { Route as ComponentsCardRouteImport } from './routes/components.card'
+import { Route as ComponentsCarouselRouteImport } from './routes/components.carousel'
 import { Route as ComponentsCheckboxRouteImport } from './routes/components.checkbox'
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
 import { Route as ComponentsDatePickerRouteImport } from './routes/components.date-picker'
@@ -85,6 +86,11 @@ const ComponentsButtonGroupRoute = ComponentsButtonGroupRouteImport.update({
 const ComponentsCardRoute = ComponentsCardRouteImport.update({
   id: '/components/card',
   path: '/components/card',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsCarouselRoute = ComponentsCarouselRouteImport.update({
+  id: '/components/carousel',
+  path: '/components/carousel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsCheckboxRoute = ComponentsCheckboxRouteImport.update({
@@ -247,6 +253,7 @@ export interface FileRoutesByFullPath {
   '/components/button': typeof ComponentsButtonRoute
   '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/card': typeof ComponentsCardRoute
+  '/components/carousel': typeof ComponentsCarouselRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/date-picker': typeof ComponentsDatePickerRoute
@@ -286,6 +293,7 @@ export interface FileRoutesByTo {
   '/components/button': typeof ComponentsButtonRoute
   '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/card': typeof ComponentsCardRoute
+  '/components/carousel': typeof ComponentsCarouselRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/date-picker': typeof ComponentsDatePickerRoute
@@ -326,6 +334,7 @@ export interface FileRoutesById {
   '/components/button': typeof ComponentsButtonRoute
   '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/card': typeof ComponentsCardRoute
+  '/components/carousel': typeof ComponentsCarouselRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/date-picker': typeof ComponentsDatePickerRoute
@@ -367,6 +376,7 @@ export interface FileRouteTypes {
     | '/components/button'
     | '/components/button-group'
     | '/components/card'
+    | '/components/carousel'
     | '/components/checkbox'
     | '/components/chips'
     | '/components/date-picker'
@@ -406,6 +416,7 @@ export interface FileRouteTypes {
     | '/components/button'
     | '/components/button-group'
     | '/components/card'
+    | '/components/carousel'
     | '/components/checkbox'
     | '/components/chips'
     | '/components/date-picker'
@@ -445,6 +456,7 @@ export interface FileRouteTypes {
     | '/components/button'
     | '/components/button-group'
     | '/components/card'
+    | '/components/carousel'
     | '/components/checkbox'
     | '/components/chips'
     | '/components/date-picker'
@@ -485,6 +497,7 @@ export interface RootRouteChildren {
   ComponentsButtonRoute: typeof ComponentsButtonRoute
   ComponentsButtonGroupRoute: typeof ComponentsButtonGroupRoute
   ComponentsCardRoute: typeof ComponentsCardRoute
+  ComponentsCarouselRoute: typeof ComponentsCarouselRoute
   ComponentsCheckboxRoute: typeof ComponentsCheckboxRoute
   ComponentsChipsRoute: typeof ComponentsChipsRoute
   ComponentsDatePickerRoute: typeof ComponentsDatePickerRoute
@@ -572,6 +585,13 @@ declare module '@tanstack/react-router' {
       path: '/components/card'
       fullPath: '/components/card'
       preLoaderRoute: typeof ComponentsCardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/carousel': {
+      id: '/components/carousel'
+      path: '/components/carousel'
+      fullPath: '/components/carousel'
+      preLoaderRoute: typeof ComponentsCarouselRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/checkbox': {
@@ -789,6 +809,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsButtonRoute: ComponentsButtonRoute,
   ComponentsButtonGroupRoute: ComponentsButtonGroupRoute,
   ComponentsCardRoute: ComponentsCardRoute,
+  ComponentsCarouselRoute: ComponentsCarouselRoute,
   ComponentsCheckboxRoute: ComponentsCheckboxRoute,
   ComponentsChipsRoute: ComponentsChipsRoute,
   ComponentsDatePickerRoute: ComponentsDatePickerRoute,
