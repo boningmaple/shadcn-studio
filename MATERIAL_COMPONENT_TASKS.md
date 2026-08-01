@@ -114,7 +114,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Date pickers
 - [x] Time pickers
 - [x] Snackbar
-- [ ] Bottom sheets
+- [x] Bottom sheets
 - [ ] Side sheets
 - [ ] Navigation bar
 - [ ] Navigation drawer

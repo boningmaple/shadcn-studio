@@ -217,6 +217,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/snackbar",
             },
             {
+              label: "bottom sheet",
+              to: "/components/bottom-sheet",
+            },
+            {
               label: "split button",
               to: "/components/split-button",
             },

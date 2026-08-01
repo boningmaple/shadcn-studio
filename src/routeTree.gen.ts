@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComponentsAvatarRouteImport } from './routes/components.avatar'
 import { Route as ComponentsBadgeRouteImport } from './routes/components.badge'
+import { Route as ComponentsBottomSheetRouteImport } from './routes/components.bottom-sheet'
 import { Route as ComponentsButtonRouteImport } from './routes/components.button'
 import { Route as ComponentsButtonGroupRouteImport } from './routes/components.button-group'
 import { Route as ComponentsCardRouteImport } from './routes/components.card'
@@ -53,6 +54,11 @@ const ComponentsAvatarRoute = ComponentsAvatarRouteImport.update({
 const ComponentsBadgeRoute = ComponentsBadgeRouteImport.update({
   id: '/components/badge',
   path: '/components/badge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsBottomSheetRoute = ComponentsBottomSheetRouteImport.update({
+  id: '/components/bottom-sheet',
+  path: '/components/bottom-sheet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsButtonRoute = ComponentsButtonRouteImport.update({
@@ -198,6 +204,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
+  '/components/bottom-sheet': typeof ComponentsBottomSheetRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/card': typeof ComponentsCardRoute
@@ -230,6 +237,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
+  '/components/bottom-sheet': typeof ComponentsBottomSheetRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/card': typeof ComponentsCardRoute
@@ -263,6 +271,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
+  '/components/bottom-sheet': typeof ComponentsBottomSheetRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/card': typeof ComponentsCardRoute
@@ -297,6 +306,7 @@ export interface FileRouteTypes {
     | '/'
     | '/components/avatar'
     | '/components/badge'
+    | '/components/bottom-sheet'
     | '/components/button'
     | '/components/button-group'
     | '/components/card'
@@ -329,6 +339,7 @@ export interface FileRouteTypes {
     | '/'
     | '/components/avatar'
     | '/components/badge'
+    | '/components/bottom-sheet'
     | '/components/button'
     | '/components/button-group'
     | '/components/card'
@@ -361,6 +372,7 @@ export interface FileRouteTypes {
     | '/'
     | '/components/avatar'
     | '/components/badge'
+    | '/components/bottom-sheet'
     | '/components/button'
     | '/components/button-group'
     | '/components/card'
@@ -394,6 +406,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ComponentsAvatarRoute: typeof ComponentsAvatarRoute
   ComponentsBadgeRoute: typeof ComponentsBadgeRoute
+  ComponentsBottomSheetRoute: typeof ComponentsBottomSheetRoute
   ComponentsButtonRoute: typeof ComponentsButtonRoute
   ComponentsButtonGroupRoute: typeof ComponentsButtonGroupRoute
   ComponentsCardRoute: typeof ComponentsCardRoute
@@ -444,6 +457,13 @@ declare module '@tanstack/react-router' {
       path: '/components/badge'
       fullPath: '/components/badge'
       preLoaderRoute: typeof ComponentsBadgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/bottom-sheet': {
+      id: '/components/bottom-sheet'
+      path: '/components/bottom-sheet'
+      fullPath: '/components/bottom-sheet'
+      preLoaderRoute: typeof ComponentsBottomSheetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/button': {
@@ -642,6 +662,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ComponentsAvatarRoute: ComponentsAvatarRoute,
   ComponentsBadgeRoute: ComponentsBadgeRoute,
+  ComponentsBottomSheetRoute: ComponentsBottomSheetRoute,
   ComponentsButtonRoute: ComponentsButtonRoute,
   ComponentsButtonGroupRoute: ComponentsButtonGroupRoute,
   ComponentsCardRoute: ComponentsCardRoute,
