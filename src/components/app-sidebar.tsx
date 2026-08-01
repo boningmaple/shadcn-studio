@@ -233,6 +233,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/progress-indicator",
             },
             {
+              label: "search",
+              to: "/components/search",
+            },
+            {
               label: "chips",
               to: "/components/chips",
             },

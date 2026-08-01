@@ -28,6 +28,7 @@ import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/compone
 import { Route as ComponentsMenuRouteImport } from './routes/components.menu'
 import { Route as ComponentsProgressIndicatorRouteImport } from './routes/components.progress-indicator'
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
+import { Route as ComponentsSearchRouteImport } from './routes/components.search'
 import { Route as ComponentsSegmentedButtonRouteImport } from './routes/components.segmented-button'
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
 import { Route as ComponentsSplitButtonRouteImport } from './routes/components.split-button'
@@ -133,6 +134,11 @@ const ComponentsRadioButtonRoute = ComponentsRadioButtonRouteImport.update({
   path: '/components/radio-button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsSearchRoute = ComponentsSearchRouteImport.update({
+  id: '/components/search',
+  path: '/components/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsSegmentedButtonRoute =
   ComponentsSegmentedButtonRouteImport.update({
     id: '/components/segmented-button',
@@ -190,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
@@ -218,6 +225,7 @@ export interface FileRoutesByTo {
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
@@ -247,6 +255,7 @@ export interface FileRoutesById {
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
@@ -277,6 +286,7 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
+    | '/components/search'
     | '/components/segmented-button'
     | '/components/slider'
     | '/components/split-button'
@@ -305,6 +315,7 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
+    | '/components/search'
     | '/components/segmented-button'
     | '/components/slider'
     | '/components/split-button'
@@ -333,6 +344,7 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
+    | '/components/search'
     | '/components/segmented-button'
     | '/components/slider'
     | '/components/split-button'
@@ -362,6 +374,7 @@ export interface RootRouteChildren {
   ComponentsMenuRoute: typeof ComponentsMenuRoute
   ComponentsProgressIndicatorRoute: typeof ComponentsProgressIndicatorRoute
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
+  ComponentsSearchRoute: typeof ComponentsSearchRoute
   ComponentsSegmentedButtonRoute: typeof ComponentsSegmentedButtonRoute
   ComponentsSliderRoute: typeof ComponentsSliderRoute
   ComponentsSplitButtonRoute: typeof ComponentsSplitButtonRoute
@@ -506,6 +519,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsRadioButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/search': {
+      id: '/components/search'
+      path: '/components/search'
+      fullPath: '/components/search'
+      preLoaderRoute: typeof ComponentsSearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/segmented-button': {
       id: '/components/segmented-button'
       path: '/components/segmented-button'
@@ -578,6 +598,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsMenuRoute: ComponentsMenuRoute,
   ComponentsProgressIndicatorRoute: ComponentsProgressIndicatorRoute,
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
+  ComponentsSearchRoute: ComponentsSearchRoute,
   ComponentsSegmentedButtonRoute: ComponentsSegmentedButtonRoute,
   ComponentsSliderRoute: ComponentsSliderRoute,
   ComponentsSplitButtonRoute: ComponentsSplitButtonRoute,

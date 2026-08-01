@@ -110,7 +110,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Tabs (`640f4a4`)
 - [x] Dialogs
 - [x] Lists
-- [ ] Search
+- [x] Search
 - [ ] Date pickers
 - [ ] Time pickers
 - [ ] Snackbar
