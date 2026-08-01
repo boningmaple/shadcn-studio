@@ -21,6 +21,7 @@ import { Route as ComponentsRadioButtonRouteImport } from './routes/components.r
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
 import { Route as ComponentsSwitchRouteImport } from './routes/components.switch'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
+import { Route as ComponentsTextFieldRouteImport } from './routes/components.text-field'
 import { Route as ComponentsToggleButtonRouteImport } from './routes/components.toggle-button'
 
 const IndexRoute = IndexRouteImport.update({
@@ -83,6 +84,11 @@ const ComponentsTabsRoute = ComponentsTabsRouteImport.update({
   path: '/components/tabs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsTextFieldRoute = ComponentsTextFieldRouteImport.update({
+  id: '/components/text-field',
+  path: '/components/text-field',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsToggleButtonRoute = ComponentsToggleButtonRouteImport.update({
   id: '/components/toggle-button',
   path: '/components/toggle-button',
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/text-field': typeof ComponentsTextFieldRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
 export interface FileRoutesByTo {
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/text-field': typeof ComponentsTextFieldRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
 export interface FileRoutesById {
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/text-field': typeof ComponentsTextFieldRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
 export interface FileRouteTypes {
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/text-field'
     | '/components/toggle-button'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -165,6 +175,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/text-field'
     | '/components/toggle-button'
   id:
     | '__root__'
@@ -180,6 +191,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/text-field'
     | '/components/toggle-button'
   fileRoutesById: FileRoutesById
 }
@@ -196,6 +208,7 @@ export interface RootRouteChildren {
   ComponentsSliderRoute: typeof ComponentsSliderRoute
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
+  ComponentsTextFieldRoute: typeof ComponentsTextFieldRoute
   ComponentsToggleButtonRoute: typeof ComponentsToggleButtonRoute
 }
 
@@ -285,6 +298,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsTabsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/text-field': {
+      id: '/components/text-field'
+      path: '/components/text-field'
+      fullPath: '/components/text-field'
+      preLoaderRoute: typeof ComponentsTextFieldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/toggle-button': {
       id: '/components/toggle-button'
       path: '/components/toggle-button'
@@ -308,6 +328,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsSliderRoute: ComponentsSliderRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
+  ComponentsTextFieldRoute: ComponentsTextFieldRoute,
   ComponentsToggleButtonRoute: ComponentsToggleButtonRoute,
 }
 export const routeTree = rootRouteImport

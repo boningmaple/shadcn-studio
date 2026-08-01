@@ -94,7 +94,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Radio button
 - [x] Switch
 - [x] Sliders
-- [ ] Text fields
+- [x] Text fields
 - [ ] Loading indicator
 - [ ] Progress indicators
 - [x] Badges (`d67ebb2`)

@@ -181,6 +181,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/slider",
             },
             {
+              label: "text field",
+              to: "/components/text-field",
+            },
+            {
               label: "chips",
               to: "/components/chips",
             },
