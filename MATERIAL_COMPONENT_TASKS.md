@@ -116,7 +116,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Snackbar
 - [x] Bottom sheets
 - [x] Side sheets
-- [ ] Navigation bar
+- [x] Navigation bar
 - [ ] Navigation drawer
 - [ ] Navigation rail
 - [ ] Toolbars

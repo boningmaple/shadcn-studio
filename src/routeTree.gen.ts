@@ -28,6 +28,7 @@ import { Route as ComponentsIconButtonRouteImport } from './routes/components.ic
 import { Route as ComponentsListRouteImport } from './routes/components.list'
 import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/components.loading-indicator'
 import { Route as ComponentsMenuRouteImport } from './routes/components.menu'
+import { Route as ComponentsNavigationBarRouteImport } from './routes/components.navigation-bar'
 import { Route as ComponentsProgressIndicatorRouteImport } from './routes/components.progress-indicator'
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
 import { Route as ComponentsSearchRouteImport } from './routes/components.search'
@@ -138,6 +139,11 @@ const ComponentsMenuRoute = ComponentsMenuRouteImport.update({
   path: '/components/menu',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsNavigationBarRoute = ComponentsNavigationBarRouteImport.update({
+  id: '/components/navigation-bar',
+  path: '/components/navigation-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsProgressIndicatorRoute =
   ComponentsProgressIndicatorRouteImport.update({
     id: '/components/progress-indicator',
@@ -226,6 +232,7 @@ export interface FileRoutesByFullPath {
   '/components/list': typeof ComponentsListRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
+  '/components/navigation-bar': typeof ComponentsNavigationBarRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/search': typeof ComponentsSearchRoute
@@ -260,6 +267,7 @@ export interface FileRoutesByTo {
   '/components/list': typeof ComponentsListRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
+  '/components/navigation-bar': typeof ComponentsNavigationBarRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/search': typeof ComponentsSearchRoute
@@ -295,6 +303,7 @@ export interface FileRoutesById {
   '/components/list': typeof ComponentsListRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
+  '/components/navigation-bar': typeof ComponentsNavigationBarRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/search': typeof ComponentsSearchRoute
@@ -331,6 +340,7 @@ export interface FileRouteTypes {
     | '/components/list'
     | '/components/loading-indicator'
     | '/components/menu'
+    | '/components/navigation-bar'
     | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/search'
@@ -365,6 +375,7 @@ export interface FileRouteTypes {
     | '/components/list'
     | '/components/loading-indicator'
     | '/components/menu'
+    | '/components/navigation-bar'
     | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/search'
@@ -399,6 +410,7 @@ export interface FileRouteTypes {
     | '/components/list'
     | '/components/loading-indicator'
     | '/components/menu'
+    | '/components/navigation-bar'
     | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/search'
@@ -434,6 +446,7 @@ export interface RootRouteChildren {
   ComponentsListRoute: typeof ComponentsListRoute
   ComponentsLoadingIndicatorRoute: typeof ComponentsLoadingIndicatorRoute
   ComponentsMenuRoute: typeof ComponentsMenuRoute
+  ComponentsNavigationBarRoute: typeof ComponentsNavigationBarRoute
   ComponentsProgressIndicatorRoute: typeof ComponentsProgressIndicatorRoute
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
   ComponentsSearchRoute: typeof ComponentsSearchRoute
@@ -584,6 +597,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsMenuRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/navigation-bar': {
+      id: '/components/navigation-bar'
+      path: '/components/navigation-bar'
+      fullPath: '/components/navigation-bar'
+      preLoaderRoute: typeof ComponentsNavigationBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/progress-indicator': {
       id: '/components/progress-indicator'
       path: '/components/progress-indicator'
@@ -698,6 +718,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsListRoute: ComponentsListRoute,
   ComponentsLoadingIndicatorRoute: ComponentsLoadingIndicatorRoute,
   ComponentsMenuRoute: ComponentsMenuRoute,
+  ComponentsNavigationBarRoute: ComponentsNavigationBarRoute,
   ComponentsProgressIndicatorRoute: ComponentsProgressIndicatorRoute,
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
   ComponentsSearchRoute: ComponentsSearchRoute,
