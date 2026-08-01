@@ -120,6 +120,6 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Navigation drawer
 - [x] Navigation rail
 - [x] Toolbars
-- [ ] App bars
+- [x] App bars
 - [ ] Carousel
 - [ ] Tooltips

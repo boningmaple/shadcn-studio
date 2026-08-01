@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ComponentsAppBarRouteImport } from './routes/components.app-bar'
 import { Route as ComponentsAvatarRouteImport } from './routes/components.avatar'
 import { Route as ComponentsBadgeRouteImport } from './routes/components.badge'
 import { Route as ComponentsBottomSheetRouteImport } from './routes/components.bottom-sheet'
@@ -49,6 +50,11 @@ import { Route as ComponentsToolbarRouteImport } from './routes/components.toolb
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsAppBarRoute = ComponentsAppBarRouteImport.update({
+  id: '/components/app-bar',
+  path: '/components/app-bar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsAvatarRoute = ComponentsAvatarRouteImport.update({
@@ -234,6 +240,7 @@ const ComponentsToolbarRoute = ComponentsToolbarRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/components/app-bar': typeof ComponentsAppBarRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/bottom-sheet': typeof ComponentsBottomSheetRoute
@@ -272,6 +279,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/components/app-bar': typeof ComponentsAppBarRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/bottom-sheet': typeof ComponentsBottomSheetRoute
@@ -311,6 +319,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/components/app-bar': typeof ComponentsAppBarRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/bottom-sheet': typeof ComponentsBottomSheetRoute
@@ -351,6 +360,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/components/app-bar'
     | '/components/avatar'
     | '/components/badge'
     | '/components/bottom-sheet'
@@ -389,6 +399,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/components/app-bar'
     | '/components/avatar'
     | '/components/badge'
     | '/components/bottom-sheet'
@@ -427,6 +438,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/components/app-bar'
     | '/components/avatar'
     | '/components/badge'
     | '/components/bottom-sheet'
@@ -466,6 +478,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ComponentsAppBarRoute: typeof ComponentsAppBarRoute
   ComponentsAvatarRoute: typeof ComponentsAvatarRoute
   ComponentsBadgeRoute: typeof ComponentsBadgeRoute
   ComponentsBottomSheetRoute: typeof ComponentsBottomSheetRoute
@@ -510,6 +523,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/app-bar': {
+      id: '/components/app-bar'
+      path: '/components/app-bar'
+      fullPath: '/components/app-bar'
+      preLoaderRoute: typeof ComponentsAppBarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/avatar': {
@@ -762,6 +782,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ComponentsAppBarRoute: ComponentsAppBarRoute,
   ComponentsAvatarRoute: ComponentsAvatarRoute,
   ComponentsBadgeRoute: ComponentsBadgeRoute,
   ComponentsBottomSheetRoute: ComponentsBottomSheetRoute,
