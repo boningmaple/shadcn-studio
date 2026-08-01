@@ -67,7 +67,7 @@ When more than one task is ready, choose the task that appears first here.
 ## Tasks
 
 - [x] Buttons (`73b464a`, `332a572`, `55b7fd3`, `5d78282`)
-- [ ] Icon buttons
+- [x] Icon buttons
 - [ ] Divider
 - [ ] Checkbox
 - [ ] Radio button

@@ -14,6 +14,7 @@ import { Route as ComponentsAvatarRouteImport } from './routes/components.avatar
 import { Route as ComponentsBadgeRouteImport } from './routes/components.badge'
 import { Route as ComponentsButtonRouteImport } from './routes/components.button'
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
+import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
 import { Route as ComponentsToggleButtonRouteImport } from './routes/components.toggle-button'
 
@@ -42,6 +43,11 @@ const ComponentsChipsRoute = ComponentsChipsRouteImport.update({
   path: '/components/chips',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsIconButtonRoute = ComponentsIconButtonRouteImport.update({
+  id: '/components/icon-button',
+  path: '/components/icon-button',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsTabsRoute = ComponentsTabsRouteImport.update({
   id: '/components/tabs',
   path: '/components/tabs',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/button'
     | '/components/chips'
+    | '/components/icon-button'
     | '/components/tabs'
     | '/components/toggle-button'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/button'
     | '/components/chips'
+    | '/components/icon-button'
     | '/components/tabs'
     | '/components/toggle-button'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/button'
     | '/components/chips'
+    | '/components/icon-button'
     | '/components/tabs'
     | '/components/toggle-button'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   ComponentsBadgeRoute: typeof ComponentsBadgeRoute
   ComponentsButtonRoute: typeof ComponentsButtonRoute
   ComponentsChipsRoute: typeof ComponentsChipsRoute
+  ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
   ComponentsToggleButtonRoute: typeof ComponentsToggleButtonRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsChipsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/icon-button': {
+      id: '/components/icon-button'
+      path: '/components/icon-button'
+      fullPath: '/components/icon-button'
+      preLoaderRoute: typeof ComponentsIconButtonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/tabs': {
       id: '/components/tabs'
       path: '/components/tabs'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsBadgeRoute: ComponentsBadgeRoute,
   ComponentsButtonRoute: ComponentsButtonRoute,
   ComponentsChipsRoute: ComponentsChipsRoute,
+  ComponentsIconButtonRoute: ComponentsIconButtonRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
   ComponentsToggleButtonRoute: ComponentsToggleButtonRoute,
 }
