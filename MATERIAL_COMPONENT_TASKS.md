@@ -98,7 +98,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Loading indicator
 - [x] Progress indicators
 - [x] Badges (`d67ebb2`)
-- [ ] Cards
+- [x] Cards
 - [ ] Button groups
 - [ ] Extended FABs
 - [ ] Floating action buttons (FABs)
