@@ -118,7 +118,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Side sheets
 - [x] Navigation bar
 - [x] Navigation drawer
-- [ ] Navigation rail
+- [x] Navigation rail
 - [ ] Toolbars
 - [ ] App bars
 - [ ] Carousel
