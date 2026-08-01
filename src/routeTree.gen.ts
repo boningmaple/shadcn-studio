@@ -32,6 +32,7 @@ import { Route as ComponentsRadioButtonRouteImport } from './routes/components.r
 import { Route as ComponentsSearchRouteImport } from './routes/components.search'
 import { Route as ComponentsSegmentedButtonRouteImport } from './routes/components.segmented-button'
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
+import { Route as ComponentsSnackbarRouteImport } from './routes/components.snackbar'
 import { Route as ComponentsSplitButtonRouteImport } from './routes/components.split-button'
 import { Route as ComponentsSwitchRouteImport } from './routes/components.switch'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
@@ -157,6 +158,11 @@ const ComponentsSliderRoute = ComponentsSliderRouteImport.update({
   path: '/components/slider',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsSnackbarRoute = ComponentsSnackbarRouteImport.update({
+  id: '/components/snackbar',
+  path: '/components/snackbar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsSplitButtonRoute = ComponentsSplitButtonRouteImport.update({
   id: '/components/split-button',
   path: '/components/split-button',
@@ -212,6 +218,7 @@ export interface FileRoutesByFullPath {
   '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
+  '/components/snackbar': typeof ComponentsSnackbarRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -243,6 +250,7 @@ export interface FileRoutesByTo {
   '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
+  '/components/snackbar': typeof ComponentsSnackbarRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -275,6 +283,7 @@ export interface FileRoutesById {
   '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
+  '/components/snackbar': typeof ComponentsSnackbarRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -308,6 +317,7 @@ export interface FileRouteTypes {
     | '/components/search'
     | '/components/segmented-button'
     | '/components/slider'
+    | '/components/snackbar'
     | '/components/split-button'
     | '/components/switch'
     | '/components/tabs'
@@ -339,6 +349,7 @@ export interface FileRouteTypes {
     | '/components/search'
     | '/components/segmented-button'
     | '/components/slider'
+    | '/components/snackbar'
     | '/components/split-button'
     | '/components/switch'
     | '/components/tabs'
@@ -370,6 +381,7 @@ export interface FileRouteTypes {
     | '/components/search'
     | '/components/segmented-button'
     | '/components/slider'
+    | '/components/snackbar'
     | '/components/split-button'
     | '/components/switch'
     | '/components/tabs'
@@ -402,6 +414,7 @@ export interface RootRouteChildren {
   ComponentsSearchRoute: typeof ComponentsSearchRoute
   ComponentsSegmentedButtonRoute: typeof ComponentsSegmentedButtonRoute
   ComponentsSliderRoute: typeof ComponentsSliderRoute
+  ComponentsSnackbarRoute: typeof ComponentsSnackbarRoute
   ComponentsSplitButtonRoute: typeof ComponentsSplitButtonRoute
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
@@ -573,6 +586,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsSliderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/snackbar': {
+      id: '/components/snackbar'
+      path: '/components/snackbar'
+      fullPath: '/components/snackbar'
+      preLoaderRoute: typeof ComponentsSnackbarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/split-button': {
       id: '/components/split-button'
       path: '/components/split-button'
@@ -642,6 +662,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsSearchRoute: ComponentsSearchRoute,
   ComponentsSegmentedButtonRoute: ComponentsSegmentedButtonRoute,
   ComponentsSliderRoute: ComponentsSliderRoute,
+  ComponentsSnackbarRoute: ComponentsSnackbarRoute,
   ComponentsSplitButtonRoute: ComponentsSplitButtonRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,

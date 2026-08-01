@@ -213,6 +213,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/slider",
             },
             {
+              label: "snackbar",
+              to: "/components/snackbar",
+            },
+            {
               label: "split button",
               to: "/components/split-button",
             },

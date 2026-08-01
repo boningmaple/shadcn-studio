@@ -113,7 +113,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Search
 - [x] Date pickers
 - [x] Time pickers
-- [ ] Snackbar
+- [x] Snackbar
 - [ ] Bottom sheets
 - [ ] Side sheets
 - [ ] Navigation bar
