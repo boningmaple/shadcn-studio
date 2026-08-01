@@ -2,9 +2,9 @@ import { TextArea } from "@/components/text-field/text-field";
 
 export default function TextFieldDemo() {
   return (
-    <div className="grid w-full max-w-sm gap-6">
+    <div className="grid w-full max-w-md gap-6">
       <TextArea
-        description="Tell us what you plan to build with this library."
+        supportingText="Tell us what you plan to build with this library."
         label="Project description"
       />
       <TextArea
@@ -12,6 +12,7 @@ export default function TextFieldDemo() {
         errorMessage="Keep the summary under 280 characters."
         isInvalid
         label="Short summary"
+        rows={3}
         variant="outlined"
       />
     </div>

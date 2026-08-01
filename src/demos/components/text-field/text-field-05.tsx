@@ -11,15 +11,17 @@ export default function TextFieldDemo() {
         <TextField isRequired label="Last name" validationBehavior="aria" />
       </div>
       <TextField
-        description="We will send the invite to this address."
         isRequired
         label="Email address"
+        supportingText="We will send the invite to this address."
         type="email"
         validationBehavior="aria"
+        variant="outlined"
       />
+      <TextField label="Team size" suffix="members" type="number" />
       <TextArea
-        description="Optional, but recommended for bigger teams."
         label="Team notes"
+        supportingText="Optional, but recommended for bigger teams."
       />
     </form>
   );

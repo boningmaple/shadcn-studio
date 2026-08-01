@@ -2,8 +2,12 @@ import { TextField } from "@/components/text-field/text-field";
 
 export default function TextFieldDemo() {
   return (
-    <div className="grid w-full max-w-sm gap-6">
-      <TextField label="Email address" variant="outlined" />
+    <div className="grid w-full max-w-md gap-6">
+      <TextField
+        label="Email address"
+        supportingText="We will only use this for account recovery."
+        variant="outlined"
+      />
       <TextField
         defaultValue="hello@example.com"
         label="Work email"
