@@ -69,7 +69,7 @@ When more than one task is ready, choose the task that appears first here.
 - [x] Buttons (`73b464a`, `332a572`, `55b7fd3`, `5d78282`)
 - [x] Icon buttons
 - [x] Divider
-- [ ] Checkbox
+- [x] Checkbox
 - [ ] Radio button
 - [ ] Switch
 - [ ] Sliders

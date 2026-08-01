@@ -165,6 +165,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/divider",
             },
             {
+              label: "checkbox",
+              to: "/components/checkbox",
+            },
+            {
               label: "chips",
               to: "/components/chips",
             },

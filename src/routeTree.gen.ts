@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComponentsAvatarRouteImport } from './routes/components.avatar'
 import { Route as ComponentsBadgeRouteImport } from './routes/components.badge'
 import { Route as ComponentsButtonRouteImport } from './routes/components.button'
+import { Route as ComponentsCheckboxRouteImport } from './routes/components.checkbox'
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
@@ -37,6 +38,11 @@ const ComponentsBadgeRoute = ComponentsBadgeRouteImport.update({
 const ComponentsButtonRoute = ComponentsButtonRouteImport.update({
   id: '/components/button',
   path: '/components/button',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsCheckboxRoute = ComponentsCheckboxRouteImport.update({
+  id: '/components/checkbox',
+  path: '/components/checkbox',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsChipsRoute = ComponentsChipsRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/components/avatar'
     | '/components/badge'
     | '/components/button'
+    | '/components/checkbox'
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/components/avatar'
     | '/components/badge'
     | '/components/button'
+    | '/components/checkbox'
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/components/avatar'
     | '/components/badge'
     | '/components/button'
+    | '/components/checkbox'
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   ComponentsAvatarRoute: typeof ComponentsAvatarRoute
   ComponentsBadgeRoute: typeof ComponentsBadgeRoute
   ComponentsButtonRoute: typeof ComponentsButtonRoute
+  ComponentsCheckboxRoute: typeof ComponentsCheckboxRoute
   ComponentsChipsRoute: typeof ComponentsChipsRoute
   ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/components/button'
       fullPath: '/components/button'
       preLoaderRoute: typeof ComponentsButtonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/checkbox': {
+      id: '/components/checkbox'
+      path: '/components/checkbox'
+      fullPath: '/components/checkbox'
+      preLoaderRoute: typeof ComponentsCheckboxRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/chips': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsAvatarRoute: ComponentsAvatarRoute,
   ComponentsBadgeRoute: ComponentsBadgeRoute,
   ComponentsButtonRoute: ComponentsButtonRoute,
+  ComponentsCheckboxRoute: ComponentsCheckboxRoute,
   ComponentsChipsRoute: ComponentsChipsRoute,
   ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
