@@ -17,6 +17,7 @@ import { Route as ComponentsButtonGroupRouteImport } from './routes/components.b
 import { Route as ComponentsCardRouteImport } from './routes/components.card'
 import { Route as ComponentsCheckboxRouteImport } from './routes/components.checkbox'
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
+import { Route as ComponentsDialogRouteImport } from './routes/components.dialog'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsExtendedFabRouteImport } from './routes/components.extended-fab'
 import { Route as ComponentsFabRouteImport } from './routes/components.fab'
@@ -72,6 +73,11 @@ const ComponentsCheckboxRoute = ComponentsCheckboxRouteImport.update({
 const ComponentsChipsRoute = ComponentsChipsRouteImport.update({
   id: '/components/chips',
   path: '/components/chips',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsDialogRoute = ComponentsDialogRouteImport.update({
+  id: '/components/dialog',
+  path: '/components/dialog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsDividerRoute = ComponentsDividerRouteImport.update({
@@ -167,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/components/card': typeof ComponentsCardRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/dialog': typeof ComponentsDialogRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/fab': typeof ComponentsFabRoute
@@ -193,6 +200,7 @@ export interface FileRoutesByTo {
   '/components/card': typeof ComponentsCardRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/dialog': typeof ComponentsDialogRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/fab': typeof ComponentsFabRoute
@@ -220,6 +228,7 @@ export interface FileRoutesById {
   '/components/card': typeof ComponentsCardRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/dialog': typeof ComponentsDialogRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/fab': typeof ComponentsFabRoute
@@ -248,6 +257,7 @@ export interface FileRouteTypes {
     | '/components/card'
     | '/components/checkbox'
     | '/components/chips'
+    | '/components/dialog'
     | '/components/divider'
     | '/components/extended-fab'
     | '/components/fab'
@@ -274,6 +284,7 @@ export interface FileRouteTypes {
     | '/components/card'
     | '/components/checkbox'
     | '/components/chips'
+    | '/components/dialog'
     | '/components/divider'
     | '/components/extended-fab'
     | '/components/fab'
@@ -300,6 +311,7 @@ export interface FileRouteTypes {
     | '/components/card'
     | '/components/checkbox'
     | '/components/chips'
+    | '/components/dialog'
     | '/components/divider'
     | '/components/extended-fab'
     | '/components/fab'
@@ -327,6 +339,7 @@ export interface RootRouteChildren {
   ComponentsCardRoute: typeof ComponentsCardRoute
   ComponentsCheckboxRoute: typeof ComponentsCheckboxRoute
   ComponentsChipsRoute: typeof ComponentsChipsRoute
+  ComponentsDialogRoute: typeof ComponentsDialogRoute
   ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsExtendedFabRoute: typeof ComponentsExtendedFabRoute
   ComponentsFabRoute: typeof ComponentsFabRoute
@@ -401,6 +414,13 @@ declare module '@tanstack/react-router' {
       path: '/components/chips'
       fullPath: '/components/chips'
       preLoaderRoute: typeof ComponentsChipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/dialog': {
+      id: '/components/dialog'
+      path: '/components/dialog'
+      fullPath: '/components/dialog'
+      preLoaderRoute: typeof ComponentsDialogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/divider': {
@@ -527,6 +547,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsCardRoute: ComponentsCardRoute,
   ComponentsCheckboxRoute: ComponentsCheckboxRoute,
   ComponentsChipsRoute: ComponentsChipsRoute,
+  ComponentsDialogRoute: ComponentsDialogRoute,
   ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsExtendedFabRoute: ComponentsExtendedFabRoute,
   ComponentsFabRoute: ComponentsFabRoute,

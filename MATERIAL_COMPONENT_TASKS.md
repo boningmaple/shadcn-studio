@@ -108,7 +108,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Split buttons
 - [x] Chips (`3a4d48b`)
 - [x] Tabs (`640f4a4`)
-- [ ] Dialogs
+- [x] Dialogs
 - [ ] Lists
 - [ ] Search
 - [ ] Date pickers

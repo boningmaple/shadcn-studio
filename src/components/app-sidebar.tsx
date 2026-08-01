@@ -173,6 +173,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/divider",
             },
             {
+              label: "dialog",
+              to: "/components/dialog",
+            },
+            {
               label: "extended FAB",
               to: "/components/extended-fab",
             },
