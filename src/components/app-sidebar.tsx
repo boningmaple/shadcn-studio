@@ -161,6 +161,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/icon-button",
             },
             {
+              label: "divider",
+              to: "/components/divider",
+            },
+            {
               label: "chips",
               to: "/components/chips",
             },

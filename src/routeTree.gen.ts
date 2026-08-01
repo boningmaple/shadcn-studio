@@ -14,6 +14,7 @@ import { Route as ComponentsAvatarRouteImport } from './routes/components.avatar
 import { Route as ComponentsBadgeRouteImport } from './routes/components.badge'
 import { Route as ComponentsButtonRouteImport } from './routes/components.button'
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
+import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
 import { Route as ComponentsToggleButtonRouteImport } from './routes/components.toggle-button'
@@ -43,6 +44,11 @@ const ComponentsChipsRoute = ComponentsChipsRouteImport.update({
   path: '/components/chips',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsDividerRoute = ComponentsDividerRouteImport.update({
+  id: '/components/divider',
+  path: '/components/divider',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsIconButtonRoute = ComponentsIconButtonRouteImport.update({
   id: '/components/icon-button',
   path: '/components/icon-button',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/button'
     | '/components/chips'
+    | '/components/divider'
     | '/components/icon-button'
     | '/components/tabs'
     | '/components/toggle-button'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/button'
     | '/components/chips'
+    | '/components/divider'
     | '/components/icon-button'
     | '/components/tabs'
     | '/components/toggle-button'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/button'
     | '/components/chips'
+    | '/components/divider'
     | '/components/icon-button'
     | '/components/tabs'
     | '/components/toggle-button'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   ComponentsBadgeRoute: typeof ComponentsBadgeRoute
   ComponentsButtonRoute: typeof ComponentsButtonRoute
   ComponentsChipsRoute: typeof ComponentsChipsRoute
+  ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
   ComponentsToggleButtonRoute: typeof ComponentsToggleButtonRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsChipsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/divider': {
+      id: '/components/divider'
+      path: '/components/divider'
+      fullPath: '/components/divider'
+      preLoaderRoute: typeof ComponentsDividerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/icon-button': {
       id: '/components/icon-button'
       path: '/components/icon-button'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsBadgeRoute: ComponentsBadgeRoute,
   ComponentsButtonRoute: ComponentsButtonRoute,
   ComponentsChipsRoute: ComponentsChipsRoute,
+  ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
   ComponentsToggleButtonRoute: ComponentsToggleButtonRoute,
