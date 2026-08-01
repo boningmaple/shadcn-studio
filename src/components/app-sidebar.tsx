@@ -157,6 +157,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/button",
             },
             {
+              label: "button group",
+              to: "/components/button-group",
+            },
+            {
               label: "card",
               to: "/components/card",
             },
