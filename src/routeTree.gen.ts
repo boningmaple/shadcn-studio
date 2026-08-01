@@ -20,6 +20,7 @@ import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsExtendedFabRouteImport } from './routes/components.extended-fab'
 import { Route as ComponentsFabRouteImport } from './routes/components.fab'
+import { Route as ComponentsFabMenuRouteImport } from './routes/components.fab-menu'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
 import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/components.loading-indicator'
 import { Route as ComponentsMenuRouteImport } from './routes/components.menu'
@@ -84,6 +85,11 @@ const ComponentsExtendedFabRoute = ComponentsExtendedFabRouteImport.update({
 const ComponentsFabRoute = ComponentsFabRouteImport.update({
   id: '/components/fab',
   path: '/components/fab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsFabMenuRoute = ComponentsFabMenuRouteImport.update({
+  id: '/components/fab-menu',
+  path: '/components/fab-menu',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsIconButtonRoute = ComponentsIconButtonRouteImport.update({
@@ -151,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/fab': typeof ComponentsFabRoute
+  '/components/fab-menu': typeof ComponentsFabMenuRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
@@ -174,6 +181,7 @@ export interface FileRoutesByTo {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/fab': typeof ComponentsFabRoute
+  '/components/fab-menu': typeof ComponentsFabMenuRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
@@ -198,6 +206,7 @@ export interface FileRoutesById {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/fab': typeof ComponentsFabRoute
+  '/components/fab-menu': typeof ComponentsFabMenuRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/extended-fab'
     | '/components/fab'
+    | '/components/fab-menu'
     | '/components/icon-button'
     | '/components/loading-indicator'
     | '/components/menu'
@@ -246,6 +256,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/extended-fab'
     | '/components/fab'
+    | '/components/fab-menu'
     | '/components/icon-button'
     | '/components/loading-indicator'
     | '/components/menu'
@@ -269,6 +280,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/extended-fab'
     | '/components/fab'
+    | '/components/fab-menu'
     | '/components/icon-button'
     | '/components/loading-indicator'
     | '/components/menu'
@@ -293,6 +305,7 @@ export interface RootRouteChildren {
   ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsExtendedFabRoute: typeof ComponentsExtendedFabRoute
   ComponentsFabRoute: typeof ComponentsFabRoute
+  ComponentsFabMenuRoute: typeof ComponentsFabMenuRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
   ComponentsLoadingIndicatorRoute: typeof ComponentsLoadingIndicatorRoute
   ComponentsMenuRoute: typeof ComponentsMenuRoute
@@ -384,6 +397,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsFabRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/fab-menu': {
+      id: '/components/fab-menu'
+      path: '/components/fab-menu'
+      fullPath: '/components/fab-menu'
+      preLoaderRoute: typeof ComponentsFabMenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/icon-button': {
       id: '/components/icon-button'
       path: '/components/icon-button'
@@ -469,6 +489,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsExtendedFabRoute: ComponentsExtendedFabRoute,
   ComponentsFabRoute: ComponentsFabRoute,
+  ComponentsFabMenuRoute: ComponentsFabMenuRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
   ComponentsLoadingIndicatorRoute: ComponentsLoadingIndicatorRoute,
   ComponentsMenuRoute: ComponentsMenuRoute,

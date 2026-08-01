@@ -103,7 +103,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Extended FABs
 - [x] Floating action buttons (FABs)
 - [x] Menus
-- [ ] FAB menu
+- [x] FAB menu
 - [ ] Segmented buttons
 - [ ] Split buttons
 - [x] Chips (`3a4d48b`)
