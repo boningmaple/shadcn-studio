@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -24,53 +26,22 @@ function Avatar({
 
 type ImageState = "loading" | "loaded" | "error";
 
-function AvatarImage({
-  className,
-  onError,
-  onLoad,
-  ref,
-  src,
-  ...props
-}: React.ComponentProps<"img">) {
-  const imageRef = React.useRef<HTMLImageElement>(null);
+function AvatarImage({ className, ...props }: React.ComponentProps<"img">) {
   const [state, setState] = React.useState<ImageState>(
-    src ? "loading" : "error",
+    props.src ? "loading" : "error",
   );
-
-  React.useImperativeHandle(ref, () => imageRef.current as HTMLImageElement);
-
-  React.useEffect(() => {
-    const image = imageRef.current;
-
-    if (!src) {
-      setState("error");
-    } else if (image?.complete) {
-      setState(image.naturalWidth > 0 ? "loaded" : "error");
-    } else {
-      setState("loading");
-    }
-  }, [src]);
-
   return (
     <img
-      {...props}
-      ref={imageRef}
       data-slot="avatar-image"
       alt={props.alt || ""}
       data-state={state}
-      onLoad={(event) => {
-        setState("loaded");
-        onLoad?.(event);
-      }}
-      onError={(event) => {
-        setState("error");
-        onError?.(event);
-      }}
-      src={src}
+      onLoad={() => setState("loaded")}
+      onError={() => setState("error")}
       className={cn(
         "peer aspect-square size-full rounded-full object-cover data-[state=error]:hidden",
         className,
       )}
+      {...props}
     />
   );
 }
