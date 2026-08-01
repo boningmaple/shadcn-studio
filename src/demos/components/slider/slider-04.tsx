@@ -2,14 +2,15 @@ import { Slider } from "@/components/slider/slider";
 
 export default function SliderDemo() {
   return (
-    <div className="grid w-full max-w-md gap-6">
+    <div className="grid w-full max-w-lg gap-7">
       <Slider
-        defaultValue={45}
+        defaultValue={0.45}
         formatOptions={{ style: "percent", maximumFractionDigits: 0 }}
-        maxValue={100}
+        maxValue={1}
         minValue={0}
+        step={0.01}
       >
-        Brightness
+        Completion
       </Slider>
       <Slider
         defaultValue={120}

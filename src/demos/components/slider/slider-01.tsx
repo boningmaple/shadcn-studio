@@ -2,13 +2,13 @@ import { Slider } from "@/components/slider/slider";
 
 export default function SliderDemo() {
   return (
-    <div className="grid w-full max-w-md gap-6">
-      <Slider defaultValue={40}>Volume</Slider>
-      <Slider isDisabled defaultValue={40}>
-        Disabled
+    <div className="grid w-full max-w-lg gap-7">
+      <Slider defaultValue={64}>Media volume</Slider>
+      <Slider defaultValue={38} maxValue={100} minValue={0}>
+        Display brightness
       </Slider>
       <Slider defaultValue={70} isDisabled>
-        Disabled with value
+        Disabled setting
       </Slider>
     </div>
   );
