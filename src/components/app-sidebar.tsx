@@ -193,6 +193,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/radio-button",
             },
             {
+              label: "segmented button",
+              to: "/components/segmented-button",
+            },
+            {
               label: "switch",
               to: "/components/switch",
             },

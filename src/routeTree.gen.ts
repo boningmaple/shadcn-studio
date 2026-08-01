@@ -26,6 +26,7 @@ import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/compone
 import { Route as ComponentsMenuRouteImport } from './routes/components.menu'
 import { Route as ComponentsProgressIndicatorRouteImport } from './routes/components.progress-indicator'
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
+import { Route as ComponentsSegmentedButtonRouteImport } from './routes/components.segmented-button'
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
 import { Route as ComponentsSwitchRouteImport } from './routes/components.switch'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
@@ -119,6 +120,12 @@ const ComponentsRadioButtonRoute = ComponentsRadioButtonRouteImport.update({
   path: '/components/radio-button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsSegmentedButtonRoute =
+  ComponentsSegmentedButtonRouteImport.update({
+    id: '/components/segmented-button',
+    path: '/components/segmented-button',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ComponentsSliderRoute = ComponentsSliderRouteImport.update({
   id: '/components/slider',
   path: '/components/slider',
@@ -163,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -187,6 +195,7 @@ export interface FileRoutesByTo {
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -212,6 +221,7 @@ export interface FileRoutesById {
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
+    | '/components/segmented-button'
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
+    | '/components/segmented-button'
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
@@ -286,6 +298,7 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
+    | '/components/segmented-button'
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
@@ -311,6 +324,7 @@ export interface RootRouteChildren {
   ComponentsMenuRoute: typeof ComponentsMenuRoute
   ComponentsProgressIndicatorRoute: typeof ComponentsProgressIndicatorRoute
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
+  ComponentsSegmentedButtonRoute: typeof ComponentsSegmentedButtonRoute
   ComponentsSliderRoute: typeof ComponentsSliderRoute
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
@@ -439,6 +453,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsRadioButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/segmented-button': {
+      id: '/components/segmented-button'
+      path: '/components/segmented-button'
+      fullPath: '/components/segmented-button'
+      preLoaderRoute: typeof ComponentsSegmentedButtonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/slider': {
       id: '/components/slider'
       path: '/components/slider'
@@ -495,6 +516,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsMenuRoute: ComponentsMenuRoute,
   ComponentsProgressIndicatorRoute: ComponentsProgressIndicatorRoute,
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
+  ComponentsSegmentedButtonRoute: ComponentsSegmentedButtonRoute,
   ComponentsSliderRoute: ComponentsSliderRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,

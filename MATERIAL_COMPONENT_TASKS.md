@@ -104,7 +104,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Floating action buttons (FABs)
 - [x] Menus
 - [x] FAB menu
-- [ ] Segmented buttons
+- [x] Segmented buttons
 - [ ] Split buttons
 - [x] Chips (`3a4d48b`)
 - [x] Tabs (`640f4a4`)
