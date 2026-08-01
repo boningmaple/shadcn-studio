@@ -229,6 +229,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/navigation-bar",
             },
             {
+              label: "navigation drawer",
+              to: "/components/navigation-drawer",
+            },
+            {
               label: "split button",
               to: "/components/split-button",
             },
