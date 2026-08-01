@@ -205,6 +205,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/slider",
             },
             {
+              label: "split button",
+              to: "/components/split-button",
+            },
+            {
               label: "text field",
               to: "/components/text-field",
             },

@@ -105,7 +105,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Menus
 - [x] FAB menu
 - [x] Segmented buttons
-- [ ] Split buttons
+- [x] Split buttons
 - [x] Chips (`3a4d48b`)
 - [x] Tabs (`640f4a4`)
 - [ ] Dialogs

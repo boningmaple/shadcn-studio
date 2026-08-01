@@ -28,6 +28,7 @@ import { Route as ComponentsProgressIndicatorRouteImport } from './routes/compon
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
 import { Route as ComponentsSegmentedButtonRouteImport } from './routes/components.segmented-button'
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
+import { Route as ComponentsSplitButtonRouteImport } from './routes/components.split-button'
 import { Route as ComponentsSwitchRouteImport } from './routes/components.switch'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
 import { Route as ComponentsTextFieldRouteImport } from './routes/components.text-field'
@@ -131,6 +132,11 @@ const ComponentsSliderRoute = ComponentsSliderRouteImport.update({
   path: '/components/slider',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsSplitButtonRoute = ComponentsSplitButtonRouteImport.update({
+  id: '/components/split-button',
+  path: '/components/split-button',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsSwitchRoute = ComponentsSwitchRouteImport.update({
   id: '/components/switch',
   path: '/components/switch',
@@ -172,6 +178,7 @@ export interface FileRoutesByFullPath {
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
+  '/components/split-button': typeof ComponentsSplitButtonRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/text-field': typeof ComponentsTextFieldRoute
@@ -197,6 +204,7 @@ export interface FileRoutesByTo {
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
+  '/components/split-button': typeof ComponentsSplitButtonRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/text-field': typeof ComponentsTextFieldRoute
@@ -223,6 +231,7 @@ export interface FileRoutesById {
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
+  '/components/split-button': typeof ComponentsSplitButtonRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/text-field': typeof ComponentsTextFieldRoute
@@ -250,6 +259,7 @@ export interface FileRouteTypes {
     | '/components/radio-button'
     | '/components/segmented-button'
     | '/components/slider'
+    | '/components/split-button'
     | '/components/switch'
     | '/components/tabs'
     | '/components/text-field'
@@ -275,6 +285,7 @@ export interface FileRouteTypes {
     | '/components/radio-button'
     | '/components/segmented-button'
     | '/components/slider'
+    | '/components/split-button'
     | '/components/switch'
     | '/components/tabs'
     | '/components/text-field'
@@ -300,6 +311,7 @@ export interface FileRouteTypes {
     | '/components/radio-button'
     | '/components/segmented-button'
     | '/components/slider'
+    | '/components/split-button'
     | '/components/switch'
     | '/components/tabs'
     | '/components/text-field'
@@ -326,6 +338,7 @@ export interface RootRouteChildren {
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
   ComponentsSegmentedButtonRoute: typeof ComponentsSegmentedButtonRoute
   ComponentsSliderRoute: typeof ComponentsSliderRoute
+  ComponentsSplitButtonRoute: typeof ComponentsSplitButtonRoute
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
   ComponentsTextFieldRoute: typeof ComponentsTextFieldRoute
@@ -467,6 +480,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsSliderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/split-button': {
+      id: '/components/split-button'
+      path: '/components/split-button'
+      fullPath: '/components/split-button'
+      preLoaderRoute: typeof ComponentsSplitButtonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/switch': {
       id: '/components/switch'
       path: '/components/switch'
@@ -518,6 +538,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
   ComponentsSegmentedButtonRoute: ComponentsSegmentedButtonRoute,
   ComponentsSliderRoute: ComponentsSliderRoute,
+  ComponentsSplitButtonRoute: ComponentsSplitButtonRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
   ComponentsTextFieldRoute: ComponentsTextFieldRoute,
