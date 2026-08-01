@@ -173,6 +173,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/radio-button",
             },
             {
+              label: "switch",
+              to: "/components/switch",
+            },
+            {
               label: "chips",
               to: "/components/chips",
             },

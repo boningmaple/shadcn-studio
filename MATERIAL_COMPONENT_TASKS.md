@@ -91,7 +91,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Divider
 - [x] Checkbox
 - [x] Radio button
-- [ ] Switch
+- [x] Switch
 - [ ] Sliders
 - [ ] Text fields
 - [ ] Loading indicator
