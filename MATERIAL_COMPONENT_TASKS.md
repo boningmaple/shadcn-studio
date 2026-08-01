@@ -101,7 +101,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Cards
 - [x] Button groups
 - [x] Extended FABs
-- [ ] Floating action buttons (FABs)
+- [x] Floating action buttons (FABs)
 - [ ] Menus
 - [ ] FAB menu
 - [ ] Segmented buttons
