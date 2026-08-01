@@ -177,6 +177,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/switch",
             },
             {
+              label: "slider",
+              to: "/components/slider",
+            },
+            {
               label: "chips",
               to: "/components/chips",
             },

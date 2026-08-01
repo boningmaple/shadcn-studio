@@ -18,6 +18,7 @@ import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
+import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
 import { Route as ComponentsSwitchRouteImport } from './routes/components.switch'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
 import { Route as ComponentsToggleButtonRouteImport } from './routes/components.toggle-button'
@@ -67,6 +68,11 @@ const ComponentsRadioButtonRoute = ComponentsRadioButtonRouteImport.update({
   path: '/components/radio-button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsSliderRoute = ComponentsSliderRouteImport.update({
+  id: '/components/slider',
+  path: '/components/slider',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsSwitchRoute = ComponentsSwitchRouteImport.update({
   id: '/components/switch',
   path: '/components/switch',
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
+  '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/icon-button'
     | '/components/radio-button'
+    | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
     | '/components/toggle-button'
@@ -152,6 +162,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/icon-button'
     | '/components/radio-button'
+    | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
     | '/components/toggle-button'
@@ -166,6 +177,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/icon-button'
     | '/components/radio-button'
+    | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
     | '/components/toggle-button'
@@ -181,6 +193,7 @@ export interface RootRouteChildren {
   ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
+  ComponentsSliderRoute: typeof ComponentsSliderRoute
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
   ComponentsToggleButtonRoute: typeof ComponentsToggleButtonRoute
@@ -251,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsRadioButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/slider': {
+      id: '/components/slider'
+      path: '/components/slider'
+      fullPath: '/components/slider'
+      preLoaderRoute: typeof ComponentsSliderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/switch': {
       id: '/components/switch'
       path: '/components/switch'
@@ -285,6 +305,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
+  ComponentsSliderRoute: ComponentsSliderRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
   ComponentsToggleButtonRoute: ComponentsToggleButtonRoute,
