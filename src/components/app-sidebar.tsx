@@ -221,6 +221,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/bottom-sheet",
             },
             {
+              label: "side sheet",
+              to: "/components/side-sheet",
+            },
+            {
               label: "split button",
               to: "/components/split-button",
             },

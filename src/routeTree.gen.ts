@@ -32,6 +32,7 @@ import { Route as ComponentsProgressIndicatorRouteImport } from './routes/compon
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
 import { Route as ComponentsSearchRouteImport } from './routes/components.search'
 import { Route as ComponentsSegmentedButtonRouteImport } from './routes/components.segmented-button'
+import { Route as ComponentsSideSheetRouteImport } from './routes/components.side-sheet'
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
 import { Route as ComponentsSnackbarRouteImport } from './routes/components.snackbar'
 import { Route as ComponentsSplitButtonRouteImport } from './routes/components.split-button'
@@ -159,6 +160,11 @@ const ComponentsSegmentedButtonRoute =
     path: '/components/segmented-button',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ComponentsSideSheetRoute = ComponentsSideSheetRouteImport.update({
+  id: '/components/side-sheet',
+  path: '/components/side-sheet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsSliderRoute = ComponentsSliderRouteImport.update({
   id: '/components/slider',
   path: '/components/slider',
@@ -224,6 +230,7 @@ export interface FileRoutesByFullPath {
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
+  '/components/side-sheet': typeof ComponentsSideSheetRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/snackbar': typeof ComponentsSnackbarRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
@@ -257,6 +264,7 @@ export interface FileRoutesByTo {
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
+  '/components/side-sheet': typeof ComponentsSideSheetRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/snackbar': typeof ComponentsSnackbarRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
@@ -291,6 +299,7 @@ export interface FileRoutesById {
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/search': typeof ComponentsSearchRoute
   '/components/segmented-button': typeof ComponentsSegmentedButtonRoute
+  '/components/side-sheet': typeof ComponentsSideSheetRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/snackbar': typeof ComponentsSnackbarRoute
   '/components/split-button': typeof ComponentsSplitButtonRoute
@@ -326,6 +335,7 @@ export interface FileRouteTypes {
     | '/components/radio-button'
     | '/components/search'
     | '/components/segmented-button'
+    | '/components/side-sheet'
     | '/components/slider'
     | '/components/snackbar'
     | '/components/split-button'
@@ -359,6 +369,7 @@ export interface FileRouteTypes {
     | '/components/radio-button'
     | '/components/search'
     | '/components/segmented-button'
+    | '/components/side-sheet'
     | '/components/slider'
     | '/components/snackbar'
     | '/components/split-button'
@@ -392,6 +403,7 @@ export interface FileRouteTypes {
     | '/components/radio-button'
     | '/components/search'
     | '/components/segmented-button'
+    | '/components/side-sheet'
     | '/components/slider'
     | '/components/snackbar'
     | '/components/split-button'
@@ -426,6 +438,7 @@ export interface RootRouteChildren {
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
   ComponentsSearchRoute: typeof ComponentsSearchRoute
   ComponentsSegmentedButtonRoute: typeof ComponentsSegmentedButtonRoute
+  ComponentsSideSheetRoute: typeof ComponentsSideSheetRoute
   ComponentsSliderRoute: typeof ComponentsSliderRoute
   ComponentsSnackbarRoute: typeof ComponentsSnackbarRoute
   ComponentsSplitButtonRoute: typeof ComponentsSplitButtonRoute
@@ -599,6 +612,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsSegmentedButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/side-sheet': {
+      id: '/components/side-sheet'
+      path: '/components/side-sheet'
+      fullPath: '/components/side-sheet'
+      preLoaderRoute: typeof ComponentsSideSheetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/slider': {
       id: '/components/slider'
       path: '/components/slider'
@@ -682,6 +702,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
   ComponentsSearchRoute: ComponentsSearchRoute,
   ComponentsSegmentedButtonRoute: ComponentsSegmentedButtonRoute,
+  ComponentsSideSheetRoute: ComponentsSideSheetRoute,
   ComponentsSliderRoute: ComponentsSliderRoute,
   ComponentsSnackbarRoute: ComponentsSnackbarRoute,
   ComponentsSplitButtonRoute: ComponentsSplitButtonRoute,
