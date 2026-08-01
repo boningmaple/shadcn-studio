@@ -1,8 +1,28 @@
 # Material Component Tasks
 
-This tracker defines the implementation order for the Material component
-gallery. Work from the first unchecked task whose dependencies are complete.
-When more than one task is ready, choose the task that appears first here.
+This is the execution queue for the Material component gallery. Always choose
+the first unchecked task whose listed dependencies are complete.
+
+## Implementation Rules
+
+- Follow the target component's [Material Design 3 guidelines](https://m3.material.io/components)
+  for anatomy, variants, layout, color roles, states, and motion.
+- Use the mapping below to choose the base implementation. Prefer the installed
+  [React Aria Components](https://react-aria.adobe.com/) for semantics,
+  accessibility, focus, keyboard, and interaction behavior. Use the existing
+  local [shadcn components](https://ui.shadcn.com/docs/components) where mapped.
+- React Aria and all shadcn components are already installed. Do not install
+  packages or download components unless the task cannot be completed with the
+  repository's current dependencies.
+- When guidance overlaps, Material controls visual design, React Aria controls
+  accessible behavior, and existing project patterns control APIs, naming, and
+  file structure. Reuse local helpers and theme tokens.
+- Expose a reusable component API, not demo-only markup. Demos should cover the
+  Material variants and meaningful states without duplicating near-identical
+  examples.
+- Keep changes limited to the selected task. Do not add, edit, or remove tests.
+- Regenerate artifacts with project scripts; never edit generated files by
+  hand.
 
 ## Workflow
 
