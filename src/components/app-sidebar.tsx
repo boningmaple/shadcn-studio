@@ -177,6 +177,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/dialog",
             },
             {
+              label: "date picker",
+              to: "/components/date-picker",
+            },
+            {
               label: "extended FAB",
               to: "/components/extended-fab",
             },

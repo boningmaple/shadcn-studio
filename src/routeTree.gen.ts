@@ -17,6 +17,7 @@ import { Route as ComponentsButtonGroupRouteImport } from './routes/components.b
 import { Route as ComponentsCardRouteImport } from './routes/components.card'
 import { Route as ComponentsCheckboxRouteImport } from './routes/components.checkbox'
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
+import { Route as ComponentsDatePickerRouteImport } from './routes/components.date-picker'
 import { Route as ComponentsDialogRouteImport } from './routes/components.dialog'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsExtendedFabRouteImport } from './routes/components.extended-fab'
@@ -75,6 +76,11 @@ const ComponentsCheckboxRoute = ComponentsCheckboxRouteImport.update({
 const ComponentsChipsRoute = ComponentsChipsRouteImport.update({
   id: '/components/chips',
   path: '/components/chips',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsDatePickerRoute = ComponentsDatePickerRouteImport.update({
+  id: '/components/date-picker',
+  path: '/components/date-picker',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsDialogRoute = ComponentsDialogRouteImport.update({
@@ -185,6 +191,7 @@ export interface FileRoutesByFullPath {
   '/components/card': typeof ComponentsCardRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/date-picker': typeof ComponentsDatePickerRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
@@ -214,6 +221,7 @@ export interface FileRoutesByTo {
   '/components/card': typeof ComponentsCardRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/date-picker': typeof ComponentsDatePickerRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
@@ -244,6 +252,7 @@ export interface FileRoutesById {
   '/components/card': typeof ComponentsCardRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
+  '/components/date-picker': typeof ComponentsDatePickerRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/extended-fab': typeof ComponentsExtendedFabRoute
@@ -275,6 +284,7 @@ export interface FileRouteTypes {
     | '/components/card'
     | '/components/checkbox'
     | '/components/chips'
+    | '/components/date-picker'
     | '/components/dialog'
     | '/components/divider'
     | '/components/extended-fab'
@@ -304,6 +314,7 @@ export interface FileRouteTypes {
     | '/components/card'
     | '/components/checkbox'
     | '/components/chips'
+    | '/components/date-picker'
     | '/components/dialog'
     | '/components/divider'
     | '/components/extended-fab'
@@ -333,6 +344,7 @@ export interface FileRouteTypes {
     | '/components/card'
     | '/components/checkbox'
     | '/components/chips'
+    | '/components/date-picker'
     | '/components/dialog'
     | '/components/divider'
     | '/components/extended-fab'
@@ -363,6 +375,7 @@ export interface RootRouteChildren {
   ComponentsCardRoute: typeof ComponentsCardRoute
   ComponentsCheckboxRoute: typeof ComponentsCheckboxRoute
   ComponentsChipsRoute: typeof ComponentsChipsRoute
+  ComponentsDatePickerRoute: typeof ComponentsDatePickerRoute
   ComponentsDialogRoute: typeof ComponentsDialogRoute
   ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsExtendedFabRoute: typeof ComponentsExtendedFabRoute
@@ -440,6 +453,13 @@ declare module '@tanstack/react-router' {
       path: '/components/chips'
       fullPath: '/components/chips'
       preLoaderRoute: typeof ComponentsChipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/date-picker': {
+      id: '/components/date-picker'
+      path: '/components/date-picker'
+      fullPath: '/components/date-picker'
+      preLoaderRoute: typeof ComponentsDatePickerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/dialog': {
@@ -587,6 +607,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsCardRoute: ComponentsCardRoute,
   ComponentsCheckboxRoute: ComponentsCheckboxRoute,
   ComponentsChipsRoute: ComponentsChipsRoute,
+  ComponentsDatePickerRoute: ComponentsDatePickerRoute,
   ComponentsDialogRoute: ComponentsDialogRoute,
   ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsExtendedFabRoute: ComponentsExtendedFabRoute,

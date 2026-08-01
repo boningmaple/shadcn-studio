@@ -111,7 +111,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Dialogs
 - [x] Lists
 - [x] Search
-- [ ] Date pickers
+- [x] Date pickers
 - [ ] Time pickers
 - [ ] Snackbar
 - [ ] Bottom sheets
