@@ -20,7 +20,7 @@ export const Route = createFileRoute("/components/loading-indicator")({
       {
         name: "description",
         content:
-          "Material 3 loading indicator patterns built with React, and Tailwind CSS.",
+          "Material 3 loading indicator patterns built with the local Spinner, React, and Tailwind CSS.",
       },
     ],
   }),
@@ -30,7 +30,7 @@ function LoadingIndicatorComponentPage() {
   return (
     <ComponentExamplesPage
       codeArtifactPrefix="loading-indicator"
-      description="Explore Material 3 loading indicators for communicating an ongoing operation."
+      description="Explore Material 3 loading indicators for communicating an ongoing operation with plain, tonal, surface, and inverse treatments."
       exampleNoun="loading indicator"
       examples={loadingIndicatorExamples}
       sectionId="loading-indicator-patterns-title"

@@ -95,7 +95,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Switch
 - [x] Sliders
 - [x] Text fields
-- [ ] Loading indicator
+- [x] Loading indicator
 - [x] Progress indicators
 - [x] Badges (`d67ebb2`)
 - [x] Cards
