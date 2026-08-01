@@ -23,6 +23,7 @@ import { Route as ComponentsExtendedFabRouteImport } from './routes/components.e
 import { Route as ComponentsFabRouteImport } from './routes/components.fab'
 import { Route as ComponentsFabMenuRouteImport } from './routes/components.fab-menu'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
+import { Route as ComponentsListRouteImport } from './routes/components.list'
 import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/components.loading-indicator'
 import { Route as ComponentsMenuRouteImport } from './routes/components.menu'
 import { Route as ComponentsProgressIndicatorRouteImport } from './routes/components.progress-indicator'
@@ -105,6 +106,11 @@ const ComponentsIconButtonRoute = ComponentsIconButtonRouteImport.update({
   path: '/components/icon-button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsListRoute = ComponentsListRouteImport.update({
+  id: '/components/list',
+  path: '/components/list',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsLoadingIndicatorRoute =
   ComponentsLoadingIndicatorRouteImport.update({
     id: '/components/loading-indicator',
@@ -179,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/components/fab': typeof ComponentsFabRoute
   '/components/fab-menu': typeof ComponentsFabMenuRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/list': typeof ComponentsListRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByTo {
   '/components/fab': typeof ComponentsFabRoute
   '/components/fab-menu': typeof ComponentsFabMenuRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/list': typeof ComponentsListRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
@@ -234,6 +242,7 @@ export interface FileRoutesById {
   '/components/fab': typeof ComponentsFabRoute
   '/components/fab-menu': typeof ComponentsFabMenuRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/list': typeof ComponentsListRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
@@ -263,6 +272,7 @@ export interface FileRouteTypes {
     | '/components/fab'
     | '/components/fab-menu'
     | '/components/icon-button'
+    | '/components/list'
     | '/components/loading-indicator'
     | '/components/menu'
     | '/components/progress-indicator'
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/components/fab'
     | '/components/fab-menu'
     | '/components/icon-button'
+    | '/components/list'
     | '/components/loading-indicator'
     | '/components/menu'
     | '/components/progress-indicator'
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '/components/fab'
     | '/components/fab-menu'
     | '/components/icon-button'
+    | '/components/list'
     | '/components/loading-indicator'
     | '/components/menu'
     | '/components/progress-indicator'
@@ -345,6 +357,7 @@ export interface RootRouteChildren {
   ComponentsFabRoute: typeof ComponentsFabRoute
   ComponentsFabMenuRoute: typeof ComponentsFabMenuRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
+  ComponentsListRoute: typeof ComponentsListRoute
   ComponentsLoadingIndicatorRoute: typeof ComponentsLoadingIndicatorRoute
   ComponentsMenuRoute: typeof ComponentsMenuRoute
   ComponentsProgressIndicatorRoute: typeof ComponentsProgressIndicatorRoute
@@ -458,6 +471,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsIconButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/list': {
+      id: '/components/list'
+      path: '/components/list'
+      fullPath: '/components/list'
+      preLoaderRoute: typeof ComponentsListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/loading-indicator': {
       id: '/components/loading-indicator'
       path: '/components/loading-indicator'
@@ -553,6 +573,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsFabRoute: ComponentsFabRoute,
   ComponentsFabMenuRoute: ComponentsFabMenuRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
+  ComponentsListRoute: ComponentsListRoute,
   ComponentsLoadingIndicatorRoute: ComponentsLoadingIndicatorRoute,
   ComponentsMenuRoute: ComponentsMenuRoute,
   ComponentsProgressIndicatorRoute: ComponentsProgressIndicatorRoute,

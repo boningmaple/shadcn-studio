@@ -109,7 +109,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Chips (`3a4d48b`)
 - [x] Tabs (`640f4a4`)
 - [x] Dialogs
-- [ ] Lists
+- [x] Lists
 - [ ] Search
 - [ ] Date pickers
 - [ ] Time pickers
