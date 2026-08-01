@@ -90,7 +90,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Icon buttons
 - [x] Divider
 - [x] Checkbox
-- [ ] Radio button
+- [x] Radio button
 - [ ] Switch
 - [ ] Sliders
 - [ ] Text fields

@@ -169,6 +169,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/checkbox",
             },
             {
+              label: "radio button",
+              to: "/components/radio-button",
+            },
+            {
               label: "chips",
               to: "/components/chips",
             },

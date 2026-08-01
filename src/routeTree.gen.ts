@@ -17,6 +17,7 @@ import { Route as ComponentsCheckboxRouteImport } from './routes/components.chec
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
+import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
 import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
 import { Route as ComponentsToggleButtonRouteImport } from './routes/components.toggle-button'
 
@@ -60,6 +61,11 @@ const ComponentsIconButtonRoute = ComponentsIconButtonRouteImport.update({
   path: '/components/icon-button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsRadioButtonRoute = ComponentsRadioButtonRouteImport.update({
+  id: '/components/radio-button',
+  path: '/components/radio-button',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsTabsRoute = ComponentsTabsRouteImport.update({
   id: '/components/tabs',
   path: '/components/tabs',
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/tabs': typeof ComponentsTabsRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
 }
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
+    | '/components/radio-button'
     | '/components/tabs'
     | '/components/toggle-button'
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
+    | '/components/radio-button'
     | '/components/tabs'
     | '/components/toggle-button'
   id:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
+    | '/components/radio-button'
     | '/components/tabs'
     | '/components/toggle-button'
   fileRoutesById: FileRoutesById
@@ -156,6 +168,7 @@ export interface RootRouteChildren {
   ComponentsChipsRoute: typeof ComponentsChipsRoute
   ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
+  ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
   ComponentsToggleButtonRoute: typeof ComponentsToggleButtonRoute
 }
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsIconButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/radio-button': {
+      id: '/components/radio-button'
+      path: '/components/radio-button'
+      fullPath: '/components/radio-button'
+      preLoaderRoute: typeof ComponentsRadioButtonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/tabs': {
       id: '/components/tabs'
       path: '/components/tabs'
@@ -244,6 +264,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsChipsRoute: ComponentsChipsRoute,
   ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
+  ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
   ComponentsToggleButtonRoute: ComponentsToggleButtonRoute,
 }
