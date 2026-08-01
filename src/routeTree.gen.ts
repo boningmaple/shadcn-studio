@@ -18,6 +18,7 @@ import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
 import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/components.loading-indicator'
+import { Route as ComponentsProgressIndicatorRouteImport } from './routes/components.progress-indicator'
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
 import { Route as ComponentsSwitchRouteImport } from './routes/components.switch'
@@ -71,6 +72,12 @@ const ComponentsLoadingIndicatorRoute =
     path: '/components/loading-indicator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ComponentsProgressIndicatorRoute =
+  ComponentsProgressIndicatorRouteImport.update({
+    id: '/components/progress-indicator',
+    path: '/components/progress-indicator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ComponentsRadioButtonRoute = ComponentsRadioButtonRouteImport.update({
   id: '/components/radio-button',
   path: '/components/radio-button',
@@ -112,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
+  '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
@@ -129,6 +137,7 @@ export interface FileRoutesByTo {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
+  '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
@@ -147,6 +156,7 @@ export interface FileRoutesById {
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
+  '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/icon-button'
     | '/components/loading-indicator'
+    | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/slider'
     | '/components/switch'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/icon-button'
     | '/components/loading-indicator'
+    | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/slider'
     | '/components/switch'
@@ -200,6 +212,7 @@ export interface FileRouteTypes {
     | '/components/divider'
     | '/components/icon-button'
     | '/components/loading-indicator'
+    | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/slider'
     | '/components/switch'
@@ -218,6 +231,7 @@ export interface RootRouteChildren {
   ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
   ComponentsLoadingIndicatorRoute: typeof ComponentsLoadingIndicatorRoute
+  ComponentsProgressIndicatorRoute: typeof ComponentsProgressIndicatorRoute
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
   ComponentsSliderRoute: typeof ComponentsSliderRoute
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
@@ -291,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsLoadingIndicatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/progress-indicator': {
+      id: '/components/progress-indicator'
+      path: '/components/progress-indicator'
+      fullPath: '/components/progress-indicator'
+      preLoaderRoute: typeof ComponentsProgressIndicatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/radio-button': {
       id: '/components/radio-button'
       path: '/components/radio-button'
@@ -346,6 +367,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
   ComponentsLoadingIndicatorRoute: ComponentsLoadingIndicatorRoute,
+  ComponentsProgressIndicatorRoute: ComponentsProgressIndicatorRoute,
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
   ComponentsSliderRoute: ComponentsSliderRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,
