@@ -17,6 +17,7 @@ import { Route as ComponentsCheckboxRouteImport } from './routes/components.chec
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
+import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/components.loading-indicator'
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
 import { Route as ComponentsSwitchRouteImport } from './routes/components.switch'
@@ -64,6 +65,12 @@ const ComponentsIconButtonRoute = ComponentsIconButtonRouteImport.update({
   path: '/components/icon-button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsLoadingIndicatorRoute =
+  ComponentsLoadingIndicatorRouteImport.update({
+    id: '/components/loading-indicator',
+    path: '/components/loading-indicator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ComponentsRadioButtonRoute = ComponentsRadioButtonRouteImport.update({
   id: '/components/radio-button',
   path: '/components/radio-button',
@@ -104,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
@@ -120,6 +128,7 @@ export interface FileRoutesByTo {
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
@@ -137,6 +146,7 @@ export interface FileRoutesById {
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
+  '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
   '/components/switch': typeof ComponentsSwitchRoute
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
+    | '/components/loading-indicator'
     | '/components/radio-button'
     | '/components/slider'
     | '/components/switch'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
+    | '/components/loading-indicator'
     | '/components/radio-button'
     | '/components/slider'
     | '/components/switch'
@@ -187,6 +199,7 @@ export interface FileRouteTypes {
     | '/components/chips'
     | '/components/divider'
     | '/components/icon-button'
+    | '/components/loading-indicator'
     | '/components/radio-button'
     | '/components/slider'
     | '/components/switch'
@@ -204,6 +217,7 @@ export interface RootRouteChildren {
   ComponentsChipsRoute: typeof ComponentsChipsRoute
   ComponentsDividerRoute: typeof ComponentsDividerRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
+  ComponentsLoadingIndicatorRoute: typeof ComponentsLoadingIndicatorRoute
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
   ComponentsSliderRoute: typeof ComponentsSliderRoute
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
@@ -270,6 +284,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsIconButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/loading-indicator': {
+      id: '/components/loading-indicator'
+      path: '/components/loading-indicator'
+      fullPath: '/components/loading-indicator'
+      preLoaderRoute: typeof ComponentsLoadingIndicatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/radio-button': {
       id: '/components/radio-button'
       path: '/components/radio-button'
@@ -324,6 +345,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsChipsRoute: ComponentsChipsRoute,
   ComponentsDividerRoute: ComponentsDividerRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
+  ComponentsLoadingIndicatorRoute: ComponentsLoadingIndicatorRoute,
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
   ComponentsSliderRoute: ComponentsSliderRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,

@@ -185,6 +185,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/text-field",
             },
             {
+              label: "loading indicator",
+              to: "/components/loading-indicator",
+            },
+            {
               label: "chips",
               to: "/components/chips",
             },

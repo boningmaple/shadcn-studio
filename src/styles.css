@@ -130,3 +130,18 @@
     @apply font-sans;
   }
 }
+
+@keyframes m3-spinner-arc {
+  0% {
+    stroke-dasharray: 1 1000;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 60 1000;
+    stroke-dashoffset: -10;
+  }
+  100% {
+    stroke-dasharray: 60 1000;
+    stroke-dashoffset: -1000;
+  }
+}
