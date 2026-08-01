@@ -122,4 +122,4 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Toolbars
 - [x] App bars
 - [x] Carousel
-- [ ] Tooltips
+- [x] Tooltips

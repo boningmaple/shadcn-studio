@@ -249,6 +249,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/carousel",
             },
             {
+              label: "tooltip",
+              to: "/components/tooltip",
+            },
+            {
               label: "split button",
               to: "/components/split-button",
             },
