@@ -22,6 +22,7 @@ import { Route as ComponentsExtendedFabRouteImport } from './routes/components.e
 import { Route as ComponentsFabRouteImport } from './routes/components.fab'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
 import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/components.loading-indicator'
+import { Route as ComponentsMenuRouteImport } from './routes/components.menu'
 import { Route as ComponentsProgressIndicatorRouteImport } from './routes/components.progress-indicator'
 import { Route as ComponentsRadioButtonRouteImport } from './routes/components.radio-button'
 import { Route as ComponentsSliderRouteImport } from './routes/components.slider'
@@ -96,6 +97,11 @@ const ComponentsLoadingIndicatorRoute =
     path: '/components/loading-indicator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ComponentsMenuRoute = ComponentsMenuRouteImport.update({
+  id: '/components/menu',
+  path: '/components/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComponentsProgressIndicatorRoute =
   ComponentsProgressIndicatorRouteImport.update({
     id: '/components/progress-indicator',
@@ -147,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/components/fab': typeof ComponentsFabRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
+  '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
@@ -169,6 +176,7 @@ export interface FileRoutesByTo {
   '/components/fab': typeof ComponentsFabRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
+  '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/components/fab': typeof ComponentsFabRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
+  '/components/menu': typeof ComponentsMenuRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
   '/components/radio-button': typeof ComponentsRadioButtonRoute
   '/components/slider': typeof ComponentsSliderRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/components/fab'
     | '/components/icon-button'
     | '/components/loading-indicator'
+    | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/slider'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/components/fab'
     | '/components/icon-button'
     | '/components/loading-indicator'
+    | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/slider'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/components/fab'
     | '/components/icon-button'
     | '/components/loading-indicator'
+    | '/components/menu'
     | '/components/progress-indicator'
     | '/components/radio-button'
     | '/components/slider'
@@ -283,6 +295,7 @@ export interface RootRouteChildren {
   ComponentsFabRoute: typeof ComponentsFabRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
   ComponentsLoadingIndicatorRoute: typeof ComponentsLoadingIndicatorRoute
+  ComponentsMenuRoute: typeof ComponentsMenuRoute
   ComponentsProgressIndicatorRoute: typeof ComponentsProgressIndicatorRoute
   ComponentsRadioButtonRoute: typeof ComponentsRadioButtonRoute
   ComponentsSliderRoute: typeof ComponentsSliderRoute
@@ -385,6 +398,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsLoadingIndicatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/menu': {
+      id: '/components/menu'
+      path: '/components/menu'
+      fullPath: '/components/menu'
+      preLoaderRoute: typeof ComponentsMenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/progress-indicator': {
       id: '/components/progress-indicator'
       path: '/components/progress-indicator'
@@ -451,6 +471,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsFabRoute: ComponentsFabRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
   ComponentsLoadingIndicatorRoute: ComponentsLoadingIndicatorRoute,
+  ComponentsMenuRoute: ComponentsMenuRoute,
   ComponentsProgressIndicatorRoute: ComponentsProgressIndicatorRoute,
   ComponentsRadioButtonRoute: ComponentsRadioButtonRoute,
   ComponentsSliderRoute: ComponentsSliderRoute,

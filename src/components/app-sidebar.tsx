@@ -205,6 +205,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/loading-indicator",
             },
             {
+              label: "menu",
+              to: "/components/menu",
+            },
+            {
               label: "progress indicator",
               to: "/components/progress-indicator",
             },
