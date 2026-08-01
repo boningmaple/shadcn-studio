@@ -221,6 +221,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/text-field",
             },
             {
+              label: "time picker",
+              to: "/components/time-picker",
+            },
+            {
               label: "loading indicator",
               to: "/components/loading-indicator",
             },
