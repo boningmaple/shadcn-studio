@@ -173,6 +173,10 @@ export const appSidebarData: AppSidebarData = {
               to: "/components/divider",
             },
             {
+              label: "extended FAB",
+              to: "/components/extended-fab",
+            },
+            {
               label: "checkbox",
               to: "/components/checkbox",
             },

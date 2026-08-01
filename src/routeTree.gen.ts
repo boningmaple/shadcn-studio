@@ -18,6 +18,7 @@ import { Route as ComponentsCardRouteImport } from './routes/components.card'
 import { Route as ComponentsCheckboxRouteImport } from './routes/components.checkbox'
 import { Route as ComponentsChipsRouteImport } from './routes/components.chips'
 import { Route as ComponentsDividerRouteImport } from './routes/components.divider'
+import { Route as ComponentsExtendedFabRouteImport } from './routes/components.extended-fab'
 import { Route as ComponentsIconButtonRouteImport } from './routes/components.icon-button'
 import { Route as ComponentsLoadingIndicatorRouteImport } from './routes/components.loading-indicator'
 import { Route as ComponentsProgressIndicatorRouteImport } from './routes/components.progress-indicator'
@@ -71,6 +72,11 @@ const ComponentsChipsRoute = ComponentsChipsRouteImport.update({
 const ComponentsDividerRoute = ComponentsDividerRouteImport.update({
   id: '/components/divider',
   path: '/components/divider',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsExtendedFabRoute = ComponentsExtendedFabRouteImport.update({
+  id: '/components/extended-fab',
+  path: '/components/extended-fab',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsIconButtonRoute = ComponentsIconButtonRouteImport.update({
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
+  '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
+  '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/chips': typeof ComponentsChipsRoute
   '/components/divider': typeof ComponentsDividerRoute
+  '/components/extended-fab': typeof ComponentsExtendedFabRoute
   '/components/icon-button': typeof ComponentsIconButtonRoute
   '/components/loading-indicator': typeof ComponentsLoadingIndicatorRoute
   '/components/progress-indicator': typeof ComponentsProgressIndicatorRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
     | '/components/checkbox'
     | '/components/chips'
     | '/components/divider'
+    | '/components/extended-fab'
     | '/components/icon-button'
     | '/components/loading-indicator'
     | '/components/progress-indicator'
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
     | '/components/checkbox'
     | '/components/chips'
     | '/components/divider'
+    | '/components/extended-fab'
     | '/components/icon-button'
     | '/components/loading-indicator'
     | '/components/progress-indicator'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/components/checkbox'
     | '/components/chips'
     | '/components/divider'
+    | '/components/extended-fab'
     | '/components/icon-button'
     | '/components/loading-indicator'
     | '/components/progress-indicator'
@@ -255,6 +267,7 @@ export interface RootRouteChildren {
   ComponentsCheckboxRoute: typeof ComponentsCheckboxRoute
   ComponentsChipsRoute: typeof ComponentsChipsRoute
   ComponentsDividerRoute: typeof ComponentsDividerRoute
+  ComponentsExtendedFabRoute: typeof ComponentsExtendedFabRoute
   ComponentsIconButtonRoute: typeof ComponentsIconButtonRoute
   ComponentsLoadingIndicatorRoute: typeof ComponentsLoadingIndicatorRoute
   ComponentsProgressIndicatorRoute: typeof ComponentsProgressIndicatorRoute
@@ -329,6 +342,13 @@ declare module '@tanstack/react-router' {
       path: '/components/divider'
       fullPath: '/components/divider'
       preLoaderRoute: typeof ComponentsDividerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/extended-fab': {
+      id: '/components/extended-fab'
+      path: '/components/extended-fab'
+      fullPath: '/components/extended-fab'
+      preLoaderRoute: typeof ComponentsExtendedFabRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/icon-button': {
@@ -407,6 +427,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsCheckboxRoute: ComponentsCheckboxRoute,
   ComponentsChipsRoute: ComponentsChipsRoute,
   ComponentsDividerRoute: ComponentsDividerRoute,
+  ComponentsExtendedFabRoute: ComponentsExtendedFabRoute,
   ComponentsIconButtonRoute: ComponentsIconButtonRoute,
   ComponentsLoadingIndicatorRoute: ComponentsLoadingIndicatorRoute,
   ComponentsProgressIndicatorRoute: ComponentsProgressIndicatorRoute,

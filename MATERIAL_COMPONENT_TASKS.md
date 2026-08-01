@@ -100,7 +100,7 @@ the first unchecked task whose listed dependencies are complete.
 - [x] Badges (`d67ebb2`)
 - [x] Cards
 - [x] Button groups
-- [ ] Extended FABs
+- [x] Extended FABs
 - [ ] Floating action buttons (FABs)
 - [ ] Menus
 - [ ] FAB menu
