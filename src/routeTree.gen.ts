@@ -44,6 +44,7 @@ import { Route as ComponentsTabsRouteImport } from './routes/components.tabs'
 import { Route as ComponentsTextFieldRouteImport } from './routes/components.text-field'
 import { Route as ComponentsTimePickerRouteImport } from './routes/components.time-picker'
 import { Route as ComponentsToggleButtonRouteImport } from './routes/components.toggle-button'
+import { Route as ComponentsToolbarRouteImport } from './routes/components.toolbar'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -225,6 +226,11 @@ const ComponentsToggleButtonRoute = ComponentsToggleButtonRouteImport.update({
   path: '/components/toggle-button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsToolbarRoute = ComponentsToolbarRouteImport.update({
+  id: '/components/toolbar',
+  path: '/components/toolbar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -262,6 +268,7 @@ export interface FileRoutesByFullPath {
   '/components/text-field': typeof ComponentsTextFieldRoute
   '/components/time-picker': typeof ComponentsTimePickerRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
+  '/components/toolbar': typeof ComponentsToolbarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -299,6 +306,7 @@ export interface FileRoutesByTo {
   '/components/text-field': typeof ComponentsTextFieldRoute
   '/components/time-picker': typeof ComponentsTimePickerRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
+  '/components/toolbar': typeof ComponentsToolbarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -337,6 +345,7 @@ export interface FileRoutesById {
   '/components/text-field': typeof ComponentsTextFieldRoute
   '/components/time-picker': typeof ComponentsTimePickerRoute
   '/components/toggle-button': typeof ComponentsToggleButtonRoute
+  '/components/toolbar': typeof ComponentsToolbarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -376,6 +385,7 @@ export interface FileRouteTypes {
     | '/components/text-field'
     | '/components/time-picker'
     | '/components/toggle-button'
+    | '/components/toolbar'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -413,6 +423,7 @@ export interface FileRouteTypes {
     | '/components/text-field'
     | '/components/time-picker'
     | '/components/toggle-button'
+    | '/components/toolbar'
   id:
     | '__root__'
     | '/'
@@ -450,6 +461,7 @@ export interface FileRouteTypes {
     | '/components/text-field'
     | '/components/time-picker'
     | '/components/toggle-button'
+    | '/components/toolbar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -488,6 +500,7 @@ export interface RootRouteChildren {
   ComponentsTextFieldRoute: typeof ComponentsTextFieldRoute
   ComponentsTimePickerRoute: typeof ComponentsTimePickerRoute
   ComponentsToggleButtonRoute: typeof ComponentsToggleButtonRoute
+  ComponentsToolbarRoute: typeof ComponentsToolbarRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -737,6 +750,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsToggleButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/toolbar': {
+      id: '/components/toolbar'
+      path: '/components/toolbar'
+      fullPath: '/components/toolbar'
+      preLoaderRoute: typeof ComponentsToolbarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -776,6 +796,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsTextFieldRoute: ComponentsTextFieldRoute,
   ComponentsTimePickerRoute: ComponentsTimePickerRoute,
   ComponentsToggleButtonRoute: ComponentsToggleButtonRoute,
+  ComponentsToolbarRoute: ComponentsToolbarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
