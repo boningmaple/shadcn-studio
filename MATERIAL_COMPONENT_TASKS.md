@@ -34,7 +34,8 @@ the first unchecked task whose listed dependencies are complete.
 5. Mark the task checked only after validation passes.
 6. Commit the implementation and checkbox together with
    `feat: add material <component> component gallery`.
-7. Ask the user to choose `Pick next task` or `Stop running`.
+7. Automatically proceed to the next unchecked task; repeat until every task
+   is checked, then stop and report the summary.
 
 ## Explicit Exclusions
 
