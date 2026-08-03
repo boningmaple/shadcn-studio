@@ -28,6 +28,7 @@ export type AppSidebarItem = {
 
 export type AppSidebarGroup = {
   label: string;
+  showLabel: boolean;
   items: AppSidebarItem[];
 };
 
@@ -57,7 +58,9 @@ export function AppSidebar({ data, ...props }: Props) {
       <SidebarContent>
         {data.groups.map((group) => (
           <SidebarGroup key={group.label}>
-            <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
+            {group.showLabel ? (
+              <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
+            ) : null}
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuTree items={group.items} />
@@ -129,6 +132,7 @@ export const appSidebarData: AppSidebarData = {
   groups: [
     {
       label: "workspace",
+      showLabel: true,
       items: [
         {
           label: "Home",
@@ -139,6 +143,7 @@ export const appSidebarData: AppSidebarData = {
     },
     {
       label: "library",
+      showLabel: false,
       items: [
         {
           label: "components",
