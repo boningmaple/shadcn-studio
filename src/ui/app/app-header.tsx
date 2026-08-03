@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
-import { MoonIcon, SearchIcon, SunIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 
+import { ThemeToggle } from "@/ui/app/theme";
 import { Button } from "@/ui/shadcn/react-aria/button";
 import {
   InputGroup,
@@ -13,9 +13,6 @@ import { Kbd, KbdGroup } from "@/ui/shadcn/react-aria/kbd";
 import { Tooltip, TooltipTrigger } from "@/ui/shadcn/react-aria/tooltip";
 
 export function AppHeader() {
-  const [isDarkIcon, setIsDarkIcon] = React.useState(false);
-  const ThemeIcon = isDarkIcon ? MoonIcon : SunIcon;
-
   return (
     <header className="sticky top-0 z-40 h-14 border-b bg-background/95 backdrop-blur">
       <div className="grid h-full grid-cols-[1fr_auto_1fr] items-center gap-3 px-4">
@@ -42,19 +39,7 @@ export function AppHeader() {
             </Button>
             <Tooltip>Search</Tooltip>
           </TooltipTrigger>
-          <TooltipTrigger delay={300}>
-            <Button
-              aria-label={
-                isDarkIcon ? "Show light mode icon" : "Show dark mode icon"
-              }
-              onPress={() => setIsDarkIcon((value) => !value)}
-              size="icon-sm"
-              variant="outline"
-            >
-              <ThemeIcon />
-            </Button>
-            <Tooltip>{isDarkIcon ? "Light icon" : "Dark icon"}</Tooltip>
-          </TooltipTrigger>
+          <ThemeToggle />
         </div>
       </div>
     </header>

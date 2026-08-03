@@ -4,6 +4,7 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AppHeader } from "@/ui/app/app-header";
 import { AppSidebar, appSidebarData } from "@/ui/app/app-sidebar";
+import { ThemeProvider } from "@/ui/app/theme";
 import { Separator } from "@/ui/shadcn/react-aria/separator";
 import {
   SidebarInset,
@@ -38,38 +39,40 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html className="dark" lang="en">
+    <html data-theme="system" lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body className="flex min-h-svh flex-col">
-        <AppHeader />
-        <SidebarProvider className="min-h-0 flex-1">
-          <AppSidebar data={appSidebarData} />
-          <SidebarInset>
-            <div
-              aria-label="Workspace controls"
-              className="flex h-14 shrink-0 items-center gap-2 border-b px-4"
-              role="toolbar"
-            >
-              <SidebarTrigger />
-              <Separator orientation="vertical" className="h-4" />
-              <span className="text-sm font-medium">VibeUI</span>
-            </div>
-            <main className="flex-1 p-4">{children}</main>
-          </SidebarInset>
-        </SidebarProvider>
-        <TanStackDevtools
-          config={{
-            position: "bottom-right",
-          }}
-          plugins={[
-            {
-              name: "Tanstack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        <ThemeProvider>
+          <AppHeader />
+          <SidebarProvider className="min-h-0 flex-1">
+            <AppSidebar data={appSidebarData} />
+            <SidebarInset>
+              <div
+                aria-label="Workspace controls"
+                className="flex h-14 shrink-0 items-center gap-2 border-b px-4"
+                role="toolbar"
+              >
+                <SidebarTrigger />
+                <Separator orientation="vertical" className="h-4" />
+                <span className="text-sm font-medium">VibeUI</span>
+              </div>
+              <main className="flex-1 p-4">{children}</main>
+            </SidebarInset>
+          </SidebarProvider>
+          <TanStackDevtools
+            config={{
+              position: "bottom-right",
+            }}
+            plugins={[
+              {
+                name: "Tanstack Router",
+                render: <TanStackRouterDevtoolsPanel />,
+              },
+            ]}
+          />
+        </ThemeProvider>
         <Scripts />
       </body>
     </html>
