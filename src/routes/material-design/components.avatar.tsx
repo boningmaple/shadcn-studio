@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 import Avatar01 from "@/ui/material-design/components/md-avatar/demos/md-avatar-01";
 import Avatar02 from "@/ui/material-design/components/md-avatar/demos/md-avatar-02";
 import Avatar03 from "@/ui/material-design/components/md-avatar/demos/md-avatar-03";

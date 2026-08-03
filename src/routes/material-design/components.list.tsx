@@ -7,7 +7,7 @@ import List04 from "@/ui/material-design/components/md-list/demos/md-list-04";
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/list")({
   component: ListComponentPage,

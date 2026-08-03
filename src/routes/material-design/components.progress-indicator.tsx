@@ -8,7 +8,7 @@ import ProgressIndicator05 from "@/ui/material-design/components/md-progress-ind
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute(
   "/material-design/components/progress-indicator",

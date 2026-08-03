@@ -8,7 +8,7 @@ import Badge05 from "@/ui/material-design/components/md-badge/demos/md-badge-05"
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/badge")({
   component: BadgeComponentPage,

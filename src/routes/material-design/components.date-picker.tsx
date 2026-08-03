@@ -7,7 +7,7 @@ import DatePicker04 from "@/ui/material-design/components/md-date-picker/demos/m
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/date-picker")(
   {

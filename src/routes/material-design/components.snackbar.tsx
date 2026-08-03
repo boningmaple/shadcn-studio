@@ -7,7 +7,7 @@ import Snackbar04 from "@/ui/material-design/components/md-snackbar/demos/md-sna
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/snackbar")({
   component: SnackbarComponentPage,

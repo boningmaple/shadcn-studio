@@ -13,7 +13,7 @@ import Button10 from "@/ui/material-design/components/md-button/demos/md-button-
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/button")({
   component: ButtonComponentPage,

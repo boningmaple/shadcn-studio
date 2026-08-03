@@ -7,7 +7,7 @@ import Search04 from "@/ui/material-design/components/md-search/demos/md-search-
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/search")({
   component: SearchComponentPage,

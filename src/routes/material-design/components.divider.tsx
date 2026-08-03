@@ -7,7 +7,7 @@ import Divider04 from "@/ui/material-design/components/md-divider/demos/md-divid
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/divider")({
   component: DividerComponentPage,

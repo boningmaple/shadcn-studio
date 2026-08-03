@@ -8,7 +8,7 @@ import Switch05 from "@/ui/material-design/components/md-switch/demos/md-switch-
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/switch")({
   component: SwitchComponentPage,

@@ -9,7 +9,7 @@ import ToggleButton06 from "@/ui/material-design/components/md-toggle-button/dem
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute(
   "/material-design/components/toggle-button",

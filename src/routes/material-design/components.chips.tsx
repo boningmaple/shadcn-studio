@@ -12,7 +12,7 @@ import Chips09 from "@/ui/material-design/components/md-chips/demos/md-chips-09"
 import {
   ComponentExamplesPage,
   type ComponentExample,
-} from "@/components/component-examples-page";
+} from "@/ui/app/component-examples-page";
 
 export const Route = createFileRoute("/material-design/components/chips")({
   component: ChipsComponentPage,
