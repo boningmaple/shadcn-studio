@@ -10,569 +10,569 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as Material3UiComponentsAppBarRouteImport } from './routes/material-3-ui/components.app-bar'
-import { Route as Material3UiComponentsAvatarRouteImport } from './routes/material-3-ui/components.avatar'
-import { Route as Material3UiComponentsBadgeRouteImport } from './routes/material-3-ui/components.badge'
-import { Route as Material3UiComponentsBottomSheetRouteImport } from './routes/material-3-ui/components.bottom-sheet'
-import { Route as Material3UiComponentsButtonRouteImport } from './routes/material-3-ui/components.button'
-import { Route as Material3UiComponentsButtonGroupRouteImport } from './routes/material-3-ui/components.button-group'
-import { Route as Material3UiComponentsCardRouteImport } from './routes/material-3-ui/components.card'
-import { Route as Material3UiComponentsCarouselRouteImport } from './routes/material-3-ui/components.carousel'
-import { Route as Material3UiComponentsCheckboxRouteImport } from './routes/material-3-ui/components.checkbox'
-import { Route as Material3UiComponentsChipsRouteImport } from './routes/material-3-ui/components.chips'
-import { Route as Material3UiComponentsDatePickerRouteImport } from './routes/material-3-ui/components.date-picker'
-import { Route as Material3UiComponentsDialogRouteImport } from './routes/material-3-ui/components.dialog'
-import { Route as Material3UiComponentsDividerRouteImport } from './routes/material-3-ui/components.divider'
-import { Route as Material3UiComponentsExtendedFabRouteImport } from './routes/material-3-ui/components.extended-fab'
-import { Route as Material3UiComponentsFabRouteImport } from './routes/material-3-ui/components.fab'
-import { Route as Material3UiComponentsFabMenuRouteImport } from './routes/material-3-ui/components.fab-menu'
-import { Route as Material3UiComponentsIconButtonRouteImport } from './routes/material-3-ui/components.icon-button'
-import { Route as Material3UiComponentsListRouteImport } from './routes/material-3-ui/components.list'
-import { Route as Material3UiComponentsLoadingIndicatorRouteImport } from './routes/material-3-ui/components.loading-indicator'
-import { Route as Material3UiComponentsMenuRouteImport } from './routes/material-3-ui/components.menu'
-import { Route as Material3UiComponentsNavigationBarRouteImport } from './routes/material-3-ui/components.navigation-bar'
-import { Route as Material3UiComponentsNavigationDrawerRouteImport } from './routes/material-3-ui/components.navigation-drawer'
-import { Route as Material3UiComponentsNavigationRailRouteImport } from './routes/material-3-ui/components.navigation-rail'
-import { Route as Material3UiComponentsProgressIndicatorRouteImport } from './routes/material-3-ui/components.progress-indicator'
-import { Route as Material3UiComponentsRadioButtonRouteImport } from './routes/material-3-ui/components.radio-button'
-import { Route as Material3UiComponentsSearchRouteImport } from './routes/material-3-ui/components.search'
-import { Route as Material3UiComponentsSegmentedButtonRouteImport } from './routes/material-3-ui/components.segmented-button'
-import { Route as Material3UiComponentsSideSheetRouteImport } from './routes/material-3-ui/components.side-sheet'
-import { Route as Material3UiComponentsSliderRouteImport } from './routes/material-3-ui/components.slider'
-import { Route as Material3UiComponentsSnackbarRouteImport } from './routes/material-3-ui/components.snackbar'
-import { Route as Material3UiComponentsSplitButtonRouteImport } from './routes/material-3-ui/components.split-button'
-import { Route as Material3UiComponentsSwitchRouteImport } from './routes/material-3-ui/components.switch'
-import { Route as Material3UiComponentsTabsRouteImport } from './routes/material-3-ui/components.tabs'
-import { Route as Material3UiComponentsTextFieldRouteImport } from './routes/material-3-ui/components.text-field'
-import { Route as Material3UiComponentsTimePickerRouteImport } from './routes/material-3-ui/components.time-picker'
-import { Route as Material3UiComponentsToggleButtonRouteImport } from './routes/material-3-ui/components.toggle-button'
-import { Route as Material3UiComponentsToolbarRouteImport } from './routes/material-3-ui/components.toolbar'
-import { Route as Material3UiComponentsTooltipRouteImport } from './routes/material-3-ui/components.tooltip'
+import { Route as MaterialDesignComponentsAppBarRouteImport } from './routes/material-design/components.app-bar'
+import { Route as MaterialDesignComponentsAvatarRouteImport } from './routes/material-design/components.avatar'
+import { Route as MaterialDesignComponentsBadgeRouteImport } from './routes/material-design/components.badge'
+import { Route as MaterialDesignComponentsBottomSheetRouteImport } from './routes/material-design/components.bottom-sheet'
+import { Route as MaterialDesignComponentsButtonRouteImport } from './routes/material-design/components.button'
+import { Route as MaterialDesignComponentsButtonGroupRouteImport } from './routes/material-design/components.button-group'
+import { Route as MaterialDesignComponentsCardRouteImport } from './routes/material-design/components.card'
+import { Route as MaterialDesignComponentsCarouselRouteImport } from './routes/material-design/components.carousel'
+import { Route as MaterialDesignComponentsCheckboxRouteImport } from './routes/material-design/components.checkbox'
+import { Route as MaterialDesignComponentsChipsRouteImport } from './routes/material-design/components.chips'
+import { Route as MaterialDesignComponentsDatePickerRouteImport } from './routes/material-design/components.date-picker'
+import { Route as MaterialDesignComponentsDialogRouteImport } from './routes/material-design/components.dialog'
+import { Route as MaterialDesignComponentsDividerRouteImport } from './routes/material-design/components.divider'
+import { Route as MaterialDesignComponentsExtendedFabRouteImport } from './routes/material-design/components.extended-fab'
+import { Route as MaterialDesignComponentsFabRouteImport } from './routes/material-design/components.fab'
+import { Route as MaterialDesignComponentsFabMenuRouteImport } from './routes/material-design/components.fab-menu'
+import { Route as MaterialDesignComponentsIconButtonRouteImport } from './routes/material-design/components.icon-button'
+import { Route as MaterialDesignComponentsListRouteImport } from './routes/material-design/components.list'
+import { Route as MaterialDesignComponentsLoadingIndicatorRouteImport } from './routes/material-design/components.loading-indicator'
+import { Route as MaterialDesignComponentsMenuRouteImport } from './routes/material-design/components.menu'
+import { Route as MaterialDesignComponentsNavigationBarRouteImport } from './routes/material-design/components.navigation-bar'
+import { Route as MaterialDesignComponentsNavigationDrawerRouteImport } from './routes/material-design/components.navigation-drawer'
+import { Route as MaterialDesignComponentsNavigationRailRouteImport } from './routes/material-design/components.navigation-rail'
+import { Route as MaterialDesignComponentsProgressIndicatorRouteImport } from './routes/material-design/components.progress-indicator'
+import { Route as MaterialDesignComponentsRadioButtonRouteImport } from './routes/material-design/components.radio-button'
+import { Route as MaterialDesignComponentsSearchRouteImport } from './routes/material-design/components.search'
+import { Route as MaterialDesignComponentsSegmentedButtonRouteImport } from './routes/material-design/components.segmented-button'
+import { Route as MaterialDesignComponentsSideSheetRouteImport } from './routes/material-design/components.side-sheet'
+import { Route as MaterialDesignComponentsSliderRouteImport } from './routes/material-design/components.slider'
+import { Route as MaterialDesignComponentsSnackbarRouteImport } from './routes/material-design/components.snackbar'
+import { Route as MaterialDesignComponentsSplitButtonRouteImport } from './routes/material-design/components.split-button'
+import { Route as MaterialDesignComponentsSwitchRouteImport } from './routes/material-design/components.switch'
+import { Route as MaterialDesignComponentsTabsRouteImport } from './routes/material-design/components.tabs'
+import { Route as MaterialDesignComponentsTextFieldRouteImport } from './routes/material-design/components.text-field'
+import { Route as MaterialDesignComponentsTimePickerRouteImport } from './routes/material-design/components.time-picker'
+import { Route as MaterialDesignComponentsToggleButtonRouteImport } from './routes/material-design/components.toggle-button'
+import { Route as MaterialDesignComponentsToolbarRouteImport } from './routes/material-design/components.toolbar'
+import { Route as MaterialDesignComponentsTooltipRouteImport } from './routes/material-design/components.tooltip'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Material3UiComponentsAppBarRoute =
-  Material3UiComponentsAppBarRouteImport.update({
-    id: '/material-3-ui/components/app-bar',
-    path: '/material-3-ui/components/app-bar',
+const MaterialDesignComponentsAppBarRoute =
+  MaterialDesignComponentsAppBarRouteImport.update({
+    id: '/material-design/components/app-bar',
+    path: '/material-design/components/app-bar',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsAvatarRoute =
-  Material3UiComponentsAvatarRouteImport.update({
-    id: '/material-3-ui/components/avatar',
-    path: '/material-3-ui/components/avatar',
+const MaterialDesignComponentsAvatarRoute =
+  MaterialDesignComponentsAvatarRouteImport.update({
+    id: '/material-design/components/avatar',
+    path: '/material-design/components/avatar',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsBadgeRoute =
-  Material3UiComponentsBadgeRouteImport.update({
-    id: '/material-3-ui/components/badge',
-    path: '/material-3-ui/components/badge',
+const MaterialDesignComponentsBadgeRoute =
+  MaterialDesignComponentsBadgeRouteImport.update({
+    id: '/material-design/components/badge',
+    path: '/material-design/components/badge',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsBottomSheetRoute =
-  Material3UiComponentsBottomSheetRouteImport.update({
-    id: '/material-3-ui/components/bottom-sheet',
-    path: '/material-3-ui/components/bottom-sheet',
+const MaterialDesignComponentsBottomSheetRoute =
+  MaterialDesignComponentsBottomSheetRouteImport.update({
+    id: '/material-design/components/bottom-sheet',
+    path: '/material-design/components/bottom-sheet',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsButtonRoute =
-  Material3UiComponentsButtonRouteImport.update({
-    id: '/material-3-ui/components/button',
-    path: '/material-3-ui/components/button',
+const MaterialDesignComponentsButtonRoute =
+  MaterialDesignComponentsButtonRouteImport.update({
+    id: '/material-design/components/button',
+    path: '/material-design/components/button',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsButtonGroupRoute =
-  Material3UiComponentsButtonGroupRouteImport.update({
-    id: '/material-3-ui/components/button-group',
-    path: '/material-3-ui/components/button-group',
+const MaterialDesignComponentsButtonGroupRoute =
+  MaterialDesignComponentsButtonGroupRouteImport.update({
+    id: '/material-design/components/button-group',
+    path: '/material-design/components/button-group',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsCardRoute =
-  Material3UiComponentsCardRouteImport.update({
-    id: '/material-3-ui/components/card',
-    path: '/material-3-ui/components/card',
+const MaterialDesignComponentsCardRoute =
+  MaterialDesignComponentsCardRouteImport.update({
+    id: '/material-design/components/card',
+    path: '/material-design/components/card',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsCarouselRoute =
-  Material3UiComponentsCarouselRouteImport.update({
-    id: '/material-3-ui/components/carousel',
-    path: '/material-3-ui/components/carousel',
+const MaterialDesignComponentsCarouselRoute =
+  MaterialDesignComponentsCarouselRouteImport.update({
+    id: '/material-design/components/carousel',
+    path: '/material-design/components/carousel',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsCheckboxRoute =
-  Material3UiComponentsCheckboxRouteImport.update({
-    id: '/material-3-ui/components/checkbox',
-    path: '/material-3-ui/components/checkbox',
+const MaterialDesignComponentsCheckboxRoute =
+  MaterialDesignComponentsCheckboxRouteImport.update({
+    id: '/material-design/components/checkbox',
+    path: '/material-design/components/checkbox',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsChipsRoute =
-  Material3UiComponentsChipsRouteImport.update({
-    id: '/material-3-ui/components/chips',
-    path: '/material-3-ui/components/chips',
+const MaterialDesignComponentsChipsRoute =
+  MaterialDesignComponentsChipsRouteImport.update({
+    id: '/material-design/components/chips',
+    path: '/material-design/components/chips',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsDatePickerRoute =
-  Material3UiComponentsDatePickerRouteImport.update({
-    id: '/material-3-ui/components/date-picker',
-    path: '/material-3-ui/components/date-picker',
+const MaterialDesignComponentsDatePickerRoute =
+  MaterialDesignComponentsDatePickerRouteImport.update({
+    id: '/material-design/components/date-picker',
+    path: '/material-design/components/date-picker',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsDialogRoute =
-  Material3UiComponentsDialogRouteImport.update({
-    id: '/material-3-ui/components/dialog',
-    path: '/material-3-ui/components/dialog',
+const MaterialDesignComponentsDialogRoute =
+  MaterialDesignComponentsDialogRouteImport.update({
+    id: '/material-design/components/dialog',
+    path: '/material-design/components/dialog',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsDividerRoute =
-  Material3UiComponentsDividerRouteImport.update({
-    id: '/material-3-ui/components/divider',
-    path: '/material-3-ui/components/divider',
+const MaterialDesignComponentsDividerRoute =
+  MaterialDesignComponentsDividerRouteImport.update({
+    id: '/material-design/components/divider',
+    path: '/material-design/components/divider',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsExtendedFabRoute =
-  Material3UiComponentsExtendedFabRouteImport.update({
-    id: '/material-3-ui/components/extended-fab',
-    path: '/material-3-ui/components/extended-fab',
+const MaterialDesignComponentsExtendedFabRoute =
+  MaterialDesignComponentsExtendedFabRouteImport.update({
+    id: '/material-design/components/extended-fab',
+    path: '/material-design/components/extended-fab',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsFabRoute =
-  Material3UiComponentsFabRouteImport.update({
-    id: '/material-3-ui/components/fab',
-    path: '/material-3-ui/components/fab',
+const MaterialDesignComponentsFabRoute =
+  MaterialDesignComponentsFabRouteImport.update({
+    id: '/material-design/components/fab',
+    path: '/material-design/components/fab',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsFabMenuRoute =
-  Material3UiComponentsFabMenuRouteImport.update({
-    id: '/material-3-ui/components/fab-menu',
-    path: '/material-3-ui/components/fab-menu',
+const MaterialDesignComponentsFabMenuRoute =
+  MaterialDesignComponentsFabMenuRouteImport.update({
+    id: '/material-design/components/fab-menu',
+    path: '/material-design/components/fab-menu',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsIconButtonRoute =
-  Material3UiComponentsIconButtonRouteImport.update({
-    id: '/material-3-ui/components/icon-button',
-    path: '/material-3-ui/components/icon-button',
+const MaterialDesignComponentsIconButtonRoute =
+  MaterialDesignComponentsIconButtonRouteImport.update({
+    id: '/material-design/components/icon-button',
+    path: '/material-design/components/icon-button',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsListRoute =
-  Material3UiComponentsListRouteImport.update({
-    id: '/material-3-ui/components/list',
-    path: '/material-3-ui/components/list',
+const MaterialDesignComponentsListRoute =
+  MaterialDesignComponentsListRouteImport.update({
+    id: '/material-design/components/list',
+    path: '/material-design/components/list',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsLoadingIndicatorRoute =
-  Material3UiComponentsLoadingIndicatorRouteImport.update({
-    id: '/material-3-ui/components/loading-indicator',
-    path: '/material-3-ui/components/loading-indicator',
+const MaterialDesignComponentsLoadingIndicatorRoute =
+  MaterialDesignComponentsLoadingIndicatorRouteImport.update({
+    id: '/material-design/components/loading-indicator',
+    path: '/material-design/components/loading-indicator',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsMenuRoute =
-  Material3UiComponentsMenuRouteImport.update({
-    id: '/material-3-ui/components/menu',
-    path: '/material-3-ui/components/menu',
+const MaterialDesignComponentsMenuRoute =
+  MaterialDesignComponentsMenuRouteImport.update({
+    id: '/material-design/components/menu',
+    path: '/material-design/components/menu',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsNavigationBarRoute =
-  Material3UiComponentsNavigationBarRouteImport.update({
-    id: '/material-3-ui/components/navigation-bar',
-    path: '/material-3-ui/components/navigation-bar',
+const MaterialDesignComponentsNavigationBarRoute =
+  MaterialDesignComponentsNavigationBarRouteImport.update({
+    id: '/material-design/components/navigation-bar',
+    path: '/material-design/components/navigation-bar',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsNavigationDrawerRoute =
-  Material3UiComponentsNavigationDrawerRouteImport.update({
-    id: '/material-3-ui/components/navigation-drawer',
-    path: '/material-3-ui/components/navigation-drawer',
+const MaterialDesignComponentsNavigationDrawerRoute =
+  MaterialDesignComponentsNavigationDrawerRouteImport.update({
+    id: '/material-design/components/navigation-drawer',
+    path: '/material-design/components/navigation-drawer',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsNavigationRailRoute =
-  Material3UiComponentsNavigationRailRouteImport.update({
-    id: '/material-3-ui/components/navigation-rail',
-    path: '/material-3-ui/components/navigation-rail',
+const MaterialDesignComponentsNavigationRailRoute =
+  MaterialDesignComponentsNavigationRailRouteImport.update({
+    id: '/material-design/components/navigation-rail',
+    path: '/material-design/components/navigation-rail',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsProgressIndicatorRoute =
-  Material3UiComponentsProgressIndicatorRouteImport.update({
-    id: '/material-3-ui/components/progress-indicator',
-    path: '/material-3-ui/components/progress-indicator',
+const MaterialDesignComponentsProgressIndicatorRoute =
+  MaterialDesignComponentsProgressIndicatorRouteImport.update({
+    id: '/material-design/components/progress-indicator',
+    path: '/material-design/components/progress-indicator',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsRadioButtonRoute =
-  Material3UiComponentsRadioButtonRouteImport.update({
-    id: '/material-3-ui/components/radio-button',
-    path: '/material-3-ui/components/radio-button',
+const MaterialDesignComponentsRadioButtonRoute =
+  MaterialDesignComponentsRadioButtonRouteImport.update({
+    id: '/material-design/components/radio-button',
+    path: '/material-design/components/radio-button',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsSearchRoute =
-  Material3UiComponentsSearchRouteImport.update({
-    id: '/material-3-ui/components/search',
-    path: '/material-3-ui/components/search',
+const MaterialDesignComponentsSearchRoute =
+  MaterialDesignComponentsSearchRouteImport.update({
+    id: '/material-design/components/search',
+    path: '/material-design/components/search',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsSegmentedButtonRoute =
-  Material3UiComponentsSegmentedButtonRouteImport.update({
-    id: '/material-3-ui/components/segmented-button',
-    path: '/material-3-ui/components/segmented-button',
+const MaterialDesignComponentsSegmentedButtonRoute =
+  MaterialDesignComponentsSegmentedButtonRouteImport.update({
+    id: '/material-design/components/segmented-button',
+    path: '/material-design/components/segmented-button',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsSideSheetRoute =
-  Material3UiComponentsSideSheetRouteImport.update({
-    id: '/material-3-ui/components/side-sheet',
-    path: '/material-3-ui/components/side-sheet',
+const MaterialDesignComponentsSideSheetRoute =
+  MaterialDesignComponentsSideSheetRouteImport.update({
+    id: '/material-design/components/side-sheet',
+    path: '/material-design/components/side-sheet',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsSliderRoute =
-  Material3UiComponentsSliderRouteImport.update({
-    id: '/material-3-ui/components/slider',
-    path: '/material-3-ui/components/slider',
+const MaterialDesignComponentsSliderRoute =
+  MaterialDesignComponentsSliderRouteImport.update({
+    id: '/material-design/components/slider',
+    path: '/material-design/components/slider',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsSnackbarRoute =
-  Material3UiComponentsSnackbarRouteImport.update({
-    id: '/material-3-ui/components/snackbar',
-    path: '/material-3-ui/components/snackbar',
+const MaterialDesignComponentsSnackbarRoute =
+  MaterialDesignComponentsSnackbarRouteImport.update({
+    id: '/material-design/components/snackbar',
+    path: '/material-design/components/snackbar',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsSplitButtonRoute =
-  Material3UiComponentsSplitButtonRouteImport.update({
-    id: '/material-3-ui/components/split-button',
-    path: '/material-3-ui/components/split-button',
+const MaterialDesignComponentsSplitButtonRoute =
+  MaterialDesignComponentsSplitButtonRouteImport.update({
+    id: '/material-design/components/split-button',
+    path: '/material-design/components/split-button',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsSwitchRoute =
-  Material3UiComponentsSwitchRouteImport.update({
-    id: '/material-3-ui/components/switch',
-    path: '/material-3-ui/components/switch',
+const MaterialDesignComponentsSwitchRoute =
+  MaterialDesignComponentsSwitchRouteImport.update({
+    id: '/material-design/components/switch',
+    path: '/material-design/components/switch',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsTabsRoute =
-  Material3UiComponentsTabsRouteImport.update({
-    id: '/material-3-ui/components/tabs',
-    path: '/material-3-ui/components/tabs',
+const MaterialDesignComponentsTabsRoute =
+  MaterialDesignComponentsTabsRouteImport.update({
+    id: '/material-design/components/tabs',
+    path: '/material-design/components/tabs',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsTextFieldRoute =
-  Material3UiComponentsTextFieldRouteImport.update({
-    id: '/material-3-ui/components/text-field',
-    path: '/material-3-ui/components/text-field',
+const MaterialDesignComponentsTextFieldRoute =
+  MaterialDesignComponentsTextFieldRouteImport.update({
+    id: '/material-design/components/text-field',
+    path: '/material-design/components/text-field',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsTimePickerRoute =
-  Material3UiComponentsTimePickerRouteImport.update({
-    id: '/material-3-ui/components/time-picker',
-    path: '/material-3-ui/components/time-picker',
+const MaterialDesignComponentsTimePickerRoute =
+  MaterialDesignComponentsTimePickerRouteImport.update({
+    id: '/material-design/components/time-picker',
+    path: '/material-design/components/time-picker',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsToggleButtonRoute =
-  Material3UiComponentsToggleButtonRouteImport.update({
-    id: '/material-3-ui/components/toggle-button',
-    path: '/material-3-ui/components/toggle-button',
+const MaterialDesignComponentsToggleButtonRoute =
+  MaterialDesignComponentsToggleButtonRouteImport.update({
+    id: '/material-design/components/toggle-button',
+    path: '/material-design/components/toggle-button',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsToolbarRoute =
-  Material3UiComponentsToolbarRouteImport.update({
-    id: '/material-3-ui/components/toolbar',
-    path: '/material-3-ui/components/toolbar',
+const MaterialDesignComponentsToolbarRoute =
+  MaterialDesignComponentsToolbarRouteImport.update({
+    id: '/material-design/components/toolbar',
+    path: '/material-design/components/toolbar',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Material3UiComponentsTooltipRoute =
-  Material3UiComponentsTooltipRouteImport.update({
-    id: '/material-3-ui/components/tooltip',
-    path: '/material-3-ui/components/tooltip',
+const MaterialDesignComponentsTooltipRoute =
+  MaterialDesignComponentsTooltipRouteImport.update({
+    id: '/material-design/components/tooltip',
+    path: '/material-design/components/tooltip',
     getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/material-3-ui/components/app-bar': typeof Material3UiComponentsAppBarRoute
-  '/material-3-ui/components/avatar': typeof Material3UiComponentsAvatarRoute
-  '/material-3-ui/components/badge': typeof Material3UiComponentsBadgeRoute
-  '/material-3-ui/components/bottom-sheet': typeof Material3UiComponentsBottomSheetRoute
-  '/material-3-ui/components/button': typeof Material3UiComponentsButtonRoute
-  '/material-3-ui/components/button-group': typeof Material3UiComponentsButtonGroupRoute
-  '/material-3-ui/components/card': typeof Material3UiComponentsCardRoute
-  '/material-3-ui/components/carousel': typeof Material3UiComponentsCarouselRoute
-  '/material-3-ui/components/checkbox': typeof Material3UiComponentsCheckboxRoute
-  '/material-3-ui/components/chips': typeof Material3UiComponentsChipsRoute
-  '/material-3-ui/components/date-picker': typeof Material3UiComponentsDatePickerRoute
-  '/material-3-ui/components/dialog': typeof Material3UiComponentsDialogRoute
-  '/material-3-ui/components/divider': typeof Material3UiComponentsDividerRoute
-  '/material-3-ui/components/extended-fab': typeof Material3UiComponentsExtendedFabRoute
-  '/material-3-ui/components/fab': typeof Material3UiComponentsFabRoute
-  '/material-3-ui/components/fab-menu': typeof Material3UiComponentsFabMenuRoute
-  '/material-3-ui/components/icon-button': typeof Material3UiComponentsIconButtonRoute
-  '/material-3-ui/components/list': typeof Material3UiComponentsListRoute
-  '/material-3-ui/components/loading-indicator': typeof Material3UiComponentsLoadingIndicatorRoute
-  '/material-3-ui/components/menu': typeof Material3UiComponentsMenuRoute
-  '/material-3-ui/components/navigation-bar': typeof Material3UiComponentsNavigationBarRoute
-  '/material-3-ui/components/navigation-drawer': typeof Material3UiComponentsNavigationDrawerRoute
-  '/material-3-ui/components/navigation-rail': typeof Material3UiComponentsNavigationRailRoute
-  '/material-3-ui/components/progress-indicator': typeof Material3UiComponentsProgressIndicatorRoute
-  '/material-3-ui/components/radio-button': typeof Material3UiComponentsRadioButtonRoute
-  '/material-3-ui/components/search': typeof Material3UiComponentsSearchRoute
-  '/material-3-ui/components/segmented-button': typeof Material3UiComponentsSegmentedButtonRoute
-  '/material-3-ui/components/side-sheet': typeof Material3UiComponentsSideSheetRoute
-  '/material-3-ui/components/slider': typeof Material3UiComponentsSliderRoute
-  '/material-3-ui/components/snackbar': typeof Material3UiComponentsSnackbarRoute
-  '/material-3-ui/components/split-button': typeof Material3UiComponentsSplitButtonRoute
-  '/material-3-ui/components/switch': typeof Material3UiComponentsSwitchRoute
-  '/material-3-ui/components/tabs': typeof Material3UiComponentsTabsRoute
-  '/material-3-ui/components/text-field': typeof Material3UiComponentsTextFieldRoute
-  '/material-3-ui/components/time-picker': typeof Material3UiComponentsTimePickerRoute
-  '/material-3-ui/components/toggle-button': typeof Material3UiComponentsToggleButtonRoute
-  '/material-3-ui/components/toolbar': typeof Material3UiComponentsToolbarRoute
-  '/material-3-ui/components/tooltip': typeof Material3UiComponentsTooltipRoute
+  '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
+  '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
+  '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
+  '/material-design/components/bottom-sheet': typeof MaterialDesignComponentsBottomSheetRoute
+  '/material-design/components/button': typeof MaterialDesignComponentsButtonRoute
+  '/material-design/components/button-group': typeof MaterialDesignComponentsButtonGroupRoute
+  '/material-design/components/card': typeof MaterialDesignComponentsCardRoute
+  '/material-design/components/carousel': typeof MaterialDesignComponentsCarouselRoute
+  '/material-design/components/checkbox': typeof MaterialDesignComponentsCheckboxRoute
+  '/material-design/components/chips': typeof MaterialDesignComponentsChipsRoute
+  '/material-design/components/date-picker': typeof MaterialDesignComponentsDatePickerRoute
+  '/material-design/components/dialog': typeof MaterialDesignComponentsDialogRoute
+  '/material-design/components/divider': typeof MaterialDesignComponentsDividerRoute
+  '/material-design/components/extended-fab': typeof MaterialDesignComponentsExtendedFabRoute
+  '/material-design/components/fab': typeof MaterialDesignComponentsFabRoute
+  '/material-design/components/fab-menu': typeof MaterialDesignComponentsFabMenuRoute
+  '/material-design/components/icon-button': typeof MaterialDesignComponentsIconButtonRoute
+  '/material-design/components/list': typeof MaterialDesignComponentsListRoute
+  '/material-design/components/loading-indicator': typeof MaterialDesignComponentsLoadingIndicatorRoute
+  '/material-design/components/menu': typeof MaterialDesignComponentsMenuRoute
+  '/material-design/components/navigation-bar': typeof MaterialDesignComponentsNavigationBarRoute
+  '/material-design/components/navigation-drawer': typeof MaterialDesignComponentsNavigationDrawerRoute
+  '/material-design/components/navigation-rail': typeof MaterialDesignComponentsNavigationRailRoute
+  '/material-design/components/progress-indicator': typeof MaterialDesignComponentsProgressIndicatorRoute
+  '/material-design/components/radio-button': typeof MaterialDesignComponentsRadioButtonRoute
+  '/material-design/components/search': typeof MaterialDesignComponentsSearchRoute
+  '/material-design/components/segmented-button': typeof MaterialDesignComponentsSegmentedButtonRoute
+  '/material-design/components/side-sheet': typeof MaterialDesignComponentsSideSheetRoute
+  '/material-design/components/slider': typeof MaterialDesignComponentsSliderRoute
+  '/material-design/components/snackbar': typeof MaterialDesignComponentsSnackbarRoute
+  '/material-design/components/split-button': typeof MaterialDesignComponentsSplitButtonRoute
+  '/material-design/components/switch': typeof MaterialDesignComponentsSwitchRoute
+  '/material-design/components/tabs': typeof MaterialDesignComponentsTabsRoute
+  '/material-design/components/text-field': typeof MaterialDesignComponentsTextFieldRoute
+  '/material-design/components/time-picker': typeof MaterialDesignComponentsTimePickerRoute
+  '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
+  '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
+  '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/material-3-ui/components/app-bar': typeof Material3UiComponentsAppBarRoute
-  '/material-3-ui/components/avatar': typeof Material3UiComponentsAvatarRoute
-  '/material-3-ui/components/badge': typeof Material3UiComponentsBadgeRoute
-  '/material-3-ui/components/bottom-sheet': typeof Material3UiComponentsBottomSheetRoute
-  '/material-3-ui/components/button': typeof Material3UiComponentsButtonRoute
-  '/material-3-ui/components/button-group': typeof Material3UiComponentsButtonGroupRoute
-  '/material-3-ui/components/card': typeof Material3UiComponentsCardRoute
-  '/material-3-ui/components/carousel': typeof Material3UiComponentsCarouselRoute
-  '/material-3-ui/components/checkbox': typeof Material3UiComponentsCheckboxRoute
-  '/material-3-ui/components/chips': typeof Material3UiComponentsChipsRoute
-  '/material-3-ui/components/date-picker': typeof Material3UiComponentsDatePickerRoute
-  '/material-3-ui/components/dialog': typeof Material3UiComponentsDialogRoute
-  '/material-3-ui/components/divider': typeof Material3UiComponentsDividerRoute
-  '/material-3-ui/components/extended-fab': typeof Material3UiComponentsExtendedFabRoute
-  '/material-3-ui/components/fab': typeof Material3UiComponentsFabRoute
-  '/material-3-ui/components/fab-menu': typeof Material3UiComponentsFabMenuRoute
-  '/material-3-ui/components/icon-button': typeof Material3UiComponentsIconButtonRoute
-  '/material-3-ui/components/list': typeof Material3UiComponentsListRoute
-  '/material-3-ui/components/loading-indicator': typeof Material3UiComponentsLoadingIndicatorRoute
-  '/material-3-ui/components/menu': typeof Material3UiComponentsMenuRoute
-  '/material-3-ui/components/navigation-bar': typeof Material3UiComponentsNavigationBarRoute
-  '/material-3-ui/components/navigation-drawer': typeof Material3UiComponentsNavigationDrawerRoute
-  '/material-3-ui/components/navigation-rail': typeof Material3UiComponentsNavigationRailRoute
-  '/material-3-ui/components/progress-indicator': typeof Material3UiComponentsProgressIndicatorRoute
-  '/material-3-ui/components/radio-button': typeof Material3UiComponentsRadioButtonRoute
-  '/material-3-ui/components/search': typeof Material3UiComponentsSearchRoute
-  '/material-3-ui/components/segmented-button': typeof Material3UiComponentsSegmentedButtonRoute
-  '/material-3-ui/components/side-sheet': typeof Material3UiComponentsSideSheetRoute
-  '/material-3-ui/components/slider': typeof Material3UiComponentsSliderRoute
-  '/material-3-ui/components/snackbar': typeof Material3UiComponentsSnackbarRoute
-  '/material-3-ui/components/split-button': typeof Material3UiComponentsSplitButtonRoute
-  '/material-3-ui/components/switch': typeof Material3UiComponentsSwitchRoute
-  '/material-3-ui/components/tabs': typeof Material3UiComponentsTabsRoute
-  '/material-3-ui/components/text-field': typeof Material3UiComponentsTextFieldRoute
-  '/material-3-ui/components/time-picker': typeof Material3UiComponentsTimePickerRoute
-  '/material-3-ui/components/toggle-button': typeof Material3UiComponentsToggleButtonRoute
-  '/material-3-ui/components/toolbar': typeof Material3UiComponentsToolbarRoute
-  '/material-3-ui/components/tooltip': typeof Material3UiComponentsTooltipRoute
+  '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
+  '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
+  '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
+  '/material-design/components/bottom-sheet': typeof MaterialDesignComponentsBottomSheetRoute
+  '/material-design/components/button': typeof MaterialDesignComponentsButtonRoute
+  '/material-design/components/button-group': typeof MaterialDesignComponentsButtonGroupRoute
+  '/material-design/components/card': typeof MaterialDesignComponentsCardRoute
+  '/material-design/components/carousel': typeof MaterialDesignComponentsCarouselRoute
+  '/material-design/components/checkbox': typeof MaterialDesignComponentsCheckboxRoute
+  '/material-design/components/chips': typeof MaterialDesignComponentsChipsRoute
+  '/material-design/components/date-picker': typeof MaterialDesignComponentsDatePickerRoute
+  '/material-design/components/dialog': typeof MaterialDesignComponentsDialogRoute
+  '/material-design/components/divider': typeof MaterialDesignComponentsDividerRoute
+  '/material-design/components/extended-fab': typeof MaterialDesignComponentsExtendedFabRoute
+  '/material-design/components/fab': typeof MaterialDesignComponentsFabRoute
+  '/material-design/components/fab-menu': typeof MaterialDesignComponentsFabMenuRoute
+  '/material-design/components/icon-button': typeof MaterialDesignComponentsIconButtonRoute
+  '/material-design/components/list': typeof MaterialDesignComponentsListRoute
+  '/material-design/components/loading-indicator': typeof MaterialDesignComponentsLoadingIndicatorRoute
+  '/material-design/components/menu': typeof MaterialDesignComponentsMenuRoute
+  '/material-design/components/navigation-bar': typeof MaterialDesignComponentsNavigationBarRoute
+  '/material-design/components/navigation-drawer': typeof MaterialDesignComponentsNavigationDrawerRoute
+  '/material-design/components/navigation-rail': typeof MaterialDesignComponentsNavigationRailRoute
+  '/material-design/components/progress-indicator': typeof MaterialDesignComponentsProgressIndicatorRoute
+  '/material-design/components/radio-button': typeof MaterialDesignComponentsRadioButtonRoute
+  '/material-design/components/search': typeof MaterialDesignComponentsSearchRoute
+  '/material-design/components/segmented-button': typeof MaterialDesignComponentsSegmentedButtonRoute
+  '/material-design/components/side-sheet': typeof MaterialDesignComponentsSideSheetRoute
+  '/material-design/components/slider': typeof MaterialDesignComponentsSliderRoute
+  '/material-design/components/snackbar': typeof MaterialDesignComponentsSnackbarRoute
+  '/material-design/components/split-button': typeof MaterialDesignComponentsSplitButtonRoute
+  '/material-design/components/switch': typeof MaterialDesignComponentsSwitchRoute
+  '/material-design/components/tabs': typeof MaterialDesignComponentsTabsRoute
+  '/material-design/components/text-field': typeof MaterialDesignComponentsTextFieldRoute
+  '/material-design/components/time-picker': typeof MaterialDesignComponentsTimePickerRoute
+  '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
+  '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
+  '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/material-3-ui/components/app-bar': typeof Material3UiComponentsAppBarRoute
-  '/material-3-ui/components/avatar': typeof Material3UiComponentsAvatarRoute
-  '/material-3-ui/components/badge': typeof Material3UiComponentsBadgeRoute
-  '/material-3-ui/components/bottom-sheet': typeof Material3UiComponentsBottomSheetRoute
-  '/material-3-ui/components/button': typeof Material3UiComponentsButtonRoute
-  '/material-3-ui/components/button-group': typeof Material3UiComponentsButtonGroupRoute
-  '/material-3-ui/components/card': typeof Material3UiComponentsCardRoute
-  '/material-3-ui/components/carousel': typeof Material3UiComponentsCarouselRoute
-  '/material-3-ui/components/checkbox': typeof Material3UiComponentsCheckboxRoute
-  '/material-3-ui/components/chips': typeof Material3UiComponentsChipsRoute
-  '/material-3-ui/components/date-picker': typeof Material3UiComponentsDatePickerRoute
-  '/material-3-ui/components/dialog': typeof Material3UiComponentsDialogRoute
-  '/material-3-ui/components/divider': typeof Material3UiComponentsDividerRoute
-  '/material-3-ui/components/extended-fab': typeof Material3UiComponentsExtendedFabRoute
-  '/material-3-ui/components/fab': typeof Material3UiComponentsFabRoute
-  '/material-3-ui/components/fab-menu': typeof Material3UiComponentsFabMenuRoute
-  '/material-3-ui/components/icon-button': typeof Material3UiComponentsIconButtonRoute
-  '/material-3-ui/components/list': typeof Material3UiComponentsListRoute
-  '/material-3-ui/components/loading-indicator': typeof Material3UiComponentsLoadingIndicatorRoute
-  '/material-3-ui/components/menu': typeof Material3UiComponentsMenuRoute
-  '/material-3-ui/components/navigation-bar': typeof Material3UiComponentsNavigationBarRoute
-  '/material-3-ui/components/navigation-drawer': typeof Material3UiComponentsNavigationDrawerRoute
-  '/material-3-ui/components/navigation-rail': typeof Material3UiComponentsNavigationRailRoute
-  '/material-3-ui/components/progress-indicator': typeof Material3UiComponentsProgressIndicatorRoute
-  '/material-3-ui/components/radio-button': typeof Material3UiComponentsRadioButtonRoute
-  '/material-3-ui/components/search': typeof Material3UiComponentsSearchRoute
-  '/material-3-ui/components/segmented-button': typeof Material3UiComponentsSegmentedButtonRoute
-  '/material-3-ui/components/side-sheet': typeof Material3UiComponentsSideSheetRoute
-  '/material-3-ui/components/slider': typeof Material3UiComponentsSliderRoute
-  '/material-3-ui/components/snackbar': typeof Material3UiComponentsSnackbarRoute
-  '/material-3-ui/components/split-button': typeof Material3UiComponentsSplitButtonRoute
-  '/material-3-ui/components/switch': typeof Material3UiComponentsSwitchRoute
-  '/material-3-ui/components/tabs': typeof Material3UiComponentsTabsRoute
-  '/material-3-ui/components/text-field': typeof Material3UiComponentsTextFieldRoute
-  '/material-3-ui/components/time-picker': typeof Material3UiComponentsTimePickerRoute
-  '/material-3-ui/components/toggle-button': typeof Material3UiComponentsToggleButtonRoute
-  '/material-3-ui/components/toolbar': typeof Material3UiComponentsToolbarRoute
-  '/material-3-ui/components/tooltip': typeof Material3UiComponentsTooltipRoute
+  '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
+  '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
+  '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
+  '/material-design/components/bottom-sheet': typeof MaterialDesignComponentsBottomSheetRoute
+  '/material-design/components/button': typeof MaterialDesignComponentsButtonRoute
+  '/material-design/components/button-group': typeof MaterialDesignComponentsButtonGroupRoute
+  '/material-design/components/card': typeof MaterialDesignComponentsCardRoute
+  '/material-design/components/carousel': typeof MaterialDesignComponentsCarouselRoute
+  '/material-design/components/checkbox': typeof MaterialDesignComponentsCheckboxRoute
+  '/material-design/components/chips': typeof MaterialDesignComponentsChipsRoute
+  '/material-design/components/date-picker': typeof MaterialDesignComponentsDatePickerRoute
+  '/material-design/components/dialog': typeof MaterialDesignComponentsDialogRoute
+  '/material-design/components/divider': typeof MaterialDesignComponentsDividerRoute
+  '/material-design/components/extended-fab': typeof MaterialDesignComponentsExtendedFabRoute
+  '/material-design/components/fab': typeof MaterialDesignComponentsFabRoute
+  '/material-design/components/fab-menu': typeof MaterialDesignComponentsFabMenuRoute
+  '/material-design/components/icon-button': typeof MaterialDesignComponentsIconButtonRoute
+  '/material-design/components/list': typeof MaterialDesignComponentsListRoute
+  '/material-design/components/loading-indicator': typeof MaterialDesignComponentsLoadingIndicatorRoute
+  '/material-design/components/menu': typeof MaterialDesignComponentsMenuRoute
+  '/material-design/components/navigation-bar': typeof MaterialDesignComponentsNavigationBarRoute
+  '/material-design/components/navigation-drawer': typeof MaterialDesignComponentsNavigationDrawerRoute
+  '/material-design/components/navigation-rail': typeof MaterialDesignComponentsNavigationRailRoute
+  '/material-design/components/progress-indicator': typeof MaterialDesignComponentsProgressIndicatorRoute
+  '/material-design/components/radio-button': typeof MaterialDesignComponentsRadioButtonRoute
+  '/material-design/components/search': typeof MaterialDesignComponentsSearchRoute
+  '/material-design/components/segmented-button': typeof MaterialDesignComponentsSegmentedButtonRoute
+  '/material-design/components/side-sheet': typeof MaterialDesignComponentsSideSheetRoute
+  '/material-design/components/slider': typeof MaterialDesignComponentsSliderRoute
+  '/material-design/components/snackbar': typeof MaterialDesignComponentsSnackbarRoute
+  '/material-design/components/split-button': typeof MaterialDesignComponentsSplitButtonRoute
+  '/material-design/components/switch': typeof MaterialDesignComponentsSwitchRoute
+  '/material-design/components/tabs': typeof MaterialDesignComponentsTabsRoute
+  '/material-design/components/text-field': typeof MaterialDesignComponentsTextFieldRoute
+  '/material-design/components/time-picker': typeof MaterialDesignComponentsTimePickerRoute
+  '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
+  '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
+  '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/material-3-ui/components/app-bar'
-    | '/material-3-ui/components/avatar'
-    | '/material-3-ui/components/badge'
-    | '/material-3-ui/components/bottom-sheet'
-    | '/material-3-ui/components/button'
-    | '/material-3-ui/components/button-group'
-    | '/material-3-ui/components/card'
-    | '/material-3-ui/components/carousel'
-    | '/material-3-ui/components/checkbox'
-    | '/material-3-ui/components/chips'
-    | '/material-3-ui/components/date-picker'
-    | '/material-3-ui/components/dialog'
-    | '/material-3-ui/components/divider'
-    | '/material-3-ui/components/extended-fab'
-    | '/material-3-ui/components/fab'
-    | '/material-3-ui/components/fab-menu'
-    | '/material-3-ui/components/icon-button'
-    | '/material-3-ui/components/list'
-    | '/material-3-ui/components/loading-indicator'
-    | '/material-3-ui/components/menu'
-    | '/material-3-ui/components/navigation-bar'
-    | '/material-3-ui/components/navigation-drawer'
-    | '/material-3-ui/components/navigation-rail'
-    | '/material-3-ui/components/progress-indicator'
-    | '/material-3-ui/components/radio-button'
-    | '/material-3-ui/components/search'
-    | '/material-3-ui/components/segmented-button'
-    | '/material-3-ui/components/side-sheet'
-    | '/material-3-ui/components/slider'
-    | '/material-3-ui/components/snackbar'
-    | '/material-3-ui/components/split-button'
-    | '/material-3-ui/components/switch'
-    | '/material-3-ui/components/tabs'
-    | '/material-3-ui/components/text-field'
-    | '/material-3-ui/components/time-picker'
-    | '/material-3-ui/components/toggle-button'
-    | '/material-3-ui/components/toolbar'
-    | '/material-3-ui/components/tooltip'
+    | '/material-design/components/app-bar'
+    | '/material-design/components/avatar'
+    | '/material-design/components/badge'
+    | '/material-design/components/bottom-sheet'
+    | '/material-design/components/button'
+    | '/material-design/components/button-group'
+    | '/material-design/components/card'
+    | '/material-design/components/carousel'
+    | '/material-design/components/checkbox'
+    | '/material-design/components/chips'
+    | '/material-design/components/date-picker'
+    | '/material-design/components/dialog'
+    | '/material-design/components/divider'
+    | '/material-design/components/extended-fab'
+    | '/material-design/components/fab'
+    | '/material-design/components/fab-menu'
+    | '/material-design/components/icon-button'
+    | '/material-design/components/list'
+    | '/material-design/components/loading-indicator'
+    | '/material-design/components/menu'
+    | '/material-design/components/navigation-bar'
+    | '/material-design/components/navigation-drawer'
+    | '/material-design/components/navigation-rail'
+    | '/material-design/components/progress-indicator'
+    | '/material-design/components/radio-button'
+    | '/material-design/components/search'
+    | '/material-design/components/segmented-button'
+    | '/material-design/components/side-sheet'
+    | '/material-design/components/slider'
+    | '/material-design/components/snackbar'
+    | '/material-design/components/split-button'
+    | '/material-design/components/switch'
+    | '/material-design/components/tabs'
+    | '/material-design/components/text-field'
+    | '/material-design/components/time-picker'
+    | '/material-design/components/toggle-button'
+    | '/material-design/components/toolbar'
+    | '/material-design/components/tooltip'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/material-3-ui/components/app-bar'
-    | '/material-3-ui/components/avatar'
-    | '/material-3-ui/components/badge'
-    | '/material-3-ui/components/bottom-sheet'
-    | '/material-3-ui/components/button'
-    | '/material-3-ui/components/button-group'
-    | '/material-3-ui/components/card'
-    | '/material-3-ui/components/carousel'
-    | '/material-3-ui/components/checkbox'
-    | '/material-3-ui/components/chips'
-    | '/material-3-ui/components/date-picker'
-    | '/material-3-ui/components/dialog'
-    | '/material-3-ui/components/divider'
-    | '/material-3-ui/components/extended-fab'
-    | '/material-3-ui/components/fab'
-    | '/material-3-ui/components/fab-menu'
-    | '/material-3-ui/components/icon-button'
-    | '/material-3-ui/components/list'
-    | '/material-3-ui/components/loading-indicator'
-    | '/material-3-ui/components/menu'
-    | '/material-3-ui/components/navigation-bar'
-    | '/material-3-ui/components/navigation-drawer'
-    | '/material-3-ui/components/navigation-rail'
-    | '/material-3-ui/components/progress-indicator'
-    | '/material-3-ui/components/radio-button'
-    | '/material-3-ui/components/search'
-    | '/material-3-ui/components/segmented-button'
-    | '/material-3-ui/components/side-sheet'
-    | '/material-3-ui/components/slider'
-    | '/material-3-ui/components/snackbar'
-    | '/material-3-ui/components/split-button'
-    | '/material-3-ui/components/switch'
-    | '/material-3-ui/components/tabs'
-    | '/material-3-ui/components/text-field'
-    | '/material-3-ui/components/time-picker'
-    | '/material-3-ui/components/toggle-button'
-    | '/material-3-ui/components/toolbar'
-    | '/material-3-ui/components/tooltip'
+    | '/material-design/components/app-bar'
+    | '/material-design/components/avatar'
+    | '/material-design/components/badge'
+    | '/material-design/components/bottom-sheet'
+    | '/material-design/components/button'
+    | '/material-design/components/button-group'
+    | '/material-design/components/card'
+    | '/material-design/components/carousel'
+    | '/material-design/components/checkbox'
+    | '/material-design/components/chips'
+    | '/material-design/components/date-picker'
+    | '/material-design/components/dialog'
+    | '/material-design/components/divider'
+    | '/material-design/components/extended-fab'
+    | '/material-design/components/fab'
+    | '/material-design/components/fab-menu'
+    | '/material-design/components/icon-button'
+    | '/material-design/components/list'
+    | '/material-design/components/loading-indicator'
+    | '/material-design/components/menu'
+    | '/material-design/components/navigation-bar'
+    | '/material-design/components/navigation-drawer'
+    | '/material-design/components/navigation-rail'
+    | '/material-design/components/progress-indicator'
+    | '/material-design/components/radio-button'
+    | '/material-design/components/search'
+    | '/material-design/components/segmented-button'
+    | '/material-design/components/side-sheet'
+    | '/material-design/components/slider'
+    | '/material-design/components/snackbar'
+    | '/material-design/components/split-button'
+    | '/material-design/components/switch'
+    | '/material-design/components/tabs'
+    | '/material-design/components/text-field'
+    | '/material-design/components/time-picker'
+    | '/material-design/components/toggle-button'
+    | '/material-design/components/toolbar'
+    | '/material-design/components/tooltip'
   id:
     | '__root__'
     | '/'
-    | '/material-3-ui/components/app-bar'
-    | '/material-3-ui/components/avatar'
-    | '/material-3-ui/components/badge'
-    | '/material-3-ui/components/bottom-sheet'
-    | '/material-3-ui/components/button'
-    | '/material-3-ui/components/button-group'
-    | '/material-3-ui/components/card'
-    | '/material-3-ui/components/carousel'
-    | '/material-3-ui/components/checkbox'
-    | '/material-3-ui/components/chips'
-    | '/material-3-ui/components/date-picker'
-    | '/material-3-ui/components/dialog'
-    | '/material-3-ui/components/divider'
-    | '/material-3-ui/components/extended-fab'
-    | '/material-3-ui/components/fab'
-    | '/material-3-ui/components/fab-menu'
-    | '/material-3-ui/components/icon-button'
-    | '/material-3-ui/components/list'
-    | '/material-3-ui/components/loading-indicator'
-    | '/material-3-ui/components/menu'
-    | '/material-3-ui/components/navigation-bar'
-    | '/material-3-ui/components/navigation-drawer'
-    | '/material-3-ui/components/navigation-rail'
-    | '/material-3-ui/components/progress-indicator'
-    | '/material-3-ui/components/radio-button'
-    | '/material-3-ui/components/search'
-    | '/material-3-ui/components/segmented-button'
-    | '/material-3-ui/components/side-sheet'
-    | '/material-3-ui/components/slider'
-    | '/material-3-ui/components/snackbar'
-    | '/material-3-ui/components/split-button'
-    | '/material-3-ui/components/switch'
-    | '/material-3-ui/components/tabs'
-    | '/material-3-ui/components/text-field'
-    | '/material-3-ui/components/time-picker'
-    | '/material-3-ui/components/toggle-button'
-    | '/material-3-ui/components/toolbar'
-    | '/material-3-ui/components/tooltip'
+    | '/material-design/components/app-bar'
+    | '/material-design/components/avatar'
+    | '/material-design/components/badge'
+    | '/material-design/components/bottom-sheet'
+    | '/material-design/components/button'
+    | '/material-design/components/button-group'
+    | '/material-design/components/card'
+    | '/material-design/components/carousel'
+    | '/material-design/components/checkbox'
+    | '/material-design/components/chips'
+    | '/material-design/components/date-picker'
+    | '/material-design/components/dialog'
+    | '/material-design/components/divider'
+    | '/material-design/components/extended-fab'
+    | '/material-design/components/fab'
+    | '/material-design/components/fab-menu'
+    | '/material-design/components/icon-button'
+    | '/material-design/components/list'
+    | '/material-design/components/loading-indicator'
+    | '/material-design/components/menu'
+    | '/material-design/components/navigation-bar'
+    | '/material-design/components/navigation-drawer'
+    | '/material-design/components/navigation-rail'
+    | '/material-design/components/progress-indicator'
+    | '/material-design/components/radio-button'
+    | '/material-design/components/search'
+    | '/material-design/components/segmented-button'
+    | '/material-design/components/side-sheet'
+    | '/material-design/components/slider'
+    | '/material-design/components/snackbar'
+    | '/material-design/components/split-button'
+    | '/material-design/components/switch'
+    | '/material-design/components/tabs'
+    | '/material-design/components/text-field'
+    | '/material-design/components/time-picker'
+    | '/material-design/components/toggle-button'
+    | '/material-design/components/toolbar'
+    | '/material-design/components/tooltip'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Material3UiComponentsAppBarRoute: typeof Material3UiComponentsAppBarRoute
-  Material3UiComponentsAvatarRoute: typeof Material3UiComponentsAvatarRoute
-  Material3UiComponentsBadgeRoute: typeof Material3UiComponentsBadgeRoute
-  Material3UiComponentsBottomSheetRoute: typeof Material3UiComponentsBottomSheetRoute
-  Material3UiComponentsButtonRoute: typeof Material3UiComponentsButtonRoute
-  Material3UiComponentsButtonGroupRoute: typeof Material3UiComponentsButtonGroupRoute
-  Material3UiComponentsCardRoute: typeof Material3UiComponentsCardRoute
-  Material3UiComponentsCarouselRoute: typeof Material3UiComponentsCarouselRoute
-  Material3UiComponentsCheckboxRoute: typeof Material3UiComponentsCheckboxRoute
-  Material3UiComponentsChipsRoute: typeof Material3UiComponentsChipsRoute
-  Material3UiComponentsDatePickerRoute: typeof Material3UiComponentsDatePickerRoute
-  Material3UiComponentsDialogRoute: typeof Material3UiComponentsDialogRoute
-  Material3UiComponentsDividerRoute: typeof Material3UiComponentsDividerRoute
-  Material3UiComponentsExtendedFabRoute: typeof Material3UiComponentsExtendedFabRoute
-  Material3UiComponentsFabRoute: typeof Material3UiComponentsFabRoute
-  Material3UiComponentsFabMenuRoute: typeof Material3UiComponentsFabMenuRoute
-  Material3UiComponentsIconButtonRoute: typeof Material3UiComponentsIconButtonRoute
-  Material3UiComponentsListRoute: typeof Material3UiComponentsListRoute
-  Material3UiComponentsLoadingIndicatorRoute: typeof Material3UiComponentsLoadingIndicatorRoute
-  Material3UiComponentsMenuRoute: typeof Material3UiComponentsMenuRoute
-  Material3UiComponentsNavigationBarRoute: typeof Material3UiComponentsNavigationBarRoute
-  Material3UiComponentsNavigationDrawerRoute: typeof Material3UiComponentsNavigationDrawerRoute
-  Material3UiComponentsNavigationRailRoute: typeof Material3UiComponentsNavigationRailRoute
-  Material3UiComponentsProgressIndicatorRoute: typeof Material3UiComponentsProgressIndicatorRoute
-  Material3UiComponentsRadioButtonRoute: typeof Material3UiComponentsRadioButtonRoute
-  Material3UiComponentsSearchRoute: typeof Material3UiComponentsSearchRoute
-  Material3UiComponentsSegmentedButtonRoute: typeof Material3UiComponentsSegmentedButtonRoute
-  Material3UiComponentsSideSheetRoute: typeof Material3UiComponentsSideSheetRoute
-  Material3UiComponentsSliderRoute: typeof Material3UiComponentsSliderRoute
-  Material3UiComponentsSnackbarRoute: typeof Material3UiComponentsSnackbarRoute
-  Material3UiComponentsSplitButtonRoute: typeof Material3UiComponentsSplitButtonRoute
-  Material3UiComponentsSwitchRoute: typeof Material3UiComponentsSwitchRoute
-  Material3UiComponentsTabsRoute: typeof Material3UiComponentsTabsRoute
-  Material3UiComponentsTextFieldRoute: typeof Material3UiComponentsTextFieldRoute
-  Material3UiComponentsTimePickerRoute: typeof Material3UiComponentsTimePickerRoute
-  Material3UiComponentsToggleButtonRoute: typeof Material3UiComponentsToggleButtonRoute
-  Material3UiComponentsToolbarRoute: typeof Material3UiComponentsToolbarRoute
-  Material3UiComponentsTooltipRoute: typeof Material3UiComponentsTooltipRoute
+  MaterialDesignComponentsAppBarRoute: typeof MaterialDesignComponentsAppBarRoute
+  MaterialDesignComponentsAvatarRoute: typeof MaterialDesignComponentsAvatarRoute
+  MaterialDesignComponentsBadgeRoute: typeof MaterialDesignComponentsBadgeRoute
+  MaterialDesignComponentsBottomSheetRoute: typeof MaterialDesignComponentsBottomSheetRoute
+  MaterialDesignComponentsButtonRoute: typeof MaterialDesignComponentsButtonRoute
+  MaterialDesignComponentsButtonGroupRoute: typeof MaterialDesignComponentsButtonGroupRoute
+  MaterialDesignComponentsCardRoute: typeof MaterialDesignComponentsCardRoute
+  MaterialDesignComponentsCarouselRoute: typeof MaterialDesignComponentsCarouselRoute
+  MaterialDesignComponentsCheckboxRoute: typeof MaterialDesignComponentsCheckboxRoute
+  MaterialDesignComponentsChipsRoute: typeof MaterialDesignComponentsChipsRoute
+  MaterialDesignComponentsDatePickerRoute: typeof MaterialDesignComponentsDatePickerRoute
+  MaterialDesignComponentsDialogRoute: typeof MaterialDesignComponentsDialogRoute
+  MaterialDesignComponentsDividerRoute: typeof MaterialDesignComponentsDividerRoute
+  MaterialDesignComponentsExtendedFabRoute: typeof MaterialDesignComponentsExtendedFabRoute
+  MaterialDesignComponentsFabRoute: typeof MaterialDesignComponentsFabRoute
+  MaterialDesignComponentsFabMenuRoute: typeof MaterialDesignComponentsFabMenuRoute
+  MaterialDesignComponentsIconButtonRoute: typeof MaterialDesignComponentsIconButtonRoute
+  MaterialDesignComponentsListRoute: typeof MaterialDesignComponentsListRoute
+  MaterialDesignComponentsLoadingIndicatorRoute: typeof MaterialDesignComponentsLoadingIndicatorRoute
+  MaterialDesignComponentsMenuRoute: typeof MaterialDesignComponentsMenuRoute
+  MaterialDesignComponentsNavigationBarRoute: typeof MaterialDesignComponentsNavigationBarRoute
+  MaterialDesignComponentsNavigationDrawerRoute: typeof MaterialDesignComponentsNavigationDrawerRoute
+  MaterialDesignComponentsNavigationRailRoute: typeof MaterialDesignComponentsNavigationRailRoute
+  MaterialDesignComponentsProgressIndicatorRoute: typeof MaterialDesignComponentsProgressIndicatorRoute
+  MaterialDesignComponentsRadioButtonRoute: typeof MaterialDesignComponentsRadioButtonRoute
+  MaterialDesignComponentsSearchRoute: typeof MaterialDesignComponentsSearchRoute
+  MaterialDesignComponentsSegmentedButtonRoute: typeof MaterialDesignComponentsSegmentedButtonRoute
+  MaterialDesignComponentsSideSheetRoute: typeof MaterialDesignComponentsSideSheetRoute
+  MaterialDesignComponentsSliderRoute: typeof MaterialDesignComponentsSliderRoute
+  MaterialDesignComponentsSnackbarRoute: typeof MaterialDesignComponentsSnackbarRoute
+  MaterialDesignComponentsSplitButtonRoute: typeof MaterialDesignComponentsSplitButtonRoute
+  MaterialDesignComponentsSwitchRoute: typeof MaterialDesignComponentsSwitchRoute
+  MaterialDesignComponentsTabsRoute: typeof MaterialDesignComponentsTabsRoute
+  MaterialDesignComponentsTextFieldRoute: typeof MaterialDesignComponentsTextFieldRoute
+  MaterialDesignComponentsTimePickerRoute: typeof MaterialDesignComponentsTimePickerRoute
+  MaterialDesignComponentsToggleButtonRoute: typeof MaterialDesignComponentsToggleButtonRoute
+  MaterialDesignComponentsToolbarRoute: typeof MaterialDesignComponentsToolbarRoute
+  MaterialDesignComponentsTooltipRoute: typeof MaterialDesignComponentsTooltipRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -584,270 +584,270 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/app-bar': {
-      id: '/material-3-ui/components/app-bar'
-      path: '/material-3-ui/components/app-bar'
-      fullPath: '/material-3-ui/components/app-bar'
-      preLoaderRoute: typeof Material3UiComponentsAppBarRouteImport
+    '/material-design/components/app-bar': {
+      id: '/material-design/components/app-bar'
+      path: '/material-design/components/app-bar'
+      fullPath: '/material-design/components/app-bar'
+      preLoaderRoute: typeof MaterialDesignComponentsAppBarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/avatar': {
-      id: '/material-3-ui/components/avatar'
-      path: '/material-3-ui/components/avatar'
-      fullPath: '/material-3-ui/components/avatar'
-      preLoaderRoute: typeof Material3UiComponentsAvatarRouteImport
+    '/material-design/components/avatar': {
+      id: '/material-design/components/avatar'
+      path: '/material-design/components/avatar'
+      fullPath: '/material-design/components/avatar'
+      preLoaderRoute: typeof MaterialDesignComponentsAvatarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/badge': {
-      id: '/material-3-ui/components/badge'
-      path: '/material-3-ui/components/badge'
-      fullPath: '/material-3-ui/components/badge'
-      preLoaderRoute: typeof Material3UiComponentsBadgeRouteImport
+    '/material-design/components/badge': {
+      id: '/material-design/components/badge'
+      path: '/material-design/components/badge'
+      fullPath: '/material-design/components/badge'
+      preLoaderRoute: typeof MaterialDesignComponentsBadgeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/bottom-sheet': {
-      id: '/material-3-ui/components/bottom-sheet'
-      path: '/material-3-ui/components/bottom-sheet'
-      fullPath: '/material-3-ui/components/bottom-sheet'
-      preLoaderRoute: typeof Material3UiComponentsBottomSheetRouteImport
+    '/material-design/components/bottom-sheet': {
+      id: '/material-design/components/bottom-sheet'
+      path: '/material-design/components/bottom-sheet'
+      fullPath: '/material-design/components/bottom-sheet'
+      preLoaderRoute: typeof MaterialDesignComponentsBottomSheetRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/button': {
-      id: '/material-3-ui/components/button'
-      path: '/material-3-ui/components/button'
-      fullPath: '/material-3-ui/components/button'
-      preLoaderRoute: typeof Material3UiComponentsButtonRouteImport
+    '/material-design/components/button': {
+      id: '/material-design/components/button'
+      path: '/material-design/components/button'
+      fullPath: '/material-design/components/button'
+      preLoaderRoute: typeof MaterialDesignComponentsButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/button-group': {
-      id: '/material-3-ui/components/button-group'
-      path: '/material-3-ui/components/button-group'
-      fullPath: '/material-3-ui/components/button-group'
-      preLoaderRoute: typeof Material3UiComponentsButtonGroupRouteImport
+    '/material-design/components/button-group': {
+      id: '/material-design/components/button-group'
+      path: '/material-design/components/button-group'
+      fullPath: '/material-design/components/button-group'
+      preLoaderRoute: typeof MaterialDesignComponentsButtonGroupRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/card': {
-      id: '/material-3-ui/components/card'
-      path: '/material-3-ui/components/card'
-      fullPath: '/material-3-ui/components/card'
-      preLoaderRoute: typeof Material3UiComponentsCardRouteImport
+    '/material-design/components/card': {
+      id: '/material-design/components/card'
+      path: '/material-design/components/card'
+      fullPath: '/material-design/components/card'
+      preLoaderRoute: typeof MaterialDesignComponentsCardRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/carousel': {
-      id: '/material-3-ui/components/carousel'
-      path: '/material-3-ui/components/carousel'
-      fullPath: '/material-3-ui/components/carousel'
-      preLoaderRoute: typeof Material3UiComponentsCarouselRouteImport
+    '/material-design/components/carousel': {
+      id: '/material-design/components/carousel'
+      path: '/material-design/components/carousel'
+      fullPath: '/material-design/components/carousel'
+      preLoaderRoute: typeof MaterialDesignComponentsCarouselRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/checkbox': {
-      id: '/material-3-ui/components/checkbox'
-      path: '/material-3-ui/components/checkbox'
-      fullPath: '/material-3-ui/components/checkbox'
-      preLoaderRoute: typeof Material3UiComponentsCheckboxRouteImport
+    '/material-design/components/checkbox': {
+      id: '/material-design/components/checkbox'
+      path: '/material-design/components/checkbox'
+      fullPath: '/material-design/components/checkbox'
+      preLoaderRoute: typeof MaterialDesignComponentsCheckboxRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/chips': {
-      id: '/material-3-ui/components/chips'
-      path: '/material-3-ui/components/chips'
-      fullPath: '/material-3-ui/components/chips'
-      preLoaderRoute: typeof Material3UiComponentsChipsRouteImport
+    '/material-design/components/chips': {
+      id: '/material-design/components/chips'
+      path: '/material-design/components/chips'
+      fullPath: '/material-design/components/chips'
+      preLoaderRoute: typeof MaterialDesignComponentsChipsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/date-picker': {
-      id: '/material-3-ui/components/date-picker'
-      path: '/material-3-ui/components/date-picker'
-      fullPath: '/material-3-ui/components/date-picker'
-      preLoaderRoute: typeof Material3UiComponentsDatePickerRouteImport
+    '/material-design/components/date-picker': {
+      id: '/material-design/components/date-picker'
+      path: '/material-design/components/date-picker'
+      fullPath: '/material-design/components/date-picker'
+      preLoaderRoute: typeof MaterialDesignComponentsDatePickerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/dialog': {
-      id: '/material-3-ui/components/dialog'
-      path: '/material-3-ui/components/dialog'
-      fullPath: '/material-3-ui/components/dialog'
-      preLoaderRoute: typeof Material3UiComponentsDialogRouteImport
+    '/material-design/components/dialog': {
+      id: '/material-design/components/dialog'
+      path: '/material-design/components/dialog'
+      fullPath: '/material-design/components/dialog'
+      preLoaderRoute: typeof MaterialDesignComponentsDialogRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/divider': {
-      id: '/material-3-ui/components/divider'
-      path: '/material-3-ui/components/divider'
-      fullPath: '/material-3-ui/components/divider'
-      preLoaderRoute: typeof Material3UiComponentsDividerRouteImport
+    '/material-design/components/divider': {
+      id: '/material-design/components/divider'
+      path: '/material-design/components/divider'
+      fullPath: '/material-design/components/divider'
+      preLoaderRoute: typeof MaterialDesignComponentsDividerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/extended-fab': {
-      id: '/material-3-ui/components/extended-fab'
-      path: '/material-3-ui/components/extended-fab'
-      fullPath: '/material-3-ui/components/extended-fab'
-      preLoaderRoute: typeof Material3UiComponentsExtendedFabRouteImport
+    '/material-design/components/extended-fab': {
+      id: '/material-design/components/extended-fab'
+      path: '/material-design/components/extended-fab'
+      fullPath: '/material-design/components/extended-fab'
+      preLoaderRoute: typeof MaterialDesignComponentsExtendedFabRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/fab': {
-      id: '/material-3-ui/components/fab'
-      path: '/material-3-ui/components/fab'
-      fullPath: '/material-3-ui/components/fab'
-      preLoaderRoute: typeof Material3UiComponentsFabRouteImport
+    '/material-design/components/fab': {
+      id: '/material-design/components/fab'
+      path: '/material-design/components/fab'
+      fullPath: '/material-design/components/fab'
+      preLoaderRoute: typeof MaterialDesignComponentsFabRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/fab-menu': {
-      id: '/material-3-ui/components/fab-menu'
-      path: '/material-3-ui/components/fab-menu'
-      fullPath: '/material-3-ui/components/fab-menu'
-      preLoaderRoute: typeof Material3UiComponentsFabMenuRouteImport
+    '/material-design/components/fab-menu': {
+      id: '/material-design/components/fab-menu'
+      path: '/material-design/components/fab-menu'
+      fullPath: '/material-design/components/fab-menu'
+      preLoaderRoute: typeof MaterialDesignComponentsFabMenuRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/icon-button': {
-      id: '/material-3-ui/components/icon-button'
-      path: '/material-3-ui/components/icon-button'
-      fullPath: '/material-3-ui/components/icon-button'
-      preLoaderRoute: typeof Material3UiComponentsIconButtonRouteImport
+    '/material-design/components/icon-button': {
+      id: '/material-design/components/icon-button'
+      path: '/material-design/components/icon-button'
+      fullPath: '/material-design/components/icon-button'
+      preLoaderRoute: typeof MaterialDesignComponentsIconButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/list': {
-      id: '/material-3-ui/components/list'
-      path: '/material-3-ui/components/list'
-      fullPath: '/material-3-ui/components/list'
-      preLoaderRoute: typeof Material3UiComponentsListRouteImport
+    '/material-design/components/list': {
+      id: '/material-design/components/list'
+      path: '/material-design/components/list'
+      fullPath: '/material-design/components/list'
+      preLoaderRoute: typeof MaterialDesignComponentsListRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/loading-indicator': {
-      id: '/material-3-ui/components/loading-indicator'
-      path: '/material-3-ui/components/loading-indicator'
-      fullPath: '/material-3-ui/components/loading-indicator'
-      preLoaderRoute: typeof Material3UiComponentsLoadingIndicatorRouteImport
+    '/material-design/components/loading-indicator': {
+      id: '/material-design/components/loading-indicator'
+      path: '/material-design/components/loading-indicator'
+      fullPath: '/material-design/components/loading-indicator'
+      preLoaderRoute: typeof MaterialDesignComponentsLoadingIndicatorRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/menu': {
-      id: '/material-3-ui/components/menu'
-      path: '/material-3-ui/components/menu'
-      fullPath: '/material-3-ui/components/menu'
-      preLoaderRoute: typeof Material3UiComponentsMenuRouteImport
+    '/material-design/components/menu': {
+      id: '/material-design/components/menu'
+      path: '/material-design/components/menu'
+      fullPath: '/material-design/components/menu'
+      preLoaderRoute: typeof MaterialDesignComponentsMenuRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/navigation-bar': {
-      id: '/material-3-ui/components/navigation-bar'
-      path: '/material-3-ui/components/navigation-bar'
-      fullPath: '/material-3-ui/components/navigation-bar'
-      preLoaderRoute: typeof Material3UiComponentsNavigationBarRouteImport
+    '/material-design/components/navigation-bar': {
+      id: '/material-design/components/navigation-bar'
+      path: '/material-design/components/navigation-bar'
+      fullPath: '/material-design/components/navigation-bar'
+      preLoaderRoute: typeof MaterialDesignComponentsNavigationBarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/navigation-drawer': {
-      id: '/material-3-ui/components/navigation-drawer'
-      path: '/material-3-ui/components/navigation-drawer'
-      fullPath: '/material-3-ui/components/navigation-drawer'
-      preLoaderRoute: typeof Material3UiComponentsNavigationDrawerRouteImport
+    '/material-design/components/navigation-drawer': {
+      id: '/material-design/components/navigation-drawer'
+      path: '/material-design/components/navigation-drawer'
+      fullPath: '/material-design/components/navigation-drawer'
+      preLoaderRoute: typeof MaterialDesignComponentsNavigationDrawerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/navigation-rail': {
-      id: '/material-3-ui/components/navigation-rail'
-      path: '/material-3-ui/components/navigation-rail'
-      fullPath: '/material-3-ui/components/navigation-rail'
-      preLoaderRoute: typeof Material3UiComponentsNavigationRailRouteImport
+    '/material-design/components/navigation-rail': {
+      id: '/material-design/components/navigation-rail'
+      path: '/material-design/components/navigation-rail'
+      fullPath: '/material-design/components/navigation-rail'
+      preLoaderRoute: typeof MaterialDesignComponentsNavigationRailRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/progress-indicator': {
-      id: '/material-3-ui/components/progress-indicator'
-      path: '/material-3-ui/components/progress-indicator'
-      fullPath: '/material-3-ui/components/progress-indicator'
-      preLoaderRoute: typeof Material3UiComponentsProgressIndicatorRouteImport
+    '/material-design/components/progress-indicator': {
+      id: '/material-design/components/progress-indicator'
+      path: '/material-design/components/progress-indicator'
+      fullPath: '/material-design/components/progress-indicator'
+      preLoaderRoute: typeof MaterialDesignComponentsProgressIndicatorRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/radio-button': {
-      id: '/material-3-ui/components/radio-button'
-      path: '/material-3-ui/components/radio-button'
-      fullPath: '/material-3-ui/components/radio-button'
-      preLoaderRoute: typeof Material3UiComponentsRadioButtonRouteImport
+    '/material-design/components/radio-button': {
+      id: '/material-design/components/radio-button'
+      path: '/material-design/components/radio-button'
+      fullPath: '/material-design/components/radio-button'
+      preLoaderRoute: typeof MaterialDesignComponentsRadioButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/search': {
-      id: '/material-3-ui/components/search'
-      path: '/material-3-ui/components/search'
-      fullPath: '/material-3-ui/components/search'
-      preLoaderRoute: typeof Material3UiComponentsSearchRouteImport
+    '/material-design/components/search': {
+      id: '/material-design/components/search'
+      path: '/material-design/components/search'
+      fullPath: '/material-design/components/search'
+      preLoaderRoute: typeof MaterialDesignComponentsSearchRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/segmented-button': {
-      id: '/material-3-ui/components/segmented-button'
-      path: '/material-3-ui/components/segmented-button'
-      fullPath: '/material-3-ui/components/segmented-button'
-      preLoaderRoute: typeof Material3UiComponentsSegmentedButtonRouteImport
+    '/material-design/components/segmented-button': {
+      id: '/material-design/components/segmented-button'
+      path: '/material-design/components/segmented-button'
+      fullPath: '/material-design/components/segmented-button'
+      preLoaderRoute: typeof MaterialDesignComponentsSegmentedButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/side-sheet': {
-      id: '/material-3-ui/components/side-sheet'
-      path: '/material-3-ui/components/side-sheet'
-      fullPath: '/material-3-ui/components/side-sheet'
-      preLoaderRoute: typeof Material3UiComponentsSideSheetRouteImport
+    '/material-design/components/side-sheet': {
+      id: '/material-design/components/side-sheet'
+      path: '/material-design/components/side-sheet'
+      fullPath: '/material-design/components/side-sheet'
+      preLoaderRoute: typeof MaterialDesignComponentsSideSheetRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/slider': {
-      id: '/material-3-ui/components/slider'
-      path: '/material-3-ui/components/slider'
-      fullPath: '/material-3-ui/components/slider'
-      preLoaderRoute: typeof Material3UiComponentsSliderRouteImport
+    '/material-design/components/slider': {
+      id: '/material-design/components/slider'
+      path: '/material-design/components/slider'
+      fullPath: '/material-design/components/slider'
+      preLoaderRoute: typeof MaterialDesignComponentsSliderRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/snackbar': {
-      id: '/material-3-ui/components/snackbar'
-      path: '/material-3-ui/components/snackbar'
-      fullPath: '/material-3-ui/components/snackbar'
-      preLoaderRoute: typeof Material3UiComponentsSnackbarRouteImport
+    '/material-design/components/snackbar': {
+      id: '/material-design/components/snackbar'
+      path: '/material-design/components/snackbar'
+      fullPath: '/material-design/components/snackbar'
+      preLoaderRoute: typeof MaterialDesignComponentsSnackbarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/split-button': {
-      id: '/material-3-ui/components/split-button'
-      path: '/material-3-ui/components/split-button'
-      fullPath: '/material-3-ui/components/split-button'
-      preLoaderRoute: typeof Material3UiComponentsSplitButtonRouteImport
+    '/material-design/components/split-button': {
+      id: '/material-design/components/split-button'
+      path: '/material-design/components/split-button'
+      fullPath: '/material-design/components/split-button'
+      preLoaderRoute: typeof MaterialDesignComponentsSplitButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/switch': {
-      id: '/material-3-ui/components/switch'
-      path: '/material-3-ui/components/switch'
-      fullPath: '/material-3-ui/components/switch'
-      preLoaderRoute: typeof Material3UiComponentsSwitchRouteImport
+    '/material-design/components/switch': {
+      id: '/material-design/components/switch'
+      path: '/material-design/components/switch'
+      fullPath: '/material-design/components/switch'
+      preLoaderRoute: typeof MaterialDesignComponentsSwitchRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/tabs': {
-      id: '/material-3-ui/components/tabs'
-      path: '/material-3-ui/components/tabs'
-      fullPath: '/material-3-ui/components/tabs'
-      preLoaderRoute: typeof Material3UiComponentsTabsRouteImport
+    '/material-design/components/tabs': {
+      id: '/material-design/components/tabs'
+      path: '/material-design/components/tabs'
+      fullPath: '/material-design/components/tabs'
+      preLoaderRoute: typeof MaterialDesignComponentsTabsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/text-field': {
-      id: '/material-3-ui/components/text-field'
-      path: '/material-3-ui/components/text-field'
-      fullPath: '/material-3-ui/components/text-field'
-      preLoaderRoute: typeof Material3UiComponentsTextFieldRouteImport
+    '/material-design/components/text-field': {
+      id: '/material-design/components/text-field'
+      path: '/material-design/components/text-field'
+      fullPath: '/material-design/components/text-field'
+      preLoaderRoute: typeof MaterialDesignComponentsTextFieldRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/time-picker': {
-      id: '/material-3-ui/components/time-picker'
-      path: '/material-3-ui/components/time-picker'
-      fullPath: '/material-3-ui/components/time-picker'
-      preLoaderRoute: typeof Material3UiComponentsTimePickerRouteImport
+    '/material-design/components/time-picker': {
+      id: '/material-design/components/time-picker'
+      path: '/material-design/components/time-picker'
+      fullPath: '/material-design/components/time-picker'
+      preLoaderRoute: typeof MaterialDesignComponentsTimePickerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/toggle-button': {
-      id: '/material-3-ui/components/toggle-button'
-      path: '/material-3-ui/components/toggle-button'
-      fullPath: '/material-3-ui/components/toggle-button'
-      preLoaderRoute: typeof Material3UiComponentsToggleButtonRouteImport
+    '/material-design/components/toggle-button': {
+      id: '/material-design/components/toggle-button'
+      path: '/material-design/components/toggle-button'
+      fullPath: '/material-design/components/toggle-button'
+      preLoaderRoute: typeof MaterialDesignComponentsToggleButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/toolbar': {
-      id: '/material-3-ui/components/toolbar'
-      path: '/material-3-ui/components/toolbar'
-      fullPath: '/material-3-ui/components/toolbar'
-      preLoaderRoute: typeof Material3UiComponentsToolbarRouteImport
+    '/material-design/components/toolbar': {
+      id: '/material-design/components/toolbar'
+      path: '/material-design/components/toolbar'
+      fullPath: '/material-design/components/toolbar'
+      preLoaderRoute: typeof MaterialDesignComponentsToolbarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-3-ui/components/tooltip': {
-      id: '/material-3-ui/components/tooltip'
-      path: '/material-3-ui/components/tooltip'
-      fullPath: '/material-3-ui/components/tooltip'
-      preLoaderRoute: typeof Material3UiComponentsTooltipRouteImport
+    '/material-design/components/tooltip': {
+      id: '/material-design/components/tooltip'
+      path: '/material-design/components/tooltip'
+      fullPath: '/material-design/components/tooltip'
+      preLoaderRoute: typeof MaterialDesignComponentsTooltipRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -855,51 +855,61 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  Material3UiComponentsAppBarRoute: Material3UiComponentsAppBarRoute,
-  Material3UiComponentsAvatarRoute: Material3UiComponentsAvatarRoute,
-  Material3UiComponentsBadgeRoute: Material3UiComponentsBadgeRoute,
-  Material3UiComponentsBottomSheetRoute: Material3UiComponentsBottomSheetRoute,
-  Material3UiComponentsButtonRoute: Material3UiComponentsButtonRoute,
-  Material3UiComponentsButtonGroupRoute: Material3UiComponentsButtonGroupRoute,
-  Material3UiComponentsCardRoute: Material3UiComponentsCardRoute,
-  Material3UiComponentsCarouselRoute: Material3UiComponentsCarouselRoute,
-  Material3UiComponentsCheckboxRoute: Material3UiComponentsCheckboxRoute,
-  Material3UiComponentsChipsRoute: Material3UiComponentsChipsRoute,
-  Material3UiComponentsDatePickerRoute: Material3UiComponentsDatePickerRoute,
-  Material3UiComponentsDialogRoute: Material3UiComponentsDialogRoute,
-  Material3UiComponentsDividerRoute: Material3UiComponentsDividerRoute,
-  Material3UiComponentsExtendedFabRoute: Material3UiComponentsExtendedFabRoute,
-  Material3UiComponentsFabRoute: Material3UiComponentsFabRoute,
-  Material3UiComponentsFabMenuRoute: Material3UiComponentsFabMenuRoute,
-  Material3UiComponentsIconButtonRoute: Material3UiComponentsIconButtonRoute,
-  Material3UiComponentsListRoute: Material3UiComponentsListRoute,
-  Material3UiComponentsLoadingIndicatorRoute:
-    Material3UiComponentsLoadingIndicatorRoute,
-  Material3UiComponentsMenuRoute: Material3UiComponentsMenuRoute,
-  Material3UiComponentsNavigationBarRoute:
-    Material3UiComponentsNavigationBarRoute,
-  Material3UiComponentsNavigationDrawerRoute:
-    Material3UiComponentsNavigationDrawerRoute,
-  Material3UiComponentsNavigationRailRoute:
-    Material3UiComponentsNavigationRailRoute,
-  Material3UiComponentsProgressIndicatorRoute:
-    Material3UiComponentsProgressIndicatorRoute,
-  Material3UiComponentsRadioButtonRoute: Material3UiComponentsRadioButtonRoute,
-  Material3UiComponentsSearchRoute: Material3UiComponentsSearchRoute,
-  Material3UiComponentsSegmentedButtonRoute:
-    Material3UiComponentsSegmentedButtonRoute,
-  Material3UiComponentsSideSheetRoute: Material3UiComponentsSideSheetRoute,
-  Material3UiComponentsSliderRoute: Material3UiComponentsSliderRoute,
-  Material3UiComponentsSnackbarRoute: Material3UiComponentsSnackbarRoute,
-  Material3UiComponentsSplitButtonRoute: Material3UiComponentsSplitButtonRoute,
-  Material3UiComponentsSwitchRoute: Material3UiComponentsSwitchRoute,
-  Material3UiComponentsTabsRoute: Material3UiComponentsTabsRoute,
-  Material3UiComponentsTextFieldRoute: Material3UiComponentsTextFieldRoute,
-  Material3UiComponentsTimePickerRoute: Material3UiComponentsTimePickerRoute,
-  Material3UiComponentsToggleButtonRoute:
-    Material3UiComponentsToggleButtonRoute,
-  Material3UiComponentsToolbarRoute: Material3UiComponentsToolbarRoute,
-  Material3UiComponentsTooltipRoute: Material3UiComponentsTooltipRoute,
+  MaterialDesignComponentsAppBarRoute: MaterialDesignComponentsAppBarRoute,
+  MaterialDesignComponentsAvatarRoute: MaterialDesignComponentsAvatarRoute,
+  MaterialDesignComponentsBadgeRoute: MaterialDesignComponentsBadgeRoute,
+  MaterialDesignComponentsBottomSheetRoute:
+    MaterialDesignComponentsBottomSheetRoute,
+  MaterialDesignComponentsButtonRoute: MaterialDesignComponentsButtonRoute,
+  MaterialDesignComponentsButtonGroupRoute:
+    MaterialDesignComponentsButtonGroupRoute,
+  MaterialDesignComponentsCardRoute: MaterialDesignComponentsCardRoute,
+  MaterialDesignComponentsCarouselRoute: MaterialDesignComponentsCarouselRoute,
+  MaterialDesignComponentsCheckboxRoute: MaterialDesignComponentsCheckboxRoute,
+  MaterialDesignComponentsChipsRoute: MaterialDesignComponentsChipsRoute,
+  MaterialDesignComponentsDatePickerRoute:
+    MaterialDesignComponentsDatePickerRoute,
+  MaterialDesignComponentsDialogRoute: MaterialDesignComponentsDialogRoute,
+  MaterialDesignComponentsDividerRoute: MaterialDesignComponentsDividerRoute,
+  MaterialDesignComponentsExtendedFabRoute:
+    MaterialDesignComponentsExtendedFabRoute,
+  MaterialDesignComponentsFabRoute: MaterialDesignComponentsFabRoute,
+  MaterialDesignComponentsFabMenuRoute: MaterialDesignComponentsFabMenuRoute,
+  MaterialDesignComponentsIconButtonRoute:
+    MaterialDesignComponentsIconButtonRoute,
+  MaterialDesignComponentsListRoute: MaterialDesignComponentsListRoute,
+  MaterialDesignComponentsLoadingIndicatorRoute:
+    MaterialDesignComponentsLoadingIndicatorRoute,
+  MaterialDesignComponentsMenuRoute: MaterialDesignComponentsMenuRoute,
+  MaterialDesignComponentsNavigationBarRoute:
+    MaterialDesignComponentsNavigationBarRoute,
+  MaterialDesignComponentsNavigationDrawerRoute:
+    MaterialDesignComponentsNavigationDrawerRoute,
+  MaterialDesignComponentsNavigationRailRoute:
+    MaterialDesignComponentsNavigationRailRoute,
+  MaterialDesignComponentsProgressIndicatorRoute:
+    MaterialDesignComponentsProgressIndicatorRoute,
+  MaterialDesignComponentsRadioButtonRoute:
+    MaterialDesignComponentsRadioButtonRoute,
+  MaterialDesignComponentsSearchRoute: MaterialDesignComponentsSearchRoute,
+  MaterialDesignComponentsSegmentedButtonRoute:
+    MaterialDesignComponentsSegmentedButtonRoute,
+  MaterialDesignComponentsSideSheetRoute:
+    MaterialDesignComponentsSideSheetRoute,
+  MaterialDesignComponentsSliderRoute: MaterialDesignComponentsSliderRoute,
+  MaterialDesignComponentsSnackbarRoute: MaterialDesignComponentsSnackbarRoute,
+  MaterialDesignComponentsSplitButtonRoute:
+    MaterialDesignComponentsSplitButtonRoute,
+  MaterialDesignComponentsSwitchRoute: MaterialDesignComponentsSwitchRoute,
+  MaterialDesignComponentsTabsRoute: MaterialDesignComponentsTabsRoute,
+  MaterialDesignComponentsTextFieldRoute:
+    MaterialDesignComponentsTextFieldRoute,
+  MaterialDesignComponentsTimePickerRoute:
+    MaterialDesignComponentsTimePickerRoute,
+  MaterialDesignComponentsToggleButtonRoute:
+    MaterialDesignComponentsToggleButtonRoute,
+  MaterialDesignComponentsToolbarRoute: MaterialDesignComponentsToolbarRoute,
+  MaterialDesignComponentsTooltipRoute: MaterialDesignComponentsTooltipRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

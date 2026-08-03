@@ -28,7 +28,7 @@ const projectRoot = path.resolve(
   "..",
 );
 const outputDirectory = path.join(projectRoot, "public/generated");
-const demoPattern = "src/material-3-ui/components/m3-*/demos/m3-*.tsx";
+const demoPattern = "src/ui/material-design/components/md-*/demos/md-*.tsx";
 const demoFiles: DemoFile[] = (await globFiles(demoPattern, projectRoot)).map(
   (demoPath) => ({
     path: demoPath,

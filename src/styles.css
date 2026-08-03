@@ -131,7 +131,7 @@
   }
 }
 
-@keyframes m3-spinner-arc {
+@keyframes md-spinner-arc {
   0% {
     stroke-dasharray: 1 1000;
     stroke-dashoffset: 0;
@@ -146,7 +146,7 @@
   }
 }
 
-@keyframes m3-linear-indeterminate {
+@keyframes md-linear-indeterminate {
   0% {
     transform: translateX(-100%);
   }

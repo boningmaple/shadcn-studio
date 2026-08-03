@@ -162,155 +162,155 @@ export const appSidebarData: AppSidebarData = {
           items: [
             {
               label: "app bar",
-              to: "/material-3-ui/components/app-bar",
+              to: "/material-design/components/app-bar",
             },
             {
               label: "avatar",
-              to: "/material-3-ui/components/avatar",
+              to: "/material-design/components/avatar",
             },
             {
               label: "badge",
-              to: "/material-3-ui/components/badge",
+              to: "/material-design/components/badge",
             },
             {
               label: "bottom sheet",
-              to: "/material-3-ui/components/bottom-sheet",
+              to: "/material-design/components/bottom-sheet",
             },
             {
               label: "button",
-              to: "/material-3-ui/components/button",
+              to: "/material-design/components/button",
             },
             {
               label: "button group",
-              to: "/material-3-ui/components/button-group",
+              to: "/material-design/components/button-group",
             },
             {
               label: "card",
-              to: "/material-3-ui/components/card",
+              to: "/material-design/components/card",
             },
             {
               label: "carousel",
-              to: "/material-3-ui/components/carousel",
+              to: "/material-design/components/carousel",
             },
             {
               label: "checkbox",
-              to: "/material-3-ui/components/checkbox",
+              to: "/material-design/components/checkbox",
             },
             {
               label: "chips",
-              to: "/material-3-ui/components/chips",
+              to: "/material-design/components/chips",
             },
             {
               label: "date picker",
-              to: "/material-3-ui/components/date-picker",
+              to: "/material-design/components/date-picker",
             },
             {
               label: "dialog",
-              to: "/material-3-ui/components/dialog",
+              to: "/material-design/components/dialog",
             },
             {
               label: "divider",
-              to: "/material-3-ui/components/divider",
+              to: "/material-design/components/divider",
             },
             {
               label: "extended FAB",
-              to: "/material-3-ui/components/extended-fab",
+              to: "/material-design/components/extended-fab",
             },
             {
               label: "FAB",
-              to: "/material-3-ui/components/fab",
+              to: "/material-design/components/fab",
             },
             {
               label: "FAB menu",
-              to: "/material-3-ui/components/fab-menu",
+              to: "/material-design/components/fab-menu",
             },
             {
               label: "icon button",
-              to: "/material-3-ui/components/icon-button",
+              to: "/material-design/components/icon-button",
             },
             {
               label: "list",
-              to: "/material-3-ui/components/list",
+              to: "/material-design/components/list",
             },
             {
               label: "loading indicator",
-              to: "/material-3-ui/components/loading-indicator",
+              to: "/material-design/components/loading-indicator",
             },
             {
               label: "menu",
-              to: "/material-3-ui/components/menu",
+              to: "/material-design/components/menu",
             },
             {
               label: "navigation bar",
-              to: "/material-3-ui/components/navigation-bar",
+              to: "/material-design/components/navigation-bar",
             },
             {
               label: "navigation drawer",
-              to: "/material-3-ui/components/navigation-drawer",
+              to: "/material-design/components/navigation-drawer",
             },
             {
               label: "navigation rail",
-              to: "/material-3-ui/components/navigation-rail",
+              to: "/material-design/components/navigation-rail",
             },
             {
               label: "progress indicator",
-              to: "/material-3-ui/components/progress-indicator",
+              to: "/material-design/components/progress-indicator",
             },
             {
               label: "radio button",
-              to: "/material-3-ui/components/radio-button",
+              to: "/material-design/components/radio-button",
             },
             {
               label: "search",
-              to: "/material-3-ui/components/search",
+              to: "/material-design/components/search",
             },
             {
               label: "segmented button",
-              to: "/material-3-ui/components/segmented-button",
+              to: "/material-design/components/segmented-button",
             },
             {
               label: "side sheet",
-              to: "/material-3-ui/components/side-sheet",
+              to: "/material-design/components/side-sheet",
             },
             {
               label: "slider",
-              to: "/material-3-ui/components/slider",
+              to: "/material-design/components/slider",
             },
             {
               label: "snackbar",
-              to: "/material-3-ui/components/snackbar",
+              to: "/material-design/components/snackbar",
             },
             {
               label: "split button",
-              to: "/material-3-ui/components/split-button",
+              to: "/material-design/components/split-button",
             },
             {
               label: "switch",
-              to: "/material-3-ui/components/switch",
+              to: "/material-design/components/switch",
             },
             {
               label: "tabs",
-              to: "/material-3-ui/components/tabs",
+              to: "/material-design/components/tabs",
             },
             {
               label: "text field",
-              to: "/material-3-ui/components/text-field",
+              to: "/material-design/components/text-field",
             },
             {
               label: "time picker",
-              to: "/material-3-ui/components/time-picker",
+              to: "/material-design/components/time-picker",
             },
             {
               label: "toggle button",
-              to: "/material-3-ui/components/toggle-button",
+              to: "/material-design/components/toggle-button",
             },
             {
               label: "toolbar",
-              to: "/material-3-ui/components/toolbar",
+              to: "/material-design/components/toolbar",
             },
             {
               label: "tooltip",
-              to: "/material-3-ui/components/tooltip",
+              to: "/material-design/components/tooltip",
             },
           ],
         },
