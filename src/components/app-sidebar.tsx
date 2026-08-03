@@ -42,6 +42,12 @@ type Props = React.ComponentPropsWithoutRef<typeof Sidebar> & {
   data: AppSidebarData;
 };
 
+function capitalizeWords(label: string) {
+  return label.replace(/\S+/g, (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  });
+}
+
 export function AppSidebar({ data, ...props }: Props) {
   return (
     <Sidebar {...props}>
@@ -59,7 +65,9 @@ export function AppSidebar({ data, ...props }: Props) {
         {data.groups.map((group) => (
           <SidebarGroup key={group.label}>
             {group.showLabel ? (
-              <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
+              <SidebarGroupLabel>
+                {capitalizeWords(group.label)}
+              </SidebarGroupLabel>
             ) : null}
             <SidebarGroupContent>
               <SidebarMenu>
@@ -94,7 +102,7 @@ function SidebarAtomicMenuItem({ item }: { item: AppSidebarItem }) {
           "href" in props ? (
             <Link {...props} to={props.href}>
               {item.icon === undefined ? null : <item.icon />}
-              <span>{item.label}</span>
+              <span>{capitalizeWords(item.label)}</span>
             </Link>
           ) : (
             <span {...props} />
@@ -113,7 +121,7 @@ function SidebarCollapsibleMenuItem({ item }: { item: AppSidebarItem }) {
       <Collapsible className="[&[data-expanded=true]>button>svg:last-child]:rotate-90">
         <SidebarMenuButton slot="trigger">
           {item.icon && <item.icon />}
-          <span>{item.label}</span>
+          <span>{capitalizeWords(item.label)}</span>
           <ChevronIcon className="ml-auto transition-transform" />
         </SidebarMenuButton>
         <CollapsibleContent>
@@ -135,171 +143,171 @@ export const appSidebarData: AppSidebarData = {
       showLabel: true,
       items: [
         {
-          label: "Home",
+          label: "home",
           to: "/",
           icon: HomeIcon,
         },
       ],
     },
     {
-      label: "library",
+      label: "unfinished",
       showLabel: false,
       items: [
         {
-          label: "components",
+          label: "material design",
           icon: ComponentIcon,
           items: [
             {
+              label: "app bar",
+              to: "/material-3-ui/components/app-bar",
+            },
+            {
               label: "avatar",
-              to: "/components/avatar",
+              to: "/material-3-ui/components/avatar",
             },
             {
               label: "badge",
-              to: "/components/badge",
-            },
-            {
-              label: "button",
-              to: "/components/button",
-            },
-            {
-              label: "button group",
-              to: "/components/button-group",
-            },
-            {
-              label: "card",
-              to: "/components/card",
-            },
-            {
-              label: "icon button",
-              to: "/components/icon-button",
-            },
-            {
-              label: "divider",
-              to: "/components/divider",
-            },
-            {
-              label: "dialog",
-              to: "/components/dialog",
-            },
-            {
-              label: "date picker",
-              to: "/components/date-picker",
-            },
-            {
-              label: "extended FAB",
-              to: "/components/extended-fab",
-            },
-            {
-              label: "FAB",
-              to: "/components/fab",
-            },
-            {
-              label: "FAB menu",
-              to: "/components/fab-menu",
-            },
-            {
-              label: "checkbox",
-              to: "/components/checkbox",
-            },
-            {
-              label: "radio button",
-              to: "/components/radio-button",
-            },
-            {
-              label: "segmented button",
-              to: "/components/segmented-button",
-            },
-            {
-              label: "switch",
-              to: "/components/switch",
-            },
-            {
-              label: "slider",
-              to: "/components/slider",
-            },
-            {
-              label: "snackbar",
-              to: "/components/snackbar",
+              to: "/material-3-ui/components/badge",
             },
             {
               label: "bottom sheet",
-              to: "/components/bottom-sheet",
+              to: "/material-3-ui/components/bottom-sheet",
             },
             {
-              label: "side sheet",
-              to: "/components/side-sheet",
+              label: "button",
+              to: "/material-3-ui/components/button",
             },
             {
-              label: "navigation bar",
-              to: "/components/navigation-bar",
+              label: "button group",
+              to: "/material-3-ui/components/button-group",
             },
             {
-              label: "navigation drawer",
-              to: "/components/navigation-drawer",
-            },
-            {
-              label: "navigation rail",
-              to: "/components/navigation-rail",
-            },
-            {
-              label: "toolbar",
-              to: "/components/toolbar",
-            },
-            {
-              label: "app bar",
-              to: "/components/app-bar",
+              label: "card",
+              to: "/material-3-ui/components/card",
             },
             {
               label: "carousel",
-              to: "/components/carousel",
+              to: "/material-3-ui/components/carousel",
             },
             {
-              label: "tooltip",
-              to: "/components/tooltip",
-            },
-            {
-              label: "split button",
-              to: "/components/split-button",
-            },
-            {
-              label: "text field",
-              to: "/components/text-field",
-            },
-            {
-              label: "time picker",
-              to: "/components/time-picker",
-            },
-            {
-              label: "loading indicator",
-              to: "/components/loading-indicator",
-            },
-            {
-              label: "list",
-              to: "/components/list",
-            },
-            {
-              label: "menu",
-              to: "/components/menu",
-            },
-            {
-              label: "progress indicator",
-              to: "/components/progress-indicator",
-            },
-            {
-              label: "search",
-              to: "/components/search",
+              label: "checkbox",
+              to: "/material-3-ui/components/checkbox",
             },
             {
               label: "chips",
-              to: "/components/chips",
+              to: "/material-3-ui/components/chips",
             },
             {
-              label: "toggle button",
-              to: "/components/toggle-button",
+              label: "date picker",
+              to: "/material-3-ui/components/date-picker",
+            },
+            {
+              label: "dialog",
+              to: "/material-3-ui/components/dialog",
+            },
+            {
+              label: "divider",
+              to: "/material-3-ui/components/divider",
+            },
+            {
+              label: "extended FAB",
+              to: "/material-3-ui/components/extended-fab",
+            },
+            {
+              label: "FAB",
+              to: "/material-3-ui/components/fab",
+            },
+            {
+              label: "FAB menu",
+              to: "/material-3-ui/components/fab-menu",
+            },
+            {
+              label: "icon button",
+              to: "/material-3-ui/components/icon-button",
+            },
+            {
+              label: "list",
+              to: "/material-3-ui/components/list",
+            },
+            {
+              label: "loading indicator",
+              to: "/material-3-ui/components/loading-indicator",
+            },
+            {
+              label: "menu",
+              to: "/material-3-ui/components/menu",
+            },
+            {
+              label: "navigation bar",
+              to: "/material-3-ui/components/navigation-bar",
+            },
+            {
+              label: "navigation drawer",
+              to: "/material-3-ui/components/navigation-drawer",
+            },
+            {
+              label: "navigation rail",
+              to: "/material-3-ui/components/navigation-rail",
+            },
+            {
+              label: "progress indicator",
+              to: "/material-3-ui/components/progress-indicator",
+            },
+            {
+              label: "radio button",
+              to: "/material-3-ui/components/radio-button",
+            },
+            {
+              label: "search",
+              to: "/material-3-ui/components/search",
+            },
+            {
+              label: "segmented button",
+              to: "/material-3-ui/components/segmented-button",
+            },
+            {
+              label: "side sheet",
+              to: "/material-3-ui/components/side-sheet",
+            },
+            {
+              label: "slider",
+              to: "/material-3-ui/components/slider",
+            },
+            {
+              label: "snackbar",
+              to: "/material-3-ui/components/snackbar",
+            },
+            {
+              label: "split button",
+              to: "/material-3-ui/components/split-button",
+            },
+            {
+              label: "switch",
+              to: "/material-3-ui/components/switch",
             },
             {
               label: "tabs",
-              to: "/components/tabs",
+              to: "/material-3-ui/components/tabs",
+            },
+            {
+              label: "text field",
+              to: "/material-3-ui/components/text-field",
+            },
+            {
+              label: "time picker",
+              to: "/material-3-ui/components/time-picker",
+            },
+            {
+              label: "toggle button",
+              to: "/material-3-ui/components/toggle-button",
+            },
+            {
+              label: "toolbar",
+              to: "/material-3-ui/components/toolbar",
+            },
+            {
+              label: "tooltip",
+              to: "/material-3-ui/components/tooltip",
             },
           ],
         },

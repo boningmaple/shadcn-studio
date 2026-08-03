@@ -1,0 +1,63 @@
+import { createFileRoute } from "@tanstack/react-router";
+
+import Search01 from "@/material-3-ui/components/m3-search/demos/m3-search-01";
+import Search02 from "@/material-3-ui/components/m3-search/demos/m3-search-02";
+import Search03 from "@/material-3-ui/components/m3-search/demos/m3-search-03";
+import Search04 from "@/material-3-ui/components/m3-search/demos/m3-search-04";
+import {
+  ComponentExamplesPage,
+  type ComponentExample,
+} from "@/components/component-examples-page";
+
+export const Route = createFileRoute("/material-3-ui/components/search")({
+  component: SearchComponentPage,
+  head: () => ({
+    meta: [
+      {
+        title: "Search Components | Shadcn Studio",
+      },
+      {
+        name: "description",
+        content:
+          "Accessible Material 3 search bar and search view patterns built with React Aria, React, and Tailwind CSS.",
+      },
+    ],
+  }),
+});
+
+function SearchComponentPage() {
+  return (
+    <ComponentExamplesPage
+      codeArtifactPrefix="m3-search"
+      description="Explore Material 3 search bars, trailing actions, docked search views, and full-screen search views."
+      exampleNoun="search"
+      examples={searchExamples}
+      sectionId="search-patterns-title"
+      sectionTitle="Search Patterns"
+      title="Search"
+    />
+  );
+}
+
+const searchExamples: ComponentExample[] = [
+  {
+    component: Search01,
+    id: "01",
+    name: "Search bar states",
+  },
+  {
+    component: Search02,
+    id: "02",
+    name: "Search bar actions",
+  },
+  {
+    component: Search03,
+    id: "03",
+    name: "Docked search view",
+  },
+  {
+    component: Search04,
+    id: "04",
+    name: "Full-screen search view",
+  },
+];

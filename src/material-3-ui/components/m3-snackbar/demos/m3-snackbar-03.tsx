@@ -1,0 +1,32 @@
+import { UNSTABLE_ToastQueue } from "react-aria-components";
+
+import { M3Button } from "@/material-3-ui/components/m3-button/m3-button";
+import {
+  M3SnackbarRegion,
+  type M3SnackbarContent,
+} from "@/material-3-ui/components/m3-snackbar/m3-snackbar";
+
+const queue = new UNSTABLE_ToastQueue<M3SnackbarContent>({
+  maxVisibleToasts: 1,
+});
+
+export default function M3SnackbarDemo() {
+  return (
+    <>
+      <M3Button
+        variant="outlined"
+        onPress={() =>
+          queue.add({
+            closeLabel: "Close upload notice",
+            message:
+              "Upload paused. Check your connection before continuing the import.",
+            showCloseButton: true,
+          })
+        }
+      >
+        Show notice
+      </M3Button>
+      <M3SnackbarRegion queue={queue} />
+    </>
+  );
+}
