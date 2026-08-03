@@ -138,7 +138,7 @@ function SidebarCollapsibleMenuItem({ item }: { item: AppSidebarItem }) {
 }
 
 export const appSidebarData: AppSidebarData = {
-  title: "Shadcn Studio",
+  title: "VibeUI",
   description: "Copy-and-paste components",
   groups: [
     {
