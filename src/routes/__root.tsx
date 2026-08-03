@@ -3,12 +3,12 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AppSidebar, appSidebarData } from "@/components/app-sidebar";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/ui/shadcn/react-aria/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
+} from "@/ui/shadcn/react-aria/sidebar";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({

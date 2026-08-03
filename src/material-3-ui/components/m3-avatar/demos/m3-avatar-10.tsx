@@ -4,7 +4,7 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/components/ui/avatar";
+} from "@/ui/shadcn/react-aria/avatar";
 
 const people = ["Jack", "Chase", "Ryker", "Katherine"];
 

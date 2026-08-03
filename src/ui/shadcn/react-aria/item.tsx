@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Link as LinkPrimitive, type LinkProps } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/ui/shadcn/react-aria/separator";
 
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (

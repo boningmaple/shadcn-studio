@@ -1,7 +1,7 @@
 import { BellIcon, SearchIcon, SettingsIcon } from "lucide-react";
 
 import { M3IconButton } from "@/material-3-ui/components/m3-icon-button/m3-icon-button";
-import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipTrigger } from "@/ui/shadcn/react-aria/tooltip";
 
 export default function M3IconButtonDemo() {
   return (

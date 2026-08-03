@@ -3,7 +3,7 @@ import {
   AvatarBadge,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar";
+} from "@/ui/shadcn/react-aria/avatar";
 
 const statuses = [
   { color: "bg-emerald-500", label: "Online", seed: "Jack" },

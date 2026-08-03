@@ -4,7 +4,10 @@ import {
   ChevronRightIcon,
   type LucideIcon,
 } from "lucide-react";
-import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
+import {
+  Collapsible,
+  CollapsibleContent,
+} from "@/ui/shadcn/react-aria/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -16,7 +19,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
-} from "@/components/ui/sidebar";
+} from "@/ui/shadcn/react-aria/sidebar";
 import { Link } from "@tanstack/react-router";
 
 export type AppSidebarItem = {

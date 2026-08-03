@@ -18,7 +18,7 @@ import {
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/ui/shadcn/react-aria/button";
 import {
   Select,
   SelectContent,
@@ -26,7 +26,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/ui/shadcn/react-aria/select";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 const cellVariants = cva(

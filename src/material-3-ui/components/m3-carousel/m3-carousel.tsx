@@ -16,7 +16,7 @@ import {
   CarouselContent as BaseCarouselContent,
   CarouselItem as BaseCarouselItem,
   useCarousel,
-} from "@/components/ui/carousel";
+} from "@/ui/shadcn/react-aria/carousel";
 import {
   M3IconButton,
   type M3IconButtonProps,

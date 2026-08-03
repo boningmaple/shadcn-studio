@@ -3,7 +3,7 @@ import {
   AvatarFallback,
   AvatarGroup,
   AvatarImage,
-} from "@/components/ui/avatar";
+} from "@/ui/shadcn/react-aria/avatar";
 
 const people = [
   { name: "Jack", stack: "z-30" },

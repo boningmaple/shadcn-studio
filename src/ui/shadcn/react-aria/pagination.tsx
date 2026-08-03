@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { LinkButton } from "@/components/ui/button";
+import { LinkButton } from "@/ui/shadcn/react-aria/button";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,

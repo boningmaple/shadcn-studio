@@ -9,17 +9,17 @@ import {
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/ui/shadcn/react-aria/button";
+import { Input } from "@/ui/shadcn/react-aria/input";
+import { Separator } from "@/ui/shadcn/react-aria/separator";
 import {
   Sheet,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/components/ui/sheet";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
+} from "@/ui/shadcn/react-aria/sheet";
+import { Skeleton } from "@/ui/shadcn/react-aria/skeleton";
+import { Tooltip, TooltipTrigger } from "@/ui/shadcn/react-aria/tooltip";
 import { PanelLeftIcon } from "lucide-react";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";

@@ -16,7 +16,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/ui/shadcn/react-aria/drawer";
 import { cn } from "@/lib/utils";
 
 export const m3BottomSheetStyles = tv({

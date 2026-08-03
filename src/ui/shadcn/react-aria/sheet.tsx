@@ -11,7 +11,7 @@ import {
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/shadcn/react-aria/button";
 import { XIcon } from "lucide-react";
 
 function SheetTrigger({ ...props }: SheetTriggerPrimitiveProps) {

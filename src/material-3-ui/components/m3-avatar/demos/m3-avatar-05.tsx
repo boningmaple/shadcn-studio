@@ -1,7 +1,11 @@
 import { CircleCheckIcon } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/ui/shadcn/react-aria/avatar";
+import { Badge } from "@/ui/shadcn/react-aria/badge";
 
 export default function M3AvatarDemo() {
   return (

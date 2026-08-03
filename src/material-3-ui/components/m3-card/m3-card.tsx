@@ -5,7 +5,7 @@ import {
   Card as BaseCard,
   CardContent as BaseCardContent,
   CardHeader as BaseCardHeader,
-} from "@/components/ui/card";
+} from "@/ui/shadcn/react-aria/card";
 import { cn } from "@/lib/utils";
 
 export const m3CardStyles = tv({

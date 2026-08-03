@@ -3,15 +3,15 @@
 import * as React from "react";
 import { CheckIcon, Code2Icon, CopyIcon, LoaderCircleIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/shadcn/react-aria/button";
 import {
   Dialog,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
+} from "@/ui/shadcn/react-aria/dialog";
+import { Tooltip, TooltipTrigger } from "@/ui/shadcn/react-aria/tooltip";
 import { cn } from "@/lib/utils";
 
 export type ComponentExample = {

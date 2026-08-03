@@ -25,8 +25,11 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
+} from "@/ui/shadcn/react-aria/dialog";
+import {
+  InputGroup,
+  InputGroupAddon,
+} from "@/ui/shadcn/react-aria/input-group";
 import { SearchIcon, CheckIcon } from "lucide-react";
 
 function Command({

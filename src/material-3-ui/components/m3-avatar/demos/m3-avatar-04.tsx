@@ -5,8 +5,8 @@ import {
   AvatarBadge,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+} from "@/ui/shadcn/react-aria/avatar";
+import { Badge } from "@/ui/shadcn/react-aria/badge";
 
 const notificationCounts = ["4", "32", "999+"];
 

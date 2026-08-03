@@ -3,9 +3,9 @@ import {
   AvatarBadge,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+} from "@/ui/shadcn/react-aria/avatar";
+import { Badge } from "@/ui/shadcn/react-aria/badge";
+import { Button } from "@/ui/shadcn/react-aria/button";
 
 export default function M3AvatarDemo() {
   return (

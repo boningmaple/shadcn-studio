@@ -12,8 +12,8 @@ import {
   SheetDescription,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { Sidebar, SidebarProvider } from "@/components/ui/sidebar";
+} from "@/ui/shadcn/react-aria/sheet";
+import { Sidebar, SidebarProvider } from "@/ui/shadcn/react-aria/sidebar";
 import { cn } from "@/lib/utils";
 
 export const m3SideSheetStyles = tv({

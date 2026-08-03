@@ -1,4 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/ui/shadcn/react-aria/avatar";
 
 const sizes = [
   { label: "Small", seed: "Chase", size: "sm" },

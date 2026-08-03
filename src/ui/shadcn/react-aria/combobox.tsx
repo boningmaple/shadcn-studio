@@ -33,13 +33,13 @@ import {
 } from "react-aria-components";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/shadcn/react-aria/button";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/components/ui/input-group";
+} from "@/ui/shadcn/react-aria/input-group";
 import { ChevronDownIcon, XIcon, CheckIcon } from "lucide-react";
 
 function ComboboxValue<T>({ ...props }: ComboBoxValueProps<T>) {

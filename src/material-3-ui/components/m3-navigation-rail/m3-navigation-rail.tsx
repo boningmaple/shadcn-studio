@@ -10,7 +10,7 @@ import {
   M3Badge,
   M3BadgeAnchor,
 } from "@/material-3-ui/components/m3-badge/m3-badge";
-import { Sidebar, SidebarProvider } from "@/components/ui/sidebar";
+import { Sidebar, SidebarProvider } from "@/ui/shadcn/react-aria/sidebar";
 import { cn } from "@/lib/utils";
 
 export const m3NavigationRailStyles = tv({

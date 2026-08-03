@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/ui/shadcn/react-aria/spinner";
 
 export const m3LoadingIndicatorStyles = tv({
   slots: {
