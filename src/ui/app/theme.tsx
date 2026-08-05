@@ -1,29 +1,26 @@
 "use client";
 
-import * as React from "react";
 import { ScriptOnce } from "@tanstack/react-router";
-import { createIsomorphicFn } from "@tanstack/react-start";
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { z } from "zod";
-import { create } from "zustand";
-import { persist, type PersistStorage } from "zustand/middleware";
 
 import { Button } from "@/ui/shadcn/react-aria/button";
 import { Tooltip, TooltipTrigger } from "@/ui/shadcn/react-aria/tooltip";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 
 export const themes = ["system", "light", "dark"] as const;
 export const themeSchema = z.enum(themes);
-
 export type Theme = z.infer<typeof themeSchema>;
 
-const defaultTheme = "system" satisfies Theme;
+const defaultTheme: Theme = "system";
 const themeStorageKey = "theme";
 const darkModeMediaQuery = "(prefers-color-scheme: dark)";
-const nextTheme: Record<Theme, Theme> = {
-  system: "light",
-  light: "dark",
-  dark: "system",
-};
 
 export function parseTheme(value: unknown): Theme {
   const result = themeSchema.safeParse(value);
@@ -32,231 +29,160 @@ export function parseTheme(value: unknown): Theme {
 }
 
 export function getNextTheme(theme: Theme): Theme {
-  return nextTheme[theme];
+  return theme === "system" ? "light" : theme === "light" ? "dark" : "system";
 }
 
-const readStoredTheme = createIsomorphicFn()
-  .server((_key: string): string | null => null)
-  .client((key: string): string | null => {
-    try {
-      return localStorage.getItem(key);
-    } catch {
-      return null;
-    }
-  });
-
-const writeStoredTheme = createIsomorphicFn()
-  .server((_key: string, _theme: Theme) => {})
-  .client((key: string, theme: Theme) => {
-    try {
-      localStorage.setItem(key, theme);
-    } catch {
-      // The selected theme still applies when storage is unavailable.
-    }
-  });
-
-const removeStoredTheme = createIsomorphicFn()
-  .server((_key: string) => {})
-  .client((key: string) => {
-    try {
-      localStorage.removeItem(key);
-    } catch {
-      // Storage can be unavailable in restricted browsing contexts.
-    }
-  });
-
-const applyTheme = createIsomorphicFn()
-  .server((_theme: Theme) => {})
-  .client((theme: Theme) => {
-    const isDark =
-      theme === "dark" ||
-      (theme === "system" && matchMedia(darkModeMediaQuery).matches);
-    const root = document.documentElement;
-
-    root.dataset.theme = theme;
-    root.classList.toggle("dark", isDark);
-    root.style.colorScheme = isDark ? "dark" : "light";
-  });
-
-const subscribeToSystemTheme = createIsomorphicFn()
-  .server((_onChange: () => void) => () => {})
-  .client((onChange: () => void) => {
-    const mediaQuery = matchMedia(darkModeMediaQuery);
-    const handleChange = () => onChange();
-
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  });
-
-const subscribeToStoredTheme = createIsomorphicFn()
-  .server((_onChange: (theme: Theme) => void) => () => {})
-  .client((onChange: (theme: Theme) => void) => {
-    const handleStorage = (event: StorageEvent) => {
-      if (event.key !== themeStorageKey) {
-        return;
-      }
-
-      try {
-        if (event.storageArea !== localStorage) {
-          return;
-        }
-      } catch {
-        return;
-      }
-
-      onChange(parseTheme(event.newValue));
-    };
-
-    addEventListener("storage", handleStorage);
-
-    return () => removeEventListener("storage", handleStorage);
-  });
-
-interface ThemeStore {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-  cycleTheme: () => void;
-}
-
-type PersistedThemeStore = Pick<ThemeStore, "theme">;
-
-const themeStorage: PersistStorage<PersistedThemeStore> = {
-  getItem: (key) => {
-    const storedTheme = readStoredTheme(key);
-
-    if (storedTheme === null) {
-      return null;
-    }
-
-    return { state: { theme: parseTheme(storedTheme) } };
-  },
-  setItem: (key, value) => {
-    writeStoredTheme(key, parseTheme(value.state.theme));
-  },
-  removeItem: (key) => {
-    removeStoredTheme(key);
-  },
-};
-
-export const useThemeStore = create<ThemeStore>()(
-  persist(
-    (set) => ({
-      theme: defaultTheme,
-      setTheme: (theme) => set({ theme: themeSchema.parse(theme) }),
-      cycleTheme: () => set((state) => ({ theme: getNextTheme(state.theme) })),
-    }),
-    {
-      name: themeStorageKey,
-      storage: themeStorage,
-      partialize: (state) => ({ theme: state.theme }),
-      skipHydration: true,
-    },
-  ),
-);
-
-interface ThemeInitOptions {
-  themes: readonly Theme[];
-  defaultTheme: Theme;
-  themeStorageKey: string;
-  darkModeMediaQuery: string;
-}
-
-function initializeTheme({
-  themes,
-  defaultTheme,
-  themeStorageKey,
-  darkModeMediaQuery,
-}: ThemeInitOptions) {
-  let theme = defaultTheme;
-
-  try {
-    const storedTheme = localStorage.getItem(themeStorageKey);
-    if (themes.some((validTheme) => validTheme === storedTheme)) {
-      theme = storedTheme as Theme;
-    }
-  } catch {}
-
+function applyThemeToDocument(theme: Theme) {
   let systemIsDark = false;
+
   try {
     systemIsDark = matchMedia(darkModeMediaQuery).matches;
-  } catch {}
+  } catch {
+    // Treat an unavailable media query as a light system preference.
+  }
 
   const isDark = theme === "dark" || (theme === "system" && systemIsDark);
+
   const root = document.documentElement;
   root.dataset.theme = theme;
   root.classList.toggle("dark", isDark);
   root.style.colorScheme = isDark ? "dark" : "light";
 }
 
-const themeInitScript = `(${initializeTheme.toString()})(${JSON.stringify({
-  themes,
-  defaultTheme,
-  themeStorageKey,
-  darkModeMediaQuery,
-} satisfies ThemeInitOptions)})`;
+const themeHydrationScript = (() => {
+  function themeHydrationFn() {
+    const defaultTheme = "system";
+    let theme = defaultTheme;
+    const systemIsDark = matchMedia("(prefers-color-scheme: dark)").matches;
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  React.useEffect(() => {
-    let isActive = true;
-    let unsubscribeSystemTheme: (() => void) | undefined;
+    try {
+      const storedTheme = localStorage.getItem("theme") ?? defaultTheme;
 
-    const synchronizeTheme = (theme: Theme) => {
-      unsubscribeSystemTheme?.();
-      unsubscribeSystemTheme = undefined;
-      applyTheme(theme);
-
-      if (theme === "system") {
-        unsubscribeSystemTheme = subscribeToSystemTheme(() => {
-          applyTheme("system");
-        });
+      if (["system", "light", "dark"].includes(storedTheme)) {
+        theme = storedTheme;
       }
-    };
+    } catch {
+      // Storage can be unavailable in restricted browsing contexts.
+    }
 
-    const unsubscribeStore = useThemeStore.subscribe((state, previousState) => {
-      if (state.theme !== previousState.theme) {
-        synchronizeTheme(state.theme);
-      }
-    });
-    const unsubscribeStoredTheme = subscribeToStoredTheme((theme) => {
-      if (theme !== useThemeStore.getState().theme) {
-        useThemeStore.getState().setTheme(theme);
-      }
-    });
+    const isDark = theme === "dark" || (theme === "system" && systemIsDark);
 
-    void Promise.resolve(useThemeStore.persist.rehydrate()).then(() => {
-      if (isActive) {
-        synchronizeTheme(useThemeStore.getState().theme);
-      }
-    });
+    const root = document.documentElement;
+    root.dataset.theme = theme;
+    root.classList.toggle("dark", isDark);
+    root.style.colorScheme = isDark ? "dark" : "light";
+  }
+  return `(${themeHydrationFn.toString()})();`;
+})();
 
-    return () => {
-      isActive = false;
-      unsubscribeStore();
-      unsubscribeStoredTheme();
-      unsubscribeSystemTheme?.();
-    };
+function readStoredTheme(): Theme {
+  try {
+    return parseTheme(localStorage.getItem(themeStorageKey));
+  } catch {
+    return defaultTheme;
+  }
+}
+
+function writeStoredTheme(theme: Theme) {
+  try {
+    localStorage.setItem(themeStorageKey, theme);
+  } catch {
+    // The selected theme still applies when storage is unavailable.
+  }
+}
+
+function subscribeToSystemTheme(onChange: () => void) {
+  const mediaQuery = matchMedia(darkModeMediaQuery);
+  const handleChange = () => onChange();
+
+  mediaQuery.addEventListener("change", handleChange);
+
+  return () => mediaQuery.removeEventListener("change", handleChange);
+}
+
+function subscribeToStoredTheme(onChange: (theme: Theme) => void) {
+  const handleStorage = (event: StorageEvent) => {
+    if (event.key !== themeStorageKey) {
+      return;
+    }
+
+    try {
+      if (event.storageArea !== localStorage) {
+        return;
+      }
+    } catch {
+      return;
+    }
+
+    onChange(parseTheme(event.newValue));
+  };
+
+  addEventListener("storage", handleStorage);
+
+  return () => removeEventListener("storage", handleStorage);
+}
+
+type ThemeContextType = {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+};
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export function useTheme() {
+  const context = useContext(ThemeContext);
+
+  if (context === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+
+  return context;
+}
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState<Theme>(readStoredTheme);
+
+  // Subscribe once for the provider's lifetime.
+  useEffect(() => {
+    return subscribeToStoredTheme(setTheme);
   }, []);
 
+  useEffect(() => {
+    writeStoredTheme(theme);
+    applyThemeToDocument(theme);
+
+    if (theme === "system") {
+      return subscribeToSystemTheme(() => {
+        applyThemeToDocument("system");
+      });
+    }
+  }, [theme]);
+
   return (
-    <>
-      <ScriptOnce>{themeInitScript}</ScriptOnce>
+    <ThemeContext value={{ theme, setTheme }}>
+      <ScriptOnce>{themeHydrationScript}</ScriptOnce>
       {children}
-    </>
+    </ThemeContext>
   );
 }
 
-export function ThemeToggle() {
-  const theme = useThemeStore((state) => state.theme);
-  const cycleTheme = useThemeStore((state) => state.cycleTheme);
-  const followingTheme = getNextTheme(theme);
-  const label = `Theme: ${capitalize(theme)}. Switch to ${capitalize(followingTheme)}.`;
+export function ThemeSwitch() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const nextTheme = getNextTheme(theme);
+  const label = mounted
+    ? `Theme: ${capitalize(theme)}. Switch to ${capitalize(nextTheme)}.`
+    : "Switch Theme";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <TooltipTrigger delay={300}>
       <Button
         aria-label={label}
-        onPress={cycleTheme}
+        onPress={() => setTheme(nextTheme)}
         size="icon-sm"
         variant="outline"
       >

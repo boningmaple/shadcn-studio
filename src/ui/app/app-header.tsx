@@ -2,7 +2,7 @@
 
 import { SearchIcon } from "lucide-react";
 
-import { ThemeToggle } from "@/ui/app/theme";
+import { ThemeSwitch } from "@/ui/app/theme";
 import { Button } from "@/ui/shadcn/react-aria/button";
 import {
   InputGroup,
@@ -39,7 +39,7 @@ export function AppHeader() {
             </Button>
             <Tooltip>Search</Tooltip>
           </TooltipTrigger>
-          <ThemeToggle />
+          <ThemeSwitch />
         </div>
       </div>
     </header>
