@@ -1,5 +1,3 @@
-"use client";
-
 import { SearchIcon } from "lucide-react";
 
 import { ThemeSwitch } from "@/ui/app/theme";

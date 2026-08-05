@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { CheckIcon, Code2Icon, CopyIcon, LoaderCircleIcon } from "lucide-react";
 
