@@ -4,7 +4,7 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AppHeader } from "@/ui/app/app-header";
 import { AppSidebar, appSidebarData } from "@/ui/app/app-sidebar";
-import { ThemeProvider } from "@/ui/app/theme";
+import { ThemeHydrationScript, ThemeProvider } from "@/ui/app/theme";
 import { Separator } from "@/ui/shadcn/react-aria/separator";
 import {
   SidebarInset,
@@ -42,6 +42,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <ThemeHydrationScript />
       </head>
       <body className="flex min-h-svh flex-col">
         <ThemeProvider>
@@ -61,18 +62,18 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               <main className="flex-1 p-4">{children}</main>
             </SidebarInset>
           </SidebarProvider>
-          <TanStackDevtools
-            config={{
-              position: "bottom-right",
-            }}
-            plugins={[
-              {
-                name: "Tanstack Router",
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-            ]}
-          />
         </ThemeProvider>
+        <TanStackDevtools
+          config={{
+            position: "bottom-right",
+          }}
+          plugins={[
+            {
+              name: "Tanstack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
         <Scripts />
       </body>
     </html>

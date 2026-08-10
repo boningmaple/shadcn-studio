@@ -12,6 +12,12 @@ dist-ssr
 __unconfig*
 todos.json
 
+# playwright
+test-results
+playwright-report
+blob-report
+.playwright
+
 # dotenv environment variable files
 .env.*
 !.env.example
