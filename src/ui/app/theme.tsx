@@ -1,5 +1,6 @@
 import { ScriptOnce } from "@tanstack/react-router";
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
+import type { PressEvent } from "react-aria-components";
 import { z } from "zod";
 import { capitalize } from "@/lib/utils";
 import { Button } from "@/ui/shadcn/react-aria/button";
@@ -12,6 +13,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { createIsomorphicFn } from "@tanstack/react-start";
 
 export type Theme = "system" | "light" | "dark";
 export const themes: Theme[] = ["system", "light", "dark"] as const;
@@ -26,12 +28,18 @@ function parseTheme(value: unknown): Theme {
   return result.success ? result.data : defaultTheme;
 }
 
-function getLocalStorageTheme(): Theme {
-  try {
-    return parseTheme(localStorage.getItem(localStorageKey));
-  } catch {
-    return defaultTheme;
-  }
+const getLocalStorageTheme = createIsomorphicFn()
+  .server((): Theme => defaultTheme)
+  .client((): Theme => {
+    try {
+      return parseTheme(localStorage.getItem(localStorageKey));
+    } catch {
+      return defaultTheme;
+    }
+  });
+
+function getLabel(theme: Theme, nextTheme: Theme) {
+  return `Theme: ${capitalize(theme)}. Switch to ${capitalize(nextTheme)}.`;
 }
 
 function setLocalStorageTheme(key: string, value: Theme) {
@@ -143,7 +151,6 @@ export function ThemeSwitchButton() {
   const focusFrameId = useRef<number | undefined>(undefined);
   const nextTheme =
     theme === "system" ? "light" : theme === "light" ? "dark" : "system";
-  const label = `Theme: ${capitalize(theme)}. Switch to ${capitalize(nextTheme)}.`;
 
   useEffect(() => {
     setIsHydrated(true);
@@ -155,13 +162,17 @@ export function ThemeSwitchButton() {
     };
   }, []);
 
-  const onPressTheme = () => {
+  const onPressTheme = ({ pointerType }: PressEvent) => {
     setTheme(nextTheme);
     setIsTooltipOpen(false);
 
     if (focusFrameId.current !== undefined) {
       cancelAnimationFrame(focusFrameId.current);
     }
+
+    // React Aria never opens a tooltip from a touch (or virtual) interaction;
+    // driving `isOpen` ourselves would override that, so opt out here instead.
+    if (pointerType === "touch" || pointerType === "virtual") return;
 
     focusFrameId.current = requestAnimationFrame(() => {
       focusFrameId.current = undefined;
@@ -173,15 +184,31 @@ export function ThemeSwitchButton() {
   const button = (
     <Button
       ref={buttonRef}
-      aria-label={label}
       isDisabled={!isHydrated}
       onPress={onPressTheme}
       size="icon-sm"
       variant="outline"
     >
+      {/*
+        All three labels are rendered so the markup never depends on `theme`
+        state, which is what keeps the server and client renders identical.
+        `<html data-theme>` picks the live one: `sr-only` keeps a span in the
+        accessibility tree, while the `hidden` variant resolves to
+        `display: none` and drops the other two. The accessible name therefore
+        needs the stylesheet — without it, all three are announced at once.
+      */}
       <MonitorIcon className="not-in-data-[theme=system]:hidden" />
+      <span className="sr-only not-in-data-[theme=system]:hidden">
+        {getLabel("system", "light")}
+      </span>
       <SunIcon className="not-in-data-[theme=light]:hidden" />
+      <span className="sr-only not-in-data-[theme=light]:hidden">
+        {getLabel("light", "dark")}
+      </span>
       <MoonIcon className="not-in-data-[theme=dark]:hidden" />
+      <span className="sr-only not-in-data-[theme=dark]:hidden">
+        {getLabel("dark", "system")}
+      </span>
     </Button>
   );
 
@@ -196,7 +223,7 @@ export function ThemeSwitchButton() {
       onOpenChange={setIsTooltipOpen}
     >
       {button}
-      <Tooltip>{label}</Tooltip>
+      <Tooltip>{getLabel(theme, nextTheme)}</Tooltip>
     </TooltipTrigger>
   );
 }

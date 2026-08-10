@@ -24,13 +24,12 @@ const config = defineConfig({
     options: { typeAware: true, typeCheck: true },
   },
   test: {
+    setupFiles: ["./tests/setup.ts"],
     // Scoped to the component suite so the Playwright specs under `e2e/` are
     // left to `npm run test:e2e`. They import `@playwright/test`, which the
     // browser-mode optimizer would otherwise try to bundle for the browser.
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
     browser: {
-      // The `system` theme resolves through `prefers-color-scheme`, so the
-      // suite pins it rather than inheriting the developer's OS setting.
       provider: playwright(),
       enabled: true,
       instances: [{ browser: "chromium" }],
@@ -40,13 +39,14 @@ const config = defineConfig({
   },
   resolve: { tsconfigPaths: true },
   plugins: lazyPlugins(() =>
-    // The full-stack plugins bundle the app for the server and leave React
-    // inlined as CJS, which the test module runner cannot evaluate. The test
-    // run keeps only React, for JSX, and Tailwind: the component tests assert
-    // on the accessible name of the theme switch, and which of its labels
-    // reaches the accessibility tree is decided entirely by CSS.
+    // `devtools()` and `nitro()` bundle the app for the server and leave React
+    // inlined as CJS, which the test module runner cannot evaluate. But
+    // `tanstackStart()` has to stay: `createIsomorphicFn` is a build-time
+    // transform, and without it the runtime stub resolves the chain to its
+    // `.server()` branch, so `getLocalStorageTheme` would hand the browser
+    // `defaultTheme` and the stored-theme tests would fail.
     isTest
-      ? [tailwindcss(), react()]
+      ? [tailwindcss(), tanstackStart(), react()]
       : [devtools(), nitro(), tailwindcss(), tanstackStart(), react()],
   ),
 });

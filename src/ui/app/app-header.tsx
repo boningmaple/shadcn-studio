@@ -8,7 +8,6 @@ import {
   InputGroupInput,
 } from "@/ui/shadcn/react-aria/input-group";
 import { Kbd, KbdGroup } from "@/ui/shadcn/react-aria/kbd";
-import { Tooltip, TooltipTrigger } from "@/ui/shadcn/react-aria/tooltip";
 
 export function AppHeader() {
   return (
@@ -26,17 +25,14 @@ export function AppHeader() {
           aria-label="App header actions"
           className="flex items-center justify-end gap-2"
         >
-          <TooltipTrigger delay={300}>
-            <Button
-              aria-label="Search"
-              className="lg:hidden"
-              size="icon-sm"
-              variant="outline"
-            >
-              <SearchIcon />
-            </Button>
-            <Tooltip>Search</Tooltip>
-          </TooltipTrigger>
+          <Button
+            aria-label="Search"
+            className="lg:hidden"
+            size="icon-sm"
+            variant="outline"
+          >
+            <SearchIcon />
+          </Button>
           <ThemeSwitchButton />
         </div>
       </div>
