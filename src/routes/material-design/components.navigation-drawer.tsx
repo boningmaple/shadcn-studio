@@ -5,9 +5,9 @@ import NavigationDrawer02 from "@/ui/material-design/components/md-navigation-dr
 import NavigationDrawer03 from "@/ui/material-design/components/md-navigation-drawer/demos/md-navigation-drawer-03";
 import NavigationDrawer04 from "@/ui/material-design/components/md-navigation-drawer/demos/md-navigation-drawer-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/navigation-drawer",
@@ -29,38 +29,16 @@ export const Route = createFileRoute(
 
 function NavigationDrawerComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-navigation-drawer"
-      description="Explore Material navigation drawers with standard, modal, grouped, and account-header layouts."
-      exampleNoun="navigation drawer"
-      examples={navigationDrawerExamples}
-      sectionId="navigation-drawer-patterns-title"
-      sectionTitle="Navigation Drawer Patterns"
-      title="Navigation Drawer"
+    <ComponentDemosPage
+      demoComponents={demoComponents}
+      slug="navigation-drawer"
     />
   );
 }
 
-const navigationDrawerExamples: ComponentExample[] = [
-  {
-    component: NavigationDrawer01,
-    id: "01",
-    name: "Standard navigation drawer",
-    wide: true,
-  },
-  {
-    component: NavigationDrawer02,
-    id: "02",
-    name: "Modal navigation drawer",
-  },
-  {
-    component: NavigationDrawer03,
-    id: "03",
-    name: "Grouped navigation drawer",
-  },
-  {
-    component: NavigationDrawer04,
-    id: "04",
-    name: "Account navigation drawer",
-  },
-];
+const demoComponents: DemoComponents<"navigation-drawer"> = {
+  "01": NavigationDrawer01,
+  "02": NavigationDrawer02,
+  "03": NavigationDrawer03,
+  "04": NavigationDrawer04,
+};

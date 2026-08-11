@@ -5,9 +5,9 @@ import NavigationRail02 from "@/ui/material-design/components/md-navigation-rail
 import NavigationRail03 from "@/ui/material-design/components/md-navigation-rail/demos/md-navigation-rail-03";
 import NavigationRail04 from "@/ui/material-design/components/md-navigation-rail/demos/md-navigation-rail-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/navigation-rail",
@@ -29,38 +29,16 @@ export const Route = createFileRoute(
 
 function NavigationRailComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-navigation-rail"
-      description="Explore Material navigation rails with optional FABs, badges, label modes, and adaptive layouts."
-      exampleNoun="navigation rail"
-      examples={navigationRailExamples}
-      sectionId="navigation-rail-patterns-title"
-      sectionTitle="Navigation Rail Patterns"
-      title="Navigation Rail"
+    <ComponentDemosPage
+      demoComponents={demoComponents}
+      slug="navigation-rail"
     />
   );
 }
 
-const navigationRailExamples: ComponentExample[] = [
-  {
-    component: NavigationRail01,
-    id: "01",
-    name: "Rail with FAB",
-  },
-  {
-    component: NavigationRail02,
-    id: "02",
-    name: "Centered rail with badges",
-  },
-  {
-    component: NavigationRail03,
-    id: "03",
-    name: "Persistent labels",
-  },
-  {
-    component: NavigationRail04,
-    id: "04",
-    name: "Rail in layout",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"navigation-rail"> = {
+  "01": NavigationRail01,
+  "02": NavigationRail02,
+  "03": NavigationRail03,
+  "04": NavigationRail04,
+};

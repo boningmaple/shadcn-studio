@@ -6,9 +6,9 @@ import Badge03 from "@/ui/material-design/components/md-badge/demos/md-badge-03"
 import Badge04 from "@/ui/material-design/components/md-badge/demos/md-badge-04";
 import Badge05 from "@/ui/material-design/components/md-badge/demos/md-badge-05";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/badge")({
   component: BadgeComponentPage,
@@ -27,48 +27,13 @@ export const Route = createFileRoute("/material-design/components/badge")({
 });
 
 function BadgeComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-badge"
-      description="Explore Material 3 notification dots and count badges, built with React and Tailwind CSS."
-      exampleNoun="badge"
-      examples={badgeExamples}
-      sectionId="badge-patterns-title"
-      sectionTitle="Badge Patterns"
-      title="Badge"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="badge" />;
 }
 
-const badgeExamples: ComponentExample[] = [
-  {
-    component: Badge01,
-    id: "01",
-    name: "Material 3 badge variants",
-    wide: true,
-  },
-  {
-    component: Badge02,
-    id: "02",
-    name: "Badges on icon controls",
-    wide: true,
-  },
-  {
-    component: Badge03,
-    id: "03",
-    name: "Clear badge on selection",
-    wide: true,
-  },
-  {
-    component: Badge04,
-    id: "04",
-    name: "Badges in tabs",
-    wide: true,
-  },
-  {
-    component: Badge05,
-    id: "05",
-    name: "Right-to-left placement",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"badge"> = {
+  "01": Badge01,
+  "02": Badge02,
+  "03": Badge03,
+  "04": Badge04,
+  "05": Badge05,
+};

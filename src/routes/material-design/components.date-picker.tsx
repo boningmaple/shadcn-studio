@@ -5,9 +5,9 @@ import DatePicker02 from "@/ui/material-design/components/md-date-picker/demos/m
 import DatePicker03 from "@/ui/material-design/components/md-date-picker/demos/md-date-picker-03";
 import DatePicker04 from "@/ui/material-design/components/md-date-picker/demos/md-date-picker-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/date-picker")(
   {
@@ -29,38 +29,13 @@ export const Route = createFileRoute("/material-design/components/date-picker")(
 
 function DatePickerComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-date-picker"
-      description="Explore Material 3 docked, range, modal calendar, and modal input date picker patterns."
-      exampleNoun="date picker"
-      examples={datePickerExamples}
-      sectionId="date-picker-patterns-title"
-      sectionTitle="Date Picker Patterns"
-      title="Date Picker"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="date-picker" />
   );
 }
 
-const datePickerExamples: ComponentExample[] = [
-  {
-    component: DatePicker01,
-    id: "01",
-    name: "Docked date picker",
-  },
-  {
-    component: DatePicker02,
-    id: "02",
-    name: "Date range picker",
-    wide: true,
-  },
-  {
-    component: DatePicker03,
-    id: "03",
-    name: "Modal date picker",
-  },
-  {
-    component: DatePicker04,
-    id: "04",
-    name: "Modal date input",
-  },
-];
+const demoComponents: DemoComponents<"date-picker"> = {
+  "01": DatePicker01,
+  "02": DatePicker02,
+  "03": DatePicker03,
+  "04": DatePicker04,
+};

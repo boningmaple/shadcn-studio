@@ -5,9 +5,9 @@ import Card02 from "@/ui/material-design/components/md-card/demos/md-card-02";
 import Card03 from "@/ui/material-design/components/md-card/demos/md-card-03";
 import Card04 from "@/ui/material-design/components/md-card/demos/md-card-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/card")({
   component: CardComponentPage,
@@ -26,42 +26,12 @@ export const Route = createFileRoute("/material-design/components/card")({
 });
 
 function CardComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-card"
-      description="Explore Material 3 elevated, filled, and outlined card containers with reusable content and action slots."
-      exampleNoun="card"
-      examples={cardExamples}
-      sectionId="card-patterns-title"
-      sectionTitle="Card Patterns"
-      title="Card"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="card" />;
 }
 
-const cardExamples: ComponentExample[] = [
-  {
-    component: Card01,
-    id: "01",
-    name: "Material 3 card variants",
-    wide: true,
-  },
-  {
-    component: Card02,
-    id: "02",
-    name: "Card with media and actions",
-    wide: true,
-  },
-  {
-    component: Card03,
-    id: "03",
-    name: "Interactive outlined cards",
-    wide: true,
-  },
-  {
-    component: Card04,
-    id: "04",
-    name: "Elevated checklist card",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"card"> = {
+  "01": Card01,
+  "02": Card02,
+  "03": Card03,
+  "04": Card04,
+};

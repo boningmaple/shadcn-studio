@@ -5,9 +5,9 @@ import Toolbar02 from "@/ui/material-design/components/md-toolbar/demos/md-toolb
 import Toolbar03 from "@/ui/material-design/components/md-toolbar/demos/md-toolbar-03";
 import Toolbar04 from "@/ui/material-design/components/md-toolbar/demos/md-toolbar-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/toolbar")({
   component: ToolbarComponentPage,
@@ -26,41 +26,12 @@ export const Route = createFileRoute("/material-design/components/toolbar")({
 });
 
 function ToolbarComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-toolbar"
-      description="Explore Material toolbar patterns for document actions, formatting, bottom actions, and contextual editing."
-      exampleNoun="toolbar"
-      examples={toolbarExamples}
-      sectionId="toolbar-patterns-title"
-      sectionTitle="Toolbar Patterns"
-      title="Toolbar"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="toolbar" />;
 }
 
-const toolbarExamples: ComponentExample[] = [
-  {
-    component: Toolbar01,
-    id: "01",
-    name: "Document toolbar",
-    wide: true,
-  },
-  {
-    component: Toolbar02,
-    id: "02",
-    name: "Formatting toolbar",
-  },
-  {
-    component: Toolbar03,
-    id: "03",
-    name: "Bottom toolbar",
-    wide: true,
-  },
-  {
-    component: Toolbar04,
-    id: "04",
-    name: "Contextual toolbars",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"toolbar"> = {
+  "01": Toolbar01,
+  "02": Toolbar02,
+  "03": Toolbar03,
+  "04": Toolbar04,
+};

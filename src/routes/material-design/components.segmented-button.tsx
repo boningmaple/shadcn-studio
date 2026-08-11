@@ -5,9 +5,9 @@ import SegmentedButton02 from "@/ui/material-design/components/md-segmented-butt
 import SegmentedButton03 from "@/ui/material-design/components/md-segmented-button/demos/md-segmented-button-03";
 import SegmentedButton04 from "@/ui/material-design/components/md-segmented-button/demos/md-segmented-button-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/segmented-button",
@@ -29,41 +29,16 @@ export const Route = createFileRoute(
 
 function SegmentedButtonComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-segmented-button"
-      description="Explore Material 3 segmented buttons for switching views, sorting content, and choosing single or multiple related options."
-      exampleNoun="segmented button"
-      examples={segmentedButtonExamples}
-      sectionId="segmented-button-patterns-title"
-      sectionTitle="Segmented Button Patterns"
-      title="Segmented Button"
+    <ComponentDemosPage
+      demoComponents={demoComponents}
+      slug="segmented-button"
     />
   );
 }
 
-const segmentedButtonExamples: ComponentExample[] = [
-  {
-    component: SegmentedButton01,
-    id: "01",
-    name: "Single-select text segments",
-    wide: true,
-  },
-  {
-    component: SegmentedButton02,
-    id: "02",
-    name: "Segments with icons",
-    wide: true,
-  },
-  {
-    component: SegmentedButton03,
-    id: "03",
-    name: "Multi-select icon segments",
-    wide: true,
-  },
-  {
-    component: SegmentedButton04,
-    id: "04",
-    name: "Compact and vertical segmented buttons",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"segmented-button"> = {
+  "01": SegmentedButton01,
+  "02": SegmentedButton02,
+  "03": SegmentedButton03,
+  "04": SegmentedButton04,
+};

@@ -5,9 +5,9 @@ import BottomSheet02 from "@/ui/material-design/components/md-bottom-sheet/demos
 import BottomSheet03 from "@/ui/material-design/components/md-bottom-sheet/demos/md-bottom-sheet-03";
 import BottomSheet04 from "@/ui/material-design/components/md-bottom-sheet/demos/md-bottom-sheet-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/bottom-sheet",
@@ -29,37 +29,13 @@ export const Route = createFileRoute(
 
 function BottomSheetComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-bottom-sheet"
-      description="Explore modal, standard, snapping, and settings bottom sheets for supplementary workflows."
-      exampleNoun="bottom sheet"
-      examples={bottomSheetExamples}
-      sectionId="bottom-sheet-patterns-title"
-      sectionTitle="Bottom Sheet Patterns"
-      title="Bottom Sheet"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="bottom-sheet" />
   );
 }
 
-const bottomSheetExamples: ComponentExample[] = [
-  {
-    component: BottomSheet01,
-    id: "01",
-    name: "Modal bottom sheet",
-  },
-  {
-    component: BottomSheet02,
-    id: "02",
-    name: "Standard bottom sheet",
-  },
-  {
-    component: BottomSheet03,
-    id: "03",
-    name: "Snapping bottom sheet",
-  },
-  {
-    component: BottomSheet04,
-    id: "04",
-    name: "Settings bottom sheet",
-  },
-];
+const demoComponents: DemoComponents<"bottom-sheet"> = {
+  "01": BottomSheet01,
+  "02": BottomSheet02,
+  "03": BottomSheet03,
+  "04": BottomSheet04,
+};

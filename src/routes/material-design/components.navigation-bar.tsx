@@ -5,9 +5,9 @@ import NavigationBar02 from "@/ui/material-design/components/md-navigation-bar/d
 import NavigationBar03 from "@/ui/material-design/components/md-navigation-bar/demos/md-navigation-bar-03";
 import NavigationBar04 from "@/ui/material-design/components/md-navigation-bar/demos/md-navigation-bar-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/navigation-bar",
@@ -29,41 +29,13 @@ export const Route = createFileRoute(
 
 function NavigationBarComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-navigation-bar"
-      description="Explore Material 3 navigation bars with active indicators, labels, and destination badges."
-      exampleNoun="navigation bar"
-      examples={navigationBarExamples}
-      sectionId="navigation-bar-patterns-title"
-      sectionTitle="Navigation Bar Patterns"
-      title="Navigation Bar"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="navigation-bar" />
   );
 }
 
-const navigationBarExamples: ComponentExample[] = [
-  {
-    component: NavigationBar01,
-    id: "01",
-    name: "Three destinations",
-    wide: true,
-  },
-  {
-    component: NavigationBar02,
-    id: "02",
-    name: "Badged destinations",
-    wide: true,
-  },
-  {
-    component: NavigationBar03,
-    id: "03",
-    name: "Five destinations",
-    wide: true,
-  },
-  {
-    component: NavigationBar04,
-    id: "04",
-    name: "Navigation bar in layout",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"navigation-bar"> = {
+  "01": NavigationBar01,
+  "02": NavigationBar02,
+  "03": NavigationBar03,
+  "04": NavigationBar04,
+};

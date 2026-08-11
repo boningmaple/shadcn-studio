@@ -5,9 +5,9 @@ import ButtonGroup02 from "@/ui/material-design/components/md-button-group/demos
 import ButtonGroup03 from "@/ui/material-design/components/md-button-group/demos/md-button-group-03";
 import ButtonGroup04 from "@/ui/material-design/components/md-button-group/demos/md-button-group-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/button-group",
@@ -29,41 +29,13 @@ export const Route = createFileRoute(
 
 function ButtonGroupComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-button-group"
-      description="Explore Material 3 action and toggle button groups with React Aria toolbar and toggle selection behavior."
-      exampleNoun="button group"
-      examples={buttonGroupExamples}
-      sectionId="button-group-patterns-title"
-      sectionTitle="Button Group Patterns"
-      title="Button Group"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="button-group" />
   );
 }
 
-const buttonGroupExamples: ComponentExample[] = [
-  {
-    component: ButtonGroup01,
-    id: "01",
-    name: "Related action buttons",
-    wide: true,
-  },
-  {
-    component: ButtonGroup02,
-    id: "02",
-    name: "Icon button group",
-    wide: true,
-  },
-  {
-    component: ButtonGroup03,
-    id: "03",
-    name: "Single-select toggle group",
-    wide: true,
-  },
-  {
-    component: ButtonGroup04,
-    id: "04",
-    name: "Multi-select icon toggle group",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"button-group"> = {
+  "01": ButtonGroup01,
+  "02": ButtonGroup02,
+  "03": ButtonGroup03,
+  "04": ButtonGroup04,
+};

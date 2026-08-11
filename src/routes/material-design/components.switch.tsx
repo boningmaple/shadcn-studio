@@ -6,9 +6,9 @@ import Switch03 from "@/ui/material-design/components/md-switch/demos/md-switch-
 import Switch04 from "@/ui/material-design/components/md-switch/demos/md-switch-04";
 import Switch05 from "@/ui/material-design/components/md-switch/demos/md-switch-05";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/switch")({
   component: SwitchComponentPage,
@@ -27,48 +27,13 @@ export const Route = createFileRoute("/material-design/components/switch")({
 });
 
 function SwitchComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-switch"
-      description="Explore Material 3 switches for toggling a single setting on or off."
-      exampleNoun="switch"
-      examples={switchExamples}
-      sectionId="switch-patterns-title"
-      sectionTitle="Switch Patterns"
-      title="Switch"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="switch" />;
 }
 
-const switchExamples: ComponentExample[] = [
-  {
-    component: Switch01,
-    id: "01",
-    name: "Switch states",
-    wide: true,
-  },
-  {
-    component: Switch02,
-    id: "02",
-    name: "Switch list",
-    wide: true,
-  },
-  {
-    component: Switch03,
-    id: "03",
-    name: "Controlled switch",
-    wide: true,
-  },
-  {
-    component: Switch04,
-    id: "04",
-    name: "Disabled and read-only switches",
-    wide: true,
-  },
-  {
-    component: Switch05,
-    id: "05",
-    name: "Switches with icons and descriptions",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"switch"> = {
+  "01": Switch01,
+  "02": Switch02,
+  "03": Switch03,
+  "04": Switch04,
+  "05": Switch05,
+};

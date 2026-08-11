@@ -1,15 +1,21 @@
+import * as React from "react";
 import { SearchIcon } from "lucide-react";
 
+import {
+  SearchFieldTrigger,
+  SearchPalette,
+  searchTriggerLabel,
+  useSearchShortcut,
+} from "@/ui/app/search-palette";
 import { ThemeSwitchButton } from "@/ui/app/theme";
 import { Button } from "@/ui/shadcn/react-aria/button";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/ui/shadcn/react-aria/input-group";
-import { Kbd, KbdGroup } from "@/ui/shadcn/react-aria/kbd";
 
 export function AppHeader() {
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
+  const openSearch = React.useCallback(() => setIsSearchOpen(true), []);
+
+  useSearchShortcut(openSearch);
+
   return (
     <header className="sticky top-0 z-40 h-14 border-b bg-background/95 backdrop-blur">
       <div className="grid h-full grid-cols-[1fr_auto_1fr] items-center gap-3 px-4">
@@ -18,7 +24,7 @@ export function AppHeader() {
         </div>
 
         <div>
-          <SearchField />
+          <SearchFieldTrigger className="hidden lg:flex" onPress={openSearch} />
         </div>
 
         <div
@@ -26,8 +32,9 @@ export function AppHeader() {
           className="flex items-center justify-end gap-2"
         >
           <Button
-            aria-label="Search"
+            aria-label={searchTriggerLabel}
             className="lg:hidden"
+            onPress={openSearch}
             size="icon-sm"
             variant="outline"
           >
@@ -36,28 +43,8 @@ export function AppHeader() {
           <ThemeSwitchButton />
         </div>
       </div>
-    </header>
-  );
-}
 
-function SearchField() {
-  return (
-    <InputGroup className="hidden h-9 w-96 rounded-full lg:flex">
-      <InputGroupInput
-        aria-label="Search"
-        className="text-base placeholder:text-muted-foreground md:text-base"
-        placeholder="Search"
-        type="search"
-      />
-      <InputGroupAddon align="inline-start" className="pl-3">
-        <SearchIcon />
-      </InputGroupAddon>
-      <InputGroupAddon align="inline-end" className="pr-3">
-        <KbdGroup>
-          <Kbd>⌘</Kbd>
-          <Kbd>K</Kbd>
-        </KbdGroup>
-      </InputGroupAddon>
-    </InputGroup>
+      <SearchPalette isOpen={isSearchOpen} onOpenChange={setIsSearchOpen} />
+    </header>
   );
 }

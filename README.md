@@ -15,6 +15,15 @@ npm run dev
 npm run build
 ```
 
+The build regenerates two committed artifacts before bundling: the per-Demo
+code shown in the code dialog, and the search index the `/api/search` route
+restores. Regenerate the search index on its own after adding or renaming a
+Demo — the pre-commit check fails until you do:
+
+```bash
+npm run generate:search-index
+```
+
 ## Testing
 
 Two suites, both driving a real Chromium. Unit and component tests run against
@@ -30,8 +39,9 @@ npx playwright install chromium
 ### Unit and component tests
 
 Vitest browser mode, via Vite+, with `vitest-browser-react` for rendering. Unit
-and component test files live in `tests/` (`tests/**/*.test.ts` and `*.test.tsx`)
-alongside the shared setup.
+and component test files sit next to the code they cover, under `src/`
+(`src/**/*.{test,spec}.{ts,tsx}`). The top-level `tests/` directory holds only
+the shared setup.
 
 ```bash
 npm run test
@@ -44,7 +54,7 @@ npm run test:watch
 Run a single file or filter by name:
 
 ```bash
-npx vp test run tests/theme.test.tsx
+npx vp test run src/ui/app/__tests__/theme.test.tsx
 ```
 
 ```bash
@@ -92,7 +102,8 @@ npx playwright test --headed
 ### Before pushing
 
 `vp check` formats, lints and type checks; it also runs as a pre-commit hook on
-staged files.
+staged files, which additionally verifies the committed search index still
+matches the registry.
 
 ```bash
 npm test && npx playwright test && npx vp check
@@ -109,12 +120,15 @@ npm test && npx playwright test && npx vp check
 |-- src
 |   |-- hooks                # shared React hooks
 |   |-- lib                  # shared utility functions
-|   |-- routes               # TanStack Router file routes
+|   |-- registry.ts          # the Components and Demos VibeUI holds
+|   |-- routes               # TanStack Router file and server routes
 |   |-- router.tsx           # router setup
 |   |-- routeTree.gen.ts     # generated TanStack route tree
+|   |-- search               # search records, ranking, and the built index
 |   |-- styles.css           # Tailwind, shadcn theme tokens, and base styles
 |   `-- ui                   # app shell and reusable shadcn UI
-|-- tests                    # unit and component tests, and the shared setup
+|-- scripts                  # build-time code and search index generation
+|-- tests                    # shared test setup only; tests live beside src
 |-- tsconfig.json            # TypeScript compiler configuration
 |-- tsr.config.json          # TanStack Router generator configuration
 `-- vite.config.ts           # Vite+ app and test configuration
@@ -123,6 +137,8 @@ npm test && npx playwright test && npx vp check
 ## Dependencies
 
 - `@fontsource-variable/geist`: Provides the Geist variable font used by the app.
+- `@orama/orama`: Indexes and ranks the Components and Demos search queries reach.
+- `@orama/plugin-data-persistence`: Persists that index at build time and restores it on the server. Pinned to the same exact version as `@orama/orama`; upgrade the two together.
 - `@tailwindcss/vite`: Integrates Tailwind CSS with the Vite build pipeline.
 - `@tanstack/react-devtools`: Adds TanStack development tooling inside the app.
 - `@tanstack/react-router`: Provides type-safe React routing.

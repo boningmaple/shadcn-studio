@@ -7,9 +7,9 @@ import ToggleButton04 from "@/ui/material-design/components/md-toggle-button/dem
 import ToggleButton05 from "@/ui/material-design/components/md-toggle-button/demos/md-toggle-button-05";
 import ToggleButton06 from "@/ui/material-design/components/md-toggle-button/demos/md-toggle-button-06";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/toggle-button",
@@ -31,53 +31,15 @@ export const Route = createFileRoute(
 
 function ToggleButtonComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-toggle-button"
-      description="Explore Material 3 toggle button selection states, built with React Aria UI, React, and Tailwind CSS."
-      exampleNoun="toggle button"
-      examples={toggleButtonExamples}
-      sectionId="toggle-button-states-title"
-      sectionTitle="Toggle Button States"
-      title="Toggle Button"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="toggle-button" />
   );
 }
 
-const toggleButtonExamples: ComponentExample[] = [
-  {
-    component: ToggleButton01,
-    id: "01",
-    name: "Material 3 variants",
-    wide: true,
-  },
-  {
-    component: ToggleButton02,
-    id: "02",
-    name: "Material 3 variants with icon",
-    wide: true,
-  },
-  {
-    component: ToggleButton03,
-    id: "03",
-    name: "Elevated toggle button states",
-    wide: true,
-  },
-  {
-    component: ToggleButton04,
-    id: "04",
-    name: "Filled toggle button states",
-    wide: true,
-  },
-  {
-    component: ToggleButton05,
-    id: "05",
-    name: "Tonal toggle button states",
-    wide: true,
-  },
-  {
-    component: ToggleButton06,
-    id: "06",
-    name: "Outlined toggle button states",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"toggle-button"> = {
+  "01": ToggleButton01,
+  "02": ToggleButton02,
+  "03": ToggleButton03,
+  "04": ToggleButton04,
+  "05": ToggleButton05,
+  "06": ToggleButton06,
+};

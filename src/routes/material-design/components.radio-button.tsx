@@ -6,9 +6,9 @@ import RadioButton03 from "@/ui/material-design/components/md-radio-button/demos
 import RadioButton04 from "@/ui/material-design/components/md-radio-button/demos/md-radio-button-04";
 import RadioButton05 from "@/ui/material-design/components/md-radio-button/demos/md-radio-button-05";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/radio-button",
@@ -30,47 +30,14 @@ export const Route = createFileRoute(
 
 function RadioButtonComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-radio-button"
-      description="Explore Material 3 radio buttons and radio groups for selecting a single option from a set."
-      exampleNoun="radio button"
-      examples={radioButtonExamples}
-      sectionId="radio-button-patterns-title"
-      sectionTitle="Radio Button Patterns"
-      title="Radio Button"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="radio-button" />
   );
 }
 
-const radioButtonExamples: ComponentExample[] = [
-  {
-    component: RadioButton01,
-    id: "01",
-    name: "Radio button states",
-    wide: true,
-  },
-  {
-    component: RadioButton02,
-    id: "02",
-    name: "Radio group",
-    wide: true,
-  },
-  {
-    component: RadioButton03,
-    id: "03",
-    name: "Required radio group",
-    wide: true,
-  },
-  {
-    component: RadioButton04,
-    id: "04",
-    name: "Disabled and read-only radio groups",
-    wide: true,
-  },
-  {
-    component: RadioButton05,
-    id: "05",
-    name: "Controlled radio group",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"radio-button"> = {
+  "01": RadioButton01,
+  "02": RadioButton02,
+  "03": RadioButton03,
+  "04": RadioButton04,
+  "05": RadioButton05,
+};

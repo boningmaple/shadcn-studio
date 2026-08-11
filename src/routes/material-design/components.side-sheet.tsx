@@ -5,9 +5,9 @@ import SideSheet02 from "@/ui/material-design/components/md-side-sheet/demos/md-
 import SideSheet03 from "@/ui/material-design/components/md-side-sheet/demos/md-side-sheet-03";
 import SideSheet04 from "@/ui/material-design/components/md-side-sheet/demos/md-side-sheet-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/side-sheet")({
   component: SideSheetComponentPage,
@@ -27,38 +27,13 @@ export const Route = createFileRoute("/material-design/components/side-sheet")({
 
 function SideSheetComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-side-sheet"
-      description="Explore standard and modal side sheets for supplemental details, navigation, and focused actions."
-      exampleNoun="side sheet"
-      examples={sideSheetExamples}
-      sectionId="side-sheet-patterns-title"
-      sectionTitle="Side Sheet Patterns"
-      title="Side Sheet"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="side-sheet" />
   );
 }
 
-const sideSheetExamples: ComponentExample[] = [
-  {
-    component: SideSheet01,
-    id: "01",
-    name: "Standard side sheet",
-    wide: true,
-  },
-  {
-    component: SideSheet02,
-    id: "02",
-    name: "Modal side sheet",
-  },
-  {
-    component: SideSheet03,
-    id: "03",
-    name: "Left side sheet",
-  },
-  {
-    component: SideSheet04,
-    id: "04",
-    name: "Side sheet with actions",
-  },
-];
+const demoComponents: DemoComponents<"side-sheet"> = {
+  "01": SideSheet01,
+  "02": SideSheet02,
+  "03": SideSheet03,
+  "04": SideSheet04,
+};

@@ -5,9 +5,9 @@ import Tooltip02 from "@/ui/material-design/components/md-tooltip/demos/md-toolt
 import Tooltip03 from "@/ui/material-design/components/md-tooltip/demos/md-tooltip-03";
 import Tooltip04 from "@/ui/material-design/components/md-tooltip/demos/md-tooltip-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/tooltip")({
   component: TooltipComponentPage,
@@ -26,39 +26,12 @@ export const Route = createFileRoute("/material-design/components/tooltip")({
 });
 
 function TooltipComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-tooltip"
-      description="Explore Material 3 plain labels and rich contextual tooltips for icon-only controls, actions, and help affordances."
-      exampleNoun="tooltip"
-      examples={tooltipExamples}
-      sectionId="tooltip-patterns-title"
-      sectionTitle="Tooltip Patterns"
-      title="Tooltip"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="tooltip" />;
 }
 
-const tooltipExamples: ComponentExample[] = [
-  {
-    component: Tooltip01,
-    id: "01",
-    name: "Plain icon tooltips",
-  },
-  {
-    component: Tooltip02,
-    id: "02",
-    name: "Tooltip placements",
-  },
-  {
-    component: Tooltip03,
-    id: "03",
-    name: "Rich tooltip with action",
-  },
-  {
-    component: Tooltip04,
-    id: "04",
-    name: "Mixed tooltip controls",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"tooltip"> = {
+  "01": Tooltip01,
+  "02": Tooltip02,
+  "03": Tooltip03,
+  "04": Tooltip04,
+};

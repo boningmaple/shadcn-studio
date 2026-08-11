@@ -5,9 +5,9 @@ import TimePicker02 from "@/ui/material-design/components/md-time-picker/demos/m
 import TimePicker03 from "@/ui/material-design/components/md-time-picker/demos/md-time-picker-03";
 import TimePicker04 from "@/ui/material-design/components/md-time-picker/demos/md-time-picker-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/time-picker")(
   {
@@ -29,37 +29,13 @@ export const Route = createFileRoute("/material-design/components/time-picker")(
 
 function TimePickerComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-time-picker"
-      description="Explore Material 3 input time pickers with segmented keyboard editing, validation states, and a modal input flow."
-      exampleNoun="time picker"
-      examples={timePickerExamples}
-      sectionId="time-picker-patterns-title"
-      sectionTitle="Time Picker Patterns"
-      title="Time Picker"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="time-picker" />
   );
 }
 
-const timePickerExamples: ComponentExample[] = [
-  {
-    component: TimePicker01,
-    id: "01",
-    name: "Input time picker",
-  },
-  {
-    component: TimePicker02,
-    id: "02",
-    name: "24-hour time with seconds",
-  },
-  {
-    component: TimePicker03,
-    id: "03",
-    name: "Disabled and invalid states",
-  },
-  {
-    component: TimePicker04,
-    id: "04",
-    name: "Modal time input",
-  },
-];
+const demoComponents: DemoComponents<"time-picker"> = {
+  "01": TimePicker01,
+  "02": TimePicker02,
+  "03": TimePicker03,
+  "04": TimePicker04,
+};

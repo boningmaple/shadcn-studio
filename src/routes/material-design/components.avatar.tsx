@@ -1,9 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
 import Avatar01 from "@/ui/material-design/components/md-avatar/demos/md-avatar-01";
 import Avatar02 from "@/ui/material-design/components/md-avatar/demos/md-avatar-02";
 import Avatar03 from "@/ui/material-design/components/md-avatar/demos/md-avatar-03";
@@ -14,6 +10,10 @@ import Avatar07 from "@/ui/material-design/components/md-avatar/demos/md-avatar-
 import Avatar08 from "@/ui/material-design/components/md-avatar/demos/md-avatar-08";
 import Avatar09 from "@/ui/material-design/components/md-avatar/demos/md-avatar-09";
 import Avatar10 from "@/ui/material-design/components/md-avatar/demos/md-avatar-10";
+import {
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/avatar")({
   component: AvatarComponentPage,
@@ -32,49 +32,18 @@ export const Route = createFileRoute("/material-design/components/avatar")({
 });
 
 function AvatarComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-avatar"
-      description="Explore composable avatars with image fallbacks, sizes, badges, groups, and interactive states, built with React and Tailwind CSS."
-      exampleNoun="avatar"
-      examples={avatarExamples}
-      sectionId="avatar-patterns-title"
-      sectionTitle="Avatar Patterns"
-      title="Avatar"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="avatar" />;
 }
 
-const avatarExamples: ComponentExample[] = [
-  { component: Avatar01, id: "01", name: "Images and fallbacks" },
-  { component: Avatar02, id: "02", name: "Avatar sizes" },
-  { component: Avatar03, id: "03", name: "Presence statuses" },
-  {
-    component: Avatar04,
-    id: "04",
-    name: "Badges with outline rings",
-    wide: true,
-  },
-  {
-    component: Avatar05,
-    id: "05",
-    name: "Outlined avatars",
-  },
-  {
-    component: Avatar06,
-    id: "06",
-    name: "Avatar buttons",
-  },
-  { component: Avatar07, id: "07", name: "Avatar group" },
-  {
-    component: Avatar08,
-    id: "08",
-    name: "Leading avatar on top",
-  },
-  { component: Avatar09, id: "09", name: "Group with count" },
-  {
-    component: Avatar10,
-    id: "10",
-    name: "Social proof",
-  },
-];
+const demoComponents: DemoComponents<"avatar"> = {
+  "01": Avatar01,
+  "02": Avatar02,
+  "03": Avatar03,
+  "04": Avatar04,
+  "05": Avatar05,
+  "06": Avatar06,
+  "07": Avatar07,
+  "08": Avatar08,
+  "09": Avatar09,
+  "10": Avatar10,
+};

@@ -6,9 +6,9 @@ import ProgressIndicator03 from "@/ui/material-design/components/md-progress-ind
 import ProgressIndicator04 from "@/ui/material-design/components/md-progress-indicator/demos/md-progress-indicator-04";
 import ProgressIndicator05 from "@/ui/material-design/components/md-progress-indicator/demos/md-progress-indicator-05";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/progress-indicator",
@@ -30,47 +30,17 @@ export const Route = createFileRoute(
 
 function ProgressIndicatorComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-progress-indicator"
-      description="Explore Material 3 linear and circular progress indicators for determinate and indeterminate operations."
-      exampleNoun="progress indicator"
-      examples={progressIndicatorExamples}
-      sectionId="progress-indicator-patterns-title"
-      sectionTitle="Progress Indicator Patterns"
-      title="Progress Indicator"
+    <ComponentDemosPage
+      demoComponents={demoComponents}
+      slug="progress-indicator"
     />
   );
 }
 
-const progressIndicatorExamples: ComponentExample[] = [
-  {
-    component: ProgressIndicator01,
-    id: "01",
-    name: "Linear progress states",
-    wide: true,
-  },
-  {
-    component: ProgressIndicator02,
-    id: "02",
-    name: "Animated linear progress",
-    wide: true,
-  },
-  {
-    component: ProgressIndicator03,
-    id: "03",
-    name: "Determinate progress",
-    wide: true,
-  },
-  {
-    component: ProgressIndicator04,
-    id: "04",
-    name: "Indeterminate progress",
-    wide: true,
-  },
-  {
-    component: ProgressIndicator05,
-    id: "05",
-    name: "Circular progress values",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"progress-indicator"> = {
+  "01": ProgressIndicator01,
+  "02": ProgressIndicator02,
+  "03": ProgressIndicator03,
+  "04": ProgressIndicator04,
+  "05": ProgressIndicator05,
+};

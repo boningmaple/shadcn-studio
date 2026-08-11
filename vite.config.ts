@@ -13,10 +13,18 @@ const isTest = process.env.VITEST === "true";
 const config = defineConfig({
   staged: {
     "*": "vp check --fix",
+    // The inputs the committed search index is built from — its contents, its
+    // schema, the script that persists it, and the artifact itself. Touching
+    // one without regenerating would leave Demos silently unfindable.
+    "{src/registry.ts,src/search/search-index.ts,src/search/search-index.gen.json,scripts/build-search-index.ts}":
+      () => "npm run check:search-index",
   },
   fmt: {
     printWidth: 80,
-    ignorePatterns: ["routeTree.gen.ts"],
+    // Generated artifacts. The search index is compared byte-for-byte against
+    // a fresh build by `npm run check:search-index`, so reformatting it would
+    // fail that check on every commit.
+    ignorePatterns: ["routeTree.gen.ts", "search-index.gen.json"],
   },
   lint: {
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
