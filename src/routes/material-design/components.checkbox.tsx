@@ -6,9 +6,9 @@ import Checkbox03 from "@/ui/material-design/components/md-checkbox/demos/md-che
 import Checkbox04 from "@/ui/material-design/components/md-checkbox/demos/md-checkbox-04";
 import Checkbox05 from "@/ui/material-design/components/md-checkbox/demos/md-checkbox-05";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/checkbox")({
   component: CheckboxComponentPage,
@@ -27,48 +27,13 @@ export const Route = createFileRoute("/material-design/components/checkbox")({
 });
 
 function CheckboxComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-checkbox"
-      description="Explore Material 3 checkboxes and checkbox groups for selecting multiple options."
-      exampleNoun="checkbox"
-      examples={checkboxExamples}
-      sectionId="checkbox-patterns-title"
-      sectionTitle="Checkbox Patterns"
-      title="Checkbox"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="checkbox" />;
 }
 
-const checkboxExamples: ComponentExample[] = [
-  {
-    component: Checkbox01,
-    id: "01",
-    name: "Checkbox states",
-    wide: true,
-  },
-  {
-    component: Checkbox02,
-    id: "02",
-    name: "Checkbox group",
-    wide: true,
-  },
-  {
-    component: Checkbox03,
-    id: "03",
-    name: "Indeterminate parent checkbox",
-    wide: true,
-  },
-  {
-    component: Checkbox04,
-    id: "04",
-    name: "Required checkbox group",
-    wide: true,
-  },
-  {
-    component: Checkbox05,
-    id: "05",
-    name: "Disabled and read-only checkboxes",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"checkbox"> = {
+  "01": Checkbox01,
+  "02": Checkbox02,
+  "03": Checkbox03,
+  "04": Checkbox04,
+  "05": Checkbox05,
+};

@@ -5,9 +5,9 @@ import Divider02 from "@/ui/material-design/components/md-divider/demos/md-divid
 import Divider03 from "@/ui/material-design/components/md-divider/demos/md-divider-03";
 import Divider04 from "@/ui/material-design/components/md-divider/demos/md-divider-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/divider")({
   component: DividerComponentPage,
@@ -26,42 +26,12 @@ export const Route = createFileRoute("/material-design/components/divider")({
 });
 
 function DividerComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-divider"
-      description="Explore Material 3 dividers for separating content in lists, layouts, and dense surfaces."
-      exampleNoun="divider"
-      examples={dividerExamples}
-      sectionId="divider-patterns-title"
-      sectionTitle="Divider Patterns"
-      title="Divider"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="divider" />;
 }
 
-const dividerExamples: ComponentExample[] = [
-  {
-    component: Divider01,
-    id: "01",
-    name: "Full-width dividers",
-    wide: true,
-  },
-  {
-    component: Divider02,
-    id: "02",
-    name: "Inset list dividers",
-    wide: true,
-  },
-  {
-    component: Divider03,
-    id: "03",
-    name: "Vertical dividers",
-    wide: true,
-  },
-  {
-    component: Divider04,
-    id: "04",
-    name: "Responsive dividers",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"divider"> = {
+  "01": Divider01,
+  "02": Divider02,
+  "03": Divider03,
+  "04": Divider04,
+};

@@ -5,9 +5,9 @@ import Menu02 from "@/ui/material-design/components/md-menu/demos/md-menu-02";
 import Menu03 from "@/ui/material-design/components/md-menu/demos/md-menu-03";
 import Menu04 from "@/ui/material-design/components/md-menu/demos/md-menu-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/menu")({
   component: MenuComponentPage,
@@ -26,39 +26,12 @@ export const Route = createFileRoute("/material-design/components/menu")({
 });
 
 function MenuComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-menu"
-      description="Explore Material 3 menus with temporary surfaces, sections, shortcuts, selectable items, and submenus."
-      exampleNoun="menu"
-      examples={menuExamples}
-      sectionId="menu-patterns-title"
-      sectionTitle="Menu Patterns"
-      title="Menu"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="menu" />;
 }
 
-const menuExamples: ComponentExample[] = [
-  {
-    component: Menu01,
-    id: "01",
-    name: "Simple menu",
-  },
-  {
-    component: Menu02,
-    id: "02",
-    name: "Sectioned menu",
-    wide: true,
-  },
-  {
-    component: Menu03,
-    id: "03",
-    name: "Selectable menu",
-  },
-  {
-    component: Menu04,
-    id: "04",
-    name: "Submenu",
-  },
-];
+const demoComponents: DemoComponents<"menu"> = {
+  "01": Menu01,
+  "02": Menu02,
+  "03": Menu03,
+  "04": Menu04,
+};

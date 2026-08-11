@@ -5,9 +5,9 @@ import List02 from "@/ui/material-design/components/md-list/demos/md-list-02";
 import List03 from "@/ui/material-design/components/md-list/demos/md-list-03";
 import List04 from "@/ui/material-design/components/md-list/demos/md-list-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/list")({
   component: ListComponentPage,
@@ -26,38 +26,12 @@ export const Route = createFileRoute("/material-design/components/list")({
 });
 
 function ListComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-list"
-      description="Explore Material 3 list items with leading content, supporting text, trailing actions, selection controls, and sections."
-      exampleNoun="list"
-      examples={listExamples}
-      sectionId="list-patterns-title"
-      sectionTitle="List Patterns"
-      title="List"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="list" />;
 }
 
-const listExamples: ComponentExample[] = [
-  {
-    component: List01,
-    id: "01",
-    name: "Text and metadata list",
-  },
-  {
-    component: List02,
-    id: "02",
-    name: "Leading and trailing content",
-  },
-  {
-    component: List03,
-    id: "03",
-    name: "Multi-select list",
-  },
-  {
-    component: List04,
-    id: "04",
-    name: "Sectioned control list",
-  },
-];
+const demoComponents: DemoComponents<"list"> = {
+  "01": List01,
+  "02": List02,
+  "03": List03,
+  "04": List04,
+};

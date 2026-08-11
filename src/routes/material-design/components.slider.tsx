@@ -6,9 +6,9 @@ import Slider03 from "@/ui/material-design/components/md-slider/demos/md-slider-
 import Slider04 from "@/ui/material-design/components/md-slider/demos/md-slider-04";
 import Slider05 from "@/ui/material-design/components/md-slider/demos/md-slider-05";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/slider")({
   component: SliderComponentPage,
@@ -27,48 +27,13 @@ export const Route = createFileRoute("/material-design/components/slider")({
 });
 
 function SliderComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-slider"
-      description="Explore Material 3 sliders and range sliders for selecting a value from a continuous or stepped range."
-      exampleNoun="slider"
-      examples={sliderExamples}
-      sectionId="slider-patterns-title"
-      sectionTitle="Slider Patterns"
-      title="Slider"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="slider" />;
 }
 
-const sliderExamples: ComponentExample[] = [
-  {
-    component: Slider01,
-    id: "01",
-    name: "Slider states",
-    wide: true,
-  },
-  {
-    component: Slider02,
-    id: "02",
-    name: "Step sliders",
-    wide: true,
-  },
-  {
-    component: Slider03,
-    id: "03",
-    name: "Range slider",
-    wide: true,
-  },
-  {
-    component: Slider04,
-    id: "04",
-    name: "Slider value formatting",
-    wide: true,
-  },
-  {
-    component: Slider05,
-    id: "05",
-    name: "Vertical sliders",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"slider"> = {
+  "01": Slider01,
+  "02": Slider02,
+  "03": Slider03,
+  "04": Slider04,
+  "05": Slider05,
+};

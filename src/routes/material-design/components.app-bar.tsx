@@ -5,9 +5,9 @@ import AppBar02 from "@/ui/material-design/components/md-app-bar/demos/md-app-ba
 import AppBar03 from "@/ui/material-design/components/md-app-bar/demos/md-app-bar-03";
 import AppBar04 from "@/ui/material-design/components/md-app-bar/demos/md-app-bar-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/app-bar")({
   component: AppBarComponentPage,
@@ -26,42 +26,12 @@ export const Route = createFileRoute("/material-design/components/app-bar")({
 });
 
 function AppBarComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-app-bar"
-      description="Explore Material app bars for navigation, titles, actions, filters, and search."
-      exampleNoun="app bar"
-      examples={appBarExamples}
-      sectionId="app-bar-patterns-title"
-      sectionTitle="App Bar Patterns"
-      title="App Bar"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="app-bar" />;
 }
 
-const appBarExamples: ComponentExample[] = [
-  {
-    component: AppBar01,
-    id: "01",
-    name: "Small app bar",
-    wide: true,
-  },
-  {
-    component: AppBar02,
-    id: "02",
-    name: "Centered app bar",
-    wide: true,
-  },
-  {
-    component: AppBar03,
-    id: "03",
-    name: "Medium app bar",
-    wide: true,
-  },
-  {
-    component: AppBar04,
-    id: "04",
-    name: "Search app bar",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"app-bar"> = {
+  "01": AppBar01,
+  "02": AppBar02,
+  "03": AppBar03,
+  "04": AppBar04,
+};

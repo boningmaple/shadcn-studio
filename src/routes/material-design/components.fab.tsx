@@ -5,9 +5,9 @@ import FAB02 from "@/ui/material-design/components/md-fab/demos/md-fab-02";
 import FAB03 from "@/ui/material-design/components/md-fab/demos/md-fab-03";
 import FAB04 from "@/ui/material-design/components/md-fab/demos/md-fab-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/fab")({
   component: FABComponentPage,
@@ -26,42 +26,12 @@ export const Route = createFileRoute("/material-design/components/fab")({
 });
 
 function FABComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-fab"
-      description="Explore Material 3 floating action buttons for high-emphasis icon actions with responsive sizes, colors, and elevation."
-      exampleNoun="FAB"
-      examples={fabExamples}
-      sectionId="fab-patterns-title"
-      sectionTitle="FAB Patterns"
-      title="FAB"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="fab" />;
 }
 
-const fabExamples: ComponentExample[] = [
-  {
-    component: FAB01,
-    id: "01",
-    name: "FAB sizes",
-    wide: true,
-  },
-  {
-    component: FAB02,
-    id: "02",
-    name: "FAB color variants",
-    wide: true,
-  },
-  {
-    component: FAB03,
-    id: "03",
-    name: "Default and lowered FABs",
-    wide: true,
-  },
-  {
-    component: FAB04,
-    id: "04",
-    name: "FAB states",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"fab"> = {
+  "01": FAB01,
+  "02": FAB02,
+  "03": FAB03,
+  "04": FAB04,
+};

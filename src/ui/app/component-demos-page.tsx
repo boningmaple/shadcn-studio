@@ -1,6 +1,14 @@
 import * as React from "react";
 import { CheckIcon, Code2Icon, CopyIcon, LoaderCircleIcon } from "lucide-react";
 
+import {
+  demoAnchorId,
+  getComponent,
+  type ComponentEntry,
+  type ComponentSlug,
+  type Demo,
+  type DemoIdOf,
+} from "@/registry";
 import { Button } from "@/ui/shadcn/react-aria/button";
 import {
   Dialog,
@@ -12,59 +20,60 @@ import {
 import { Tooltip, TooltipTrigger } from "@/ui/shadcn/react-aria/tooltip";
 import { cn } from "@/lib/utils";
 
-export type ComponentExample = {
-  component: React.ComponentType;
-  id: string;
-  name: string;
-  wide?: boolean;
+/**
+ * The Demo previews a Component page renders, keyed by Demo id. The registry
+ * holds no component references (ADR-0003), so each route module supplies its
+ * own; the key type makes a Demo without a preview a compile error.
+ */
+export type DemoComponents<TSlug extends ComponentSlug> = Record<
+  DemoIdOf<TSlug>,
+  React.ComponentType
+>;
+
+type ComponentDemosPageProps<TSlug extends ComponentSlug> = {
+  demoComponents: DemoComponents<TSlug>;
+  slug: TSlug;
 };
 
-type ComponentExamplesPageProps = {
-  codeArtifactPrefix: string;
-  description: string;
-  exampleNoun: string;
-  examples: ComponentExample[];
-  sectionId: string;
-  sectionTitle: string;
-  title: string;
-};
+export function ComponentDemosPage<TSlug extends ComponentSlug>({
+  demoComponents,
+  slug,
+}: ComponentDemosPageProps<TSlug>) {
+  const component = getComponent(slug);
+  // The exact keys are checked where the route module declares them; inside
+  // this generic they are only known to be Demo ids of some Component.
+  const previews: Record<string, React.ComponentType> = demoComponents;
 
-export function ComponentExamplesPage({
-  codeArtifactPrefix,
-  description,
-  exampleNoun,
-  examples,
-  sectionId,
-  sectionTitle,
-  title,
-}: ComponentExamplesPageProps) {
   return (
     <div className="mx-auto w-full max-w-350 py-6 sm:px-2 sm:py-10">
       <header className="max-w-4xl">
         <h1 className="font-heading text-3xl font-semibold tracking-normal sm:text-4xl">
-          {title}
+          {component.name}
         </h1>
         <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-          {description}
+          {component.description}
         </p>
       </header>
 
       <section
-        aria-labelledby={sectionId}
+        aria-labelledby={component.sectionId}
         className="mt-10 overflow-hidden rounded-lg border bg-card sm:mt-12"
       >
         <div className="flex h-14 items-center border-b bg-muted/45 px-5">
-          <h2 className="font-heading text-base font-medium" id={sectionId}>
-            {sectionTitle}
+          <h2
+            className="font-heading text-base font-medium"
+            id={component.sectionId}
+          >
+            {component.sectionTitle}
           </h2>
         </div>
         <div className="-mr-px -mb-px grid sm:grid-cols-2 lg:grid-cols-3">
-          {examples.map((example) => (
-            <ComponentExampleCard
-              codeArtifactPrefix={codeArtifactPrefix}
-              example={example}
-              exampleNoun={exampleNoun}
-              key={example.id}
+          {component.demos.map((demo) => (
+            <DemoCard
+              component={component}
+              demo={demo}
+              key={demo.id}
+              preview={previews[demo.id]}
             />
           ))}
         </div>
@@ -73,36 +82,27 @@ export function ComponentExamplesPage({
   );
 }
 
-type ComponentExampleCardProps = {
-  codeArtifactPrefix: string;
-  example: ComponentExample;
-  exampleNoun: string;
+type DemoCardProps = {
+  component: ComponentEntry;
+  demo: Demo;
+  preview: React.ComponentType;
 };
 
-function ComponentExampleCard({
-  codeArtifactPrefix,
-  example,
-  exampleNoun,
-}: ComponentExampleCardProps) {
-  const Preview = example.component;
-
+function DemoCard({ component, demo, preview: Preview }: DemoCardProps) {
   return (
     <article
-      aria-label={example.name}
+      aria-label={demo.name}
       className={cn(
         "group/item relative flex min-h-57.5 items-center justify-center border-r border-b border-dashed px-6 py-16",
-        example.wide && "sm:col-span-2 lg:col-span-3",
+        demo.wide && "sm:col-span-2 lg:col-span-3",
       )}
+      id={demoAnchorId(component, demo)}
     >
       <span className="pointer-events-none absolute top-4 left-4 text-sm text-muted-foreground opacity-0 transition-opacity group-hover/item:opacity-100 [@media(hover:none)]:opacity-100">
-        {example.name}
+        {demo.name}
       </span>
       <div className="absolute top-2 right-2 z-10 opacity-0 transition-opacity group-hover/item:opacity-100 [@media(hover:none)]:opacity-100">
-        <CodeDialog
-          codeArtifactPrefix={codeArtifactPrefix}
-          example={example}
-          exampleNoun={exampleNoun}
-        />
+        <CodeDialog component={component} demo={demo} />
       </div>
       <Preview />
     </article>
@@ -120,11 +120,7 @@ type ComponentCodePayload = {
   html: string;
 };
 
-function CodeDialog({
-  codeArtifactPrefix,
-  example,
-  exampleNoun,
-}: ComponentExampleCardProps) {
+function CodeDialog({ component, demo }: Omit<DemoCardProps, "preview">) {
   const [codeState, setCodeState] = React.useState<ComponentCodeState>({
     status: "idle",
   });
@@ -148,7 +144,7 @@ function CodeDialog({
 
     try {
       const response = await fetch(
-        `${import.meta.env.BASE_URL}generated/${codeArtifactPrefix}-${example.id}.json`,
+        `${import.meta.env.BASE_URL}generated/${demoAnchorId(component, demo)}.json`,
       );
 
       if (!response.ok) {
@@ -179,7 +175,7 @@ function CodeDialog({
   return (
     <DialogTrigger>
       <Button
-        aria-label={`View code for ${example.name}`}
+        aria-label={`View code for ${demo.name}`}
         className="group/code pointer-events-auto relative overflow-visible text-muted-foreground hover:bg-muted hover:text-foreground"
         onPress={loadCode}
         size="icon"
@@ -198,9 +194,9 @@ function CodeDialog({
         isDismissable
       >
         <DialogHeader className="border-b px-6 py-5 pr-14">
-          <DialogTitle className="text-lg">{example.name}</DialogTitle>
+          <DialogTitle className="text-lg">{demo.name}</DialogTitle>
           <DialogDescription>
-            The complete TSX source for this {exampleNoun} example.
+            The complete TSX source for this {component.demoNoun} example.
           </DialogDescription>
         </DialogHeader>
         <div className="max-h-[calc(85vh-6.5rem)] overflow-y-auto p-4 sm:p-6">

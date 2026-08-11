@@ -5,9 +5,9 @@ import SplitButton02 from "@/ui/material-design/components/md-split-button/demos
 import SplitButton03 from "@/ui/material-design/components/md-split-button/demos/md-split-button-03";
 import SplitButton04 from "@/ui/material-design/components/md-split-button/demos/md-split-button-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/split-button",
@@ -29,41 +29,13 @@ export const Route = createFileRoute(
 
 function SplitButtonComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-split-button"
-      description="Explore Material 3 split buttons that pair a primary action with a menu of related alternatives."
-      exampleNoun="split button"
-      examples={splitButtonExamples}
-      sectionId="split-button-patterns-title"
-      sectionTitle="Split Button Patterns"
-      title="Split Button"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="split-button" />
   );
 }
 
-const splitButtonExamples: ComponentExample[] = [
-  {
-    component: SplitButton01,
-    id: "01",
-    name: "Filled split button",
-    wide: true,
-  },
-  {
-    component: SplitButton02,
-    id: "02",
-    name: "Tonal and outlined split buttons",
-    wide: true,
-  },
-  {
-    component: SplitButton03,
-    id: "03",
-    name: "Split button sizes",
-    wide: true,
-  },
-  {
-    component: SplitButton04,
-    id: "04",
-    name: "Split button disabled states",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"split-button"> = {
+  "01": SplitButton01,
+  "02": SplitButton02,
+  "03": SplitButton03,
+  "04": SplitButton04,
+};

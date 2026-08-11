@@ -5,9 +5,9 @@ import ExtendedFAB02 from "@/ui/material-design/components/md-extended-fab/demos
 import ExtendedFAB03 from "@/ui/material-design/components/md-extended-fab/demos/md-extended-fab-03";
 import ExtendedFAB04 from "@/ui/material-design/components/md-extended-fab/demos/md-extended-fab-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute(
   "/material-design/components/extended-fab",
@@ -29,41 +29,13 @@ export const Route = createFileRoute(
 
 function ExtendedFABComponentPage() {
   return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-extended-fab"
-      description="Explore Material 3 extended floating action buttons for high-emphasis primary actions with labels, icons, colors, and lowered elevation."
-      exampleNoun="extended FAB"
-      examples={extendedFABExamples}
-      sectionId="extended-fab-patterns-title"
-      sectionTitle="Extended FAB Patterns"
-      title="Extended FAB"
-    />
+    <ComponentDemosPage demoComponents={demoComponents} slug="extended-fab" />
   );
 }
 
-const extendedFABExamples: ComponentExample[] = [
-  {
-    component: ExtendedFAB01,
-    id: "01",
-    name: "Extended FAB color variants",
-    wide: true,
-  },
-  {
-    component: ExtendedFAB02,
-    id: "02",
-    name: "Extended FAB with and without icons",
-    wide: true,
-  },
-  {
-    component: ExtendedFAB03,
-    id: "03",
-    name: "Default and lowered elevation",
-    wide: true,
-  },
-  {
-    component: ExtendedFAB04,
-    id: "04",
-    name: "Extended FAB states",
-    wide: true,
-  },
-];
+const demoComponents: DemoComponents<"extended-fab"> = {
+  "01": ExtendedFAB01,
+  "02": ExtendedFAB02,
+  "03": ExtendedFAB03,
+  "04": ExtendedFAB04,
+};

@@ -5,9 +5,9 @@ import Snackbar02 from "@/ui/material-design/components/md-snackbar/demos/md-sna
 import Snackbar03 from "@/ui/material-design/components/md-snackbar/demos/md-snackbar-03";
 import Snackbar04 from "@/ui/material-design/components/md-snackbar/demos/md-snackbar-04";
 import {
-  ComponentExamplesPage,
-  type ComponentExample,
-} from "@/ui/app/component-examples-page";
+  ComponentDemosPage,
+  type DemoComponents,
+} from "@/ui/app/component-demos-page";
 
 export const Route = createFileRoute("/material-design/components/snackbar")({
   component: SnackbarComponentPage,
@@ -26,38 +26,12 @@ export const Route = createFileRoute("/material-design/components/snackbar")({
 });
 
 function SnackbarComponentPage() {
-  return (
-    <ComponentExamplesPage
-      codeArtifactPrefix="md-snackbar"
-      description="Explore Material 3 snackbars for temporary process feedback, optional actions, and dismissible notices."
-      exampleNoun="snackbar"
-      examples={snackbarExamples}
-      sectionId="snackbar-patterns-title"
-      sectionTitle="Snackbar Patterns"
-      title="Snackbar"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="snackbar" />;
 }
 
-const snackbarExamples: ComponentExample[] = [
-  {
-    component: Snackbar01,
-    id: "01",
-    name: "Basic snackbar",
-  },
-  {
-    component: Snackbar02,
-    id: "02",
-    name: "Snackbar with action",
-  },
-  {
-    component: Snackbar03,
-    id: "03",
-    name: "Dismissible snackbar",
-  },
-  {
-    component: Snackbar04,
-    id: "04",
-    name: "Consecutive snackbars",
-  },
-];
+const demoComponents: DemoComponents<"snackbar"> = {
+  "01": Snackbar01,
+  "02": Snackbar02,
+  "03": Snackbar03,
+  "04": Snackbar04,
+};
