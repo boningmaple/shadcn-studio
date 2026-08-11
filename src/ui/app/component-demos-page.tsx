@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRouterState } from "@tanstack/react-router";
 import { CheckIcon, Code2Icon, CopyIcon, LoaderCircleIcon } from "lucide-react";
 
 import {
@@ -40,6 +41,7 @@ export function ComponentDemosPage<TSlug extends ComponentSlug>({
   slug,
 }: ComponentDemosPageProps<TSlug>) {
   const component = getComponent(slug);
+  const markedAnchorId = useMarkedAnchorId();
   // The exact keys are checked where the route module declares them; inside
   // this generic they are only known to be Demo ids of some Component.
   const previews: Record<string, React.ComponentType> = demoComponents;
@@ -72,6 +74,7 @@ export function ComponentDemosPage<TSlug extends ComponentSlug>({
             <DemoCard
               component={component}
               demo={demo}
+              isMarked={demoAnchorId(component, demo) === markedAnchorId}
               key={demo.id}
               preview={previews[demo.id]}
             />
@@ -82,20 +85,64 @@ export function ComponentDemosPage<TSlug extends ComponentSlug>({
   );
 }
 
+/**
+ * How long a Demo stays marked after a link sends a visitor to it. Long enough
+ * to find the card among ten near-identical ones, short enough that the mark
+ * reads as an arrival rather than a selected state.
+ */
+const markDuration = 2500;
+
+/**
+ * The Demo the current fragment points at, for as long as it stays marked.
+ *
+ * Scrolling is the router's own hash behaviour, not ours; this only decides
+ * what to mark once the visitor is there. It runs in an effect, so the server
+ * — which never sees a fragment — and the first client render agree.
+ */
+function useMarkedAnchorId(): string | undefined {
+  const hash = useRouterState({ select: (state) => state.location.hash });
+  const [markedAnchorId, setMarkedAnchorId] = React.useState<string>();
+
+  React.useEffect(() => {
+    if (hash === "") {
+      setMarkedAnchorId(undefined);
+      return;
+    }
+
+    setMarkedAnchorId(hash);
+    const timeout = window.setTimeout(
+      () => setMarkedAnchorId(undefined),
+      markDuration,
+    );
+
+    return () => window.clearTimeout(timeout);
+  }, [hash]);
+
+  return markedAnchorId;
+}
+
 type DemoCardProps = {
   component: ComponentEntry;
   demo: Demo;
+  isMarked: boolean;
   preview: React.ComponentType;
 };
 
-function DemoCard({ component, demo, preview: Preview }: DemoCardProps) {
+function DemoCard({
+  component,
+  demo,
+  isMarked,
+  preview: Preview,
+}: DemoCardProps) {
   return (
     <article
       aria-label={demo.name}
       className={cn(
-        "group/item relative flex min-h-57.5 items-center justify-center border-r border-b border-dashed px-6 py-16",
+        "group/item relative flex min-h-57.5 scroll-mt-20 items-center justify-center border-r border-b border-dashed px-6 py-16 transition-colors duration-700",
         demo.wide && "sm:col-span-2 lg:col-span-3",
+        "data-[marked=true]:bg-primary/8 data-[marked=true]:ring-2 data-[marked=true]:ring-ring/50 data-[marked=true]:duration-150",
       )}
+      data-marked={isMarked}
       id={demoAnchorId(component, demo)}
     >
       <span className="pointer-events-none absolute top-4 left-4 text-sm text-muted-foreground opacity-0 transition-opacity group-hover/item:opacity-100 [@media(hover:none)]:opacity-100">
@@ -120,7 +167,10 @@ type ComponentCodePayload = {
   html: string;
 };
 
-function CodeDialog({ component, demo }: Omit<DemoCardProps, "preview">) {
+function CodeDialog({
+  component,
+  demo,
+}: Pick<DemoCardProps, "component" | "demo">) {
   const [codeState, setCodeState] = React.useState<ComponentCodeState>({
     status: "idle",
   });
