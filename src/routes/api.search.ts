@@ -2,7 +2,7 @@ import { restore } from "@orama/plugin-data-persistence";
 import { createFileRoute } from "@tanstack/react-router";
 
 import persistedSearchIndex from "@/search/search-index.gen.json?raw";
-import { searchIndex, type SearchIndex } from "@/search/search-index";
+import { findHits, type SearchIndex } from "@/search/search-index";
 
 /**
  * Restored once and reused. The Nitro preset is `node-server`, a long-lived
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/api/search")({
     handlers: {
       GET: async ({ request }) => {
         const query = new URL(request.url).searchParams.get("q") ?? "";
-        const hits = await searchIndex(await getSearchIndex(), query);
+        const hits = await findHits(await getSearchIndex(), query);
 
         return Response.json(hits, {
           // Results for a given query change only on deploy.

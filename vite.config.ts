@@ -13,9 +13,10 @@ const isTest = process.env.VITEST === "true";
 const config = defineConfig({
   staged: {
     "*": "vp check --fix",
-    // The inputs the committed search index is built from. Touching one of
-    // them without regenerating would leave new or renamed Demos unfindable.
-    "{src/registry.ts,src/search/search-index.ts,src/search/search-index.gen.json}":
+    // The inputs the committed search index is built from — its contents, its
+    // schema, the script that persists it, and the artifact itself. Touching
+    // one without regenerating would leave Demos silently unfindable.
+    "{src/registry.ts,src/search/search-index.ts,src/search/search-index.gen.json,scripts/build-search-index.ts}":
       () => "npm run check:search-index",
   },
   fmt: {

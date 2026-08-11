@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { LoaderCircleIcon, SearchIcon } from "lucide-react";
 
 import type { Hit } from "@/search/hits";
-import { useSearch, type SearchResults } from "@/ui/app/use-search";
+import { useSearch, type SearchState } from "@/ui/app/use-search";
 import { Button } from "@/ui/shadcn/react-aria/button";
 import {
   Command,
@@ -44,7 +44,7 @@ export function SearchPalette({ isOpen, onOpenChange }: SearchPaletteProps) {
 
 function SearchPaletteBody({ onDone }: { onDone: () => void }) {
   const [query, setQuery] = React.useState("");
-  const { results, retry } = useSearch(query);
+  const { search, retry } = useSearch(query);
   const navigate = useNavigate();
 
   const goTo = (href: string) => {
@@ -67,7 +67,7 @@ function SearchPaletteBody({ onDone }: { onDone: () => void }) {
     >
       <div className="relative">
         <CommandInput placeholder={searchPlaceholder} />
-        {results.status === "loading" ? (
+        {search.status === "loading" ? (
           <LoaderCircleIcon
             aria-hidden
             className="absolute top-1/2 right-3 size-4 -translate-y-1/2 animate-spin text-muted-foreground"
@@ -76,26 +76,26 @@ function SearchPaletteBody({ onDone }: { onDone: () => void }) {
       </div>
 
       <div className="sr-only" role="status">
-        {announcementFor(results)}
+        {announcementFor(search)}
       </div>
 
-      <SearchPaletteResults onRetry={retry} onSelect={goTo} results={results} />
+      <SearchPaletteHits onRetry={retry} onSelect={goTo} search={search} />
     </Command>
   );
 }
 
-type SearchPaletteResultsProps = {
+type SearchPaletteHitsProps = {
   onRetry: () => void;
   onSelect: (href: string) => void;
-  results: SearchResults;
+  search: SearchState;
 };
 
-function SearchPaletteResults({
+function SearchPaletteHits({
   onRetry,
   onSelect,
-  results,
-}: SearchPaletteResultsProps) {
-  if (results.status === "failed") {
+  search,
+}: SearchPaletteHitsProps) {
+  if (search.status === "failed") {
     return (
       <div
         className="flex flex-col items-center justify-center gap-4 px-6 py-10 text-center"
@@ -112,15 +112,15 @@ function SearchPaletteResults({
   }
 
   // Never blanked while loading: the previous Hits stay until new ones land.
-  if (results.status === "ready" && results.hits.length === 0) {
-    return <CommandEmpty>No results for “{results.query}”</CommandEmpty>;
+  if (search.status === "ready" && search.hits.length === 0) {
+    return <CommandEmpty>No results for “{search.query}”</CommandEmpty>;
   }
 
   return (
     <CommandList
       aria-label="Search results"
       className="mt-1"
-      items={results.hits.map((hit) => ({ ...hit, id: hit.href }))}
+      items={search.hits.map((hit) => ({ ...hit, id: hit.href }))}
       onAction={(key) => onSelect(String(key))}
     >
       {(hit) => (
@@ -151,7 +151,7 @@ function labelFor(hit: Hit): string {
     : `${hit.demoName}, in ${hit.componentName}`;
 }
 
-function announcementFor({ hits, query, status }: SearchResults): string {
+function announcementFor({ hits, query, status }: SearchState): string {
   if (status === "loading") {
     return "Searching";
   }
@@ -224,9 +224,10 @@ function isApplePlatform(): boolean {
 /**
  * Opens the palette on ⌘K, or Ctrl+K away from macOS.
  *
- * Both modifiers are accepted everywhere rather than gated on the platform:
- * the hint tells a visitor which one their keyboard has, and honouring the
- * other costs nothing while the palette is closed.
+ * Strictly one modifier per platform, matching the hint. Claiming Ctrl+K on
+ * macOS as well would cost something real: there it is the system's
+ * kill-to-end-of-line binding, and VibeUI's own Text Field and Search Demos
+ * are text fields a visitor may be editing.
  */
 export function useSearchShortcut(onOpen: () => void) {
   React.useEffect(() => {
@@ -235,7 +236,9 @@ export function useSearchShortcut(onOpen: () => void) {
         return;
       }
 
-      if (!event.metaKey && !event.ctrlKey) {
+      const modifier = isApplePlatform() ? event.metaKey : event.ctrlKey;
+
+      if (!modifier) {
         return;
       }
 

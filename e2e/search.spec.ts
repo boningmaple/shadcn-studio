@@ -2,16 +2,21 @@ import { expect, test, type Page } from "@playwright/test";
 
 import { components, demoAnchorId, getComponent } from "../src/registry";
 import { searchEndpoint } from "../src/search/hits";
+import {
+  searchDialogTitle,
+  searchTriggerLabel,
+} from "../src/ui/app/search-palette";
 
 const button = getComponent("button");
 const elevatedDemo = button.demos[2];
 const elevatedAnchorId = demoAnchorId(button, elevatedDemo);
 
-const palette = (page: Page) => page.getByRole("dialog", { name: "Search" });
+const palette = (page: Page) =>
+  page.getByRole("dialog", { name: searchDialogTitle });
 const searchInput = (page: Page) => page.getByRole("searchbox");
 const hits = (page: Page) => page.getByRole("menuitem");
 const searchTrigger = (page: Page) =>
-  page.getByRole("button", { name: "Search" });
+  page.getByRole("button", { name: searchTriggerLabel });
 
 /**
  * Waits for the app to become interactive.
@@ -32,30 +37,61 @@ async function openPalette(page: Page) {
   await expect(palette(page)).toBeVisible();
 }
 
+/**
+ * The palette reads the platform off the user agent, so overriding the user
+ * agent is what lets one machine cover both platforms' shortcuts.
+ */
+const chrome =
+  "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151 Safari/537.36";
+const macUserAgent = `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ${chrome}`;
+const windowsUserAgent = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) ${chrome}`;
+
+test.describe("the keyboard shortcut", () => {
+  test.describe("on a Mac", () => {
+    test.use({ userAgent: macUserAgent });
+
+    test("⌘K opens the palette from any page", async ({ page }) => {
+      await goto(page, button.href);
+
+      await page.keyboard.press("Meta+k");
+
+      await expect(palette(page)).toBeVisible();
+    });
+
+    test("Ctrl+K is left to macOS, which binds it in text fields", async ({
+      page,
+    }) => {
+      await goto(page, "/");
+
+      await page.keyboard.press("Control+k");
+
+      await expect(palette(page)).toBeHidden();
+    });
+  });
+
+  test.describe("away from macOS", () => {
+    test.use({ userAgent: windowsUserAgent });
+
+    test("Ctrl+K opens the palette from any page", async ({ page }) => {
+      await goto(page, button.href);
+
+      await page.keyboard.press("Control+k");
+
+      await expect(palette(page)).toBeVisible();
+    });
+  });
+});
+
 test.describe("opening the palette", () => {
-  test("⌘K opens it from any page", async ({ page }) => {
-    await goto(page, button.href);
-
-    await page.keyboard.press("Meta+k");
-
-    await expect(palette(page)).toBeVisible();
-  });
-
-  test("Ctrl+K opens it too, for keyboards without ⌘", async ({ page }) => {
-    await goto(page, "/");
-
-    await page.keyboard.press("Control+k");
-
-    await expect(palette(page)).toBeVisible();
-  });
-
   test("the header search trigger is a button, and opens it", async ({
     page,
   }) => {
     await goto(page, "/");
 
     // The control that used to be a text input silently discarding keystrokes.
-    await expect(page.getByRole("textbox", { name: "Search" })).toHaveCount(0);
+    await expect(
+      page.getByRole("textbox", { name: searchTriggerLabel }),
+    ).toHaveCount(0);
     await openPalette(page);
   });
 
@@ -82,13 +118,8 @@ test.describe("opening the palette", () => {
 });
 
 test.describe("the keyboard hint", () => {
-  const chrome =
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151 Safari/537.36";
-
   test.describe("on a Mac", () => {
-    test.use({
-      userAgent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ${chrome}`,
-    });
+    test.use({ userAgent: macUserAgent });
 
     test("shows ⌘", async ({ page }) => {
       await goto(page, "/");
@@ -98,9 +129,7 @@ test.describe("the keyboard hint", () => {
   });
 
   test.describe("away from macOS", () => {
-    test.use({
-      userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) ${chrome}`,
-    });
+    test.use({ userAgent: windowsUserAgent });
 
     test("shows the key that keyboard actually has", async ({ page }) => {
       await goto(page, "/");
@@ -142,8 +171,7 @@ test.describe("searching", () => {
 
   test("keyboard alone reaches a Component page", async ({ page }) => {
     await goto(page, "/");
-    await page.keyboard.press("Meta+k");
-    await expect(palette(page)).toBeVisible();
+    await openPalette(page);
 
     await page.keyboard.type("button");
     await expect(hits(page).first()).toHaveAccessibleName(button.name);

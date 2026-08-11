@@ -16,6 +16,18 @@ import {
 export const Route = createFileRoute("/material-design/components/icon-button")(
   {
     component: IconButtonComponentPage,
+    head: () => ({
+      meta: [
+        {
+          title: "Icon Button Components | Shadcn Studio",
+        },
+        {
+          name: "description",
+          content:
+            "Accessible Material 3 icon button patterns built with React Aria, React, and Tailwind CSS.",
+        },
+      ],
+    }),
   },
 );
 

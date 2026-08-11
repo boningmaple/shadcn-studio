@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 /**
  * The search wire format, shared by the Server Route and the palette.
  *
@@ -12,35 +14,17 @@ export function searchRequestUrl(query: string): string {
   return `${searchEndpoint}?q=${encodeURIComponent(query)}`;
 }
 
-/** Which kind of thing a Search record stands for. */
-export type SearchRecordKind = "component" | "demo";
+const hitSchema = z.object({
+  componentName: z.string(),
+  /** Present on Demo Hits only. */
+  demoName: z.string().optional(),
+  href: z.string(),
+  /** Which kind of thing the matched Search record stands for. */
+  kind: z.enum(["component", "demo"]),
+  score: z.number(),
+});
+
+export const hitsSchema = z.array(hitSchema);
 
 /** A Search record a query matched, carrying the score that orders it. */
-export type Hit = {
-  componentName: string;
-  /** Present on Demo Hits only. */
-  demoName?: string;
-  href: string;
-  kind: SearchRecordKind;
-  score: number;
-};
-
-export function isHits(value: unknown): value is Hit[] {
-  return Array.isArray(value) && value.every(isHit);
-}
-
-function isHit(value: unknown): value is Hit {
-  if (typeof value !== "object" || value === null) {
-    return false;
-  }
-
-  const hit = value as Record<string, unknown>;
-
-  return (
-    typeof hit.componentName === "string" &&
-    (hit.demoName === undefined || typeof hit.demoName === "string") &&
-    typeof hit.href === "string" &&
-    (hit.kind === "component" || hit.kind === "demo") &&
-    typeof hit.score === "number"
-  );
-}
+export type Hit = z.infer<typeof hitSchema>;

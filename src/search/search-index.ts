@@ -73,7 +73,7 @@ const limit = 20;
 /** Zero requires every term to match: at ~226 records precision beats recall. */
 const threshold = 0;
 
-export function searchRecordsOf(
+function searchRecordsOf(
   components: readonly ComponentEntry[],
 ): SearchRecord[] {
   return components.flatMap((component) => [
@@ -115,7 +115,7 @@ export async function createSearchIndex(
  * An empty query is a navigation jump rather than a search, so it answers with
  * every Component and no Demo.
  */
-export async function searchIndex(
+export async function findHits(
   index: SearchIndex,
   query: string,
 ): Promise<Hit[]> {

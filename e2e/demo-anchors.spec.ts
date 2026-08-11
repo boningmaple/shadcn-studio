@@ -58,6 +58,22 @@ test("a fragment matching no Demo leaves the page at the top", async ({
   expect(pageErrors).toEqual([]);
 });
 
+test("every Component page carries its own title and description", async ({
+  page,
+}) => {
+  // Route metadata is the one thing the registry does not own, so it is the
+  // one thing a mechanical rewrite of the route modules can drop unnoticed.
+  for (const component of components) {
+    await page.goto(component.href);
+
+    await expect(page).toHaveTitle(new RegExp(`^${component.name} `));
+    await expect(page.locator('head meta[name="description"]')).toHaveAttribute(
+      "content",
+      /\S/,
+    );
+  }
+});
+
 test("every Component page anchors every one of its Demos", async ({
   page,
 }) => {

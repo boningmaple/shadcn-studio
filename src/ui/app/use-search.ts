@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { isHits, searchRequestUrl, type Hit } from "@/search/hits";
+import { hitsSchema, searchRequestUrl, type Hit } from "@/search/hits";
 
 /**
  * Long enough that a burst of typing is one request, short enough that the
@@ -10,7 +10,7 @@ export const searchDebounceMs = 150;
 
 export type SearchStatus = "loading" | "ready" | "failed";
 
-export type SearchResults = {
+export type SearchState = {
   /**
    * What is on screen. Kept from the previous query while a new one is in
    * flight: blanking the list at a 150ms debounce reads as flicker.
@@ -21,7 +21,7 @@ export type SearchResults = {
   status: SearchStatus;
 };
 
-const initialResults: SearchResults = {
+const initialState: SearchState = {
   hits: [],
   query: "",
   status: "loading",
@@ -38,12 +38,12 @@ const initialResults: SearchResults = {
  * and be very hard to reproduce afterwards.
  */
 export function useSearch(query: string): {
-  results: SearchResults;
   retry: () => void;
+  search: SearchState;
 } {
   const settledQuery = useDebounced(query, searchDebounceMs);
   const [attempt, setAttempt] = React.useState(0);
-  const [results, setResults] = React.useState(initialResults);
+  const [search, setSearch] = React.useState(initialState);
 
   // What the visitor has typed right now, readable from a promise that
   // resolves long after the render it was started in.
@@ -54,7 +54,7 @@ export function useSearch(query: string): {
 
   React.useEffect(() => {
     const controller = new AbortController();
-    setResults((previous) => ({ ...previous, status: "loading" }));
+    setSearch((previous) => ({ ...previous, status: "loading" }));
 
     const run = async () => {
       try {
@@ -66,23 +66,19 @@ export function useSearch(query: string): {
           throw new Error(`Search failed with status ${response.status}`);
         }
 
-        const payload: unknown = await response.json();
-
-        if (!isHits(payload)) {
-          throw new Error("Search response has an invalid shape");
-        }
+        const hits = hitsSchema.parse(await response.json());
 
         if (typedQuery.current !== settledQuery) {
           return;
         }
 
-        setResults({ hits: payload, query: settledQuery, status: "ready" });
+        setSearch({ hits, query: settledQuery, status: "ready" });
       } catch {
         if (controller.signal.aborted || typedQuery.current !== settledQuery) {
           return;
         }
 
-        setResults((previous) => ({ ...previous, status: "failed" }));
+        setSearch((previous) => ({ ...previous, status: "failed" }));
       }
     };
 
@@ -93,7 +89,7 @@ export function useSearch(query: string): {
 
   const retry = React.useCallback(() => setAttempt((count) => count + 1), []);
 
-  return { results, retry };
+  return { retry, search };
 }
 
 /**

@@ -12,6 +12,18 @@ import {
 export const Route = createFileRoute("/material-design/components/time-picker")(
   {
     component: TimePickerComponentPage,
+    head: () => ({
+      meta: [
+        {
+          title: "Time Picker Components | Shadcn Studio",
+        },
+        {
+          name: "description",
+          content:
+            "Accessible Material 3 input time picker patterns built with React Aria, React, and Tailwind CSS.",
+        },
+      ],
+    }),
   },
 );
 

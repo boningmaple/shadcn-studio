@@ -4,7 +4,7 @@ import type { ComponentEntry } from "@/registry";
 import type { Hit } from "@/search/hits";
 import {
   createSearchIndex,
-  searchIndex,
+  findHits,
   type SearchIndex,
 } from "@/search/search-index";
 
@@ -74,9 +74,9 @@ beforeAll(async () => {
 const labelsOf = (hits: Hit[]) =>
   hits.map((hit) => hit.demoName ?? hit.componentName);
 
-const query = async (term: string) => labelsOf(await searchIndex(index, term));
+const query = async (term: string) => labelsOf(await findHits(index, term));
 
-describe("searchIndex", () => {
+describe("findHits", () => {
   it("ranks a Component above the Demos that merely mention it", async () => {
     const labels = await query("button");
 
@@ -129,7 +129,7 @@ describe("searchIndex", () => {
   });
 
   it("answers an empty query with every Component and no Demo", async () => {
-    const hits = await searchIndex(index, "");
+    const hits = await findHits(index, "");
 
     expect(hits.map((hit) => hit.componentName)).toEqual([
       "Button",
@@ -147,8 +147,8 @@ describe("searchIndex", () => {
 
 describe("Hits", () => {
   it("carries a Component's destination and no Demo name", async () => {
-    const [hit] = await searchIndex(index, "checkbox chips");
-    const chips = (await searchIndex(index, "chips")).find(
+    const [hit] = await findHits(index, "checkbox chips");
+    const chips = (await findHits(index, "chips")).find(
       (candidate) => candidate.kind === "component",
     );
 
@@ -162,7 +162,7 @@ describe("Hits", () => {
   });
 
   it("labels a Demo with the Component it belongs to, and links to its anchor", async () => {
-    const [hit] = await searchIndex(index, "checklist");
+    const [hit] = await findHits(index, "checklist");
 
     expect(hit).toEqual({
       componentName: "Card",

@@ -12,6 +12,18 @@ import {
 export const Route = createFileRoute("/material-design/components/date-picker")(
   {
     component: DatePickerComponentPage,
+    head: () => ({
+      meta: [
+        {
+          title: "Date Picker Components | Shadcn Studio",
+        },
+        {
+          name: "description",
+          content:
+            "Accessible Material 3 date picker patterns built with React Aria, React, and Tailwind CSS.",
+        },
+      ],
+    }),
   },
 );
 

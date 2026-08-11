@@ -249,7 +249,7 @@ function CodeDialog({
         <DialogHeader className="border-b px-6 py-5 pr-14">
           <DialogTitle className="text-lg">{demo.name}</DialogTitle>
           <DialogDescription>
-            The complete TSX source for this {component.demoNoun} example.
+            The complete TSX source for this {component.demoNoun}.
           </DialogDescription>
         </DialogHeader>
         <div className="max-h-[calc(85vh-6.5rem)] overflow-y-auto p-4 sm:p-6">
