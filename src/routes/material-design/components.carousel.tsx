@@ -14,7 +14,7 @@ export const Route = createFileRoute("/material-design/components/carousel")({
   head: () => ({
     meta: [
       {
-        title: "Carousel Components | Shadcn Studio",
+        title: "Carousel Components | VibeUI",
       },
       {
         name: "description",

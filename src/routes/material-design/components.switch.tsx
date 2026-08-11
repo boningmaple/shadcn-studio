@@ -15,7 +15,7 @@ export const Route = createFileRoute("/material-design/components/switch")({
   head: () => ({
     meta: [
       {
-        title: "Switch Components | Shadcn Studio",
+        title: "Switch Components | VibeUI",
       },
       {
         name: "description",

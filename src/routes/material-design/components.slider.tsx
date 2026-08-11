@@ -15,7 +15,7 @@ export const Route = createFileRoute("/material-design/components/slider")({
   head: () => ({
     meta: [
       {
-        title: "Slider Components | Shadcn Studio",
+        title: "Slider Components | VibeUI",
       },
       {
         name: "description",

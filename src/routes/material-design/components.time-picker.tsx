@@ -15,7 +15,7 @@ export const Route = createFileRoute("/material-design/components/time-picker")(
     head: () => ({
       meta: [
         {
-          title: "Time Picker Components | Shadcn Studio",
+          title: "Time Picker Components | VibeUI",
         },
         {
           name: "description",
