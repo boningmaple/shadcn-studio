@@ -5,6 +5,13 @@
  * the engine into the browser bundle.
  */
 
+/** Where the palette asks its questions. */
+export const searchEndpoint = "/api/search";
+
+export function searchRequestUrl(query: string): string {
+  return `${searchEndpoint}?q=${encodeURIComponent(query)}`;
+}
+
 /** Which kind of thing a Search record stands for. */
 export type SearchRecordKind = "component" | "demo";
 

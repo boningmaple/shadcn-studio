@@ -140,7 +140,10 @@ function DemoCard({
       className={cn(
         "group/item relative flex min-h-57.5 scroll-mt-20 items-center justify-center border-r border-b border-dashed px-6 py-16 transition-colors duration-700",
         demo.wide && "sm:col-span-2 lg:col-span-3",
-        "data-[marked=true]:bg-primary/8 data-[marked=true]:ring-2 data-[marked=true]:ring-ring/50 data-[marked=true]:duration-150",
+        // An inset ring, not a regular one: the cards sit flush against a
+        // section that clips its overflow, so a ring drawn outside the border
+        // box is cut off at the edges.
+        "data-[marked=true]:bg-primary/8 data-[marked=true]:inset-ring-2 data-[marked=true]:inset-ring-ring/60 data-[marked=true]:duration-150",
       )}
       data-marked={isMarked}
       id={demoAnchorId(component, demo)}
