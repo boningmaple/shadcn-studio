@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiSearchRouteImport } from './routes/api.search'
 import { Route as MaterialDesignComponentsAppBarRouteImport } from './routes/material-design/components.app-bar'
 import { Route as MaterialDesignComponentsAvatarRouteImport } from './routes/material-design/components.avatar'
 import { Route as MaterialDesignComponentsBadgeRouteImport } from './routes/material-design/components.badge'
@@ -52,6 +53,11 @@ import { Route as MaterialDesignComponentsTooltipRouteImport } from './routes/ma
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSearchRoute = ApiSearchRouteImport.update({
+  id: '/api/search',
+  path: '/api/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MaterialDesignComponentsAppBarRoute =
@@ -285,6 +291,7 @@ const MaterialDesignComponentsTooltipRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/search': typeof ApiSearchRoute
   '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
   '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
   '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
@@ -326,6 +333,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/search': typeof ApiSearchRoute
   '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
   '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
   '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
@@ -368,6 +376,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/search': typeof ApiSearchRoute
   '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
   '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
   '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
@@ -411,6 +420,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/api/search'
     | '/material-design/components/app-bar'
     | '/material-design/components/avatar'
     | '/material-design/components/badge'
@@ -452,6 +462,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/api/search'
     | '/material-design/components/app-bar'
     | '/material-design/components/avatar'
     | '/material-design/components/badge'
@@ -493,6 +504,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/api/search'
     | '/material-design/components/app-bar'
     | '/material-design/components/avatar'
     | '/material-design/components/badge'
@@ -535,6 +547,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiSearchRoute: typeof ApiSearchRoute
   MaterialDesignComponentsAppBarRoute: typeof MaterialDesignComponentsAppBarRoute
   MaterialDesignComponentsAvatarRoute: typeof MaterialDesignComponentsAvatarRoute
   MaterialDesignComponentsBadgeRoute: typeof MaterialDesignComponentsBadgeRoute
@@ -582,6 +595,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/search': {
+      id: '/api/search'
+      path: '/api/search'
+      fullPath: '/api/search'
+      preLoaderRoute: typeof ApiSearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/material-design/components/app-bar': {
@@ -855,6 +875,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiSearchRoute: ApiSearchRoute,
   MaterialDesignComponentsAppBarRoute: MaterialDesignComponentsAppBarRoute,
   MaterialDesignComponentsAvatarRoute: MaterialDesignComponentsAvatarRoute,
   MaterialDesignComponentsBadgeRoute: MaterialDesignComponentsBadgeRoute,

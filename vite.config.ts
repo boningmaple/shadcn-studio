@@ -16,7 +16,10 @@ const config = defineConfig({
   },
   fmt: {
     printWidth: 80,
-    ignorePatterns: ["routeTree.gen.ts"],
+    // Generated artifacts. The search index is compared byte-for-byte against
+    // a fresh build by `npm run check:search-index`, so reformatting it would
+    // fail that check on every commit.
+    ignorePatterns: ["routeTree.gen.ts", "search-index.gen.json"],
   },
   lint: {
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
