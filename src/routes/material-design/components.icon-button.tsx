@@ -19,7 +19,7 @@ export const Route = createFileRoute("/material-design/components/icon-button")(
     head: () => ({
       meta: [
         {
-          title: "Icon Button Components | Shadcn Studio",
+          title: "Icon Button Components | VibeUI",
         },
         {
           name: "description",

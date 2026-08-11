@@ -15,7 +15,7 @@ export const Route = createFileRoute("/material-design/components/checkbox")({
   head: () => ({
     meta: [
       {
-        title: "Checkbox Components | Shadcn Studio",
+        title: "Checkbox Components | VibeUI",
       },
       {
         name: "description",

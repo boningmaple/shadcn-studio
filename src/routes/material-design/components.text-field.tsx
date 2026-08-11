@@ -15,7 +15,7 @@ export const Route = createFileRoute("/material-design/components/text-field")({
   head: () => ({
     meta: [
       {
-        title: "Text Field Components | Shadcn Studio",
+        title: "Text Field Components | VibeUI",
       },
       {
         name: "description",

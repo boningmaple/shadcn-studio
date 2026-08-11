@@ -20,7 +20,7 @@ export const Route = createFileRoute("/material-design/components/button")({
   head: () => ({
     meta: [
       {
-        title: "Button Components | Shadcn Studio",
+        title: "Button Components | VibeUI",
       },
       {
         name: "description",

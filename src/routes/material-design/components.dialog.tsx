@@ -14,7 +14,7 @@ export const Route = createFileRoute("/material-design/components/dialog")({
   head: () => ({
     meta: [
       {
-        title: "Dialog Components | Shadcn Studio",
+        title: "Dialog Components | VibeUI",
       },
       {
         name: "description",

@@ -16,7 +16,7 @@ export const Route = createFileRoute(
   head: () => ({
     meta: [
       {
-        title: "Split Button Components | Shadcn Studio",
+        title: "Split Button Components | VibeUI",
       },
       {
         name: "description",

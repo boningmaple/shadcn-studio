@@ -14,7 +14,7 @@ export const Route = createFileRoute("/material-design/components/fab-menu")({
   head: () => ({
     meta: [
       {
-        title: "FAB Menu Components | Shadcn Studio",
+        title: "FAB Menu Components | VibeUI",
       },
       {
         name: "description",

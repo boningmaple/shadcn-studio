@@ -14,7 +14,7 @@ export const Route = createFileRoute("/material-design/components/card")({
   head: () => ({
     meta: [
       {
-        title: "Card Components | Shadcn Studio",
+        title: "Card Components | VibeUI",
       },
       {
         name: "description",

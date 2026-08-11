@@ -14,7 +14,7 @@ export const Route = createFileRoute("/material-design/components/tooltip")({
   head: () => ({
     meta: [
       {
-        title: "Tooltip Components | Shadcn Studio",
+        title: "Tooltip Components | VibeUI",
       },
       {
         name: "description",

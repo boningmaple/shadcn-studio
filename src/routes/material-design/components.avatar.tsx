@@ -20,7 +20,7 @@ export const Route = createFileRoute("/material-design/components/avatar")({
   head: () => ({
     meta: [
       {
-        title: "Avatar Components | Shadcn Studio",
+        title: "Avatar Components | VibeUI",
       },
       {
         name: "description",
