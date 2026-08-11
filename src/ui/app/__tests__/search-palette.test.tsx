@@ -54,8 +54,9 @@ const allComponents = ["Avatar", "Button", "Card"].map(componentHit);
 beforeEach(() => {
   searches = [];
 
-  vi.stubGlobal("fetch", (input: RequestInfo | URL, init?: RequestInit) => {
-    const url = new URL(String(input), window.location.origin);
+  // Typed to what the palette actually passes: a URL string and a signal.
+  vi.stubGlobal("fetch", (input: string, init?: RequestInit) => {
+    const url = new URL(input, window.location.origin);
     const signal = init?.signal ?? new AbortController().signal;
 
     return new Promise<Response>((resolve, reject) => {
