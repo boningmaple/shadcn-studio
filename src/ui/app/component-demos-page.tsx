@@ -10,6 +10,8 @@ import {
   type Demo,
   type DemoIdOf,
 } from "@/registry";
+import { HighlightedCode, useComponentCode } from "@/ui/app/component-code";
+import { LargeDemoPreview } from "@/ui/app/large-demo-preview";
 import { Button } from "@/ui/shadcn/react-aria/button";
 import {
   Dialog,
@@ -71,18 +73,32 @@ export function ComponentDemosPage<TSlug extends ComponentSlug>({
         </div>
         <div className="-mr-px -mb-px grid sm:grid-cols-2 lg:grid-cols-3">
           {component.demos.map((demo) => (
-            <DemoCard
-              component={component}
-              demo={demo}
-              isMarked={demoAnchorId(component, demo) === markedAnchorId}
-              key={demo.id}
-              preview={previews[demo.id]}
-            />
+            <React.Fragment key={demo.id}>
+              {isWideDemo(demo) ? (
+                <LargeDemoPreview
+                  component={component}
+                  demo={demo}
+                  isMarked={demoAnchorId(component, demo) === markedAnchorId}
+                  preview={previews[demo.id]}
+                />
+              ) : (
+                <DemoCard
+                  component={component}
+                  demo={demo}
+                  isMarked={demoAnchorId(component, demo) === markedAnchorId}
+                  preview={previews[demo.id]}
+                />
+              )}
+            </React.Fragment>
           ))}
         </div>
       </section>
     </div>
   );
+}
+
+function isWideDemo(demo: Demo): boolean {
+  return demo.wide === true;
 }
 
 /**
@@ -159,24 +175,11 @@ function DemoCard({
   );
 }
 
-type ComponentCodeState =
-  | { status: "idle" }
-  | { status: "loading" }
-  | { status: "success"; payload: ComponentCodePayload }
-  | { status: "error" };
-
-type ComponentCodePayload = {
-  code: string;
-  html: string;
-};
-
 function CodeDialog({
   component,
   demo,
 }: Pick<DemoCardProps, "component" | "demo">) {
-  const [codeState, setCodeState] = React.useState<ComponentCodeState>({
-    status: "idle",
-  });
+  const { codeState, loadCode } = useComponentCode(component, demo);
   const [copied, setCopied] = React.useState(false);
 
   React.useEffect(() => {
@@ -187,34 +190,6 @@ function CodeDialog({
     const timeout = window.setTimeout(() => setCopied(false), 2000);
     return () => window.clearTimeout(timeout);
   }, [copied]);
-
-  async function loadCode() {
-    if (codeState.status === "loading" || codeState.status === "success") {
-      return;
-    }
-
-    setCodeState({ status: "loading" });
-
-    try {
-      const response = await fetch(
-        `${import.meta.env.BASE_URL}generated/${demoAnchorId(component, demo)}.json`,
-      );
-
-      if (!response.ok) {
-        throw new Error(`Code request failed with status ${response.status}`);
-      }
-
-      const payload: unknown = await response.json();
-
-      if (!isComponentCodePayload(payload)) {
-        throw new Error("Code response has an invalid shape");
-      }
-
-      setCodeState({ status: "success", payload });
-    } catch {
-      setCodeState({ status: "error" });
-    }
-  }
 
   async function copyCode() {
     if (codeState.status !== "success") {
@@ -272,10 +247,7 @@ function CodeDialog({
             ) : null}
           </div>
           {codeState.status === "success" ? (
-            <div
-              className="overflow-hidden rounded-md border bg-[#0d1117] [&_.shiki]:m-0 [&_.shiki]:overflow-x-auto [&_.shiki]:p-5 [&_.shiki]:font-mono [&_.shiki]:text-[13px] [&_.shiki]:leading-6 [&_.shiki_code]:block [&_.shiki_code]:min-w-max"
-              dangerouslySetInnerHTML={{ __html: codeState.payload.html }}
-            />
+            <HighlightedCode html={codeState.payload.html} />
           ) : codeState.status === "error" ? (
             <div
               className="flex min-h-48 flex-col items-center justify-center gap-4 rounded-md border bg-muted/20 p-6 text-center"
@@ -300,16 +272,5 @@ function CodeDialog({
         </div>
       </Dialog>
     </DialogTrigger>
-  );
-}
-
-function isComponentCodePayload(value: unknown): value is ComponentCodePayload {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    "code" in value &&
-    typeof value.code === "string" &&
-    "html" in value &&
-    typeof value.html === "string"
   );
 }

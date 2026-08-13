@@ -745,6 +745,10 @@ export function getComponent<TSlug extends ComponentSlug>(
   return component as ComponentEntryFor<TSlug>;
 }
 
+export function findComponent(slug: string): ComponentEntry | undefined {
+  return bySlug.get(slug);
+}
+
 /**
  * The id a Demo carries everywhere it appears: its source filename, its
  * generated code artifact, its card's DOM id, and its Search record.

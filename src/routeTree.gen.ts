@@ -49,6 +49,7 @@ import { Route as MaterialDesignComponentsTimePickerRouteImport } from './routes
 import { Route as MaterialDesignComponentsToggleButtonRouteImport } from './routes/material-design/components.toggle-button'
 import { Route as MaterialDesignComponentsToolbarRouteImport } from './routes/material-design/components.toolbar'
 import { Route as MaterialDesignComponentsTooltipRouteImport } from './routes/material-design/components.tooltip'
+import { Route as MaterialDesignComponentsSlugDemoIdRouteImport } from './routes/material-design/components.$slug.$demoId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -288,6 +289,12 @@ const MaterialDesignComponentsTooltipRoute =
     path: '/material-design/components/tooltip',
     getParentRoute: () => rootRouteImport,
   } as any)
+const MaterialDesignComponentsSlugDemoIdRoute =
+  MaterialDesignComponentsSlugDemoIdRouteImport.update({
+    id: '/material-design/components/$slug/$demoId',
+    path: '/material-design/components/$slug/$demoId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -330,6 +337,7 @@ export interface FileRoutesByFullPath {
   '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
   '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
   '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
+  '/material-design/components/$slug/$demoId': typeof MaterialDesignComponentsSlugDemoIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -372,6 +380,7 @@ export interface FileRoutesByTo {
   '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
   '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
   '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
+  '/material-design/components/$slug/$demoId': typeof MaterialDesignComponentsSlugDemoIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -415,6 +424,7 @@ export interface FileRoutesById {
   '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
   '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
   '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
+  '/material-design/components/$slug/$demoId': typeof MaterialDesignComponentsSlugDemoIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -459,6 +469,7 @@ export interface FileRouteTypes {
     | '/material-design/components/toggle-button'
     | '/material-design/components/toolbar'
     | '/material-design/components/tooltip'
+    | '/material-design/components/$slug/$demoId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -501,6 +512,7 @@ export interface FileRouteTypes {
     | '/material-design/components/toggle-button'
     | '/material-design/components/toolbar'
     | '/material-design/components/tooltip'
+    | '/material-design/components/$slug/$demoId'
   id:
     | '__root__'
     | '/'
@@ -543,6 +555,7 @@ export interface FileRouteTypes {
     | '/material-design/components/toggle-button'
     | '/material-design/components/toolbar'
     | '/material-design/components/tooltip'
+    | '/material-design/components/$slug/$demoId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -586,6 +599,7 @@ export interface RootRouteChildren {
   MaterialDesignComponentsToggleButtonRoute: typeof MaterialDesignComponentsToggleButtonRoute
   MaterialDesignComponentsToolbarRoute: typeof MaterialDesignComponentsToolbarRoute
   MaterialDesignComponentsTooltipRoute: typeof MaterialDesignComponentsTooltipRoute
+  MaterialDesignComponentsSlugDemoIdRoute: typeof MaterialDesignComponentsSlugDemoIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -870,6 +884,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MaterialDesignComponentsTooltipRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/material-design/components/$slug/$demoId': {
+      id: '/material-design/components/$slug/$demoId'
+      path: '/material-design/components/$slug/$demoId'
+      fullPath: '/material-design/components/$slug/$demoId'
+      preLoaderRoute: typeof MaterialDesignComponentsSlugDemoIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -931,6 +952,8 @@ const rootRouteChildren: RootRouteChildren = {
     MaterialDesignComponentsToggleButtonRoute,
   MaterialDesignComponentsToolbarRoute: MaterialDesignComponentsToolbarRoute,
   MaterialDesignComponentsTooltipRoute: MaterialDesignComponentsTooltipRoute,
+  MaterialDesignComponentsSlugDemoIdRoute:
+    MaterialDesignComponentsSlugDemoIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
