@@ -120,6 +120,7 @@ npm test && npx playwright test && npx vp check
 |-- src
 |   |-- hooks                # shared React hooks
 |   |-- lib                  # shared utility functions
+|   |-- query-client.ts      # TanStack Query cache setup
 |   |-- registry.ts          # the Components and Demos VibeUI holds
 |   |-- routes               # TanStack Router file and server routes
 |   |-- router.tsx           # router setup
@@ -141,6 +142,8 @@ npm test && npx playwright test && npx vp check
 - `@orama/plugin-data-persistence`: Persists that index at build time and restores it on the server. Pinned to the same exact version as `@orama/orama`; upgrade the two together.
 - `@tailwindcss/vite`: Integrates Tailwind CSS with the Vite build pipeline.
 - `@tanstack/react-devtools`: Adds TanStack development tooling inside the app.
+- `@tanstack/react-query`: Caches what the search palette fetches, keyed by query.
+- `@tanstack/react-query-devtools`: Adds query cache inspection during development.
 - `@tanstack/react-router`: Provides type-safe React routing.
 - `@tanstack/react-router-devtools`: Adds router inspection tools during development.
 - `@tanstack/react-start`: Provides the TanStack Start app framework.

@@ -206,10 +206,44 @@ test.describe("searching", () => {
     await demoHit.click();
 
     await expect(page).toHaveURL(`${button.href}#${elevatedAnchorId}`);
+    await expect(palette(page)).toBeHidden();
 
     const card = page.locator(`#${elevatedAnchorId}`);
     await expect(card).toBeInViewport();
     await expect(card).toHaveAttribute("data-marked", "true");
+  });
+});
+
+test.describe("reopening the palette", () => {
+  test("shows the Hits it already has, without asking again", async ({
+    page,
+  }) => {
+    await goto(page, "/");
+
+    let requests = 0;
+    await page.route(`${searchEndpoint}**`, async (route) => {
+      requests += 1;
+      await route.continue();
+    });
+
+    await openPalette(page);
+    await expect(hits(page)).toHaveCount(components.length);
+
+    // Counted rather than asserted outright: this suite runs against the dev
+    // server, where StrictMode remounts every component once, so the first
+    // open asks twice here and once in a production build.
+    const askedOnFirstOpen = requests;
+
+    await page.keyboard.press("Escape");
+    await expect(palette(page)).toBeHidden();
+
+    await openPalette(page);
+    await expect(hits(page)).toHaveCount(components.length);
+
+    // Long enough that a request the reopen had started would have been
+    // counted by now — the only way to show one was never made.
+    await page.waitForTimeout(500);
+    expect(requests).toBe(askedOnFirstOpen);
   });
 });
 

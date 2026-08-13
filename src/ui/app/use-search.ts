@@ -1,12 +1,25 @@
-import * as React from "react";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useCallback } from "react";
 
 import { hitsSchema, searchRequestUrl, type Hit } from "@/search/hits";
 
 /**
  * Long enough that a burst of typing is one request, short enough that the
  * list does not feel like it lags behind the keyboard.
+ *
+ * Waited out inside the request rather than before it, so that the wait ends
+ * on the same cancellation that ends the fetch — and so that what is asked for
+ * is always what is typed, never a lagging copy of it.
  */
 export const searchDebounceMs = 150;
+
+/**
+ * How long an answer is trusted without asking again — the window the Server
+ * Route's own `Cache-Control` already claims, since Hits for a given query
+ * change only on deploy. Long enough that reopening the palette paints the
+ * list it had rather than flickering through a fresh load.
+ */
+export const searchStaleTimeMs = 5 * 60 * 1000;
 
 export type SearchStatus = "loading" | "ready" | "failed";
 
@@ -21,93 +34,93 @@ export type SearchState = {
   status: SearchStatus;
 };
 
-const initialState: SearchState = {
-  hits: [],
-  query: "",
-  status: "loading",
-};
+/** Where one query's answer lives in the cache. */
+export function searchQueryKey(query: string) {
+  return ["search", query] as const;
+}
 
 /**
- * Runs one search per settled query and guards against every way a stale one
- * can win.
+ * Hits and the query that produced them, cached as one value.
  *
- * Aborting a superseded request is not enough on its own: it can resolve
- * before its abort lands, painting Hits for a query the visitor has already
- * typed past. So each response is checked against what is currently typed and
- * dropped if it no longer matches — the defect most likely to ship unnoticed
- * and be very hard to reproduce afterwards.
+ * Pairing them is what lets `SearchState.query` name a query the Hits actually
+ * came from, even while the Hits on screen belong to the query before this one.
  */
+type SearchAnswer = {
+  hits: Hit[];
+  query: string;
+};
+
+/** Waits out the debounce, or gives up the moment the query is superseded. */
+function waitOut(delayMs: number, signal: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const timeout = setTimeout(resolve, delayMs);
+
+    signal.addEventListener(
+      "abort",
+      () => {
+        clearTimeout(timeout);
+        reject(signal.reason);
+      },
+      { once: true },
+    );
+  });
+}
+
+async function fetchHits(
+  query: string,
+  signal: AbortSignal,
+): Promise<SearchAnswer> {
+  const response = await fetch(searchRequestUrl(query), { signal });
+
+  if (!response.ok) {
+    throw new Error(`Search failed with status ${response.status}`);
+  }
+
+  return { hits: hitsSchema.parse(await response.json()), query };
+}
+
 export function useSearch(query: string): {
   retry: () => void;
   search: SearchState;
 } {
-  const settledQuery = useDebounced(query, searchDebounceMs);
-  const [attempt, setAttempt] = React.useState(0);
-  const [search, setSearch] = React.useState(initialState);
+  const { data, isError, isFetching, refetch } = useQuery({
+    // Reading `signal` is also what arms the cancellation: TanStack Query ends
+    // an in-flight query once nothing is watching it, which is precisely what
+    // the next keystroke does to this one.
+    queryFn: async ({ signal }) => {
+      // Nothing to collapse on the query the palette opens with, so the idle
+      // list is asked for without waiting a debounce out first.
+      if (query !== "") {
+        await waitOut(searchDebounceMs, signal);
+      }
 
-  // What the visitor has typed right now, readable from a promise that
-  // resolves long after the render it was started in.
-  const typedQuery = React.useRef(query);
-  React.useEffect(() => {
-    typedQuery.current = query;
+      return fetchHits(query, signal);
+    },
+    queryKey: searchQueryKey(query),
+    // The previous query's Hits stay on screen until the next ones land.
+    placeholderData: keepPreviousData,
+    // An open palette is being read. Refetching underneath it would reorder
+    // the list while the visitor is aiming at a Hit.
+    refetchOnWindowFocus: false,
+    // A failure is offered to the visitor as "Try again" rather than retried
+    // behind their back, which would leave the palette spinning for seconds
+    // before admitting anything was wrong.
+    retry: false,
+    staleTime: searchStaleTimeMs,
   });
 
-  React.useEffect(() => {
-    const controller = new AbortController();
-    setSearch((previous) => ({ ...previous, status: "loading" }));
+  const retry = useCallback(() => {
+    void refetch();
+  }, [refetch]);
 
-    const run = async () => {
-      try {
-        const response = await fetch(searchRequestUrl(settledQuery), {
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          throw new Error(`Search failed with status ${response.status}`);
-        }
-
-        const hits = hitsSchema.parse(await response.json());
-
-        if (typedQuery.current !== settledQuery) {
-          return;
-        }
-
-        setSearch({ hits, query: settledQuery, status: "ready" });
-      } catch {
-        if (controller.signal.aborted || typedQuery.current !== settledQuery) {
-          return;
-        }
-
-        setSearch((previous) => ({ ...previous, status: "failed" }));
-      }
-    };
-
-    void run();
-
-    return () => controller.abort();
-  }, [attempt, settledQuery]);
-
-  const retry = React.useCallback(() => setAttempt((count) => count + 1), []);
-
-  return { retry, search };
-}
-
-/**
- * The value once it stops changing. Equal to the input on the first render, so
- * opening the palette fetches the idle list without waiting out a debounce.
- */
-function useDebounced(value: string, delayMs: number): string {
-  const [debounced, setDebounced] = React.useState(value);
-
-  React.useEffect(() => {
-    if (value === debounced) {
-      return;
-    }
-
-    const timeout = window.setTimeout(() => setDebounced(value), delayMs);
-
-    return () => window.clearTimeout(timeout);
-  }, [debounced, delayMs, value]);
-
-  return debounced;
+  return {
+    retry,
+    search: {
+      hits: data?.hits ?? [],
+      query: data?.query ?? "",
+      // In flight outranks failed, so a retry replaces the alert with the
+      // spinner instead of leaving a dead "Try again" under the pointer.
+      status: isFetching ? "loading" : isError ? "failed" : "ready",
+    },
+  };
 }

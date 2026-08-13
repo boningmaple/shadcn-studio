@@ -1,6 +1,8 @@
-import * as React from "react";
 import { useNavigate } from "@tanstack/react-router";
+import { createIsomorphicFn } from "@tanstack/react-start";
+import { getRequestHeader } from "@tanstack/react-start/server";
 import { LoaderCircleIcon, SearchIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import type { Hit } from "@/search/hits";
 import { useSearch, type SearchState } from "@/ui/app/use-search";
@@ -15,36 +17,58 @@ import {
   CommandShortcut,
 } from "@/ui/shadcn/react-aria/command";
 import { Kbd, KbdGroup } from "@/ui/shadcn/react-aria/kbd";
-import { cn } from "@/lib/utils";
 
-export const searchDialogTitle = "Search";
 export const searchTriggerLabel = "Search";
-const searchPlaceholder = "Search Components and Demos";
+export const searchDialogTitle = "Search";
 
-type SearchPaletteProps = {
-  isOpen: boolean;
-  onOpenChange: (isOpen: boolean) => void;
-};
+/**
+ * The way into search, and the palette it opens.
+ *
+ * An icon button at every width, widening into a field-like button once there
+ * is room to spell the shortcut out.
+ */
+export function SearchTrigger() {
+  const [isOpen, setIsOpen] = useState(false);
 
-export function SearchPalette({ isOpen, onOpenChange }: SearchPaletteProps) {
+  useSearchShortcut(setIsOpen);
+
   return (
-    <CommandDialog
-      className="top-1/4 w-full sm:max-w-xl"
-      description="Find a Component or a Demo and go straight to it."
-      onOpenChange={onOpenChange}
-      open={isOpen}
-      title={searchDialogTitle}
-    >
-      {/* Mounted only while open, so the idle list is fetched on each visit
-          rather than kept warm behind a closed dialog. */}
-      <SearchPaletteBody onDone={() => onOpenChange(false)} />
-    </CommandDialog>
+    <div>
+      <Button
+        aria-label={searchTriggerLabel}
+        className="lg:hidden"
+        onPress={() => setIsOpen(true)}
+        size="icon-sm"
+        variant="outline"
+      >
+        <SearchIcon />
+      </Button>
+      <Button
+        className="hidden w-60 rounded-full text-muted-foreground lg:inline-flex"
+        onPress={() => setIsOpen(true)}
+        variant="outline"
+      >
+        <SearchIcon />
+        <span className="flex-1 text-left">{searchTriggerLabel}</span>
+        <SearchShortcutHint />
+      </Button>
+
+      <CommandDialog
+        className="top-0 h-full w-full max-w-full sm:top-1/4 sm:h-fit sm:max-w-xl"
+        description="Find a Component or a Demo and go straight to it."
+        onOpenChange={setIsOpen}
+        open={isOpen}
+        title={searchDialogTitle}
+      >
+        <SearchModal onDone={() => setIsOpen(false)} />
+      </CommandDialog>
+    </div>
   );
 }
 
-function SearchPaletteBody({ onDone }: { onDone: () => void }) {
-  const [query, setQuery] = React.useState("");
-  const { search, retry } = useSearch(query);
+function SearchModal({ onDone }: { onDone: () => void }) {
+  const [query, setQuery] = useState("");
+  const { retry, search } = useSearch(query);
   const navigate = useNavigate();
 
   const goTo = (href: string) => {
@@ -66,11 +90,11 @@ function SearchPaletteBody({ onDone }: { onDone: () => void }) {
       onInputChange={setQuery}
     >
       <div className="relative">
-        <CommandInput placeholder={searchPlaceholder} />
+        <CommandInput placeholder={searchTriggerLabel} />
         {search.status === "loading" ? (
           <LoaderCircleIcon
             aria-hidden
-            className="absolute top-1/2 right-3 size-4 -translate-y-1/2 animate-spin text-muted-foreground"
+            className="absolute top-3 right-3 size-4 animate-spin text-muted-foreground"
           />
         ) : null}
       </div>
@@ -79,22 +103,18 @@ function SearchPaletteBody({ onDone }: { onDone: () => void }) {
         {announcementFor(search)}
       </div>
 
-      <SearchPaletteHits onRetry={retry} onSelect={goTo} search={search} />
+      <SearchList onRetry={retry} onSelect={goTo} search={search} />
     </Command>
   );
 }
 
-type SearchPaletteHitsProps = {
+type SearchListProps = {
   onRetry: () => void;
   onSelect: (href: string) => void;
   search: SearchState;
 };
 
-function SearchPaletteHits({
-  onRetry,
-  onSelect,
-  search,
-}: SearchPaletteHitsProps) {
+function SearchList({ onRetry, onSelect, search }: SearchListProps) {
   if (search.status === "failed") {
     return (
       <div
@@ -119,7 +139,7 @@ function SearchPaletteHits({
   return (
     <CommandList
       aria-label="Search results"
-      className="mt-1"
+      className="mt-2 h-[calc(100vh-40px-4px-8px)] max-h-none sm:max-h-72"
       items={search.hits.map((hit) => ({ ...hit, id: hit.href }))}
       onAction={(key) => onSelect(String(key))}
     >
@@ -166,88 +186,44 @@ function announcementFor({ hits, query, status }: SearchState): string {
 }
 
 /**
- * The header's search control: a button that looks like a field.
- *
- * It used to be a real text input that discarded every keystroke — announced
- * to a screen reader as an editable field that accepts input it throws away.
+ * Whichever user agent is at hand: the request's on the server, the browser's
+ * on the client. Read this way so the platform is known while rendering, and
+ * the shortcut hint is right in the HTML rather than corrected after mount.
  */
-export function SearchFieldTrigger({
-  className,
-  onPress,
-}: {
-  className?: string;
-  onPress: () => void;
-}) {
-  return (
-    <Button
-      aria-label={searchTriggerLabel}
-      className={cn(
-        "w-96 justify-start gap-3 rounded-full px-3 font-normal text-muted-foreground",
-        className,
-      )}
-      onPress={onPress}
-      size="lg"
-      variant="outline"
-    >
-      <SearchIcon />
-      <span className="flex-1 text-left text-base">{searchTriggerLabel}</span>
-      <SearchShortcutHint />
-    </Button>
-  );
+const getUserAgent = createIsomorphicFn()
+  .server(() => getRequestHeader("user-agent") ?? "")
+  .client(() => navigator.userAgent);
+
+function isApplePlatform(): boolean {
+  return /mac|iphone|ipad|ipod/i.test(getUserAgent());
 }
 
-/**
- * The modifier this visitor's keyboard actually has.
- *
- * Server-rendered as the macOS symbol and corrected after mount, since the
- * platform is not knowable while rendering on the server.
- */
+/** The modifier this visitor's keyboard actually has. */
 function SearchShortcutHint() {
-  const [modifier, setModifier] = React.useState("⌘");
-
-  React.useEffect(() => {
-    setModifier(isApplePlatform() ? "⌘" : "Ctrl");
-  }, []);
-
   return (
     <KbdGroup aria-hidden>
-      <Kbd>{modifier}</Kbd>
+      <Kbd>{isApplePlatform() ? "⌘" : "Ctrl"}</Kbd>
       <Kbd>K</Kbd>
     </KbdGroup>
   );
 }
 
-function isApplePlatform(): boolean {
-  return /mac|iphone|ipad|ipod/i.test(navigator.userAgent);
-}
-
-/**
- * Opens the palette on ⌘K, or Ctrl+K away from macOS.
- *
- * Strictly one modifier per platform, matching the hint. Claiming Ctrl+K on
- * macOS as well would cost something real: there it is the system's
- * kill-to-end-of-line binding, and VibeUI's own Text Field and Search Demos
- * are text fields a visitor may be editing.
- */
-export function useSearchShortcut(onOpen: () => void) {
-  React.useEffect(() => {
+function useSearchShortcut(setIsOpen: (isOpen: boolean) => void) {
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key.toLowerCase() !== "k") {
-        return;
+      if (event.key === "Escape") {
+        event.stopPropagation();
+        event.preventDefault();
+        setIsOpen(false);
+      } else if (
+        event.key.toLowerCase() === "k" &&
+        (isApplePlatform() ? event.metaKey : event.ctrlKey)
+      ) {
+        event.preventDefault();
+        setIsOpen(true);
       }
-
-      const modifier = isApplePlatform() ? event.metaKey : event.ctrlKey;
-
-      if (!modifier) {
-        return;
-      }
-
-      event.preventDefault();
-      onOpen();
     };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [onOpen]);
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
+  }, [setIsOpen]);
 }

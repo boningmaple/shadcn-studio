@@ -1,5 +1,6 @@
 import * as React from "react";
 import { TanStackDevtools } from "@tanstack/react-devtools";
+import { ReactQueryDevtoolsPanel } from "@tanstack/react-query-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { AppHeader } from "@/ui/app/app-header";
@@ -71,6 +72,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             {
               name: "Tanstack Router",
               render: <TanStackRouterDevtoolsPanel />,
+            },
+            {
+              name: "TanStack Query",
+              render: <ReactQueryDevtoolsPanel />,
             },
           ]}
         />

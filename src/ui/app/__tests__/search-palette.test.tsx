@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   RouterProvider,
   createMemoryHistory,
@@ -17,7 +18,11 @@ import { page, userEvent } from "vite-plus/test/browser/context";
 import { render } from "vitest-browser-react";
 
 import type { Hit } from "@/search/hits";
-import { SearchPalette } from "@/ui/app/search-palette";
+import {
+  SearchTrigger,
+  searchDialogTitle,
+  searchTriggerLabel,
+} from "@/ui/app/search-palette";
 import { searchDebounceMs } from "@/ui/app/use-search";
 
 /**
@@ -86,11 +91,20 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-const rootRoute = createRootRoute({
-  component: () => <SearchPalette isOpen onOpenChange={() => {}} />,
-});
+const renderTrigger = () => {
+  // One cache per test. A client shared across tests would answer the next
+  // test's first query from the previous one's Hits, and the request these
+  // tests count would never be made.
+  const queryClient = new QueryClient();
 
-const renderPalette = () => {
+  const rootRoute = createRootRoute({
+    component: () => (
+      <QueryClientProvider client={queryClient}>
+        <SearchTrigger />
+      </QueryClientProvider>
+    ),
+  });
+
   const router = createRouter({
     history: createMemoryHistory({ initialEntries: ["/"] }),
     routeTree: rootRoute.addChildren([
@@ -101,9 +115,22 @@ const renderPalette = () => {
   return render(<RouterProvider router={router as never} />);
 };
 
+const palette = () => page.getByRole("dialog", { name: searchDialogTitle });
+const searchTrigger = () =>
+  page.getByRole("button", { name: searchTriggerLabel });
 const searchInput = () => page.getByRole("searchbox");
 const hitsList = () => page.getByRole("menu", { name: "Search results" });
 const hit = (name: string | RegExp) => page.getByRole("menuitem", { name });
+
+/** Opens the palette the way a visitor does, from the header. */
+const openPalette = async () => {
+  const screen = renderTrigger();
+
+  await userEvent.click(searchTrigger());
+  await expect.element(palette()).toBeInTheDocument();
+
+  return screen;
+};
 
 /** Waits past the debounce window, so a settled query has had its chance. */
 const afterDebounce = () =>
@@ -114,7 +141,7 @@ const searchesFor = (query: string) =>
 
 describe("SearchPalette idle", () => {
   it("lists every Component before anything is typed", async () => {
-    await renderPalette();
+    await openPalette();
 
     await expect.poll(() => searchesFor("").length).toBe(1);
     searchesFor("")[0]!.resolveWith(allComponents);
@@ -126,7 +153,7 @@ describe("SearchPalette idle", () => {
   });
 
   it("names a Demo Hit with the Component it belongs to", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
     searchesFor("")[0]!.resolveWith([demoHit("Card", "Elevated checklist")]);
 
@@ -134,11 +161,19 @@ describe("SearchPalette idle", () => {
       .element(hit("Elevated checklist, in Card"))
       .toBeInTheDocument();
   });
+
+  it("asks nothing until it is opened", async () => {
+    await renderTrigger();
+
+    await afterDebounce();
+
+    expect(searches).toHaveLength(0);
+  });
 });
 
 describe("SearchPalette request choreography", () => {
   it("collapses a burst of keystrokes into one request", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
     searchesFor("")[0]!.resolveWith(allComponents);
 
@@ -149,7 +184,7 @@ describe("SearchPalette request choreography", () => {
   });
 
   it("searches on a single character", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
 
     await userEvent.fill(searchInput(), "c");
@@ -158,7 +193,7 @@ describe("SearchPalette request choreography", () => {
   });
 
   it("aborts a request it supersedes", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
 
     await userEvent.fill(searchInput(), "car");
@@ -167,12 +202,30 @@ describe("SearchPalette request choreography", () => {
     await userEvent.fill(searchInput(), "card");
     await expect.poll(() => searchesFor("card").length).toBe(1);
 
-    expect(searchesFor("car")[0]!.signal.aborted).toBe(true);
+    await expect.poll(() => searchesFor("car")[0]!.signal.aborted).toBe(true);
     expect(searchesFor("card")[0]!.signal.aborted).toBe(false);
   });
 
+  it("gives up on the idle list the moment the visitor types", async () => {
+    await openPalette();
+    await expect.poll(() => searchesFor("").length).toBe(1);
+
+    // Typed while the idle list is still in flight, and answered inside the
+    // debounce window — the moment a debounced key would still have been "",
+    // painting the idle list as though it answered "button". Two lists in
+    // ~150ms costs more than a flicker: react-aria drops its focused Hit when
+    // the one it was on disappears, leaving Enter nothing to land on.
+    await userEvent.fill(searchInput(), "button");
+    searchesFor("")[0]!.resolveWith(allComponents);
+
+    await afterDebounce();
+
+    await expect.element(hit("Avatar")).not.toBeInTheDocument();
+    expect(searchesFor("")[0]!.signal.aborted).toBe(true);
+  });
+
   it("never paints a superseded response that resolves late", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
     searchesFor("")[0]!.resolveWith(allComponents);
     await expect.element(hit("Avatar")).toBeInTheDocument();
@@ -194,11 +247,27 @@ describe("SearchPalette request choreography", () => {
     await expect.element(hit("Card")).toBeInTheDocument();
     await expect.element(hit("Carousel")).not.toBeInTheDocument();
   });
+
+  it("reopens on the Hits it already has, without asking again", async () => {
+    await openPalette();
+    await expect.poll(() => searchesFor("").length).toBe(1);
+    searchesFor("")[0]!.resolveWith(allComponents);
+    await expect.element(hit("Avatar")).toBeInTheDocument();
+
+    await userEvent.keyboard("{Escape}");
+    await expect.element(palette()).not.toBeInTheDocument();
+
+    await userEvent.click(searchTrigger());
+
+    await expect.element(hit("Avatar")).toBeInTheDocument();
+    await afterDebounce();
+    expect(searchesFor("")).toHaveLength(1);
+  });
 });
 
 describe("SearchPalette states", () => {
   it("keeps the previous Hits while the next query is in flight", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
     searchesFor("")[0]!.resolveWith(allComponents);
     await expect.element(hit("Avatar")).toBeInTheDocument();
@@ -217,7 +286,7 @@ describe("SearchPalette states", () => {
   });
 
   it("says plainly when a query matches nothing, and names it", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
     searchesFor("")[0]!.resolveWith(allComponents);
 
@@ -231,7 +300,7 @@ describe("SearchPalette states", () => {
   });
 
   it("offers a retry that re-runs the current query after a failure", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
     searchesFor("")[0]!.resolveWith(allComponents);
 
@@ -250,25 +319,34 @@ describe("SearchPalette states", () => {
     await expect.element(hit("Card")).toBeInTheDocument();
     await expect.element(alert).not.toBeInTheDocument();
   });
+
+  it("says so once, rather than retrying a failure behind the visitor", async () => {
+    await openPalette();
+    await expect.poll(() => searchesFor("").length).toBe(1);
+    searchesFor("")[0]!.fail();
+
+    await expect.element(page.getByRole("alert")).toBeInTheDocument();
+    await afterDebounce();
+
+    expect(searchesFor("")).toHaveLength(1);
+  });
 });
 
 describe("SearchPalette a11y", () => {
   it("is a dialog with a name", async () => {
-    await renderPalette();
+    await openPalette();
 
-    await expect
-      .element(page.getByRole("dialog", { name: "Search" }))
-      .toBeInTheDocument();
+    await expect.element(palette()).toBeInTheDocument();
   });
 
   it("moves focus into the palette on open", async () => {
-    await renderPalette();
+    await openPalette();
 
     await expect.element(searchInput()).toHaveFocus();
   });
 
   it("conveys how many Hits there are as results change", async () => {
-    await renderPalette();
+    await openPalette();
     await expect.poll(() => searchesFor("").length).toBe(1);
     searchesFor("")[0]!.resolveWith(allComponents);
 
@@ -280,5 +358,19 @@ describe("SearchPalette a11y", () => {
     searchesFor("card")[0]!.resolveWith([componentHit("Card")]);
 
     await expect.element(status).toHaveTextContent("1 result for card");
+  });
+});
+
+describe("SearchPalette navigation", () => {
+  it("closes once a Hit has been chosen", async () => {
+    await openPalette();
+    await expect.poll(() => searchesFor("").length).toBe(1);
+    // The one route this memory router has, so choosing it navigates rather
+    // than landing on a route the test tree does not define.
+    searchesFor("")[0]!.resolveWith([{ ...componentHit("Card"), href: "/" }]);
+
+    await userEvent.click(hit("Card"));
+
+    await expect.element(palette()).not.toBeInTheDocument();
   });
 });
