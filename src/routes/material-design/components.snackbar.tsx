@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Snackbar01 from "@/ui/material-design/components/md-snackbar/demos/md-snackbar-01";
-import Snackbar02 from "@/ui/material-design/components/md-snackbar/demos/md-snackbar-02";
-import Snackbar03 from "@/ui/material-design/components/md-snackbar/demos/md-snackbar-03";
-import Snackbar04 from "@/ui/material-design/components/md-snackbar/demos/md-snackbar-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import Snackbar01 from "@/features/ui-material-design/components/md-snackbar/demos/md-snackbar-01";
+import Snackbar02 from "@/features/ui-material-design/components/md-snackbar/demos/md-snackbar-02";
+import Snackbar03 from "@/features/ui-material-design/components/md-snackbar/demos/md-snackbar-03";
+import Snackbar04 from "@/features/ui-material-design/components/md-snackbar/demos/md-snackbar-04";
 
 export const Route = createFileRoute("/material-design/components/snackbar")({
   component: SnackbarComponentPage,

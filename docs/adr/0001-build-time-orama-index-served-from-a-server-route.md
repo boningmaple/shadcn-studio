@@ -14,6 +14,8 @@ client bundle.
   preference feature, whose `NFR-TS-005` requires it to work offline. The
   palette will not function offline, and that is deliberate — do not "restore
   consistency" by moving the index client-side without revisiting this decision.
+  What it does instead is say so: an offline visitor gets "No network" and a
+  way to try anyway, rather than a failed request (ADR-0006).
 - `@orama/plugin-data-persistence` cannot serialize functions. The default
   English tokenizer is reconstructed correctly on `restore`, but a custom
   tokenizer, stemmer, or stop-word list would be silently lost and would change

@@ -1,17 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import NavigationRail01 from "@/ui/material-design/components/md-navigation-rail/demos/md-navigation-rail-01";
-import NavigationRail02 from "@/ui/material-design/components/md-navigation-rail/demos/md-navigation-rail-02";
-import NavigationRail03 from "@/ui/material-design/components/md-navigation-rail/demos/md-navigation-rail-03";
-import NavigationRail04 from "@/ui/material-design/components/md-navigation-rail/demos/md-navigation-rail-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import NavigationRail01 from "@/features/ui-material-design/components/md-navigation-rail/demos/md-navigation-rail-01";
+import NavigationRail02 from "@/features/ui-material-design/components/md-navigation-rail/demos/md-navigation-rail-02";
+import NavigationRail03 from "@/features/ui-material-design/components/md-navigation-rail/demos/md-navigation-rail-03";
+import NavigationRail04 from "@/features/ui-material-design/components/md-navigation-rail/demos/md-navigation-rail-04";
 
-export const Route = createFileRoute(
-  "/material-design/components/navigation-rail",
-)({
+export const Route = createFileRoute("/material-design/components/navigation-rail")({
   component: NavigationRailComponentPage,
   head: () => ({
     meta: [
@@ -28,12 +24,7 @@ export const Route = createFileRoute(
 });
 
 function NavigationRailComponentPage() {
-  return (
-    <ComponentDemosPage
-      demoComponents={demoComponents}
-      slug="navigation-rail"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="navigation-rail" />;
 }
 
 const demoComponents: DemoComponents<"navigation-rail"> = {

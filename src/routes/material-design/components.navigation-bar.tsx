@@ -1,17 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import NavigationBar01 from "@/ui/material-design/components/md-navigation-bar/demos/md-navigation-bar-01";
-import NavigationBar02 from "@/ui/material-design/components/md-navigation-bar/demos/md-navigation-bar-02";
-import NavigationBar03 from "@/ui/material-design/components/md-navigation-bar/demos/md-navigation-bar-03";
-import NavigationBar04 from "@/ui/material-design/components/md-navigation-bar/demos/md-navigation-bar-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import NavigationBar01 from "@/features/ui-material-design/components/md-navigation-bar/demos/md-navigation-bar-01";
+import NavigationBar02 from "@/features/ui-material-design/components/md-navigation-bar/demos/md-navigation-bar-02";
+import NavigationBar03 from "@/features/ui-material-design/components/md-navigation-bar/demos/md-navigation-bar-03";
+import NavigationBar04 from "@/features/ui-material-design/components/md-navigation-bar/demos/md-navigation-bar-04";
 
-export const Route = createFileRoute(
-  "/material-design/components/navigation-bar",
-)({
+export const Route = createFileRoute("/material-design/components/navigation-bar")({
   component: NavigationBarComponentPage,
   head: () => ({
     meta: [
@@ -28,9 +24,7 @@ export const Route = createFileRoute(
 });
 
 function NavigationBarComponentPage() {
-  return (
-    <ComponentDemosPage demoComponents={demoComponents} slug="navigation-bar" />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="navigation-bar" />;
 }
 
 const demoComponents: DemoComponents<"navigation-bar"> = {

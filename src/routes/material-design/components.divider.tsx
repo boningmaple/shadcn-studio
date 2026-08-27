@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Divider01 from "@/ui/material-design/components/md-divider/demos/md-divider-01";
-import Divider02 from "@/ui/material-design/components/md-divider/demos/md-divider-02";
-import Divider03 from "@/ui/material-design/components/md-divider/demos/md-divider-03";
-import Divider04 from "@/ui/material-design/components/md-divider/demos/md-divider-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import Divider01 from "@/features/ui-material-design/components/md-divider/demos/md-divider-01";
+import Divider02 from "@/features/ui-material-design/components/md-divider/demos/md-divider-02";
+import Divider03 from "@/features/ui-material-design/components/md-divider/demos/md-divider-03";
+import Divider04 from "@/features/ui-material-design/components/md-divider/demos/md-divider-04";
 
 export const Route = createFileRoute("/material-design/components/divider")({
   component: DividerComponentPage,

@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import FAB01 from "@/ui/material-design/components/md-fab/demos/md-fab-01";
-import FAB02 from "@/ui/material-design/components/md-fab/demos/md-fab-02";
-import FAB03 from "@/ui/material-design/components/md-fab/demos/md-fab-03";
-import FAB04 from "@/ui/material-design/components/md-fab/demos/md-fab-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import FAB01 from "@/features/ui-material-design/components/md-fab/demos/md-fab-01";
+import FAB02 from "@/features/ui-material-design/components/md-fab/demos/md-fab-02";
+import FAB03 from "@/features/ui-material-design/components/md-fab/demos/md-fab-03";
+import FAB04 from "@/features/ui-material-design/components/md-fab/demos/md-fab-04";
 
 export const Route = createFileRoute("/material-design/components/fab")({
   component: FABComponentPage,

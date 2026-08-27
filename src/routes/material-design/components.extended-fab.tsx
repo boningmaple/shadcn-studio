@@ -1,17 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import ExtendedFAB01 from "@/ui/material-design/components/md-extended-fab/demos/md-extended-fab-01";
-import ExtendedFAB02 from "@/ui/material-design/components/md-extended-fab/demos/md-extended-fab-02";
-import ExtendedFAB03 from "@/ui/material-design/components/md-extended-fab/demos/md-extended-fab-03";
-import ExtendedFAB04 from "@/ui/material-design/components/md-extended-fab/demos/md-extended-fab-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import ExtendedFAB01 from "@/features/ui-material-design/components/md-extended-fab/demos/md-extended-fab-01";
+import ExtendedFAB02 from "@/features/ui-material-design/components/md-extended-fab/demos/md-extended-fab-02";
+import ExtendedFAB03 from "@/features/ui-material-design/components/md-extended-fab/demos/md-extended-fab-03";
+import ExtendedFAB04 from "@/features/ui-material-design/components/md-extended-fab/demos/md-extended-fab-04";
 
-export const Route = createFileRoute(
-  "/material-design/components/extended-fab",
-)({
+export const Route = createFileRoute("/material-design/components/extended-fab")({
   component: ExtendedFABComponentPage,
   head: () => ({
     meta: [
@@ -28,9 +24,7 @@ export const Route = createFileRoute(
 });
 
 function ExtendedFABComponentPage() {
-  return (
-    <ComponentDemosPage demoComponents={demoComponents} slug="extended-fab" />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="extended-fab" />;
 }
 
 const demoComponents: DemoComponents<"extended-fab"> = {

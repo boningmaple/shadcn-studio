@@ -1,18 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import RadioButton01 from "@/ui/material-design/components/md-radio-button/demos/md-radio-button-01";
-import RadioButton02 from "@/ui/material-design/components/md-radio-button/demos/md-radio-button-02";
-import RadioButton03 from "@/ui/material-design/components/md-radio-button/demos/md-radio-button-03";
-import RadioButton04 from "@/ui/material-design/components/md-radio-button/demos/md-radio-button-04";
-import RadioButton05 from "@/ui/material-design/components/md-radio-button/demos/md-radio-button-05";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import RadioButton01 from "@/features/ui-material-design/components/md-radio-button/demos/md-radio-button-01";
+import RadioButton02 from "@/features/ui-material-design/components/md-radio-button/demos/md-radio-button-02";
+import RadioButton03 from "@/features/ui-material-design/components/md-radio-button/demos/md-radio-button-03";
+import RadioButton04 from "@/features/ui-material-design/components/md-radio-button/demos/md-radio-button-04";
+import RadioButton05 from "@/features/ui-material-design/components/md-radio-button/demos/md-radio-button-05";
 
-export const Route = createFileRoute(
-  "/material-design/components/radio-button",
-)({
+export const Route = createFileRoute("/material-design/components/radio-button")({
   component: RadioButtonComponentPage,
   head: () => ({
     meta: [
@@ -29,9 +25,7 @@ export const Route = createFileRoute(
 });
 
 function RadioButtonComponentPage() {
-  return (
-    <ComponentDemosPage demoComponents={demoComponents} slug="radio-button" />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="radio-button" />;
 }
 
 const demoComponents: DemoComponents<"radio-button"> = {

@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import SideSheet01 from "@/ui/material-design/components/md-side-sheet/demos/md-side-sheet-01";
-import SideSheet02 from "@/ui/material-design/components/md-side-sheet/demos/md-side-sheet-02";
-import SideSheet03 from "@/ui/material-design/components/md-side-sheet/demos/md-side-sheet-03";
-import SideSheet04 from "@/ui/material-design/components/md-side-sheet/demos/md-side-sheet-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import SideSheet01 from "@/features/ui-material-design/components/md-side-sheet/demos/md-side-sheet-01";
+import SideSheet02 from "@/features/ui-material-design/components/md-side-sheet/demos/md-side-sheet-02";
+import SideSheet03 from "@/features/ui-material-design/components/md-side-sheet/demos/md-side-sheet-03";
+import SideSheet04 from "@/features/ui-material-design/components/md-side-sheet/demos/md-side-sheet-04";
 
 export const Route = createFileRoute("/material-design/components/side-sheet")({
   component: SideSheetComponentPage,
@@ -26,9 +24,7 @@ export const Route = createFileRoute("/material-design/components/side-sheet")({
 });
 
 function SideSheetComponentPage() {
-  return (
-    <ComponentDemosPage demoComponents={demoComponents} slug="side-sheet" />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="side-sheet" />;
 }
 
 const demoComponents: DemoComponents<"side-sheet"> = {

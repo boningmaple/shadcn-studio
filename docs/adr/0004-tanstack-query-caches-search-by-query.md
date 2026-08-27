@@ -22,7 +22,8 @@ because it looks like the obvious way to debounce a query.
 - Retries are off. TanStack Query would otherwise retry a failed query three
   times with backoff, leaving the palette spinning for seconds before admitting
   anything is wrong. VibeUI offers the failure to the visitor as "Try again"
-  instead, and that button is the retry.
+  instead, and that button is the retry. What the failure then looks like, and
+  why it has to be latched to survive the retry, is ADR-0006.
 - The 150ms debounce is waited out inside the request, never before it.
   TanStack Query has no debounce of its own, and the obvious placement —
   debouncing the value the key is built from — quietly reopens the defect this
@@ -34,9 +35,11 @@ because it looks like the obvious way to debounce a query.
   keystroke; the superseded ones are cancelled before they ask anything, hold
   no data, and are collected on the usual timer.
 - `staleTime` mirrors the `Cache-Control` the Server Route already sends, since
-  Hits for a query change only on deploy (ADR-0001). Reopening the palette
-  paints the list it had rather than flickering through a fresh load — but a tab
-  left open across a deploy can show Hits from the previous one for that window.
+  Hits for a query change only on deploy (ADR-0001). Retyping a query answered
+  minutes ago paints its Hits rather than flickering through a fresh load — but
+  a tab left open across a deploy can show Hits from the previous one for that
+  window. Until ADR-0006 this said "reopening the palette", which opened on the
+  idle list; it now opens on Quick links and asks nothing.
 - `refetchOnWindowFocus` is off. An open palette is being read, and refetching
   underneath it would reorder the list while the visitor is aiming at a Hit.
 - The `QueryClient` is created per app instance, never at module scope. One
@@ -46,3 +49,6 @@ because it looks like the obvious way to debounce a query.
   client entry wraps the app in it, so in development every component mounts
   twice and the palette's first query is asked twice. A production build asks
   once. Assert against the change in the count, not its absolute value.
+- The key is the query as typed, which is now also the query as _asked_: an
+  empty one is never sent (ADR-0006), so the `queryFn` waits out the debounce
+  unconditionally rather than skipping it for the idle list.

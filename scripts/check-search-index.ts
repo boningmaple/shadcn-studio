@@ -1,9 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-import {
-  buildSearchIndex,
-  searchIndexArtifactPath,
-} from "./build-search-index.ts";
+import { buildSearchIndex, searchIndexArtifactPath } from "./build-search-index.ts";
 
 /**
  * Fails when the committed search index no longer matches the registry.
@@ -14,9 +11,7 @@ import {
  * hook; when CI arrives it belongs there too, which is the stronger home.
  */
 const expected = await buildSearchIndex();
-const committed = await readFile(searchIndexArtifactPath, "utf8").catch(
-  () => "",
-);
+const committed = await readFile(searchIndexArtifactPath, "utf8").catch(() => "");
 
 if (committed !== expected) {
   process.stderr.write(

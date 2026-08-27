@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Card01 from "@/ui/material-design/components/md-card/demos/md-card-01";
-import Card02 from "@/ui/material-design/components/md-card/demos/md-card-02";
-import Card03 from "@/ui/material-design/components/md-card/demos/md-card-03";
-import Card04 from "@/ui/material-design/components/md-card/demos/md-card-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import Card01 from "@/features/ui-material-design/components/md-card/demos/md-card-01";
+import Card02 from "@/features/ui-material-design/components/md-card/demos/md-card-02";
+import Card03 from "@/features/ui-material-design/components/md-card/demos/md-card-03";
+import Card04 from "@/features/ui-material-design/components/md-card/demos/md-card-04";
 
 export const Route = createFileRoute("/material-design/components/card")({
   component: CardComponentPage,
@@ -18,8 +16,7 @@ export const Route = createFileRoute("/material-design/components/card")({
       },
       {
         name: "description",
-        content:
-          "Accessible Material 3 card patterns built with React and Tailwind CSS.",
+        content: "Accessible Material 3 card patterns built with React and Tailwind CSS.",
       },
     ],
   }),

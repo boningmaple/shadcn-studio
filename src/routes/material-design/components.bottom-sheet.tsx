@@ -1,17 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import BottomSheet01 from "@/ui/material-design/components/md-bottom-sheet/demos/md-bottom-sheet-01";
-import BottomSheet02 from "@/ui/material-design/components/md-bottom-sheet/demos/md-bottom-sheet-02";
-import BottomSheet03 from "@/ui/material-design/components/md-bottom-sheet/demos/md-bottom-sheet-03";
-import BottomSheet04 from "@/ui/material-design/components/md-bottom-sheet/demos/md-bottom-sheet-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import BottomSheet01 from "@/features/ui-material-design/components/md-bottom-sheet/demos/md-bottom-sheet-01";
+import BottomSheet02 from "@/features/ui-material-design/components/md-bottom-sheet/demos/md-bottom-sheet-02";
+import BottomSheet03 from "@/features/ui-material-design/components/md-bottom-sheet/demos/md-bottom-sheet-03";
+import BottomSheet04 from "@/features/ui-material-design/components/md-bottom-sheet/demos/md-bottom-sheet-04";
 
-export const Route = createFileRoute(
-  "/material-design/components/bottom-sheet",
-)({
+export const Route = createFileRoute("/material-design/components/bottom-sheet")({
   component: BottomSheetComponentPage,
   head: () => ({
     meta: [
@@ -28,9 +24,7 @@ export const Route = createFileRoute(
 });
 
 function BottomSheetComponentPage() {
-  return (
-    <ComponentDemosPage demoComponents={demoComponents} slug="bottom-sheet" />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="bottom-sheet" />;
 }
 
 const demoComponents: DemoComponents<"bottom-sheet"> = {

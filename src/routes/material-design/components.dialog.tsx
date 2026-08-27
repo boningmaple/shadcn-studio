@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Dialog01 from "@/ui/material-design/components/md-dialog/demos/md-dialog-01";
-import Dialog02 from "@/ui/material-design/components/md-dialog/demos/md-dialog-02";
-import Dialog03 from "@/ui/material-design/components/md-dialog/demos/md-dialog-03";
-import Dialog04 from "@/ui/material-design/components/md-dialog/demos/md-dialog-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import Dialog01 from "@/features/ui-material-design/components/md-dialog/demos/md-dialog-01";
+import Dialog02 from "@/features/ui-material-design/components/md-dialog/demos/md-dialog-02";
+import Dialog03 from "@/features/ui-material-design/components/md-dialog/demos/md-dialog-03";
+import Dialog04 from "@/features/ui-material-design/components/md-dialog/demos/md-dialog-04";
 
 export const Route = createFileRoute("/material-design/components/dialog")({
   component: DialogComponentPage,

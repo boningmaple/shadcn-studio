@@ -1,18 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import ProgressIndicator01 from "@/ui/material-design/components/md-progress-indicator/demos/md-progress-indicator-01";
-import ProgressIndicator02 from "@/ui/material-design/components/md-progress-indicator/demos/md-progress-indicator-02";
-import ProgressIndicator03 from "@/ui/material-design/components/md-progress-indicator/demos/md-progress-indicator-03";
-import ProgressIndicator04 from "@/ui/material-design/components/md-progress-indicator/demos/md-progress-indicator-04";
-import ProgressIndicator05 from "@/ui/material-design/components/md-progress-indicator/demos/md-progress-indicator-05";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import ProgressIndicator01 from "@/features/ui-material-design/components/md-progress-indicator/demos/md-progress-indicator-01";
+import ProgressIndicator02 from "@/features/ui-material-design/components/md-progress-indicator/demos/md-progress-indicator-02";
+import ProgressIndicator03 from "@/features/ui-material-design/components/md-progress-indicator/demos/md-progress-indicator-03";
+import ProgressIndicator04 from "@/features/ui-material-design/components/md-progress-indicator/demos/md-progress-indicator-04";
+import ProgressIndicator05 from "@/features/ui-material-design/components/md-progress-indicator/demos/md-progress-indicator-05";
 
-export const Route = createFileRoute(
-  "/material-design/components/progress-indicator",
-)({
+export const Route = createFileRoute("/material-design/components/progress-indicator")({
   component: ProgressIndicatorComponentPage,
   head: () => ({
     meta: [
@@ -29,12 +25,7 @@ export const Route = createFileRoute(
 });
 
 function ProgressIndicatorComponentPage() {
-  return (
-    <ComponentDemosPage
-      demoComponents={demoComponents}
-      slug="progress-indicator"
-    />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="progress-indicator" />;
 }
 
 const demoComponents: DemoComponents<"progress-indicator"> = {

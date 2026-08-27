@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ApiSearchRouteImport } from './routes/api.search'
+import { Route as ApiSearchRouteImport } from './routes/api/search'
 import { Route as MaterialDesignComponentsAppBarRouteImport } from './routes/material-design/components.app-bar'
 import { Route as MaterialDesignComponentsAvatarRouteImport } from './routes/material-design/components.avatar'
 import { Route as MaterialDesignComponentsBadgeRouteImport } from './routes/material-design/components.badge'

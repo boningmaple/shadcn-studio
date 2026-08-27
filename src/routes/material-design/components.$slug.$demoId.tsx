@@ -1,21 +1,17 @@
-import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import * as React from "react";
 import { z } from "zod";
 
-import { findComponent } from "@/registry";
-import {
-  getDemoModuleLoader,
-  type DemoPreviewTheme,
-} from "@/ui/app/demo-preview";
+import { demoArtifacts } from "@/features/demo-preview/lib/demo-artifacts";
+import type { DemoPreviewTheme } from "@/features/demo-preview/types/demo-preview";
+import { findComponent } from "@/features/search/data/registry";
 import { cn } from "@/lib/utils";
 
 const demoPreviewSearchSchema = z.object({
   theme: z.enum(["light", "dark"]).catch("light"),
 });
 
-export const Route = createFileRoute(
-  "/material-design/components/$slug/$demoId",
-)({
+export const Route = createFileRoute("/material-design/components/$slug/$demoId")({
   component: StandaloneDemoPreviewPage,
   head: () => ({
     meta: [
@@ -35,7 +31,7 @@ function StandaloneDemoPreviewPage() {
   const loadDemo =
     component === undefined || demo === undefined
       ? undefined
-      : getDemoModuleLoader(component, demo);
+      : demoArtifacts(component, demo).loadPreview;
   const Preview = React.useMemo(
     () => (loadDemo === undefined ? undefined : React.lazy(loadDemo)),
     [loadDemo],
@@ -54,11 +50,7 @@ function StandaloneDemoPreviewPage() {
   return (
     <StandaloneDemoShell theme={theme}>
       <React.Suspense
-        fallback={
-          <div className="text-sm text-muted-foreground" role="status">
-            Loading preview
-          </div>
-        }
+        fallback={<output className="text-sm text-muted-foreground">Loading preview</output>}
       >
         <main
           aria-label={`${demo.name} fullscreen preview`}

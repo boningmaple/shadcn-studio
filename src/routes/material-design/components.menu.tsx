@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Menu01 from "@/ui/material-design/components/md-menu/demos/md-menu-01";
-import Menu02 from "@/ui/material-design/components/md-menu/demos/md-menu-02";
-import Menu03 from "@/ui/material-design/components/md-menu/demos/md-menu-03";
-import Menu04 from "@/ui/material-design/components/md-menu/demos/md-menu-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import Menu01 from "@/features/ui-material-design/components/md-menu/demos/md-menu-01";
+import Menu02 from "@/features/ui-material-design/components/md-menu/demos/md-menu-02";
+import Menu03 from "@/features/ui-material-design/components/md-menu/demos/md-menu-03";
+import Menu04 from "@/features/ui-material-design/components/md-menu/demos/md-menu-04";
 
 export const Route = createFileRoute("/material-design/components/menu")({
   component: MenuComponentPage,

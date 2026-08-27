@@ -1,14 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Badge01 from "@/ui/material-design/components/md-badge/demos/md-badge-01";
-import Badge02 from "@/ui/material-design/components/md-badge/demos/md-badge-02";
-import Badge03 from "@/ui/material-design/components/md-badge/demos/md-badge-03";
-import Badge04 from "@/ui/material-design/components/md-badge/demos/md-badge-04";
-import Badge05 from "@/ui/material-design/components/md-badge/demos/md-badge-05";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import Badge01 from "@/features/ui-material-design/components/md-badge/demos/md-badge-01";
+import Badge02 from "@/features/ui-material-design/components/md-badge/demos/md-badge-02";
+import Badge03 from "@/features/ui-material-design/components/md-badge/demos/md-badge-03";
+import Badge04 from "@/features/ui-material-design/components/md-badge/demos/md-badge-04";
+import Badge05 from "@/features/ui-material-design/components/md-badge/demos/md-badge-05";
 
 export const Route = createFileRoute("/material-design/components/badge")({
   component: BadgeComponentPage,
@@ -19,8 +17,7 @@ export const Route = createFileRoute("/material-design/components/badge")({
       },
       {
         name: "description",
-        content:
-          "Accessible Material 3 badge patterns built with React and Tailwind CSS.",
+        content: "Accessible Material 3 badge patterns built with React and Tailwind CSS.",
       },
     ],
   }),

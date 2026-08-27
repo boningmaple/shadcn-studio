@@ -1,8 +1,8 @@
-import { localStorageKey, type Theme } from "@/ui/app/theme";
 import { expect, test, type Page } from "@playwright/test";
 
-const getThemeSwitchButton = (page: Page) =>
-  page.getByRole("button", { name: /^Theme:/ });
+import { localStorageKey, type Theme } from "@/features/theme-switch/types/theme";
+
+const getThemeSwitchButton = (page: Page) => page.getByRole("button", { name: /^Theme:/ });
 
 const expectTheme = async (
   page: Page,
@@ -15,9 +15,11 @@ const expectTheme = async (
   if (expectedColorScheme == "dark") {
     await expect(root).toContainClass("dark");
   }
-  expect(
-    await root.evaluate((_, key) => localStorage.getItem(key), localStorageKey),
-  ).toBe(expectedTheme);
+  // The only read here with no retry of its own. Polling gives a theme
+  // arriving from another tab the same chance to land as the assertions above.
+  await expect
+    .poll(() => root.evaluate((_, key) => localStorage.getItem(key), localStorageKey))
+    .toBe(expectedTheme);
 };
 
 /**
@@ -149,9 +151,15 @@ test.describe("system theme", () => {
 test("syncs across tabs", async ({ context }) => {
   const first = await context.newPage();
   await first.goto("/");
+  await expect(getThemeSwitchButton(first)).toBeEnabled();
 
   const second = await context.newPage();
   await second.goto("/");
+  // Both tabs have to be listening before either one writes. A tab subscribes
+  // to `storage` while hydrating, in the same pass that enables its button, so
+  // a write sent before this point reaches a tab that is not yet listening —
+  // which then writes its own stale theme back over the new one.
+  await expect(getThemeSwitchButton(second)).toBeEnabled();
 
   await getThemeSwitchButton(first).click(); // system -> light
   await expectTheme(second, "light", "light");

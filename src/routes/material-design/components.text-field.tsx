@@ -1,14 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import TextField01 from "@/ui/material-design/components/md-text-field/demos/md-text-field-01";
-import TextField02 from "@/ui/material-design/components/md-text-field/demos/md-text-field-02";
-import TextField03 from "@/ui/material-design/components/md-text-field/demos/md-text-field-03";
-import TextField04 from "@/ui/material-design/components/md-text-field/demos/md-text-field-04";
-import TextField05 from "@/ui/material-design/components/md-text-field/demos/md-text-field-05";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import TextField01 from "@/features/ui-material-design/components/md-text-field/demos/md-text-field-01";
+import TextField02 from "@/features/ui-material-design/components/md-text-field/demos/md-text-field-02";
+import TextField03 from "@/features/ui-material-design/components/md-text-field/demos/md-text-field-03";
+import TextField04 from "@/features/ui-material-design/components/md-text-field/demos/md-text-field-04";
+import TextField05 from "@/features/ui-material-design/components/md-text-field/demos/md-text-field-05";
 
 export const Route = createFileRoute("/material-design/components/text-field")({
   component: TextFieldComponentPage,
@@ -27,9 +25,7 @@ export const Route = createFileRoute("/material-design/components/text-field")({
 });
 
 function TextFieldComponentPage() {
-  return (
-    <ComponentDemosPage demoComponents={demoComponents} slug="text-field" />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="text-field" />;
 }
 
 const demoComponents: DemoComponents<"text-field"> = {

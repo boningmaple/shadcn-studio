@@ -1,18 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Chips01 from "@/ui/material-design/components/md-chips/demos/md-chips-01";
-import Chips02 from "@/ui/material-design/components/md-chips/demos/md-chips-02";
-import Chips03 from "@/ui/material-design/components/md-chips/demos/md-chips-03";
-import Chips04 from "@/ui/material-design/components/md-chips/demos/md-chips-04";
-import Chips05 from "@/ui/material-design/components/md-chips/demos/md-chips-05";
-import Chips06 from "@/ui/material-design/components/md-chips/demos/md-chips-06";
-import Chips07 from "@/ui/material-design/components/md-chips/demos/md-chips-07";
-import Chips08 from "@/ui/material-design/components/md-chips/demos/md-chips-08";
-import Chips09 from "@/ui/material-design/components/md-chips/demos/md-chips-09";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import Chips01 from "@/features/ui-material-design/components/md-chips/demos/md-chips-01";
+import Chips02 from "@/features/ui-material-design/components/md-chips/demos/md-chips-02";
+import Chips03 from "@/features/ui-material-design/components/md-chips/demos/md-chips-03";
+import Chips04 from "@/features/ui-material-design/components/md-chips/demos/md-chips-04";
+import Chips05 from "@/features/ui-material-design/components/md-chips/demos/md-chips-05";
+import Chips06 from "@/features/ui-material-design/components/md-chips/demos/md-chips-06";
+import Chips07 from "@/features/ui-material-design/components/md-chips/demos/md-chips-07";
+import Chips08 from "@/features/ui-material-design/components/md-chips/demos/md-chips-08";
+import Chips09 from "@/features/ui-material-design/components/md-chips/demos/md-chips-09";
 
 export const Route = createFileRoute("/material-design/components/chips")({
   component: ChipsComponentPage,

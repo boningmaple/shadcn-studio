@@ -3,7 +3,22 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
-@custom-variant dark (&:is(.dark *));
+/*
+ * `dark:` applies under a `.dark` ancestor, unless a `.light` scope intervenes.
+ *
+ * The demo previews nest a scope inside the page: a `.light` stage inside a
+ * dark document, or the reverse. `.light` re-declares the custom properties,
+ * which is enough for utilities that read them — but a `dark:` utility is a
+ * selector match, and plain `.dark *` keeps matching through `.light` because
+ * `<html>` is still an ancestor. Hence the exclusion: without it, a light
+ * preview inside a dark page paints dark colors on a light stage.
+ *
+ * Both `:not()` arguments are wrapped in `:where()` so the selector keeps the
+ * specificity of `.dark *` alone, leaving the utility ordering untouched. One
+ * level of nesting is what the previews need and all this resolves — a `.dark`
+ * nested inside a `.light` inside a `.dark` would still read as light.
+ */
+@custom-variant dark (&:is(.dark *):not(:where(.light, .light *)));
 @plugin "@tailwindcss/typography";
 
 @theme inline {

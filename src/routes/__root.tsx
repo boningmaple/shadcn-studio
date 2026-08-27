@@ -1,17 +1,21 @@
-import * as React from "react";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { ReactQueryDevtoolsPanel } from "@tanstack/react-query-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { AppHeader } from "@/ui/app/app-header";
-import { AppSidebar, appSidebarData } from "@/ui/app/app-sidebar";
-import { ThemeHydrationScript, ThemeProvider } from "@/ui/app/theme";
-import { Separator } from "@/ui/shadcn/react-aria/separator";
+import * as React from "react";
+
+import { ThemeHydrationScript } from "@/features/theme-switch/components/theme-hydration-script";
+import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
+import { AppHeader } from "@/features/ui-app/components/app-header";
+import { AppSidebar } from "@/features/ui-app/components/app-sidebar";
+import { appSidebarData } from "@/features/ui-app/data/app-sidebar-data";
+import { Separator } from "@/features/ui-shadcn/react-aria/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/ui/shadcn/react-aria/sidebar";
+} from "@/features/ui-shadcn/react-aria/sidebar";
+
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({

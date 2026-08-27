@@ -1,5 +1,14 @@
 # Agent Guide
 
+## Code quality
+
+- After making code changes, run `npm run check` (runs `vp check --fix` — formats, lints, and type-checks, auto-fixing what it can).
+- Before finishing, run `npm run lint -- --deny-warnings --format=agent` (zero-warning gate; fails on any lint warning).
+
+## Frontend testing
+
+- Before adding or changing frontend component/browser or E2E tests, read `docs/agents/frontend-testing.md`.
+
 ## Agent skills
 
 ### Issue tracker

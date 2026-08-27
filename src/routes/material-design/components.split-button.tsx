@@ -1,17 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import SplitButton01 from "@/ui/material-design/components/md-split-button/demos/md-split-button-01";
-import SplitButton02 from "@/ui/material-design/components/md-split-button/demos/md-split-button-02";
-import SplitButton03 from "@/ui/material-design/components/md-split-button/demos/md-split-button-03";
-import SplitButton04 from "@/ui/material-design/components/md-split-button/demos/md-split-button-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import SplitButton01 from "@/features/ui-material-design/components/md-split-button/demos/md-split-button-01";
+import SplitButton02 from "@/features/ui-material-design/components/md-split-button/demos/md-split-button-02";
+import SplitButton03 from "@/features/ui-material-design/components/md-split-button/demos/md-split-button-03";
+import SplitButton04 from "@/features/ui-material-design/components/md-split-button/demos/md-split-button-04";
 
-export const Route = createFileRoute(
-  "/material-design/components/split-button",
-)({
+export const Route = createFileRoute("/material-design/components/split-button")({
   component: SplitButtonComponentPage,
   head: () => ({
     meta: [
@@ -28,9 +24,7 @@ export const Route = createFileRoute(
 });
 
 function SplitButtonComponentPage() {
-  return (
-    <ComponentDemosPage demoComponents={demoComponents} slug="split-button" />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="split-button" />;
 }
 
 const demoComponents: DemoComponents<"split-button"> = {

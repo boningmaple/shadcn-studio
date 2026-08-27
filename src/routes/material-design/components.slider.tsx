@@ -1,14 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Slider01 from "@/ui/material-design/components/md-slider/demos/md-slider-01";
-import Slider02 from "@/ui/material-design/components/md-slider/demos/md-slider-02";
-import Slider03 from "@/ui/material-design/components/md-slider/demos/md-slider-03";
-import Slider04 from "@/ui/material-design/components/md-slider/demos/md-slider-04";
-import Slider05 from "@/ui/material-design/components/md-slider/demos/md-slider-05";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import Slider01 from "@/features/ui-material-design/components/md-slider/demos/md-slider-01";
+import Slider02 from "@/features/ui-material-design/components/md-slider/demos/md-slider-02";
+import Slider03 from "@/features/ui-material-design/components/md-slider/demos/md-slider-03";
+import Slider04 from "@/features/ui-material-design/components/md-slider/demos/md-slider-04";
+import Slider05 from "@/features/ui-material-design/components/md-slider/demos/md-slider-05";
 
 export const Route = createFileRoute("/material-design/components/slider")({
   component: SliderComponentPage,

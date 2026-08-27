@@ -1,19 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import ToggleButton01 from "@/ui/material-design/components/md-toggle-button/demos/md-toggle-button-01";
-import ToggleButton02 from "@/ui/material-design/components/md-toggle-button/demos/md-toggle-button-02";
-import ToggleButton03 from "@/ui/material-design/components/md-toggle-button/demos/md-toggle-button-03";
-import ToggleButton04 from "@/ui/material-design/components/md-toggle-button/demos/md-toggle-button-04";
-import ToggleButton05 from "@/ui/material-design/components/md-toggle-button/demos/md-toggle-button-05";
-import ToggleButton06 from "@/ui/material-design/components/md-toggle-button/demos/md-toggle-button-06";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import ToggleButton01 from "@/features/ui-material-design/components/md-toggle-button/demos/md-toggle-button-01";
+import ToggleButton02 from "@/features/ui-material-design/components/md-toggle-button/demos/md-toggle-button-02";
+import ToggleButton03 from "@/features/ui-material-design/components/md-toggle-button/demos/md-toggle-button-03";
+import ToggleButton04 from "@/features/ui-material-design/components/md-toggle-button/demos/md-toggle-button-04";
+import ToggleButton05 from "@/features/ui-material-design/components/md-toggle-button/demos/md-toggle-button-05";
+import ToggleButton06 from "@/features/ui-material-design/components/md-toggle-button/demos/md-toggle-button-06";
 
-export const Route = createFileRoute(
-  "/material-design/components/toggle-button",
-)({
+export const Route = createFileRoute("/material-design/components/toggle-button")({
   component: ToggleButtonComponentPage,
   head: () => ({
     meta: [
@@ -30,9 +26,7 @@ export const Route = createFileRoute(
 });
 
 function ToggleButtonComponentPage() {
-  return (
-    <ComponentDemosPage demoComponents={demoComponents} slug="toggle-button" />
-  );
+  return <ComponentDemosPage demoComponents={demoComponents} slug="toggle-button" />;
 }
 
 const demoComponents: DemoComponents<"toggle-button"> = {

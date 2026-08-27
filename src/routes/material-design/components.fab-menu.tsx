@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import FABMenu01 from "@/ui/material-design/components/md-fab-menu/demos/md-fab-menu-01";
-import FABMenu02 from "@/ui/material-design/components/md-fab-menu/demos/md-fab-menu-02";
-import FABMenu03 from "@/ui/material-design/components/md-fab-menu/demos/md-fab-menu-03";
-import FABMenu04 from "@/ui/material-design/components/md-fab-menu/demos/md-fab-menu-04";
-import {
-  ComponentDemosPage,
-  type DemoComponents,
-} from "@/ui/app/component-demos-page";
+import { ComponentDemosPage } from "@/features/demo-preview/components/component-demos-page";
+import type { DemoComponents } from "@/features/demo-preview/types/demo-components";
+import FABMenu01 from "@/features/ui-material-design/components/md-fab-menu/demos/md-fab-menu-01";
+import FABMenu02 from "@/features/ui-material-design/components/md-fab-menu/demos/md-fab-menu-02";
+import FABMenu03 from "@/features/ui-material-design/components/md-fab-menu/demos/md-fab-menu-03";
+import FABMenu04 from "@/features/ui-material-design/components/md-fab-menu/demos/md-fab-menu-04";
 
 export const Route = createFileRoute("/material-design/components/fab-menu")({
   component: FABMenuComponentPage,
