@@ -1,3 +1,7 @@
+---
+status: superseded by ADR-0007
+---
+
 # The registry lives inside the search feature
 
 `src/` is organised feature-first: each of `search`, `theme-switch`,

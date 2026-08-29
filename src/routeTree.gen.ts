@@ -9,607 +9,150 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as RootLayoutRouteImport } from './routes/_rootLayout'
+import { Route as RootLayoutIndexRouteImport } from './routes/_rootLayout.index'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
-import { Route as MaterialDesignComponentsAppBarRouteImport } from './routes/material-design/components.app-bar'
-import { Route as MaterialDesignComponentsAvatarRouteImport } from './routes/material-design/components.avatar'
-import { Route as MaterialDesignComponentsBadgeRouteImport } from './routes/material-design/components.badge'
-import { Route as MaterialDesignComponentsBottomSheetRouteImport } from './routes/material-design/components.bottom-sheet'
-import { Route as MaterialDesignComponentsButtonRouteImport } from './routes/material-design/components.button'
-import { Route as MaterialDesignComponentsButtonGroupRouteImport } from './routes/material-design/components.button-group'
-import { Route as MaterialDesignComponentsCardRouteImport } from './routes/material-design/components.card'
-import { Route as MaterialDesignComponentsCarouselRouteImport } from './routes/material-design/components.carousel'
-import { Route as MaterialDesignComponentsCheckboxRouteImport } from './routes/material-design/components.checkbox'
-import { Route as MaterialDesignComponentsChipsRouteImport } from './routes/material-design/components.chips'
-import { Route as MaterialDesignComponentsDatePickerRouteImport } from './routes/material-design/components.date-picker'
-import { Route as MaterialDesignComponentsDialogRouteImport } from './routes/material-design/components.dialog'
-import { Route as MaterialDesignComponentsDividerRouteImport } from './routes/material-design/components.divider'
-import { Route as MaterialDesignComponentsExtendedFabRouteImport } from './routes/material-design/components.extended-fab'
-import { Route as MaterialDesignComponentsFabRouteImport } from './routes/material-design/components.fab'
-import { Route as MaterialDesignComponentsFabMenuRouteImport } from './routes/material-design/components.fab-menu'
-import { Route as MaterialDesignComponentsIconButtonRouteImport } from './routes/material-design/components.icon-button'
-import { Route as MaterialDesignComponentsListRouteImport } from './routes/material-design/components.list'
-import { Route as MaterialDesignComponentsLoadingIndicatorRouteImport } from './routes/material-design/components.loading-indicator'
-import { Route as MaterialDesignComponentsMenuRouteImport } from './routes/material-design/components.menu'
-import { Route as MaterialDesignComponentsNavigationBarRouteImport } from './routes/material-design/components.navigation-bar'
-import { Route as MaterialDesignComponentsNavigationDrawerRouteImport } from './routes/material-design/components.navigation-drawer'
-import { Route as MaterialDesignComponentsNavigationRailRouteImport } from './routes/material-design/components.navigation-rail'
-import { Route as MaterialDesignComponentsProgressIndicatorRouteImport } from './routes/material-design/components.progress-indicator'
-import { Route as MaterialDesignComponentsRadioButtonRouteImport } from './routes/material-design/components.radio-button'
-import { Route as MaterialDesignComponentsSearchRouteImport } from './routes/material-design/components.search'
-import { Route as MaterialDesignComponentsSegmentedButtonRouteImport } from './routes/material-design/components.segmented-button'
-import { Route as MaterialDesignComponentsSideSheetRouteImport } from './routes/material-design/components.side-sheet'
-import { Route as MaterialDesignComponentsSliderRouteImport } from './routes/material-design/components.slider'
-import { Route as MaterialDesignComponentsSnackbarRouteImport } from './routes/material-design/components.snackbar'
-import { Route as MaterialDesignComponentsSplitButtonRouteImport } from './routes/material-design/components.split-button'
-import { Route as MaterialDesignComponentsSwitchRouteImport } from './routes/material-design/components.switch'
-import { Route as MaterialDesignComponentsTabsRouteImport } from './routes/material-design/components.tabs'
-import { Route as MaterialDesignComponentsTextFieldRouteImport } from './routes/material-design/components.text-field'
-import { Route as MaterialDesignComponentsTimePickerRouteImport } from './routes/material-design/components.time-picker'
-import { Route as MaterialDesignComponentsToggleButtonRouteImport } from './routes/material-design/components.toggle-button'
-import { Route as MaterialDesignComponentsToolbarRouteImport } from './routes/material-design/components.toolbar'
-import { Route as MaterialDesignComponentsTooltipRouteImport } from './routes/material-design/components.tooltip'
-import { Route as MaterialDesignComponentsSlugDemoIdRouteImport } from './routes/material-design/components.$slug.$demoId'
+import { Route as RootLayoutBlocksIndexRouteImport } from './routes/_rootLayout.blocks.index'
+import { Route as RootLayoutBlocksCategoryRouteImport } from './routes/_rootLayout.blocks.$category'
+import { Route as RootLayoutComponentsIndexRouteImport } from './routes/_rootLayout.components.index'
+import { Route as RootLayoutComponentsCategoryRouteImport } from './routes/_rootLayout.components.$category'
+import { Route as RootLayoutPagesIndexRouteImport } from './routes/_rootLayout.pages.index'
+import { Route as RootLayoutPagesCategoryRouteImport } from './routes/_rootLayout.pages.$category'
 
-const IndexRoute = IndexRouteImport.update({
+const RootLayoutRoute = RootLayoutRouteImport.update({
+  id: '/_rootLayout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RootLayoutIndexRoute = RootLayoutIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => RootLayoutRoute,
 } as any)
 const ApiSearchRoute = ApiSearchRouteImport.update({
   id: '/api/search',
   path: '/api/search',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MaterialDesignComponentsAppBarRoute =
-  MaterialDesignComponentsAppBarRouteImport.update({
-    id: '/material-design/components/app-bar',
-    path: '/material-design/components/app-bar',
-    getParentRoute: () => rootRouteImport,
+const RootLayoutBlocksIndexRoute = RootLayoutBlocksIndexRouteImport.update({
+  id: '/blocks/',
+  path: '/blocks/',
+  getParentRoute: () => RootLayoutRoute,
+} as any)
+const RootLayoutBlocksCategoryRoute =
+  RootLayoutBlocksCategoryRouteImport.update({
+    id: '/blocks/$category',
+    path: '/blocks/$category',
+    getParentRoute: () => RootLayoutRoute,
   } as any)
-const MaterialDesignComponentsAvatarRoute =
-  MaterialDesignComponentsAvatarRouteImport.update({
-    id: '/material-design/components/avatar',
-    path: '/material-design/components/avatar',
-    getParentRoute: () => rootRouteImport,
+const RootLayoutComponentsIndexRoute =
+  RootLayoutComponentsIndexRouteImport.update({
+    id: '/components/',
+    path: '/components/',
+    getParentRoute: () => RootLayoutRoute,
   } as any)
-const MaterialDesignComponentsBadgeRoute =
-  MaterialDesignComponentsBadgeRouteImport.update({
-    id: '/material-design/components/badge',
-    path: '/material-design/components/badge',
-    getParentRoute: () => rootRouteImport,
+const RootLayoutComponentsCategoryRoute =
+  RootLayoutComponentsCategoryRouteImport.update({
+    id: '/components/$category',
+    path: '/components/$category',
+    getParentRoute: () => RootLayoutRoute,
   } as any)
-const MaterialDesignComponentsBottomSheetRoute =
-  MaterialDesignComponentsBottomSheetRouteImport.update({
-    id: '/material-design/components/bottom-sheet',
-    path: '/material-design/components/bottom-sheet',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsButtonRoute =
-  MaterialDesignComponentsButtonRouteImport.update({
-    id: '/material-design/components/button',
-    path: '/material-design/components/button',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsButtonGroupRoute =
-  MaterialDesignComponentsButtonGroupRouteImport.update({
-    id: '/material-design/components/button-group',
-    path: '/material-design/components/button-group',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsCardRoute =
-  MaterialDesignComponentsCardRouteImport.update({
-    id: '/material-design/components/card',
-    path: '/material-design/components/card',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsCarouselRoute =
-  MaterialDesignComponentsCarouselRouteImport.update({
-    id: '/material-design/components/carousel',
-    path: '/material-design/components/carousel',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsCheckboxRoute =
-  MaterialDesignComponentsCheckboxRouteImport.update({
-    id: '/material-design/components/checkbox',
-    path: '/material-design/components/checkbox',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsChipsRoute =
-  MaterialDesignComponentsChipsRouteImport.update({
-    id: '/material-design/components/chips',
-    path: '/material-design/components/chips',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsDatePickerRoute =
-  MaterialDesignComponentsDatePickerRouteImport.update({
-    id: '/material-design/components/date-picker',
-    path: '/material-design/components/date-picker',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsDialogRoute =
-  MaterialDesignComponentsDialogRouteImport.update({
-    id: '/material-design/components/dialog',
-    path: '/material-design/components/dialog',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsDividerRoute =
-  MaterialDesignComponentsDividerRouteImport.update({
-    id: '/material-design/components/divider',
-    path: '/material-design/components/divider',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsExtendedFabRoute =
-  MaterialDesignComponentsExtendedFabRouteImport.update({
-    id: '/material-design/components/extended-fab',
-    path: '/material-design/components/extended-fab',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsFabRoute =
-  MaterialDesignComponentsFabRouteImport.update({
-    id: '/material-design/components/fab',
-    path: '/material-design/components/fab',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsFabMenuRoute =
-  MaterialDesignComponentsFabMenuRouteImport.update({
-    id: '/material-design/components/fab-menu',
-    path: '/material-design/components/fab-menu',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsIconButtonRoute =
-  MaterialDesignComponentsIconButtonRouteImport.update({
-    id: '/material-design/components/icon-button',
-    path: '/material-design/components/icon-button',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsListRoute =
-  MaterialDesignComponentsListRouteImport.update({
-    id: '/material-design/components/list',
-    path: '/material-design/components/list',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsLoadingIndicatorRoute =
-  MaterialDesignComponentsLoadingIndicatorRouteImport.update({
-    id: '/material-design/components/loading-indicator',
-    path: '/material-design/components/loading-indicator',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsMenuRoute =
-  MaterialDesignComponentsMenuRouteImport.update({
-    id: '/material-design/components/menu',
-    path: '/material-design/components/menu',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsNavigationBarRoute =
-  MaterialDesignComponentsNavigationBarRouteImport.update({
-    id: '/material-design/components/navigation-bar',
-    path: '/material-design/components/navigation-bar',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsNavigationDrawerRoute =
-  MaterialDesignComponentsNavigationDrawerRouteImport.update({
-    id: '/material-design/components/navigation-drawer',
-    path: '/material-design/components/navigation-drawer',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsNavigationRailRoute =
-  MaterialDesignComponentsNavigationRailRouteImport.update({
-    id: '/material-design/components/navigation-rail',
-    path: '/material-design/components/navigation-rail',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsProgressIndicatorRoute =
-  MaterialDesignComponentsProgressIndicatorRouteImport.update({
-    id: '/material-design/components/progress-indicator',
-    path: '/material-design/components/progress-indicator',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsRadioButtonRoute =
-  MaterialDesignComponentsRadioButtonRouteImport.update({
-    id: '/material-design/components/radio-button',
-    path: '/material-design/components/radio-button',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsSearchRoute =
-  MaterialDesignComponentsSearchRouteImport.update({
-    id: '/material-design/components/search',
-    path: '/material-design/components/search',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsSegmentedButtonRoute =
-  MaterialDesignComponentsSegmentedButtonRouteImport.update({
-    id: '/material-design/components/segmented-button',
-    path: '/material-design/components/segmented-button',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsSideSheetRoute =
-  MaterialDesignComponentsSideSheetRouteImport.update({
-    id: '/material-design/components/side-sheet',
-    path: '/material-design/components/side-sheet',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsSliderRoute =
-  MaterialDesignComponentsSliderRouteImport.update({
-    id: '/material-design/components/slider',
-    path: '/material-design/components/slider',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsSnackbarRoute =
-  MaterialDesignComponentsSnackbarRouteImport.update({
-    id: '/material-design/components/snackbar',
-    path: '/material-design/components/snackbar',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsSplitButtonRoute =
-  MaterialDesignComponentsSplitButtonRouteImport.update({
-    id: '/material-design/components/split-button',
-    path: '/material-design/components/split-button',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsSwitchRoute =
-  MaterialDesignComponentsSwitchRouteImport.update({
-    id: '/material-design/components/switch',
-    path: '/material-design/components/switch',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsTabsRoute =
-  MaterialDesignComponentsTabsRouteImport.update({
-    id: '/material-design/components/tabs',
-    path: '/material-design/components/tabs',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsTextFieldRoute =
-  MaterialDesignComponentsTextFieldRouteImport.update({
-    id: '/material-design/components/text-field',
-    path: '/material-design/components/text-field',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsTimePickerRoute =
-  MaterialDesignComponentsTimePickerRouteImport.update({
-    id: '/material-design/components/time-picker',
-    path: '/material-design/components/time-picker',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsToggleButtonRoute =
-  MaterialDesignComponentsToggleButtonRouteImport.update({
-    id: '/material-design/components/toggle-button',
-    path: '/material-design/components/toggle-button',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsToolbarRoute =
-  MaterialDesignComponentsToolbarRouteImport.update({
-    id: '/material-design/components/toolbar',
-    path: '/material-design/components/toolbar',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsTooltipRoute =
-  MaterialDesignComponentsTooltipRouteImport.update({
-    id: '/material-design/components/tooltip',
-    path: '/material-design/components/tooltip',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MaterialDesignComponentsSlugDemoIdRoute =
-  MaterialDesignComponentsSlugDemoIdRouteImport.update({
-    id: '/material-design/components/$slug/$demoId',
-    path: '/material-design/components/$slug/$demoId',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const RootLayoutPagesIndexRoute = RootLayoutPagesIndexRouteImport.update({
+  id: '/pages/',
+  path: '/pages/',
+  getParentRoute: () => RootLayoutRoute,
+} as any)
+const RootLayoutPagesCategoryRoute = RootLayoutPagesCategoryRouteImport.update({
+  id: '/pages/$category',
+  path: '/pages/$category',
+  getParentRoute: () => RootLayoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof RootLayoutIndexRoute
   '/api/search': typeof ApiSearchRoute
-  '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
-  '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
-  '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
-  '/material-design/components/bottom-sheet': typeof MaterialDesignComponentsBottomSheetRoute
-  '/material-design/components/button': typeof MaterialDesignComponentsButtonRoute
-  '/material-design/components/button-group': typeof MaterialDesignComponentsButtonGroupRoute
-  '/material-design/components/card': typeof MaterialDesignComponentsCardRoute
-  '/material-design/components/carousel': typeof MaterialDesignComponentsCarouselRoute
-  '/material-design/components/checkbox': typeof MaterialDesignComponentsCheckboxRoute
-  '/material-design/components/chips': typeof MaterialDesignComponentsChipsRoute
-  '/material-design/components/date-picker': typeof MaterialDesignComponentsDatePickerRoute
-  '/material-design/components/dialog': typeof MaterialDesignComponentsDialogRoute
-  '/material-design/components/divider': typeof MaterialDesignComponentsDividerRoute
-  '/material-design/components/extended-fab': typeof MaterialDesignComponentsExtendedFabRoute
-  '/material-design/components/fab': typeof MaterialDesignComponentsFabRoute
-  '/material-design/components/fab-menu': typeof MaterialDesignComponentsFabMenuRoute
-  '/material-design/components/icon-button': typeof MaterialDesignComponentsIconButtonRoute
-  '/material-design/components/list': typeof MaterialDesignComponentsListRoute
-  '/material-design/components/loading-indicator': typeof MaterialDesignComponentsLoadingIndicatorRoute
-  '/material-design/components/menu': typeof MaterialDesignComponentsMenuRoute
-  '/material-design/components/navigation-bar': typeof MaterialDesignComponentsNavigationBarRoute
-  '/material-design/components/navigation-drawer': typeof MaterialDesignComponentsNavigationDrawerRoute
-  '/material-design/components/navigation-rail': typeof MaterialDesignComponentsNavigationRailRoute
-  '/material-design/components/progress-indicator': typeof MaterialDesignComponentsProgressIndicatorRoute
-  '/material-design/components/radio-button': typeof MaterialDesignComponentsRadioButtonRoute
-  '/material-design/components/search': typeof MaterialDesignComponentsSearchRoute
-  '/material-design/components/segmented-button': typeof MaterialDesignComponentsSegmentedButtonRoute
-  '/material-design/components/side-sheet': typeof MaterialDesignComponentsSideSheetRoute
-  '/material-design/components/slider': typeof MaterialDesignComponentsSliderRoute
-  '/material-design/components/snackbar': typeof MaterialDesignComponentsSnackbarRoute
-  '/material-design/components/split-button': typeof MaterialDesignComponentsSplitButtonRoute
-  '/material-design/components/switch': typeof MaterialDesignComponentsSwitchRoute
-  '/material-design/components/tabs': typeof MaterialDesignComponentsTabsRoute
-  '/material-design/components/text-field': typeof MaterialDesignComponentsTextFieldRoute
-  '/material-design/components/time-picker': typeof MaterialDesignComponentsTimePickerRoute
-  '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
-  '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
-  '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
-  '/material-design/components/$slug/$demoId': typeof MaterialDesignComponentsSlugDemoIdRoute
+  '/blocks/$category': typeof RootLayoutBlocksCategoryRoute
+  '/components/$category': typeof RootLayoutComponentsCategoryRoute
+  '/pages/$category': typeof RootLayoutPagesCategoryRoute
+  '/blocks/': typeof RootLayoutBlocksIndexRoute
+  '/components/': typeof RootLayoutComponentsIndexRoute
+  '/pages/': typeof RootLayoutPagesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/api/search': typeof ApiSearchRoute
-  '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
-  '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
-  '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
-  '/material-design/components/bottom-sheet': typeof MaterialDesignComponentsBottomSheetRoute
-  '/material-design/components/button': typeof MaterialDesignComponentsButtonRoute
-  '/material-design/components/button-group': typeof MaterialDesignComponentsButtonGroupRoute
-  '/material-design/components/card': typeof MaterialDesignComponentsCardRoute
-  '/material-design/components/carousel': typeof MaterialDesignComponentsCarouselRoute
-  '/material-design/components/checkbox': typeof MaterialDesignComponentsCheckboxRoute
-  '/material-design/components/chips': typeof MaterialDesignComponentsChipsRoute
-  '/material-design/components/date-picker': typeof MaterialDesignComponentsDatePickerRoute
-  '/material-design/components/dialog': typeof MaterialDesignComponentsDialogRoute
-  '/material-design/components/divider': typeof MaterialDesignComponentsDividerRoute
-  '/material-design/components/extended-fab': typeof MaterialDesignComponentsExtendedFabRoute
-  '/material-design/components/fab': typeof MaterialDesignComponentsFabRoute
-  '/material-design/components/fab-menu': typeof MaterialDesignComponentsFabMenuRoute
-  '/material-design/components/icon-button': typeof MaterialDesignComponentsIconButtonRoute
-  '/material-design/components/list': typeof MaterialDesignComponentsListRoute
-  '/material-design/components/loading-indicator': typeof MaterialDesignComponentsLoadingIndicatorRoute
-  '/material-design/components/menu': typeof MaterialDesignComponentsMenuRoute
-  '/material-design/components/navigation-bar': typeof MaterialDesignComponentsNavigationBarRoute
-  '/material-design/components/navigation-drawer': typeof MaterialDesignComponentsNavigationDrawerRoute
-  '/material-design/components/navigation-rail': typeof MaterialDesignComponentsNavigationRailRoute
-  '/material-design/components/progress-indicator': typeof MaterialDesignComponentsProgressIndicatorRoute
-  '/material-design/components/radio-button': typeof MaterialDesignComponentsRadioButtonRoute
-  '/material-design/components/search': typeof MaterialDesignComponentsSearchRoute
-  '/material-design/components/segmented-button': typeof MaterialDesignComponentsSegmentedButtonRoute
-  '/material-design/components/side-sheet': typeof MaterialDesignComponentsSideSheetRoute
-  '/material-design/components/slider': typeof MaterialDesignComponentsSliderRoute
-  '/material-design/components/snackbar': typeof MaterialDesignComponentsSnackbarRoute
-  '/material-design/components/split-button': typeof MaterialDesignComponentsSplitButtonRoute
-  '/material-design/components/switch': typeof MaterialDesignComponentsSwitchRoute
-  '/material-design/components/tabs': typeof MaterialDesignComponentsTabsRoute
-  '/material-design/components/text-field': typeof MaterialDesignComponentsTextFieldRoute
-  '/material-design/components/time-picker': typeof MaterialDesignComponentsTimePickerRoute
-  '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
-  '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
-  '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
-  '/material-design/components/$slug/$demoId': typeof MaterialDesignComponentsSlugDemoIdRoute
+  '/': typeof RootLayoutIndexRoute
+  '/blocks/$category': typeof RootLayoutBlocksCategoryRoute
+  '/components/$category': typeof RootLayoutComponentsCategoryRoute
+  '/pages/$category': typeof RootLayoutPagesCategoryRoute
+  '/blocks': typeof RootLayoutBlocksIndexRoute
+  '/components': typeof RootLayoutComponentsIndexRoute
+  '/pages': typeof RootLayoutPagesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_rootLayout': typeof RootLayoutRouteWithChildren
   '/api/search': typeof ApiSearchRoute
-  '/material-design/components/app-bar': typeof MaterialDesignComponentsAppBarRoute
-  '/material-design/components/avatar': typeof MaterialDesignComponentsAvatarRoute
-  '/material-design/components/badge': typeof MaterialDesignComponentsBadgeRoute
-  '/material-design/components/bottom-sheet': typeof MaterialDesignComponentsBottomSheetRoute
-  '/material-design/components/button': typeof MaterialDesignComponentsButtonRoute
-  '/material-design/components/button-group': typeof MaterialDesignComponentsButtonGroupRoute
-  '/material-design/components/card': typeof MaterialDesignComponentsCardRoute
-  '/material-design/components/carousel': typeof MaterialDesignComponentsCarouselRoute
-  '/material-design/components/checkbox': typeof MaterialDesignComponentsCheckboxRoute
-  '/material-design/components/chips': typeof MaterialDesignComponentsChipsRoute
-  '/material-design/components/date-picker': typeof MaterialDesignComponentsDatePickerRoute
-  '/material-design/components/dialog': typeof MaterialDesignComponentsDialogRoute
-  '/material-design/components/divider': typeof MaterialDesignComponentsDividerRoute
-  '/material-design/components/extended-fab': typeof MaterialDesignComponentsExtendedFabRoute
-  '/material-design/components/fab': typeof MaterialDesignComponentsFabRoute
-  '/material-design/components/fab-menu': typeof MaterialDesignComponentsFabMenuRoute
-  '/material-design/components/icon-button': typeof MaterialDesignComponentsIconButtonRoute
-  '/material-design/components/list': typeof MaterialDesignComponentsListRoute
-  '/material-design/components/loading-indicator': typeof MaterialDesignComponentsLoadingIndicatorRoute
-  '/material-design/components/menu': typeof MaterialDesignComponentsMenuRoute
-  '/material-design/components/navigation-bar': typeof MaterialDesignComponentsNavigationBarRoute
-  '/material-design/components/navigation-drawer': typeof MaterialDesignComponentsNavigationDrawerRoute
-  '/material-design/components/navigation-rail': typeof MaterialDesignComponentsNavigationRailRoute
-  '/material-design/components/progress-indicator': typeof MaterialDesignComponentsProgressIndicatorRoute
-  '/material-design/components/radio-button': typeof MaterialDesignComponentsRadioButtonRoute
-  '/material-design/components/search': typeof MaterialDesignComponentsSearchRoute
-  '/material-design/components/segmented-button': typeof MaterialDesignComponentsSegmentedButtonRoute
-  '/material-design/components/side-sheet': typeof MaterialDesignComponentsSideSheetRoute
-  '/material-design/components/slider': typeof MaterialDesignComponentsSliderRoute
-  '/material-design/components/snackbar': typeof MaterialDesignComponentsSnackbarRoute
-  '/material-design/components/split-button': typeof MaterialDesignComponentsSplitButtonRoute
-  '/material-design/components/switch': typeof MaterialDesignComponentsSwitchRoute
-  '/material-design/components/tabs': typeof MaterialDesignComponentsTabsRoute
-  '/material-design/components/text-field': typeof MaterialDesignComponentsTextFieldRoute
-  '/material-design/components/time-picker': typeof MaterialDesignComponentsTimePickerRoute
-  '/material-design/components/toggle-button': typeof MaterialDesignComponentsToggleButtonRoute
-  '/material-design/components/toolbar': typeof MaterialDesignComponentsToolbarRoute
-  '/material-design/components/tooltip': typeof MaterialDesignComponentsTooltipRoute
-  '/material-design/components/$slug/$demoId': typeof MaterialDesignComponentsSlugDemoIdRoute
+  '/_rootLayout/': typeof RootLayoutIndexRoute
+  '/_rootLayout/blocks/$category': typeof RootLayoutBlocksCategoryRoute
+  '/_rootLayout/components/$category': typeof RootLayoutComponentsCategoryRoute
+  '/_rootLayout/pages/$category': typeof RootLayoutPagesCategoryRoute
+  '/_rootLayout/blocks/': typeof RootLayoutBlocksIndexRoute
+  '/_rootLayout/components/': typeof RootLayoutComponentsIndexRoute
+  '/_rootLayout/pages/': typeof RootLayoutPagesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/api/search'
-    | '/material-design/components/app-bar'
-    | '/material-design/components/avatar'
-    | '/material-design/components/badge'
-    | '/material-design/components/bottom-sheet'
-    | '/material-design/components/button'
-    | '/material-design/components/button-group'
-    | '/material-design/components/card'
-    | '/material-design/components/carousel'
-    | '/material-design/components/checkbox'
-    | '/material-design/components/chips'
-    | '/material-design/components/date-picker'
-    | '/material-design/components/dialog'
-    | '/material-design/components/divider'
-    | '/material-design/components/extended-fab'
-    | '/material-design/components/fab'
-    | '/material-design/components/fab-menu'
-    | '/material-design/components/icon-button'
-    | '/material-design/components/list'
-    | '/material-design/components/loading-indicator'
-    | '/material-design/components/menu'
-    | '/material-design/components/navigation-bar'
-    | '/material-design/components/navigation-drawer'
-    | '/material-design/components/navigation-rail'
-    | '/material-design/components/progress-indicator'
-    | '/material-design/components/radio-button'
-    | '/material-design/components/search'
-    | '/material-design/components/segmented-button'
-    | '/material-design/components/side-sheet'
-    | '/material-design/components/slider'
-    | '/material-design/components/snackbar'
-    | '/material-design/components/split-button'
-    | '/material-design/components/switch'
-    | '/material-design/components/tabs'
-    | '/material-design/components/text-field'
-    | '/material-design/components/time-picker'
-    | '/material-design/components/toggle-button'
-    | '/material-design/components/toolbar'
-    | '/material-design/components/tooltip'
-    | '/material-design/components/$slug/$demoId'
+    | '/blocks/$category'
+    | '/components/$category'
+    | '/pages/$category'
+    | '/blocks/'
+    | '/components/'
+    | '/pages/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/api/search'
-    | '/material-design/components/app-bar'
-    | '/material-design/components/avatar'
-    | '/material-design/components/badge'
-    | '/material-design/components/bottom-sheet'
-    | '/material-design/components/button'
-    | '/material-design/components/button-group'
-    | '/material-design/components/card'
-    | '/material-design/components/carousel'
-    | '/material-design/components/checkbox'
-    | '/material-design/components/chips'
-    | '/material-design/components/date-picker'
-    | '/material-design/components/dialog'
-    | '/material-design/components/divider'
-    | '/material-design/components/extended-fab'
-    | '/material-design/components/fab'
-    | '/material-design/components/fab-menu'
-    | '/material-design/components/icon-button'
-    | '/material-design/components/list'
-    | '/material-design/components/loading-indicator'
-    | '/material-design/components/menu'
-    | '/material-design/components/navigation-bar'
-    | '/material-design/components/navigation-drawer'
-    | '/material-design/components/navigation-rail'
-    | '/material-design/components/progress-indicator'
-    | '/material-design/components/radio-button'
-    | '/material-design/components/search'
-    | '/material-design/components/segmented-button'
-    | '/material-design/components/side-sheet'
-    | '/material-design/components/slider'
-    | '/material-design/components/snackbar'
-    | '/material-design/components/split-button'
-    | '/material-design/components/switch'
-    | '/material-design/components/tabs'
-    | '/material-design/components/text-field'
-    | '/material-design/components/time-picker'
-    | '/material-design/components/toggle-button'
-    | '/material-design/components/toolbar'
-    | '/material-design/components/tooltip'
-    | '/material-design/components/$slug/$demoId'
+    | '/'
+    | '/blocks/$category'
+    | '/components/$category'
+    | '/pages/$category'
+    | '/blocks'
+    | '/components'
+    | '/pages'
   id:
     | '__root__'
-    | '/'
+    | '/_rootLayout'
     | '/api/search'
-    | '/material-design/components/app-bar'
-    | '/material-design/components/avatar'
-    | '/material-design/components/badge'
-    | '/material-design/components/bottom-sheet'
-    | '/material-design/components/button'
-    | '/material-design/components/button-group'
-    | '/material-design/components/card'
-    | '/material-design/components/carousel'
-    | '/material-design/components/checkbox'
-    | '/material-design/components/chips'
-    | '/material-design/components/date-picker'
-    | '/material-design/components/dialog'
-    | '/material-design/components/divider'
-    | '/material-design/components/extended-fab'
-    | '/material-design/components/fab'
-    | '/material-design/components/fab-menu'
-    | '/material-design/components/icon-button'
-    | '/material-design/components/list'
-    | '/material-design/components/loading-indicator'
-    | '/material-design/components/menu'
-    | '/material-design/components/navigation-bar'
-    | '/material-design/components/navigation-drawer'
-    | '/material-design/components/navigation-rail'
-    | '/material-design/components/progress-indicator'
-    | '/material-design/components/radio-button'
-    | '/material-design/components/search'
-    | '/material-design/components/segmented-button'
-    | '/material-design/components/side-sheet'
-    | '/material-design/components/slider'
-    | '/material-design/components/snackbar'
-    | '/material-design/components/split-button'
-    | '/material-design/components/switch'
-    | '/material-design/components/tabs'
-    | '/material-design/components/text-field'
-    | '/material-design/components/time-picker'
-    | '/material-design/components/toggle-button'
-    | '/material-design/components/toolbar'
-    | '/material-design/components/tooltip'
-    | '/material-design/components/$slug/$demoId'
+    | '/_rootLayout/'
+    | '/_rootLayout/blocks/$category'
+    | '/_rootLayout/components/$category'
+    | '/_rootLayout/pages/$category'
+    | '/_rootLayout/blocks/'
+    | '/_rootLayout/components/'
+    | '/_rootLayout/pages/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  RootLayoutRoute: typeof RootLayoutRouteWithChildren
   ApiSearchRoute: typeof ApiSearchRoute
-  MaterialDesignComponentsAppBarRoute: typeof MaterialDesignComponentsAppBarRoute
-  MaterialDesignComponentsAvatarRoute: typeof MaterialDesignComponentsAvatarRoute
-  MaterialDesignComponentsBadgeRoute: typeof MaterialDesignComponentsBadgeRoute
-  MaterialDesignComponentsBottomSheetRoute: typeof MaterialDesignComponentsBottomSheetRoute
-  MaterialDesignComponentsButtonRoute: typeof MaterialDesignComponentsButtonRoute
-  MaterialDesignComponentsButtonGroupRoute: typeof MaterialDesignComponentsButtonGroupRoute
-  MaterialDesignComponentsCardRoute: typeof MaterialDesignComponentsCardRoute
-  MaterialDesignComponentsCarouselRoute: typeof MaterialDesignComponentsCarouselRoute
-  MaterialDesignComponentsCheckboxRoute: typeof MaterialDesignComponentsCheckboxRoute
-  MaterialDesignComponentsChipsRoute: typeof MaterialDesignComponentsChipsRoute
-  MaterialDesignComponentsDatePickerRoute: typeof MaterialDesignComponentsDatePickerRoute
-  MaterialDesignComponentsDialogRoute: typeof MaterialDesignComponentsDialogRoute
-  MaterialDesignComponentsDividerRoute: typeof MaterialDesignComponentsDividerRoute
-  MaterialDesignComponentsExtendedFabRoute: typeof MaterialDesignComponentsExtendedFabRoute
-  MaterialDesignComponentsFabRoute: typeof MaterialDesignComponentsFabRoute
-  MaterialDesignComponentsFabMenuRoute: typeof MaterialDesignComponentsFabMenuRoute
-  MaterialDesignComponentsIconButtonRoute: typeof MaterialDesignComponentsIconButtonRoute
-  MaterialDesignComponentsListRoute: typeof MaterialDesignComponentsListRoute
-  MaterialDesignComponentsLoadingIndicatorRoute: typeof MaterialDesignComponentsLoadingIndicatorRoute
-  MaterialDesignComponentsMenuRoute: typeof MaterialDesignComponentsMenuRoute
-  MaterialDesignComponentsNavigationBarRoute: typeof MaterialDesignComponentsNavigationBarRoute
-  MaterialDesignComponentsNavigationDrawerRoute: typeof MaterialDesignComponentsNavigationDrawerRoute
-  MaterialDesignComponentsNavigationRailRoute: typeof MaterialDesignComponentsNavigationRailRoute
-  MaterialDesignComponentsProgressIndicatorRoute: typeof MaterialDesignComponentsProgressIndicatorRoute
-  MaterialDesignComponentsRadioButtonRoute: typeof MaterialDesignComponentsRadioButtonRoute
-  MaterialDesignComponentsSearchRoute: typeof MaterialDesignComponentsSearchRoute
-  MaterialDesignComponentsSegmentedButtonRoute: typeof MaterialDesignComponentsSegmentedButtonRoute
-  MaterialDesignComponentsSideSheetRoute: typeof MaterialDesignComponentsSideSheetRoute
-  MaterialDesignComponentsSliderRoute: typeof MaterialDesignComponentsSliderRoute
-  MaterialDesignComponentsSnackbarRoute: typeof MaterialDesignComponentsSnackbarRoute
-  MaterialDesignComponentsSplitButtonRoute: typeof MaterialDesignComponentsSplitButtonRoute
-  MaterialDesignComponentsSwitchRoute: typeof MaterialDesignComponentsSwitchRoute
-  MaterialDesignComponentsTabsRoute: typeof MaterialDesignComponentsTabsRoute
-  MaterialDesignComponentsTextFieldRoute: typeof MaterialDesignComponentsTextFieldRoute
-  MaterialDesignComponentsTimePickerRoute: typeof MaterialDesignComponentsTimePickerRoute
-  MaterialDesignComponentsToggleButtonRoute: typeof MaterialDesignComponentsToggleButtonRoute
-  MaterialDesignComponentsToolbarRoute: typeof MaterialDesignComponentsToolbarRoute
-  MaterialDesignComponentsTooltipRoute: typeof MaterialDesignComponentsTooltipRoute
-  MaterialDesignComponentsSlugDemoIdRoute: typeof MaterialDesignComponentsSlugDemoIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_rootLayout': {
+      id: '/_rootLayout'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof RootLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_rootLayout/': {
+      id: '/_rootLayout/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof RootLayoutIndexRouteImport
+      parentRoute: typeof RootLayoutRoute
     }
     '/api/search': {
       id: '/api/search'
@@ -618,342 +161,78 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiSearchRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/material-design/components/app-bar': {
-      id: '/material-design/components/app-bar'
-      path: '/material-design/components/app-bar'
-      fullPath: '/material-design/components/app-bar'
-      preLoaderRoute: typeof MaterialDesignComponentsAppBarRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_rootLayout/blocks/': {
+      id: '/_rootLayout/blocks/'
+      path: '/blocks'
+      fullPath: '/blocks/'
+      preLoaderRoute: typeof RootLayoutBlocksIndexRouteImport
+      parentRoute: typeof RootLayoutRoute
     }
-    '/material-design/components/avatar': {
-      id: '/material-design/components/avatar'
-      path: '/material-design/components/avatar'
-      fullPath: '/material-design/components/avatar'
-      preLoaderRoute: typeof MaterialDesignComponentsAvatarRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_rootLayout/blocks/$category': {
+      id: '/_rootLayout/blocks/$category'
+      path: '/blocks/$category'
+      fullPath: '/blocks/$category'
+      preLoaderRoute: typeof RootLayoutBlocksCategoryRouteImport
+      parentRoute: typeof RootLayoutRoute
     }
-    '/material-design/components/badge': {
-      id: '/material-design/components/badge'
-      path: '/material-design/components/badge'
-      fullPath: '/material-design/components/badge'
-      preLoaderRoute: typeof MaterialDesignComponentsBadgeRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_rootLayout/components/': {
+      id: '/_rootLayout/components/'
+      path: '/components'
+      fullPath: '/components/'
+      preLoaderRoute: typeof RootLayoutComponentsIndexRouteImport
+      parentRoute: typeof RootLayoutRoute
     }
-    '/material-design/components/bottom-sheet': {
-      id: '/material-design/components/bottom-sheet'
-      path: '/material-design/components/bottom-sheet'
-      fullPath: '/material-design/components/bottom-sheet'
-      preLoaderRoute: typeof MaterialDesignComponentsBottomSheetRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_rootLayout/components/$category': {
+      id: '/_rootLayout/components/$category'
+      path: '/components/$category'
+      fullPath: '/components/$category'
+      preLoaderRoute: typeof RootLayoutComponentsCategoryRouteImport
+      parentRoute: typeof RootLayoutRoute
     }
-    '/material-design/components/button': {
-      id: '/material-design/components/button'
-      path: '/material-design/components/button'
-      fullPath: '/material-design/components/button'
-      preLoaderRoute: typeof MaterialDesignComponentsButtonRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_rootLayout/pages/': {
+      id: '/_rootLayout/pages/'
+      path: '/pages'
+      fullPath: '/pages/'
+      preLoaderRoute: typeof RootLayoutPagesIndexRouteImport
+      parentRoute: typeof RootLayoutRoute
     }
-    '/material-design/components/button-group': {
-      id: '/material-design/components/button-group'
-      path: '/material-design/components/button-group'
-      fullPath: '/material-design/components/button-group'
-      preLoaderRoute: typeof MaterialDesignComponentsButtonGroupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/card': {
-      id: '/material-design/components/card'
-      path: '/material-design/components/card'
-      fullPath: '/material-design/components/card'
-      preLoaderRoute: typeof MaterialDesignComponentsCardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/carousel': {
-      id: '/material-design/components/carousel'
-      path: '/material-design/components/carousel'
-      fullPath: '/material-design/components/carousel'
-      preLoaderRoute: typeof MaterialDesignComponentsCarouselRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/checkbox': {
-      id: '/material-design/components/checkbox'
-      path: '/material-design/components/checkbox'
-      fullPath: '/material-design/components/checkbox'
-      preLoaderRoute: typeof MaterialDesignComponentsCheckboxRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/chips': {
-      id: '/material-design/components/chips'
-      path: '/material-design/components/chips'
-      fullPath: '/material-design/components/chips'
-      preLoaderRoute: typeof MaterialDesignComponentsChipsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/date-picker': {
-      id: '/material-design/components/date-picker'
-      path: '/material-design/components/date-picker'
-      fullPath: '/material-design/components/date-picker'
-      preLoaderRoute: typeof MaterialDesignComponentsDatePickerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/dialog': {
-      id: '/material-design/components/dialog'
-      path: '/material-design/components/dialog'
-      fullPath: '/material-design/components/dialog'
-      preLoaderRoute: typeof MaterialDesignComponentsDialogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/divider': {
-      id: '/material-design/components/divider'
-      path: '/material-design/components/divider'
-      fullPath: '/material-design/components/divider'
-      preLoaderRoute: typeof MaterialDesignComponentsDividerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/extended-fab': {
-      id: '/material-design/components/extended-fab'
-      path: '/material-design/components/extended-fab'
-      fullPath: '/material-design/components/extended-fab'
-      preLoaderRoute: typeof MaterialDesignComponentsExtendedFabRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/fab': {
-      id: '/material-design/components/fab'
-      path: '/material-design/components/fab'
-      fullPath: '/material-design/components/fab'
-      preLoaderRoute: typeof MaterialDesignComponentsFabRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/fab-menu': {
-      id: '/material-design/components/fab-menu'
-      path: '/material-design/components/fab-menu'
-      fullPath: '/material-design/components/fab-menu'
-      preLoaderRoute: typeof MaterialDesignComponentsFabMenuRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/icon-button': {
-      id: '/material-design/components/icon-button'
-      path: '/material-design/components/icon-button'
-      fullPath: '/material-design/components/icon-button'
-      preLoaderRoute: typeof MaterialDesignComponentsIconButtonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/list': {
-      id: '/material-design/components/list'
-      path: '/material-design/components/list'
-      fullPath: '/material-design/components/list'
-      preLoaderRoute: typeof MaterialDesignComponentsListRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/loading-indicator': {
-      id: '/material-design/components/loading-indicator'
-      path: '/material-design/components/loading-indicator'
-      fullPath: '/material-design/components/loading-indicator'
-      preLoaderRoute: typeof MaterialDesignComponentsLoadingIndicatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/menu': {
-      id: '/material-design/components/menu'
-      path: '/material-design/components/menu'
-      fullPath: '/material-design/components/menu'
-      preLoaderRoute: typeof MaterialDesignComponentsMenuRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/navigation-bar': {
-      id: '/material-design/components/navigation-bar'
-      path: '/material-design/components/navigation-bar'
-      fullPath: '/material-design/components/navigation-bar'
-      preLoaderRoute: typeof MaterialDesignComponentsNavigationBarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/navigation-drawer': {
-      id: '/material-design/components/navigation-drawer'
-      path: '/material-design/components/navigation-drawer'
-      fullPath: '/material-design/components/navigation-drawer'
-      preLoaderRoute: typeof MaterialDesignComponentsNavigationDrawerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/navigation-rail': {
-      id: '/material-design/components/navigation-rail'
-      path: '/material-design/components/navigation-rail'
-      fullPath: '/material-design/components/navigation-rail'
-      preLoaderRoute: typeof MaterialDesignComponentsNavigationRailRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/progress-indicator': {
-      id: '/material-design/components/progress-indicator'
-      path: '/material-design/components/progress-indicator'
-      fullPath: '/material-design/components/progress-indicator'
-      preLoaderRoute: typeof MaterialDesignComponentsProgressIndicatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/radio-button': {
-      id: '/material-design/components/radio-button'
-      path: '/material-design/components/radio-button'
-      fullPath: '/material-design/components/radio-button'
-      preLoaderRoute: typeof MaterialDesignComponentsRadioButtonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/search': {
-      id: '/material-design/components/search'
-      path: '/material-design/components/search'
-      fullPath: '/material-design/components/search'
-      preLoaderRoute: typeof MaterialDesignComponentsSearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/segmented-button': {
-      id: '/material-design/components/segmented-button'
-      path: '/material-design/components/segmented-button'
-      fullPath: '/material-design/components/segmented-button'
-      preLoaderRoute: typeof MaterialDesignComponentsSegmentedButtonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/side-sheet': {
-      id: '/material-design/components/side-sheet'
-      path: '/material-design/components/side-sheet'
-      fullPath: '/material-design/components/side-sheet'
-      preLoaderRoute: typeof MaterialDesignComponentsSideSheetRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/slider': {
-      id: '/material-design/components/slider'
-      path: '/material-design/components/slider'
-      fullPath: '/material-design/components/slider'
-      preLoaderRoute: typeof MaterialDesignComponentsSliderRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/snackbar': {
-      id: '/material-design/components/snackbar'
-      path: '/material-design/components/snackbar'
-      fullPath: '/material-design/components/snackbar'
-      preLoaderRoute: typeof MaterialDesignComponentsSnackbarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/split-button': {
-      id: '/material-design/components/split-button'
-      path: '/material-design/components/split-button'
-      fullPath: '/material-design/components/split-button'
-      preLoaderRoute: typeof MaterialDesignComponentsSplitButtonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/switch': {
-      id: '/material-design/components/switch'
-      path: '/material-design/components/switch'
-      fullPath: '/material-design/components/switch'
-      preLoaderRoute: typeof MaterialDesignComponentsSwitchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/tabs': {
-      id: '/material-design/components/tabs'
-      path: '/material-design/components/tabs'
-      fullPath: '/material-design/components/tabs'
-      preLoaderRoute: typeof MaterialDesignComponentsTabsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/text-field': {
-      id: '/material-design/components/text-field'
-      path: '/material-design/components/text-field'
-      fullPath: '/material-design/components/text-field'
-      preLoaderRoute: typeof MaterialDesignComponentsTextFieldRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/time-picker': {
-      id: '/material-design/components/time-picker'
-      path: '/material-design/components/time-picker'
-      fullPath: '/material-design/components/time-picker'
-      preLoaderRoute: typeof MaterialDesignComponentsTimePickerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/toggle-button': {
-      id: '/material-design/components/toggle-button'
-      path: '/material-design/components/toggle-button'
-      fullPath: '/material-design/components/toggle-button'
-      preLoaderRoute: typeof MaterialDesignComponentsToggleButtonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/toolbar': {
-      id: '/material-design/components/toolbar'
-      path: '/material-design/components/toolbar'
-      fullPath: '/material-design/components/toolbar'
-      preLoaderRoute: typeof MaterialDesignComponentsToolbarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/tooltip': {
-      id: '/material-design/components/tooltip'
-      path: '/material-design/components/tooltip'
-      fullPath: '/material-design/components/tooltip'
-      preLoaderRoute: typeof MaterialDesignComponentsTooltipRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/material-design/components/$slug/$demoId': {
-      id: '/material-design/components/$slug/$demoId'
-      path: '/material-design/components/$slug/$demoId'
-      fullPath: '/material-design/components/$slug/$demoId'
-      preLoaderRoute: typeof MaterialDesignComponentsSlugDemoIdRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_rootLayout/pages/$category': {
+      id: '/_rootLayout/pages/$category'
+      path: '/pages/$category'
+      fullPath: '/pages/$category'
+      preLoaderRoute: typeof RootLayoutPagesCategoryRouteImport
+      parentRoute: typeof RootLayoutRoute
     }
   }
 }
 
+interface RootLayoutRouteChildren {
+  RootLayoutIndexRoute: typeof RootLayoutIndexRoute
+  RootLayoutBlocksCategoryRoute: typeof RootLayoutBlocksCategoryRoute
+  RootLayoutComponentsCategoryRoute: typeof RootLayoutComponentsCategoryRoute
+  RootLayoutPagesCategoryRoute: typeof RootLayoutPagesCategoryRoute
+  RootLayoutBlocksIndexRoute: typeof RootLayoutBlocksIndexRoute
+  RootLayoutComponentsIndexRoute: typeof RootLayoutComponentsIndexRoute
+  RootLayoutPagesIndexRoute: typeof RootLayoutPagesIndexRoute
+}
+
+const RootLayoutRouteChildren: RootLayoutRouteChildren = {
+  RootLayoutIndexRoute: RootLayoutIndexRoute,
+  RootLayoutBlocksCategoryRoute: RootLayoutBlocksCategoryRoute,
+  RootLayoutComponentsCategoryRoute: RootLayoutComponentsCategoryRoute,
+  RootLayoutPagesCategoryRoute: RootLayoutPagesCategoryRoute,
+  RootLayoutBlocksIndexRoute: RootLayoutBlocksIndexRoute,
+  RootLayoutComponentsIndexRoute: RootLayoutComponentsIndexRoute,
+  RootLayoutPagesIndexRoute: RootLayoutPagesIndexRoute,
+}
+
+const RootLayoutRouteWithChildren = RootLayoutRoute._addFileChildren(
+  RootLayoutRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  RootLayoutRoute: RootLayoutRouteWithChildren,
   ApiSearchRoute: ApiSearchRoute,
-  MaterialDesignComponentsAppBarRoute: MaterialDesignComponentsAppBarRoute,
-  MaterialDesignComponentsAvatarRoute: MaterialDesignComponentsAvatarRoute,
-  MaterialDesignComponentsBadgeRoute: MaterialDesignComponentsBadgeRoute,
-  MaterialDesignComponentsBottomSheetRoute:
-    MaterialDesignComponentsBottomSheetRoute,
-  MaterialDesignComponentsButtonRoute: MaterialDesignComponentsButtonRoute,
-  MaterialDesignComponentsButtonGroupRoute:
-    MaterialDesignComponentsButtonGroupRoute,
-  MaterialDesignComponentsCardRoute: MaterialDesignComponentsCardRoute,
-  MaterialDesignComponentsCarouselRoute: MaterialDesignComponentsCarouselRoute,
-  MaterialDesignComponentsCheckboxRoute: MaterialDesignComponentsCheckboxRoute,
-  MaterialDesignComponentsChipsRoute: MaterialDesignComponentsChipsRoute,
-  MaterialDesignComponentsDatePickerRoute:
-    MaterialDesignComponentsDatePickerRoute,
-  MaterialDesignComponentsDialogRoute: MaterialDesignComponentsDialogRoute,
-  MaterialDesignComponentsDividerRoute: MaterialDesignComponentsDividerRoute,
-  MaterialDesignComponentsExtendedFabRoute:
-    MaterialDesignComponentsExtendedFabRoute,
-  MaterialDesignComponentsFabRoute: MaterialDesignComponentsFabRoute,
-  MaterialDesignComponentsFabMenuRoute: MaterialDesignComponentsFabMenuRoute,
-  MaterialDesignComponentsIconButtonRoute:
-    MaterialDesignComponentsIconButtonRoute,
-  MaterialDesignComponentsListRoute: MaterialDesignComponentsListRoute,
-  MaterialDesignComponentsLoadingIndicatorRoute:
-    MaterialDesignComponentsLoadingIndicatorRoute,
-  MaterialDesignComponentsMenuRoute: MaterialDesignComponentsMenuRoute,
-  MaterialDesignComponentsNavigationBarRoute:
-    MaterialDesignComponentsNavigationBarRoute,
-  MaterialDesignComponentsNavigationDrawerRoute:
-    MaterialDesignComponentsNavigationDrawerRoute,
-  MaterialDesignComponentsNavigationRailRoute:
-    MaterialDesignComponentsNavigationRailRoute,
-  MaterialDesignComponentsProgressIndicatorRoute:
-    MaterialDesignComponentsProgressIndicatorRoute,
-  MaterialDesignComponentsRadioButtonRoute:
-    MaterialDesignComponentsRadioButtonRoute,
-  MaterialDesignComponentsSearchRoute: MaterialDesignComponentsSearchRoute,
-  MaterialDesignComponentsSegmentedButtonRoute:
-    MaterialDesignComponentsSegmentedButtonRoute,
-  MaterialDesignComponentsSideSheetRoute:
-    MaterialDesignComponentsSideSheetRoute,
-  MaterialDesignComponentsSliderRoute: MaterialDesignComponentsSliderRoute,
-  MaterialDesignComponentsSnackbarRoute: MaterialDesignComponentsSnackbarRoute,
-  MaterialDesignComponentsSplitButtonRoute:
-    MaterialDesignComponentsSplitButtonRoute,
-  MaterialDesignComponentsSwitchRoute: MaterialDesignComponentsSwitchRoute,
-  MaterialDesignComponentsTabsRoute: MaterialDesignComponentsTabsRoute,
-  MaterialDesignComponentsTextFieldRoute:
-    MaterialDesignComponentsTextFieldRoute,
-  MaterialDesignComponentsTimePickerRoute:
-    MaterialDesignComponentsTimePickerRoute,
-  MaterialDesignComponentsToggleButtonRoute:
-    MaterialDesignComponentsToggleButtonRoute,
-  MaterialDesignComponentsToolbarRoute: MaterialDesignComponentsToolbarRoute,
-  MaterialDesignComponentsTooltipRoute: MaterialDesignComponentsTooltipRoute,
-  MaterialDesignComponentsSlugDemoIdRoute:
-    MaterialDesignComponentsSlugDemoIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

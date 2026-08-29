@@ -1,3 +1,7 @@
+---
+status: superseded by ADR-0007
+---
+
 # Orama ranks, and react-aria's Autocomplete filter is disabled
 
 The command palette reuses the existing `Command` and `CommandDialog` primitives

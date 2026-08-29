@@ -1,3 +1,7 @@
+---
+status: superseded by ADR-0007
+---
+
 # Demo names live in a metadata-only registry
 
 Component and Demo names, routes, and ids move out of the 38 individual route

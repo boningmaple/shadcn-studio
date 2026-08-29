@@ -27,14 +27,14 @@ const mockQuickLinks = [
   { label: "Mock components", to: "/mock-components" },
 ] as const;
 
-const componentHit = (
-  componentName: string,
-  href = `/mock-${componentName.toLowerCase()}`,
-): SearchHit => ({
-  componentName,
+const registryItemHit = (title: string, href = `/mock-${title.toLowerCase()}`): SearchHit => ({
+  description: `A ${title.toLowerCase()} Registry item.`,
   href,
-  kind: "component",
+  id: `registry-item:${title.toLowerCase()}`,
+  kind: "registry-item",
+  name: title.toLowerCase(),
   score: 1,
+  title,
 });
 
 const setOnline = (isOnline: boolean) => {
@@ -469,7 +469,7 @@ describe("SearchDialog", () => {
             return HttpResponse.json([], { status: 500 });
           }
 
-          return HttpResponse.json([componentHit("Card", mockCardHref)]);
+          return HttpResponse.json([registryItemHit("Card", mockCardHref)]);
         }),
       );
 
@@ -499,7 +499,7 @@ describe("SearchDialog", () => {
             return HttpResponse.json([], { status: 500 });
           }
 
-          return HttpResponse.json([componentHit("Card", mockCardHref)]);
+          return HttpResponse.json([registryItemHit("Card", mockCardHref)]);
         }),
       );
 
@@ -760,7 +760,7 @@ describe("Search - Accessibility", () => {
           return HttpResponse.json([], { status: 500 });
         }
 
-        return HttpResponse.json([componentHit("Card", mockCardHref)]);
+        return HttpResponse.json([registryItemHit("Card", mockCardHref)]);
       }),
     );
 
@@ -828,7 +828,7 @@ describe("Search - ARIA snapshots", () => {
     await expect.element(searchDialog()).toMatchAriaInlineSnapshot(`
       - dialog "Search":
         - heading "Search" [level=2]
-        - text: Find a Component or a Demo and go straight to it.
+        - text: Find a Registry item, Collection page, or app page and go straight to it.
         - group:
           - searchbox "Search"
           - group
@@ -850,7 +850,7 @@ describe("Search - ARIA snapshots", () => {
     await expect.element(searchDialog()).toMatchAriaInlineSnapshot(`
       - dialog "Search":
         - heading "Search" [level=2]
-        - text: Find a Component or a Demo and go straight to it.
+        - text: Find a Registry item, Collection page, or app page and go straight to it.
         - group:
           - searchbox "Search": card
           - group

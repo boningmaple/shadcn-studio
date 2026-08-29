@@ -7,7 +7,8 @@ Use the Search feature as the reference shape:
 - Component/browser reference: `src/features/search/__tests__/search.browser.test.tsx`
 - E2E reference: `e2e/search.spec.ts`
 
-Use the repo vocabulary from `CONTEXT.md` in test names and docs: Component, Demo, Search record, Hit, and Quick link.
+Use the repo vocabulary from `CONTEXT.md` in test names and docs: Registry item,
+Collection page, Preview, Code preview, Search record, Hit, and Quick link.
 
 ## Coverage Split
 

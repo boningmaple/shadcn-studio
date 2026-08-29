@@ -6,14 +6,16 @@ const searchQuerySchema = z.strictObject({
   q: z.string().trim().max(searchQueryMaxLength).default(""),
 });
 
+export const searchRecordKindSchema = z.enum(["collection", "registry-item", "route"]);
+
 export const searchHitSchema = z.strictObject({
-  componentName: z.string(),
-  /** Present on Demo Hits only. */
-  demoName: z.string().optional(),
+  description: z.string(),
   href: z.string(),
-  /** Which kind of Search record matched the query. */
-  kind: z.enum(["component", "demo"]),
+  id: z.string(),
+  kind: searchRecordKindSchema,
+  name: z.string(),
   score: z.number(),
+  title: z.string(),
 });
 
 const searchSuccessResponseSchema = z.array(searchHitSchema);
@@ -34,6 +36,7 @@ export const searchContract = {
 
 export type SearchQuery = z.infer<typeof searchContract.query>;
 export type SearchHit = z.infer<typeof searchHitSchema>;
+export type SearchRecordKind = z.infer<typeof searchRecordKindSchema>;
 export type SearchSuccessResponse = z.infer<(typeof searchContract.responses)[200]>;
 export type SearchBadRequestResponse = z.infer<(typeof searchContract.responses)[400]>;
 export type SearchErrorCode = SearchBadRequestResponse["error"];

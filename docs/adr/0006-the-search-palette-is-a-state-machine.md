@@ -1,3 +1,7 @@
+---
+status: superseded by ADR-0007
+---
+
 # The search palette is a state machine
 
 `SearchQueryResultList` picks what the palette shows with one ordered run of

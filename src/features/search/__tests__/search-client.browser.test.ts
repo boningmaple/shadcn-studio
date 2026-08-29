@@ -104,7 +104,7 @@ describe("fetchSearchHits", () => {
   });
 
   it("turns an invalid Hit shape into SearchFetchError", async ({ worker }) => {
-    worker.use(http.get(searchContract.path, () => HttpResponse.json([{ componentName: "Card" }])));
+    worker.use(http.get(searchContract.path, () => HttpResponse.json([{ title: "Card" }])));
 
     const error = await expectSearchFetchError(
       fetchSearchHits("card", new AbortController().signal),

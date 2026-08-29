@@ -11,25 +11,39 @@ _Avoid_: Shadcn Studio (the repository and npm package name only, never the prod
 
 ## Catalog
 
-**Component**:
-A catalog entry for one piece of UI, such as Button, with its own page.
-_Avoid_: catalog entry, page, widget
+**Registry item**:
+A free, open-source component, block, template, or page that VibeUI publishes
+for installation through its shadcn registry.
+_Avoid_: Demo, Demo artifact, catalog entry
 
-**Demo**:
-A single self-contained illustration of one [[Component]]'s usage, shown as one
-card on that Component's page.
-_Avoid_: example, variant, sample
+**UI primitive**:
+A foundational shadcn UI component used to build Registry items. UI primitives
+are not Registry items merely because VibeUI uses them internally.
+_Avoid_: Registry item, catalog component
 
-**Demo artifact**:
-Everything one [[Demo]] is filed under — its source module, its generated code
-JSON, its card's anchor, and its full-page preview — all keyed by the anchor id
-the registry derives for it, such as `md-button-01`.
-_Avoid_: asset, artefact, generated file
+**Collection page**:
+A page that groups related Registry items sharing a type and category, such as
+the Button page containing `button-01` and `button-02`.
+_Avoid_: category route, listing route, page route
+
+**Section page**:
+A top-level catalog page that lists Collection pages of one Registry item type,
+such as Components, Blocks, or Pages.
+_Avoid_: index route, type route
+
+**Preview**:
+An interactive rendering of a Registry item inside VibeUI.
+_Avoid_: Demo, example
+
+**Code preview**:
+A browsable view of the files a Registry item installs.
+_Avoid_: Demo artifact, generated code
 
 ## Search
 
 **Search record**:
-One findable thing in VibeUI — either a Component or a Demo.
+One findable destination in VibeUI, such as a Registry item, Collection page,
+or ordinary application page.
 _Avoid_: document, doc, entry
 
 **Hit**:

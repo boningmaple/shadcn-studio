@@ -1,3 +1,7 @@
+---
+status: superseded by ADR-0007
+---
+
 # Build-time Orama index, served from a Server Route
 
 VibeUI search runs Orama JS on the server. A build step indexes every Component

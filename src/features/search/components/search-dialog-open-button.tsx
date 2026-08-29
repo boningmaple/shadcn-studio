@@ -1,8 +1,8 @@
 import { SearchIcon } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { isApplePlatform } from "@/features/search/lib/platform";
-import { Button } from "@/features/ui-shadcn/react-aria/button";
-import { Kbd, KbdGroup } from "@/features/ui-shadcn/react-aria/kbd";
 
 import { useSearchShortcut } from "../hooks/use-search-shortcut";
 

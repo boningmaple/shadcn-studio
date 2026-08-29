@@ -44,10 +44,13 @@ describe("searchContract", () => {
     expect(
       searchContract.responses[200].parse([
         {
-          componentName: "Card",
-          href: "/material-design/components/card",
-          kind: "component",
+          description: "A card Registry item.",
+          href: "/components/card/card-01",
+          id: "registry-item:card-01",
+          kind: "registry-item",
+          name: "card-01",
           score: 1,
+          title: "Card 01",
         },
       ]),
     ).toHaveLength(1);

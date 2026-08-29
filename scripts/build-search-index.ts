@@ -1,28 +1,69 @@
-import { writeFile } from "node:fs/promises";
+import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { pathToFileURL } from "node:url";
 
 import { persist } from "@orama/plugin-data-persistence";
 
-import { components } from "../src/features/search/data/registry.ts";
-import { createSearchIndex } from "../src/features/search/lib/search-index.ts";
+import {
+  registryCollections,
+  registryItemSummaries,
+  registrySections,
+} from "../src/features/registry/lib/registry-catalog.ts";
+import type { RegistrySourceItem } from "../src/features/registry/types/registry.ts";
+import { createSearchIndex, type SearchRecord } from "../src/features/search/lib/search-index.ts";
+import type { RouteSearchMetadata } from "../src/features/search/types/route-search-metadata.ts";
 
-/**
- * Builds the search index at build time and commits it, so the server never
- * indexes on boot (ADR-0001).
- *
- * The artifact deliberately does not go under `public/`: only the server reads
- * it, and importing out of the public directory is a Vite anti-pattern.
- */
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const projectRoot = path.resolve(import.meta.dirname, "..");
 
 export const searchIndexArtifactPath = path.join(
   projectRoot,
   "src/features/search/data/search-index.gen.json",
 );
 
+export async function buildSearchRecords(): Promise<SearchRecord[]> {
+  const source = JSON.parse(await readFile(path.join(projectRoot, "registry.json"), "utf8")) as {
+    items: RegistrySourceItem[];
+  };
+  const items = registryItemSummaries(source.items);
+  const collections = registryCollections(items);
+  const sections = registrySections(items);
+  const routeMetadata = await searchableRoutes(path.join(projectRoot, "src/routes"));
+
+  return [
+    ...items.map((item) => ({
+      description: item.description,
+      href: item.href,
+      id: `registry-item:${item.name}`,
+      kind: "registry-item" as const,
+      name: item.name,
+      title: item.title,
+    })),
+    ...collections.map((collection) => ({
+      description: collection.description,
+      href: collection.href,
+      id: `collection:${collection.kind}:${collection.category}`,
+      kind: "collection" as const,
+      name: collection.category,
+      title: collection.title,
+    })),
+    ...sections.map((section) => ({
+      description: section.description,
+      href: section.href,
+      id: `route:${section.kind}s`,
+      kind: "route" as const,
+      name: `${section.kind}s`,
+      title: section.title,
+    })),
+    ...routeMetadata.map((route) => ({
+      ...route,
+      id: `route:${route.name}`,
+      kind: "route" as const,
+    })),
+  ];
+}
+
 export async function buildSearchIndex(): Promise<string> {
-  const index = await createSearchIndex(components);
+  const index = await createSearchIndex(await buildSearchRecords());
   const persisted = await persist(index, "json");
 
   if (typeof persisted !== "string") {
@@ -34,13 +75,36 @@ export async function buildSearchIndex(): Promise<string> {
   return `${persisted}\n`;
 }
 
+async function searchableRoutes(directory: string): Promise<RouteSearchMetadata[]> {
+  const files = await searchMetadataFiles(directory);
+  const records: RouteSearchMetadata[] = [];
+
+  for (const file of files) {
+    const module = (await import(pathToFileURL(file).href)) as {
+      searchMetadata?: RouteSearchMetadata;
+    };
+    if (module.searchMetadata !== undefined) records.push(module.searchMetadata);
+  }
+
+  return records;
+}
+
+async function searchMetadataFiles(directory: string): Promise<string[]> {
+  const files: string[] = [];
+
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...(await searchMetadataFiles(entryPath)));
+    else if (entry.name.endsWith(".search.ts")) files.push(entryPath);
+  }
+
+  return files.sort();
+}
+
 if (import.meta.filename === process.argv[1]) {
-  const artifact = await buildSearchIndex();
-  await writeFile(searchIndexArtifactPath, artifact, "utf8");
-
-  const demoCount = components.reduce((total, component) => total + component.demos.length, 0);
-
+  const records = await buildSearchRecords();
+  await writeFile(searchIndexArtifactPath, await buildSearchIndex(), "utf8");
   process.stdout.write(
-    `Indexed ${components.length} Components and ${demoCount} Demos into ${searchIndexArtifactPath}\n`,
+    `Indexed ${records.length} Search records into ${searchIndexArtifactPath}\n`,
   );
 }

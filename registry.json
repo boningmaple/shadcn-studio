@@ -1,0 +1,67 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Vibe UI",
+  "homepage": "https://github.com/boningmaple/shadcn-studio",
+  "items": [
+    {
+      "name": "button-01",
+      "title": "Button 01",
+      "description": "A primary action button with a compact leading icon.",
+      "type": "registry:component",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/button-01/button-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/button-01/button-01.tsx"
+        }
+      ],
+      "categories": ["button"]
+    },
+    {
+      "name": "button-02",
+      "title": "Button 02",
+      "description": "A quiet secondary action with a trailing keyboard hint.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "kbd"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/button-02/button-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/button-02/button-02.tsx"
+        }
+      ],
+      "categories": ["button"]
+    },
+    {
+      "name": "hero-section-01",
+      "title": "Hero Section 01",
+      "description": "A centered product hero with a focused call to action.",
+      "type": "registry:block",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/hero-section-01/hero-section-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/hero-section-01/hero-section-01.tsx"
+        }
+      ],
+      "categories": ["hero-section"]
+    },
+    {
+      "name": "landing-page-01",
+      "title": "Landing Page 01",
+      "description": "A complete landing page with navigation, hero, and social proof.",
+      "type": "registry:page",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/landing-page-01/landing-page-01.tsx",
+          "type": "registry:page",
+          "target": "@components/vibe-ui/landing-page-01/landing-page-01.tsx"
+        }
+      ],
+      "categories": ["landing-pages"]
+    }
+  ]
+}

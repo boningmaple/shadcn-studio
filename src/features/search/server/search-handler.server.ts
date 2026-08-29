@@ -12,7 +12,7 @@ import { findHits, type SearchIndex } from "@/features/search/lib/search-index";
  * Restored once and reused. The Nitro preset is `node-server`, a long-lived
  * process, so this happens once per boot rather than once per request. A
  * serverless preset would restore it per cold start — the point at which
- * ADR-0001 should be re-examined.
+ * ADR-0007 should be re-examined.
  *
  * Imported as `?raw` so the exact persisted string reaches `restore`, rather
  * than a parsed-then-restringified copy of it.

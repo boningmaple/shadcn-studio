@@ -3,10 +3,10 @@ import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { PressEvent } from "react-aria-components";
 
+import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { useTheme } from "@/features/theme-switch/components/theme-context";
 import type { Theme } from "@/features/theme-switch/types/theme";
-import { Button } from "@/features/ui-shadcn/react-aria/button";
-import { Tooltip, TooltipTrigger } from "@/features/ui-shadcn/react-aria/tooltip";
 import { capitalize } from "@/lib/utils";
 
 function getLabel(theme: Theme, nextTheme: Theme) {

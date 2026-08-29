@@ -147,27 +147,3 @@
     @apply font-sans;
   }
 }
-
-@keyframes md-spinner-arc {
-  0% {
-    stroke-dasharray: 1 1000;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 60 1000;
-    stroke-dashoffset: -10;
-  }
-  100% {
-    stroke-dasharray: 60 1000;
-    stroke-dashoffset: -1000;
-  }
-}
-
-@keyframes md-linear-indeterminate {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(400%);
-  }
-}

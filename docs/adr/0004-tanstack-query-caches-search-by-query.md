@@ -1,3 +1,7 @@
+---
+status: superseded by ADR-0007
+---
+
 # TanStack Query caches search, keyed by the query
 
 The palette's fetching goes through TanStack Query rather than a hand-rolled

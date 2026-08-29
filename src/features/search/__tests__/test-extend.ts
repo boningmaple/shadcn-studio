@@ -4,18 +4,29 @@ import { it as baseIt } from "vite-plus/test";
 
 import { searchContract, type SearchHit } from "../api/search.contract";
 
-export const mockedComponentHit = (componentName: string): SearchHit => ({
-  componentName,
-  href: `/mock-${componentName.toLowerCase()}`,
-  kind: "component",
+export const mockedRegistryItemHit = (title: string): SearchHit => ({
+  description: `A ${title.toLowerCase()} Registry item.`,
+  href: `/mock-${title.toLowerCase()}`,
+  id: `registry-item:${title.toLowerCase()}`,
+  kind: "registry-item",
+  name: title.toLowerCase(),
   score: 1,
+  title,
 });
 
 export const mockedSearchHitsByQuery: Record<string, SearchHit[]> = {
-  c: [mockedComponentHit("Card"), mockedComponentHit("Calendar"), mockedComponentHit("Combobox")],
-  ca: [mockedComponentHit("Card"), mockedComponentHit("Calendar"), mockedComponentHit("Carousel")],
-  car: [mockedComponentHit("Card"), mockedComponentHit("Carousel")],
-  card: [mockedComponentHit("Card")],
+  c: [
+    mockedRegistryItemHit("Card"),
+    mockedRegistryItemHit("Calendar"),
+    mockedRegistryItemHit("Combobox"),
+  ],
+  ca: [
+    mockedRegistryItemHit("Card"),
+    mockedRegistryItemHit("Calendar"),
+    mockedRegistryItemHit("Carousel"),
+  ],
+  car: [mockedRegistryItemHit("Card"), mockedRegistryItemHit("Carousel")],
+  card: [mockedRegistryItemHit("Card")],
 };
 
 const searchHandler = http.get(searchContract.path, ({ request }) => {

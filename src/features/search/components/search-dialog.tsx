@@ -9,11 +9,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { SearchFetchError, type SearchAnswer } from "@/features/search/api/search-client";
-import { searchContract, type SearchHit } from "@/features/search/api/search.contract";
-import { useSearchQuery } from "@/features/search/hooks/use-search-query";
-import type { QuickLink } from "@/features/search/types/quick-links";
-import { Button } from "@/features/ui-shadcn/react-aria/button";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandDialog,
@@ -21,8 +17,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandShortcut,
-} from "@/features/ui-shadcn/react-aria/command";
+} from "@/components/ui/command";
 import {
   Empty,
   EmptyContent,
@@ -30,7 +25,11 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/features/ui-shadcn/react-aria/empty";
+} from "@/components/ui/empty";
+import { SearchFetchError, type SearchAnswer } from "@/features/search/api/search-client";
+import { searchContract, type SearchHit } from "@/features/search/api/search.contract";
+import { useSearchQuery } from "@/features/search/hooks/use-search-query";
+import type { QuickLink } from "@/features/search/types/quick-links";
 import { useIsOnline } from "@/hooks/use-is-online";
 
 type SelectHandler = (href: string) => void;
@@ -69,13 +68,13 @@ export function SearchDialog({
   return (
     <CommandDialog
       className="top-0 h-full w-full max-w-full rounded-none! sm:top-1/4 sm:h-fit sm:max-w-xl sm:rounded-xl!"
-      description="Find a Component or a Demo and go straight to it."
+      description="Find a Registry item, Collection page, or app page and go straight to it."
       onOpenChange={setIsOpen}
       open={isOpen}
       title="Search"
     >
       <Command
-        // ADR-0002: Orama has already matched, scored and ordered these Hits.
+        // ADR-0007: Orama has already matched, scored and ordered these Hits.
         // `Autocomplete` would otherwise apply a plain substring filter and
         // discard exactly the typo-tolerant Hits Orama was adopted to provide.
         filter={() => true}
@@ -306,29 +305,15 @@ function HitList({ hits, onSelect }: { hits: SearchHit[]; onSelect: SelectHandle
       onAction={(key) => onSelect(String(key))}
     >
       {(hit) => (
-        <CommandItem
-          // Named rather than left to its content, so a Demo Hit reads as
-          // belonging to its Component instead of as two loose phrases.
-          aria-label={labelFor(hit)}
-          className="gap-3"
-          id={hit.id}
-          textValue={labelFor(hit)}
-        >
-          <span className="truncate">{hit.demoName ?? hit.componentName}</span>
-          {hit.demoName === undefined ? null : (
-            <CommandShortcut className="tracking-normal">{hit.componentName}</CommandShortcut>
-          )}
+        <CommandItem aria-label={hit.title} className="gap-3" id={hit.id} textValue={hit.title}>
+          <span className="truncate">{hit.title}</span>
+          <span className="ml-auto text-xs capitalize text-muted-foreground">
+            {hit.kind.replace("-", " ")}
+          </span>
         </CommandItem>
       )}
     </CommandList>
   );
-}
-
-/** What a Hit is called, to assistive technology and to type-ahead. */
-function labelFor(hit: SearchHit): string {
-  return hit.demoName === undefined
-    ? hit.componentName
-    : `${hit.demoName}, in ${hit.componentName}`;
 }
 
 /**

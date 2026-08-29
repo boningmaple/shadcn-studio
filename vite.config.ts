@@ -15,7 +15,7 @@ const config = defineConfig({
     sortPackageJson: true,
   },
   lint: {
-    ignorePatterns: ["**/ui-material-design/*", "**/ui-shadcn/*"],
+    ignorePatterns: ["**/components/ui/*"],
     plugins: ["eslint", "typescript", "unicorn", "oxc", "react", "react-perf", "jsx-a11y"],
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
     options: { typeAware: true, typeCheck: true },
@@ -52,10 +52,10 @@ const config = defineConfig({
   },
   staged: {
     "*": "vp check --fix",
-    // The inputs the committed search index is built from — its contents, its
-    // schema, the script that persists it, and the artifact itself. Touching
-    // one without regenerating would leave Demos silently unfindable.
-    "{src/features/search/data/registry.ts,src/features/search/lib/search-index.ts,src/features/search/data/search-index.gen.json,scripts/build-search-index.ts}":
+    "{registry.json,registry/vibe-ui/**,scripts/check-registry.ts}": () => "npm run registry:build",
+    // Registry metadata and route-owned search sidecars are the sources for
+    // the committed server-side index.
+    "{registry.json,src/routes/**/*.search.ts,src/features/registry/lib/registry-catalog.ts,src/features/search/lib/search-index.ts,src/features/search/data/search-index.gen.json,scripts/build-search-index.ts}":
       () => "npm run check:search-index",
   },
   resolve: { tsconfigPaths: true },

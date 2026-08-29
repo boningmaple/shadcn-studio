@@ -7,12 +7,12 @@ const searchRequest = (url: string) => new Request(`http://localhost${url}`);
 
 describe("handleSearchRequest", () => {
   it("answers a query with valid Hits and cache headers", async () => {
-    const response = await handleSearchRequest(searchRequest("/api/search?q=card"));
+    const response = await handleSearchRequest(searchRequest("/api/search?q=button"));
     const hits = searchContract.responses[200].parse(await response.json());
 
     expect(response.status).toBe(200);
     expect(response.headers.get("Cache-Control")).toBe("public, max-age=300");
-    expect(hits.some((hit) => hit.componentName === "Card")).toBe(true);
+    expect(hits.some((hit) => hit.name === "button-01")).toBe(true);
   });
 
   it("answers a request without q with no Hits", async () => {
