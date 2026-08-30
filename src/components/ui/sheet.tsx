@@ -88,7 +88,7 @@ function Sheet({
         >
           {children}
           {showCloseButton && (
-            <SheetClose variant="ghost" className="absolute top-3 right-3" size="icon-sm">
+            <SheetClose variant="ghost" className="absolute top-3 right-3" size="icon">
               <XIcon />
               <span className="sr-only">Close</span>
             </SheetClose>
