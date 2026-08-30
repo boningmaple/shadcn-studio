@@ -4,6 +4,7 @@ import { AppHeader } from "@/components/app-header";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { getRegistryNavigation } from "@/features/registry/api/registry.server-fns";
+import { REGISTRY_CACHE_TIME_MS } from "@/features/registry/constants";
 import type { RegistryNavigationResult } from "@/features/registry/types/registry";
 import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
 
@@ -11,6 +12,8 @@ export const Route = createFileRoute("/_rootLayout")({
   staticData: { ariaLabel: "" },
   loader: () => getRegistryNavigation(),
   component: RouteComponent,
+  gcTime: REGISTRY_CACHE_TIME_MS,
+  staleTime: REGISTRY_CACHE_TIME_MS,
 });
 
 function RouteComponent() {

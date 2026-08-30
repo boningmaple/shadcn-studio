@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getRegistryItemGroupsByType } from "@/features/registry/api/registry.server-fns";
+import { REGISTRY_CACHE_TIME_MS } from "@/features/registry/constants";
 
 export const Route = createFileRoute("/_rootLayout/blocks/")({
   staticData: { ariaLabel: "Blocks" },
@@ -14,6 +15,8 @@ export const Route = createFileRoute("/_rootLayout/blocks/")({
     return blockGroups;
   },
   component: BlocksPage,
+  gcTime: REGISTRY_CACHE_TIME_MS,
+  staleTime: REGISTRY_CACHE_TIME_MS,
 });
 
 function BlocksPage() {

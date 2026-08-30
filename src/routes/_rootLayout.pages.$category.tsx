@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getRegistryItemGroup } from "@/features/registry/api/registry.server-fns";
 import { RegistryCodePanel } from "@/features/registry/components/registry-code-panel";
 import { RegistryPreviewPage } from "@/features/registry/components/registry-preview-page";
+import { REGISTRY_CACHE_TIME_MS } from "@/features/registry/constants";
 import type { RegistryItemShowcase } from "@/features/registry/types/registry";
 
 export const Route = createFileRoute("/_rootLayout/pages/$category")({
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/_rootLayout/pages/$category")({
     return group;
   },
   component: PageCollectionPage,
+  gcTime: REGISTRY_CACHE_TIME_MS,
+  staleTime: REGISTRY_CACHE_TIME_MS,
 });
 
 function PageCollectionPage() {
