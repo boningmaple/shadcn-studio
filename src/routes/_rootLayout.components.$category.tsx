@@ -8,6 +8,7 @@ import { RegistryPreviewPage } from "@/features/registry/components/registry-pre
 import type { RegistryItemShowcase } from "@/features/registry/types/registry";
 
 export const Route = createFileRoute("/_rootLayout/components/$category")({
+  staticData: { ariaLabel: "Component Collection" },
   loader: async ({ params }) => {
     const group = await getRegistryItemGroup({
       data: { category: params.category, type: "registry:component" },

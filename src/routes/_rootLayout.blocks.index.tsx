@@ -4,6 +4,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { getRegistryItemGroupsByType } from "@/features/registry/api/registry.server-fns";
 
 export const Route = createFileRoute("/_rootLayout/blocks/")({
+  staticData: { ariaLabel: "Blocks" },
   loader: async () => {
     const blockGroups = await getRegistryItemGroupsByType({
       data: { type: "registry:block" },

@@ -7,22 +7,17 @@ import { getRegistryNavigation } from "@/features/registry/api/registry.server-f
 import type { RegistryNavigationResult } from "@/features/registry/types/registry";
 import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
 
-declare module "@tanstack/react-router" {
-  interface StaticDataRouteOption {
-    hideDesktopSidebar?: boolean;
-  }
-}
-
 export const Route = createFileRoute("/_rootLayout")({
+  staticData: { ariaLabel: "" },
   loader: () => getRegistryNavigation(),
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const navigation = Route.useLoaderData();
   const hideDesktopSidebar = useMatches({
     select: (matches) => matches.some((match) => match.staticData.hideDesktopSidebar === true),
   });
+  const navigation = Route.useLoaderData();
 
   return (
     <ThemeProvider>

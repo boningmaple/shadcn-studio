@@ -63,6 +63,7 @@ function createTestRouterWithQuery(component: () => React.ReactNode) {
   const queryClient = new QueryClient();
 
   const rootRoute = createRootRoute({
+    staticData: { ariaLabel: "" },
     shellComponent: ({ children }) => (
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     ),
@@ -71,24 +72,28 @@ function createTestRouterWithQuery(component: () => React.ReactNode) {
   const componentRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: "/",
+    staticData: { ariaLabel: "Test Page" },
     component,
   });
 
   const mockHomeRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: mockQuickLinks[0].to,
+    staticData: { ariaLabel: "Mock Home" },
     component: () => null,
   });
 
   const mockComponentsRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: mockQuickLinks[1].to,
+    staticData: { ariaLabel: "Mock Components" },
     component: () => null,
   });
 
   const mockCardRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: mockCardHref,
+    staticData: { ariaLabel: "Mock Card" },
     component: () => null,
   });
 

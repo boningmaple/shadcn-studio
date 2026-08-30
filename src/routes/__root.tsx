@@ -9,6 +9,7 @@ import { ThemeHydrationScript } from "@/features/theme-switch/components/theme-h
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
+  staticData: { ariaLabel: "" },
   head: () => ({
     meta: [
       {
