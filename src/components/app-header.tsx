@@ -14,7 +14,7 @@ const headerNavRoutes = [componentsRoute, blocksRoute, pagesRoute] as const;
 
 export function AppHeader() {
   return (
-    <header className="sticky top-0 z-10 w-full h-14 border-b border-dashed backdrop-blur-sm flex items-center gap-4 px-4">
+    <header className="sticky top-0 z-50 w-full h-(--header-height) border-b border-dashed backdrop-blur-sm flex items-center gap-4 px-4">
       <SidebarTrigger className="lg:hidden" size="icon" />
 
       <Link

@@ -21,6 +21,10 @@
 @custom-variant dark (&:is(.dark *):not(:where(.light, .light *)));
 @plugin "@tailwindcss/typography";
 
+:root {
+  --header-height: 3.5rem;
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: "Geist Variable", sans-serif;

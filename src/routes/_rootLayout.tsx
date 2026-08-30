@@ -42,13 +42,16 @@ function RootLayoutContent({
   return (
     <div className="flex flex-1">
       {showSidebar ? (
-        <AppSidebar navigation={navigation} className="top-14 h-[calc(100svh-56px)]" />
+        <AppSidebar
+          navigation={navigation}
+          className="top-(--header-height) h-[calc(100svh-var(--header-height))]"
+        />
       ) : null}
       <SidebarInset className="min-w-0">
         {hideDesktopSidebar ? null : (
           <div
             aria-label="Workspace controls"
-            className="hidden h-14 shrink-0 items-center gap-2 border-b px-4 lg:flex"
+            className="hidden h-(--header-height) shrink-0 items-center gap-2 border-b px-4 lg:flex"
             role="toolbar"
           >
             <SidebarTrigger />
