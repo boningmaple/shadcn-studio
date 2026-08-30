@@ -15,19 +15,19 @@ export function SearchDialogOpenButton({ onPress }: { onPress: () => void }) {
         aria-label="Search"
         className="lg:hidden"
         onPress={onPress}
-        size="icon-sm"
+        size="icon"
         variant="outline"
       >
         <SearchIcon />
       </Button>
       <Button
-        className="hidden w-60 rounded-full text-muted-foreground lg:inline-flex"
+        className="hidden rounded-full text-muted-foreground lg:inline-flex"
         onPress={onPress}
         variant="outline"
       >
         <SearchIcon />
-        <span className="flex-1 text-left">Search</span>
-        <KbdGroup aria-hidden>
+        <span className="pr-2">Search</span>
+        <KbdGroup aria-hidden className="z-10">
           <Kbd>{isApplePlatform() ? "⌘" : "Ctrl"}</Kbd>
           <Kbd>K</Kbd>
         </KbdGroup>

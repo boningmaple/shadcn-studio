@@ -53,7 +53,7 @@ export function ThemeSwitchButton() {
       ref={buttonRef}
       isDisabled={!hydrated}
       onPress={onPressTheme}
-      size="icon-sm"
+      size="icon"
       variant="outline"
     >
       {/*
