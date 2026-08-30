@@ -54,10 +54,10 @@ function RootLayoutContent({
         {hideDesktopSidebar ? null : (
           <div
             aria-label="Workspace controls"
-            className="hidden h-(--header-height) shrink-0 items-center gap-2 border-b px-4 lg:flex"
+            className="hidden h-(--header-height) lg:flex items-center gap-4 px-4"
             role="toolbar"
           >
-            <SidebarTrigger />
+            <SidebarTrigger size="icon" />
           </div>
         )}
         <div className="flex-1 p-4">
