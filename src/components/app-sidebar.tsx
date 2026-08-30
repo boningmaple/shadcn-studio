@@ -21,12 +21,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import type {
   RegistryItemKind,
   RegistryNavigationResult,
 } from "@/features/registry/types/registry";
 import type { QuickLink } from "@/features/search/types/quick-links";
+import { Route as homeRoute } from "@/routes/_rootLayout.index";
 
 export type AppSidebarItem = {
   icon?: LucideIcon;
@@ -72,26 +74,31 @@ export function AppSidebar({
   ...props
 }: React.ComponentPropsWithoutRef<typeof Sidebar> & { navigation: RegistryNavigationResult }) {
   const router = useRouter();
-  const groups =
-    navigation.status === "ok"
-      ? [...fixedGroups, ...registryGroups(navigation.sections)]
-      : fixedGroups;
+  const groups = navigation.status === "ok" ? [...registryGroups(navigation.sections)] : [];
+
+  const { setOpenMobile } = useSidebar();
 
   return (
     <Sidebar {...props}>
-      <SidebarHeader className="lg:hidden">
-        <div className="flex flex-col gap-0.5 px-2 py-1">
-          <span className="text-sm font-semibold">VibeUI</span>
-          <span className="text-xs text-sidebar-foreground/70">Copy-and-paste components</span>
-        </div>
+      <SidebarHeader className="w-full h-(--header-height) border-b border-dashed flex-row items-center px-4 py-0 lg:hidden">
+        <Link
+          className="text-xl font-bold hover:underline"
+          aria-label={homeRoute.options.staticData.ariaLabel}
+          to={homeRoute.to}
+          activeOptions={{ exact: true }}
+          onClick={() => setOpenMobile(false)}
+        >
+          VibeUI
+        </Link>
       </SidebarHeader>
+
       <SidebarContent>
         {groups.map((group) => (
           <SidebarGroup key={group.label}>
             {group.showLabel ? <SidebarGroupLabel>{group.label}</SidebarGroupLabel> : null}
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuTree items={group.items} />
+                <SidebarMenuTree items={group.items} setOpenMobile={setOpenMobile} />
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
@@ -136,17 +143,29 @@ function registryGroups(
   ];
 }
 
-function SidebarMenuTree({ items }: { items: AppSidebarItem[] }) {
+function SidebarMenuTree({
+  items,
+  setOpenMobile,
+}: {
+  items: AppSidebarItem[];
+  setOpenMobile: (open: boolean) => void;
+}) {
   return items.map((item) =>
     item.items === undefined || item.items.length === 0 ? (
-      <SidebarAtomicMenuItem item={item} key={item.label} />
+      <SidebarAtomicMenuItem item={item} key={item.label} setOpenMobile={setOpenMobile} />
     ) : (
-      <SidebarCollapsibleMenuItem item={item} key={item.label} />
+      <SidebarCollapsibleMenuItem item={item} key={item.label} setOpenMobile={setOpenMobile} />
     ),
   );
 }
 
-function SidebarAtomicMenuItem({ item }: { item: AppSidebarItem }) {
+function SidebarAtomicMenuItem({
+  item,
+  setOpenMobile,
+}: {
+  item: AppSidebarItem;
+  setOpenMobile: (open: boolean) => void;
+}) {
   if (item.to === undefined) return null;
 
   return (
@@ -155,7 +174,7 @@ function SidebarAtomicMenuItem({ item }: { item: AppSidebarItem }) {
         href={item.to}
         render={(props) =>
           "href" in props ? (
-            <Link {...props} to={props.href}>
+            <Link {...props} onClick={() => setOpenMobile(false)} to={props.href}>
               {item.icon === undefined ? null : <item.icon />}
               <span>{item.label}</span>
             </Link>
@@ -168,7 +187,13 @@ function SidebarAtomicMenuItem({ item }: { item: AppSidebarItem }) {
   );
 }
 
-function SidebarCollapsibleMenuItem({ item }: { item: AppSidebarItem }) {
+function SidebarCollapsibleMenuItem({
+  item,
+  setOpenMobile,
+}: {
+  item: AppSidebarItem;
+  setOpenMobile: (open: boolean) => void;
+}) {
   return (
     <SidebarMenuItem>
       <Collapsible className="[&[data-expanded=true]>button>svg:last-child]:rotate-90">
@@ -179,7 +204,7 @@ function SidebarCollapsibleMenuItem({ item }: { item: AppSidebarItem }) {
         </SidebarMenuButton>
         <CollapsibleContent>
           <SidebarMenuSub>
-            <SidebarMenuTree items={item.items ?? []} />
+            <SidebarMenuTree items={item.items ?? []} setOpenMobile={setOpenMobile} />
           </SidebarMenuSub>
         </CollapsibleContent>
       </Collapsible>
