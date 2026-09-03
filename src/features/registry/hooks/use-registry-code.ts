@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { z } from "zod";
 
 import { highlightRegistryFiles } from "../api/highlight.server-fn.ts";
-import type { HighlightedRegistryFile } from "../types/registry.ts";
+import type { VibeHighlightedRegistryFile } from "../types/registry.ts";
 
 const builtItemSchema = z.object({
   categories: z.array(z.string()),
@@ -17,7 +17,7 @@ const builtItemSchema = z.object({
     }),
   ),
   name: z.string(),
-  registryDependencies: z.array(z.string()),
+  registryDependencies: z.array(z.string()).optional(),
   title: z.string(),
   type: z.enum(["registry:component", "registry:block", "registry:page"]),
 });
@@ -25,7 +25,7 @@ const builtItemSchema = z.object({
 type RegistryCodeState =
   | { status: "idle" }
   | { status: "loading" }
-  | { files: HighlightedRegistryFile[]; highlightingFailed: boolean; status: "success" }
+  | { files: VibeHighlightedRegistryFile[]; highlightingFailed: boolean; status: "success" }
   | { error: Error; status: "error" };
 
 export function useRegistryCode(name: string, enabled: boolean) {

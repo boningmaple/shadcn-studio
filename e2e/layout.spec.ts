@@ -43,8 +43,9 @@ test.describe("route-controlled sidebar", () => {
 
     await page.getByRole("button", { name: "Toggle Sidebar" }).click();
 
-    await expect(page.getByRole("dialog", { name: "Sidebar" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Home", exact: true })).toBeVisible();
+    const sidebar = page.getByRole("dialog", { name: "Sidebar" });
+    await expect(sidebar).toBeVisible();
+    await expect(sidebar.getByRole("link", { name: "Home", exact: true })).toBeVisible();
   });
 
   test("navigates from a Registry section to a Collection page", async ({ page }) => {

@@ -3,10 +3,10 @@ import { page, userEvent } from "vite-plus/test/browser/context";
 import { render } from "vitest-browser-react";
 
 import { CodeExplorer } from "@/features/registry/components/registry-code-panel";
-import type { HighlightedRegistryFile } from "@/features/registry/types/registry";
+import type { VibeHighlightedRegistryFile } from "@/features/registry/types/registry";
 
 it("navigates textual files and keeps plain source usable when highlighting fails", async () => {
-  const files: HighlightedRegistryFile[] = [
+  const files: VibeHighlightedRegistryFile[] = [
     {
       content: "export function LoginPage() {}",
       path: "registry/login-page.tsx",

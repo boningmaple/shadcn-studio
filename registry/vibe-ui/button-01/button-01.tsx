@@ -2,7 +2,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-export function Button01() {
+export default function Button01() {
   return (
     <Button>
       Get started

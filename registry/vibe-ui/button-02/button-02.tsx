@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
 
-export function Button02() {
+export default function Button02() {
   return (
     <Button variant="outline">
       Open search

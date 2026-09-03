@@ -13,7 +13,7 @@ import { Spinner } from "@/components/ui/spinner";
 
 import { useRegistryCode } from "../hooks/use-registry-code.ts";
 import { buildFileTree, registryFileDisplayPath, type FileTreeNode } from "../lib/file-tree.ts";
-import type { HighlightedRegistryFile } from "../types/registry.ts";
+import type { VibeHighlightedRegistryFile } from "../types/registry.ts";
 
 export function RegistryCodePanel({ enabled, name }: { enabled: boolean; name: string }) {
   const { retry, state } = useRegistryCode(name, enabled);
@@ -50,7 +50,7 @@ export function CodeExplorer({
   files,
   highlightingFailed,
 }: {
-  files: HighlightedRegistryFile[];
+  files: VibeHighlightedRegistryFile[];
   highlightingFailed: boolean;
 }) {
   const [selectedPath, setSelectedPath] = useState(() => registryFileDisplayPath(files[0]!));

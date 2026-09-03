@@ -9,24 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as RootLayoutRouteImport } from './routes/_rootLayout'
-import { Route as RootLayoutIndexRouteImport } from './routes/_rootLayout.index'
+import { Route as RootLayoutRouteRouteImport } from './routes/_rootLayout/route'
+import { Route as RootLayoutIndexRouteImport } from './routes/_rootLayout/index'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
-import { Route as RootLayoutBlocksIndexRouteImport } from './routes/_rootLayout.blocks.index'
-import { Route as RootLayoutBlocksCategoryRouteImport } from './routes/_rootLayout.blocks.$category'
-import { Route as RootLayoutComponentsIndexRouteImport } from './routes/_rootLayout.components.index'
-import { Route as RootLayoutComponentsCategoryRouteImport } from './routes/_rootLayout.components.$category'
-import { Route as RootLayoutPagesIndexRouteImport } from './routes/_rootLayout.pages.index'
-import { Route as RootLayoutPagesCategoryRouteImport } from './routes/_rootLayout.pages.$category'
+import { Route as RootLayoutBlocksIndexRouteImport } from './routes/_rootLayout/blocks/index'
+import { Route as RootLayoutBlocksHeroSectionRouteImport } from './routes/_rootLayout/blocks/hero-section'
+import { Route as RootLayoutComponentsIndexRouteImport } from './routes/_rootLayout/components/index'
+import { Route as RootLayoutComponentsButtonRouteImport } from './routes/_rootLayout/components/button'
+import { Route as RootLayoutPagesIndexRouteImport } from './routes/_rootLayout/pages/index'
+import { Route as RootLayoutPagesLandingPagesRouteImport } from './routes/_rootLayout/pages/landing-pages'
 
-const RootLayoutRoute = RootLayoutRouteImport.update({
+const RootLayoutRouteRoute = RootLayoutRouteRouteImport.update({
   id: '/_rootLayout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RootLayoutIndexRoute = RootLayoutIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => RootLayoutRoute,
+  getParentRoute: () => RootLayoutRouteRoute,
 } as any)
 const ApiSearchRoute = ApiSearchRouteImport.update({
   id: '/api/search',
@@ -36,43 +36,44 @@ const ApiSearchRoute = ApiSearchRouteImport.update({
 const RootLayoutBlocksIndexRoute = RootLayoutBlocksIndexRouteImport.update({
   id: '/blocks/',
   path: '/blocks/',
-  getParentRoute: () => RootLayoutRoute,
+  getParentRoute: () => RootLayoutRouteRoute,
 } as any)
-const RootLayoutBlocksCategoryRoute =
-  RootLayoutBlocksCategoryRouteImport.update({
-    id: '/blocks/$category',
-    path: '/blocks/$category',
-    getParentRoute: () => RootLayoutRoute,
+const RootLayoutBlocksHeroSectionRoute =
+  RootLayoutBlocksHeroSectionRouteImport.update({
+    id: '/blocks/hero-section',
+    path: '/blocks/hero-section',
+    getParentRoute: () => RootLayoutRouteRoute,
   } as any)
 const RootLayoutComponentsIndexRoute =
   RootLayoutComponentsIndexRouteImport.update({
     id: '/components/',
     path: '/components/',
-    getParentRoute: () => RootLayoutRoute,
+    getParentRoute: () => RootLayoutRouteRoute,
   } as any)
-const RootLayoutComponentsCategoryRoute =
-  RootLayoutComponentsCategoryRouteImport.update({
-    id: '/components/$category',
-    path: '/components/$category',
-    getParentRoute: () => RootLayoutRoute,
+const RootLayoutComponentsButtonRoute =
+  RootLayoutComponentsButtonRouteImport.update({
+    id: '/components/button',
+    path: '/components/button',
+    getParentRoute: () => RootLayoutRouteRoute,
   } as any)
 const RootLayoutPagesIndexRoute = RootLayoutPagesIndexRouteImport.update({
   id: '/pages/',
   path: '/pages/',
-  getParentRoute: () => RootLayoutRoute,
+  getParentRoute: () => RootLayoutRouteRoute,
 } as any)
-const RootLayoutPagesCategoryRoute = RootLayoutPagesCategoryRouteImport.update({
-  id: '/pages/$category',
-  path: '/pages/$category',
-  getParentRoute: () => RootLayoutRoute,
-} as any)
+const RootLayoutPagesLandingPagesRoute =
+  RootLayoutPagesLandingPagesRouteImport.update({
+    id: '/pages/landing-pages',
+    path: '/pages/landing-pages',
+    getParentRoute: () => RootLayoutRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof RootLayoutIndexRoute
   '/api/search': typeof ApiSearchRoute
-  '/blocks/$category': typeof RootLayoutBlocksCategoryRoute
-  '/components/$category': typeof RootLayoutComponentsCategoryRoute
-  '/pages/$category': typeof RootLayoutPagesCategoryRoute
+  '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
+  '/components/button': typeof RootLayoutComponentsButtonRoute
+  '/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/blocks/': typeof RootLayoutBlocksIndexRoute
   '/components/': typeof RootLayoutComponentsIndexRoute
   '/pages/': typeof RootLayoutPagesIndexRoute
@@ -80,21 +81,21 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/api/search': typeof ApiSearchRoute
   '/': typeof RootLayoutIndexRoute
-  '/blocks/$category': typeof RootLayoutBlocksCategoryRoute
-  '/components/$category': typeof RootLayoutComponentsCategoryRoute
-  '/pages/$category': typeof RootLayoutPagesCategoryRoute
+  '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
+  '/components/button': typeof RootLayoutComponentsButtonRoute
+  '/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/blocks': typeof RootLayoutBlocksIndexRoute
   '/components': typeof RootLayoutComponentsIndexRoute
   '/pages': typeof RootLayoutPagesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_rootLayout': typeof RootLayoutRouteWithChildren
+  '/_rootLayout': typeof RootLayoutRouteRouteWithChildren
   '/api/search': typeof ApiSearchRoute
   '/_rootLayout/': typeof RootLayoutIndexRoute
-  '/_rootLayout/blocks/$category': typeof RootLayoutBlocksCategoryRoute
-  '/_rootLayout/components/$category': typeof RootLayoutComponentsCategoryRoute
-  '/_rootLayout/pages/$category': typeof RootLayoutPagesCategoryRoute
+  '/_rootLayout/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
+  '/_rootLayout/components/button': typeof RootLayoutComponentsButtonRoute
+  '/_rootLayout/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/_rootLayout/blocks/': typeof RootLayoutBlocksIndexRoute
   '/_rootLayout/components/': typeof RootLayoutComponentsIndexRoute
   '/_rootLayout/pages/': typeof RootLayoutPagesIndexRoute
@@ -104,9 +105,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/api/search'
-    | '/blocks/$category'
-    | '/components/$category'
-    | '/pages/$category'
+    | '/blocks/hero-section'
+    | '/components/button'
+    | '/pages/landing-pages'
     | '/blocks/'
     | '/components/'
     | '/pages/'
@@ -114,9 +115,9 @@ export interface FileRouteTypes {
   to:
     | '/api/search'
     | '/'
-    | '/blocks/$category'
-    | '/components/$category'
-    | '/pages/$category'
+    | '/blocks/hero-section'
+    | '/components/button'
+    | '/pages/landing-pages'
     | '/blocks'
     | '/components'
     | '/pages'
@@ -125,16 +126,16 @@ export interface FileRouteTypes {
     | '/_rootLayout'
     | '/api/search'
     | '/_rootLayout/'
-    | '/_rootLayout/blocks/$category'
-    | '/_rootLayout/components/$category'
-    | '/_rootLayout/pages/$category'
+    | '/_rootLayout/blocks/hero-section'
+    | '/_rootLayout/components/button'
+    | '/_rootLayout/pages/landing-pages'
     | '/_rootLayout/blocks/'
     | '/_rootLayout/components/'
     | '/_rootLayout/pages/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  RootLayoutRoute: typeof RootLayoutRouteWithChildren
+  RootLayoutRouteRoute: typeof RootLayoutRouteRouteWithChildren
   ApiSearchRoute: typeof ApiSearchRoute
 }
 
@@ -144,7 +145,7 @@ declare module '@tanstack/react-router' {
       id: '/_rootLayout'
       path: ''
       fullPath: '/'
-      preLoaderRoute: typeof RootLayoutRouteImport
+      preLoaderRoute: typeof RootLayoutRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_rootLayout/': {
@@ -152,7 +153,7 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof RootLayoutIndexRouteImport
-      parentRoute: typeof RootLayoutRoute
+      parentRoute: typeof RootLayoutRouteRoute
     }
     '/api/search': {
       id: '/api/search'
@@ -166,72 +167,72 @@ declare module '@tanstack/react-router' {
       path: '/blocks'
       fullPath: '/blocks/'
       preLoaderRoute: typeof RootLayoutBlocksIndexRouteImport
-      parentRoute: typeof RootLayoutRoute
+      parentRoute: typeof RootLayoutRouteRoute
     }
-    '/_rootLayout/blocks/$category': {
-      id: '/_rootLayout/blocks/$category'
-      path: '/blocks/$category'
-      fullPath: '/blocks/$category'
-      preLoaderRoute: typeof RootLayoutBlocksCategoryRouteImport
-      parentRoute: typeof RootLayoutRoute
+    '/_rootLayout/blocks/hero-section': {
+      id: '/_rootLayout/blocks/hero-section'
+      path: '/blocks/hero-section'
+      fullPath: '/blocks/hero-section'
+      preLoaderRoute: typeof RootLayoutBlocksHeroSectionRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
     }
     '/_rootLayout/components/': {
       id: '/_rootLayout/components/'
       path: '/components'
       fullPath: '/components/'
       preLoaderRoute: typeof RootLayoutComponentsIndexRouteImport
-      parentRoute: typeof RootLayoutRoute
+      parentRoute: typeof RootLayoutRouteRoute
     }
-    '/_rootLayout/components/$category': {
-      id: '/_rootLayout/components/$category'
-      path: '/components/$category'
-      fullPath: '/components/$category'
-      preLoaderRoute: typeof RootLayoutComponentsCategoryRouteImport
-      parentRoute: typeof RootLayoutRoute
+    '/_rootLayout/components/button': {
+      id: '/_rootLayout/components/button'
+      path: '/components/button'
+      fullPath: '/components/button'
+      preLoaderRoute: typeof RootLayoutComponentsButtonRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
     }
     '/_rootLayout/pages/': {
       id: '/_rootLayout/pages/'
       path: '/pages'
       fullPath: '/pages/'
       preLoaderRoute: typeof RootLayoutPagesIndexRouteImport
-      parentRoute: typeof RootLayoutRoute
+      parentRoute: typeof RootLayoutRouteRoute
     }
-    '/_rootLayout/pages/$category': {
-      id: '/_rootLayout/pages/$category'
-      path: '/pages/$category'
-      fullPath: '/pages/$category'
-      preLoaderRoute: typeof RootLayoutPagesCategoryRouteImport
-      parentRoute: typeof RootLayoutRoute
+    '/_rootLayout/pages/landing-pages': {
+      id: '/_rootLayout/pages/landing-pages'
+      path: '/pages/landing-pages'
+      fullPath: '/pages/landing-pages'
+      preLoaderRoute: typeof RootLayoutPagesLandingPagesRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
     }
   }
 }
 
-interface RootLayoutRouteChildren {
+interface RootLayoutRouteRouteChildren {
   RootLayoutIndexRoute: typeof RootLayoutIndexRoute
-  RootLayoutBlocksCategoryRoute: typeof RootLayoutBlocksCategoryRoute
-  RootLayoutComponentsCategoryRoute: typeof RootLayoutComponentsCategoryRoute
-  RootLayoutPagesCategoryRoute: typeof RootLayoutPagesCategoryRoute
+  RootLayoutBlocksHeroSectionRoute: typeof RootLayoutBlocksHeroSectionRoute
+  RootLayoutComponentsButtonRoute: typeof RootLayoutComponentsButtonRoute
+  RootLayoutPagesLandingPagesRoute: typeof RootLayoutPagesLandingPagesRoute
   RootLayoutBlocksIndexRoute: typeof RootLayoutBlocksIndexRoute
   RootLayoutComponentsIndexRoute: typeof RootLayoutComponentsIndexRoute
   RootLayoutPagesIndexRoute: typeof RootLayoutPagesIndexRoute
 }
 
-const RootLayoutRouteChildren: RootLayoutRouteChildren = {
+const RootLayoutRouteRouteChildren: RootLayoutRouteRouteChildren = {
   RootLayoutIndexRoute: RootLayoutIndexRoute,
-  RootLayoutBlocksCategoryRoute: RootLayoutBlocksCategoryRoute,
-  RootLayoutComponentsCategoryRoute: RootLayoutComponentsCategoryRoute,
-  RootLayoutPagesCategoryRoute: RootLayoutPagesCategoryRoute,
+  RootLayoutBlocksHeroSectionRoute: RootLayoutBlocksHeroSectionRoute,
+  RootLayoutComponentsButtonRoute: RootLayoutComponentsButtonRoute,
+  RootLayoutPagesLandingPagesRoute: RootLayoutPagesLandingPagesRoute,
   RootLayoutBlocksIndexRoute: RootLayoutBlocksIndexRoute,
   RootLayoutComponentsIndexRoute: RootLayoutComponentsIndexRoute,
   RootLayoutPagesIndexRoute: RootLayoutPagesIndexRoute,
 }
 
-const RootLayoutRouteWithChildren = RootLayoutRoute._addFileChildren(
-  RootLayoutRouteChildren,
+const RootLayoutRouteRouteWithChildren = RootLayoutRouteRoute._addFileChildren(
+  RootLayoutRouteRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  RootLayoutRoute: RootLayoutRouteWithChildren,
+  RootLayoutRouteRoute: RootLayoutRouteRouteWithChildren,
   ApiSearchRoute: ApiSearchRoute,
 }
 export const routeTree = rootRouteImport

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { searchMetadata } from "./-index.search";
+import { searchMetadata } from "../-index.search";
 
 export const Route = createFileRoute("/_rootLayout/")({
   staticData: { ariaLabel: "Home", hideDesktopSidebar: true, search: searchMetadata },

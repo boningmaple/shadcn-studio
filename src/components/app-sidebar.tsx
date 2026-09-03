@@ -1,4 +1,4 @@
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import {
   BlocksIcon,
   ChevronRightIcon,
@@ -8,7 +8,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import {
   Sidebar,
@@ -23,12 +22,13 @@ import {
   SidebarMenuSub,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { registrySidebarSections } from "@/features/registry/data/registry-sidebar.gen";
 import type {
-  RegistryItemKind,
-  RegistryNavigationResult,
+  VibeRegistryItemType,
+  VibeRegistrySidebarSection,
 } from "@/features/registry/types/registry";
 import type { QuickLink } from "@/features/search/types/quick-links";
-import { Route as homeRoute } from "@/routes/_rootLayout.index";
+import { Route as homeRoute } from "@/routes/_rootLayout/index";
 
 export type AppSidebarItem = {
   icon?: LucideIcon;
@@ -57,25 +57,20 @@ export const appQuickLinks: QuickLink[] = fixedGroups
     item.to === undefined ? [] : [{ icon: item.icon, label: item.label, to: item.to }],
   );
 
-const labelByKind: Record<RegistryItemKind, string> = {
-  block: "Blocks",
-  component: "Components",
-  page: "Pages",
+const labelByType: Record<VibeRegistryItemType, string> = {
+  "registry:block": "Blocks",
+  "registry:component": "Components",
+  "registry:page": "Pages",
 };
 
-const iconByKind: Record<RegistryItemKind, LucideIcon> = {
-  block: BlocksIcon,
-  component: ShapesIcon,
-  page: LayoutTemplateIcon,
+const iconByType: Record<VibeRegistryItemType, LucideIcon> = {
+  "registry:block": BlocksIcon,
+  "registry:component": ShapesIcon,
+  "registry:page": LayoutTemplateIcon,
 };
 
-export function AppSidebar({
-  navigation,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Sidebar> & { navigation: RegistryNavigationResult }) {
-  const router = useRouter();
-  const groups = navigation.status === "ok" ? [...registryGroups(navigation.sections)] : [];
-
+export function AppSidebar(props: React.ComponentPropsWithoutRef<typeof Sidebar>) {
+  const groups = registryGroups(registrySidebarSections);
   const { setOpenMobile } = useSidebar();
 
   return (
@@ -103,39 +98,21 @@ export function AppSidebar({
             </SidebarGroupContent>
           </SidebarGroup>
         ))}
-        {navigation.status === "error" ? (
-          <SidebarGroup>
-            <SidebarGroupLabel>Registry unavailable</SidebarGroupLabel>
-            <SidebarGroupContent className="px-2 text-xs text-muted-foreground">
-              <p>Registry navigation could not be loaded.</p>
-              <Button
-                className="mt-2"
-                onPress={() => void router.invalidate()}
-                size="sm"
-                variant="outline"
-              >
-                Try again
-              </Button>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ) : null}
       </SidebarContent>
     </Sidebar>
   );
 }
 
-function registryGroups(
-  sections: Extract<RegistryNavigationResult, { status: "ok" }>["sections"],
-): AppSidebarGroup[] {
+function registryGroups(sections: readonly VibeRegistrySidebarSection[]): AppSidebarGroup[] {
   return [
     {
       items: sections.map((section) => ({
-        icon: iconByKind[section.kind],
+        icon: iconByType[section.type],
         items: section.collections.map((collection) => ({
           label: collection.title,
           to: collection.href,
         })),
-        label: labelByKind[section.kind],
+        label: labelByType[section.type],
       })),
       label: "Registry",
       showLabel: false,

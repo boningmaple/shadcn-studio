@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vite-plus/test";
 
 import { buildFileTree } from "@/features/registry/lib/file-tree";
-import type { HighlightedRegistryFile } from "@/features/registry/types/registry";
+import type { VibeHighlightedRegistryFile } from "@/features/registry/types/registry";
 
-const file = (target: string): HighlightedRegistryFile => ({
+const file = (target: string): VibeHighlightedRegistryFile => ({
   content: target,
   path: `registry/${target}`,
   target,

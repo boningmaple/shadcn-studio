@@ -1,15 +1,16 @@
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 import { persist } from "@orama/plugin-data-persistence";
 
+import sourceRegistry from "../registry.json" with { type: "json" };
 import {
   registryCollections,
   registryItemSummaries,
   registrySections,
 } from "../src/features/registry/lib/registry-catalog.ts";
-import type { RegistrySourceItem } from "../src/features/registry/types/registry.ts";
+import type { VibeRegistry } from "../src/features/registry/types/registry.ts";
 import { createSearchIndex, type SearchRecord } from "../src/features/search/lib/search-index.ts";
 import type { RouteSearchMetadata } from "../src/features/search/types/route-search-metadata.ts";
 
@@ -21,9 +22,7 @@ export const searchIndexArtifactPath = path.join(
 );
 
 export async function buildSearchRecords(): Promise<SearchRecord[]> {
-  const source = JSON.parse(await readFile(path.join(projectRoot, "registry.json"), "utf8")) as {
-    items: RegistrySourceItem[];
-  };
+  const source = sourceRegistry as VibeRegistry;
   const items = registryItemSummaries(source.items);
   const collections = registryCollections(items);
   const sections = registrySections(items);
@@ -41,7 +40,7 @@ export async function buildSearchRecords(): Promise<SearchRecord[]> {
     ...collections.map((collection) => ({
       description: collection.description,
       href: collection.href,
-      id: `collection:${collection.kind}:${collection.category}`,
+      id: `collection:${collection.type}:${collection.category}`,
       kind: "collection" as const,
       name: collection.category,
       title: collection.title,
@@ -49,9 +48,9 @@ export async function buildSearchRecords(): Promise<SearchRecord[]> {
     ...sections.map((section) => ({
       description: section.description,
       href: section.href,
-      id: `route:${section.kind}s`,
+      id: `route:${section.type}`,
       kind: "route" as const,
-      name: `${section.kind}s`,
+      name: section.type,
       title: section.title,
     })),
     ...routeMetadata.map((route) => ({

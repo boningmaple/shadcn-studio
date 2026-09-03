@@ -3,52 +3,36 @@ import { createFileRoute, Outlet, useMatches } from "@tanstack/react-router";
 import { AppHeader } from "@/components/app-header";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
-import { getRegistryNavigation } from "@/features/registry/api/registry.server-fns";
-import { REGISTRY_CACHE_TIME_MS } from "@/features/registry/constants";
-import type { RegistryNavigationResult } from "@/features/registry/types/registry";
 import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
 
 export const Route = createFileRoute("/_rootLayout")({
   staticData: { ariaLabel: "" },
-  loader: () => getRegistryNavigation(),
   component: RouteComponent,
-  gcTime: REGISTRY_CACHE_TIME_MS,
-  staleTime: REGISTRY_CACHE_TIME_MS,
 });
 
 function RouteComponent() {
   const hideDesktopSidebar = useMatches({
     select: (matches) => matches.some((match) => match.staticData.hideDesktopSidebar === true),
   });
-  const navigation = Route.useLoaderData();
 
   return (
     <ThemeProvider>
       <SidebarProvider className="flex-col">
         <AppHeader />
-        <RootLayoutContent hideDesktopSidebar={hideDesktopSidebar} navigation={navigation} />
+        <RootLayoutContent hideDesktopSidebar={hideDesktopSidebar} />
       </SidebarProvider>
     </ThemeProvider>
   );
 }
 
-function RootLayoutContent({
-  hideDesktopSidebar,
-  navigation,
-}: {
-  hideDesktopSidebar: boolean;
-  navigation: RegistryNavigationResult;
-}) {
+function RootLayoutContent({ hideDesktopSidebar }: { hideDesktopSidebar: boolean }) {
   const { isMobile } = useSidebar();
   const showSidebar = isMobile || !hideDesktopSidebar;
 
   return (
     <div className="flex flex-1">
       {showSidebar ? (
-        <AppSidebar
-          navigation={navigation}
-          className="top-(--header-height) h-[calc(100svh-var(--header-height))]"
-        />
+        <AppSidebar className="top-(--header-height) h-[calc(100svh-var(--header-height))]" />
       ) : null}
       <SidebarInset className="min-w-0">
         {hideDesktopSidebar ? null : (

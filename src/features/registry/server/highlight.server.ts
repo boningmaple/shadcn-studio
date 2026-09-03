@@ -1,12 +1,12 @@
 import { createHighlighter, type Highlighter } from "shiki";
 
-import type { HighlightedRegistryFile, RegistryItemFile } from "../types/registry.ts";
+import type { VibeHighlightedRegistryFile, VibeRegistryItemFile } from "../types/registry.ts";
 
 let highlighter: Promise<Highlighter> | undefined;
 
 export async function highlightFiles(
-  files: readonly RegistryItemFile[],
-): Promise<HighlightedRegistryFile[]> {
+  files: readonly VibeRegistryItemFile[],
+): Promise<VibeHighlightedRegistryFile[]> {
   highlighter ??= createHighlighter({
     langs: ["bash", "css", "html", "javascript", "json", "markdown", "text", "tsx", "typescript"],
     themes: ["github-dark", "github-light"],

@@ -1,22 +1,14 @@
-import { Suspense } from "react";
+import { Suspense, type ReactNode } from "react";
 
 import { Spinner } from "@/components/ui/spinner";
 
-import { registryPreviewComponent } from "../lib/preview-modules.ts";
-
-export function RegistryPreviewPage({
+export function RegistryItemPreview({
   embedded = false,
-  name,
+  preview,
 }: {
   embedded?: boolean;
-  name: string;
+  preview: ReactNode;
 }) {
-  const Preview = registryPreviewComponent(name);
-
-  if (Preview === null) {
-    return <p className="p-6">Preview not found.</p>;
-  }
-
   return (
     <Suspense
       fallback={
@@ -27,9 +19,7 @@ export function RegistryPreviewPage({
         </output>
       }
     >
-      <div className={embedded ? "min-h-[34rem] [&>main]:min-h-[34rem]" : undefined}>
-        <Preview />
-      </div>
+      <div className={embedded ? "min-h-[34rem] [&>main]:min-h-[34rem]" : undefined}>{preview}</div>
     </Suspense>
   );
 }

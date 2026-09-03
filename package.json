@@ -5,11 +5,6 @@
   "scripts": {
     "predev": "npm run registry:build",
     "dev": "vp dev --port 3000",
-    "prebuild": "npm run registry:build",
-    "generate-routes": "tsr generate",
-    "generate:search-index": "node scripts/build-search-index.ts",
-    "check:search-index": "node scripts/check-search-index.ts",
-    "registry:build": "shadcn build && node scripts/check-registry.ts",
     "format": "vp fmt",
     "lint": "vp lint",
     "check": "vp check --fix",
@@ -17,9 +12,15 @@
     "test:watch": "vp test watch",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "prebuild": "npm run registry:build",
     "build": "vp run generate:search-index && vp build",
     "preview": "vp preview",
-    "prepare": "vp config"
+    "prepare": "vp config",
+    "generate-routes": "tsr generate",
+    "generate:search-index": "node scripts/build-search-index.ts",
+    "check:search-index": "node scripts/check-search-index.ts",
+    "check:registry-generated": "node scripts/build-registry-routes.ts --check && node scripts/build-registry-sidebar.ts --check",
+    "registry:build": "node scripts/check-registry.ts && shadcn build && node scripts/build-registry-routes.ts && node scripts/build-registry-sidebar.ts && tsr generate"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

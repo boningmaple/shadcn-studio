@@ -18,9 +18,11 @@ editing an item:
 npm run registry:build
 ```
 
-Authored Registry items live in `registry/vibe-ui/<item-name>/`. Every item has
-one `preview.tsx` used only by VibeUI and one or more installable files declared
-in the root `registry.json`.
+Authored Registry items live in `registry/vibe-ui/<item-name>/`. Every item
+declares `registry/vibe-ui/<item-name>/<item-name>.tsx` as an installable file.
+That canonical entry default-exports a component with no required props, which
+VibeUI imports from generated Collection routes and renders as an ordinary React
+Preview.
 
 ## Registry
 
@@ -35,9 +37,25 @@ npx shadcn@latest add https://your-vibeui-host.example/r/button-01.json
 Registry conventions require every item to:
 
 - use `registry:component`, `registry:block`, or `registry:page`;
-- have a unique name, title, description, and exactly one category;
-- live under `registry/vibe-ui/<name>/` with exactly one `preview.tsx`;
+- have a unique route-safe name, title, description, and exactly one route-safe
+  category;
+- declare `registry/vibe-ui/<name>/<name>.tsx` with a default component export;
 - install files under `@components/vibe-ui/<name>/`.
+
+`registry:build` also reads `registry.json` and updates committed generated
+TypeScript:
+
+- concrete TanStack route files under `src/routes/_rootLayout/{components,blocks,pages}/`;
+- sidebar data in `src/features/registry/data/registry-sidebar.gen.ts`;
+- the TanStack `src/routeTree.gen.ts` route tree.
+
+Generated Collection routes import their Registry item components directly, so
+Preview HTML is available during the production prerender. No generated catalog
+JSON is used.
+
+```bash
+npm run check:registry-generated
+```
 
 ## Search
 
@@ -65,7 +83,7 @@ through Playwright.
 
 ```bash
 npx playwright install chromium
-npm test -- --run
+npm run test
 npm run test:watch
 npm run test:e2e
 ```
@@ -77,8 +95,9 @@ npm run check
 npm run lint -- --deny-warnings --format=agent
 ```
 
-The production build regenerates and validates `public/r`, rebuilds the
-committed Orama artifact, and bundles the application:
+The production build regenerates and validates `public/r`, refreshes generated
+Registry routes/sidebar data, rebuilds the committed Orama artifact, bundles the
+application, and prerenders the generated static Registry routes:
 
 ```bash
 npm run build
@@ -92,10 +111,12 @@ npm run preview
 |-- CONTEXT.md                  # product glossary
 |-- components.json             # shadcn installation aliases
 |-- registry.json               # authored public Registry catalog
-|-- registry/vibe-ui            # authored Registry items and Preview fixtures
+|-- registry/vibe-ui            # authored Registry items and Preview components
 |-- docs/adr                    # architecture decisions
 |-- public/r                    # generated, ignored shadcn payloads
 |-- scripts
+|   |-- build-registry-routes.ts # generates concrete Registry routes
+|   |-- build-registry-sidebar.ts # generates sidebar data from registry.json
 |   |-- build-search-index.ts   # persists the server-side Orama index
 |   |-- check-registry.ts       # validates VibeUI Registry conventions
 |   `-- check-search-index.ts   # detects a stale committed search index
@@ -105,7 +126,7 @@ npm run preview
     |   |-- app-header.tsx      # application shell header
     |   `-- app-sidebar.tsx     # application navigation and sidebar rendering
     |-- features
-    |   |-- registry            # catalog, Preview, and Code preview behavior
+    |   |-- registry            # generated navigation, Preview, and Code preview behavior
     |   |-- search              # Orama endpoint and search palette
     |   `-- theme-switch        # theme persistence and controls
     |-- routes                  # TanStack application and server routes

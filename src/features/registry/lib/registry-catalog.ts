@@ -1,72 +1,68 @@
 import type {
-  RegistryCollection,
-  RegistryItemKind,
-  RegistryItemSummary,
-  RegistryItemType,
-  RegistrySection,
-  RegistrySourceItem,
+  VibeRegistryCollection,
+  VibeRegistryItemSummary,
+  VibeRegistryItemType,
+  VibeRegistrySection,
+  VibeRegistryItem,
 } from "../types/registry.ts";
 
-const kindByType: Record<RegistryItemType, RegistryItemKind> = {
-  "registry:block": "block",
-  "registry:component": "component",
-  "registry:page": "page",
+const segmentByType: Record<VibeRegistryItemType, string> = {
+  "registry:block": "blocks",
+  "registry:component": "components",
+  "registry:page": "pages",
 };
 
-const segmentByKind: Record<RegistryItemKind, string> = {
-  block: "blocks",
-  component: "components",
-  page: "pages",
+const pluralByType: Record<VibeRegistryItemType, string> = {
+  "registry:block": "Blocks",
+  "registry:component": "Components",
+  "registry:page": "Pages",
 };
 
-const pluralByKind: Record<RegistryItemKind, string> = {
-  block: "Blocks",
-  component: "Components",
-  page: "Pages",
+const sectionDescriptionByType: Record<VibeRegistryItemType, string> = {
+  "registry:block": "Browse complete interface sections and application patterns.",
+  "registry:component": "Browse focused UI components grouped by category.",
+  "registry:page": "Browse complete page compositions grouped by purpose.",
 };
 
-const sectionDescriptionByKind: Record<RegistryItemKind, string> = {
-  block: "Browse complete interface sections and application patterns.",
-  component: "Browse focused UI components grouped by category.",
-  page: "Browse complete page compositions grouped by purpose.",
-};
-
-export function registryKind(type: RegistryItemType): RegistryItemKind {
-  return kindByType[type];
+export function collectionHref(type: VibeRegistryItemType, category: string): string {
+  return `/${segmentByType[type]}/${category}`;
 }
 
-export function collectionHref(kind: RegistryItemKind, category: string): string {
-  return `/${segmentByKind[kind]}/${category}`;
+export function registrySectionHref(type: VibeRegistryItemType): string {
+  return `/${segmentByType[type]}`;
 }
 
-export function registrySectionHref(kind: RegistryItemKind): string {
-  return `/${segmentByKind[kind]}`;
+export function registryItemHref(
+  type: VibeRegistryItemType,
+  category: string,
+  name: string,
+): string {
+  return `${collectionHref(type, category)}#${name}`;
 }
 
-export function registryItemHref(kind: RegistryItemKind, category: string, name: string): string {
-  return `${collectionHref(kind, category)}#${name}`;
-}
-
-export function registryItemSummaries(items: readonly RegistrySourceItem[]): RegistryItemSummary[] {
+export function registryItemSummaries(
+  items: readonly VibeRegistryItem[],
+): VibeRegistryItemSummary[] {
   return items.map((item) => {
     const category = item.categories[0]!;
-    const kind = registryKind(item.type);
     return {
       category,
       description: item.description,
-      href: registryItemHref(kind, category, item.name),
-      kind,
+      href: registryItemHref(item.type, category, item.name),
       name: item.name,
       title: item.title,
+      type: item.type,
     };
   });
 }
 
-export function registryCollections(items: readonly RegistryItemSummary[]): RegistryCollection[] {
-  const grouped = new Map<string, RegistryCollection>();
+export function registryCollections(
+  items: readonly VibeRegistryItemSummary[],
+): VibeRegistryCollection[] {
+  const grouped = new Map<string, VibeRegistryCollection>();
 
   for (const item of items) {
-    const key = `${item.kind}:${item.category}`;
+    const key = `${item.type}:${item.category}`;
     const existing = grouped.get(key);
 
     if (existing === undefined) {
@@ -74,10 +70,10 @@ export function registryCollections(items: readonly RegistryItemSummary[]): Regi
       grouped.set(key, {
         category: item.category,
         description: `Browse ${categoryTitle.toLowerCase()} Registry items.`,
-        href: collectionHref(item.kind, item.category),
+        href: collectionHref(item.type, item.category),
         items: [item],
-        kind: item.kind,
         title: categoryTitle,
+        type: item.type,
       });
     } else {
       existing.items.push(item);
@@ -90,31 +86,31 @@ export function registryCollections(items: readonly RegistryItemSummary[]): Regi
       items: [...collection.items].sort((left, right) => left.title.localeCompare(right.title)),
     }))
     .sort((left, right) =>
-      `${left.kind}:${left.title}`.localeCompare(`${right.kind}:${right.title}`),
+      `${left.type}:${left.title}`.localeCompare(`${right.type}:${right.title}`),
     );
 }
 
-export function registrySections(items: readonly RegistryItemSummary[]): RegistrySection[] {
+export function registrySections(items: readonly VibeRegistryItemSummary[]): VibeRegistrySection[] {
   const collections = registryCollections(items);
 
-  return (["component", "block", "page"] as const).flatMap((kind) => {
-    const matchingCollections = collections.filter((collection) => collection.kind === kind);
+  return (["registry:component", "registry:block", "registry:page"] as const).flatMap((type) => {
+    const matchingCollections = collections.filter((collection) => collection.type === type);
     if (matchingCollections.length === 0) return [];
 
     return [
       {
         collections: matchingCollections,
-        description: sectionDescriptionByKind[kind],
-        href: registrySectionHref(kind),
-        kind,
-        title: pluralByKind[kind],
+        description: sectionDescriptionByType[type],
+        href: registrySectionHref(type),
+        title: pluralByType[type],
+        type,
       },
     ];
   });
 }
 
-export function registryTypeSegment(kind: RegistryItemKind): string {
-  return segmentByKind[kind];
+export function registryTypeSegment(type: VibeRegistryItemType): string {
+  return segmentByType[type];
 }
 
 function humanize(value: string): string {

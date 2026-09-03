@@ -1,16 +1,16 @@
-import type { HighlightedRegistryFile } from "../types/registry.ts";
+import type { VibeHighlightedRegistryFile } from "../types/registry.ts";
 
 export type FileTreeNode = {
   children: FileTreeNode[];
-  file?: HighlightedRegistryFile;
+  file?: VibeHighlightedRegistryFile;
   name: string;
 };
 
-export function registryFileDisplayPath(file: HighlightedRegistryFile): string {
+export function registryFileDisplayPath(file: VibeHighlightedRegistryFile): string {
   return file.target ?? file.path;
 }
 
-export function buildFileTree(files: readonly HighlightedRegistryFile[]): FileTreeNode[] {
+export function buildFileTree(files: readonly VibeHighlightedRegistryFile[]): FileTreeNode[] {
   const root: FileTreeNode[] = [];
 
   for (const file of files) {

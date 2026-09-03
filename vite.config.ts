@@ -10,7 +10,7 @@ const isTest = process.env.VITEST === "true";
 
 const config = defineConfig({
   fmt: {
-    ignorePatterns: ["routeTree.gen.ts", "search-index.gen.json"],
+    ignorePatterns: ["routeTree.gen.ts", "registry-sidebar.gen.ts", "search-index.gen.json"],
     sortImports: true,
     sortPackageJson: true,
   },
@@ -52,7 +52,10 @@ const config = defineConfig({
   },
   staged: {
     "*": "vp check --fix",
-    "{registry.json,registry/vibe-ui/**,scripts/check-registry.ts}": () => "npm run registry:build",
+    "{registry.json,registry/vibe-ui/**,scripts/check-registry.ts,scripts/build-registry-routes.ts,scripts/build-registry-sidebar.ts}":
+      () => "npm run registry:build",
+    "{registry.json,registry/vibe-ui/**,src/routes/_rootLayout/**,src/features/registry/data/registry-sidebar.gen.ts,scripts/build-registry-routes.ts,scripts/build-registry-sidebar.ts}":
+      () => "npm run check:registry-generated",
     // Registry metadata and route-owned search sidecars are the sources for
     // the committed server-side index.
     "{registry.json,src/routes/**/*.search.ts,src/features/registry/lib/registry-catalog.ts,src/features/search/lib/search-index.ts,src/features/search/data/search-index.gen.json,scripts/build-search-index.ts}":
@@ -67,8 +70,22 @@ const config = defineConfig({
     // `.server()` branch, so `getLocalStorageTheme` would hand the browser
     // `defaultTheme` and the stored-theme tests would fail.
     isTest
-      ? [tailwindcss(), tanstackStart(), react()]
-      : [devtools(), nitro(), tailwindcss(), tanstackStart(), react()],
+      ? [
+          tailwindcss(),
+          tanstackStart({
+            prerender: { crawlLinks: false, enabled: true, failOnError: true },
+          }),
+          react(),
+        ]
+      : [
+          devtools(),
+          nitro(),
+          tailwindcss(),
+          tanstackStart({
+            prerender: { crawlLinks: false, enabled: true, failOnError: true },
+          }),
+          react(),
+        ],
   ),
 });
 

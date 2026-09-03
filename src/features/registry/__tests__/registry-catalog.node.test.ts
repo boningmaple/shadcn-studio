@@ -5,9 +5,9 @@ import {
   registryItemSummaries,
   registrySections,
 } from "@/features/registry/lib/registry-catalog";
-import type { RegistrySourceItem } from "@/features/registry/types/registry";
+import type { VibeRegistryItem } from "@/features/registry/types/registry";
 
-const sourceItems: RegistrySourceItem[] = [
+const sourceItems: VibeRegistryItem[] = [
   {
     categories: ["button"],
     description: "A quiet button.",

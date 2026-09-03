@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-import type { HighlightedRegistryFile } from "../types/registry.ts";
+import type { VibeHighlightedRegistryFile } from "../types/registry.ts";
 
 const registryFileSchema = z.object({
   content: z.string(),
@@ -12,7 +12,7 @@ const registryFileSchema = z.object({
 
 export const highlightRegistryFiles = createServerFn({ method: "POST" })
   .validator(z.object({ files: z.array(registryFileSchema) }))
-  .handler(async ({ data }): Promise<HighlightedRegistryFile[]> => {
+  .handler(async ({ data }): Promise<VibeHighlightedRegistryFile[]> => {
     const { highlightFiles } = await import("../server/highlight.server.ts");
     return highlightFiles(data.files);
   });

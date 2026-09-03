@@ -2,7 +2,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-export function HeroSection01() {
+export default function HeroSection01() {
   return (
     <section className="mx-auto flex max-w-4xl flex-col items-center px-6 py-24 text-center">
       <p className="mb-4 text-sm font-medium text-primary">Ship with confidence</p>

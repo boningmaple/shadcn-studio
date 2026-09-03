@@ -2,7 +2,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-export function LandingPage01() {
+export default function LandingPage01() {
   return (
     <main className="min-h-svh">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
