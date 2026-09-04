@@ -6,7 +6,8 @@ import * as React from "react";
 
 import { ThemeHydrationScript } from "@/features/theme-switch/components/theme-hydration-script";
 
-import appCss from "../styles.css?url";
+import fontCss from "@/styles/font.css?url";
+import rootCss from "@/styles/root.css?url";
 
 export const Route = createRootRoute({
   staticData: { ariaLabel: "" },
@@ -26,7 +27,11 @@ export const Route = createRootRoute({
     links: [
       {
         rel: "stylesheet",
-        href: appCss,
+        href: fontCss,
+      },
+      {
+        rel: "stylesheet",
+        href: rootCss,
       },
     ],
   }),

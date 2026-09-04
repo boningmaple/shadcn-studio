@@ -6,7 +6,7 @@ import type {
   VibeRegistryItem,
 } from "../types/registry.ts";
 
-const segmentByType: Record<VibeRegistryItemType, string> = {
+export const segmentByType: Record<VibeRegistryItemType, string> = {
   "registry:block": "blocks",
   "registry:component": "components",
   "registry:page": "pages",
@@ -80,14 +80,9 @@ export function registryCollections(
     }
   }
 
-  return [...grouped.values()]
-    .map((collection) => ({
-      ...collection,
-      items: [...collection.items].sort((left, right) => left.title.localeCompare(right.title)),
-    }))
-    .sort((left, right) =>
-      `${left.type}:${left.title}`.localeCompare(`${right.type}:${right.title}`),
-    );
+  return [...grouped.values()].sort((left, right) =>
+    `${left.type}:${left.title}`.localeCompare(`${right.type}:${right.title}`),
+  );
 }
 
 export function registrySections(items: readonly VibeRegistryItemSummary[]): VibeRegistrySection[] {
@@ -107,10 +102,6 @@ export function registrySections(items: readonly VibeRegistryItemSummary[]): Vib
       },
     ];
   });
-}
-
-export function registryTypeSegment(type: VibeRegistryItemType): string {
-  return segmentByType[type];
 }
 
 function humanize(value: string): string {

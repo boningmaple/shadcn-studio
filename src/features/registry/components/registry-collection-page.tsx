@@ -14,28 +14,21 @@ export type RegistryCollectionItem = {
 
 export function RegistryCollectionPage({
   description,
-  eyebrow,
   items,
   title,
 }: {
   description: string;
-  eyebrow: string;
   items: RegistryCollectionItem[];
   title: string;
 }) {
   return (
-    <div className="mx-auto w-full max-w-7xl space-y-12 py-6">
-      <header className="space-y-2">
-        <p className="text-sm font-medium text-muted-foreground">{eyebrow}</p>
-        <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>
-        <p className="max-w-2xl text-muted-foreground">{description}</p>
-      </header>
+    <div className="w-full prose dark:prose-invert">
+      <h1>{title}</h1>
+      <p>{description}</p>
 
-      <div className="space-y-16">
-        {items.map((item) => (
-          <RegistryItemShowcase item={item} key={item.name} />
-        ))}
-      </div>
+      {items.map((item) => (
+        <RegistryItemShowcase item={item} key={item.name} />
+      ))}
     </div>
   );
 }
@@ -45,13 +38,12 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
   const Preview = item.Preview;
 
   return (
-    <article className="scroll-mt-20 space-y-5" id={item.name}>
-      <header className="space-y-1">
-        <h2 className="text-2xl font-semibold tracking-tight">{item.title}</h2>
-        <p className="text-muted-foreground">{item.description}</p>
-      </header>
+    <article className="scroll-mt-20" id={item.name}>
+      <h2>{item.title}</h2>
+      <p>{item.description}</p>
 
       <Tabs
+        className="not-prose"
         defaultSelectedKey="preview"
         onSelectionChange={(key) => {
           if (key === "code") setCodeEnabled(true);

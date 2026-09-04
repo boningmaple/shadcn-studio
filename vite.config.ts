@@ -52,10 +52,8 @@ const config = defineConfig({
   },
   staged: {
     "*": "vp check --fix",
-    "{registry.json,registry/vibe-ui/**,scripts/check-registry.ts,scripts/build-registry-routes.ts,scripts/build-registry-sidebar.ts}":
+    "{registry.json,registry/vibe-ui/**,scripts/build-registry.ts,src/features/registry/lib/registry-catalog.ts,src/features/registry/types/registry.ts}":
       () => "npm run registry:build",
-    "{registry.json,registry/vibe-ui/**,src/routes/_rootLayout/**,src/features/registry/data/registry-sidebar.gen.ts,scripts/build-registry-routes.ts,scripts/build-registry-sidebar.ts}":
-      () => "npm run check:registry-generated",
     // Registry metadata and route-owned search sidecars are the sources for
     // the committed server-side index.
     "{registry.json,src/routes/**/*.search.ts,src/features/registry/lib/registry-catalog.ts,src/features/search/lib/search-index.ts,src/features/search/data/search-index.gen.json,scripts/build-search-index.ts}":

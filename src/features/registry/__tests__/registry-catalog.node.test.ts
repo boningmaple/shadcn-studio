@@ -41,11 +41,11 @@ describe("Registry catalog", () => {
   it("anchors Registry items to their Collection page", () => {
     expect(registryItemSummaries(sourceItems)[0]).toMatchObject({
       href: "/components/button#button-01",
-      kind: "component",
+      type: "registry:component",
     });
     expect(registryItemSummaries(sourceItems)[2]).toMatchObject({
       href: "/blocks/authentication#login-form-01",
-      kind: "block",
+      type: "registry:block",
     });
   });
 

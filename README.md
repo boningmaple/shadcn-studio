@@ -46,16 +46,17 @@ Registry conventions require every item to:
 TypeScript:
 
 - concrete TanStack route files under `src/routes/_rootLayout/{components,blocks,pages}/`;
-- sidebar data in `src/features/registry/data/registry-sidebar.gen.ts`;
-- the TanStack `src/routeTree.gen.ts` route tree.
+- sidebar data in `src/features/registry/data/registry-sidebar.gen.ts`.
+
+Those three route directories and the generated sidebar module are wholly owned
+by the Registry builder. It deletes and recreates them on every run, so do not
+put handwritten files there. TanStack Start generates `src/routeTree.gen.ts`
+when `dev` or `build` starts; `registry:build` does not generate the route tree
+by itself.
 
 Generated Collection routes import their Registry item components directly, so
 Preview HTML is available during the production prerender. No generated catalog
 JSON is used.
-
-```bash
-npm run check:registry-generated
-```
 
 ## Search
 
@@ -115,10 +116,8 @@ npm run preview
 |-- docs/adr                    # architecture decisions
 |-- public/r                    # generated, ignored shadcn payloads
 |-- scripts
-|   |-- build-registry-routes.ts # generates concrete Registry routes
-|   |-- build-registry-sidebar.ts # generates sidebar data from registry.json
+|   |-- build-registry.ts        # validates and builds all Registry outputs
 |   |-- build-search-index.ts   # persists the server-side Orama index
-|   |-- check-registry.ts       # validates VibeUI Registry conventions
 |   `-- check-search-index.ts   # detects a stale committed search index
 `-- src
     |-- components
