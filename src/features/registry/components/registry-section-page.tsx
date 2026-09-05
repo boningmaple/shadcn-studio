@@ -18,16 +18,14 @@ export function RegistrySectionPage({
   title: string;
 }) {
   return (
-    <div className="w-full">
-      <header className="prose dark:prose-invert">
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </header>
+    <>
+      <h1>{title}</h1>
+      <p>{description}</p>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="not-prose grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {collections.map((collection) => (
           <Link key={collection.href} to={collection.href}>
-            <Card className="h-full transition-colors hover:bg-muted/40">
+            <Card className="hover:bg-muted">
               <CardHeader>
                 <CardTitle>{collection.title}</CardTitle>
                 <CardDescription>
@@ -38,6 +36,6 @@ export function RegistrySectionPage({
           </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 }

@@ -55,6 +55,7 @@ export function ThemeSwitchButton() {
       onPress={onPressTheme}
       size="icon"
       variant="outline"
+      className="transition-none"
     >
       {/*
         All three labels are rendered so the markup never depends on `theme`

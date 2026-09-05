@@ -44,7 +44,7 @@ function RootLayoutContent({ hideDesktopSidebar }: { hideDesktopSidebar: boolean
             <SidebarTrigger size="icon" />
           </div>
         )}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-4 prose dark:prose-invert max-w-none">
           <Outlet />
         </div>
       </SidebarInset>
