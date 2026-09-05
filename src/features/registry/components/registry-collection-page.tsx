@@ -2,22 +2,33 @@ import {
   CodeIcon,
   EyeIcon,
   MonitorIcon,
-  RotateCwIcon,
   ScanSquareIcon,
   SmartphoneIcon,
   TabletIcon,
 } from "lucide-react";
-import { useLayoutEffect, useRef, useState, type ComponentType } from "react";
+import { useState, type ComponentType } from "react";
+import { usePanelRef } from "react-resizable-panels";
 
 import { Button } from "@/components/ui/button";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+
+import ResetPreviewButton from "./reset-preview-button";
 
 export type RegistryCollectionItem = {
   description: string;
   name: string;
   Preview: ComponentType;
   title: string;
+};
+
+type PreviewSize = "desktop" | "phone" | "tablet";
+
+const previewWidths: Record<PreviewSize, number | string> = {
+  desktop: "100%",
+  phone: 320,
+  tablet: 640,
 };
 
 export function RegistryCollectionPage({
@@ -43,36 +54,17 @@ export function RegistryCollectionPage({
 
 function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
   const [, setCodeEnabled] = useState(false);
-  const [previewGeneration, setPreviewGeneration] = useState(0);
-  const [previewHeight, setPreviewHeight] = useState<number | null>(null);
-  const previewPanelRef = useRef<HTMLDivElement>(null);
-  const releaseHeightFrameRef = useRef<number | null>(null);
+  const [previewKey, setPreviewKey] = useState(0);
+  const [previewSize, setPreviewSize] = useState<PreviewSize | null>("desktop");
+  const previewPanelRef = usePanelRef();
+  const resetPreview = () => setPreviewKey((key) => key + 1);
+
+  const resizePreview = (size: PreviewSize) => {
+    setPreviewSize(size);
+    previewPanelRef.current?.resize(previewWidths[size]);
+  };
+
   const Preview = item.Preview;
-
-  useLayoutEffect(() => {
-    if (previewHeight === null) return;
-
-    releaseHeightFrameRef.current = requestAnimationFrame(() => {
-      releaseHeightFrameRef.current = requestAnimationFrame(() => {
-        releaseHeightFrameRef.current = null;
-        setPreviewHeight(null);
-      });
-    });
-
-    return () => {
-      if (releaseHeightFrameRef.current !== null) {
-        cancelAnimationFrame(releaseHeightFrameRef.current);
-        releaseHeightFrameRef.current = null;
-      }
-    };
-  }, [previewGeneration, previewHeight]);
-
-  function reloadPreview() {
-    const currentHeight = previewPanelRef.current?.getBoundingClientRect().height;
-
-    if (currentHeight) setPreviewHeight(currentHeight);
-    setPreviewGeneration((generation) => generation + 1);
-  }
 
   return (
     <article className="scroll-mt-20" id={item.name}>
@@ -103,10 +95,17 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
           <div aria-label="Preview controls" className="flex items-center gap-2" role="toolbar">
             <ToggleGroup
               aria-label="Preview size"
-              defaultSelectedKeys={["desktop"]}
+              selectedKeys={previewSize ? [previewSize] : []}
               selectionMode="single"
               spacing={1}
               className="hidden border p-0.75 transition-none *:data-[slot=toggle-group-item]:size-7! *:data-[slot=toggle-group-item]:px-0 *:data-[slot=toggle-group-item]:[&_svg]:size-4! *:data-[slot=toggle-group-item]:transition-none lg:flex"
+              onSelectionChange={(keys) => {
+                const [size] = keys;
+
+                if (size === "desktop" || size === "phone" || size === "tablet") {
+                  resizePreview(size);
+                }
+              }}
             >
               <ToggleGroupItem aria-label="Phone preview" id="phone" size="sm">
                 <SmartphoneIcon />
@@ -126,27 +125,31 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
             >
               <ScanSquareIcon />
             </Button>
-            <Button
-              aria-label="Reload preview"
-              variant="outline"
-              size="icon"
-              className="transition-none"
-              onPress={reloadPreview}
-            >
-              <RotateCwIcon />
-            </Button>
+            <ResetPreviewButton resetPreview={resetPreview} />
           </div>
         </div>
-        <TabsContent
-          ref={previewPanelRef}
-          id="preview"
-          className="min-h-64 flex items-center justify-center rounded-lg border bg-background"
-          style={{
-            height: previewHeight ?? undefined,
-            overflow: previewHeight === null ? undefined : "hidden",
-          }}
-        >
-          <Preview key={previewGeneration} />
+        <TabsContent id="preview" className="min-h-64 overflow-hidden rounded-lg">
+          <ResizablePanelGroup
+            className="min-h-64"
+            onLayoutChanged={(_, { isUserInteraction }) => {
+              if (isUserInteraction) setPreviewSize(null);
+            }}
+            orientation="horizontal"
+          >
+            <ResizablePanel
+              className="flex items-center justify-center rounded-lg border bg-background"
+              defaultSize="100%"
+              groupResizeBehavior={
+                previewSize === "desktop" ? "preserve-relative-size" : "preserve-pixel-size"
+              }
+              minSize={320}
+              panelRef={previewPanelRef}
+            >
+              <Preview key={previewKey} />
+            </ResizablePanel>
+            <ResizableHandle className="relative hidden w-3 bg-transparent p-0 after:absolute after:top-1/2 after:right-0 after:h-8 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all after:hover:h-10 lg:flex" />
+            <ResizablePanel defaultSize="0%" minSize="0%" />
+          </ResizablePanelGroup>
         </TabsContent>
         <TabsContent
           id="code"
