@@ -7,7 +7,7 @@ import {
   SmartphoneIcon,
   TabletIcon,
 } from "lucide-react";
-import { useState, type ComponentType } from "react";
+import { useLayoutEffect, useRef, useState, type ComponentType } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -43,7 +43,36 @@ export function RegistryCollectionPage({
 
 function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
   const [, setCodeEnabled] = useState(false);
+  const [previewGeneration, setPreviewGeneration] = useState(0);
+  const [previewHeight, setPreviewHeight] = useState<number | null>(null);
+  const previewPanelRef = useRef<HTMLDivElement>(null);
+  const releaseHeightFrameRef = useRef<number | null>(null);
   const Preview = item.Preview;
+
+  useLayoutEffect(() => {
+    if (previewHeight === null) return;
+
+    releaseHeightFrameRef.current = requestAnimationFrame(() => {
+      releaseHeightFrameRef.current = requestAnimationFrame(() => {
+        releaseHeightFrameRef.current = null;
+        setPreviewHeight(null);
+      });
+    });
+
+    return () => {
+      if (releaseHeightFrameRef.current !== null) {
+        cancelAnimationFrame(releaseHeightFrameRef.current);
+        releaseHeightFrameRef.current = null;
+      }
+    };
+  }, [previewGeneration, previewHeight]);
+
+  function reloadPreview() {
+    const currentHeight = previewPanelRef.current?.getBoundingClientRect().height;
+
+    if (currentHeight) setPreviewHeight(currentHeight);
+    setPreviewGeneration((generation) => generation + 1);
+  }
 
   return (
     <article className="scroll-mt-20" id={item.name}>
@@ -102,16 +131,22 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
               variant="outline"
               size="icon"
               className="transition-none"
+              onPress={reloadPreview}
             >
               <RotateCwIcon />
             </Button>
           </div>
         </div>
         <TabsContent
+          ref={previewPanelRef}
           id="preview"
           className="min-h-64 flex items-center justify-center rounded-lg border bg-background"
+          style={{
+            height: previewHeight ?? undefined,
+            overflow: previewHeight === null ? undefined : "hidden",
+          }}
         >
-          <Preview />
+          <Preview key={previewGeneration} />
         </TabsContent>
         <TabsContent
           id="code"
