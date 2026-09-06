@@ -15,6 +15,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+import {
+  RegistryPreviewThemeBoundary,
+  RegistryPreviewThemeSwitch,
+  useRegistryPreviewTheme,
+} from "./registry-preview-theme";
 import ResetPreviewButton from "./reset-preview-button";
 
 export type RegistryCollectionItem = {
@@ -60,6 +65,7 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
   const [previewSize, setPreviewSize] = useState<PreviewSize | null>("desktop");
   const previewPanelRef = usePanelRef();
   const [previewKey, setPreviewKey] = useState(0);
+  const { setTheme: setPreviewTheme, theme: previewTheme } = useRegistryPreviewTheme();
   const resetPreview = () => setPreviewKey((key) => key + 1);
 
   const handlePreviewSizeChange = (keys: Set<React.Key>) => {
@@ -125,7 +131,7 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
             <LinkButton
               aria-label="Open preview in tab"
               className="transition-none"
-              href={item.previewHref}
+              href={previewTheme ? `${item.previewHref}?theme=${previewTheme}` : item.previewHref}
               rel="noopener noreferrer"
               size="icon"
               target="_blank"
@@ -133,6 +139,7 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
             >
               <ScanSquareIcon />
             </LinkButton>
+            <RegistryPreviewThemeSwitch setTheme={setPreviewTheme} theme={previewTheme} />
             <ResetPreviewButton resetPreview={resetPreview} />
           </div>
         </div>
@@ -152,9 +159,14 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
               groupResizeBehavior={
                 previewSize === "desktop" ? "preserve-relative-size" : "preserve-pixel-size"
               }
-              className="flex items-center justify-center rounded-lg border bg-background"
+              className="rounded-lg"
             >
-              <Preview key={previewKey} />
+              <RegistryPreviewThemeBoundary
+                className="flex size-full items-center justify-center rounded-lg border"
+                theme={previewTheme}
+              >
+                <Preview key={previewKey} />
+              </RegistryPreviewThemeBoundary>
             </ResizablePanel>
             <ResizableHandle className="hidden lg:flex w-3 cursor-col-resize bg-transparent after:absolute after:top-1/2 after:right-0 after:h-16 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all" />
             <ResizablePanel defaultSize="0%" minSize="0%" />

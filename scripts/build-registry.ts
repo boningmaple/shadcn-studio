@@ -162,15 +162,23 @@ function previewRouteContent(item: VibeRegistryItemSummary): string {
   return `${generatedHeader}import { createFileRoute } from "@tanstack/react-router";
 
 import { RegistryPreviewPage } from "@/features/registry/components/registry-preview-page";
+import { previewThemeSearchSchema } from "@/features/registry/types/preview-theme";
 import ${importName} from "${importPath}";
 
 export const Route = createFileRoute(${JSON.stringify(href)})({
   head: () => ({ meta: [{ title: ${JSON.stringify(`${item.title} Preview – VibeUI`)} }] }),
   staticData: { ariaLabel: ${JSON.stringify(`${item.title} Preview`)} },
-  component: () => (
-    <RegistryPreviewPage Preview={${importName}} type=${JSON.stringify(item.type)} />
-  ),
+  validateSearch: previewThemeSearchSchema,
+  component: PreviewRoute,
 });
+
+function PreviewRoute() {
+  const { theme } = Route.useSearch();
+
+  return (
+    <RegistryPreviewPage Preview={${importName}} theme={theme} type=${JSON.stringify(item.type)} />
+  );
+}
 `;
 }
 

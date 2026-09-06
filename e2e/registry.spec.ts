@@ -60,16 +60,23 @@ test.describe("Registry item Previews", () => {
   }
 
   test("opens a fresh Registry item Preview in a new tab", async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem("theme", "light"));
     await page.goto("/components/button");
     await waitForHydration(page);
 
+    const item = page.locator("#button-01");
+    await item.getByRole("button", { name: "Preview theme: Light. Switch to Dark." }).click();
     const previewPagePromise = page.waitForEvent("popup");
-    await page.locator("#button-01").getByRole("link", { name: "Open preview in tab" }).click();
+    await item.getByRole("link", { name: "Open preview in tab" }).click();
     const previewPage = await previewPagePromise;
 
-    await expect(previewPage).toHaveURL("/preview/components/button/button-01");
+    await expect(previewPage).toHaveURL("/preview/components/button/button-01?theme=dark");
     await expect(previewPage).toHaveTitle("Button 01 Preview – VibeUI");
     await expect(previewPage.getByText("Get started, 0", { exact: true })).toBeVisible();
+    await expect(previewPage.locator('[data-slot="registry-preview-theme"]')).toHaveAttribute(
+      "data-theme",
+      "dark",
+    );
   });
 
   test("applies the persisted theme to an isolated Preview", async ({ page }) => {
@@ -78,6 +85,59 @@ test.describe("Registry item Previews", () => {
     await page.goto("/preview/components/button/button-01");
 
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect(page.locator('[data-slot="registry-preview-theme"]')).toHaveAttribute(
+      "data-theme",
+      "dark",
+    );
+  });
+
+  test("follows the app theme until the Preview theme switch is used", async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem("theme", "light"));
+    await page.goto("/components/button");
+    await waitForHydration(page);
+
+    const item = page.locator("#button-02");
+    const boundary = item.locator('[data-slot="registry-preview-theme"]');
+
+    await page.getByRole("button", { exact: true, name: "Theme: Light. Switch to Dark." }).click();
+    await expect(boundary).toHaveAttribute("data-theme", "dark");
+
+    await item.getByRole("button", { name: "Preview theme: Dark. Switch to Light." }).click();
+    await page.getByRole("button", { exact: true, name: "Theme: Dark. Switch to System." }).click();
+    await page
+      .getByRole("button", { exact: true, name: "Theme: System. Switch to Light." })
+      .click();
+    await page.getByRole("button", { exact: true, name: "Theme: Light. Switch to Dark." }).click();
+
+    await expect(boundary).toHaveAttribute("data-theme", "light");
+    await expect(boundary).toHaveCSS("background-color", "oklch(1 0 0)");
+    await expect(item.getByRole("button", { name: "Open search ⌘ K" })).toHaveCSS(
+      "color",
+      "oklch(0.145 0 0)",
+    );
+
+    await item.getByRole("button", { name: "Preview theme: Light. Switch to Dark." }).click();
+    await page.getByRole("button", { exact: true, name: "Theme: Dark. Switch to System." }).click();
+    await page
+      .getByRole("button", { exact: true, name: "Theme: System. Switch to Light." })
+      .click();
+
+    await expect(boundary).toHaveAttribute("data-theme", "dark");
+    await expect(item.getByRole("button", { name: "Open search ⌘ K" })).toHaveCSS(
+      "color",
+      "oklch(0.985 0 0)",
+    );
+    await expect(boundary).toHaveCSS("background-color", "oklch(0.145 0 0)");
+  });
+
+  test("falls back to the resolved app theme for an invalid Preview theme", async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem("theme", "light"));
+    await page.goto("/preview/components/button/button-01?theme=sepia");
+
+    await expect(page.locator('[data-slot="registry-preview-theme"]')).toHaveAttribute(
+      "data-theme",
+      "light",
+    );
   });
 
   test("loads a Code preview only after its tab opens", async ({ page }) => {

@@ -123,6 +123,9 @@ describe("renderRegistryOutputs", () => {
     expect(componentPreview).toContain(
       'import Button01Preview from "@/registry/vibe-ui/button-01/button-01.tsx";',
     );
+    expect(componentPreview).toContain("validateSearch: previewThemeSearchSchema");
+    expect(componentPreview).toContain("const { theme } = Route.useSearch()");
+    expect(componentPreview).toContain("theme={theme}");
     expect(componentPreview).toContain('title: "Button 01 Preview – VibeUI"');
     expect(componentPreview).toContain('type="registry:component"');
     expect(pagePreview).toContain('type="registry:page"');
