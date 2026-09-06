@@ -18,6 +18,10 @@ import { Route as RootLayoutComponentsIndexRouteImport } from './routes/_rootLay
 import { Route as RootLayoutComponentsButtonRouteImport } from './routes/_rootLayout/components/button'
 import { Route as RootLayoutPagesIndexRouteImport } from './routes/_rootLayout/pages/index'
 import { Route as RootLayoutPagesLandingPagesRouteImport } from './routes/_rootLayout/pages/landing-pages'
+import { Route as PreviewBlocksHeroSectionHeroSection01RouteImport } from './routes/preview/blocks/hero-section/hero-section-01'
+import { Route as PreviewComponentsButtonButton01RouteImport } from './routes/preview/components/button/button-01'
+import { Route as PreviewComponentsButtonButton02RouteImport } from './routes/preview/components/button/button-02'
+import { Route as PreviewPagesLandingPagesLandingPage01RouteImport } from './routes/preview/pages/landing-pages/landing-page-01'
 
 const RootLayoutRouteRoute = RootLayoutRouteRouteImport.update({
   id: '/_rootLayout',
@@ -67,6 +71,30 @@ const RootLayoutPagesLandingPagesRoute =
     path: '/pages/landing-pages',
     getParentRoute: () => RootLayoutRouteRoute,
   } as any)
+const PreviewBlocksHeroSectionHeroSection01Route =
+  PreviewBlocksHeroSectionHeroSection01RouteImport.update({
+    id: '/preview/blocks/hero-section/hero-section-01',
+    path: '/preview/blocks/hero-section/hero-section-01',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PreviewComponentsButtonButton01Route =
+  PreviewComponentsButtonButton01RouteImport.update({
+    id: '/preview/components/button/button-01',
+    path: '/preview/components/button/button-01',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PreviewComponentsButtonButton02Route =
+  PreviewComponentsButtonButton02RouteImport.update({
+    id: '/preview/components/button/button-02',
+    path: '/preview/components/button/button-02',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PreviewPagesLandingPagesLandingPage01Route =
+  PreviewPagesLandingPagesLandingPage01RouteImport.update({
+    id: '/preview/pages/landing-pages/landing-page-01',
+    path: '/preview/pages/landing-pages/landing-page-01',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof RootLayoutIndexRoute
@@ -77,6 +105,10 @@ export interface FileRoutesByFullPath {
   '/blocks/': typeof RootLayoutBlocksIndexRoute
   '/components/': typeof RootLayoutComponentsIndexRoute
   '/pages/': typeof RootLayoutPagesIndexRoute
+  '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
+  '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
+  '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
+  '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesByTo {
   '/api/search': typeof ApiSearchRoute
@@ -87,6 +119,10 @@ export interface FileRoutesByTo {
   '/blocks': typeof RootLayoutBlocksIndexRoute
   '/components': typeof RootLayoutComponentsIndexRoute
   '/pages': typeof RootLayoutPagesIndexRoute
+  '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
+  '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
+  '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
+  '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -99,6 +135,10 @@ export interface FileRoutesById {
   '/_rootLayout/blocks/': typeof RootLayoutBlocksIndexRoute
   '/_rootLayout/components/': typeof RootLayoutComponentsIndexRoute
   '/_rootLayout/pages/': typeof RootLayoutPagesIndexRoute
+  '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
+  '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
+  '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
+  '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +151,10 @@ export interface FileRouteTypes {
     | '/blocks/'
     | '/components/'
     | '/pages/'
+    | '/preview/blocks/hero-section/hero-section-01'
+    | '/preview/components/button/button-01'
+    | '/preview/components/button/button-02'
+    | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/api/search'
@@ -121,6 +165,10 @@ export interface FileRouteTypes {
     | '/blocks'
     | '/components'
     | '/pages'
+    | '/preview/blocks/hero-section/hero-section-01'
+    | '/preview/components/button/button-01'
+    | '/preview/components/button/button-02'
+    | '/preview/pages/landing-pages/landing-page-01'
   id:
     | '__root__'
     | '/_rootLayout'
@@ -132,11 +180,19 @@ export interface FileRouteTypes {
     | '/_rootLayout/blocks/'
     | '/_rootLayout/components/'
     | '/_rootLayout/pages/'
+    | '/preview/blocks/hero-section/hero-section-01'
+    | '/preview/components/button/button-01'
+    | '/preview/components/button/button-02'
+    | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   RootLayoutRouteRoute: typeof RootLayoutRouteRouteWithChildren
   ApiSearchRoute: typeof ApiSearchRoute
+  PreviewBlocksHeroSectionHeroSection01Route: typeof PreviewBlocksHeroSectionHeroSection01Route
+  PreviewComponentsButtonButton01Route: typeof PreviewComponentsButtonButton01Route
+  PreviewComponentsButtonButton02Route: typeof PreviewComponentsButtonButton02Route
+  PreviewPagesLandingPagesLandingPage01Route: typeof PreviewPagesLandingPagesLandingPage01Route
 }
 
 declare module '@tanstack/react-router' {
@@ -204,6 +260,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RootLayoutPagesLandingPagesRouteImport
       parentRoute: typeof RootLayoutRouteRoute
     }
+    '/preview/blocks/hero-section/hero-section-01': {
+      id: '/preview/blocks/hero-section/hero-section-01'
+      path: '/preview/blocks/hero-section/hero-section-01'
+      fullPath: '/preview/blocks/hero-section/hero-section-01'
+      preLoaderRoute: typeof PreviewBlocksHeroSectionHeroSection01RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preview/components/button/button-01': {
+      id: '/preview/components/button/button-01'
+      path: '/preview/components/button/button-01'
+      fullPath: '/preview/components/button/button-01'
+      preLoaderRoute: typeof PreviewComponentsButtonButton01RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preview/components/button/button-02': {
+      id: '/preview/components/button/button-02'
+      path: '/preview/components/button/button-02'
+      fullPath: '/preview/components/button/button-02'
+      preLoaderRoute: typeof PreviewComponentsButtonButton02RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preview/pages/landing-pages/landing-page-01': {
+      id: '/preview/pages/landing-pages/landing-page-01'
+      path: '/preview/pages/landing-pages/landing-page-01'
+      fullPath: '/preview/pages/landing-pages/landing-page-01'
+      preLoaderRoute: typeof PreviewPagesLandingPagesLandingPage01RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -234,6 +318,12 @@ const RootLayoutRouteRouteWithChildren = RootLayoutRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   RootLayoutRouteRoute: RootLayoutRouteRouteWithChildren,
   ApiSearchRoute: ApiSearchRoute,
+  PreviewBlocksHeroSectionHeroSection01Route:
+    PreviewBlocksHeroSectionHeroSection01Route,
+  PreviewComponentsButtonButton01Route: PreviewComponentsButtonButton01Route,
+  PreviewComponentsButtonButton02Route: PreviewComponentsButtonButton02Route,
+  PreviewPagesLandingPagesLandingPage01Route:
+    PreviewPagesLandingPagesLandingPage01Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

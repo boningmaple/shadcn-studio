@@ -9,7 +9,7 @@ import {
 import { useState, type ComponentType } from "react";
 import { usePanelRef } from "react-resizable-panels";
 
-import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/button";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -21,6 +21,7 @@ export type RegistryCollectionItem = {
   description: string;
   name: string;
   Preview: ComponentType;
+  previewHref: string;
   title: string;
 };
 
@@ -121,14 +122,17 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
                 <MonitorIcon />
               </ToggleGroupItem>
             </ToggleGroup>
-            <Button
-              aria-label="Open preview fullscreen"
-              variant="outline"
-              size="icon"
+            <LinkButton
+              aria-label="Open preview in tab"
               className="transition-none"
+              href={item.previewHref}
+              rel="noopener noreferrer"
+              size="icon"
+              target="_blank"
+              variant="outline"
             >
               <ScanSquareIcon />
-            </Button>
+            </LinkButton>
             <ResetPreviewButton resetPreview={resetPreview} />
           </div>
         </div>

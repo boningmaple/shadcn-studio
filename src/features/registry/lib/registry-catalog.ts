@@ -40,6 +40,14 @@ export function registryItemHref(
   return `${collectionHref(type, category)}#${name}`;
 }
 
+export function registryPreviewHref(
+  type: VibeRegistryItemType,
+  category: string,
+  name: string,
+): string {
+  return `/preview/${segmentByType[type]}/${category}/${name}`;
+}
+
 export function registryItemSummaries(
   items: readonly VibeRegistryItem[],
 ): VibeRegistryItemSummary[] {

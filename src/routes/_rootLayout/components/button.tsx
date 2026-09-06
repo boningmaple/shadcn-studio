@@ -13,12 +13,14 @@ const items = [
     Preview: Button01Preview1,
     description: "A primary action button with a compact leading icon.",
     name: "button-01",
+    previewHref: "/preview/components/button/button-01",
     title: "Button 01",
   },
   {
     Preview: Button02Preview2,
     description: "A quiet secondary action with a trailing keyboard hint.",
     name: "button-02",
+    previewHref: "/preview/components/button/button-02",
     title: "Button 02",
   },
 ] satisfies RegistryCollectionItem[];

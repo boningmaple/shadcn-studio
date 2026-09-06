@@ -12,6 +12,7 @@ const items = [
     Preview: HeroSection01Preview1,
     description: "A centered product hero with a focused call to action.",
     name: "hero-section-01",
+    previewHref: "/preview/blocks/hero-section/hero-section-01",
     title: "Hero Section 01",
   },
 ] satisfies RegistryCollectionItem[];

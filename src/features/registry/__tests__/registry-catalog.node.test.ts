@@ -3,6 +3,7 @@ import { describe, expect, it } from "vite-plus/test";
 import {
   registryCollections,
   registryItemSummaries,
+  registryPreviewHref,
   registrySections,
 } from "@/features/registry/lib/registry-catalog";
 import type { VibeRegistryItem } from "@/features/registry/types/registry";
@@ -38,6 +39,15 @@ const sourceItems: VibeRegistryItem[] = [
 ];
 
 describe("Registry catalog", () => {
+  it("builds canonical Preview routes from Registry item metadata", () => {
+    expect(registryPreviewHref("registry:component", "button", "button-01")).toBe(
+      "/preview/components/button/button-01",
+    );
+    expect(registryPreviewHref("registry:block", "authentication", "login-form-01")).toBe(
+      "/preview/blocks/authentication/login-form-01",
+    );
+  });
+
   it("anchors Registry items to their Collection page", () => {
     expect(registryItemSummaries(sourceItems)[0]).toMatchObject({
       href: "/components/button#button-01",

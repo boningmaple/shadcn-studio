@@ -106,6 +106,26 @@ describe("renderRegistryOutputs", () => {
     );
     expect(collection).toContain('staticData: { ariaLabel: "Button" }');
     expect(collection).toContain("satisfies RegistryCollectionItem[]");
+    expect(collection).toContain('previewHref:"/preview/components/button/button-01"');
+  });
+
+  it("renders a concrete isolated Preview route for every Registry item", () => {
+    const { paths, registry: source } = renderFixture();
+    const [routeFiles] = renderRegistryOutputs(source, paths.routesRootPath);
+    const componentPreview = routeFiles.get(
+      path.resolve("/project/src/routes/preview/components/button/button-01.tsx"),
+    );
+    const pagePreview = routeFiles.get(
+      path.resolve("/project/src/routes/preview/pages/landing-pages/landing-page-01.tsx"),
+    );
+
+    expect(componentPreview).toContain('createFileRoute("/preview/components/button/button-01")');
+    expect(componentPreview).toContain(
+      'import Button01Preview from "@/registry/vibe-ui/button-01/button-01.tsx";',
+    );
+    expect(componentPreview).toContain('title: "Button 01 Preview – VibeUI"');
+    expect(componentPreview).toContain('type="registry:component"');
+    expect(pagePreview).toContain('type="registry:page"');
   });
 
   it("separates routes when item types share a category", () => {
@@ -169,6 +189,10 @@ describe("writeRegistryOutputs", () => {
         seed(path.join(fixture.paths.routesRootPath, segment, "old.tsx"), "handwritten\n"),
       ),
     );
+    await seed(
+      path.join(path.dirname(fixture.paths.routesRootPath), "preview/old.tsx"),
+      "handwritten\n",
+    );
 
     await writeRegistryOutputs(
       fixture.registry,
@@ -186,6 +210,18 @@ describe("writeRegistryOutputs", () => {
     await expect(
       readFile(path.join(fixture.paths.routesRootPath, "components/button.tsx"), "utf8"),
     ).resolves.toContain('createFileRoute("/_rootLayout/components/button")');
+    await expect(
+      readFile(path.join(path.dirname(fixture.paths.routesRootPath), "preview/old.tsx"), "utf8"),
+    ).rejects.toMatchObject({ code: "ENOENT" });
+    await expect(
+      readFile(
+        path.join(
+          path.dirname(fixture.paths.routesRootPath),
+          "preview/components/button/button-01.tsx",
+        ),
+        "utf8",
+      ),
+    ).resolves.toContain('createFileRoute("/preview/components/button/button-01")');
   });
 
   it("removes section directories absent from the Registry", async () => {

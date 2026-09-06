@@ -46,9 +46,11 @@ Registry conventions require every item to:
 TypeScript:
 
 - concrete TanStack route files under `src/routes/_rootLayout/{components,blocks,pages}/`;
+- concrete standalone Preview routes under
+  `src/routes/preview/{components,blocks,pages}/<category>/<item-name>.tsx`;
 - sidebar data in `src/features/registry/data/registry-sidebar.gen.ts`.
 
-Those three route directories and the generated sidebar module are wholly owned
+Those four route directories and the generated sidebar module are wholly owned
 by the Registry builder. It deletes and recreates them on every run, so do not
 put handwritten files there. TanStack Start generates `src/routeTree.gen.ts`
 when `dev` or `build` starts; `registry:build` does not generate the route tree

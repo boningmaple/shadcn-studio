@@ -12,6 +12,7 @@ const items = [
     Preview: LandingPage01Preview1,
     description: "A complete landing page with navigation, hero, and social proof.",
     name: "landing-page-01",
+    previewHref: "/preview/pages/landing-pages/landing-page-01",
     title: "Landing Page 01",
   },
 ] satisfies RegistryCollectionItem[];

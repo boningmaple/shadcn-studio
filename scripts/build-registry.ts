@@ -5,12 +5,14 @@ import path from "node:path";
 import sourceRegistry from "../registry.json" with { type: "json" };
 import {
   registryItemSummaries,
+  registryPreviewHref,
   registrySections,
   segmentByType,
 } from "../src/features/registry/lib/registry-catalog.ts";
 import {
   type VibeRegistry,
   type VibeRegistryCollection,
+  type VibeRegistryItemSummary,
   type VibeRegistrySection,
   vibeRegistrySchema,
 } from "../src/features/registry/types/registry.ts";
@@ -36,11 +38,13 @@ export async function writeRegistryOutputs(
   sidebarFile: string,
 ): Promise<void> {
   const [routeFiles, sidebarContent] = renderRegistryOutputs(registry, routesRootPath);
+  const previewRoutesRootPath = path.join(path.dirname(routesRootPath), "preview");
 
   await Promise.all([
     ...registryRouteSegments.map((segment) =>
       rm(path.join(routesRootPath, segment), { force: true, recursive: true }),
     ),
+    rm(previewRoutesRootPath, { force: true, recursive: true }),
     rm(sidebarFile, { force: true }),
   ]);
 
@@ -65,6 +69,17 @@ export function renderRegistryOutputs(registry: VibeRegistry, routesRootPath: st
     for (const collection of section.collections) {
       const routeFile = path.join(sectionRouteDir, `${collection.category}.tsx`);
       routeFiles.set(routeFile, collectionRouteContent(collection));
+
+      for (const item of collection.items) {
+        const previewRouteFile = path.join(
+          path.dirname(routesRootPath),
+          "preview",
+          segmentByType[item.type],
+          item.category,
+          `${item.name}.tsx`,
+        );
+        routeFiles.set(previewRouteFile, previewRouteContent(item));
+      }
     }
   }
 
@@ -111,7 +126,7 @@ function collectionRouteContent(collection: VibeRegistryCollection): string {
   const items = collection.items
     .map(
       (item, index) =>
-        `{Preview:${pascalCase(item.name)}Preview${index + 1},description:${JSON.stringify(item.description)},name:${JSON.stringify(item.name)},title:${JSON.stringify(item.title)}}`,
+        `{Preview:${pascalCase(item.name)}Preview${index + 1},description:${JSON.stringify(item.description)},name:${JSON.stringify(item.name)},previewHref:${JSON.stringify(registryPreviewHref(item.type, item.category, item.name))},title:${JSON.stringify(item.title)}}`,
     )
     .join(",");
 
@@ -134,6 +149,26 @@ export const Route = createFileRoute("/_rootLayout${collection.href}")({
       items={items}
       title={${JSON.stringify(collection.title)}}
     />
+  ),
+});
+`;
+}
+
+function previewRouteContent(item: VibeRegistryItemSummary): string {
+  const importName = `${pascalCase(item.name)}Preview`;
+  const href = registryPreviewHref(item.type, item.category, item.name);
+  const importPath = `@/registry/vibe-ui/${item.name}/${item.name}.tsx`;
+
+  return `${generatedHeader}import { createFileRoute } from "@tanstack/react-router";
+
+import { RegistryPreviewPage } from "@/features/registry/components/registry-preview-page";
+import ${importName} from "${importPath}";
+
+export const Route = createFileRoute(${JSON.stringify(href)})({
+  head: () => ({ meta: [{ title: ${JSON.stringify(`${item.title} Preview – VibeUI`)} }] }),
+  staticData: { ariaLabel: ${JSON.stringify(`${item.title} Preview`)} },
+  component: () => (
+    <RegistryPreviewPage Preview={${importName}} type=${JSON.stringify(item.type)} />
   ),
 });
 `;
