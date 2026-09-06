@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 import ResetPreviewButton from "./reset-preview-button";
 
@@ -53,15 +54,20 @@ export function RegistryCollectionPage({
 }
 
 function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
+  const isMobile = useIsMobile();
   const [, setCodeEnabled] = useState(false);
-  const [previewKey, setPreviewKey] = useState(0);
   const [previewSize, setPreviewSize] = useState<PreviewSize | null>("desktop");
   const previewPanelRef = usePanelRef();
+  const [previewKey, setPreviewKey] = useState(0);
   const resetPreview = () => setPreviewKey((key) => key + 1);
 
-  const resizePreview = (size: PreviewSize) => {
-    setPreviewSize(size);
-    previewPanelRef.current?.resize(previewWidths[size]);
+  const handlePreviewSizeChange = (keys: Set<React.Key>) => {
+    const [size] = keys;
+
+    if (size === "desktop" || size === "phone" || size === "tablet") {
+      setPreviewSize(size);
+      previewPanelRef.current?.resize(previewWidths[size]);
+    }
   };
 
   const Preview = item.Preview;
@@ -92,20 +98,18 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
               <span className="sr-only">Code</span>
             </TabsTrigger>
           </TabsList>
-          <div aria-label="Preview controls" className="flex items-center gap-2" role="toolbar">
+          <div
+            aria-label="Preview controls"
+            className="flex items-center gap-2 lg:pr-3"
+            role="toolbar"
+          >
             <ToggleGroup
               aria-label="Preview size"
               selectedKeys={previewSize ? [previewSize] : []}
               selectionMode="single"
               spacing={1}
-              className="hidden border p-0.75 transition-none *:data-[slot=toggle-group-item]:size-7! *:data-[slot=toggle-group-item]:px-0 *:data-[slot=toggle-group-item]:[&_svg]:size-4! *:data-[slot=toggle-group-item]:transition-none lg:flex"
-              onSelectionChange={(keys) => {
-                const [size] = keys;
-
-                if (size === "desktop" || size === "phone" || size === "tablet") {
-                  resizePreview(size);
-                }
-              }}
+              className="hidden lg:flex border p-0.75 transition-none *:data-[slot=toggle-group-item]:px-0 *:data-[slot=toggle-group-item]:[&_svg]:size-4! *:data-[slot=toggle-group-item]:transition-none"
+              onSelectionChange={handlePreviewSizeChange}
             >
               <ToggleGroupItem aria-label="Phone preview" id="phone" size="sm">
                 <SmartphoneIcon />
@@ -128,26 +132,27 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
             <ResetPreviewButton resetPreview={resetPreview} />
           </div>
         </div>
-        <TabsContent id="preview" className="min-h-64 overflow-hidden rounded-lg">
+        <TabsContent id="preview">
           <ResizablePanelGroup
-            className="min-h-64"
+            disabled={isMobile}
+            orientation="horizontal"
             onLayoutChanged={(_, { isUserInteraction }) => {
               if (isUserInteraction) setPreviewSize(null);
             }}
-            orientation="horizontal"
+            className="min-h-64 rounded-lg bg-[radial-gradient(circle,var(--border)_1px,transparent_1px)] bg-size-[20px_20px]"
           >
             <ResizablePanel
-              className="flex items-center justify-center rounded-lg border bg-background"
+              panelRef={previewPanelRef}
               defaultSize="100%"
+              minSize={320}
               groupResizeBehavior={
                 previewSize === "desktop" ? "preserve-relative-size" : "preserve-pixel-size"
               }
-              minSize={320}
-              panelRef={previewPanelRef}
+              className="flex items-center justify-center rounded-lg border bg-background"
             >
               <Preview key={previewKey} />
             </ResizablePanel>
-            <ResizableHandle className="relative hidden w-3 bg-transparent p-0 after:absolute after:top-1/2 after:right-0 after:h-8 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all after:hover:h-10 lg:flex" />
+            <ResizableHandle className="hidden lg:flex w-3 cursor-col-resize bg-transparent after:absolute after:top-1/2 after:right-0 after:h-16 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all" />
             <ResizablePanel defaultSize="0%" minSize="0%" />
           </ResizablePanelGroup>
         </TabsContent>
