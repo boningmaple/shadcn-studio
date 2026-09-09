@@ -1,20 +1,18 @@
 # Registry Preview themes
 
 Each Registry item Preview on a Collection page follows the app's resolved light or dark theme
-until the visitor uses that Preview's theme switch. The first switch gives that Preview an
-independent, component-local theme; later app theme changes do not resynchronize it. Resetting a
-Registry item preserves whether its Preview follows the app or owns a selected theme.
+until the visitor uses that Preview's theme switch. The first switch adds an explicit
+`?theme=light|dark` override to the iframe and new-tab URL. Clicking the app theme switch removes
+that override, returning every Preview to the app theme. Changing either URL reloads the affected
+iframe, while resetting an item recreates its iframe without changing its current URL theme.
 
-The Preview boundary explicitly applies the `.light` or `.dark` theme scope, `data-theme`,
-`color-scheme`, `background-color`, and `color`. This prevents rendered items from inheriting
-already-computed shell colors. Opening a Preview in a new tab carries its theme in the optional
-`?theme=light|dark` parameter. The parameter never changes the app theme preference; missing or
-invalid values fall back to the resolved app theme.
+Collection pages render each Registry item through its canonical Preview route in a same-origin
+iframe. A queryless Preview uses the app's existing stored-theme state, `storage` events, and system
+color-scheme listener. A valid query instead controls that Preview document's `<html>` element and
+does not listen for app or system theme changes. This document-root authority covers body-mounted
+portals, native controls, and ordinary descendants without cross-frame messaging or observation.
 
-## Known limitation: portals
-
-The theme boundary covers descendants rendered inside the Preview container. Overlays that portal
-to `document.body`—including dialogs, popovers, menus, and tooltips—are outside that boundary and
-can still inherit the app shell theme. Supporting those components requires a scoped portal host or
-iframe architecture and is intentionally deferred. Tests should cover the supported in-boundary
-contract without treating the current portal behavior as correct.
+The app and Preview routes have separate runtime theme boundaries. Registry items do not receive
+the app's theme context and should respond to document CSS. A Preview-specific head script applies
+a valid query before paint without changing local storage. Missing or invalid values fall back to
+the saved app theme, including its resolved system appearance.

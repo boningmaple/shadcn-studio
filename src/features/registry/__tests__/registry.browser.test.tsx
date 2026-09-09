@@ -1,37 +1,28 @@
-import { useState } from "react";
 import { afterEach, describe, expect, it } from "vite-plus/test";
 import { page, userEvent } from "vite-plus/test/browser/context";
 import { render } from "vitest-browser-react";
 
+import { PreviewThemeProvider } from "@/features/registry/components/preview-theme-provider";
 import { CodeExplorer } from "@/features/registry/components/registry-code-panel";
 import {
   RegistryCollectionPage,
   type RegistryCollectionItem,
 } from "@/features/registry/components/registry-collection-page";
 import type { VibeHighlightedRegistryFile } from "@/features/registry/types/registry";
-
-function FirstPreview() {
-  const [count, setCount] = useState(0);
-
-  return <button onClick={() => setCount((value) => value + 1)}>First count: {count}</button>;
-}
-
-function SecondPreview() {
-  return <button>Second Preview</button>;
-}
+import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
+import { ThemeSwitchButton } from "@/features/theme-switch/components/theme-switch-button";
+import { localStorageKey } from "@/features/theme-switch/types/theme";
 
 const collectionItems: RegistryCollectionItem[] = [
   {
     description: "The first Preview.",
     name: "first-item",
-    Preview: FirstPreview,
     previewHref: "/preview/components/button/first-item",
     title: "First item",
   },
   {
     description: "The second Preview.",
     name: "second-item",
-    Preview: SecondPreview,
     previewHref: "/preview/components/button/second-item",
     title: "Second item",
   },
@@ -39,22 +30,29 @@ const collectionItems: RegistryCollectionItem[] = [
 
 const renderCollection = () =>
   render(
-    <RegistryCollectionPage
-      description="A test Collection page."
-      items={collectionItems}
-      title="Test collection"
-    />,
+    <ThemeProvider>
+      <ThemeSwitchButton />
+      <RegistryCollectionPage
+        description="A test Collection page."
+        items={collectionItems}
+        title="Test collection"
+      />
+    </ThemeProvider>,
   );
 
 const item = (name: string) => document.getElementById(name)!;
 const itemElement = <ElementType extends Element>(name: string, selector: string) =>
   page.elementLocator(item(name).querySelector<ElementType>(selector)!);
-const themeBoundary = (name: string) => itemElement(name, '[data-slot="registry-preview-theme"]');
 const themeSwitch = (name: string) =>
-  itemElement<HTMLButtonElement>(name, 'button[aria-label^="Preview theme:"]');
+  itemElement<HTMLButtonElement>(name, '[data-slot="collection-preview-theme"]');
+const previewFrame = (name: string) => item(name).querySelector<HTMLIFrameElement>("iframe")!;
 
 afterEach(() => {
-  document.documentElement.classList.remove("dark");
+  const root = document.documentElement;
+  delete root.dataset.theme;
+  root.classList.remove("dark");
+  root.style.removeProperty("color-scheme");
+  localStorage.clear();
 });
 
 it("navigates textual files and keeps plain source usable when highlighting fails", async () => {
@@ -81,31 +79,54 @@ it("navigates textual files and keeps plain source usable when highlighting fail
 });
 
 describe("Registry item Preview themes", () => {
+  it("renders canonical, lazy, accessibly named Preview frames", async () => {
+    await renderCollection();
+
+    await expect
+      .element(itemElement<HTMLIFrameElement>("first-item", "iframe"))
+      .toHaveAttribute("src", "/preview/components/button/first-item");
+    await expect
+      .element(itemElement<HTMLIFrameElement>("first-item", "iframe"))
+      .toHaveAttribute("loading", "lazy");
+    await expect
+      .element(itemElement<HTMLIFrameElement>("first-item", "iframe"))
+      .toHaveAttribute("title", "First item Preview");
+  });
+
   it("follows the app theme until each Preview switches independently", async () => {
     await renderCollection();
 
     const firstSwitch = themeSwitch("first-item");
+    const secondSwitch = themeSwitch("second-item");
     await expect.element(firstSwitch).toBeEnabled();
     await expect.element(firstSwitch).toHaveAccessibleName("Preview theme: Light. Switch to Dark.");
-    await expect.element(themeBoundary("first-item")).toHaveAttribute("data-theme", "light");
-    await expect.element(themeBoundary("second-item")).toHaveAttribute("data-theme", "light");
+    await expect
+      .element(secondSwitch)
+      .toHaveAccessibleName("Preview theme: Light. Switch to Dark.");
 
     document.documentElement.classList.add("dark");
-    await expect.element(themeBoundary("first-item")).toHaveAttribute("data-theme", "dark");
-    await expect.element(themeBoundary("second-item")).toHaveAttribute("data-theme", "dark");
+    await expect.element(firstSwitch).toHaveAccessibleName("Preview theme: Dark. Switch to Light.");
+    await expect
+      .element(secondSwitch)
+      .toHaveAccessibleName("Preview theme: Dark. Switch to Light.");
 
     await userEvent.click(firstSwitch);
-    await expect.element(themeBoundary("first-item")).toHaveAttribute("data-theme", "light");
-    await expect.element(themeBoundary("first-item")).toHaveStyle({ colorScheme: "light" });
-    await expect.element(themeBoundary("second-item")).toHaveAttribute("data-theme", "dark");
+    await expect.element(firstSwitch).toHaveAccessibleName("Preview theme: Light. Switch to Dark.");
+    await expect
+      .element(secondSwitch)
+      .toHaveAccessibleName("Preview theme: Dark. Switch to Light.");
 
     document.documentElement.classList.remove("dark");
-    await expect.element(themeBoundary("first-item")).toHaveAttribute("data-theme", "light");
-    await expect.element(themeBoundary("second-item")).toHaveAttribute("data-theme", "light");
+    await expect.element(firstSwitch).toHaveAccessibleName("Preview theme: Light. Switch to Dark.");
+    await expect
+      .element(secondSwitch)
+      .toHaveAccessibleName("Preview theme: Light. Switch to Dark.");
 
     document.documentElement.classList.add("dark");
-    await expect.element(themeBoundary("first-item")).toHaveAttribute("data-theme", "light");
-    await expect.element(themeBoundary("second-item")).toHaveAttribute("data-theme", "dark");
+    await expect.element(firstSwitch).toHaveAccessibleName("Preview theme: Light. Switch to Dark.");
+    await expect
+      .element(secondSwitch)
+      .toHaveAccessibleName("Preview theme: Dark. Switch to Light.");
   });
 
   it("exposes the current theme and supports keyboard switching", async () => {
@@ -129,19 +150,96 @@ describe("Registry item Preview themes", () => {
     await expect.element(themeSwitch("first-item")).toHaveFocus();
   });
 
-  it("preserves the Preview theme when resetting item state", async () => {
+  it("returns every Preview to the app theme when the app theme changes", async () => {
+    localStorage.setItem(localStorageKey, "light");
     await renderCollection();
 
-    await userEvent.click(page.getByRole("button", { name: "First count: 0" }));
+    await userEvent.click(themeSwitch("first-item"));
+    expect(previewFrame("first-item").getAttribute("src")).toBe(
+      "/preview/components/button/first-item?theme=dark",
+    );
+
+    await userEvent.click(
+      page.getByRole("button", { exact: true, name: "Theme: Light. Switch to Dark." }),
+    );
+
+    await expect
+      .element(itemElement<HTMLIFrameElement>("first-item", "iframe"))
+      .toHaveAttribute("src", "/preview/components/button/first-item");
+    await expect
+      .element(themeSwitch("first-item"))
+      .toHaveAccessibleName("Preview theme: Dark. Switch to Light.");
+  });
+
+  it("preserves the Preview theme when resetting item state", async () => {
+    await page.viewport(1024, 800);
+    await renderCollection();
+
+    const originalFrame = previewFrame("first-item");
+    await userEvent.click(
+      itemElement<HTMLButtonElement>("first-item", 'button[aria-label="Phone preview"]'),
+    );
     await userEvent.click(themeSwitch("first-item"));
     await userEvent.click(
       itemElement<HTMLButtonElement>("first-item", 'button[aria-label="Reset preview"]'),
     );
 
-    await expect.element(page.getByRole("button", { name: "First count: 0" })).toBeInTheDocument();
-    await expect.element(themeBoundary("first-item")).toHaveAttribute("data-theme", "dark");
+    expect(previewFrame("first-item")).not.toBe(originalFrame);
+    expect(previewFrame("first-item").getAttribute("src")).toBe(
+      "/preview/components/button/first-item?theme=dark",
+    );
+    await expect
+      .element(itemElement<HTMLButtonElement>("first-item", 'button[aria-label="Phone preview"]'))
+      .toHaveAttribute("aria-checked", "true");
+    await expect
+      .element(themeSwitch("first-item"))
+      .toHaveAccessibleName("Preview theme: Dark. Switch to Light.");
     await expect
       .element(itemElement<HTMLAnchorElement>("first-item", 'a[aria-label="Open preview in tab"]'))
       .toHaveAttribute("href", "/preview/components/button/first-item?theme=dark");
+  });
+});
+
+describe("PreviewThemeProvider", () => {
+  it("follows stored app theme changes when the URL has no override", async () => {
+    localStorage.setItem(localStorageKey, "light");
+    await render(<PreviewThemeProvider>Preview</PreviewThemeProvider>);
+
+    await expect.poll(() => document.documentElement).toHaveAttribute("data-theme", "light");
+
+    localStorage.setItem(localStorageKey, "dark");
+    dispatchEvent(
+      new StorageEvent("storage", {
+        key: localStorageKey,
+        newValue: "dark",
+        storageArea: localStorage,
+      }),
+    );
+
+    await expect.poll(() => document.documentElement).toHaveAttribute("data-theme", "dark");
+  });
+
+  it("leaves the hydrated URL theme pinned and reads storage after the override is removed", async () => {
+    const root = document.documentElement;
+    root.dataset.theme = "dark";
+    root.classList.add("dark");
+    root.style.colorScheme = "dark";
+    localStorage.setItem(localStorageKey, "light");
+    const preview = await render(<PreviewThemeProvider theme="dark">Preview</PreviewThemeProvider>);
+
+    await expect.poll(() => document.documentElement).toHaveAttribute("data-theme", "dark");
+
+    localStorage.setItem(localStorageKey, "light");
+    dispatchEvent(
+      new StorageEvent("storage", {
+        key: localStorageKey,
+        newValue: "light",
+        storageArea: localStorage,
+      }),
+    );
+    await expect.poll(() => document.documentElement).toHaveAttribute("data-theme", "dark");
+
+    await preview.rerender(<PreviewThemeProvider>Preview</PreviewThemeProvider>);
+    await expect.poll(() => document.documentElement).toHaveAttribute("data-theme", "light");
   });
 });

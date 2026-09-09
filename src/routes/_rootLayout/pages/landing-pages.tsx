@@ -5,11 +5,9 @@ import {
   RegistryCollectionPage,
   type RegistryCollectionItem,
 } from "@/features/registry/components/registry-collection-page";
-import LandingPage01Preview1 from "@/registry/vibe-ui/landing-page-01/landing-page-01.tsx";
 
 const items = [
   {
-    Preview: LandingPage01Preview1,
     description: "A complete landing page with navigation, hero, and social proof.",
     name: "landing-page-01",
     previewHref: "/preview/pages/landing-pages/landing-page-01",

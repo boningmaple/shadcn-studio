@@ -13,14 +13,10 @@ export const themeHydrationScript = (() => {
     let theme = defaultTheme;
     try {
       const localStorageTheme = localStorage.getItem("theme");
-      if (localStorageTheme === null) {
-        localStorage.setItem("theme", theme);
+      if (localStorageTheme !== null && ["system", "light", "dark"].includes(localStorageTheme)) {
+        theme = localStorageTheme;
       } else {
-        if (["system", "light", "dark"].includes(localStorageTheme)) {
-          theme = localStorageTheme;
-        } else {
-          localStorage.setItem("theme", theme);
-        }
+        localStorage.setItem("theme", theme);
       }
     } catch {}
 

@@ -20,8 +20,8 @@ import {
  * All three land here so the document is written from one place.
  */
 export function useThemeState(): {
-  setTheme: (theme: Theme) => void;
   theme: Theme;
+  setTheme: (theme: Theme) => void;
 } {
   const [theme, setTheme] = useState<Theme>(getLocalStorageTheme);
 
@@ -47,5 +47,5 @@ export function useThemeState(): {
     }
   }, [theme]);
 
-  return { setTheme, theme };
+  return { theme, setTheme };
 }

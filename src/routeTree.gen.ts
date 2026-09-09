@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RootLayoutRouteRouteImport } from './routes/_rootLayout/route'
+import { Route as PreviewRouteRouteImport } from './routes/preview/route'
 import { Route as RootLayoutIndexRouteImport } from './routes/_rootLayout/index'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
 import { Route as RootLayoutBlocksIndexRouteImport } from './routes/_rootLayout/blocks/index'
@@ -25,6 +26,11 @@ import { Route as PreviewPagesLandingPagesLandingPage01RouteImport } from './rou
 
 const RootLayoutRouteRoute = RootLayoutRouteRouteImport.update({
   id: '/_rootLayout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreviewRouteRoute = PreviewRouteRouteImport.update({
+  id: '/preview',
+  path: '/preview',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RootLayoutIndexRoute = RootLayoutIndexRouteImport.update({
@@ -73,31 +79,32 @@ const RootLayoutPagesLandingPagesRoute =
   } as any)
 const PreviewBlocksHeroSectionHeroSection01Route =
   PreviewBlocksHeroSectionHeroSection01RouteImport.update({
-    id: '/preview/blocks/hero-section/hero-section-01',
-    path: '/preview/blocks/hero-section/hero-section-01',
-    getParentRoute: () => rootRouteImport,
+    id: '/blocks/hero-section/hero-section-01',
+    path: '/blocks/hero-section/hero-section-01',
+    getParentRoute: () => PreviewRouteRoute,
   } as any)
 const PreviewComponentsButtonButton01Route =
   PreviewComponentsButtonButton01RouteImport.update({
-    id: '/preview/components/button/button-01',
-    path: '/preview/components/button/button-01',
-    getParentRoute: () => rootRouteImport,
+    id: '/components/button/button-01',
+    path: '/components/button/button-01',
+    getParentRoute: () => PreviewRouteRoute,
   } as any)
 const PreviewComponentsButtonButton02Route =
   PreviewComponentsButtonButton02RouteImport.update({
-    id: '/preview/components/button/button-02',
-    path: '/preview/components/button/button-02',
-    getParentRoute: () => rootRouteImport,
+    id: '/components/button/button-02',
+    path: '/components/button/button-02',
+    getParentRoute: () => PreviewRouteRoute,
   } as any)
 const PreviewPagesLandingPagesLandingPage01Route =
   PreviewPagesLandingPagesLandingPage01RouteImport.update({
-    id: '/preview/pages/landing-pages/landing-page-01',
-    path: '/preview/pages/landing-pages/landing-page-01',
-    getParentRoute: () => rootRouteImport,
+    id: '/pages/landing-pages/landing-page-01',
+    path: '/pages/landing-pages/landing-page-01',
+    getParentRoute: () => PreviewRouteRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof RootLayoutIndexRoute
+  '/preview': typeof PreviewRouteRouteWithChildren
   '/api/search': typeof ApiSearchRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/components/button': typeof RootLayoutComponentsButtonRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesByTo {
+  '/preview': typeof PreviewRouteRouteWithChildren
   '/api/search': typeof ApiSearchRoute
   '/': typeof RootLayoutIndexRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
@@ -127,6 +135,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_rootLayout': typeof RootLayoutRouteRouteWithChildren
+  '/preview': typeof PreviewRouteRouteWithChildren
   '/api/search': typeof ApiSearchRoute
   '/_rootLayout/': typeof RootLayoutIndexRoute
   '/_rootLayout/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/preview'
     | '/api/search'
     | '/blocks/hero-section'
     | '/components/button'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/preview'
     | '/api/search'
     | '/'
     | '/blocks/hero-section'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_rootLayout'
+    | '/preview'
     | '/api/search'
     | '/_rootLayout/'
     | '/_rootLayout/blocks/hero-section'
@@ -188,11 +200,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   RootLayoutRouteRoute: typeof RootLayoutRouteRouteWithChildren
+  PreviewRouteRoute: typeof PreviewRouteRouteWithChildren
   ApiSearchRoute: typeof ApiSearchRoute
-  PreviewBlocksHeroSectionHeroSection01Route: typeof PreviewBlocksHeroSectionHeroSection01Route
-  PreviewComponentsButtonButton01Route: typeof PreviewComponentsButtonButton01Route
-  PreviewComponentsButtonButton02Route: typeof PreviewComponentsButtonButton02Route
-  PreviewPagesLandingPagesLandingPage01Route: typeof PreviewPagesLandingPagesLandingPage01Route
 }
 
 declare module '@tanstack/react-router' {
@@ -202,6 +211,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof RootLayoutRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preview': {
+      id: '/preview'
+      path: '/preview'
+      fullPath: '/preview'
+      preLoaderRoute: typeof PreviewRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_rootLayout/': {
@@ -262,31 +278,31 @@ declare module '@tanstack/react-router' {
     }
     '/preview/blocks/hero-section/hero-section-01': {
       id: '/preview/blocks/hero-section/hero-section-01'
-      path: '/preview/blocks/hero-section/hero-section-01'
+      path: '/blocks/hero-section/hero-section-01'
       fullPath: '/preview/blocks/hero-section/hero-section-01'
       preLoaderRoute: typeof PreviewBlocksHeroSectionHeroSection01RouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PreviewRouteRoute
     }
     '/preview/components/button/button-01': {
       id: '/preview/components/button/button-01'
-      path: '/preview/components/button/button-01'
+      path: '/components/button/button-01'
       fullPath: '/preview/components/button/button-01'
       preLoaderRoute: typeof PreviewComponentsButtonButton01RouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PreviewRouteRoute
     }
     '/preview/components/button/button-02': {
       id: '/preview/components/button/button-02'
-      path: '/preview/components/button/button-02'
+      path: '/components/button/button-02'
       fullPath: '/preview/components/button/button-02'
       preLoaderRoute: typeof PreviewComponentsButtonButton02RouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PreviewRouteRoute
     }
     '/preview/pages/landing-pages/landing-page-01': {
       id: '/preview/pages/landing-pages/landing-page-01'
-      path: '/preview/pages/landing-pages/landing-page-01'
+      path: '/pages/landing-pages/landing-page-01'
       fullPath: '/preview/pages/landing-pages/landing-page-01'
       preLoaderRoute: typeof PreviewPagesLandingPagesLandingPage01RouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PreviewRouteRoute
     }
   }
 }
@@ -315,15 +331,30 @@ const RootLayoutRouteRouteWithChildren = RootLayoutRouteRoute._addFileChildren(
   RootLayoutRouteRouteChildren,
 )
 
-const rootRouteChildren: RootRouteChildren = {
-  RootLayoutRouteRoute: RootLayoutRouteRouteWithChildren,
-  ApiSearchRoute: ApiSearchRoute,
+interface PreviewRouteRouteChildren {
+  PreviewBlocksHeroSectionHeroSection01Route: typeof PreviewBlocksHeroSectionHeroSection01Route
+  PreviewComponentsButtonButton01Route: typeof PreviewComponentsButtonButton01Route
+  PreviewComponentsButtonButton02Route: typeof PreviewComponentsButtonButton02Route
+  PreviewPagesLandingPagesLandingPage01Route: typeof PreviewPagesLandingPagesLandingPage01Route
+}
+
+const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
   PreviewBlocksHeroSectionHeroSection01Route:
     PreviewBlocksHeroSectionHeroSection01Route,
   PreviewComponentsButtonButton01Route: PreviewComponentsButtonButton01Route,
   PreviewComponentsButtonButton02Route: PreviewComponentsButtonButton02Route,
   PreviewPagesLandingPagesLandingPage01Route:
     PreviewPagesLandingPagesLandingPage01Route,
+}
+
+const PreviewRouteRouteWithChildren = PreviewRouteRoute._addFileChildren(
+  PreviewRouteRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  RootLayoutRouteRoute: RootLayoutRouteRouteWithChildren,
+  PreviewRouteRoute: PreviewRouteRouteWithChildren,
+  ApiSearchRoute: ApiSearchRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

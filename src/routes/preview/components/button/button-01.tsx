@@ -2,18 +2,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { RegistryPreviewPage } from "@/features/registry/components/registry-preview-page";
-import { previewThemeSearchSchema } from "@/features/registry/types/preview-theme";
 import Button01Preview from "@/registry/vibe-ui/button-01/button-01.tsx";
 
 export const Route = createFileRoute("/preview/components/button/button-01")({
-  head: () => ({ meta: [{ title: "Button 01 Preview – VibeUI" }] }),
+  head: () => ({
+    meta: [{ title: "Button 01 Preview – VibeUI" }],
+  }),
   staticData: { ariaLabel: "Button 01 Preview" },
-  validateSearch: previewThemeSearchSchema,
-  component: PreviewRoute,
+  component: () => <RegistryPreviewPage Preview={Button01Preview} type="registry:component" />,
 });
-
-function PreviewRoute() {
-  const { theme } = Route.useSearch();
-
-  return <RegistryPreviewPage Preview={Button01Preview} theme={theme} type="registry:component" />;
-}

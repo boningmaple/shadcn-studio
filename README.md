@@ -56,9 +56,9 @@ put handwritten files there. TanStack Start generates `src/routeTree.gen.ts`
 when `dev` or `build` starts; `registry:build` does not generate the route tree
 by itself.
 
-Generated Collection routes import their Registry item components directly, so
-Preview HTML is available during the production prerender. No generated catalog
-JSON is used.
+Generated Collection routes embed each Registry item's canonical Preview route
+in an iframe. The parent response contains the iframe and each Preview route
+server-renders its own Registry item HTML. No generated catalog JSON is used.
 
 ## Search
 

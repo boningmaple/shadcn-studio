@@ -44,7 +44,9 @@ export async function writeRegistryOutputs(
     ...registryRouteSegments.map((segment) =>
       rm(path.join(routesRootPath, segment), { force: true, recursive: true }),
     ),
-    rm(previewRoutesRootPath, { force: true, recursive: true }),
+    ...registryRouteSegments.map((segment) =>
+      rm(path.join(previewRoutesRootPath, segment), { force: true, recursive: true }),
+    ),
     rm(sidebarFile, { force: true }),
   ]);
 
@@ -115,18 +117,10 @@ export const Route = createFileRoute("/_rootLayout${section.href}/")({
 }
 
 function collectionRouteContent(collection: VibeRegistryCollection): string {
-  const imports = collection.items
-    .map((item, index) => {
-      const importName = `${pascalCase(item.name)}Preview${index + 1}`;
-      const importPath = `@/registry/vibe-ui/${item.name}/${item.name}.tsx`;
-      return `import ${importName} from "${importPath}";`;
-    })
-    .join("\n");
-
   const items = collection.items
     .map(
-      (item, index) =>
-        `{Preview:${pascalCase(item.name)}Preview${index + 1},description:${JSON.stringify(item.description)},name:${JSON.stringify(item.name)},previewHref:${JSON.stringify(registryPreviewHref(item.type, item.category, item.name))},title:${JSON.stringify(item.title)}}`,
+      (item) =>
+        `{description:${JSON.stringify(item.description)},name:${JSON.stringify(item.name)},previewHref:${JSON.stringify(registryPreviewHref(item.type, item.category, item.name))},title:${JSON.stringify(item.title)}}`,
     )
     .join(",");
 
@@ -136,8 +130,6 @@ import {
   RegistryCollectionPage,
   type RegistryCollectionItem,
 } from "@/features/registry/components/registry-collection-page";
-
-${imports}
 
 const items = [${items}] satisfies RegistryCollectionItem[];
 
@@ -162,23 +154,17 @@ function previewRouteContent(item: VibeRegistryItemSummary): string {
   return `${generatedHeader}import { createFileRoute } from "@tanstack/react-router";
 
 import { RegistryPreviewPage } from "@/features/registry/components/registry-preview-page";
-import { previewThemeSearchSchema } from "@/features/registry/types/preview-theme";
 import ${importName} from "${importPath}";
 
 export const Route = createFileRoute(${JSON.stringify(href)})({
-  head: () => ({ meta: [{ title: ${JSON.stringify(`${item.title} Preview – VibeUI`)} }] }),
+  head: () => ({
+    meta: [{ title: ${JSON.stringify(`${item.title} Preview – VibeUI`)} }],
+  }),
   staticData: { ariaLabel: ${JSON.stringify(`${item.title} Preview`)} },
-  validateSearch: previewThemeSearchSchema,
-  component: PreviewRoute,
+  component: () => (
+    <RegistryPreviewPage Preview={${importName}} type=${JSON.stringify(item.type)} />
+  ),
 });
-
-function PreviewRoute() {
-  const { theme } = Route.useSearch();
-
-  return (
-    <RegistryPreviewPage Preview={${importName}} theme={theme} type=${JSON.stringify(item.type)} />
-  );
-}
 `;
 }
 

@@ -94,16 +94,15 @@ describe("renderRegistryOutputs", () => {
     );
   });
 
-  it("uses direct canonical Preview imports and existing metadata", () => {
+  it("uses canonical Preview routes and existing metadata", () => {
     const { paths, registry: source } = renderFixture();
     const [routeFiles] = renderRegistryOutputs(source, paths.routesRootPath);
     const section = routeFiles.get(path.join(paths.routesRootPath, "components/index.tsx"));
     const collection = routeFiles.get(path.join(paths.routesRootPath, "components/button.tsx"));
 
     expect(section).toContain('"itemCount":2');
-    expect(collection).toContain(
-      'import Button01Preview1 from "@/registry/vibe-ui/button-01/button-01.tsx";',
-    );
+    expect(collection).not.toContain("@/registry/vibe-ui/button-01/button-01.tsx");
+    expect(collection).not.toContain("Preview:");
     expect(collection).toContain('staticData: { ariaLabel: "Button" }');
     expect(collection).toContain("satisfies RegistryCollectionItem[]");
     expect(collection).toContain('previewHref:"/preview/components/button/button-01"');
@@ -123,9 +122,10 @@ describe("renderRegistryOutputs", () => {
     expect(componentPreview).toContain(
       'import Button01Preview from "@/registry/vibe-ui/button-01/button-01.tsx";',
     );
-    expect(componentPreview).toContain("validateSearch: previewThemeSearchSchema");
-    expect(componentPreview).toContain("const { theme } = Route.useSearch()");
-    expect(componentPreview).toContain("theme={theme}");
+    expect(componentPreview).not.toContain("previewThemeSearchSchema");
+    expect(componentPreview).not.toContain("previewThemeHydrationScript");
+    expect(componentPreview).not.toContain("Route.useSearch()");
+    expect(componentPreview).not.toContain("theme={theme}");
     expect(componentPreview).toContain('title: "Button 01 Preview – VibeUI"');
     expect(componentPreview).toContain('type="registry:component"');
     expect(pagePreview).toContain('type="registry:page"');
@@ -185,17 +185,16 @@ describe("renderRegistryOutputs", () => {
 });
 
 describe("writeRegistryOutputs", () => {
-  it("replaces every builder-owned route directory", async () => {
+  it("replaces builder-owned route directories and preserves the Preview layout", async () => {
     const fixture = await outputFixture();
     await Promise.all(
       ["components", "blocks", "pages"].map((segment) =>
         seed(path.join(fixture.paths.routesRootPath, segment, "old.tsx"), "handwritten\n"),
       ),
     );
-    await seed(
-      path.join(path.dirname(fixture.paths.routesRootPath), "preview/old.tsx"),
-      "handwritten\n",
-    );
+    const previewRoot = path.join(path.dirname(fixture.paths.routesRootPath), "preview");
+    await seed(path.join(previewRoot, "route.tsx"), "handwritten Preview layout\n");
+    await seed(path.join(previewRoot, "components/old.tsx"), "stale generated Preview\n");
 
     await writeRegistryOutputs(
       fixture.registry,
@@ -213,8 +212,11 @@ describe("writeRegistryOutputs", () => {
     await expect(
       readFile(path.join(fixture.paths.routesRootPath, "components/button.tsx"), "utf8"),
     ).resolves.toContain('createFileRoute("/_rootLayout/components/button")');
+    await expect(readFile(path.join(previewRoot, "route.tsx"), "utf8")).resolves.toBe(
+      "handwritten Preview layout\n",
+    );
     await expect(
-      readFile(path.join(path.dirname(fixture.paths.routesRootPath), "preview/old.tsx"), "utf8"),
+      readFile(path.join(previewRoot, "components/old.tsx"), "utf8"),
     ).rejects.toMatchObject({ code: "ENOENT" });
     await expect(
       readFile(

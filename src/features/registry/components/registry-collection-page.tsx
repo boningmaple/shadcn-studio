@@ -6,26 +6,23 @@ import {
   SmartphoneIcon,
   TabletIcon,
 } from "lucide-react";
-import { useState, type ComponentType } from "react";
+import { useEffect, useState } from "react";
 import { usePanelRef } from "react-resizable-panels";
 
 import { LinkButton } from "@/components/ui/button";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useTheme } from "@/features/theme-switch/components/theme-context";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import {
-  RegistryPreviewThemeBoundary,
-  RegistryPreviewThemeSwitch,
-  useRegistryPreviewTheme,
-} from "./registry-preview-theme";
+import type { PreviewTheme } from "../types/preview-theme";
+import { CollectionPreviewThemeSwitch } from "./collection-preview-theme";
 import ResetPreviewButton from "./reset-preview-button";
 
 export type RegistryCollectionItem = {
   description: string;
   name: string;
-  Preview: ComponentType;
   previewHref: string;
   title: string;
 };
@@ -37,6 +34,10 @@ const previewWidths: Record<PreviewSize, number | string> = {
   phone: 320,
   tablet: 640,
 };
+
+function previewHrefWithTheme(previewHref: string, previewTheme: PreviewTheme | null) {
+  return previewTheme ? `${previewHref}?theme=${previewTheme}` : previewHref;
+}
 
 export function RegistryCollectionPage({
   description,
@@ -60,13 +61,20 @@ export function RegistryCollectionPage({
 }
 
 function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
+  const { theme: appTheme } = useTheme();
   const isMobile = useIsMobile();
   const [, setCodeEnabled] = useState(false);
   const [previewSize, setPreviewSize] = useState<PreviewSize | null>("desktop");
   const previewPanelRef = usePanelRef();
   const [previewKey, setPreviewKey] = useState(0);
-  const { setTheme: setPreviewTheme, theme: previewTheme } = useRegistryPreviewTheme();
-  const resetPreview = () => setPreviewKey((key) => key + 1);
+  const [previewTheme, setPreviewTheme] = useState<PreviewTheme | null>(null);
+  const resetPreview = () => {
+    setPreviewKey((key) => key + 1);
+  };
+
+  useEffect(() => {
+    setPreviewTheme(null);
+  }, [appTheme]);
 
   const handlePreviewSizeChange = (keys: Set<React.Key>) => {
     const [size] = keys;
@@ -76,8 +84,6 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
       previewPanelRef.current?.resize(previewWidths[size]);
     }
   };
-
-  const Preview = item.Preview;
 
   return (
     <article className="scroll-mt-20" id={item.name}>
@@ -124,14 +130,14 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
               <ToggleGroupItem aria-label="Tablet preview" id="tablet" size="sm">
                 <TabletIcon />
               </ToggleGroupItem>
-              <ToggleGroupItem aria-label="Desktop preview" id="desktop" size="sm">
+              <ToggleGroupItem aria-label="Full-width preview" id="desktop" size="sm">
                 <MonitorIcon />
               </ToggleGroupItem>
             </ToggleGroup>
             <LinkButton
               aria-label="Open preview in tab"
               className="transition-none"
-              href={previewTheme ? `${item.previewHref}?theme=${previewTheme}` : item.previewHref}
+              href={previewHrefWithTheme(item.previewHref, previewTheme)}
               rel="noopener noreferrer"
               size="icon"
               target="_blank"
@@ -139,11 +145,14 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
             >
               <ScanSquareIcon />
             </LinkButton>
-            <RegistryPreviewThemeSwitch setTheme={setPreviewTheme} theme={previewTheme} />
+            <CollectionPreviewThemeSwitch
+              previewTheme={previewTheme}
+              setPreviewTheme={setPreviewTheme}
+            />
             <ResetPreviewButton resetPreview={resetPreview} />
           </div>
         </div>
-        <TabsContent id="preview">
+        <TabsContent id="preview" shouldForceMount className="data-inert:hidden">
           <ResizablePanelGroup
             disabled={isMobile}
             orientation="horizontal"
@@ -159,16 +168,17 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
               groupResizeBehavior={
                 previewSize === "desktop" ? "preserve-relative-size" : "preserve-pixel-size"
               }
-              className="rounded-lg"
+              className="size-full rounded-lg border bg-background"
             >
-              <RegistryPreviewThemeBoundary
-                className="flex size-full items-center justify-center rounded-lg border"
-                theme={previewTheme}
-              >
-                <Preview key={previewKey} />
-              </RegistryPreviewThemeBoundary>
+              <iframe
+                key={previewKey}
+                title={`${item.title} Preview`}
+                src={previewHrefWithTheme(item.previewHref, previewTheme)}
+                loading="lazy"
+                className="size-full"
+              />
             </ResizablePanel>
-            <ResizableHandle className="hidden lg:flex w-3 cursor-col-resize bg-transparent after:absolute after:top-1/2 after:right-0 after:h-16 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all" />
+            <ResizableHandle className="hidden lg:flex w-3 cursor-col-resize bg-background after:absolute after:top-1/2 after:right-0 after:h-16 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all" />
             <ResizablePanel defaultSize="0%" minSize="0%" />
           </ResizablePanelGroup>
         </TabsContent>

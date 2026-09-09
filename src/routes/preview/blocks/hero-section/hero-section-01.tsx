@@ -2,18 +2,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { RegistryPreviewPage } from "@/features/registry/components/registry-preview-page";
-import { previewThemeSearchSchema } from "@/features/registry/types/preview-theme";
 import HeroSection01Preview from "@/registry/vibe-ui/hero-section-01/hero-section-01.tsx";
 
 export const Route = createFileRoute("/preview/blocks/hero-section/hero-section-01")({
-  head: () => ({ meta: [{ title: "Hero Section 01 Preview – VibeUI" }] }),
+  head: () => ({
+    meta: [{ title: "Hero Section 01 Preview – VibeUI" }],
+  }),
   staticData: { ariaLabel: "Hero Section 01 Preview" },
-  validateSearch: previewThemeSearchSchema,
-  component: PreviewRoute,
+  component: () => <RegistryPreviewPage Preview={HeroSection01Preview} type="registry:block" />,
 });
-
-function PreviewRoute() {
-  const { theme } = Route.useSearch();
-
-  return <RegistryPreviewPage Preview={HeroSection01Preview} theme={theme} type="registry:block" />;
-}

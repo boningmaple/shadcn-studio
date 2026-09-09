@@ -5,11 +5,9 @@ import {
   RegistryCollectionPage,
   type RegistryCollectionItem,
 } from "@/features/registry/components/registry-collection-page";
-import HeroSection01Preview1 from "@/registry/vibe-ui/hero-section-01/hero-section-01.tsx";
 
 const items = [
   {
-    Preview: HeroSection01Preview1,
     description: "A centered product hero with a focused call to action.",
     name: "hero-section-01",
     previewHref: "/preview/blocks/hero-section/hero-section-01",

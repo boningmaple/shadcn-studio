@@ -5,19 +5,15 @@ import {
   RegistryCollectionPage,
   type RegistryCollectionItem,
 } from "@/features/registry/components/registry-collection-page";
-import Button01Preview1 from "@/registry/vibe-ui/button-01/button-01.tsx";
-import Button02Preview2 from "@/registry/vibe-ui/button-02/button-02.tsx";
 
 const items = [
   {
-    Preview: Button01Preview1,
     description: "A primary action button with a compact leading icon.",
     name: "button-01",
     previewHref: "/preview/components/button/button-01",
     title: "Button 01",
   },
   {
-    Preview: Button02Preview2,
     description: "A quiet secondary action with a trailing keyboard hint.",
     name: "button-02",
     previewHref: "/preview/components/button/button-02",
