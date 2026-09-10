@@ -134,3 +134,45 @@
     @apply font-sans;
   }
 }
+
+@layer components {
+  .registry-code pre {
+    min-width: 100%;
+    min-height: 100%;
+    width: max-content;
+    margin: 0;
+    padding-block: 1rem;
+    background-color: transparent !important;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+
+  .registry-code code {
+    display: block;
+    counter-reset: registry-code-line;
+  }
+
+  .registry-code .line {
+    display: block;
+    min-height: 1.5rem;
+    padding-right: 1rem;
+    white-space: pre;
+  }
+
+  .registry-code .line::before {
+    display: inline-block;
+    width: 3.5rem;
+    padding-right: 1rem;
+    color: var(--muted-foreground);
+    text-align: right;
+    content: counter(registry-code-line);
+    counter-increment: registry-code-line;
+    user-select: none;
+  }
+
+  .dark .registry-code .shiki,
+  .dark .registry-code .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}

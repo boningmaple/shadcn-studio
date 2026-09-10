@@ -22,6 +22,7 @@ import { Route as RootLayoutPagesLandingPagesRouteImport } from './routes/_rootL
 import { Route as PreviewBlocksHeroSectionHeroSection01RouteImport } from './routes/preview/blocks/hero-section/hero-section-01'
 import { Route as PreviewComponentsButtonButton01RouteImport } from './routes/preview/components/button/button-01'
 import { Route as PreviewComponentsButtonButton02RouteImport } from './routes/preview/components/button/button-02'
+import { Route as PreviewComponentsButtonButton03RouteImport } from './routes/preview/components/button/button-03'
 import { Route as PreviewPagesLandingPagesLandingPage01RouteImport } from './routes/preview/pages/landing-pages/landing-page-01'
 
 const RootLayoutRouteRoute = RootLayoutRouteRouteImport.update({
@@ -95,6 +96,12 @@ const PreviewComponentsButtonButton02Route =
     path: '/components/button/button-02',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
+const PreviewComponentsButtonButton03Route =
+  PreviewComponentsButtonButton03RouteImport.update({
+    id: '/components/button/button-03',
+    path: '/components/button/button-03',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
 const PreviewPagesLandingPagesLandingPage01Route =
   PreviewPagesLandingPagesLandingPage01RouteImport.update({
     id: '/pages/landing-pages/landing-page-01',
@@ -115,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
+  '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesByTo {
@@ -130,6 +138,7 @@ export interface FileRoutesByTo {
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
+  '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesById {
@@ -147,6 +156,7 @@ export interface FileRoutesById {
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
+  '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRouteTypes {
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
     | '/preview/blocks/hero-section/hero-section-01'
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
+    | '/preview/components/button/button-03'
     | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/preview/blocks/hero-section/hero-section-01'
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
+    | '/preview/components/button/button-03'
     | '/preview/pages/landing-pages/landing-page-01'
   id:
     | '__root__'
@@ -195,6 +207,7 @@ export interface FileRouteTypes {
     | '/preview/blocks/hero-section/hero-section-01'
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
+    | '/preview/components/button/button-03'
     | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesById: FileRoutesById
 }
@@ -297,6 +310,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PreviewComponentsButtonButton02RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
+    '/preview/components/button/button-03': {
+      id: '/preview/components/button/button-03'
+      path: '/components/button/button-03'
+      fullPath: '/preview/components/button/button-03'
+      preLoaderRoute: typeof PreviewComponentsButtonButton03RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
     '/preview/pages/landing-pages/landing-page-01': {
       id: '/preview/pages/landing-pages/landing-page-01'
       path: '/pages/landing-pages/landing-page-01'
@@ -335,6 +355,7 @@ interface PreviewRouteRouteChildren {
   PreviewBlocksHeroSectionHeroSection01Route: typeof PreviewBlocksHeroSectionHeroSection01Route
   PreviewComponentsButtonButton01Route: typeof PreviewComponentsButtonButton01Route
   PreviewComponentsButtonButton02Route: typeof PreviewComponentsButtonButton02Route
+  PreviewComponentsButtonButton03Route: typeof PreviewComponentsButtonButton03Route
   PreviewPagesLandingPagesLandingPage01Route: typeof PreviewPagesLandingPagesLandingPage01Route
 }
 
@@ -343,6 +364,7 @@ const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
     PreviewBlocksHeroSectionHeroSection01Route,
   PreviewComponentsButtonButton01Route: PreviewComponentsButtonButton01Route,
   PreviewComponentsButtonButton02Route: PreviewComponentsButtonButton02Route,
+  PreviewComponentsButtonButton03Route: PreviewComponentsButtonButton03Route,
   PreviewPagesLandingPagesLandingPage01Route:
     PreviewPagesLandingPagesLandingPage01Route,
 }

@@ -18,6 +18,8 @@
     "prepare": "vp config",
     "generate:search-index": "node scripts/build-search-index.ts",
     "check:search-index": "node scripts/check-search-index.ts",
+    "check:shiki": "node scripts/generate-shiki-bundle.ts --check",
+    "generate:shiki": "node scripts/generate-shiki-bundle.ts",
     "registry:build": "node scripts/build-registry.ts"
   },
   "dependencies": {
@@ -63,7 +65,8 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/browser-playwright": "^4.1.10",
     "msw": "^2.15.0",
-    "shiki": "^4.3.1",
+    "shiki": "^4.4.2",
+    "shiki-codegen": "^4.4.2",
     "typescript": "^6.0.2",
     "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
     "vite-plus": "0.2.6",

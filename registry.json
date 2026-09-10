@@ -34,6 +34,31 @@
       "categories": ["button"]
     },
     {
+      "name": "button-03",
+      "title": "Button 03",
+      "description": "A composed action button built from multiple source files.",
+      "type": "registry:component",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/button-03/button-03.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/button-03/button-03.tsx"
+        },
+        {
+          "path": "registry/vibe-ui/button-03/parts/button-icon.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/button-03/parts/button-icon.tsx"
+        },
+        {
+          "path": "registry/vibe-ui/button-03/parts/button-label.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/button-03/parts/button-label.tsx"
+        }
+      ],
+      "categories": ["button"]
+    },
+    {
       "name": "hero-section-01",
       "title": "Hero Section 01",
       "description": "A centered product hero with a focused call to action.",

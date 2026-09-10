@@ -10,7 +10,12 @@ const isTest = process.env.VITEST === "true";
 
 const config = defineConfig({
   fmt: {
-    ignorePatterns: ["routeTree.gen.ts", "registry-sidebar.gen.ts", "search-index.gen.json"],
+    ignorePatterns: [
+      "routeTree.gen.ts",
+      "registry-sidebar.gen.ts",
+      "search-index.gen.json",
+      "shiki.bundle.gen.ts",
+    ],
     sortImports: true,
     sortPackageJson: true,
   },
@@ -58,6 +63,8 @@ const config = defineConfig({
     // the committed server-side index.
     "{registry.json,src/routes/**/*.search.ts,src/features/registry/lib/registry-catalog.ts,src/features/search/lib/search-index.ts,src/features/search/data/search-index.gen.json,scripts/build-search-index.ts}":
       () => "npm run check:search-index",
+    "{package-lock.json,package.json,scripts/generate-shiki-bundle.ts,src/features/registry/generated/shiki.bundle.gen.ts}":
+      () => "npm run check:shiki",
   },
   resolve: { tsconfigPaths: true },
   plugins: lazyPlugins(() =>

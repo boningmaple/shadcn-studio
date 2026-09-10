@@ -19,6 +19,12 @@ const items = [
     previewHref: "/preview/components/button/button-02",
     title: "Button 02",
   },
+  {
+    description: "A composed action button built from multiple source files.",
+    name: "button-03",
+    previewHref: "/preview/components/button/button-03",
+    title: "Button 03",
+  },
 ] satisfies RegistryCollectionItem[];
 
 export const Route = createFileRoute("/_rootLayout/components/button")({
