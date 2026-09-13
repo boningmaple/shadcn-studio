@@ -1,3 +1,4 @@
+import { useHydrated } from "@tanstack/react-router";
 import {
   CodeIcon,
   EyeIcon,
@@ -35,6 +36,20 @@ function previewHrefWithTheme(previewHref: string, previewTheme: PreviewTheme | 
   return previewTheme ? `${previewHref}?theme=${previewTheme}` : previewHref;
 }
 
+function RegistryPreviewFrame({ src, title }: { src: string; title: string }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <iframe
+      title={title}
+      src={src}
+      loading="lazy"
+      className={loaded ? "size-full opacity-100" : "pointer-events-none size-full opacity-0"}
+      onLoad={() => setLoaded(true)}
+    />
+  );
+}
+
 export function RegistryCollectionPage({
   description,
   items,
@@ -57,6 +72,7 @@ export function RegistryCollectionPage({
 }
 
 function RegistryItemShowcase({ item }: { item: VibeBuiltRegistryItem }) {
+  const hydrated = useHydrated();
   const { theme: appTheme } = useTheme();
   const isMobile = useIsMobile();
   const [activeView, setActiveView] = useState<"code" | "preview">("preview");
@@ -65,6 +81,7 @@ function RegistryItemShowcase({ item }: { item: VibeBuiltRegistryItem }) {
   const [previewKey, setPreviewKey] = useState(0);
   const [previewTheme, setPreviewTheme] = useState<PreviewTheme | null>(null);
   const previewHref = registryPreviewHref(item.type, item.categories[0], item.name);
+  const previewSrc = previewHrefWithTheme(previewHref, previewTheme);
   const resetPreview = () => {
     setPreviewKey((key) => key + 1);
   };
@@ -170,13 +187,13 @@ function RegistryItemShowcase({ item }: { item: VibeBuiltRegistryItem }) {
               }
               className="size-full rounded-lg border bg-background"
             >
-              <iframe
-                key={previewKey}
-                title={`${item.title} Preview`}
-                src={previewHrefWithTheme(previewHref, previewTheme)}
-                loading="lazy"
-                className="size-full"
-              />
+              {hydrated ? (
+                <RegistryPreviewFrame
+                  key={`${previewKey}:${previewSrc}`}
+                  title={`${item.title} Preview`}
+                  src={previewSrc}
+                />
+              ) : null}
             </ResizablePanel>
             <ResizableHandle className="hidden lg:flex w-3 cursor-col-resize bg-background after:absolute after:top-1/2 after:right-0 after:h-16 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all" />
             <ResizablePanel defaultSize="0%" minSize="0%" />

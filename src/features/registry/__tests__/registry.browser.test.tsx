@@ -287,6 +287,26 @@ describe("Registry item Preview themes", () => {
       .element(itemElement<HTMLAnchorElement>("first-item", 'a[aria-label="Open preview in tab"]'))
       .toHaveAttribute("href", "/preview/components/button/first-item?theme=dark");
   });
+
+  it("hides a reset Preview until its replacement frame loads", async () => {
+    await page.viewport(390, 844);
+    await renderCollection();
+
+    const originalFrame = previewFrame("first-item");
+    originalFrame.dispatchEvent(new Event("load"));
+    await expect.poll(() => getComputedStyle(originalFrame).opacity).toBe("1");
+
+    await userEvent.click(
+      itemElement<HTMLButtonElement>("first-item", 'button[aria-label="Reset preview"]'),
+    );
+
+    const replacementFrame = previewFrame("first-item");
+    expect(replacementFrame).not.toBe(originalFrame);
+    expect(getComputedStyle(replacementFrame).opacity).toBe("0");
+
+    replacementFrame.dispatchEvent(new Event("load"));
+    await expect.poll(() => getComputedStyle(replacementFrame).opacity).toBe("1");
+  });
 });
 
 describe("PreviewThemeProvider", () => {

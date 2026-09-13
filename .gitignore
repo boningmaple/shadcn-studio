@@ -22,3 +22,5 @@ blob-report
 # dotenv environment variable files
 .env.*
 !.env.example
+.vercel
+.env*
