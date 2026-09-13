@@ -21,13 +21,15 @@ npm run registry:build
 Authored Registry items live in `registry/vibe-ui/<item-name>/`. Every item
 declares `registry/vibe-ui/<item-name>/<item-name>.tsx` as an installable file.
 That canonical entry default-exports a component with no required props, which
-VibeUI imports from generated Collection routes and renders as an ordinary React
+VibeUI imports from generated Preview routes and renders as an ordinary React
 Preview.
 
 ## Registry
 
-The root `registry.json` is the only authored catalog. The build writes the
-public shadcn payloads to the ignored `public/r/` directory:
+The root `registry.json` is the only authored catalog. The build validates it,
+generates importable shadcn payloads in the committed
+`src/features/registry/data/items/` directory, and copies those exact files to
+the ignored `public/r/` directory:
 
 ```bash
 npm run registry:build
@@ -42,7 +44,7 @@ Registry conventions require every item to:
 - declare `registry/vibe-ui/<name>/<name>.tsx` with a default component export;
 - install files under `@components/vibe-ui/<name>/`.
 
-`registry:build` also reads `registry.json` and updates committed generated
+`registry:build` uses the validated generated aggregate to update committed
 TypeScript:
 
 - concrete TanStack route files under `src/routes/_rootLayout/{components,blocks,pages}/`;
@@ -50,15 +52,17 @@ TypeScript:
   `src/routes/preview/{components,blocks,pages}/<category>/<item-name>.tsx`;
 - sidebar data in `src/features/registry/data/registry-sidebar.gen.ts`.
 
-Those four route directories and the generated sidebar module are wholly owned
+The generated route directories, item data, and sidebar module are wholly owned
 by the Registry builder. It deletes and recreates them on every run, so do not
 put handwritten files there. TanStack Start generates `src/routeTree.gen.ts`
 when `dev` or `build` starts; `registry:build` does not generate the route tree
 by itself.
 
 Generated Collection routes embed each Registry item's canonical Preview route
-in an iframe. The parent response contains the iframe and each Preview route
-server-renders its own Registry item HTML. No generated catalog JSON is used.
+in an iframe and import their complete built item JSON. The parent response
+contains the iframe, metadata, and Code preview source; each Preview route
+server-renders its own Registry item HTML. Code highlighting begins in the
+background when each Registry item showcase mounts and never fetches `/r`.
 
 ## Search
 
@@ -98,9 +102,10 @@ npm run check
 npm run lint -- --deny-warnings --format=agent
 ```
 
-The production build regenerates and validates `public/r`, refreshes generated
-Registry routes/sidebar data, rebuilds the committed Orama artifact, bundles the
-application, and prerenders the generated static Registry routes:
+The production build regenerates and validates the committed Registry item
+data, copies it to `public/r`, refreshes generated Registry routes/sidebar data,
+rebuilds the committed Orama artifact, bundles the application, and prerenders
+the generated static Registry routes:
 
 ```bash
 npm run build
@@ -127,7 +132,7 @@ npm run preview
     |   |-- app-header.tsx      # application shell header
     |   `-- app-sidebar.tsx     # application navigation and sidebar rendering
     |-- features
-    |   |-- registry            # generated navigation, Preview, and Code preview behavior
+    |   |-- registry            # generated item data, navigation, Preview, and Code preview behavior
     |   |-- search              # Orama endpoint and search palette
     |   `-- theme-switch        # theme persistence and controls
     |-- routes                  # TanStack application and server routes

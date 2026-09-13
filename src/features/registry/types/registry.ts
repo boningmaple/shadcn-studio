@@ -65,6 +65,32 @@ export const vibeRegistryItemSchema = z.intersection(
   vibeRegistryItemRequirementsSchema,
 );
 
+const vibeBuiltRegistryItemFilesSchema = z
+  .array(
+    z.looseObject({
+      content: z.string(),
+      path: z.string(),
+      target: z.string().optional(),
+      type: z.string(),
+    }),
+  )
+  .min(1);
+
+export const vibeBuiltRegistryItemSchema = vibeRegistryItemSchema.transform((item, context) => {
+  const result = vibeBuiltRegistryItemFilesSchema.safeParse(item.files);
+  if (result.success) return { ...item, files: result.data };
+
+  for (const issue of result.error.issues) {
+    context.issues.push({
+      code: "custom",
+      input: item.files,
+      message: issue.message,
+      path: ["files", ...issue.path],
+    });
+  }
+  return z.NEVER;
+});
+
 const vibeRegistryRequirementsSchema = z
   .object({
     name: z.literal("Vibe UI"),
@@ -103,6 +129,7 @@ export const vibeRegistrySchema = z.intersection(
 
 export type VibeRegistry = z.infer<typeof vibeRegistrySchema>;
 export type VibeRegistryItem = z.infer<typeof vibeRegistryItemSchema>;
+export type VibeBuiltRegistryItem = z.infer<typeof vibeBuiltRegistryItemSchema>;
 export type VibeRegistryItemType = VibeRegistryItem["type"];
 
 export type VibeRegistryItemSummary = {

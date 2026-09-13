@@ -1,6 +1,8 @@
 import { execFileSync } from "node:child_process";
-import { mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import path from "node:path";
+import { isDeepStrictEqual } from "node:util";
 
 import sourceRegistry from "../registry.json" with { type: "json" };
 import {
@@ -10,10 +12,14 @@ import {
   segmentByType,
 } from "../src/features/registry/lib/registry-catalog.ts";
 import {
+  type VibeBuiltRegistryItem,
   type VibeRegistry,
   type VibeRegistryCollection,
+  type VibeRegistryItem,
   type VibeRegistryItemSummary,
   type VibeRegistrySection,
+  vibeBuiltRegistryItemSchema,
+  vibeRegistryItemSchema,
   vibeRegistrySchema,
 } from "../src/features/registry/types/registry.ts";
 
@@ -22,14 +28,99 @@ const projectRoot = path.resolve(import.meta.dirname, "..");
 const registryRouteSegments = ["components", "blocks", "pages"] as const;
 
 async function buildRegistry(): Promise<void> {
-  const registry = vibeRegistrySchema.parse(sourceRegistry);
-  await rm(path.join(projectRoot, "public/r"), { force: true, recursive: true });
-  execFileSync("shadcn", ["build"], { stdio: "inherit" });
-  await writeRegistryOutputs(
-    registry,
-    path.join(projectRoot, "src/routes/_rootLayout"),
-    path.join(projectRoot, "src/features/registry/data/registry-sidebar.gen.ts"),
+  vibeRegistrySchema.parse(sourceRegistry);
+  const temporaryRootPath = await mkdtemp(path.join(tmpdir(), "vibeui-registry-"));
+  const temporaryItemsPath = path.join(temporaryRootPath, "items");
+  const itemsPath = path.join(projectRoot, "src/features/registry/data/items");
+  const publicRegistryPath = path.join(projectRoot, "public/r");
+
+  try {
+    execFileSync("shadcn", ["build", "--output", temporaryItemsPath], { stdio: "inherit" });
+    const registry = await readBuiltRegistryOutput(temporaryItemsPath);
+
+    await replaceBuiltRegistryData(temporaryItemsPath, itemsPath, publicRegistryPath);
+    await writeRegistryOutputs(
+      registry,
+      path.join(projectRoot, "src/routes/_rootLayout"),
+      path.join(projectRoot, "src/features/registry/data/registry-sidebar.gen.ts"),
+    );
+  } finally {
+    await rm(temporaryRootPath, { force: true, recursive: true });
+  }
+}
+
+export async function readBuiltRegistryOutput(itemsPath: string): Promise<VibeRegistry> {
+  const aggregate = vibeRegistrySchema.parse(
+    JSON.parse(await readFile(path.join(itemsPath, "registry.json"), "utf8")),
   );
+  const entries = await readdir(itemsPath, { withFileTypes: true });
+  const itemFileNames = entries
+    .filter(
+      (entry) => entry.isFile() && entry.name.endsWith(".json") && entry.name !== "registry.json",
+    )
+    .map((entry) => entry.name)
+    .sort();
+  const expectedFileNames = aggregate.items.map((item) => `${item.name}.json`).sort();
+  const missingFileNames = expectedFileNames.filter(
+    (fileName) => !itemFileNames.includes(fileName),
+  );
+  const extraFileNames = itemFileNames.filter((fileName) => !expectedFileNames.includes(fileName));
+
+  if (missingFileNames.length > 0 || extraFileNames.length > 0) {
+    throw new Error(
+      `Built Registry item files do not match the aggregate. Missing: ${missingFileNames.join(", ") || "none"}. Extra: ${extraFileNames.join(", ") || "none"}.`,
+    );
+  }
+
+  const aggregateItems = new Map(aggregate.items.map((item) => [item.name, item]));
+
+  for (const fileName of itemFileNames) {
+    const builtItem = vibeBuiltRegistryItemSchema.parse(
+      JSON.parse(await readFile(path.join(itemsPath, fileName), "utf8")),
+    );
+    const fileItemName = fileName.slice(0, -".json".length);
+
+    if (builtItem.name !== fileItemName) {
+      throw new Error(
+        `Built Registry item ${fileName} declares the unexpected name ${builtItem.name}.`,
+      );
+    }
+
+    const aggregateItem = aggregateItems.get(builtItem.name)!;
+    if (!isDeepStrictEqual(registryItemWithoutContent(builtItem), aggregateItem)) {
+      throw new Error(`Built Registry item ${fileName} does not match the aggregate metadata.`);
+    }
+  }
+
+  return aggregate;
+}
+
+export async function replaceBuiltRegistryData(
+  sourcePath: string,
+  itemsPath: string,
+  publicRegistryPath: string,
+): Promise<void> {
+  await rm(itemsPath, { force: true, recursive: true });
+  await mkdir(path.dirname(itemsPath), { recursive: true });
+  await cp(sourcePath, itemsPath, { recursive: true });
+
+  await rm(publicRegistryPath, { force: true, recursive: true });
+  await mkdir(path.dirname(publicRegistryPath), { recursive: true });
+  await cp(itemsPath, publicRegistryPath, { recursive: true });
+}
+
+function registryItemWithoutContent(item: VibeBuiltRegistryItem): VibeRegistryItem {
+  const itemMetadata: Record<string, unknown> = { ...item };
+  delete itemMetadata.$schema;
+
+  return vibeRegistryItemSchema.parse({
+    ...itemMetadata,
+    files: item.files.map((file) => {
+      const metadata: Record<string, unknown> = { ...file };
+      delete metadata.content;
+      return metadata;
+    }),
+  });
 }
 
 export async function writeRegistryOutputs(
@@ -117,21 +208,21 @@ export const Route = createFileRoute("/_rootLayout${section.href}/")({
 }
 
 function collectionRouteContent(collection: VibeRegistryCollection): string {
-  const items = collection.items
+  const itemImports = collection.items
     .map(
       (item) =>
-        `{description:${JSON.stringify(item.description)},name:${JSON.stringify(item.name)},previewHref:${JSON.stringify(registryPreviewHref(item.type, item.category, item.name))},title:${JSON.stringify(item.title)}}`,
+        `import ${registryItemImportName(item.name)} from "@/features/registry/data/items/${item.name}.json";`,
     )
-    .join(",");
+    .join("\n");
+  const items = collection.items.map((item) => registryItemImportName(item.name)).join(", ");
 
   return `${generatedHeader}import { createFileRoute } from "@tanstack/react-router";
 
-import {
-  RegistryCollectionPage,
-  type RegistryCollectionItem,
-} from "@/features/registry/components/registry-collection-page";
+import { RegistryCollectionPage } from "@/features/registry/components/registry-collection-page";
+${itemImports}
+import type { VibeBuiltRegistryItem } from "@/features/registry/types/registry";
 
-const items = [${items}] satisfies RegistryCollectionItem[];
+const items = [${items}] as VibeBuiltRegistryItem[];
 
 export const Route = createFileRoute("/_rootLayout${collection.href}")({
   staticData: { ariaLabel: ${JSON.stringify(collection.title)} },
@@ -190,6 +281,10 @@ function pascalCase(value: string): string {
     .filter(Boolean)
     .map((part) => `${part[0]?.toUpperCase() ?? ""}${part.slice(1)}`)
     .join("");
+}
+
+function registryItemImportName(value: string): string {
+  return `registryItem${pascalCase(value)}`;
 }
 
 if (import.meta.filename === process.argv[1]) {

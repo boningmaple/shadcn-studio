@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "landing-page-01",
+  "title": "Landing Page 01",
+  "description": "A complete landing page with navigation, hero, and social proof.",
+  "registryDependencies": ["button"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/landing-page-01/landing-page-01.tsx",
+      "content": "import { ArrowRightIcon } from \"lucide-react\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function LandingPage01() {\n  return (\n    <main className=\"min-h-svh\">\n      <nav className=\"mx-auto flex max-w-6xl items-center justify-between px-6 py-5\">\n        <span className=\"font-semibold\">Northstar</span>\n        <Button size=\"sm\" variant=\"outline\">\n          Sign in\n        </Button>\n      </nav>\n      <section className=\"mx-auto flex max-w-5xl flex-col items-center px-6 py-24 text-center\">\n        <p className=\"mb-5 rounded-full border px-3 py-1 text-xs font-medium\">Now in public beta</p>\n        <h1 className=\"text-balance text-5xl font-semibold tracking-tight sm:text-7xl\">\n          Turn your next big idea into momentum\n        </h1>\n        <p className=\"mt-6 max-w-2xl text-pretty text-lg text-muted-foreground\">\n          Northstar gives modern teams one beautiful place to plan, build, and learn together.\n        </p>\n        <Button className=\"mt-8\">\n          Start for free <ArrowRightIcon data-icon=\"inline-end\" />\n        </Button>\n        <div className=\"mt-20 grid w-full grid-cols-3 gap-6 border-y py-8 text-left\">\n          {[\n            [\"12k+\", \"teams\"],\n            [\"42%\", \"faster delivery\"],\n            [\"99.99%\", \"uptime\"],\n          ].map(([value, label]) => (\n            <div key={label}>\n              <p className=\"text-2xl font-semibold\">{value}</p>\n              <p className=\"text-sm text-muted-foreground\">{label}</p>\n            </div>\n          ))}\n        </div>\n      </section>\n    </main>\n  );\n}\n",
+      "type": "registry:page",
+      "target": "@components/vibe-ui/landing-page-01/landing-page-01.tsx"
+    }
+  ],
+  "categories": ["landing-pages"],
+  "type": "registry:page"
+}

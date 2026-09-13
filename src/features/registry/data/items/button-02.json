@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-02",
+  "title": "Button 02",
+  "description": "A quiet secondary action with a trailing keyboard hint.",
+  "registryDependencies": ["button", "kbd"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/button-02/button-02.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { Kbd } from \"@/components/ui/kbd\";\n\nexport default function Button02() {\n  return (\n    <Button variant=\"outline\">\n      Open search\n      <Kbd className=\"ml-1\">⌘ K</Kbd>\n    </Button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/button-02/button-02.tsx"
+    }
+  ],
+  "categories": ["button"],
+  "type": "registry:component"
+}

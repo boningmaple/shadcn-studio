@@ -16,17 +16,12 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useTheme } from "@/features/theme-switch/components/theme-context";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+import { registryPreviewHref } from "../lib/registry-catalog.ts";
 import type { PreviewTheme } from "../types/preview-theme";
+import type { VibeBuiltRegistryItem } from "../types/registry.ts";
 import { CollectionPreviewThemeSwitch } from "./collection-preview-theme";
 import { RegistryCodePanel } from "./registry-code-panel";
 import ResetPreviewButton from "./reset-preview-button";
-
-export type RegistryCollectionItem = {
-  description: string;
-  name: string;
-  previewHref: string;
-  title: string;
-};
 
 type PreviewSize = "desktop" | "phone" | "tablet";
 
@@ -46,7 +41,7 @@ export function RegistryCollectionPage({
   title,
 }: {
   description: string;
-  items: RegistryCollectionItem[];
+  items: VibeBuiltRegistryItem[];
   title: string;
 }) {
   return (
@@ -61,15 +56,15 @@ export function RegistryCollectionPage({
   );
 }
 
-function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
+function RegistryItemShowcase({ item }: { item: VibeBuiltRegistryItem }) {
   const { theme: appTheme } = useTheme();
   const isMobile = useIsMobile();
   const [activeView, setActiveView] = useState<"code" | "preview">("preview");
-  const [codeEnabled, setCodeEnabled] = useState(false);
   const [previewSize, setPreviewSize] = useState<PreviewSize | null>("desktop");
   const previewPanelRef = usePanelRef();
   const [previewKey, setPreviewKey] = useState(0);
   const [previewTheme, setPreviewTheme] = useState<PreviewTheme | null>(null);
+  const previewHref = registryPreviewHref(item.type, item.categories[0], item.name);
   const resetPreview = () => {
     setPreviewKey((key) => key + 1);
   };
@@ -98,7 +93,6 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
         onSelectionChange={(key) => {
           if (key !== "code" && key !== "preview") return;
           setActiveView(key);
-          if (key === "code") setCodeEnabled(true);
         }}
       >
         <div className="flex items-center justify-between">
@@ -142,7 +136,7 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
               <LinkButton
                 aria-label="Open preview in tab"
                 className="transition-none"
-                href={previewHrefWithTheme(item.previewHref, previewTheme)}
+                href={previewHrefWithTheme(previewHref, previewTheme)}
                 rel="noopener noreferrer"
                 size="icon"
                 target="_blank"
@@ -179,7 +173,7 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
               <iframe
                 key={previewKey}
                 title={`${item.title} Preview`}
-                src={previewHrefWithTheme(item.previewHref, previewTheme)}
+                src={previewHrefWithTheme(previewHref, previewTheme)}
                 loading="lazy"
                 className="size-full"
               />
@@ -189,7 +183,7 @@ function RegistryItemShowcase({ item }: { item: RegistryCollectionItem }) {
           </ResizablePanelGroup>
         </TabsContent>
         <TabsContent id="code" shouldForceMount className="data-inert:hidden">
-          {codeEnabled ? <RegistryCodePanel enabled name={item.name} /> : null}
+          <RegistryCodePanel item={item} />
         </TabsContent>
       </Tabs>
     </article>

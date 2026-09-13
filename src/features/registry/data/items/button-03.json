@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-03",
+  "title": "Button 03",
+  "description": "A composed action button built from multiple source files.",
+  "registryDependencies": ["button"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/button-03/button-03.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\n\nimport { ButtonIcon } from \"./parts/button-icon\";\nimport { ButtonLabel } from \"./parts/button-label\";\n\nexport default function Button03() {\n  return (\n    <Button>\n      <ButtonLabel>Explore components</ButtonLabel>\n      <ButtonIcon />\n    </Button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/button-03/button-03.tsx"
+    },
+    {
+      "path": "registry/vibe-ui/button-03/parts/button-icon.tsx",
+      "content": "import { ArrowRightIcon } from \"lucide-react\";\n\nexport function ButtonIcon() {\n  return <ArrowRightIcon aria-hidden=\"true\" data-icon=\"inline-end\" />;\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/button-03/parts/button-icon.tsx"
+    },
+    {
+      "path": "registry/vibe-ui/button-03/parts/button-label.tsx",
+      "content": "import type { ReactNode } from \"react\";\n\nexport function ButtonLabel({ children }: { children: ReactNode }) {\n  return <span>{children}</span>;\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/button-03/parts/button-label.tsx"
+    }
+  ],
+  "categories": ["button"],
+  "type": "registry:component"
+}

@@ -5,7 +5,6 @@ import {
   FileIcon,
   FolderIcon,
   PanelLeftIcon,
-  TriangleAlertIcon,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -22,25 +21,18 @@ import {
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import {
-  Empty,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/components/ui/empty";
 import { Spinner } from "@/components/ui/spinner";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
-import { useRegistryCode } from "../hooks/use-registry-code.ts";
+import { useHighlightedRegistryFiles } from "../hooks/use-highlighted-registry-files.ts";
 import { buildFileTree, registryFileDisplayPath, type FileTreeNode } from "../lib/file-tree.ts";
-import type { VibeHighlightedRegistryFile } from "../types/registry.ts";
+import type { VibeBuiltRegistryItem, VibeHighlightedRegistryFile } from "../types/registry.ts";
 
 const panelHeight = "h-[min(30rem,calc(100svh-2rem))] lg:h-[min(36rem,calc(100svh-2rem))]";
 
-export function RegistryCodePanel({ enabled, name }: { enabled: boolean; name: string }) {
-  const query = useRegistryCode(name, enabled);
+export function RegistryCodePanel({ item }: { item: VibeBuiltRegistryItem }) {
+  const query = useHighlightedRegistryFiles(item);
 
   if (query.isPending) {
     return (
@@ -56,23 +48,10 @@ export function RegistryCodePanel({ enabled, name }: { enabled: boolean; name: s
   }
 
   if (query.isError) {
-    return (
-      <Empty className={cn(panelHeight, "w-full rounded-lg border")} role="alert">
-        <EmptyHeader>
-          <EmptyMedia variant="icon">
-            <TriangleAlertIcon />
-          </EmptyMedia>
-          <EmptyTitle>Code could not be loaded</EmptyTitle>
-          <EmptyDescription>{query.error.message}</EmptyDescription>
-        </EmptyHeader>
-        <Button onPress={() => void query.refetch()} variant="outline">
-          Try again
-        </Button>
-      </Empty>
-    );
+    return <CodeExplorer files={item.files} highlightingFailed name={item.name} />;
   }
 
-  return <CodeExplorer files={query.data} name={name} />;
+  return <CodeExplorer files={query.data} name={item.name} />;
 }
 
 export function CodeExplorer({

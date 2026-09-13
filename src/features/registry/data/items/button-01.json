@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-01",
+  "title": "Button 01",
+  "description": "A primary action button with a compact leading icon.",
+  "registryDependencies": ["button"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/button-01/button-01.tsx",
+      "content": "import { ArrowRightIcon } from \"lucide-react\";\nimport { useState } from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function Button01() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <Button onPress={() => setCount(count + 1)}>\n      Get started, {count}\n      <ArrowRightIcon data-icon=\"inline-end\" />\n    </Button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/button-01/button-01.tsx"
+    }
+  ],
+  "categories": ["button"],
+  "type": "registry:component"
+}
