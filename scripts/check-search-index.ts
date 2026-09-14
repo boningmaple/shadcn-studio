@@ -12,7 +12,7 @@ const committed = await readFile(searchIndexArtifactPath, "utf8").catch(() => ""
 if (committed !== expected) {
   process.stderr.write(
     "The committed search index does not match its Registry or route metadata sources.\n" +
-      "Fix it with: npm run generate:search-index\n",
+      "Fix it with: npm run build:search-index\n",
   );
   process.exit(1);
 }

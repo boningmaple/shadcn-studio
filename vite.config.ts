@@ -58,13 +58,13 @@ const config = defineConfig({
   staged: {
     "*": "vp check --fix",
     "{registry.json,registry/vibe-ui/**,scripts/build-registry.ts,src/features/registry/lib/registry-catalog.ts,src/features/registry/types/registry.ts}":
-      () => "npm run registry:build",
+      () => "npm run build:registry",
     // Registry metadata and route-owned search sidecars are the sources for
     // the committed server-side index.
     "{registry.json,src/routes/**/*.search.ts,src/features/registry/lib/registry-catalog.ts,src/features/search/lib/search-index.ts,src/features/search/data/search-index.gen.json,scripts/build-search-index.ts}":
       () => "npm run check:search-index",
-    "{package-lock.json,package.json,scripts/generate-shiki-bundle.ts,src/features/registry/generated/shiki.bundle.gen.ts}":
-      () => "npm run check:shiki",
+    "{package-lock.json,package.json,scripts/build-shiki-bundle.ts,src/features/registry/lib/shiki.bundle.gen.ts}":
+      () => "npm run build:shiki",
   },
   resolve: { tsconfigPaths: true },
   plugins: lazyPlugins(() =>

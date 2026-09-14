@@ -1,47 +1,33 @@
-import type { BundledLanguage } from "../generated/shiki.bundle.gen.ts";
 import type { VibeHighlightedRegistryFile, VibeRegistryItemFile } from "../types/registry.ts";
+import {
+  bundledLanguages,
+  bundledThemes,
+  codeToHtml,
+  type BundledLanguage,
+} from "./shiki.bundle.gen.ts";
 
-const supportedExtensions: Record<string, BundledLanguage> = {
-  css: "css",
-  html: "html",
-  js: "javascript",
-  jsx: "javascript",
-  json: "json",
-  md: "markdown",
-  mdx: "markdown",
-  sh: "bash",
-  ts: "typescript",
-  tsx: "tsx",
-};
+const lightTheme = "github-light" satisfies keyof typeof bundledThemes;
+const darkTheme = "github-dark" satisfies keyof typeof bundledThemes;
 
 export async function highlightRegistryFiles(
   files: readonly VibeRegistryItemFile[],
 ): Promise<VibeHighlightedRegistryFile[]> {
-  const filesWithLanguages = files.map((file) => ({
+  const filesWithExtensions = files.map((file) => ({
+    extension: (file.target ?? file.path).split(".").pop()?.toLowerCase(),
     file,
-    language: languageFor(file.target ?? file.path),
   }));
 
-  if (filesWithLanguages.every(({ language }) => language === undefined)) return [...files];
-
-  const { codeToHtml } = await import("../generated/shiki.bundle.gen.ts");
-
   return Promise.all(
-    filesWithLanguages.map(async ({ file, language }) =>
-      language === undefined
+    filesWithExtensions.map(async ({ extension, file }) =>
+      extension === undefined || !Object.hasOwn(bundledLanguages, extension)
         ? file
         : {
             ...file,
             html: await codeToHtml(file.content, {
-              lang: language,
-              themes: { dark: "github-dark", light: "github-light" },
+              lang: extension as BundledLanguage,
+              themes: { dark: darkTheme, light: lightTheme },
             }),
           },
     ),
   );
-}
-
-function languageFor(filePath: string): BundledLanguage | undefined {
-  const extension = filePath.split(".").pop()?.toLowerCase();
-  return extension === undefined ? undefined : supportedExtensions[extension];
 }

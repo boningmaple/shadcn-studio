@@ -15,7 +15,7 @@ installed shadcn CLI has no watch mode, so rerun the registry build after
 editing an item:
 
 ```bash
-npm run registry:build
+npm run build:registry
 ```
 
 Authored Registry items live in `registry/vibe-ui/<item-name>/`. Every item
@@ -32,7 +32,7 @@ generates importable shadcn payloads in the committed
 the ignored `public/r/` directory:
 
 ```bash
-npm run registry:build
+npm run build:registry
 npx shadcn@latest add https://your-vibeui-host.example/r/button-01.json
 ```
 
@@ -44,7 +44,7 @@ Registry conventions require every item to:
 - declare `registry/vibe-ui/<name>/<name>.tsx` with a default component export;
 - install files under `@components/vibe-ui/<name>/`.
 
-`registry:build` uses the validated generated aggregate to update committed
+`build:registry` uses the validated generated aggregate to update committed
 TypeScript:
 
 - concrete TanStack route files under `src/routes/_rootLayout/{components,blocks,pages}/`;
@@ -55,7 +55,7 @@ TypeScript:
 The generated route directories, item data, and sidebar module are wholly owned
 by the Registry builder. It deletes and recreates them on every run, so do not
 put handwritten files there. TanStack Start generates `src/routeTree.gen.ts`
-when `dev` or `build` starts; `registry:build` does not generate the route tree
+when `dev` or `build` starts; `build:registry` does not generate the route tree
 by itself.
 
 Generated Collection routes embed each Registry item's canonical Preview route
@@ -78,7 +78,7 @@ debouncing, request caching, stale-response protection, retry, and offline
 behavior in the palette.
 
 ```bash
-npm run generate:search-index
+npm run build:search-index
 npm run check:search-index
 ```
 

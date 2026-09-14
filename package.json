@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "npm run registry:build",
+    "predev": "npm run build:registry",
     "dev": "vp dev --port 3000",
     "format": "vp fmt",
     "lint": "vp lint",
@@ -12,15 +12,14 @@
     "test:watch": "vp test watch",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "prebuild": "npm run registry:build",
-    "build": "vp run generate:search-index && vp build",
+    "prebuild": "npm run build:registry",
+    "build": "vp run build:search-index && vp build",
     "preview": "vp preview",
     "prepare": "vp config",
-    "generate:search-index": "node scripts/build-search-index.ts",
+    "build:search-index": "node scripts/build-search-index.ts",
     "check:search-index": "node scripts/check-search-index.ts",
-    "check:shiki": "node scripts/generate-shiki-bundle.ts --check",
-    "generate:shiki": "node scripts/generate-shiki-bundle.ts",
-    "registry:build": "node scripts/build-registry.ts"
+    "build:shiki": "node scripts/build-shiki-bundle.ts",
+    "build:registry": "node scripts/build-registry.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

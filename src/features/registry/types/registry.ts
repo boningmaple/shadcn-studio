@@ -169,12 +169,7 @@ export type VibeRegistrySidebarSection = {
   type: VibeRegistryItemType;
 };
 
-export type VibeRegistryItemFile = {
-  content: string;
-  path: string;
-  target?: string;
-  type: string;
-};
+export type VibeRegistryItemFile = VibeBuiltRegistryItem["files"][number];
 
 export type VibeHighlightedRegistryFile = VibeRegistryItemFile & {
   html?: string;

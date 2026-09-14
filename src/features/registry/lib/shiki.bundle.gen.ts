@@ -22,9 +22,11 @@ type BundledLanguage =
   | 'js'
   | 'cjs'
   | 'mjs'
+  | 'jsx'
   | 'json'
   | 'markdown'
   | 'md'
+  | 'mdx'
   | 'tsx'
   | 'typescript'
   | 'ts'
@@ -45,9 +47,11 @@ const bundledLanguages = {
   js: () => import('@shikijs/langs/javascript'),
   cjs: () => import('@shikijs/langs/javascript'),
   mjs: () => import('@shikijs/langs/javascript'),
+  jsx: () => import('@shikijs/langs/jsx'),
   json: () => import('@shikijs/langs/json'),
   markdown: () => import('@shikijs/langs/markdown'),
   md: () => import('@shikijs/langs/markdown'),
+  mdx: () => import('@shikijs/langs/mdx'),
   tsx: () => import('@shikijs/langs/tsx'),
   typescript: () => import('@shikijs/langs/typescript'),
   ts: () => import('@shikijs/langs/typescript'),
