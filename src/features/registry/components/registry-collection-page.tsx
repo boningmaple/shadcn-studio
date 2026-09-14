@@ -36,20 +36,6 @@ function previewHrefWithTheme(previewHref: string, previewTheme: PreviewTheme | 
   return previewTheme ? `${previewHref}?theme=${previewTheme}` : previewHref;
 }
 
-function RegistryPreviewFrame({ src, title }: { src: string; title: string }) {
-  const [loaded, setLoaded] = useState(false);
-
-  return (
-    <iframe
-      title={title}
-      src={src}
-      loading="lazy"
-      className={loaded ? "size-full opacity-100" : "pointer-events-none size-full opacity-0"}
-      onLoad={() => setLoaded(true)}
-    />
-  );
-}
-
 export function RegistryCollectionPage({
   description,
   items,
@@ -204,5 +190,19 @@ function RegistryItemShowcase({ item }: { item: VibeBuiltRegistryItem }) {
         </TabsContent>
       </Tabs>
     </article>
+  );
+}
+
+function RegistryPreviewFrame({ src, title }: { src: string; title: string }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <iframe
+      title={title}
+      src={src}
+      loading="lazy"
+      className={loaded ? "size-full" : "invisible size-full"}
+      onLoad={() => setLoaded(true)}
+    />
   );
 }
