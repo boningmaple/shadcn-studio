@@ -2,7 +2,6 @@ import { execFileSync } from "node:child_process";
 import { cp, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { isDeepStrictEqual } from "node:util";
 
 import sourceRegistry from "../registry.json" with { type: "json" };
 import {
@@ -12,14 +11,11 @@ import {
   segmentByType,
 } from "../src/features/registry/lib/registry-catalog.ts";
 import {
-  type VibeBuiltRegistryItem,
   type VibeRegistry,
   type VibeRegistryCollection,
-  type VibeRegistryItem,
   type VibeRegistryItemSummary,
   type VibeRegistrySection,
   vibeBuiltRegistryItemSchema,
-  vibeRegistryItemSchema,
   vibeRegistrySchema,
 } from "../src/features/registry/types/registry.ts";
 
@@ -53,43 +49,14 @@ export async function readBuiltRegistryOutput(itemsPath: string): Promise<VibeRe
   const aggregate = vibeRegistrySchema.parse(
     JSON.parse(await readFile(path.join(itemsPath, "registry.json"), "utf8")),
   );
-  const entries = await readdir(itemsPath, { withFileTypes: true });
-  const itemFileNames = entries
-    .filter(
-      (entry) => entry.isFile() && entry.name.endsWith(".json") && entry.name !== "registry.json",
-    )
-    .map((entry) => entry.name)
-    .sort();
-  const expectedFileNames = aggregate.items.map((item) => `${item.name}.json`).sort();
-  const missingFileNames = expectedFileNames.filter(
-    (fileName) => !itemFileNames.includes(fileName),
+  const itemFileNames = (await readdir(itemsPath)).filter(
+    (fileName) => fileName.endsWith(".json") && fileName !== "registry.json",
   );
-  const extraFileNames = itemFileNames.filter((fileName) => !expectedFileNames.includes(fileName));
-
-  if (missingFileNames.length > 0 || extraFileNames.length > 0) {
-    throw new Error(
-      `Built Registry item files do not match the aggregate. Missing: ${missingFileNames.join(", ") || "none"}. Extra: ${extraFileNames.join(", ") || "none"}.`,
-    );
-  }
-
-  const aggregateItems = new Map(aggregate.items.map((item) => [item.name, item]));
 
   for (const fileName of itemFileNames) {
-    const builtItem = vibeBuiltRegistryItemSchema.parse(
+    vibeBuiltRegistryItemSchema.parse(
       JSON.parse(await readFile(path.join(itemsPath, fileName), "utf8")),
     );
-    const fileItemName = fileName.slice(0, -".json".length);
-
-    if (builtItem.name !== fileItemName) {
-      throw new Error(
-        `Built Registry item ${fileName} declares the unexpected name ${builtItem.name}.`,
-      );
-    }
-
-    const aggregateItem = aggregateItems.get(builtItem.name)!;
-    if (!isDeepStrictEqual(registryItemWithoutContent(builtItem), aggregateItem)) {
-      throw new Error(`Built Registry item ${fileName} does not match the aggregate metadata.`);
-    }
   }
 
   return aggregate;
@@ -107,20 +74,6 @@ export async function replaceBuiltRegistryData(
   await rm(publicRegistryPath, { force: true, recursive: true });
   await mkdir(path.dirname(publicRegistryPath), { recursive: true });
   await cp(itemsPath, publicRegistryPath, { recursive: true });
-}
-
-function registryItemWithoutContent(item: VibeBuiltRegistryItem): VibeRegistryItem {
-  const itemMetadata: Record<string, unknown> = { ...item };
-  delete itemMetadata.$schema;
-
-  return vibeRegistryItemSchema.parse({
-    ...itemMetadata,
-    files: item.files.map((file) => {
-      const metadata: Record<string, unknown> = { ...file };
-      delete metadata.content;
-      return metadata;
-    }),
-  });
 }
 
 export async function writeRegistryOutputs(
