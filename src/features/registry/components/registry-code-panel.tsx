@@ -1,12 +1,5 @@
-import {
-  CheckIcon,
-  ChevronRightIcon,
-  CopyIcon,
-  FileIcon,
-  FolderIcon,
-  PanelLeftIcon,
-} from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { ChevronRightIcon, FileIcon, FolderIcon, PanelLeftIcon } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
 import {
   Button as AriaButton,
   Dialog,
@@ -18,8 +11,8 @@ import {
   TreeItemContent,
   type Key,
 } from "react-aria-components";
-import { toast } from "sonner";
 
+import { CopyButton } from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -70,38 +63,17 @@ export function CodeExplorer({
   const [desktopTreeOpen, setDesktopTreeOpen] = useState(true);
   const [mobileTreeOpen, setMobileTreeOpen] = useState(false);
   const [expandedKeys, setExpandedKeys] = useState<Set<Key>>(() => directoryKeys(tree));
-  const [copied, setCopied] = useState(false);
   const codeScrollerRef = useRef<HTMLDivElement>(null);
   const overlayContainerRef = useRef<HTMLDivElement>(null);
-  const copyResetRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const selectedFile =
     files.find((file) => registryFileDisplayPath(file) === selectedPath) ?? files[0]!;
   const hasFileTree = files.length > 1;
-
-  useEffect(
-    () => () => {
-      if (copyResetRef.current !== undefined) clearTimeout(copyResetRef.current);
-    },
-    [],
-  );
 
   const selectFile = (path: string) => {
     setSelectedPath(path);
     setExpandedKeys((current) => new Set([...current, ...ancestorKeys(path)]));
     setMobileTreeOpen(false);
-    setCopied(false);
     codeScrollerRef.current?.scrollTo({ left: 0, top: 0 });
-  };
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(selectedFile.content);
-      if (copyResetRef.current !== undefined) clearTimeout(copyResetRef.current);
-      setCopied(true);
-      copyResetRef.current = setTimeout(() => setCopied(false), 1_500);
-    } catch {
-      toast.error("Could not copy the current file.");
-    }
   };
 
   const treeOpen = isMobile ? mobileTreeOpen : desktopTreeOpen;
@@ -118,6 +90,7 @@ export function CodeExplorer({
           Syntax highlighting is unavailable. Showing plain code.
         </output>
       ) : null}
+
       <header className="flex h-11 shrink-0 items-center gap-2 border-b px-2">
         {hasFileTree ? (
           <Button
@@ -136,12 +109,7 @@ export function CodeExplorer({
         <span className="min-w-0 flex-1 truncate px-1 font-mono text-xs text-muted-foreground">
           {registryFileDisplayPath(selectedFile)}
         </span>
-        <Button aria-label="Copy current file" onPress={copy} size="icon-sm" variant="ghost">
-          {copied ? <CheckIcon /> : <CopyIcon />}
-        </Button>
-        <span aria-live="polite" className="sr-only">
-          {copied ? "Current file copied." : ""}
-        </span>
+        <CopyButton content={selectedFile.content} />
       </header>
 
       <div className="relative flex min-h-0 flex-1" ref={overlayContainerRef}>
