@@ -14,7 +14,6 @@ import {
 
 import { CopyButton } from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
@@ -22,29 +21,10 @@ import { useHighlightedRegistryFiles } from "../hooks/use-highlighted-registry-f
 import { buildFileTree, registryFileDisplayPath, type FileTreeNode } from "../lib/file-tree.ts";
 import type { VibeBuiltRegistryItem, VibeHighlightedRegistryFile } from "../types/registry.ts";
 
-const panelHeight = "h-[min(30rem,calc(100svh-2rem))] lg:h-[min(36rem,calc(100svh-2rem))]";
-
 export function RegistryCodePanel({ item }: { item: VibeBuiltRegistryItem }) {
   const query = useHighlightedRegistryFiles(item);
 
-  if (query.isPending || query.isError) {
-    return (
-      <output
-        className={cn(
-          panelHeight,
-          "flex w-full items-center justify-center gap-2 rounded-lg border text-sm text-muted-foreground",
-        )}
-      >
-        {query.isPending ? (
-          <>
-            <Spinner /> Loading code
-          </>
-        ) : (
-          "Unable to display source code."
-        )}
-      </output>
-    );
-  }
+  if (query.isPending || query.isError) return null;
 
   return <CodeExplorer files={query.data} name={item.name} />;
 }
@@ -80,12 +60,7 @@ export function CodeExplorer({
   const treeOpen = isMobile ? mobileTreeOpen : desktopTreeOpen;
 
   return (
-    <div
-      className={cn(
-        panelHeight,
-        "flex w-full flex-col overflow-hidden rounded-lg border bg-background",
-      )}
-    >
+    <div className="h-[min(30rem,calc(100svh-2rem))] lg:h-[min(36rem,calc(100svh-2rem))]jflex w-full flex-col overflow-hidden rounded-lg border bg-background">
       <header className="flex h-11 shrink-0 items-center gap-2 border-b px-2">
         {hasFileTree ? (
           <Button
@@ -95,7 +70,7 @@ export function CodeExplorer({
               if (isMobile) setMobileTreeOpen((open) => !open);
               else setDesktopTreeOpen((open) => !open);
             }}
-            size="icon-sm"
+            size="icon"
             variant="ghost"
           >
             <PanelLeftIcon />
