@@ -97,33 +97,108 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-it("navigates highlighted files", async () => {
+const explorerFiles: VibeHighlightedRegistryFile[] = [
+  {
+    content: "export function LoginPage() {}",
+    html: '<pre class="shiki"><code>export function LoginPage() {}</code></pre>',
+    path: "registry/login-page.tsx",
+    target: "@components/vibe-ui/login-page-01/login-page-01.tsx",
+    type: "registry:page",
+  },
+  {
+    content: ".login-page { display: grid; }",
+    html: '<pre class="shiki"><code>.login-page { display: grid; }</code></pre>',
+    path: "registry/login-page.css",
+    target: "@components/vibe-ui/login-page-01/login-page-01.css",
+    type: "registry:file",
+  },
+];
+
+it("navigates the Sidebar file tree built from highlighted Registry item files", async () => {
   await page.viewport(1024, 800);
-  const files: VibeHighlightedRegistryFile[] = [
-    {
-      content: "export function LoginPage() {}",
-      html: '<pre class="shiki"><code>export function LoginPage() {}</code></pre>',
-      path: "registry/login-page.tsx",
-      target: "@components/vibe-ui/login-page-01/login-page-01.tsx",
-      type: "registry:page",
-    },
-    {
-      content: ".login-page { display: grid; }",
-      html: '<pre class="shiki"><code>.login-page { display: grid; }</code></pre>',
-      path: "registry/login-page.css",
-      target: "@components/vibe-ui/login-page-01/login-page-01.css",
-      type: "registry:file",
-    },
-  ];
+  await render(<CodeExplorer files={explorerFiles} />);
 
-  await render(<CodeExplorer files={files} />);
+  for (const directory of ["@components", "vibe-ui", "login-page-01"]) {
+    await expect
+      .element(page.getByRole("button", { exact: true, name: directory }))
+      .toHaveAttribute("aria-expanded", "true");
+  }
 
-  const cssLabel = [...document.querySelectorAll("span")].find(
-    (element) => element.textContent === "login-page-01.css",
-  )!;
-  await userEvent.click(page.elementLocator(cssLabel.closest<HTMLElement>('[role="row"]')!));
-  await userEvent.keyboard("{Enter}");
+  const source = document.querySelector<HTMLElement>('[aria-label^="Source code for"]')!;
+  const scrollToSpy = vi.spyOn(source, "scrollTo");
+  await userEvent.click(page.getByRole("button", { name: "login-page-01.css" }));
+
   await expect.element(page.getByText(".login-page { display: grid; }")).toBeInTheDocument();
+  await expect
+    .element(page.getByRole("button", { name: "login-page-01.css" }))
+    .toHaveAttribute("data-active", "true");
+  expect(scrollToSpy).toHaveBeenCalledWith({ left: 0, top: 0 });
+});
+
+it("collapses and expands every directory in the Sidebar file tree", async () => {
+  await page.viewport(1024, 800);
+  await render(<CodeExplorer files={explorerFiles} />);
+  const directory = page.getByRole("button", { exact: true, name: "login-page-01" });
+
+  await userEvent.click(directory);
+  await expect.element(directory).toHaveAttribute("aria-expanded", "false");
+
+  await userEvent.click(directory);
+  await expect.element(directory).toHaveAttribute("aria-expanded", "true");
+});
+
+it("keeps deeply nested file rows wide and visibly marks the selected file", async () => {
+  await page.viewport(1024, 800);
+  await render(<CodeExplorer files={explorerFiles} />);
+  const submenus = [...document.querySelectorAll<HTMLElement>('[data-slot="sidebar-menu-sub"]')];
+  const rightEdges = submenus.map((submenu) => submenu.getBoundingClientRect().right);
+
+  expect.soft(Math.max(...rightEdges) - Math.min(...rightEdges)).toBeLessThan(1);
+
+  const cssFile = page.getByRole("button", { name: "login-page-01.css" });
+  await userEvent.click(cssFile);
+  const backgroundColor = getComputedStyle(
+    document.querySelector<HTMLElement>('[data-slot="sidebar-menu-button"][data-active="true"]')!,
+  ).backgroundColor;
+
+  expect(backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
+});
+
+it("uses an independent contained Sidebar instead of a Sheet on mobile", async () => {
+  await page.viewport(390, 844);
+  await render(<CodeExplorer files={explorerFiles} />);
+  const sidebar = page.elementLocator(
+    document.querySelector<HTMLElement>('[data-slot="sidebar"][data-layout="contained"]')!,
+  );
+
+  await expect.element(sidebar).toHaveAttribute("data-state", "collapsed");
+  expect(document.querySelector('[data-slot="sheet-content"]')).toBeNull();
+
+  await userEvent.click(page.getByRole("button", { name: "Toggle file explorer" }));
+  await expect.element(sidebar).toHaveAttribute("data-state", "expanded");
+
+  await userEvent.click(page.getByRole("button", { name: "login-page-01.css" }));
+  await expect.element(sidebar).toHaveAttribute("data-state", "collapsed");
+  await expect.element(page.getByText(".login-page { display: grid; }")).toBeInTheDocument();
+
+  await userEvent.click(page.getByRole("button", { name: "Toggle file explorer" }));
+  await expect.element(sidebar).toHaveAttribute("data-state", "expanded");
+
+  await page.viewport(1024, 800);
+  await expect.element(sidebar).toHaveAttribute("data-state", "expanded");
+  await userEvent.click(page.getByRole("button", { name: "Toggle file explorer" }));
+  await expect.element(sidebar).toHaveAttribute("data-state", "collapsed");
+
+  await page.viewport(390, 844);
+  await expect.element(sidebar).toHaveAttribute("data-state", "expanded");
+});
+
+it("omits the file explorer for a single-file Registry item", async () => {
+  await page.viewport(1024, 800);
+  await render(<CodeExplorer files={[explorerFiles[0]!]} />);
+
+  expect(document.querySelector('[data-layout="contained"]')).toBeNull();
+  expect(document.querySelector('[aria-label="Toggle file explorer"]')).toBeNull();
 });
 
 describe("Collection Code previews", () => {
