@@ -67,6 +67,7 @@ export function CodeExplorer({
   const overlayContainerRef = useRef<HTMLDivElement>(null);
   const selectedFile =
     files.find((file) => registryFileDisplayPath(file) === selectedPath) ?? files[0]!;
+  const selectedFileName = registryFileDisplayPath(selectedFile).split("/").at(-1);
   const hasFileTree = files.length > 1;
 
   const selectFile = (path: string) => {
@@ -107,7 +108,7 @@ export function CodeExplorer({
           </Button>
         ) : null}
         <span className="min-w-0 flex-1 truncate px-1 font-mono text-xs text-muted-foreground">
-          {registryFileDisplayPath(selectedFile)}
+          {selectedFileName}
         </span>
         <CopyButton content={selectedFile.content} />
       </header>
