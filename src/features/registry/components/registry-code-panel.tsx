@@ -27,7 +27,7 @@ const panelHeight = "h-[min(30rem,calc(100svh-2rem))] lg:h-[min(36rem,calc(100sv
 export function RegistryCodePanel({ item }: { item: VibeBuiltRegistryItem }) {
   const query = useHighlightedRegistryFiles(item);
 
-  if (query.isPending) {
+  if (query.isPending || query.isError) {
     return (
       <output
         className={cn(
@@ -35,13 +35,15 @@ export function RegistryCodePanel({ item }: { item: VibeBuiltRegistryItem }) {
           "flex w-full items-center justify-center gap-2 rounded-lg border text-sm text-muted-foreground",
         )}
       >
-        <Spinner /> Loading code
+        {query.isPending ? (
+          <>
+            <Spinner /> Loading code
+          </>
+        ) : (
+          "Unable to display source code."
+        )}
       </output>
     );
-  }
-
-  if (query.isError) {
-    return <CodeExplorer files={item.files} highlightingFailed name={item.name} />;
   }
 
   return <CodeExplorer files={query.data} name={item.name} />;
@@ -49,11 +51,9 @@ export function RegistryCodePanel({ item }: { item: VibeBuiltRegistryItem }) {
 
 export function CodeExplorer({
   files,
-  highlightingFailed = false,
   name = "",
 }: {
   files: VibeHighlightedRegistryFile[];
-  highlightingFailed?: boolean;
   name?: string;
 }) {
   const isMobile = useIsMobile();
@@ -63,7 +63,7 @@ export function CodeExplorer({
   const [desktopTreeOpen, setDesktopTreeOpen] = useState(true);
   const [mobileTreeOpen, setMobileTreeOpen] = useState(false);
   const [expandedKeys, setExpandedKeys] = useState<Set<Key>>(() => directoryKeys(tree));
-  const codeScrollerRef = useRef<HTMLDivElement>(null);
+  const codeScrollerRef = useRef<HTMLElement>(null);
   const overlayContainerRef = useRef<HTMLDivElement>(null);
   const selectedFile =
     files.find((file) => registryFileDisplayPath(file) === selectedPath) ?? files[0]!;
@@ -86,12 +86,6 @@ export function CodeExplorer({
         "flex w-full flex-col overflow-hidden rounded-lg border bg-background",
       )}
     >
-      {highlightingFailed ? (
-        <output className="block shrink-0 border-b bg-muted/40 px-4 py-2 text-xs text-muted-foreground">
-          Syntax highlighting is unavailable. Showing plain code.
-        </output>
-      ) : null}
-
       <header className="flex h-11 shrink-0 items-center gap-2 border-b px-2">
         {hasFileTree ? (
           <Button
@@ -135,15 +129,12 @@ export function CodeExplorer({
           </aside>
         ) : null}
 
-        <section aria-label={registryFileDisplayPath(selectedFile)} className="min-w-0 flex-1">
-          <div className="registry-code size-full overflow-auto" ref={codeScrollerRef}>
-            {selectedFile.html === undefined ? (
-              <PlainCode content={selectedFile.content} />
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: selectedFile.html }} />
-            )}
-          </div>
-        </section>
+        <section
+          aria-label={`Source code for ${selectedFileName}`}
+          className="registry-code min-w-0 flex-1 overflow-auto"
+          dangerouslySetInnerHTML={{ __html: selectedFile.html }}
+          ref={codeScrollerRef}
+        />
 
         {hasFileTree && isMobile ? (
           <ModalOverlay
@@ -268,20 +259,6 @@ function ExplorerTreeItem({
         />
       ))}
     </TreeItem>
-  );
-}
-
-function PlainCode({ content }: { content: string }) {
-  return (
-    <pre className="shiki">
-      <code>
-        {content.split("\n").map((line, index) => (
-          <span className="line" key={`${index}:${line}`}>
-            {line || "\n"}
-          </span>
-        ))}
-      </code>
-    </pre>
   );
 }
 

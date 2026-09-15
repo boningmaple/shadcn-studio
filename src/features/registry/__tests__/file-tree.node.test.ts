@@ -5,6 +5,7 @@ import type { VibeHighlightedRegistryFile } from "@/features/registry/types/regi
 
 const file = (target: string): VibeHighlightedRegistryFile => ({
   content: target,
+  html: target,
   path: `registry/${target}`,
   target,
   type: "registry:file",

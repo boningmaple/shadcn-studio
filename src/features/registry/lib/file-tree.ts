@@ -7,7 +7,7 @@ export type FileTreeNode = {
 };
 
 export function registryFileDisplayPath(file: VibeHighlightedRegistryFile): string {
-  return file.target ?? file.path;
+  return file.target;
 }
 
 export function buildFileTree(files: readonly VibeHighlightedRegistryFile[]): FileTreeNode[] {

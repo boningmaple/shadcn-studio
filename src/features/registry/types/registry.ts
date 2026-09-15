@@ -6,6 +6,8 @@ import {
 } from "shadcn/schema";
 import { z } from "zod";
 
+import { shikiLanguageForPath } from "../lib/shiki-language.ts";
+
 type ShadcnSchema<T> = {
   safeParse(data: unknown):
     | { success: true; data: T }
@@ -67,12 +69,17 @@ export const vibeRegistryItemSchema = z.intersection(
 
 const vibeBuiltRegistryItemFilesSchema = z
   .array(
-    z.looseObject({
-      content: z.string(),
-      path: z.string(),
-      target: z.string().optional(),
-      type: z.string(),
-    }),
+    z
+      .looseObject({
+        content: z.string(),
+        path: z.string(),
+        target: z.string().trim().min(1),
+        type: z.string(),
+      })
+      .refine((file) => shikiLanguageForPath(file.target) !== undefined, {
+        message: "Must use a file extension supported by the Shiki bundle.",
+        path: ["target"],
+      }),
   )
   .min(1);
 
@@ -172,5 +179,5 @@ export type VibeRegistrySidebarSection = {
 export type VibeRegistryItemFile = VibeBuiltRegistryItem["files"][number];
 
 export type VibeHighlightedRegistryFile = VibeRegistryItemFile & {
-  html?: string;
+  html: string;
 };

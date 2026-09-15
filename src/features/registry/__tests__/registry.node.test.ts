@@ -46,6 +46,29 @@ describe("vibeBuiltRegistryItemSchema", () => {
 
     expect(() => vibeBuiltRegistryItemSchema.parse(item)).toThrow();
   });
+
+  it("rejects a built Registry item when any file has no installation target", () => {
+    const item = builtRegistryItem(registryItem({ name: "button-02" }));
+    delete (item.files[0] as { target?: string }).target;
+
+    expect(() => vibeBuiltRegistryItemSchema.parse(item)).toThrow();
+  });
+
+  it("rejects target extensions outside the Shiki bundle", () => {
+    const item = builtRegistryItem(registryItem({ name: "button-02" }));
+    item.files[0]!.target = "@components/vibe-ui/button-02/button-02.txt";
+
+    expect(() => vibeBuiltRegistryItemSchema.parse(item)).toThrow(/Shiki bundle/);
+  });
+
+  it("accepts target extensions exposed as Shiki language aliases", () => {
+    const item = builtRegistryItem(registryItem({ name: "button-02" }));
+    item.files[0]!.target = "@components/vibe-ui/button-02/button-02.typescript";
+
+    expect(vibeBuiltRegistryItemSchema.parse(item).files[0]?.target).toBe(
+      "@components/vibe-ui/button-02/button-02.typescript",
+    );
+  });
 });
 
 describe("vibeRegistrySchema", () => {

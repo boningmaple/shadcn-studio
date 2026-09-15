@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { afterEach, describe, expect, it, vi } from "vite-plus/test";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 import { page, userEvent } from "vite-plus/test/browser/context";
 import { render } from "vitest-browser-react";
 
@@ -24,7 +24,8 @@ const collectionItems: VibeBuiltRegistryItem[] = [
     files: [
       {
         content: "First item source",
-        path: "registry/first-item.txt",
+        path: "registry/first-item.tsx",
+        target: "@components/first-item.tsx",
         type: "registry:component",
       },
     ],
@@ -38,7 +39,8 @@ const collectionItems: VibeBuiltRegistryItem[] = [
     files: [
       {
         content: "Second item source",
-        path: "registry/second-item.txt",
+        path: "registry/second-item.tsx",
+        target: "@components/second-item.tsx",
         type: "registry:component",
       },
     ],
@@ -76,6 +78,15 @@ const fetchInputUrl = (input: RequestInfo | URL) => {
   return input.url;
 };
 
+beforeEach(() => {
+  vi.mocked(highlightCode.highlightRegistryFiles).mockImplementation(async (files) =>
+    files.map((file) => ({
+      ...file,
+      html: `<pre class="shiki"><code>${file.content}</code></pre>`,
+    })),
+  );
+});
+
 afterEach(() => {
   const root = document.documentElement;
   delete root.dataset.theme;
@@ -86,26 +97,27 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-it("navigates textual files and keeps plain source usable when highlighting fails", async () => {
+it("navigates highlighted files", async () => {
   await page.viewport(1024, 800);
   const files: VibeHighlightedRegistryFile[] = [
     {
       content: "export function LoginPage() {}",
+      html: '<pre class="shiki"><code>export function LoginPage() {}</code></pre>',
       path: "registry/login-page.tsx",
       target: "@components/vibe-ui/login-page-01/login-page-01.tsx",
       type: "registry:page",
     },
     {
       content: ".login-page { display: grid; }",
+      html: '<pre class="shiki"><code>.login-page { display: grid; }</code></pre>',
       path: "registry/login-page.css",
       target: "@components/vibe-ui/login-page-01/login-page-01.css",
       type: "registry:file",
     },
   ];
 
-  await render(<CodeExplorer files={files} highlightingFailed />);
+  await render(<CodeExplorer files={files} />);
 
-  await expect.element(page.getByText(/Syntax highlighting is unavailable/)).toBeInTheDocument();
   const cssLabel = [...document.querySelectorAll("span")].find(
     (element) => element.textContent === "login-page-01.css",
   )!;
@@ -117,9 +129,7 @@ it("navigates textual files and keeps plain source usable when highlighting fail
 describe("Collection Code previews", () => {
   it("starts highlighting on mount and shows the completed result without a Registry request", async () => {
     const fetchSpy = vi.spyOn(globalThis, "fetch");
-    const highlightSpy = vi
-      .mocked(highlightCode.highlightRegistryFiles)
-      .mockImplementation(async (files) => [...files]);
+    const highlightSpy = vi.mocked(highlightCode.highlightRegistryFiles);
 
     await renderCollection();
 
@@ -129,7 +139,11 @@ describe("Collection Code previews", () => {
     await userEvent.click(
       itemElement<HTMLButtonElement>("first-item", '[role="tab"]:nth-of-type(2)'),
     );
-    await expect.element(page.getByText("First item source")).toBeInTheDocument();
+    const sourceCode = item("first-item").querySelector<HTMLElement>(
+      'section[aria-label="Source code for first-item.tsx"]',
+    )!;
+    expect(sourceCode.firstElementChild?.tagName).toBe("PRE");
+    await expect.element(page.elementLocator(sourceCode)).toHaveTextContent("First item source");
   });
 
   it("shows loading while background highlighting remains pending", async () => {
@@ -147,7 +161,7 @@ describe("Collection Code previews", () => {
       .toHaveTextContent("Loading code");
   });
 
-  it("falls back to raw source after one failed highlighting attempt per item", async () => {
+  it("shows an error after one failed highlighting attempt per item", async () => {
     const highlightSpy = vi
       .mocked(highlightCode.highlightRegistryFiles)
       .mockRejectedValue(new Error("Highlighting failed"));
@@ -160,10 +174,10 @@ describe("Collection Code previews", () => {
 
     await expect
       .element(itemElement<HTMLOutputElement>("first-item", "output"))
-      .toHaveTextContent("Syntax highlighting is unavailable");
-    await expect.element(page.getByText("First item source")).toBeInTheDocument();
+      .toHaveTextContent("Unable to display source code.");
     expect(highlightSpy).toHaveBeenCalledTimes(2);
-    expect(document.body.textContent).not.toContain("Try again");
+    expect(document.body.textContent).not.toContain("First item source");
+    expect(document.body.textContent).not.toContain("Highlighting failed");
   });
 });
 
