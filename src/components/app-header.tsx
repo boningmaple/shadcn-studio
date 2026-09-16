@@ -15,35 +15,48 @@ const headerNavRoutes = [componentsRoute, blocksRoute, pagesRoute] as const;
 export function AppHeader() {
   return (
     <header className="sticky top-0 z-50 w-full h-(--header-height) border-b border-dashed backdrop-blur-sm flex items-center gap-4 px-4">
-      <SidebarTrigger className="lg:hidden" size="icon" />
-
-      <Link
-        className="text-xl font-bold hover:underline"
-        aria-label={homeRoute.options.staticData.ariaLabel}
-        to={homeRoute.to}
-        activeOptions={{ exact: true }}
-      >
-        VibeUI
-      </Link>
-
-      <nav aria-label="App primary navigation" className="hidden lg:flex items-center gap-8 mx-4">
-        {headerNavRoutes.map((route) => (
-          <Link
-            key={route.id}
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground data-status:text-foreground data-status:underline data-status:underline-offset-3"
-            to={route.to}
-          >
-            {route.options.staticData.ariaLabel}
-          </Link>
-        ))}
-      </nav>
-
-      <div className="flex-1" />
-
-      <div aria-label="App header actions" className="flex items-center gap-4">
-        <SearchDialogTrigger quickLinks={appQuickLinks} />
-        <ThemeSwitchButton />
-      </div>
+      <SidebarTrigger className="lg:hidden" size="icon" variant="outline" />
+      <AppBrandLink />
+      <AppHeaderNavigation />
+      <AppHeaderActions />
     </header>
+  );
+}
+
+function AppBrandLink() {
+  return (
+    <Link
+      className="text-xl font-bold hover:underline"
+      aria-label={homeRoute.options.staticData.ariaLabel}
+      to={homeRoute.to}
+      activeOptions={{ exact: true }}
+    >
+      VibeUI
+    </Link>
+  );
+}
+
+function AppHeaderNavigation() {
+  return (
+    <nav aria-label="App header navigation" className="hidden lg:flex items-center gap-8 mx-4">
+      {headerNavRoutes.map((route) => (
+        <Link
+          key={route.id}
+          className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground data-status:text-foreground data-status:underline data-status:underline-offset-3"
+          to={route.to}
+        >
+          {route.options.staticData.ariaLabel}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
+function AppHeaderActions() {
+  return (
+    <div className="ml-auto flex items-center gap-2">
+      <SearchDialogTrigger quickLinks={appQuickLinks} />
+      <ThemeSwitchButton />
+    </div>
   );
 }
