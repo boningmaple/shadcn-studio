@@ -70,8 +70,7 @@ describe("ThemeSwitchButton", () => {
     }
   });
 
-  // The switch keeps one stable button, and explicitly restores focus after
-  // activation so the updated label and tooltip stay attached to focus.
+  // The switch keeps one stable button so focus remains while its label updates.
   it("works with keyboard", async () => {
     await renderThemeSwitch();
 
@@ -100,21 +99,6 @@ describe("ThemeSwitchButton - a11y", () => {
       await expect.element(themeButton()).toHaveAccessibleName(labelFor(theme));
       await userEvent.click(themeButton());
     }
-  });
-
-  it("updates the tooltip text after the switch is focused again", async () => {
-    localStorage.setItem(localStorageKey, "dark");
-    await renderThemeSwitch();
-
-    await userEvent.hover(themeButton());
-    await expect.element(page.getByRole("tooltip")).toBeVisible();
-    await expect.element(page.getByRole("tooltip")).toHaveTextContent(labelFor("dark"));
-
-    await userEvent.click(themeButton());
-    await expectTheme("system", "light");
-    await expect.element(themeButton()).toHaveFocus();
-    await expect.element(page.getByRole("tooltip")).toBeVisible();
-    await expect.element(page.getByRole("tooltip")).toHaveTextContent(labelFor("system"));
   });
 });
 

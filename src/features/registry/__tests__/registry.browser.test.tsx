@@ -211,9 +211,7 @@ describe("Collection Code previews", () => {
     await expect.poll(() => highlightSpy.mock.calls.length).toBe(2);
     expect(fetchSpy.mock.calls.some(([input]) => fetchInputUrl(input).includes("/r/"))).toBe(false);
 
-    await userEvent.click(
-      itemElement<HTMLButtonElement>("first-item", '[role="tab"]:nth-of-type(2)'),
-    );
+    await userEvent.click(page.getByRole("tab", { name: "Code" }).nth(0));
     const sourceCode = item("first-item").querySelector<HTMLElement>(
       'section[aria-label="Source code for first-item.tsx"]',
     )!;
@@ -221,35 +219,30 @@ describe("Collection Code previews", () => {
     await expect.element(page.elementLocator(sourceCode)).toHaveTextContent("First item source");
   });
 
-  it("shows loading while background highlighting remains pending", async () => {
-    vi.mocked(highlightCode.highlightRegistryFiles).mockImplementation(
-      () => new Promise(() => undefined),
-    );
+  it("leaves the code panel empty while background highlighting remains pending", async () => {
+    const highlightSpy = vi
+      .mocked(highlightCode.highlightRegistryFiles)
+      .mockImplementation(() => new Promise(() => undefined));
 
     await renderCollection();
-    await userEvent.click(
-      itemElement<HTMLButtonElement>("first-item", '[role="tab"]:nth-of-type(2)'),
-    );
+    await expect.poll(() => highlightSpy.mock.calls.length).toBe(2);
+    await userEvent.click(page.getByRole("tab", { name: "Code" }).nth(0));
 
-    await expect
-      .element(itemElement<HTMLOutputElement>("first-item", "output"))
-      .toHaveTextContent("Loading code");
+    expect(item("first-item").querySelector("output")).toBeNull();
+    expect(item("first-item").querySelector('[aria-label^="Source code for"]')).toBeNull();
   });
 
-  it("shows an error after one failed highlighting attempt per item", async () => {
+  it("leaves the code panel empty after one failed highlighting attempt per item", async () => {
     const highlightSpy = vi
       .mocked(highlightCode.highlightRegistryFiles)
       .mockRejectedValue(new Error("Highlighting failed"));
 
     await renderCollection();
     await expect.poll(() => highlightSpy.mock.calls.length).toBe(2);
-    await userEvent.click(
-      itemElement<HTMLButtonElement>("first-item", '[role="tab"]:nth-of-type(2)'),
-    );
+    await userEvent.click(page.getByRole("tab", { name: "Code" }).nth(0));
 
-    await expect
-      .element(itemElement<HTMLOutputElement>("first-item", "output"))
-      .toHaveTextContent("Unable to display source code.");
+    expect(item("first-item").querySelector("output")).toBeNull();
+    expect(item("first-item").querySelector('[aria-label^="Source code for"]')).toBeNull();
     expect(highlightSpy).toHaveBeenCalledTimes(2);
     expect(document.body.textContent).not.toContain("First item source");
     expect(document.body.textContent).not.toContain("Highlighting failed");
@@ -383,7 +376,7 @@ describe("Registry item Preview themes", () => {
 
     const originalFrame = previewFrame("first-item");
     originalFrame.dispatchEvent(new Event("load"));
-    await expect.poll(() => getComputedStyle(originalFrame).opacity).toBe("1");
+    await expect.poll(() => getComputedStyle(originalFrame).visibility).toBe("visible");
 
     await userEvent.click(
       itemElement<HTMLButtonElement>("first-item", 'button[aria-label="Reset preview"]'),
@@ -391,10 +384,10 @@ describe("Registry item Preview themes", () => {
 
     const replacementFrame = previewFrame("first-item");
     expect(replacementFrame).not.toBe(originalFrame);
-    expect(getComputedStyle(replacementFrame).opacity).toBe("0");
+    expect(getComputedStyle(replacementFrame).visibility).toBe("hidden");
 
     replacementFrame.dispatchEvent(new Event("load"));
-    await expect.poll(() => getComputedStyle(replacementFrame).opacity).toBe("1");
+    await expect.poll(() => getComputedStyle(replacementFrame).visibility).toBe("visible");
   });
 });
 

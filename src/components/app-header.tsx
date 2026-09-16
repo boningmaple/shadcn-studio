@@ -38,7 +38,7 @@ function AppBrandLink() {
 
 function AppHeaderNavigation() {
   return (
-    <nav aria-label="App header navigation" className="hidden lg:flex items-center gap-8 mx-4">
+    <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 mx-4">
       {headerNavRoutes.map((route) => (
         <Link
           key={route.id}
