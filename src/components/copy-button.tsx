@@ -13,6 +13,11 @@ type CopyButtonProps = React.ComponentPropsWithoutRef<typeof Button> & {
   successMessage?: string;
 };
 
+type CopyState = {
+  content: string;
+  status: "copied" | "copying" | "idle";
+};
+
 export function CopyButton({
   "aria-label": ariaLabel = "Copy current content",
   className,
@@ -24,14 +29,13 @@ export function CopyButton({
   variant = "ghost",
   ...props
 }: CopyButtonProps) {
-  const [copyState, setCopyState] = useState<"idle" | "copying" | "copied">("idle");
-  const copied = copyState === "copied";
+  const [copyState, setCopyState] = useState<CopyState>({ content, status: "idle" });
+  const copyStatus = copyState.content === content ? copyState.status : "idle";
+  const copied = copyStatus === "copied";
   const copyAttemptRef = useRef(0);
   const copyResetRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
-    setCopyState("idle");
-
     return () => {
       copyAttemptRef.current += 1;
       if (copyResetRef.current !== undefined) clearTimeout(copyResetRef.current);
@@ -40,18 +44,21 @@ export function CopyButton({
 
   const copy = async () => {
     const copyAttempt = copyAttemptRef.current;
-    setCopyState("copying");
+    setCopyState({ content, status: "copying" });
 
     try {
       await navigator.clipboard.writeText(content);
       if (copyAttempt !== copyAttemptRef.current) return;
 
-      setCopyState("copied");
-      copyResetRef.current = setTimeout(() => setCopyState("idle"), copiedStateDuration);
+      setCopyState({ content, status: "copied" });
+      copyResetRef.current = setTimeout(
+        () => setCopyState({ content, status: "idle" }),
+        copiedStateDuration,
+      );
     } catch {
       if (copyAttempt !== copyAttemptRef.current) return;
 
-      setCopyState("idle");
+      setCopyState({ content, status: "idle" });
       toast.error(errorMessage);
     }
   };
@@ -62,7 +69,7 @@ export function CopyButton({
         {...props}
         aria-label={ariaLabel}
         className={cn("disabled:opacity-100", className)}
-        isDisabled={isDisabled || copyState !== "idle"}
+        isDisabled={isDisabled || copyStatus !== "idle"}
         onPress={copy}
         size={size}
         variant={variant}

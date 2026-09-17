@@ -7,7 +7,7 @@ import {
   SmartphoneIcon,
   TabletIcon,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePanelRef } from "react-resizable-panels";
 
 import { LinkButton } from "@/components/ui/button";
@@ -66,15 +66,17 @@ function RegistryItemShowcase({ item }: { item: VibeBuiltRegistryItem }) {
   const previewPanelRef = usePanelRef();
   const [previewKey, setPreviewKey] = useState(0);
   const [previewTheme, setPreviewTheme] = useState<PreviewTheme | null>(null);
+  const [previewThemeAppTheme, setPreviewThemeAppTheme] = useState(appTheme);
   const previewHref = registryPreviewHref(item.type, item.categories[0], item.name);
   const previewSrc = previewHrefWithTheme(previewHref, previewTheme);
   const resetPreview = () => {
     setPreviewKey((key) => key + 1);
   };
 
-  useEffect(() => {
+  if (previewThemeAppTheme !== appTheme) {
+    setPreviewThemeAppTheme(appTheme);
     setPreviewTheme(null);
-  }, [appTheme]);
+  }
 
   const handlePreviewSizeChange = (keys: Set<React.Key>) => {
     const [size] = keys;
@@ -173,13 +175,12 @@ function RegistryItemShowcase({ item }: { item: VibeBuiltRegistryItem }) {
               }
               className="size-full rounded-lg border bg-background"
             >
-              {hydrated ? (
-                <RegistryPreviewFrame
-                  key={`${previewKey}:${previewSrc}`}
-                  title={`${item.title} Preview`}
-                  src={previewSrc}
-                />
-              ) : null}
+              <RegistryPreviewFrame
+                initiallyLoaded={!hydrated}
+                key={`${previewKey}:${previewSrc}`}
+                title={`${item.title} Preview`}
+                src={previewSrc}
+              />
             </ResizablePanel>
             <ResizableHandle className="hidden lg:flex w-3 cursor-col-resize bg-background after:absolute after:top-1/2 after:right-0 after:h-16 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all" />
             <ResizablePanel defaultSize="0%" minSize="0%" />
@@ -193,8 +194,16 @@ function RegistryItemShowcase({ item }: { item: VibeBuiltRegistryItem }) {
   );
 }
 
-function RegistryPreviewFrame({ src, title }: { src: string; title: string }) {
-  const [loaded, setLoaded] = useState(false);
+function RegistryPreviewFrame({
+  initiallyLoaded,
+  src,
+  title,
+}: {
+  initiallyLoaded: boolean;
+  src: string;
+  title: string;
+}) {
+  const [loaded, setLoaded] = useState(initiallyLoaded);
 
   return (
     <iframe

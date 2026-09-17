@@ -7,7 +7,7 @@ import {
   WifiOffIcon,
   type LucideIcon,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -143,15 +143,14 @@ function SearchQueryResultList({
 }: SearchBodyProps) {
   const [isRetrying, setIsRetrying] = useState(false);
 
-  useEffect(() => {
-    if (!searchQueryResult.isFetching) {
+  const retry = async () => {
+    setIsRetrying(true);
+
+    try {
+      await searchQueryResult.refetch();
+    } finally {
       setIsRetrying(false);
     }
-  }, [searchQueryResult.isFetching]);
-
-  const retry = () => {
-    setIsRetrying(true);
-    void searchQueryResult.refetch();
   };
 
   if (query === "") {
@@ -185,7 +184,7 @@ function SearchQueryResultList({
         description="VibeUI search needs a connection."
         icon={WifiOffIcon}
         isRetrying={searchQueryResult.isFetching}
-        onRetry={retry}
+        onRetry={() => void retry()}
         title="No network"
       />
     );
@@ -194,16 +193,15 @@ function SearchQueryResultList({
   // `keepPreviousData` reports the retry of a failed query as a success, so the
   // click is latched: without it the alert would drop back to the previous
   // query's Hits for the length of the retry, as though it had already worked.
-  // The latch ends the moment an answer lands, rather than when the effect
-  // below catches up, so a retry that works never flashes the alert on its way
-  // to the Hits.
+  // The latch ends when the retry settles, so the previous query's Hits cannot
+  // flash while that request is in flight.
   if (searchQueryResult.isError || (isRetrying && !answersThisQuery)) {
     return (
       <Unreachable
         description="That may well be a blip. Try it again."
         icon={TriangleAlertIcon}
         isRetrying={searchQueryResult.isFetching}
-        onRetry={retry}
+        onRetry={() => void retry()}
         title="The search could not be reached."
       />
     );

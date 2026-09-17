@@ -1,5 +1,5 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 import { fetchSearchHits } from "@/features/search/api/search-client";
 import { searchContract } from "@/features/search/api/search.contract";
@@ -23,14 +23,14 @@ function waitOut(delayMs: number, signal: AbortSignal): Promise<void> {
 }
 
 export function useSearchQuery(query: string, isOnline: boolean, isQueryValid = true) {
-  const previousQuery = useRef(query);
-  // Empty search is a reset boundary: do not let older Hits leak into the
-  // next fresh query after the palette has gone back to quick links.
-  const canKeepPreviousData = previousQuery.current !== "";
+  const [queryTransition, setQueryTransition] = useState({ current: query, previous: query });
 
-  useEffect(() => {
-    previousQuery.current = query;
-  }, [query]);
+  if (queryTransition.current !== query) {
+    setQueryTransition({ current: query, previous: queryTransition.current });
+  }
+
+  const previousQuery =
+    queryTransition.current === query ? queryTransition.previous : queryTransition.current;
 
   return useQuery({
     queryKey: ["search", query],
@@ -47,7 +47,9 @@ export function useSearchQuery(query: string, isOnline: boolean, isQueryValid = 
     // leaves "Try again" with nothing to do — the one moment the visitor is
     // asking for an attempt is the one moment they would not get one.
     networkMode: "always",
-    placeholderData: canKeepPreviousData ? keepPreviousData : undefined,
+    // Empty search is a reset boundary: do not let older Hits leak into the
+    // next fresh query after the palette has gone back to quick links.
+    placeholderData: previousQuery === "" ? undefined : (previousData) => previousData,
     refetchOnWindowFocus: false,
     retry: false,
     staleTime: searchContract.staleTimeMs,
