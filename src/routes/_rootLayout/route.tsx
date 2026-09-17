@@ -41,7 +41,7 @@ function RootLayoutContent({ hideDesktopSidebar }: { hideDesktopSidebar: boolean
             className="hidden h-(--header-height) lg:flex items-center gap-4 px-4"
             role="toolbar"
           >
-            <SidebarTrigger size="icon" />
+            <SidebarTrigger size="icon" variant="outline" className="transition-none" />
           </div>
         )}
         <div className="flex-1 p-4 prose dark:prose-invert max-w-none">
