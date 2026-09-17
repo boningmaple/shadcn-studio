@@ -9,6 +9,7 @@ import {
   darkModeMediaQuery,
   localStorageKey,
   parseTheme,
+  themes,
   type Theme,
 } from "@/features/theme-switch/types/theme";
 
@@ -39,7 +40,7 @@ export function useThemeState(): {
     setLocalStorageTheme(localStorageKey, theme);
     applyThemeToDocument(theme);
 
-    if (theme === "system") {
+    if (theme === themes.system) {
       const onChange = () => applyThemeToDocument(theme);
       const mediaQuery = matchMedia(darkModeMediaQuery);
       mediaQuery.addEventListener("change", onChange);

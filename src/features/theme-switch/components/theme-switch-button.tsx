@@ -3,7 +3,7 @@ import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/features/theme-switch/components/theme-context";
-import type { Theme } from "@/features/theme-switch/types/theme";
+import { themes, type Theme } from "@/features/theme-switch/types/theme";
 import { capitalize } from "@/lib/utils";
 
 function getLabel(theme: Theme, nextTheme: Theme) {
@@ -13,7 +13,8 @@ function getLabel(theme: Theme, nextTheme: Theme) {
 export function ThemeSwitchButton() {
   const hydrated = useHydrated();
   const { setTheme, theme } = useTheme();
-  const nextTheme = theme === "system" ? "light" : theme === "light" ? "dark" : "system";
+  const nextTheme =
+    theme === themes.system ? themes.light : theme === themes.light ? themes.dark : themes.system;
 
   return (
     <Button
@@ -33,12 +34,16 @@ export function ThemeSwitchButton() {
       */}
       <MonitorIcon className="not-in-data-[theme=system]:hidden" />
       <span className="sr-only not-in-data-[theme=system]:hidden">
-        {getLabel("system", "light")}
+        {getLabel(themes.system, themes.light)}
       </span>
       <SunIcon className="not-in-data-[theme=light]:hidden" />
-      <span className="sr-only not-in-data-[theme=light]:hidden">{getLabel("light", "dark")}</span>
+      <span className="sr-only not-in-data-[theme=light]:hidden">
+        {getLabel(themes.light, themes.dark)}
+      </span>
       <MoonIcon className="not-in-data-[theme=dark]:hidden" />
-      <span className="sr-only not-in-data-[theme=dark]:hidden">{getLabel("dark", "system")}</span>
+      <span className="sr-only not-in-data-[theme=dark]:hidden">
+        {getLabel(themes.dark, themes.system)}
+      </span>
     </Button>
   );
 }

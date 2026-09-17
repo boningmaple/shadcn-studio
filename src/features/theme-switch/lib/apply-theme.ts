@@ -1,4 +1,4 @@
-import { darkModeMediaQuery, type Theme } from "@/features/theme-switch/types/theme";
+import { darkModeMediaQuery, themes, type Theme } from "@/features/theme-switch/types/theme";
 
 /**
  * Writes the theme onto `<html>`, where the stylesheet reads it.
@@ -10,7 +10,7 @@ import { darkModeMediaQuery, type Theme } from "@/features/theme-switch/types/th
  */
 export function applyThemeToDocument(theme: Theme) {
   const systemIsDark = matchMedia(darkModeMediaQuery).matches;
-  const isDark = theme === "dark" || (theme === "system" && systemIsDark);
+  const isDark = theme === themes.dark || (theme === themes.system && systemIsDark);
   const colorScheme = isDark ? "dark" : "light";
 
   const root = document.documentElement;
