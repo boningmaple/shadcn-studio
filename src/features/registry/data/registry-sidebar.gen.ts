@@ -3,33 +3,33 @@ import type { VibeRegistrySidebarSection } from "../types/registry";
 
 export const registrySidebarSections = [
   {
-    "collections": [
+    collections: [
       {
-        "href": "/components/button",
-        "title": "Button"
-      }
+        href: "/components/button",
+        title: "Button",
+      },
     ],
-    "label": "Components",
-    "type": "registry:component"
+    label: "Components",
+    type: "registry:component",
   },
   {
-    "collections": [
+    collections: [
       {
-        "href": "/blocks/hero-section",
-        "title": "Hero Section"
-      }
+        href: "/blocks/hero-section",
+        title: "Hero Section",
+      },
     ],
-    "label": "Blocks",
-    "type": "registry:block"
+    label: "Blocks",
+    type: "registry:block",
   },
   {
-    "collections": [
+    collections: [
       {
-        "href": "/pages/landing-pages",
-        "title": "Landing Pages"
-      }
+        href: "/pages/landing-pages",
+        title: "Landing Pages",
+      },
     ],
-    "label": "Pages",
-    "type": "registry:page"
-  }
+    label: "Pages",
+    type: "registry:page",
+  },
 ] satisfies VibeRegistrySidebarSection[];

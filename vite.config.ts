@@ -10,12 +10,7 @@ const isTest = process.env.VITEST === "true";
 
 const config = defineConfig({
   fmt: {
-    ignorePatterns: [
-      "routeTree.gen.ts",
-      "registry-sidebar.gen.ts",
-      "search-index.gen.json",
-      "shiki.bundle.gen.ts",
-    ],
+    ignorePatterns: ["routeTree.gen.ts", "search-index.gen.json"],
     sortImports: true,
     sortPackageJson: true,
   },

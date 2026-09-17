@@ -12,14 +12,14 @@
     "test:watch": "vp test watch",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "prebuild": "npm run build:registry",
-    "build": "vp run build:search-index && vp build",
+    "prebuild": "npm run build:registry && npm run build:search-index",
+    "build": "vp build",
     "preview": "vp preview",
     "prepare": "vp config",
     "build:search-index": "node scripts/build-search-index.ts",
     "check:search-index": "node scripts/check-search-index.ts",
-    "build:shiki": "node scripts/build-shiki-bundle.ts",
-    "build:registry": "node scripts/build-registry.ts"
+    "build:shiki": "node scripts/build-shiki-bundle.ts && vp fmt",
+    "build:registry": "node scripts/build-registry.ts && vp fmt"
   },
   "dependencies": {
     "@orama/orama": "^3.1.18",
