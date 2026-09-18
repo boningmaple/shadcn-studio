@@ -8,6 +8,10 @@ export const registrySidebarSections = [
         href: "/components/button",
         title: "Button",
       },
+      {
+        href: "/components/form",
+        title: "Form",
+      },
     ],
     label: "Components",
     type: "registry:component",

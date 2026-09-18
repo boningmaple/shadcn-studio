@@ -17,12 +17,24 @@ import { Route as RootLayoutBlocksIndexRouteImport } from './routes/_rootLayout/
 import { Route as RootLayoutBlocksHeroSectionRouteImport } from './routes/_rootLayout/blocks/hero-section'
 import { Route as RootLayoutComponentsIndexRouteImport } from './routes/_rootLayout/components/index'
 import { Route as RootLayoutComponentsButtonRouteImport } from './routes/_rootLayout/components/button'
+import { Route as RootLayoutComponentsFormRouteImport } from './routes/_rootLayout/components/form'
 import { Route as RootLayoutPagesIndexRouteImport } from './routes/_rootLayout/pages/index'
 import { Route as RootLayoutPagesLandingPagesRouteImport } from './routes/_rootLayout/pages/landing-pages'
 import { Route as PreviewBlocksHeroSectionHeroSection01RouteImport } from './routes/preview/blocks/hero-section/hero-section-01'
 import { Route as PreviewComponentsButtonButton01RouteImport } from './routes/preview/components/button/button-01'
 import { Route as PreviewComponentsButtonButton02RouteImport } from './routes/preview/components/button/button-02'
 import { Route as PreviewComponentsButtonButton03RouteImport } from './routes/preview/components/button/button-03'
+import { Route as PreviewComponentsFormForm01RouteImport } from './routes/preview/components/form/form-01'
+import { Route as PreviewComponentsFormForm02RouteImport } from './routes/preview/components/form/form-02'
+import { Route as PreviewComponentsFormForm03RouteImport } from './routes/preview/components/form/form-03'
+import { Route as PreviewComponentsFormForm04RouteImport } from './routes/preview/components/form/form-04'
+import { Route as PreviewComponentsFormForm05RouteImport } from './routes/preview/components/form/form-05'
+import { Route as PreviewComponentsFormForm06RouteImport } from './routes/preview/components/form/form-06'
+import { Route as PreviewComponentsFormForm07RouteImport } from './routes/preview/components/form/form-07'
+import { Route as PreviewComponentsFormForm08RouteImport } from './routes/preview/components/form/form-08'
+import { Route as PreviewComponentsFormForm09RouteImport } from './routes/preview/components/form/form-09'
+import { Route as PreviewComponentsFormForm10RouteImport } from './routes/preview/components/form/form-10'
+import { Route as PreviewComponentsFormForm11RouteImport } from './routes/preview/components/form/form-11'
 import { Route as PreviewPagesLandingPagesLandingPage01RouteImport } from './routes/preview/pages/landing-pages/landing-page-01'
 
 const RootLayoutRouteRoute = RootLayoutRouteRouteImport.update({
@@ -67,6 +79,12 @@ const RootLayoutComponentsButtonRoute =
     path: '/components/button',
     getParentRoute: () => RootLayoutRouteRoute,
   } as any)
+const RootLayoutComponentsFormRoute =
+  RootLayoutComponentsFormRouteImport.update({
+    id: '/components/form',
+    path: '/components/form',
+    getParentRoute: () => RootLayoutRouteRoute,
+  } as any)
 const RootLayoutPagesIndexRoute = RootLayoutPagesIndexRouteImport.update({
   id: '/pages/',
   path: '/pages/',
@@ -102,6 +120,72 @@ const PreviewComponentsButtonButton03Route =
     path: '/components/button/button-03',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
+const PreviewComponentsFormForm01Route =
+  PreviewComponentsFormForm01RouteImport.update({
+    id: '/components/form/form-01',
+    path: '/components/form/form-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm02Route =
+  PreviewComponentsFormForm02RouteImport.update({
+    id: '/components/form/form-02',
+    path: '/components/form/form-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm03Route =
+  PreviewComponentsFormForm03RouteImport.update({
+    id: '/components/form/form-03',
+    path: '/components/form/form-03',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm04Route =
+  PreviewComponentsFormForm04RouteImport.update({
+    id: '/components/form/form-04',
+    path: '/components/form/form-04',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm05Route =
+  PreviewComponentsFormForm05RouteImport.update({
+    id: '/components/form/form-05',
+    path: '/components/form/form-05',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm06Route =
+  PreviewComponentsFormForm06RouteImport.update({
+    id: '/components/form/form-06',
+    path: '/components/form/form-06',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm07Route =
+  PreviewComponentsFormForm07RouteImport.update({
+    id: '/components/form/form-07',
+    path: '/components/form/form-07',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm08Route =
+  PreviewComponentsFormForm08RouteImport.update({
+    id: '/components/form/form-08',
+    path: '/components/form/form-08',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm09Route =
+  PreviewComponentsFormForm09RouteImport.update({
+    id: '/components/form/form-09',
+    path: '/components/form/form-09',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm10Route =
+  PreviewComponentsFormForm10RouteImport.update({
+    id: '/components/form/form-10',
+    path: '/components/form/form-10',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsFormForm11Route =
+  PreviewComponentsFormForm11RouteImport.update({
+    id: '/components/form/form-11',
+    path: '/components/form/form-11',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
 const PreviewPagesLandingPagesLandingPage01Route =
   PreviewPagesLandingPagesLandingPage01RouteImport.update({
     id: '/pages/landing-pages/landing-page-01',
@@ -115,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/api/search': typeof ApiSearchRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/components/button': typeof RootLayoutComponentsButtonRoute
+  '/components/form': typeof RootLayoutComponentsFormRoute
   '/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/blocks/': typeof RootLayoutBlocksIndexRoute
   '/components/': typeof RootLayoutComponentsIndexRoute
@@ -123,6 +208,17 @@ export interface FileRoutesByFullPath {
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
+  '/preview/components/form/form-01': typeof PreviewComponentsFormForm01Route
+  '/preview/components/form/form-02': typeof PreviewComponentsFormForm02Route
+  '/preview/components/form/form-03': typeof PreviewComponentsFormForm03Route
+  '/preview/components/form/form-04': typeof PreviewComponentsFormForm04Route
+  '/preview/components/form/form-05': typeof PreviewComponentsFormForm05Route
+  '/preview/components/form/form-06': typeof PreviewComponentsFormForm06Route
+  '/preview/components/form/form-07': typeof PreviewComponentsFormForm07Route
+  '/preview/components/form/form-08': typeof PreviewComponentsFormForm08Route
+  '/preview/components/form/form-09': typeof PreviewComponentsFormForm09Route
+  '/preview/components/form/form-10': typeof PreviewComponentsFormForm10Route
+  '/preview/components/form/form-11': typeof PreviewComponentsFormForm11Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesByTo {
@@ -131,6 +227,7 @@ export interface FileRoutesByTo {
   '/': typeof RootLayoutIndexRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/components/button': typeof RootLayoutComponentsButtonRoute
+  '/components/form': typeof RootLayoutComponentsFormRoute
   '/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/blocks': typeof RootLayoutBlocksIndexRoute
   '/components': typeof RootLayoutComponentsIndexRoute
@@ -139,6 +236,17 @@ export interface FileRoutesByTo {
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
+  '/preview/components/form/form-01': typeof PreviewComponentsFormForm01Route
+  '/preview/components/form/form-02': typeof PreviewComponentsFormForm02Route
+  '/preview/components/form/form-03': typeof PreviewComponentsFormForm03Route
+  '/preview/components/form/form-04': typeof PreviewComponentsFormForm04Route
+  '/preview/components/form/form-05': typeof PreviewComponentsFormForm05Route
+  '/preview/components/form/form-06': typeof PreviewComponentsFormForm06Route
+  '/preview/components/form/form-07': typeof PreviewComponentsFormForm07Route
+  '/preview/components/form/form-08': typeof PreviewComponentsFormForm08Route
+  '/preview/components/form/form-09': typeof PreviewComponentsFormForm09Route
+  '/preview/components/form/form-10': typeof PreviewComponentsFormForm10Route
+  '/preview/components/form/form-11': typeof PreviewComponentsFormForm11Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesById {
@@ -149,6 +257,7 @@ export interface FileRoutesById {
   '/_rootLayout/': typeof RootLayoutIndexRoute
   '/_rootLayout/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/_rootLayout/components/button': typeof RootLayoutComponentsButtonRoute
+  '/_rootLayout/components/form': typeof RootLayoutComponentsFormRoute
   '/_rootLayout/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/_rootLayout/blocks/': typeof RootLayoutBlocksIndexRoute
   '/_rootLayout/components/': typeof RootLayoutComponentsIndexRoute
@@ -157,6 +266,17 @@ export interface FileRoutesById {
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
+  '/preview/components/form/form-01': typeof PreviewComponentsFormForm01Route
+  '/preview/components/form/form-02': typeof PreviewComponentsFormForm02Route
+  '/preview/components/form/form-03': typeof PreviewComponentsFormForm03Route
+  '/preview/components/form/form-04': typeof PreviewComponentsFormForm04Route
+  '/preview/components/form/form-05': typeof PreviewComponentsFormForm05Route
+  '/preview/components/form/form-06': typeof PreviewComponentsFormForm06Route
+  '/preview/components/form/form-07': typeof PreviewComponentsFormForm07Route
+  '/preview/components/form/form-08': typeof PreviewComponentsFormForm08Route
+  '/preview/components/form/form-09': typeof PreviewComponentsFormForm09Route
+  '/preview/components/form/form-10': typeof PreviewComponentsFormForm10Route
+  '/preview/components/form/form-11': typeof PreviewComponentsFormForm11Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRouteTypes {
@@ -167,6 +287,7 @@ export interface FileRouteTypes {
     | '/api/search'
     | '/blocks/hero-section'
     | '/components/button'
+    | '/components/form'
     | '/pages/landing-pages'
     | '/blocks/'
     | '/components/'
@@ -175,6 +296,17 @@ export interface FileRouteTypes {
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
+    | '/preview/components/form/form-01'
+    | '/preview/components/form/form-02'
+    | '/preview/components/form/form-03'
+    | '/preview/components/form/form-04'
+    | '/preview/components/form/form-05'
+    | '/preview/components/form/form-06'
+    | '/preview/components/form/form-07'
+    | '/preview/components/form/form-08'
+    | '/preview/components/form/form-09'
+    | '/preview/components/form/form-10'
+    | '/preview/components/form/form-11'
     | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -183,6 +315,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blocks/hero-section'
     | '/components/button'
+    | '/components/form'
     | '/pages/landing-pages'
     | '/blocks'
     | '/components'
@@ -191,6 +324,17 @@ export interface FileRouteTypes {
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
+    | '/preview/components/form/form-01'
+    | '/preview/components/form/form-02'
+    | '/preview/components/form/form-03'
+    | '/preview/components/form/form-04'
+    | '/preview/components/form/form-05'
+    | '/preview/components/form/form-06'
+    | '/preview/components/form/form-07'
+    | '/preview/components/form/form-08'
+    | '/preview/components/form/form-09'
+    | '/preview/components/form/form-10'
+    | '/preview/components/form/form-11'
     | '/preview/pages/landing-pages/landing-page-01'
   id:
     | '__root__'
@@ -200,6 +344,7 @@ export interface FileRouteTypes {
     | '/_rootLayout/'
     | '/_rootLayout/blocks/hero-section'
     | '/_rootLayout/components/button'
+    | '/_rootLayout/components/form'
     | '/_rootLayout/pages/landing-pages'
     | '/_rootLayout/blocks/'
     | '/_rootLayout/components/'
@@ -208,6 +353,17 @@ export interface FileRouteTypes {
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
+    | '/preview/components/form/form-01'
+    | '/preview/components/form/form-02'
+    | '/preview/components/form/form-03'
+    | '/preview/components/form/form-04'
+    | '/preview/components/form/form-05'
+    | '/preview/components/form/form-06'
+    | '/preview/components/form/form-07'
+    | '/preview/components/form/form-08'
+    | '/preview/components/form/form-09'
+    | '/preview/components/form/form-10'
+    | '/preview/components/form/form-11'
     | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesById: FileRoutesById
 }
@@ -275,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RootLayoutComponentsButtonRouteImport
       parentRoute: typeof RootLayoutRouteRoute
     }
+    '/_rootLayout/components/form': {
+      id: '/_rootLayout/components/form'
+      path: '/components/form'
+      fullPath: '/components/form'
+      preLoaderRoute: typeof RootLayoutComponentsFormRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
     '/_rootLayout/pages/': {
       id: '/_rootLayout/pages/'
       path: '/pages'
@@ -317,6 +480,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PreviewComponentsButtonButton03RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
+    '/preview/components/form/form-01': {
+      id: '/preview/components/form/form-01'
+      path: '/components/form/form-01'
+      fullPath: '/preview/components/form/form-01'
+      preLoaderRoute: typeof PreviewComponentsFormForm01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-02': {
+      id: '/preview/components/form/form-02'
+      path: '/components/form/form-02'
+      fullPath: '/preview/components/form/form-02'
+      preLoaderRoute: typeof PreviewComponentsFormForm02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-03': {
+      id: '/preview/components/form/form-03'
+      path: '/components/form/form-03'
+      fullPath: '/preview/components/form/form-03'
+      preLoaderRoute: typeof PreviewComponentsFormForm03RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-04': {
+      id: '/preview/components/form/form-04'
+      path: '/components/form/form-04'
+      fullPath: '/preview/components/form/form-04'
+      preLoaderRoute: typeof PreviewComponentsFormForm04RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-05': {
+      id: '/preview/components/form/form-05'
+      path: '/components/form/form-05'
+      fullPath: '/preview/components/form/form-05'
+      preLoaderRoute: typeof PreviewComponentsFormForm05RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-06': {
+      id: '/preview/components/form/form-06'
+      path: '/components/form/form-06'
+      fullPath: '/preview/components/form/form-06'
+      preLoaderRoute: typeof PreviewComponentsFormForm06RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-07': {
+      id: '/preview/components/form/form-07'
+      path: '/components/form/form-07'
+      fullPath: '/preview/components/form/form-07'
+      preLoaderRoute: typeof PreviewComponentsFormForm07RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-08': {
+      id: '/preview/components/form/form-08'
+      path: '/components/form/form-08'
+      fullPath: '/preview/components/form/form-08'
+      preLoaderRoute: typeof PreviewComponentsFormForm08RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-09': {
+      id: '/preview/components/form/form-09'
+      path: '/components/form/form-09'
+      fullPath: '/preview/components/form/form-09'
+      preLoaderRoute: typeof PreviewComponentsFormForm09RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-10': {
+      id: '/preview/components/form/form-10'
+      path: '/components/form/form-10'
+      fullPath: '/preview/components/form/form-10'
+      preLoaderRoute: typeof PreviewComponentsFormForm10RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/form/form-11': {
+      id: '/preview/components/form/form-11'
+      path: '/components/form/form-11'
+      fullPath: '/preview/components/form/form-11'
+      preLoaderRoute: typeof PreviewComponentsFormForm11RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
     '/preview/pages/landing-pages/landing-page-01': {
       id: '/preview/pages/landing-pages/landing-page-01'
       path: '/pages/landing-pages/landing-page-01'
@@ -331,6 +571,7 @@ interface RootLayoutRouteRouteChildren {
   RootLayoutIndexRoute: typeof RootLayoutIndexRoute
   RootLayoutBlocksHeroSectionRoute: typeof RootLayoutBlocksHeroSectionRoute
   RootLayoutComponentsButtonRoute: typeof RootLayoutComponentsButtonRoute
+  RootLayoutComponentsFormRoute: typeof RootLayoutComponentsFormRoute
   RootLayoutPagesLandingPagesRoute: typeof RootLayoutPagesLandingPagesRoute
   RootLayoutBlocksIndexRoute: typeof RootLayoutBlocksIndexRoute
   RootLayoutComponentsIndexRoute: typeof RootLayoutComponentsIndexRoute
@@ -341,6 +582,7 @@ const RootLayoutRouteRouteChildren: RootLayoutRouteRouteChildren = {
   RootLayoutIndexRoute: RootLayoutIndexRoute,
   RootLayoutBlocksHeroSectionRoute: RootLayoutBlocksHeroSectionRoute,
   RootLayoutComponentsButtonRoute: RootLayoutComponentsButtonRoute,
+  RootLayoutComponentsFormRoute: RootLayoutComponentsFormRoute,
   RootLayoutPagesLandingPagesRoute: RootLayoutPagesLandingPagesRoute,
   RootLayoutBlocksIndexRoute: RootLayoutBlocksIndexRoute,
   RootLayoutComponentsIndexRoute: RootLayoutComponentsIndexRoute,
@@ -356,6 +598,17 @@ interface PreviewRouteRouteChildren {
   PreviewComponentsButtonButton01Route: typeof PreviewComponentsButtonButton01Route
   PreviewComponentsButtonButton02Route: typeof PreviewComponentsButtonButton02Route
   PreviewComponentsButtonButton03Route: typeof PreviewComponentsButtonButton03Route
+  PreviewComponentsFormForm01Route: typeof PreviewComponentsFormForm01Route
+  PreviewComponentsFormForm02Route: typeof PreviewComponentsFormForm02Route
+  PreviewComponentsFormForm03Route: typeof PreviewComponentsFormForm03Route
+  PreviewComponentsFormForm04Route: typeof PreviewComponentsFormForm04Route
+  PreviewComponentsFormForm05Route: typeof PreviewComponentsFormForm05Route
+  PreviewComponentsFormForm06Route: typeof PreviewComponentsFormForm06Route
+  PreviewComponentsFormForm07Route: typeof PreviewComponentsFormForm07Route
+  PreviewComponentsFormForm08Route: typeof PreviewComponentsFormForm08Route
+  PreviewComponentsFormForm09Route: typeof PreviewComponentsFormForm09Route
+  PreviewComponentsFormForm10Route: typeof PreviewComponentsFormForm10Route
+  PreviewComponentsFormForm11Route: typeof PreviewComponentsFormForm11Route
   PreviewPagesLandingPagesLandingPage01Route: typeof PreviewPagesLandingPagesLandingPage01Route
 }
 
@@ -365,6 +618,17 @@ const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
   PreviewComponentsButtonButton01Route: PreviewComponentsButtonButton01Route,
   PreviewComponentsButtonButton02Route: PreviewComponentsButtonButton02Route,
   PreviewComponentsButtonButton03Route: PreviewComponentsButtonButton03Route,
+  PreviewComponentsFormForm01Route: PreviewComponentsFormForm01Route,
+  PreviewComponentsFormForm02Route: PreviewComponentsFormForm02Route,
+  PreviewComponentsFormForm03Route: PreviewComponentsFormForm03Route,
+  PreviewComponentsFormForm04Route: PreviewComponentsFormForm04Route,
+  PreviewComponentsFormForm05Route: PreviewComponentsFormForm05Route,
+  PreviewComponentsFormForm06Route: PreviewComponentsFormForm06Route,
+  PreviewComponentsFormForm07Route: PreviewComponentsFormForm07Route,
+  PreviewComponentsFormForm08Route: PreviewComponentsFormForm08Route,
+  PreviewComponentsFormForm09Route: PreviewComponentsFormForm09Route,
+  PreviewComponentsFormForm10Route: PreviewComponentsFormForm10Route,
+  PreviewComponentsFormForm11Route: PreviewComponentsFormForm11Route,
   PreviewPagesLandingPagesLandingPage01Route:
     PreviewPagesLandingPagesLandingPage01Route,
 }

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-09",
+  "title": "Form 09",
+  "description": "A website field with HTTP URL validation.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "input"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-09/form-09.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nfunction usesHttpProtocol(value: string) {\n  try {\n    return [\"http:\", \"https:\"].includes(new URL(value).protocol);\n  } catch {\n    return false;\n  }\n}\n\nconst formSchema = z.object({\n  url: z\n    .string()\n    .min(1, \"Website URL is required.\")\n    .url(\"Enter a valid URL.\")\n    .refine(usesHttpProtocol, {\n      message: \"Website URL must use HTTP or HTTPS.\",\n    }),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form09() {\n  const urlId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      url: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"url\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel htmlFor={urlId}>Website URL</FieldLabel>\n            <Input\n              {...field}\n              id={urlId}\n              type=\"url\"\n              autoComplete=\"url\"\n              aria-invalid={fieldState.invalid}\n            />\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-09/form-09.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}

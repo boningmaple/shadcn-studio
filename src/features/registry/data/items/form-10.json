@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-10",
+  "title": "Form 10",
+  "description": "A short bio field with character limits.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "textarea"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-10/form-10.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport { Textarea } from \"@/components/ui/textarea\";\n\nconst formSchema = z.object({\n  bio: z\n    .string()\n    .trim()\n    .min(1, \"Bio is required.\")\n    .min(20, \"Bio must be at least 20 characters.\")\n    .max(160, \"Bio must be at most 160 characters.\"),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form10() {\n  const bioId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      bio: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"bio\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel htmlFor={bioId}>Bio</FieldLabel>\n            <Textarea {...field} id={bioId} aria-invalid={fieldState.invalid} />\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-10/form-10.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}

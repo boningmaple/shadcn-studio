@@ -3,7 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { RegistrySectionPage } from "@/features/registry/components/registry-section-page";
 
-const collections = [{ title: "Button", href: "/components/button", itemCount: 3 }];
+const collections = [
+  { title: "Button", href: "/components/button", itemCount: 3 },
+  { title: "Form", href: "/components/form", itemCount: 11 },
+];
 
 export const Route = createFileRoute("/_rootLayout/components/")({
   staticData: { ariaLabel: "Components" },

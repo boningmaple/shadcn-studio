@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-01",
+  "title": "Form 01",
+  "description": "A single email field with schema-based validation.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "input"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-01/form-01.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nconst formSchema = z.object({\n  email: z.string().min(1, \"Email is required.\").email(\"Enter a valid email address.\"),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form01() {\n  const emailId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      email: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"email\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel htmlFor={emailId}>Email</FieldLabel>\n            <Input {...field} id={emailId} type=\"email\" aria-invalid={fieldState.invalid} />\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-01/form-01.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-06",
+  "title": "Form 06",
+  "description": "A date of birth field with age validation.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "input"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-06/form-06.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nfunction getAge(dateOfBirth: string) {\n  const [year, month, day] = dateOfBirth.split(\"-\").map(Number);\n  const birthDate = new Date(year, month - 1, day);\n\n  if (\n    birthDate.getFullYear() !== year ||\n    birthDate.getMonth() !== month - 1 ||\n    birthDate.getDate() !== day\n  ) {\n    return null;\n  }\n\n  const today = new Date();\n  let age = today.getFullYear() - year;\n  const hasNotHadBirthday =\n    today.getMonth() < month - 1 || (today.getMonth() === month - 1 && today.getDate() < day);\n\n  if (hasNotHadBirthday) {\n    age -= 1;\n  }\n\n  return age;\n}\n\nconst formSchema = z.object({\n  dateOfBirth: z\n    .string()\n    .min(1, \"Date of birth is required.\")\n    .refine((value) => getAge(value) !== null, \"Enter a valid date of birth.\")\n    .refine((value) => {\n      const age = getAge(value);\n      return age !== null && age >= 18 && age <= 120;\n    }, \"You must be between 18 and 120 years old.\"),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form06() {\n  const dateOfBirthId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      dateOfBirth: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"dateOfBirth\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel htmlFor={dateOfBirthId}>Date of birth</FieldLabel>\n            <Input\n              {...field}\n              id={dateOfBirthId}\n              type=\"date\"\n              autoComplete=\"bday\"\n              aria-invalid={fieldState.invalid}\n            />\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-06/form-06.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}

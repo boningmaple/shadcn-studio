@@ -22,6 +22,7 @@
     "build:registry": "node scripts/build-registry.ts && vp fmt"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
     "@orama/orama": "^3.1.18",
     "@orama/plugin-data-persistence": "^3.1.18",
     "@shadcn/react": "^0.2.1",
@@ -40,6 +41,7 @@
     "react": "^19.2.0",
     "react-aria-components": "^1.19.0",
     "react-dom": "^19.2.0",
+    "react-hook-form": "^7.88.0",
     "react-resizable-panels": "^4.12.2",
     "recharts": "^3.8.0",
     "sonner": "^2.0.7",

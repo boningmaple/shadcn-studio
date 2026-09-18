@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-08",
+  "title": "Form 08",
+  "description": "An international phone number field.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "input"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-08/form-08.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nconst formSchema = z.object({\n  phone: z\n    .string()\n    .min(1, \"Phone number is required.\")\n    .regex(/^\\+?[1-9]\\d{7,14}$/, \"Enter a valid international phone number.\"),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form08() {\n  const phoneId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      phone: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"phone\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel htmlFor={phoneId}>Phone number</FieldLabel>\n            <Input\n              {...field}\n              id={phoneId}\n              type=\"tel\"\n              autoComplete=\"tel\"\n              aria-invalid={fieldState.invalid}\n            />\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-08/form-08.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}

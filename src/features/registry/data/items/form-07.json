@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-07",
+  "title": "Form 07",
+  "description": "A time field with 24-hour validation.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "input"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-07/form-07.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nconst formSchema = z.object({\n  time: z\n    .string()\n    .min(1, \"Time is required.\")\n    .regex(/^(?:[01]\\d|2[0-3]):[0-5]\\d$/, \"Enter a valid time.\"),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form07() {\n  const timeId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      time: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"time\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel htmlFor={timeId}>Time</FieldLabel>\n            <Input {...field} id={timeId} type=\"time\" aria-invalid={fieldState.invalid} />\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-07/form-07.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}

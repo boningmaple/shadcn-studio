@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-03",
+  "title": "Form 03",
+  "description": "A full name field with length validation.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "input"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-03/form-03.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nconst formSchema = z.object({\n  name: z\n    .string()\n    .trim()\n    .min(1, \"Full name is required.\")\n    .min(2, \"Full name must be at least 2 characters.\")\n    .max(100, \"Full name must be at most 100 characters.\"),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form03() {\n  const nameId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      name: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"name\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel htmlFor={nameId}>Full name</FieldLabel>\n            <Input\n              {...field}\n              id={nameId}\n              type=\"text\"\n              autoComplete=\"name\"\n              aria-invalid={fieldState.invalid}\n            />\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-03/form-03.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}

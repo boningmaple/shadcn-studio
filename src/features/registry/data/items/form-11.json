@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-11",
+  "title": "Form 11",
+  "description": "A required country selection field.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "select"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-11/form-11.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/components/ui/select\";\n\nconst countries = [\n  { id: \"AU\", name: \"Australia\" },\n  { id: \"CA\", name: \"Canada\" },\n  { id: \"FR\", name: \"France\" },\n  { id: \"DE\", name: \"Germany\" },\n  { id: \"JP\", name: \"Japan\" },\n  { id: \"GB\", name: \"United Kingdom\" },\n  { id: \"US\", name: \"United States\" },\n] as const;\n\nconst countryCodes = new Set(countries.map((country) => country.id));\n\nconst formSchema = z.object({\n  country: z\n    .string()\n    .min(1, \"Country is required.\")\n    .refine((value) => countryCodes.has(value as (typeof countries)[number][\"id\"]), {\n      message: \"Select a valid country.\",\n    }),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form11() {\n  const countryId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      country: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"country\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel id={`${countryId}-label`} htmlFor={countryId}>\n              Country\n            </FieldLabel>\n            <Select\n              name={field.name}\n              selectedKey={field.value || null}\n              onSelectionChange={(key) => field.onChange(key ?? \"\")}\n              onBlur={field.onBlur}\n              aria-labelledby={`${countryId}-label`}\n              isInvalid={fieldState.invalid}\n            >\n              <SelectTrigger id={countryId} aria-invalid={fieldState.invalid}>\n                <SelectValue>{({ selectedText }) => selectedText}</SelectValue>\n              </SelectTrigger>\n              <SelectContent>\n                {countries.map((country) => (\n                  <SelectItem key={country.id} id={country.id}>\n                    {country.name}\n                  </SelectItem>\n                ))}\n              </SelectContent>\n            </Select>\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-11/form-11.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}

@@ -59,6 +59,182 @@
       "categories": ["button"]
     },
     {
+      "name": "form-01",
+      "title": "Form 01",
+      "description": "A single email field with schema-based validation.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-01/form-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-01/form-01.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-02",
+      "title": "Form 02",
+      "description": "A password field with strength validation.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-02/form-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-02/form-02.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-03",
+      "title": "Form 03",
+      "description": "A full name field with length validation.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-03/form-03.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-03/form-03.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-04",
+      "title": "Form 04",
+      "description": "A CVV field with digit-length validation.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-04/form-04.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-04/form-04.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-05",
+      "title": "Form 05",
+      "description": "A card number field with Luhn validation.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-05/form-05.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-05/form-05.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-06",
+      "title": "Form 06",
+      "description": "A date of birth field with age validation.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-06/form-06.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-06/form-06.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-07",
+      "title": "Form 07",
+      "description": "A time field with 24-hour validation.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-07/form-07.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-07/form-07.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-08",
+      "title": "Form 08",
+      "description": "An international phone number field.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-08/form-08.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-08/form-08.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-09",
+      "title": "Form 09",
+      "description": "A website field with HTTP URL validation.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "input"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-09/form-09.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-09/form-09.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-10",
+      "title": "Form 10",
+      "description": "A short bio field with character limits.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "textarea"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-10/form-10.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-10/form-10.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
+      "name": "form-11",
+      "title": "Form 11",
+      "description": "A required country selection field.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "field", "select"],
+      "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/form-11/form-11.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/form-11/form-11.tsx"
+        }
+      ],
+      "categories": ["form"]
+    },
+    {
       "name": "hero-section-01",
       "title": "Hero Section 01",
       "description": "A centered product hero with a focused call to action.",

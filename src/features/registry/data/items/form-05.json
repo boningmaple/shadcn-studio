@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-05",
+  "title": "Form 05",
+  "description": "A card number field with Luhn validation.",
+  "dependencies": ["@hookform/resolvers", "react-hook-form", "zod"],
+  "registryDependencies": ["button", "field", "input"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/form-05/form-05.tsx",
+      "content": "import { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useId } from \"react\";\nimport { Controller, useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nfunction normalizeCardNumber(value: string) {\n  return value.replace(/[ -]/g, \"\");\n}\n\nfunction passesLuhnCheck(value: string) {\n  const digits = normalizeCardNumber(value);\n  let sum = 0;\n  let shouldDouble = false;\n\n  for (let index = digits.length - 1; index >= 0; index -= 1) {\n    let digit = Number(digits[index]);\n\n    if (shouldDouble) {\n      digit *= 2;\n      if (digit > 9) {\n        digit -= 9;\n      }\n    }\n\n    sum += digit;\n    shouldDouble = !shouldDouble;\n  }\n\n  return sum % 10 === 0;\n}\n\nconst formSchema = z.object({\n  cardNumber: z\n    .string()\n    .min(1, \"Card number is required.\")\n    .regex(/^[\\d -]+$/, \"Card number can contain only digits, spaces, and hyphens.\")\n    .refine((value) => /^\\d{13,19}$/.test(normalizeCardNumber(value)), {\n      message: \"Card number must contain 13 to 19 digits.\",\n    })\n    .refine(passesLuhnCheck, {\n      message: \"Enter a valid card number.\",\n    }),\n});\n\ntype FormValues = z.infer<typeof formSchema>;\n\nexport default function Form05() {\n  const cardNumberId = useId();\n  const form = useForm<FormValues>({\n    resolver: zodResolver(formSchema),\n    defaultValues: {\n      cardNumber: \"\",\n    },\n  });\n\n  return (\n    <form className=\"w-full max-w-sm space-y-4\" onSubmit={form.handleSubmit(() => undefined)}>\n      <Controller\n        name=\"cardNumber\"\n        control={form.control}\n        render={({ field, fieldState }) => (\n          <Field data-invalid={fieldState.invalid}>\n            <FieldLabel htmlFor={cardNumberId}>Card number</FieldLabel>\n            <Input\n              {...field}\n              id={cardNumberId}\n              type=\"text\"\n              inputMode=\"numeric\"\n              autoComplete=\"cc-number\"\n              aria-invalid={fieldState.invalid}\n            />\n            <FieldError errors={[fieldState.error]} />\n          </Field>\n        )}\n      />\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/form-05/form-05.tsx"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:component"
+}
