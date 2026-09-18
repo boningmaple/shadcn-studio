@@ -1,9 +1,18 @@
 import { createFileRoute, Outlet, useMatches } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 
 import { AppHeader } from "@/components/app-header";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
+
+const TanStackDevtools = import.meta.env.DEV
+  ? lazy(() =>
+      import("@/components/tanstack-devtools").then((module) => ({
+        default: module.TanStackDevtools,
+      })),
+    )
+  : null;
 
 export const Route = createFileRoute("/_rootLayout")({
   staticData: { ariaLabel: "" },
@@ -21,6 +30,11 @@ function RouteComponent() {
         <AppHeader />
         <RootLayoutContent hideDesktopSidebar={hideDesktopSidebar} />
       </SidebarProvider>
+      {TanStackDevtools ? (
+        <Suspense fallback={null}>
+          <TanStackDevtools />
+        </Suspense>
+      ) : null}
     </ThemeProvider>
   );
 }
