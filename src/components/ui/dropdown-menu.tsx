@@ -17,7 +17,7 @@ import {
   type MenuSectionProps as MenuSectionPrimitiveProps,
 } from "react-aria-components";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 function DropdownMenuTrigger({ ...props }: React.ComponentProps<typeof MenuTriggerPrimitive>) {
   return <MenuTriggerPrimitive data-slot="dropdown-menu-trigger" {...props} />;

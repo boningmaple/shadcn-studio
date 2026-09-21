@@ -40,7 +40,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 function ComboboxValue<T>({ ...props }: ComboBoxValueProps<T>) {
   return <ComboBoxValuePrimitive data-slot="combobox-value" {...props} />;

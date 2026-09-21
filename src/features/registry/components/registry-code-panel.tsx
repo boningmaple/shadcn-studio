@@ -1,7 +1,6 @@
 import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 
-import { CopyButton } from "@/components/copy-button";
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import {
   Sidebar,
@@ -17,6 +16,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { CopyButton } from "@/shared/components/copy-button";
 
 import { useHighlightedRegistryFiles } from "../hooks/use-highlighted-registry-files.ts";
 import { buildFileTree, registryFileDisplayPath, type FileTreeNode } from "../lib/file-tree.ts";

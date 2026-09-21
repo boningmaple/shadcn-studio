@@ -4,7 +4,7 @@ import { afterEach, describe, expect, test, vi } from "vite-plus/test";
 import { page, userEvent } from "vite-plus/test/browser/context";
 import { render } from "vitest-browser-react";
 
-import { CopyButton } from "@/components/copy-button";
+import { CopyButton } from "@/shared/components/copy-button";
 
 vi.mock("sonner", () => ({ toast: { error: vi.fn() } }));
 

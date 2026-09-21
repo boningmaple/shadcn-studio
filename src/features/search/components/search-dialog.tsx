@@ -30,7 +30,7 @@ import { SearchFetchError, type SearchAnswer } from "@/features/search/api/searc
 import { searchContract, type SearchHit } from "@/features/search/api/search.contract";
 import { useSearchQuery } from "@/features/search/hooks/use-search-query";
 import type { QuickLink } from "@/features/search/types/quick-links";
-import { useIsOnline } from "@/hooks/use-is-online";
+import { useIsOnline } from "@/shared/hooks/use-is-online";
 
 type SelectHandler = (href: string) => void;
 const queryErrorId = "search-query-error";

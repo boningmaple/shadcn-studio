@@ -12,7 +12,7 @@ import {
   type DisclosureProps,
 } from "react-aria-components";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 function Accordion({ className, ...props }: DisclosureGroupProps) {
   return (

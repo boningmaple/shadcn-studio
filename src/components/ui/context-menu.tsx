@@ -18,7 +18,7 @@ import {
 } from "react-aria-components";
 import { createPortal } from "react-dom";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 function ContextMenu({
   "data-slot": dataSlot = "context-menu-content",

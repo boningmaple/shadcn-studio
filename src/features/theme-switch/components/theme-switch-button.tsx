@@ -4,7 +4,7 @@ import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/features/theme-switch/components/theme-context";
 import { themes, type Theme } from "@/features/theme-switch/types/theme";
-import { capitalize } from "@/lib/utils";
+import { capitalize } from "@/shared/lib/utils";
 
 function getLabel(theme: Theme, nextTheme: Theme) {
   return `Theme: ${capitalize(theme)}. Switch to ${capitalize(nextTheme)}.`;

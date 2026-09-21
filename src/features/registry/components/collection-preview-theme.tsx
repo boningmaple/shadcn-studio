@@ -3,7 +3,7 @@ import { MoonIcon, SunIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { PreviewTheme } from "@/features/registry/types/preview-theme";
-import { capitalize, cn } from "@/lib/utils";
+import { capitalize, cn } from "@/shared/lib/utils";
 
 function getLabel(theme: PreviewTheme, nextTheme: PreviewTheme) {
   return `Preview theme: ${capitalize(theme)}. Switch to ${capitalize(nextTheme)}.`;

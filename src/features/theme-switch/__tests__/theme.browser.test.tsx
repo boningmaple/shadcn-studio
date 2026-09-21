@@ -13,7 +13,7 @@ import {
   themes,
   type Theme,
 } from "@/features/theme-switch/types/theme";
-import { capitalize } from "@/lib/utils";
+import { capitalize } from "@/shared/lib/utils";
 
 const themeValues = Object.values(themes);
 const nextTheme = {

@@ -10,7 +10,7 @@ import {
 } from "react-aria-components";
 
 import { toggleVariants } from "@/components/ui/toggle";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants> & {

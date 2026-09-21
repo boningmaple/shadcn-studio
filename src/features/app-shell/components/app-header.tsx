@@ -1,14 +1,13 @@
 import { Link } from "@tanstack/react-router";
 
-import { appQuickLinks } from "@/components/app-sidebar";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { appQuickLinks } from "@/features/app-shell/components/app-sidebar";
 import { SearchDialogTrigger } from "@/features/search/components/search-dialog-trigger";
 import { ThemeSwitchButton } from "@/features/theme-switch/components/theme-switch-button";
 import { Route as blocksRoute } from "@/routes/_rootLayout/blocks/index";
 import { Route as componentsRoute } from "@/routes/_rootLayout/components/index";
 import { Route as homeRoute } from "@/routes/_rootLayout/index";
 import { Route as pagesRoute } from "@/routes/_rootLayout/pages/index";
-
-import { SidebarTrigger } from "./ui/sidebar";
 
 const headerNavRoutes = [componentsRoute, blocksRoute, pagesRoute] as const;
 

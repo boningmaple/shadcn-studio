@@ -22,7 +22,7 @@ import {
 } from "react-aria-components";
 
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 function Select<T extends object, M extends "single" | "multiple" = "single">({
   className,

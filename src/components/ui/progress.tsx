@@ -8,7 +8,7 @@ import {
   type ProgressBarProps as ProgressPrimitiveProps,
 } from "react-aria-components";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 type ProgressContextValue = {
   percentage?: number;

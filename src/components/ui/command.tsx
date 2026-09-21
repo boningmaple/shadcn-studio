@@ -22,7 +22,7 @@ import {
 
 import { Dialog, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 function Command({
   className,

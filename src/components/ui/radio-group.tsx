@@ -6,7 +6,7 @@ import {
   type RadioProps,
 } from "react-aria-components";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 function RadioGroup({ className, ...props }: RadioGroupProps) {
   return (

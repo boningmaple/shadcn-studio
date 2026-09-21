@@ -20,6 +20,10 @@ Keep E2E focused on integration risk. Duplicate detailed component behavior in E
 
 Put feature browser tests under `src/features/<feature>/__tests__/<feature>.browser.test.tsx`.
 
+Put tests for shared components under `src/shared/__tests__`. Keep tests for installed shadcn UI
+primitives under `src/components/__tests__` so their test ownership follows the compatibility
+location of the components themselves.
+
 Build the test file like a readable journey:
 
 - Define mock data, helpers, locators, render helpers, timer helpers, and network helpers near the top.

@@ -10,7 +10,7 @@ import {
 } from "react-aria-components";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 function AlertDialogTrigger({ ...props }: AlertDialogTriggerPrimitiveProps) {
   return <AlertDialogTriggerPrimitive data-slot="alert-dialog-trigger" {...props} />;

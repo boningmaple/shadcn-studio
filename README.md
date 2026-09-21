@@ -128,13 +128,25 @@ npm run preview
 |   `-- check-search-index.ts   # detects a stale committed search index
 `-- src
     |-- components
-    |   |-- ui                  # installed shadcn UI primitives
-    |   |-- app-header.tsx      # application shell header
-    |   `-- app-sidebar.tsx     # application navigation and sidebar rendering
+    |   |-- __tests__           # installed shadcn UI primitive browser tests
+    |   `-- ui                  # installed shadcn UI primitives
     |-- features
+    |   |-- app-shell           # application header, navigation, and development tools
     |   |-- registry            # generated item data, navigation, Preview, and Code preview behavior
     |   |-- search              # Orama endpoint and search palette
     |   `-- theme-switch        # theme persistence and controls
     |-- routes                  # TanStack application and server routes
-    `-- styles.css              # Tailwind theme and base styles
+    |-- shared
+    |   |-- __tests__           # shared component browser tests
+    |   |-- components          # reusable application components
+    |   |-- hooks               # reusable React hooks
+    |   |-- lib                 # domain-neutral utilities
+    |   `-- styles              # global fonts, Tailwind theme, and base styles
+    |-- router.tsx              # router construction and application route metadata
+    `-- routeTree.gen.ts        # generated TanStack route tree
 ```
+
+`src/routes` and each directory under `src/features` are peer feature-level slices. Feature-level
+code may depend on other feature-level slices and on `src/shared`; shared code must not import
+feature-level code. Installed shadcn primitives remain under `src/components/ui` so shadcn tooling
+and public Registry examples can keep the conventional `@/components/ui/*` imports.

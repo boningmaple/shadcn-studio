@@ -4,8 +4,8 @@ import * as React from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeHydrationScript } from "@/features/theme-switch/components/theme-hydration-script";
 
-import fontCss from "@/styles/font.css?url";
-import rootCss from "@/styles/root.css?url";
+import fontCss from "@/shared/styles/font.css?url";
+import rootCss from "@/shared/styles/root.css?url";
 
 export const Route = createRootRoute({
   staticData: { ariaLabel: "" },
