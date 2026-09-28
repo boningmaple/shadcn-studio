@@ -18,7 +18,7 @@ import {
   explorerSubmenus,
   selectedExplorerEntry,
   cssSource,
-  renderCodeExplorer,
+  renderCodePanel,
   mockPreviewHighlighting,
   cleanupPreview,
   fetchInputUrl,
@@ -33,12 +33,12 @@ beforeEach(async () => {
 
 afterEach(cleanupPreview);
 
-describe("Code tab panel", () => {
+describe("Code panel", () => {
   describe("File tree", () => {
     describe("Responsiveness", () => {
       it("uses an independent contained Sidebar instead of a Sheet on mobile", async () => {
         await page.viewport(390, 844);
-        await renderCodeExplorer();
+        await renderCodePanel();
         const sidebar = explorerSidebar();
 
         await expect.element(sidebar).toHaveAttribute("data-state", "collapsed");
@@ -67,9 +67,9 @@ describe("Code tab panel", () => {
     describe("Critical paths", () => {
       it("navigates the Sidebar file tree built from highlighted Registry item files", async () => {
         await page.viewport(1024, 800);
-        await renderCodeExplorer();
+        await renderCodePanel();
 
-        for (const directory of ["@components", "vibe-ui", "login-page-01"]) {
+        for (const directory of ["components", "vibe-ui", "login-page-01"]) {
           await expect.element(explorerEntry(directory)).toHaveAttribute("aria-expanded", "true");
         }
 
@@ -84,11 +84,11 @@ describe("Code tab panel", () => {
         expect(scrollToSpy).toHaveBeenCalledWith({ left: 0, top: 0 });
       });
 
-      it.each(["@components", "vibe-ui", "login-page-01"])(
+      it.each(["components", "vibe-ui", "login-page-01"])(
         "collapses and expands directory %s",
         async (name) => {
           await page.viewport(1024, 800);
-          await renderCodeExplorer();
+          await renderCodePanel();
           const directory = explorerEntry(name);
 
           await userEvent.click(directory);
@@ -103,7 +103,7 @@ describe("Code tab panel", () => {
     describe("Edge cases", () => {
       it("keeps deeply nested file rows wide and visibly marks the selected file", async () => {
         await page.viewport(1024, 800);
-        await renderCodeExplorer();
+        await renderCodePanel();
         const submenus = explorerSubmenus();
         const rightEdges = submenus.map((submenu) => submenu.getBoundingClientRect().right);
 
@@ -118,7 +118,7 @@ describe("Code tab panel", () => {
 
       it("omits the file explorer for a single-file Registry item", async () => {
         await page.viewport(1024, 800);
-        await renderCodeExplorer([explorerFiles[0]!]);
+        await renderCodePanel([explorerFiles[0]!]);
 
         expect(containedExplorer()).toBeNull();
         await expect.element(explorerToggle()).not.toBeInTheDocument();
@@ -127,7 +127,7 @@ describe("Code tab panel", () => {
 
     describe("Accessibility", () => {
       it("expands directories and selects files using the keyboard", async () => {
-        await renderCodeExplorer();
+        await renderCodePanel();
         await userEvent.click(explorerEntry("login-page-01"));
         await expect
           .element(explorerEntry("login-page-01"))

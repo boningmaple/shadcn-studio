@@ -1,16 +1,16 @@
 import { CodeIcon, EyeIcon } from "lucide-react";
 import { useRef, useState } from "react";
 
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { OpenNewTabButton } from "@/shared/components/open-new-tab-button";
 
 import { usePreviewSize } from "../hooks/use-preview-size";
 import { usePreviewTheme } from "../hooks/use-preview-theme";
 import { previewUrl as getPreviewUrl } from "../lib/registry-catalog.ts";
 import type { VibeBuiltRegistryItem } from "../types/registry.ts";
-import { CodeTabPanel } from "./code-tab-panel";
+import { CodePanel } from "./code-panel";
+import { PreviewPanel } from "./preview-panel";
 import { PreviewSizeToggleGroup } from "./preview-size-toggle-group";
-import { PreviewTabPanel } from "./preview-tab-panel";
 import { PreviewThemeSwitchButton } from "./preview-theme-switch-button";
 import ResetPreviewButton from "./reset-preview-button";
 
@@ -71,15 +71,27 @@ export function PreviewBlock(props: PreviewBlockProps) {
             </div>
           ) : null}
         </div>
-        <PreviewTabPanel
-          frameRef={previewFrameRef}
-          panelRef={previewPanelRef}
-          href={previewUrl}
-          title={`${props.item.title} Preview`}
-          selectedPreviewSize={selectedPreviewSize}
-          onPreviewPanelResize={onPreviewPanelResize}
-        />
-        <CodeTabPanel item={props.item} />
+        <TabsContent
+          id={"preview" satisfies PreviewTab}
+          shouldForceMount
+          className="data-inert:hidden"
+        >
+          <PreviewPanel
+            frameRef={previewFrameRef}
+            panelRef={previewPanelRef}
+            href={previewUrl}
+            title={`${props.item.title} Preview`}
+            selectedPreviewSize={selectedPreviewSize}
+            onPreviewPanelResize={onPreviewPanelResize}
+          />
+        </TabsContent>
+        <TabsContent
+          id={"code" satisfies PreviewTab}
+          shouldForceMount
+          className="data-inert:hidden"
+        >
+          <CodePanel item={props.item} />
+        </TabsContent>
       </Tabs>
     </article>
   );

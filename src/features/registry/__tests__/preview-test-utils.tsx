@@ -3,7 +3,7 @@ import { vi } from "vite-plus/test";
 import { page, userEvent } from "vite-plus/test/browser/context";
 import { render } from "vitest-browser-react";
 
-import { CodeExplorer } from "@/features/registry/components/code-tab-panel";
+import { CodePanel } from "@/features/registry/components/code-panel";
 import { PreviewBlock } from "@/features/registry/components/preview-block";
 import * as highlightCode from "@/features/registry/lib/highlight-code";
 import { themeDarkMessage, themeLightMessage } from "@/features/registry/lib/preview-frame-message";
@@ -120,7 +120,17 @@ export const selectedExplorerEntry = () =>
   document.querySelector<HTMLElement>('[data-slot="sidebar-menu-button"][data-active="true"]')!;
 export const cssSource = () => page.getByText(".login-page { display: grid; }");
 
-export const renderCodeExplorer = (files = explorerFiles) => render(<CodeExplorer files={files} />);
+export const renderCodePanel = (files = explorerFiles) => {
+  const item = { ...registryItem, files };
+  const queryClient = new QueryClient();
+  queryClient.setQueryData(["registry-item-code", item.name, item.files], files);
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <CodePanel item={item} />
+    </QueryClientProvider>,
+  );
+};
 
 export function runPreviewThemeHydrationScript(search: string) {
   const script = document.createElement("script");

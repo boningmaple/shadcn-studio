@@ -141,7 +141,7 @@
     min-height: 100%;
     width: max-content;
     margin: 0;
-    padding-block: 1rem;
+    padding-block: 0.75rem;
     background-color: transparent !important;
     font-size: 0.875rem;
     line-height: 1.5rem;
@@ -149,20 +149,21 @@
 
   .registry-code code {
     display: block;
+    white-space: normal;
     counter-reset: registry-code-line;
   }
 
   .registry-code .line {
     display: block;
     min-height: 1.5rem;
-    padding-right: 1rem;
+    padding-right: 0.75rem;
     white-space: pre;
   }
 
   .registry-code .line::before {
     display: inline-block;
-    width: 3.5rem;
-    padding-right: 1rem;
+    width: 3rem;
+    padding-right: 0.75rem;
     color: var(--muted-foreground);
     text-align: right;
     content: counter(registry-code-line);

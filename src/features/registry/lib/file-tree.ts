@@ -6,15 +6,11 @@ export type FileTreeNode = {
   name: string;
 };
 
-export function registryFileDisplayPath(file: VibeHighlightedRegistryFile): string {
-  return file.target;
-}
-
 export function buildFileTree(files: readonly VibeHighlightedRegistryFile[]): FileTreeNode[] {
   const root: FileTreeNode[] = [];
 
   for (const file of files) {
-    const parts = registryFileDisplayPath(file).split("/").filter(Boolean);
+    const parts = file.target.split("/").filter(Boolean);
     let level = root;
 
     for (const [index, part] of parts.entries()) {
