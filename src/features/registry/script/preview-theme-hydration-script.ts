@@ -1,13 +1,13 @@
-/**
- * Applies a standalone Preview's optional theme query before its body paints.
- *
- * This runs after the app-wide stored-theme hydration script, so a valid
- * Preview-local query can override that document without changing storage.
- */
+/** Applies a standalone Preview's explicit URL theme before its body paints. */
 export const previewThemeHydrationScript = (() => {
   function previewThemeHydrationFn() {
-    const theme = new URLSearchParams(location.search).get("theme");
-    if (theme !== "light" && theme !== "dark") return;
+    const queryTheme = new URLSearchParams(location.search).get("theme");
+    const parentTheme =
+      window === parent || !parent.document.documentElement.classList.contains("dark")
+        ? "light"
+        : "dark";
+    const theme =
+      queryTheme === "dark" || (queryTheme === null && parentTheme === "dark") ? "dark" : "light";
 
     const root = document.documentElement;
     root.dataset.theme = theme;

@@ -9,38 +9,38 @@ function getLabel(theme: PreviewTheme, nextTheme: PreviewTheme) {
   return `Preview theme: ${capitalize(theme)}. Switch to ${capitalize(nextTheme)}.`;
 }
 
-export function CollectionPreviewThemeSwitch({
-  previewTheme,
-  setPreviewTheme,
-}: {
-  previewTheme: PreviewTheme | null;
+type PreviewThemeSwitchButtonProps = {
+  previewTheme: PreviewTheme;
+  isFollowingAppTheme: boolean;
   setPreviewTheme: (previewTheme: PreviewTheme) => void;
-}) {
+};
+
+export function PreviewThemeSwitchButton(props: PreviewThemeSwitchButtonProps) {
   const hydrated = useHydrated();
 
+  const lightClasses = props.isFollowingAppTheme
+    ? "dark:hidden"
+    : props.previewTheme === "dark"
+      ? "hidden"
+      : undefined;
+  const darkClasses = props.isFollowingAppTheme
+    ? "hidden dark:block"
+    : props.previewTheme === "light"
+      ? "hidden"
+      : undefined;
+
   const switchTheme = () => {
-    // When no preview override exists, the iframe initially inherits the
-    // resolved app theme represented by the outer document's `dark` class.
-    const currentTheme =
-      previewTheme ?? (document.documentElement.classList.contains("dark") ? "dark" : "light");
-
-    setPreviewTheme(currentTheme === "light" ? "dark" : "light");
+    props.setPreviewTheme(props.previewTheme === "light" ? "dark" : "light");
   };
-
-  const lightClasses =
-    previewTheme === null ? "dark:hidden" : previewTheme === "dark" ? "hidden" : undefined;
-
-  const darkClasses =
-    previewTheme === null ? "hidden dark:block" : previewTheme === "light" ? "hidden" : undefined;
 
   return (
     <Button
       data-slot="collection-preview-theme"
+      isDisabled={!hydrated}
       variant="outline"
       size="icon"
-      isDisabled={!hydrated}
-      onPress={switchTheme}
       className="transition-none"
+      onPress={switchTheme}
     >
       <SunIcon className={lightClasses} />
       <span className={cn("sr-only", lightClasses)}>{getLabel("light", "dark")}</span>

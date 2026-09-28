@@ -1,8 +1,9 @@
 import { createContext, useContext } from "react";
 
-import type { Theme } from "@/features/theme-switch/types/theme";
+import type { ResolvedTheme, Theme } from "@/features/theme-switch/types/theme";
 
 type ThemeContextType = {
+  resolvedTheme: ResolvedTheme;
   setTheme: (theme: Theme) => void;
   theme: Theme;
 };

@@ -2,7 +2,6 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import * as React from "react";
 
 import { Toaster } from "@/components/ui/sonner";
-import { ThemeHydrationScript } from "@/features/theme-switch/components/theme-hydration-script";
 
 import fontCss from "@/shared/styles/font.css?url";
 import rootCss from "@/shared/styles/root.css?url";
@@ -40,7 +39,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <ThemeHydrationScript />
         <HeadContent />
       </head>
       <body>

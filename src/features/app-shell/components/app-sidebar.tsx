@@ -77,10 +77,10 @@ export function AppSidebar(props: React.ComponentPropsWithoutRef<typeof Sidebar>
     <Sidebar {...props}>
       <SidebarHeader className="w-full h-(--header-height) border-b border-dashed flex-row items-center px-4 py-0 lg:hidden">
         <Link
-          className="text-xl font-bold hover:underline"
           aria-label={homeRoute.options.staticData.ariaLabel}
           to={homeRoute.to}
           activeOptions={{ exact: true }}
+          className="text-xl font-bold hover:underline"
           onClick={() => setOpenMobile(false)}
         >
           VibeUI
@@ -129,9 +129,9 @@ function SidebarMenuTree({
 }) {
   return items.map((item) =>
     item.items === undefined || item.items.length === 0 ? (
-      <SidebarAtomicMenuItem item={item} key={item.label} setOpenMobile={setOpenMobile} />
+      <SidebarAtomicMenuItem key={item.label} item={item} setOpenMobile={setOpenMobile} />
     ) : (
-      <SidebarCollapsibleMenuItem item={item} key={item.label} setOpenMobile={setOpenMobile} />
+      <SidebarCollapsibleMenuItem key={item.label} item={item} setOpenMobile={setOpenMobile} />
     ),
   );
 }
@@ -151,7 +151,7 @@ function SidebarAtomicMenuItem({
         href={item.to}
         render={(props) =>
           "href" in props ? (
-            <Link {...props} onClick={() => setOpenMobile(false)} to={props.href}>
+            <Link {...props} to={props.href} onClick={() => setOpenMobile(false)}>
               {item.icon === undefined ? null : <item.icon />}
               <span>{item.label}</span>
             </Link>

@@ -1,3 +1,4 @@
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
 async function abortScriptRequests(page: Page) {
@@ -21,31 +22,14 @@ async function setInitialTheme(page: Page, theme: "light" | "dark") {
   }, theme);
 }
 
-test.describe("Registry item Previews", () => {
-  for (const collection of [
-    { item: "button-01", path: "/components/button", previewText: "Get started, 0" },
-    {
-      item: "hero-section-01",
-      path: "/blocks/hero-section",
-      previewText: "Ship with confidence",
-    },
-    { item: "landing-page-01", path: "/pages/landing-pages", previewText: "Northstar" },
-  ]) {
-    test(`renders ${collection.path} Preview before hydration`, async ({ page }) => {
-      await abortScriptRequests(page);
+async function expectNoAxeViolations(page: Page) {
+  const results = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22a", "wcag22aa"])
+    .analyze();
+  expect(results.violations).toEqual([]);
+}
 
-      const response = await page.goto(collection.path);
-
-      expect(response?.status()).toBe(200);
-      await expect(
-        page
-          .frameLocator(`#${collection.item} iframe`)
-          .getByText(collection.previewText, { exact: true })
-          .first(),
-      ).toBeVisible();
-    });
-  }
-
+test.describe("Preview Rendering", () => {
   for (const preview of [
     {
       path: "/preview/components/button/button-01",
@@ -63,7 +47,7 @@ test.describe("Registry item Previews", () => {
       title: "Landing Page 01 Preview – VibeUI",
     },
   ]) {
-    test(`renders ${preview.path} before hydration`, async ({ page }) => {
+    test(`server-renders ${preview.path} without JavaScript`, async ({ page }) => {
       await abortScriptRequests(page);
 
       const response = await page.goto(preview.path);
@@ -74,105 +58,33 @@ test.describe("Registry item Previews", () => {
     });
   }
 
-  test("opens a fresh Registry item Preview in a new tab", async ({ page }) => {
-    await setInitialTheme(page, "light");
+  test("renders an interactive Preview and Code preview from real Registry item data", async ({
+    page,
+  }) => {
     await page.goto("/components/button");
     await waitForHydration(page);
 
     const item = page.locator("#button-01");
-    await item.getByRole("button", { name: "Preview theme: Light. Switch to Dark." }).click();
-    const previewPagePromise = page.waitForEvent("popup");
-    await item.getByRole("link", { name: "Open preview in tab" }).click();
-    const previewPage = await previewPagePromise;
+    const preview = page.frameLocator("#button-01 iframe");
+    await expect(preview.getByRole("button", { name: "Get started, 0" })).toBeVisible();
 
-    await expect(previewPage).toHaveURL("/preview/components/button/button-01?theme=dark");
-    await expect(previewPage).toHaveTitle("Button 01 Preview – VibeUI");
-    await expect(previewPage.getByText("Get started, 0", { exact: true })).toBeVisible();
-    await expect(previewPage.locator("html")).toHaveAttribute("data-theme", "dark");
-
-    await page.getByRole("button", { exact: true, name: "Theme: Light. Switch to Dark." }).click();
-    await page.getByRole("button", { exact: true, name: "Theme: Dark. Switch to System." }).click();
-    await page
-      .getByRole("button", { exact: true, name: "Theme: System. Switch to Light." })
-      .click();
-
-    await expect(previewPage).toHaveURL("/preview/components/button/button-01?theme=dark");
-    await expect(previewPage.locator("html")).toHaveAttribute("data-theme", "dark");
+    await item.getByRole("tab", { name: "Code" }).click();
+    const source = item.getByRole("region", { name: "Source code for button-01.tsx" });
+    await expect(source).toBeVisible();
+    await expect(source).toContainText("Get started");
   });
+});
 
-  test("applies the persisted theme to an isolated Preview", async ({ page }) => {
-    await setInitialTheme(page, "dark");
-
-    await page.goto("/preview/components/button/button-01");
-
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  });
-
-  test("applies a Preview theme query before hydration", async ({ page }) => {
-    await setInitialTheme(page, "light");
-    await abortScriptRequests(page);
-
-    await page.goto("/preview/components/button/button-01?theme=dark");
-
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-    await expect(page.locator("html")).toHaveClass(/dark/);
-  });
-
-  test("follows app theme changes and returns to them after an explicit override", async ({
-    page,
-  }) => {
-    await setInitialTheme(page, "light");
-    await page.goto("/components/button");
-    await waitForHydration(page);
-
-    const item = page.locator("#button-02");
-    const preview = page.frameLocator("#button-02 iframe");
-    const previewRoot = preview.locator("html");
-    const previewBody = preview.locator("body");
-
-    await page.getByRole("button", { exact: true, name: "Theme: Light. Switch to Dark." }).click();
-    await expect(previewRoot).toHaveAttribute("data-theme", "dark");
-
-    await item.getByRole("button", { name: "Preview theme: Dark. Switch to Light." }).click();
-    await expect(item.locator("iframe")).toHaveAttribute(
-      "src",
-      "/preview/components/button/button-02?theme=light",
-    );
-    await expect(previewRoot).toHaveAttribute("data-theme", "light");
-    await expect(previewBody).toHaveCSS("background-color", "oklch(1 0 0)");
-
-    await page.getByRole("button", { exact: true, name: "Theme: Dark. Switch to System." }).click();
-    await expect(item.locator("iframe")).toHaveAttribute(
-      "src",
-      "/preview/components/button/button-02",
-    );
-    await expect(previewRoot).toHaveAttribute("data-theme", "system");
-
-    await page
-      .getByRole("button", { exact: true, name: "Theme: System. Switch to Light." })
-      .click();
-
-    await expect(previewRoot).toHaveAttribute("data-theme", "light");
-    await expect(preview.getByRole("button", { name: "Open search ⌘ K" })).toHaveCSS(
-      "color",
-      "oklch(0.145 0 0)",
-    );
-  });
-
-  test("uses the iframe viewport for responsive Registry item styles", async ({ page }) => {
+test.describe("Responsive Previews", () => {
+  test("applies Registry item breakpoints from the resized iframe viewport", async ({ page }) => {
     await page.goto("/blocks/hero-section");
     await waitForHydration(page);
 
     const item = page.locator("#hero-section-01");
-    const iframe = item.locator("iframe");
     const preview = page.frameLocator("#hero-section-01 iframe");
     const heading = preview.getByRole("heading", {
       name: "A calmer way to build ambitious products",
     });
-
-    await expect(iframe).toHaveAttribute("loading", "lazy");
-    await expect(iframe).toHaveAttribute("title", "Hero Section 01 Preview");
-    await expect(item.getByRole("radio", { name: "Full-width preview" })).toBeChecked();
 
     await item.getByRole("radio", { name: "Phone preview" }).click();
     await expect.poll(() => heading.evaluate(() => innerWidth)).toBe(320);
@@ -182,44 +94,148 @@ test.describe("Registry item Previews", () => {
     await expect.poll(() => heading.evaluate(() => innerWidth)).toBe(640);
     await expect(heading).toHaveCSS("font-size", "60px");
   });
+});
 
-  test("preserves an iframe across tabs and Reset restores its canonical Preview", async ({
+test.describe("Preview Theme", () => {
+  test("shows the resolved dark app theme before hydration", async ({ page }) => {
+    await setInitialTheme(page, "dark");
+    await abortScriptRequests(page);
+    await page.goto("/components/button");
+
+    const switchButton = page
+      .locator("#button-01")
+      .getByRole("button", { name: "Preview theme: Dark. Switch to Light." });
+    await expect(switchButton).toBeVisible();
+    await expect(switchButton).toBeDisabled();
+  });
+
+  test("keeps a dark Preview visible after refreshing its Collection page", async ({ page }) => {
+    await setInitialTheme(page, "dark");
+    await page.goto("/components/button");
+    await waitForHydration(page);
+
+    const item = page.locator("#button-01");
+    const frame = item.locator("iframe");
+    const previewRoot = page.frameLocator("#button-01 iframe").locator("html");
+    await expect(frame).toBeVisible();
+    await expect(previewRoot).toHaveAttribute("data-theme", "dark");
+
+    await page.reload();
+    await waitForHydration(page);
+    await expect(frame).toBeVisible();
+    await expect(previewRoot).toHaveAttribute("data-theme", "dark");
+  });
+
+  test("clears local Preview themes after app changes without resetting Registry item state", async ({
+    page,
+  }) => {
+    await setInitialTheme(page, "light");
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto("/components/button");
+    await waitForHydration(page);
+
+    const item = page.locator("#button-01");
+    const preview = page.frameLocator("#button-01 iframe");
+    const previewRoot = preview.locator("html");
+    await expect
+      .poll(async () => {
+        const initialButton = preview.getByRole("button", { name: "Get started, 0" });
+        if (await initialButton.isVisible()) await initialButton.click();
+        return preview.getByRole("button", { name: "Get started, 1" }).isVisible();
+      })
+      .toBe(true);
+
+    await page.getByRole("button", { exact: true, name: "Theme: Light. Switch to Dark." }).click();
+    await expect(previewRoot).toHaveAttribute("data-theme", "dark");
+
+    await item.getByRole("button", { name: "Preview theme: Dark. Switch to Light." }).click();
+    await expect(previewRoot).toHaveAttribute("data-theme", "light");
+
+    await page.getByRole("button", { exact: true, name: "Theme: Dark. Switch to System." }).click();
+    await expect(previewRoot).toHaveAttribute("data-theme", "dark");
+
+    await item.getByRole("button", { name: "Preview theme: Dark. Switch to Light." }).click();
+    await expect(previewRoot).toHaveAttribute("data-theme", "light");
+    await page.emulateMedia({ colorScheme: "light" });
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
+    await expect(previewRoot).toHaveAttribute("data-theme", "light");
+    await page.emulateMedia({ colorScheme: "dark" });
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await expect(previewRoot).toHaveAttribute("data-theme", "dark");
+    await expect(preview.getByRole("button", { name: "Get started, 1" })).toBeVisible();
+  });
+
+  test("opens a standalone Preview with the effective explicit theme", async ({ page }) => {
+    await setInitialTheme(page, "light");
+    await page.goto("/components/button");
+    await waitForHydration(page);
+
+    const item = page.locator("#button-01");
+    await item.getByRole("button", { name: "Preview theme: Light. Switch to Dark." }).click();
+    const previewPagePromise = page.waitForEvent("popup");
+    await item.getByRole("link", { name: "Open in a new tab" }).click();
+    const previewPage = await previewPagePromise;
+
+    await expect(previewPage).toHaveURL("/preview/components/button/button-01?theme=dark");
+    await expect(previewPage.getByText("Get started, 0", { exact: true })).toBeVisible();
+    await expect(previewPage.locator("html")).toHaveAttribute("data-theme", "dark");
+
+    await page.getByRole("button", { exact: true, name: "Theme: Light. Switch to Dark." }).click();
+    await expect(previewPage.locator("html")).toHaveAttribute("data-theme", "dark");
+  });
+
+  test("uses the URL theme or light fallback when rendering a standalone Preview", async ({
+    page,
+  }) => {
+    await setInitialTheme(page, "dark");
+    await page.emulateMedia({ colorScheme: "light" });
+    await abortScriptRequests(page);
+
+    await page.goto("/preview/components/button/button-01?theme=dark");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect(page.locator("html")).toHaveClass(/dark/);
+
+    await page.goto("/preview/components/button/button-01");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
+
+    await page.goto("/preview/components/button/button-01?theme=sepia");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
+  });
+});
+
+test.describe("Preview Reset", () => {
+  test("resets Registry item state without replacing or retheming its Preview document", async ({
     page,
   }) => {
     await page.goto("/components/button");
     await waitForHydration(page);
 
     const item = page.locator("#button-01");
-    const iframe = item.locator("iframe");
     const preview = page.frameLocator("#button-01 iframe");
+    await preview.locator("html").evaluate(() => {
+      Object.assign(window, { __previewDocumentIdentity: "original" });
+    });
 
     await preview.getByRole("button", { name: "Get started, 0" }).click();
     await expect(preview.getByRole("button", { name: "Get started, 1" })).toBeVisible();
-
-    await item.getByRole("tab", { name: "Code" }).click();
-    await expect(iframe).toHaveCount(1);
-    await item.getByRole("tab", { name: "Preview" }).click();
-    await expect(preview.getByRole("button", { name: "Get started, 1" })).toBeVisible();
-
-    const child = page
-      .frames()
-      .find((frame) => frame.url().includes("/preview/components/button/button-01"));
-    expect(child).toBeDefined();
-    await child?.goto("/preview/components/button/button-02");
-    await expect(preview.getByRole("button", { name: "Open search ⌘ K" })).toBeVisible();
+    await item.getByRole("button", { name: "Preview theme: Light. Switch to Dark." }).click();
+    await expect(preview.locator("html")).toHaveAttribute("data-theme", "dark");
 
     await item.getByRole("button", { name: "Reset preview" }).click();
+
     await expect(preview.getByRole("button", { name: "Get started, 0" })).toBeVisible();
-    await expect(iframe).toHaveAttribute("src", "/preview/components/button/button-01");
+    await expect(preview.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect
+      .poll(() =>
+        preview.locator("html").evaluate(() => Reflect.get(window, "__previewDocumentIdentity")),
+      )
+      .toBe("original");
   });
+});
 
-  test("falls back to the resolved app theme for an invalid Preview theme", async ({ page }) => {
-    await setInitialTheme(page, "light");
-    await page.goto("/preview/components/button/button-01?theme=sepia");
-
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-  });
-
+test.describe("Error Handling", () => {
   test("returns not found for an unknown Collection page", async ({ page }) => {
     const response = await page.goto("/components/not-a-category");
 
@@ -230,5 +246,29 @@ test.describe("Registry item Previews", () => {
     const response = await page.goto("/preview/components/button/not-an-item");
 
     expect(response?.status()).toBe(404);
+  });
+});
+
+test.describe("A11y", () => {
+  test("has no detectable accessibility violations in Preview and Code preview states", async ({
+    page,
+  }) => {
+    await page.goto("/components/button");
+    await waitForHydration(page);
+
+    await expect(page.frameLocator("#button-01 iframe").getByText("Get started, 0")).toBeVisible();
+    await expectNoAxeViolations(page);
+
+    const item = page.locator("#button-01");
+    await item.getByRole("tab", { name: "Code" }).click();
+    await expect(item.getByRole("region", { name: "Source code for button-01.tsx" })).toBeVisible();
+    await expectNoAxeViolations(page);
+  });
+
+  test("has no detectable accessibility violations in a standalone Preview", async ({ page }) => {
+    await page.goto("/preview/components/button/button-01");
+    await expect(page.getByRole("button", { name: "Get started, 0" })).toBeVisible();
+
+    await expectNoAxeViolations(page);
   });
 });

@@ -5,6 +5,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "@/com
 import { AppHeader } from "@/features/app-shell/components/app-header";
 import { AppSidebar } from "@/features/app-shell/components/app-sidebar";
 import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
+import { themeHydrationScript } from "@/features/theme-switch/script/theme-hydration-script";
 
 const TanStackDevtools = import.meta.env.DEV
   ? lazy(() =>
@@ -15,6 +16,9 @@ const TanStackDevtools = import.meta.env.DEV
   : null;
 
 export const Route = createFileRoute("/_rootLayout")({
+  head: () => ({
+    scripts: [{ children: themeHydrationScript }],
+  }),
   staticData: { ariaLabel: "" },
   component: RouteComponent,
 });
@@ -52,10 +56,10 @@ function RootLayoutContent({ hideDesktopSidebar }: { hideDesktopSidebar: boolean
         {hideDesktopSidebar ? null : (
           <div
             aria-label="Workspace controls"
-            className="hidden h-(--header-height) lg:flex items-center gap-4 px-4"
             role="toolbar"
+            className="hidden h-(--header-height) lg:flex items-center gap-4 px-4"
           >
-            <SidebarTrigger size="icon" variant="outline" className="transition-none" />
+            <SidebarTrigger variant="outline" size="icon" className="transition-none" />
           </div>
         )}
         <div className="flex-1 p-4 prose dark:prose-invert max-w-none">

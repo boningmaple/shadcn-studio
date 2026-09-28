@@ -13,17 +13,17 @@ export function SearchDialogOpenButton({ onPress }: { onPress: () => void }) {
     <>
       <Button
         aria-label="Search"
-        size="icon"
         variant="outline"
-        onPress={onPress}
+        size="icon"
         className="lg:hidden transition-none"
+        onPress={onPress}
       >
         <SearchIcon />
       </Button>
       <Button
-        onPress={onPress}
         variant="outline"
         className="hidden rounded-full text-muted-foreground lg:inline-flex transition-none"
+        onPress={onPress}
       >
         <SearchIcon />
         <span className="pr-2">Search</span>

@@ -19,10 +19,10 @@ export function ThemeSwitchButton() {
   return (
     <Button
       isDisabled={!hydrated}
-      onPress={() => setTheme(nextTheme)}
-      size="icon"
       variant="outline"
+      size="icon"
       className="transition-none"
+      onPress={() => setTheme(nextTheme)}
     >
       {/*
         All three labels are rendered so the markup never depends on `theme`

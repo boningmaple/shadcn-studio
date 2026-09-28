@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { applyThemeToDocument } from "@/features/theme-switch/lib/apply-theme";
+import {
+  applyThemeToDocument,
+  getResolvedThemeFromDocument,
+} from "@/features/theme-switch/lib/apply-theme";
 import {
   getLocalStorageTheme,
   setLocalStorageTheme,
@@ -10,6 +13,7 @@ import {
   localStorageKey,
   parseTheme,
   themes,
+  type ResolvedTheme,
   type Theme,
 } from "@/features/theme-switch/types/theme";
 
@@ -21,10 +25,12 @@ import {
  * All three land here so the document is written from one place.
  */
 export function useThemeState(): {
+  resolvedTheme: ResolvedTheme;
   theme: Theme;
   setTheme: (theme: Theme) => void;
 } {
   const [theme, setTheme] = useState<Theme>(getLocalStorageTheme);
+  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>(themes.light);
 
   useEffect(() => {
     const onStorage = (event: StorageEvent) => {
@@ -38,15 +44,19 @@ export function useThemeState(): {
 
   useEffect(() => {
     setLocalStorageTheme(localStorageKey, theme);
-    applyThemeToDocument(theme);
+    const mediaQuery = matchMedia(darkModeMediaQuery);
+    const applyTheme = () => {
+      applyThemeToDocument(theme);
+      setResolvedTheme(getResolvedThemeFromDocument());
+    };
+
+    applyTheme();
 
     if (theme === themes.system) {
-      const onChange = () => applyThemeToDocument(theme);
-      const mediaQuery = matchMedia(darkModeMediaQuery);
-      mediaQuery.addEventListener("change", onChange);
-      return () => mediaQuery.removeEventListener("change", onChange);
+      mediaQuery.addEventListener("change", applyTheme);
+      return () => mediaQuery.removeEventListener("change", applyTheme);
     }
   }, [theme]);
 
-  return { theme, setTheme };
+  return { resolvedTheme, theme, setTheme };
 }

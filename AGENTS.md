@@ -4,6 +4,8 @@
 
 - After making code changes, run `npm run check` (runs `vp check --fix` — formats, lints, and type-checks, auto-fixing what it can).
 - Before finishing, run `npm run lint -- --deny-warnings --format=agent` (zero-warning gate; fails on any lint warning).
+- Define each project-owned React component's props as a named `ComponentNameProps` type outside the component function, accept the object as `props: ComponentNameProps`, and access values through `props`. When ref-valued props trigger `react-hooks/refs`, destructure only those refs and collect the remaining values as `...props` (for example, `{ frameRef, panelRef, ...props }`). Exclude shadcn-owned source in `src/components/**` and `registry/**`.
+- Keep project-owned JSX props readable: `key`/`ref` first, identity and accessibility props next, content and configuration props after those, visual props and `className` near the end, and event handlers last. Preserve prop-spread positions because their order affects overrides. Exclude shadcn-owned source in `src/components/**` and `registry/**`.
 
 ## Frontend testing
 

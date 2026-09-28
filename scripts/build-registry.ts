@@ -5,8 +5,8 @@ import path from "node:path";
 
 import sourceRegistry from "../registry.json" with { type: "json" };
 import {
+  previewUrl,
   registryItemSummaries,
-  registryPreviewHref,
   registrySections,
   segmentByType,
 } from "../src/features/registry/lib/registry-catalog.ts";
@@ -192,12 +192,12 @@ export const Route = createFileRoute("/_rootLayout${collection.href}")({
 
 function previewRouteContent(item: VibeRegistryItemSummary): string {
   const importName = `${pascalCase(item.name)}Preview`;
-  const href = registryPreviewHref(item.type, item.category, item.name);
+  const href = previewUrl(item);
   const importPath = `@/registry/vibe-ui/${item.name}/${item.name}.tsx`;
 
   return `${generatedHeader}import { createFileRoute } from "@tanstack/react-router";
 
-import { RegistryPreviewPage } from "@/features/registry/components/registry-preview-page";
+import { PreviewPage } from "@/features/registry/components/preview-page";
 import ${importName} from "${importPath}";
 
 export const Route = createFileRoute(${JSON.stringify(href)})({
@@ -206,7 +206,7 @@ export const Route = createFileRoute(${JSON.stringify(href)})({
   }),
   staticData: { ariaLabel: ${JSON.stringify(`${item.title} Preview`)} },
   component: () => (
-    <RegistryPreviewPage Preview={${importName}} type=${JSON.stringify(item.type)} />
+    <PreviewPage Preview={${importName}} type=${JSON.stringify(item.type)} />
   ),
 });
 `;

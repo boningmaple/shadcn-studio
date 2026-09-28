@@ -16,35 +16,54 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { TabsContent } from "@/components/ui/tabs";
 import { CopyButton } from "@/shared/components/copy-button";
 
 import { useHighlightedRegistryFiles } from "../hooks/use-highlighted-registry-files.ts";
 import { buildFileTree, registryFileDisplayPath, type FileTreeNode } from "../lib/file-tree.ts";
 import type { VibeBuiltRegistryItem, VibeHighlightedRegistryFile } from "../types/registry.ts";
+import type { PreviewTab } from "./preview-block";
 
-export function RegistryCodePanel({ item }: { item: VibeBuiltRegistryItem }) {
-  const query = useHighlightedRegistryFiles(item);
+type CodeTabPanelProps = {
+  item: VibeBuiltRegistryItem;
+};
 
-  if (query.isPending || query.isError) return null;
-
-  return <CodeExplorer files={query.data} name={item.name} />;
-}
-
-export function CodeExplorer({
-  files,
-  name = "",
-}: {
+type CodeExplorerProps = {
   files: VibeHighlightedRegistryFile[];
   name?: string;
-}) {
-  const tree = useMemo(() => buildFileTree(files), [files]);
-  const initialPath = useMemo(() => initialFilePath(files, name), [files, name]);
+};
+
+type FileTreeItemProps = {
+  node: FileTreeNode;
+  onSelect: (path: string) => void;
+  selectedPath: string;
+  prefix?: string;
+};
+
+export function CodeTabPanel(props: CodeTabPanelProps) {
+  const query = useHighlightedRegistryFiles(props.item);
+
+  return (
+    <TabsContent id={"code" satisfies PreviewTab} shouldForceMount className="data-inert:hidden">
+      {query.isPending || query.isError ? null : (
+        <CodeExplorer files={query.data} name={props.item.name} />
+      )}
+    </TabsContent>
+  );
+}
+
+export function CodeExplorer(props: CodeExplorerProps) {
+  const tree = useMemo(() => buildFileTree(props.files), [props.files]);
+  const initialPath = useMemo(
+    () => initialFilePath(props.files, props.name ?? ""),
+    [props.files, props.name],
+  );
   const [selectedPath, setSelectedPath] = useState(initialPath);
   const codeScrollerRef = useRef<HTMLElement>(null);
   const selectedFile =
-    files.find((file) => registryFileDisplayPath(file) === selectedPath) ?? files[0]!;
+    props.files.find((file) => registryFileDisplayPath(file) === selectedPath) ?? props.files[0]!;
   const selectedFileName = registryFileDisplayPath(selectedFile).split("/").at(-1);
-  const hasFileTree = files.length > 1;
+  const hasFileTree = props.files.length > 1;
 
   const selectFile = (path: string) => {
     setSelectedPath(path);
@@ -53,9 +72,9 @@ export function CodeExplorer({
 
   return (
     <SidebarProvider
-      className="h-[min(30rem,calc(100svh-2rem))] min-h-0 flex-col overflow-hidden rounded-lg border bg-background lg:h-[min(36rem,calc(100svh-2rem))]"
       cookieName={false}
       keyboardShortcut={false}
+      className="h-[min(30rem,calc(100svh-2rem))] min-h-0 flex-col overflow-hidden rounded-lg border bg-background lg:h-[min(36rem,calc(100svh-2rem))]"
     >
       <header className="flex h-11 shrink-0 items-center gap-2 border-b px-2">
         {hasFileTree ? <SidebarTrigger aria-label="Toggle file explorer" size="icon" /> : null}
@@ -82,8 +101,8 @@ export function CodeExplorer({
                       <FileTreeItem
                         key={node.name}
                         node={node}
-                        onSelect={selectFile}
                         selectedPath={selectedPath}
+                        onSelect={selectFile}
                       />
                     ))}
                   </SidebarMenu>
@@ -94,41 +113,32 @@ export function CodeExplorer({
         ) : null}
 
         <section
+          ref={codeScrollerRef}
           aria-label={`Source code for ${selectedFileName}`}
           className="registry-code min-w-0 flex-1 overflow-auto"
           dangerouslySetInnerHTML={{ __html: selectedFile.html }}
-          ref={codeScrollerRef}
         />
       </div>
     </SidebarProvider>
   );
 }
 
-function FileTreeItem({
-  node,
-  onSelect,
-  selectedPath,
-  prefix = "",
-}: {
-  node: FileTreeNode;
-  onSelect: (path: string) => void;
-  selectedPath: string;
-  prefix?: string;
-}) {
-  const path = prefix === "" ? node.name : `${prefix}/${node.name}`;
+function FileTreeItem(props: FileTreeItemProps) {
+  const prefix = props.prefix ?? "";
+  const path = prefix === "" ? props.node.name : `${prefix}/${props.node.name}`;
   const { isMobile, setOpenMobile } = useSidebar();
 
-  if (node.file !== undefined) {
+  if (props.node.file !== undefined) {
     return (
       <SidebarMenuButton
-        isActive={path === selectedPath}
+        isActive={path === props.selectedPath}
         onPress={() => {
-          onSelect(path);
+          props.onSelect(path);
           if (isMobile) setOpenMobile(false);
         }}
       >
         <FileIcon />
-        <span>{node.name}</span>
+        <span>{props.node.name}</span>
       </SidebarMenuButton>
     );
   }
@@ -136,23 +146,23 @@ function FileTreeItem({
   return (
     <SidebarMenuItem>
       <Collapsible
-        className="group/collapsible [&[data-expanded=true]>button>svg:first-child]:rotate-90"
         defaultExpanded
+        className="group/collapsible [&[data-expanded=true]>button>svg:first-child]:rotate-90"
       >
         <SidebarMenuButton slot="trigger">
           <ChevronRightIcon className="transition-transform" />
           <FolderIcon />
-          <span>{node.name}</span>
+          <span>{props.node.name}</span>
         </SidebarMenuButton>
         <CollapsibleContent>
           <SidebarMenuSub className="mr-0! translate-x-0! pr-0!">
-            {node.children.map((child) => (
+            {props.node.children.map((child) => (
               <FileTreeItem
                 key={`${path}/${child.name}`}
                 node={child}
-                onSelect={onSelect}
                 prefix={path}
-                selectedPath={selectedPath}
+                selectedPath={props.selectedPath}
+                onSelect={props.onSelect}
               />
             ))}
           </SidebarMenuSub>

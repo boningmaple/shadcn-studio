@@ -67,11 +67,11 @@ export function SearchDialog({
 
   return (
     <CommandDialog
-      className="top-0 h-full w-full max-w-full rounded-none! sm:top-1/4 sm:h-fit sm:max-w-xl sm:rounded-xl!"
       description="Find a Registry item, Collection page, or app page and go straight to it."
-      onOpenChange={setIsOpen}
       open={isOpen}
       title="Search"
+      className="top-0 h-full w-full max-w-full rounded-none! sm:top-1/4 sm:h-fit sm:max-w-xl sm:rounded-xl!"
+      onOpenChange={setIsOpen}
     >
       <Command
         // ADR-0007: Orama has already matched, scored and ordered these Hits.
@@ -94,7 +94,7 @@ export function SearchDialog({
             />
           ) : null}
           {isQueryInvalid ? (
-            <p className="px-2 pt-1 text-sm text-destructive" id={queryErrorId} role="alert">
+            <p id={queryErrorId} role="alert" className="px-2 pt-1 text-sm text-destructive">
               {queryErrorMessage}
             </p>
           ) : null}
@@ -184,8 +184,8 @@ function SearchQueryResultList({
         description="VibeUI search needs a connection."
         icon={WifiOffIcon}
         isRetrying={searchQueryResult.isFetching}
-        onRetry={() => void retry()}
         title="No network"
+        onRetry={() => void retry()}
       />
     );
   }
@@ -201,8 +201,8 @@ function SearchQueryResultList({
         description="That may well be a blip. Try it again."
         icon={TriangleAlertIcon}
         isRetrying={searchQueryResult.isFetching}
-        onRetry={() => void retry()}
         title="The search could not be reached."
+        onRetry={() => void retry()}
       />
     );
   }
@@ -259,7 +259,7 @@ function Unreachable({
         <EmptyDescription>{description}</EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button isDisabled={isRetrying} onPress={onRetry} variant="outline">
+        <Button isDisabled={isRetrying} variant="outline" onPress={onRetry}>
           {"Try again"}
         </Button>
       </EmptyContent>
@@ -284,7 +284,7 @@ function QuickLinkList({
     >
       <CommandGroup heading="Go to" items={linksWithIds}>
         {(link: QuickLink & { id: string }) => (
-          <CommandItem className="gap-3" id={link.id} textValue={link.label}>
+          <CommandItem id={link.id} textValue={link.label} className="gap-3">
             {link.icon === undefined ? null : <link.icon />}
             <span className="truncate">{link.label}</span>
           </CommandItem>
@@ -298,12 +298,12 @@ function HitList({ hits, onSelect }: { hits: SearchHit[]; onSelect: SelectHandle
   return (
     <CommandList
       aria-label="Search results"
-      className="mt-2 h-[calc(100vh-40px-4px-8px)] max-h-none sm:max-h-72"
       items={hits.map((hit) => ({ ...hit, id: hit.href }))}
+      className="mt-2 h-[calc(100vh-40px-4px-8px)] max-h-none sm:max-h-72"
       onAction={(key) => onSelect(String(key))}
     >
       {(hit) => (
-        <CommandItem aria-label={hit.title} className="gap-3" id={hit.id} textValue={hit.title}>
+        <CommandItem id={hit.id} aria-label={hit.title} textValue={hit.title} className="gap-3">
           <span className="truncate">{hit.title}</span>
           <span className="ml-auto text-xs capitalize text-muted-foreground">
             {hit.kind.replace("-", " ")}

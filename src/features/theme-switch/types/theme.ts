@@ -9,6 +9,7 @@ export const themes = {
 export const themeSchema = z.enum(themes);
 export type Theme = z.infer<typeof themeSchema>;
 export type Themes = typeof themes;
+export type ResolvedTheme = typeof themes.light | typeof themes.dark;
 export const defaultTheme: Theme = themes.system;
 
 /** Anything unrecognised is the default rather than an error. */

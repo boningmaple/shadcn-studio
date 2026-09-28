@@ -1,18 +1,21 @@
 # Registry Preview themes
 
-Each Registry item Preview on a Collection page follows the app's resolved light or dark theme
-until the visitor uses that Preview's theme switch. The first switch adds an explicit
-`?theme=light|dark` override to the iframe and new-tab URL. Clicking the app theme switch removes
-that override, returning every Preview to the app theme. Changing either URL reloads the affected
-iframe, while resetting an item recreates its iframe without changing its current URL theme.
+Each Registry item Preview on a Collection page owns one concrete `light` or `dark` theme. It starts
+with the app's resolved appearance. Changing either the app preference or its resolved appearance
+clears every local Preview choice and returns each Preview to the app. Each Preview's switch changes
+only that Preview. Theme changes preserve both the iframe and the Registry item's state.
 
 Collection pages render each Registry item through its canonical Preview route in a same-origin
-iframe. A queryless Preview uses the app's existing stored-theme state, `storage` events, and system
-color-scheme listener. A valid query instead controls that Preview document's `<html>` element and
-does not listen for app or system theme changes. This document-root authority covers body-mounted
-portals, native controls, and ordinary descendants without cross-frame messaging or observation.
+iframe with no theme query. Before hydration, an embedded Preview initializes from the parent
+document's `dark` class. After hydration, the parent sends an explicit `light` or `dark` message
+whenever the effective Preview theme changes. The Preview validates the message source and origin,
+then applies `data-theme`, the `dark` class, and `color-scheme` to its document root. The iframe
+remains hidden until its load event fires.
 
-The app and Preview routes have separate runtime theme boundaries. Registry items do not receive
-the app's theme context and should respond to document CSS. A Preview-specific head script applies
-a valid query before paint without changing local storage. Missing or invalid values fall back to
-the saved app theme, including its resolved system appearance.
+Reset uses the same validated message channel to remount only the generated Registry item inside its
+existing document. Opening a Preview in a new tab always includes its current explicit
+`?theme=light|dark`. The Preview head script applies that query before paint. A standalone Preview
+with a missing or invalid value uses light as a deterministic fallback; an embedded Preview without
+a query initializes from its parent document. Preview documents do not read theme storage or listen
+to the OS color scheme. Registry items respond only to document CSS, whose root-level theme
+authority covers body-mounted portals, native controls, and ordinary descendants.

@@ -24,6 +24,10 @@ const sectionDescriptionByType: Record<VibeRegistryItemType, string> = {
   "registry:page": "Browse complete page compositions grouped by purpose.",
 };
 
+type PreviewUrlItem =
+  | Pick<VibeRegistryItem, "type" | "categories" | "name">
+  | Pick<VibeRegistryItemSummary, "type" | "category" | "name">;
+
 export function collectionHref(type: VibeRegistryItemType, category: string): string {
   return `/${segmentByType[type]}/${category}`;
 }
@@ -40,12 +44,9 @@ export function registryItemHref(
   return `${collectionHref(type, category)}#${name}`;
 }
 
-export function registryPreviewHref(
-  type: VibeRegistryItemType,
-  category: string,
-  name: string,
-): string {
-  return `/preview/${segmentByType[type]}/${category}/${name}`;
+export function previewUrl(item: PreviewUrlItem): string {
+  const category = "category" in item ? item.category : item.categories[0];
+  return `/preview/${segmentByType[item.type]}/${category}/${item.name}`;
 }
 
 export function registryItemSummaries(

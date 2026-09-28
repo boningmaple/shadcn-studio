@@ -14,7 +14,7 @@ const headerNavRoutes = [componentsRoute, blocksRoute, pagesRoute] as const;
 export function AppHeader() {
   return (
     <header className="sticky top-0 z-50 w-full h-(--header-height) border-b border-dashed backdrop-blur-sm flex items-center gap-4 px-4">
-      <SidebarTrigger className="lg:hidden transition-none" size="icon" variant="outline" />
+      <SidebarTrigger variant="outline" size="icon" className="lg:hidden transition-none" />
       <AppBrandLink />
       <AppHeaderNavigation />
       <AppHeaderActions />
@@ -25,10 +25,10 @@ export function AppHeader() {
 function AppBrandLink() {
   return (
     <Link
-      className="text-xl font-bold hover:underline"
       aria-label={homeRoute.options.staticData.ariaLabel}
       to={homeRoute.to}
       activeOptions={{ exact: true }}
+      className="text-xl font-bold hover:underline"
     >
       VibeUI
     </Link>
@@ -41,8 +41,8 @@ function AppHeaderNavigation() {
       {headerNavRoutes.map((route) => (
         <Link
           key={route.id}
-          className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground data-status:text-foreground data-status:underline data-status:underline-offset-3"
           to={route.to}
+          className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground data-status:text-foreground data-status:underline data-status:underline-offset-3"
         >
           {route.options.staticData.ariaLabel}
         </Link>
