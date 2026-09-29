@@ -78,7 +78,10 @@ const config = defineConfig({
           react(),
         ]
       : [
-          devtools(),
+          devtools({
+            // Per-iframe console streams exhaust localhost HTTP/1.1 connections.
+            consolePiping: { enabled: false },
+          }),
           nitro(),
           tailwindcss(),
           tanstackStart({
