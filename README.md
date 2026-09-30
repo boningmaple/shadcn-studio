@@ -104,8 +104,8 @@ npm run lint -- --deny-warnings --format=agent
 
 The production build regenerates and validates the committed Registry item
 data, copies it to `public/r`, refreshes generated Registry routes/sidebar data,
-rebuilds the committed Orama artifact, bundles the application, and prerenders
-the generated static Registry routes:
+rebuilds the committed Orama artifact, and bundles the application. Pages render
+on the server for each request rather than being prerendered at build time:
 
 ```bash
 npm run build

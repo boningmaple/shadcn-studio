@@ -70,13 +70,7 @@ const config = defineConfig({
     // `.server()` branch, so `getLocalStorageTheme` would hand the browser
     // `defaultTheme` and the stored-theme tests would fail.
     isTest
-      ? [
-          tailwindcss(),
-          tanstackStart({
-            prerender: { crawlLinks: false, enabled: true, failOnError: true },
-          }),
-          react(),
-        ]
+      ? [tailwindcss(), tanstackStart(), react()]
       : [
           devtools({
             // Per-iframe console streams exhaust localhost HTTP/1.1 connections.
@@ -84,9 +78,7 @@ const config = defineConfig({
           }),
           nitro(),
           tailwindcss(),
-          tanstackStart({
-            prerender: { crawlLinks: false, enabled: true, failOnError: true },
-          }),
+          tanstackStart(),
           react(),
         ],
   ),
