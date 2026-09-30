@@ -18,6 +18,7 @@ import { Route as RootLayoutBlocksHeroSectionRouteImport } from './routes/_rootL
 import { Route as RootLayoutComponentsIndexRouteImport } from './routes/_rootLayout/components/index'
 import { Route as RootLayoutComponentsButtonRouteImport } from './routes/_rootLayout/components/button'
 import { Route as RootLayoutComponentsFormRouteImport } from './routes/_rootLayout/components/form'
+import { Route as RootLayoutComponentsTableRouteImport } from './routes/_rootLayout/components/table'
 import { Route as RootLayoutPagesIndexRouteImport } from './routes/_rootLayout/pages/index'
 import { Route as RootLayoutPagesLandingPagesRouteImport } from './routes/_rootLayout/pages/landing-pages'
 import { Route as PreviewBlocksHeroSectionHeroSection01RouteImport } from './routes/preview/blocks/hero-section/hero-section-01'
@@ -35,6 +36,10 @@ import { Route as PreviewComponentsFormForm08RouteImport } from './routes/previe
 import { Route as PreviewComponentsFormForm09RouteImport } from './routes/preview/components/form/form-09'
 import { Route as PreviewComponentsFormForm10RouteImport } from './routes/preview/components/form/form-10'
 import { Route as PreviewComponentsFormForm11RouteImport } from './routes/preview/components/form/form-11'
+import { Route as PreviewComponentsTableTable01RouteImport } from './routes/preview/components/table/table-01'
+import { Route as PreviewComponentsTableTable02RouteImport } from './routes/preview/components/table/table-02'
+import { Route as PreviewComponentsTableTable03RouteImport } from './routes/preview/components/table/table-03'
+import { Route as PreviewComponentsTableTable04RouteImport } from './routes/preview/components/table/table-04'
 import { Route as PreviewPagesLandingPagesLandingPage01RouteImport } from './routes/preview/pages/landing-pages/landing-page-01'
 
 const RootLayoutRouteRoute = RootLayoutRouteRouteImport.update({
@@ -83,6 +88,12 @@ const RootLayoutComponentsFormRoute =
   RootLayoutComponentsFormRouteImport.update({
     id: '/components/form',
     path: '/components/form',
+    getParentRoute: () => RootLayoutRouteRoute,
+  } as any)
+const RootLayoutComponentsTableRoute =
+  RootLayoutComponentsTableRouteImport.update({
+    id: '/components/table',
+    path: '/components/table',
     getParentRoute: () => RootLayoutRouteRoute,
   } as any)
 const RootLayoutPagesIndexRoute = RootLayoutPagesIndexRouteImport.update({
@@ -186,6 +197,30 @@ const PreviewComponentsFormForm11Route =
     path: '/components/form/form-11',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
+const PreviewComponentsTableTable01Route =
+  PreviewComponentsTableTable01RouteImport.update({
+    id: '/components/table/table-01',
+    path: '/components/table/table-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsTableTable02Route =
+  PreviewComponentsTableTable02RouteImport.update({
+    id: '/components/table/table-02',
+    path: '/components/table/table-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsTableTable03Route =
+  PreviewComponentsTableTable03RouteImport.update({
+    id: '/components/table/table-03',
+    path: '/components/table/table-03',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewComponentsTableTable04Route =
+  PreviewComponentsTableTable04RouteImport.update({
+    id: '/components/table/table-04',
+    path: '/components/table/table-04',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
 const PreviewPagesLandingPagesLandingPage01Route =
   PreviewPagesLandingPagesLandingPage01RouteImport.update({
     id: '/pages/landing-pages/landing-page-01',
@@ -200,6 +235,7 @@ export interface FileRoutesByFullPath {
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/components/button': typeof RootLayoutComponentsButtonRoute
   '/components/form': typeof RootLayoutComponentsFormRoute
+  '/components/table': typeof RootLayoutComponentsTableRoute
   '/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/blocks/': typeof RootLayoutBlocksIndexRoute
   '/components/': typeof RootLayoutComponentsIndexRoute
@@ -219,6 +255,10 @@ export interface FileRoutesByFullPath {
   '/preview/components/form/form-09': typeof PreviewComponentsFormForm09Route
   '/preview/components/form/form-10': typeof PreviewComponentsFormForm10Route
   '/preview/components/form/form-11': typeof PreviewComponentsFormForm11Route
+  '/preview/components/table/table-01': typeof PreviewComponentsTableTable01Route
+  '/preview/components/table/table-02': typeof PreviewComponentsTableTable02Route
+  '/preview/components/table/table-03': typeof PreviewComponentsTableTable03Route
+  '/preview/components/table/table-04': typeof PreviewComponentsTableTable04Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesByTo {
@@ -228,6 +268,7 @@ export interface FileRoutesByTo {
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/components/button': typeof RootLayoutComponentsButtonRoute
   '/components/form': typeof RootLayoutComponentsFormRoute
+  '/components/table': typeof RootLayoutComponentsTableRoute
   '/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/blocks': typeof RootLayoutBlocksIndexRoute
   '/components': typeof RootLayoutComponentsIndexRoute
@@ -247,6 +288,10 @@ export interface FileRoutesByTo {
   '/preview/components/form/form-09': typeof PreviewComponentsFormForm09Route
   '/preview/components/form/form-10': typeof PreviewComponentsFormForm10Route
   '/preview/components/form/form-11': typeof PreviewComponentsFormForm11Route
+  '/preview/components/table/table-01': typeof PreviewComponentsTableTable01Route
+  '/preview/components/table/table-02': typeof PreviewComponentsTableTable02Route
+  '/preview/components/table/table-03': typeof PreviewComponentsTableTable03Route
+  '/preview/components/table/table-04': typeof PreviewComponentsTableTable04Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRoutesById {
@@ -258,6 +303,7 @@ export interface FileRoutesById {
   '/_rootLayout/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/_rootLayout/components/button': typeof RootLayoutComponentsButtonRoute
   '/_rootLayout/components/form': typeof RootLayoutComponentsFormRoute
+  '/_rootLayout/components/table': typeof RootLayoutComponentsTableRoute
   '/_rootLayout/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/_rootLayout/blocks/': typeof RootLayoutBlocksIndexRoute
   '/_rootLayout/components/': typeof RootLayoutComponentsIndexRoute
@@ -277,6 +323,10 @@ export interface FileRoutesById {
   '/preview/components/form/form-09': typeof PreviewComponentsFormForm09Route
   '/preview/components/form/form-10': typeof PreviewComponentsFormForm10Route
   '/preview/components/form/form-11': typeof PreviewComponentsFormForm11Route
+  '/preview/components/table/table-01': typeof PreviewComponentsTableTable01Route
+  '/preview/components/table/table-02': typeof PreviewComponentsTableTable02Route
+  '/preview/components/table/table-03': typeof PreviewComponentsTableTable03Route
+  '/preview/components/table/table-04': typeof PreviewComponentsTableTable04Route
   '/preview/pages/landing-pages/landing-page-01': typeof PreviewPagesLandingPagesLandingPage01Route
 }
 export interface FileRouteTypes {
@@ -288,6 +338,7 @@ export interface FileRouteTypes {
     | '/blocks/hero-section'
     | '/components/button'
     | '/components/form'
+    | '/components/table'
     | '/pages/landing-pages'
     | '/blocks/'
     | '/components/'
@@ -307,6 +358,10 @@ export interface FileRouteTypes {
     | '/preview/components/form/form-09'
     | '/preview/components/form/form-10'
     | '/preview/components/form/form-11'
+    | '/preview/components/table/table-01'
+    | '/preview/components/table/table-02'
+    | '/preview/components/table/table-03'
+    | '/preview/components/table/table-04'
     | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -316,6 +371,7 @@ export interface FileRouteTypes {
     | '/blocks/hero-section'
     | '/components/button'
     | '/components/form'
+    | '/components/table'
     | '/pages/landing-pages'
     | '/blocks'
     | '/components'
@@ -335,6 +391,10 @@ export interface FileRouteTypes {
     | '/preview/components/form/form-09'
     | '/preview/components/form/form-10'
     | '/preview/components/form/form-11'
+    | '/preview/components/table/table-01'
+    | '/preview/components/table/table-02'
+    | '/preview/components/table/table-03'
+    | '/preview/components/table/table-04'
     | '/preview/pages/landing-pages/landing-page-01'
   id:
     | '__root__'
@@ -345,6 +405,7 @@ export interface FileRouteTypes {
     | '/_rootLayout/blocks/hero-section'
     | '/_rootLayout/components/button'
     | '/_rootLayout/components/form'
+    | '/_rootLayout/components/table'
     | '/_rootLayout/pages/landing-pages'
     | '/_rootLayout/blocks/'
     | '/_rootLayout/components/'
@@ -364,6 +425,10 @@ export interface FileRouteTypes {
     | '/preview/components/form/form-09'
     | '/preview/components/form/form-10'
     | '/preview/components/form/form-11'
+    | '/preview/components/table/table-01'
+    | '/preview/components/table/table-02'
+    | '/preview/components/table/table-03'
+    | '/preview/components/table/table-04'
     | '/preview/pages/landing-pages/landing-page-01'
   fileRoutesById: FileRoutesById
 }
@@ -436,6 +501,13 @@ declare module '@tanstack/react-router' {
       path: '/components/form'
       fullPath: '/components/form'
       preLoaderRoute: typeof RootLayoutComponentsFormRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/components/table': {
+      id: '/_rootLayout/components/table'
+      path: '/components/table'
+      fullPath: '/components/table'
+      preLoaderRoute: typeof RootLayoutComponentsTableRouteImport
       parentRoute: typeof RootLayoutRouteRoute
     }
     '/_rootLayout/pages/': {
@@ -557,6 +629,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PreviewComponentsFormForm11RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
+    '/preview/components/table/table-01': {
+      id: '/preview/components/table/table-01'
+      path: '/components/table/table-01'
+      fullPath: '/preview/components/table/table-01'
+      preLoaderRoute: typeof PreviewComponentsTableTable01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/table/table-02': {
+      id: '/preview/components/table/table-02'
+      path: '/components/table/table-02'
+      fullPath: '/preview/components/table/table-02'
+      preLoaderRoute: typeof PreviewComponentsTableTable02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/table/table-03': {
+      id: '/preview/components/table/table-03'
+      path: '/components/table/table-03'
+      fullPath: '/preview/components/table/table-03'
+      preLoaderRoute: typeof PreviewComponentsTableTable03RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/components/table/table-04': {
+      id: '/preview/components/table/table-04'
+      path: '/components/table/table-04'
+      fullPath: '/preview/components/table/table-04'
+      preLoaderRoute: typeof PreviewComponentsTableTable04RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
     '/preview/pages/landing-pages/landing-page-01': {
       id: '/preview/pages/landing-pages/landing-page-01'
       path: '/pages/landing-pages/landing-page-01'
@@ -572,6 +672,7 @@ interface RootLayoutRouteRouteChildren {
   RootLayoutBlocksHeroSectionRoute: typeof RootLayoutBlocksHeroSectionRoute
   RootLayoutComponentsButtonRoute: typeof RootLayoutComponentsButtonRoute
   RootLayoutComponentsFormRoute: typeof RootLayoutComponentsFormRoute
+  RootLayoutComponentsTableRoute: typeof RootLayoutComponentsTableRoute
   RootLayoutPagesLandingPagesRoute: typeof RootLayoutPagesLandingPagesRoute
   RootLayoutBlocksIndexRoute: typeof RootLayoutBlocksIndexRoute
   RootLayoutComponentsIndexRoute: typeof RootLayoutComponentsIndexRoute
@@ -583,6 +684,7 @@ const RootLayoutRouteRouteChildren: RootLayoutRouteRouteChildren = {
   RootLayoutBlocksHeroSectionRoute: RootLayoutBlocksHeroSectionRoute,
   RootLayoutComponentsButtonRoute: RootLayoutComponentsButtonRoute,
   RootLayoutComponentsFormRoute: RootLayoutComponentsFormRoute,
+  RootLayoutComponentsTableRoute: RootLayoutComponentsTableRoute,
   RootLayoutPagesLandingPagesRoute: RootLayoutPagesLandingPagesRoute,
   RootLayoutBlocksIndexRoute: RootLayoutBlocksIndexRoute,
   RootLayoutComponentsIndexRoute: RootLayoutComponentsIndexRoute,
@@ -609,6 +711,10 @@ interface PreviewRouteRouteChildren {
   PreviewComponentsFormForm09Route: typeof PreviewComponentsFormForm09Route
   PreviewComponentsFormForm10Route: typeof PreviewComponentsFormForm10Route
   PreviewComponentsFormForm11Route: typeof PreviewComponentsFormForm11Route
+  PreviewComponentsTableTable01Route: typeof PreviewComponentsTableTable01Route
+  PreviewComponentsTableTable02Route: typeof PreviewComponentsTableTable02Route
+  PreviewComponentsTableTable03Route: typeof PreviewComponentsTableTable03Route
+  PreviewComponentsTableTable04Route: typeof PreviewComponentsTableTable04Route
   PreviewPagesLandingPagesLandingPage01Route: typeof PreviewPagesLandingPagesLandingPage01Route
 }
 
@@ -629,6 +735,10 @@ const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
   PreviewComponentsFormForm09Route: PreviewComponentsFormForm09Route,
   PreviewComponentsFormForm10Route: PreviewComponentsFormForm10Route,
   PreviewComponentsFormForm11Route: PreviewComponentsFormForm11Route,
+  PreviewComponentsTableTable01Route: PreviewComponentsTableTable01Route,
+  PreviewComponentsTableTable02Route: PreviewComponentsTableTable02Route,
+  PreviewComponentsTableTable03Route: PreviewComponentsTableTable03Route,
+  PreviewComponentsTableTable04Route: PreviewComponentsTableTable04Route,
   PreviewPagesLandingPagesLandingPage01Route:
     PreviewPagesLandingPagesLandingPage01Route,
 }

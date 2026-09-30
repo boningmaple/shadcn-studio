@@ -12,6 +12,10 @@ export const registrySidebarSections = [
         href: "/components/form",
         title: "Form",
       },
+      {
+        href: "/components/table",
+        title: "Table",
+      },
     ],
     label: "Components",
     type: "registry:component",

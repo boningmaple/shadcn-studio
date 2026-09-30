@@ -263,6 +263,94 @@
         }
       ],
       "categories": ["landing-pages"]
+    },
+    {
+      "name": "table-01",
+      "title": "Table 01",
+      "description": "A polished customers table with search, filtering, sorting, and pagination. Includes page selection.",
+      "type": "registry:component",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "input",
+        "native-select",
+        "table",
+        "checkbox",
+        "avatar"
+      ],
+      "dependencies": ["@tanstack/react-table@^9.2.4", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/table-01/table-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/table-01/table-01.tsx"
+        }
+      ],
+      "categories": ["table"]
+    },
+    {
+      "name": "table-02",
+      "title": "Table 02",
+      "description": "A polished invoices table with search, filtering, sorting, and pagination.",
+      "type": "registry:component",
+      "registryDependencies": ["badge", "button", "input", "native-select", "table"],
+      "dependencies": ["@tanstack/react-table@^9.2.4", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/table-02/table-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/table-02/table-02.tsx"
+        }
+      ],
+      "categories": ["table"]
+    },
+    {
+      "name": "table-03",
+      "title": "Table 03",
+      "description": "A polished projects table with search, filtering, sorting, and pagination.",
+      "type": "registry:component",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "input",
+        "native-select",
+        "table",
+        "avatar",
+        "progress"
+      ],
+      "dependencies": ["@tanstack/react-table@^9.2.4", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/table-03/table-03.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/table-03/table-03.tsx"
+        }
+      ],
+      "categories": ["table"]
+    },
+    {
+      "name": "table-04",
+      "title": "Table 04",
+      "description": "A polished products table with search, filtering, sorting, and pagination. Includes column visibility controls.",
+      "type": "registry:component",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "input",
+        "native-select",
+        "table",
+        "checkbox",
+        "popover"
+      ],
+      "dependencies": ["@tanstack/react-table@^9.2.4", "lucide-react", "react-aria-components"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/table-04/table-04.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/table-04/table-04.tsx"
+        }
+      ],
+      "categories": ["table"]
     }
   ]
 }

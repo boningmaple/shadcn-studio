@@ -6,6 +6,7 @@ import { RegistrySectionPage } from "@/features/registry/components/registry-sec
 const collections = [
   { title: "Button", href: "/components/button", itemCount: 3 },
   { title: "Form", href: "/components/form", itemCount: 11 },
+  { title: "Table", href: "/components/table", itemCount: 4 },
 ];
 
 export const Route = createFileRoute("/_rootLayout/components/")({
