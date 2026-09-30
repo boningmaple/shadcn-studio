@@ -49,9 +49,7 @@ function RootLayoutContent({ hideDesktopSidebar }: { hideDesktopSidebar: boolean
 
   return (
     <div className="flex flex-1">
-      {showSidebar ? (
-        <AppSidebar className="top-(--header-height) h-[calc(100svh-var(--header-height))]" />
-      ) : null}
+      {showSidebar ? <AppSidebar /> : null}
       <SidebarInset className="min-w-0">
         {hideDesktopSidebar ? null : (
           <div

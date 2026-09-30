@@ -5,6 +5,7 @@ import {
   SearchXIcon,
   TriangleAlertIcon,
   WifiOffIcon,
+  XIcon,
   type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
@@ -18,6 +19,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { DialogClose } from "@/components/ui/dialog";
 import {
   Empty,
   EmptyContent,
@@ -36,15 +38,13 @@ type SelectHandler = (href: string) => void;
 const queryErrorId = "search-query-error";
 const queryErrorMessage = "Search must be 200 characters or fewer.";
 
-export function SearchDialog({
-  isOpen,
-  setIsOpen,
-  quickLinks,
-}: {
+type SearchDialogProps = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   quickLinks: readonly QuickLink[];
-}) {
+};
+
+export function SearchDialog(props: SearchDialogProps) {
   const [query, setQuery] = useState("");
   const parsedQuery = searchContract.query.safeParse({ q: query });
   const searchTerm = parsedQuery.success ? parsedQuery.data.q : query.trim();
@@ -62,16 +62,16 @@ export function SearchDialog({
     // Hit hrefs are the app's own route paths, but they arrive over the wire
     // as plain strings, which the router's typed `to` cannot know.
     void navigate({ hash, to: pathname as never });
-    setIsOpen(false);
+    props.setIsOpen(false);
   };
 
   return (
     <CommandDialog
       description="Find a Registry item, Collection page, or app page and go straight to it."
-      open={isOpen}
+      open={props.isOpen}
       title="Search"
       className="top-0 h-full w-full max-w-full rounded-none! sm:top-1/4 sm:h-fit sm:max-w-xl sm:rounded-xl!"
-      onOpenChange={setIsOpen}
+      onOpenChange={props.setIsOpen}
     >
       <Command
         // ADR-0007: Orama has already matched, scored and ordered these Hits.
@@ -81,18 +81,26 @@ export function SearchDialog({
         inputValue={query}
         onInputChange={setQuery}
       >
-        <div className="relative">
-          <CommandInput
-            aria-describedby={isQueryInvalid ? queryErrorId : undefined}
-            aria-invalid={isQueryInvalid || undefined}
-            placeholder="Search"
-          />
-          {searchQueryResult.isFetching ? (
-            <LoaderCircleIcon
-              aria-hidden
-              className="absolute top-3 right-3 size-4 animate-spin text-muted-foreground"
-            />
-          ) : null}
+        <div>
+          <div className="flex items-center">
+            <div className="relative min-w-0 flex-1">
+              <CommandInput
+                aria-describedby={isQueryInvalid ? queryErrorId : undefined}
+                aria-invalid={isQueryInvalid || undefined}
+                placeholder="Search"
+                className="pr-8"
+              />
+              {searchQueryResult.isFetching ? (
+                <LoaderCircleIcon
+                  aria-hidden
+                  className="pointer-events-none absolute top-3 right-3 size-4 animate-spin text-muted-foreground"
+                />
+              ) : null}
+            </div>
+            <DialogClose aria-label="Close search" size="icon" className="mt-1 mr-1 ml-1">
+              <XIcon aria-hidden />
+            </DialogClose>
+          </div>
           {isQueryInvalid ? (
             <p id={queryErrorId} role="alert" className="px-2 pt-1 text-sm text-destructive">
               {queryErrorMessage}
@@ -107,7 +115,7 @@ export function SearchDialog({
         <SearchQueryResultList
           isOnline={isOnline}
           isQueryInvalid={isQueryInvalid}
-          quickLinks={quickLinks}
+          quickLinks={props.quickLinks}
           query={searchTerm}
           searchQueryResult={searchQueryResult}
           onSelect={goTo}
@@ -294,18 +302,28 @@ function QuickLinkList({
   );
 }
 
-function HitList({ hits, onSelect }: { hits: SearchHit[]; onSelect: SelectHandler }) {
+type HitListProps = {
+  hits: SearchHit[];
+  onSelect: SelectHandler;
+};
+
+function HitList(props: HitListProps) {
   return (
     <CommandList
       aria-label="Search results"
-      items={hits.map((hit) => ({ ...hit, id: hit.href }))}
-      className="mt-2 h-[calc(100vh-40px-4px-8px)] max-h-none sm:max-h-72"
-      onAction={(key) => onSelect(String(key))}
+      items={props.hits.map((hit) => ({ ...hit, id: hit.href }))}
+      className="mt-2 px-1 h-[calc(100vh-40px-4px-8px)] max-h-none sm:max-h-72"
+      onAction={(key) => props.onSelect(String(key))}
     >
       {(hit) => (
-        <CommandItem id={hit.id} aria-label={hit.title} textValue={hit.title} className="gap-3">
-          <span className="truncate">{hit.title}</span>
-          <span className="ml-auto text-xs capitalize text-muted-foreground">
+        <CommandItem
+          id={hit.id}
+          aria-label={hit.title}
+          textValue={hit.title}
+          className="gap-4 [&>svg]:hidden"
+        >
+          <span className="min-w-0 flex-1 truncate">{hit.title}</span>
+          <span className="shrink-0 text-right text-xs whitespace-nowrap capitalize text-muted-foreground">
             {hit.kind.replace("-", " ")}
           </span>
         </CommandItem>

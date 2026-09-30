@@ -7,12 +7,8 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem,
   SidebarMenuSub,
-  SidebarMenuSubItem,
   SidebarProvider,
   SidebarTrigger,
   useSidebar,
@@ -43,7 +39,7 @@ type CodePanelCodeProps = {
   file: VibeHighlightedRegistryFile;
 };
 
-type FileTreeItemProps = {
+type TreeNodeProps = {
   node: FileTreeNode;
   onSelect: (file: VibeHighlightedRegistryFile) => void;
   selectedFile: VibeHighlightedRegistryFile;
@@ -104,7 +100,6 @@ function CodePanelFileTree(props: CodePanelFileTreeProps) {
 
   return (
     <Sidebar
-      aria-label="Explorer"
       collapsible="offcanvas"
       layout="contained"
       mobileSheet={false}
@@ -112,18 +107,8 @@ function CodePanelFileTree(props: CodePanelFileTreeProps) {
     >
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="sr-only">Files</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {tree.map((node) => (
-                <FileTreeItem
-                  key={node.name}
-                  node={node}
-                  selectedFile={props.selectedFile}
-                  onSelect={props.onSelect}
-                />
-              ))}
-            </SidebarMenu>
+            <Tree nodes={tree} selectedFile={props.selectedFile} onSelect={props.onSelect} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
@@ -142,27 +127,50 @@ function CodePanelCode({ codeScrollerRef, ...props }: CodePanelCodeProps) {
   );
 }
 
-function FileTreeItem(props: FileTreeItemProps) {
+type TreeProps = {
+  nodes: FileTreeNode[];
+  selectedFile: VibeHighlightedRegistryFile;
+  onSelect: (file: VibeHighlightedRegistryFile) => void;
+};
+
+function Tree(props: TreeProps) {
+  return (
+    <ul aria-label="Files" className="flex w-full min-w-0 flex-col gap-0">
+      {props.nodes.map((node) => (
+        <TreeNode
+          key={node.name}
+          node={node}
+          selectedFile={props.selectedFile}
+          onSelect={props.onSelect}
+        />
+      ))}
+    </ul>
+  );
+}
+
+function TreeNode(props: TreeNodeProps) {
   const { isMobile, setOpenMobile } = useSidebar();
 
   const file = props.node.file;
   if (file !== undefined) {
     return (
-      <SidebarMenuButton
-        isActive={file.target === props.selectedFile.target}
-        onPress={() => {
-          props.onSelect(file);
-          if (isMobile) setOpenMobile(false);
-        }}
-      >
-        <FileIcon />
-        <span>{props.node.name}</span>
-      </SidebarMenuButton>
+      <li className="group/menu-item relative">
+        <SidebarMenuButton
+          isActive={file.target === props.selectedFile.target}
+          onPress={() => {
+            props.onSelect(file);
+            if (isMobile) setOpenMobile(false);
+          }}
+        >
+          <FileIcon />
+          <span>{props.node.name}</span>
+        </SidebarMenuButton>
+      </li>
     );
   }
 
   return (
-    <SidebarMenuItem>
+    <li className="group/menu-item relative">
       <Collapsible
         defaultExpanded
         className="group/collapsible [&[data-expanded=true]>button>svg:first-child]:rotate-90"
@@ -175,18 +183,17 @@ function FileTreeItem(props: FileTreeItemProps) {
         <CollapsibleContent>
           <SidebarMenuSub className="mr-0! translate-x-0! pr-0!">
             {props.node.children.map((child) => (
-              <SidebarMenuSubItem key={child.name}>
-                <FileTreeItem
-                  node={child}
-                  selectedFile={props.selectedFile}
-                  onSelect={props.onSelect}
-                />
-              </SidebarMenuSubItem>
+              <TreeNode
+                key={child.name}
+                node={child}
+                selectedFile={props.selectedFile}
+                onSelect={props.onSelect}
+              />
             ))}
           </SidebarMenuSub>
         </CollapsibleContent>
       </Collapsible>
-    </SidebarMenuItem>
+    </li>
   );
 }
 

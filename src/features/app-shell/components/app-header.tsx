@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
 
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { AppBrandLink } from "@/features/app-shell/components/app-brand-link";
 import { appQuickLinks } from "@/features/app-shell/components/app-sidebar";
 import { SearchDialogTrigger } from "@/features/search/components/search-dialog-trigger";
 import { ThemeSwitchButton } from "@/features/theme-switch/components/theme-switch-button";
 import { Route as blocksRoute } from "@/routes/_rootLayout/blocks/index";
 import { Route as componentsRoute } from "@/routes/_rootLayout/components/index";
-import { Route as homeRoute } from "@/routes/_rootLayout/index";
 import { Route as pagesRoute } from "@/routes/_rootLayout/pages/index";
 
 const headerNavRoutes = [componentsRoute, blocksRoute, pagesRoute] as const;
@@ -19,19 +19,6 @@ export function AppHeader() {
       <AppHeaderNavigation />
       <AppHeaderActions />
     </header>
-  );
-}
-
-function AppBrandLink() {
-  return (
-    <Link
-      aria-label={homeRoute.options.staticData.ariaLabel}
-      to={homeRoute.to}
-      activeOptions={{ exact: true }}
-      className="text-xl font-bold hover:underline"
-    >
-      VibeUI
-    </Link>
   );
 }
 
