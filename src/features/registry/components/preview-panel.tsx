@@ -12,6 +12,7 @@ type PreviewPanelProps = {
   panelRef: React.Ref<PanelImperativeHandle | null>;
   href: string;
   title: string;
+  height: number;
   selectedPreviewSize: PreviewSize | null;
   onPreviewPanelResize: () => void;
 };
@@ -25,7 +26,8 @@ export function PreviewPanel({ frameRef, panelRef, ...props }: PreviewPanelProps
     <ResizablePanelGroup
       disabled={isMobile}
       orientation="horizontal"
-      className="min-h-64 rounded-lg bg-[radial-gradient(circle,var(--border)_1px,transparent_1px)] bg-size-[20px_20px]"
+      style={{ height: props.height + 2 }}
+      className="max-h-[max(2px,calc(100svh-6rem))] rounded-lg bg-[radial-gradient(circle,var(--border)_1px,transparent_1px)] bg-size-[20px_20px]"
       onLayoutChanged={(_, { isUserInteraction }) => {
         if (isUserInteraction) props.onPreviewPanelResize();
       }}

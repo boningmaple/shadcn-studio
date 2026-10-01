@@ -47,6 +47,7 @@ const vibeRegistryItemRequirementsSchema = z
     type: z.enum(["registry:block", "registry:component", "registry:page"]),
     files: z.array(z.looseObject({ path: z.string() })),
     categories: z.tuple([vibeRegistryItemNameSchema]),
+    height: z.number().int().positive(),
   })
   .refine(
     (item) => {

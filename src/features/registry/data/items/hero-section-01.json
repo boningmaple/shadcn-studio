@@ -13,5 +13,6 @@
     }
   ],
   "categories": ["hero-section"],
-  "type": "registry:block"
+  "type": "registry:block",
+  "height": 600
 }

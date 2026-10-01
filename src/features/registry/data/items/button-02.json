@@ -13,5 +13,6 @@
     }
   ],
   "categories": ["button"],
-  "type": "registry:component"
+  "type": "registry:component",
+  "height": 120
 }

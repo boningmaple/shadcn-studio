@@ -16,7 +16,8 @@
           "target": "@components/vibe-ui/button-01/button-01.tsx"
         }
       ],
-      "categories": ["button"]
+      "categories": ["button"],
+      "height": 120
     },
     {
       "name": "button-02",
@@ -31,7 +32,8 @@
           "target": "@components/vibe-ui/button-02/button-02.tsx"
         }
       ],
-      "categories": ["button"]
+      "categories": ["button"],
+      "height": 120
     },
     {
       "name": "button-03",
@@ -56,7 +58,8 @@
           "target": "@components/vibe-ui/button-03/parts/button-label.tsx"
         }
       ],
-      "categories": ["button"]
+      "categories": ["button"],
+      "height": 120
     },
     {
       "name": "form-01",
@@ -72,7 +75,8 @@
           "target": "@components/vibe-ui/form-01/form-01.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-02",
@@ -88,7 +92,8 @@
           "target": "@components/vibe-ui/form-02/form-02.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-03",
@@ -104,7 +109,8 @@
           "target": "@components/vibe-ui/form-03/form-03.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-04",
@@ -120,7 +126,8 @@
           "target": "@components/vibe-ui/form-04/form-04.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-05",
@@ -136,7 +143,8 @@
           "target": "@components/vibe-ui/form-05/form-05.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-06",
@@ -152,7 +160,8 @@
           "target": "@components/vibe-ui/form-06/form-06.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-07",
@@ -168,7 +177,8 @@
           "target": "@components/vibe-ui/form-07/form-07.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-08",
@@ -184,7 +194,8 @@
           "target": "@components/vibe-ui/form-08/form-08.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-09",
@@ -200,7 +211,8 @@
           "target": "@components/vibe-ui/form-09/form-09.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "form-10",
@@ -216,7 +228,8 @@
           "target": "@components/vibe-ui/form-10/form-10.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 280
     },
     {
       "name": "form-11",
@@ -232,7 +245,8 @@
           "target": "@components/vibe-ui/form-11/form-11.tsx"
         }
       ],
-      "categories": ["form"]
+      "categories": ["form"],
+      "height": 240
     },
     {
       "name": "hero-section-01",
@@ -247,7 +261,8 @@
           "target": "@components/vibe-ui/hero-section-01/hero-section-01.tsx"
         }
       ],
-      "categories": ["hero-section"]
+      "categories": ["hero-section"],
+      "height": 600
     },
     {
       "name": "landing-page-01",
@@ -262,7 +277,8 @@
           "target": "@components/vibe-ui/landing-page-01/landing-page-01.tsx"
         }
       ],
-      "categories": ["landing-pages"]
+      "categories": ["landing-pages"],
+      "height": 1000
     },
     {
       "name": "table-01",
@@ -286,7 +302,8 @@
           "target": "@components/vibe-ui/table-01/table-01.tsx"
         }
       ],
-      "categories": ["table"]
+      "categories": ["table"],
+      "height": 640
     },
     {
       "name": "table-02",
@@ -302,7 +319,8 @@
           "target": "@components/vibe-ui/table-02/table-02.tsx"
         }
       ],
-      "categories": ["table"]
+      "categories": ["table"],
+      "height": 640
     },
     {
       "name": "table-03",
@@ -326,7 +344,8 @@
           "target": "@components/vibe-ui/table-03/table-03.tsx"
         }
       ],
-      "categories": ["table"]
+      "categories": ["table"],
+      "height": 640
     },
     {
       "name": "table-04",
@@ -350,7 +369,8 @@
           "target": "@components/vibe-ui/table-04/table-04.tsx"
         }
       ],
-      "categories": ["table"]
+      "categories": ["table"],
+      "height": 640
     }
   ]
 }

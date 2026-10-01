@@ -32,6 +32,15 @@ async function buildRegistry(): Promise<void> {
 
   try {
     execFileSync("shadcn", ["build", "--output", temporaryItemsPath], { stdio: "inherit" });
+    // shadcn strips project-specific fields from individual built items.
+    for (const item of sourceRegistry.items) {
+      const itemPath = path.join(temporaryItemsPath, `${item.name}.json`);
+      const builtItem = JSON.parse(await readFile(itemPath, "utf8"));
+      await writeFile(
+        itemPath,
+        `${JSON.stringify({ ...builtItem, height: item.height }, null, 2)}\n`,
+      );
+    }
     const registry = await readBuiltRegistryOutput(temporaryItemsPath);
 
     await replaceBuiltRegistryData(temporaryItemsPath, itemsPath, publicRegistryPath);

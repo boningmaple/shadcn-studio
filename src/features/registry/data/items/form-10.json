@@ -14,5 +14,6 @@
     }
   ],
   "categories": ["form"],
-  "type": "registry:component"
+  "type": "registry:component",
+  "height": 280
 }

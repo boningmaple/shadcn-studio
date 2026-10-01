@@ -22,5 +22,6 @@
     }
   ],
   "categories": ["table"],
-  "type": "registry:component"
+  "type": "registry:component",
+  "height": 640
 }

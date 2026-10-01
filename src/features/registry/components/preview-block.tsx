@@ -36,10 +36,10 @@ export function PreviewBlock(props: PreviewBlockProps) {
 
       <Tabs
         selectedKey={selectedTab}
-        className="not-prose"
+        className="not-prose gap-0"
         onSelectionChange={(key) => setSelectedTab(key as PreviewTab)}
       >
-        <div className="flex items-center justify-between">
+        <div className="sticky top-(--header-height) z-20 flex items-center justify-between bg-background py-2">
           <TabsList
             aria-label="Preview block tabs"
             className="group-data-horizontal/tabs:h-fit p-1 gap-1 *:data-[slot=tabs-trigger]:size-7 *:data-[slot=tabs-trigger]:p-0 *:data-[slot=tabs-trigger]:[&_svg]:size-4 *:data-[slot=tabs-trigger]:transition-none"
@@ -81,6 +81,7 @@ export function PreviewBlock(props: PreviewBlockProps) {
             panelRef={previewPanelRef}
             href={previewUrl}
             title={`${props.item.title} Preview`}
+            height={props.item.height}
             selectedPreviewSize={selectedPreviewSize}
             onPreviewPanelResize={onPreviewPanelResize}
           />

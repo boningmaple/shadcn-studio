@@ -13,5 +13,6 @@
     }
   ],
   "categories": ["landing-pages"],
-  "type": "registry:page"
+  "type": "registry:page",
+  "height": 1000
 }

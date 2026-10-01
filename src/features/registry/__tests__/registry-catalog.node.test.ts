@@ -10,6 +10,7 @@ import type { VibeRegistryItem } from "@/features/registry/types/registry";
 
 const sourceItems: VibeRegistryItem[] = [
   {
+    height: 120,
     categories: ["button"],
     description: "A quiet button.",
     files: [],
@@ -19,6 +20,7 @@ const sourceItems: VibeRegistryItem[] = [
     type: "registry:component",
   },
   {
+    height: 120,
     categories: ["button"],
     description: "A loud button.",
     files: [],
@@ -28,6 +30,7 @@ const sourceItems: VibeRegistryItem[] = [
     type: "registry:component",
   },
   {
+    height: 120,
     categories: ["authentication"],
     description: "A login form.",
     files: [],

@@ -16,6 +16,7 @@ import { ThemeProvider } from "@/features/theme-switch/components/theme-provider
 import { ThemeSwitchButton } from "@/features/theme-switch/components/theme-switch-button";
 
 export const registryItem: VibeBuiltRegistryItem = {
+  height: 120,
   categories: ["button"],
   description: "The first Preview.",
   files: [

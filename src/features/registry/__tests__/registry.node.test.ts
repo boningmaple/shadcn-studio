@@ -13,6 +13,11 @@ describe("vibeRegistryItemSchema", () => {
   });
 
   it.each([
+    ["missing height", { height: undefined }],
+    ["zero height", { height: 0 }],
+    ["negative height", { height: -1 }],
+    ["fractional height", { height: 1.5 }],
+    ["string height", { height: "120" }],
     ["unsafe item name", { name: "Button 01" }],
     ["reserved item name", { name: "index" }],
     ["unsupported item type", { type: "registry:ui" }],
@@ -119,6 +124,7 @@ function registryItem(changes: Record<string, unknown> = {}) {
   return {
     name,
     title: "Button 01",
+    height: 120,
     type,
     description: "A button.",
     files: [
