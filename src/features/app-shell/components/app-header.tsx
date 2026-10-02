@@ -6,14 +6,15 @@ import { appQuickLinks } from "@/features/app-shell/components/app-sidebar";
 import { SearchDialogTrigger } from "@/features/search/components/search-dialog-trigger";
 import { ThemeSwitchButton } from "@/features/theme-switch/components/theme-switch-button";
 import { Route as blocksRoute } from "@/routes/_rootLayout/blocks/index";
+import { Route as chartsRoute } from "@/routes/_rootLayout/charts/index";
 import { Route as componentsRoute } from "@/routes/_rootLayout/components/index";
 import { Route as pagesRoute } from "@/routes/_rootLayout/pages/index";
 
-const headerNavRoutes = [componentsRoute, blocksRoute, pagesRoute] as const;
+const headerNavRoutes = [componentsRoute, blocksRoute, chartsRoute, pagesRoute] as const;
 
 export function AppHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full h-(--header-height) border-b border-dashed backdrop-blur-sm flex items-center gap-4 px-4">
+    <header className="sticky top-0 z-50 w-full h-(--header-height) border-b border-dashed bg-background flex items-center gap-4 px-4">
       <SidebarTrigger variant="outline" size="icon" className="lg:hidden transition-none" />
       <AppBrandLink />
       <AppHeaderNavigation />

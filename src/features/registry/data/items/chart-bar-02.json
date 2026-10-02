@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-bar-02",
+  "title": "chart-bar-02",
+  "description": "Monthly orders · online and in store. Online contributed 57.5% of June orders.",
+  "dependencies": ["recharts"],
+  "registryDependencies": ["card", "chart"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-bar-02/chart-bar-02.tsx",
+      "content": "\"use client\";\n\nimport { BarChart, Bar, CartesianGrid, XAxis, YAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  ChartLegend,\n  ChartLegendContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { month: \"Jan\", current: 186, previous: 140 },\n  { month: \"Feb\", current: 225, previous: 178 },\n  { month: \"Mar\", current: 208, previous: 190 },\n  { month: \"Apr\", current: 284, previous: 210 },\n  { month: \"May\", current: 312, previous: 245 },\n  { month: \"Jun\", current: 368, previous: 272 },\n];\nconst config = {\n  current: { label: \"Online\", color: \"var(--chart-1)\" },\n  previous: { label: \"In store\", color: \"var(--chart-2)\" },\n} satisfies ChartConfig;\n\nexport default function ChartBar02() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Monthly orders · online and in store</CardDescription>\n        <CardTitle className=\"text-lg\">Sales by channel</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">640 orders</div>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <BarChart accessibilityLayer data={data}>\n            <CartesianGrid vertical={false} strokeDasharray=\"3 3\" />\n            <XAxis dataKey=\"month\" tickLine={false} axisLine={false} tickMargin={12} />\n            <YAxis tickLine={false} axisLine={false} width={42} />\n            <ChartTooltip content={<ChartTooltipContent />} />\n            <ChartLegend content={<ChartLegendContent />} />\n            <Bar dataKey=\"current\" fill=\"var(--color-current)\" radius={[4, 4, 0, 0]} />\n            <Bar dataKey=\"previous\" fill=\"var(--color-previous)\" radius={[4, 4, 0, 0]} />\n          </BarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        Online contributed 57.5% of June orders.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-bar-02/chart-bar-02.tsx"
+    }
+  ],
+  "meta": {
+    "height": 520
+  },
+  "categories": ["charts", "bar"],
+  "type": "registry:component"
+}

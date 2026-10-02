@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-radar-01",
+  "title": "chart-radar-01",
+  "description": "Customer survey · scores out of 100. Average across six dimensions from the June survey.",
+  "dependencies": ["recharts"],
+  "registryDependencies": ["card", "chart"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-radar-01/chart-radar-01.tsx",
+      "content": "\"use client\";\n\nimport { RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { skill: \"Reliability\", current: 92, previous: 72 },\n  { skill: \"Speed\", current: 78, previous: 65 },\n  { skill: \"Usability\", current: 88, previous: 74 },\n  { skill: \"Support\", current: 84, previous: 70 },\n  { skill: \"Value\", current: 80, previous: 82 },\n  { skill: \"Features\", current: 90, previous: 68 },\n];\nconst config = {\n  current: { label: \"June\", color: \"var(--chart-1)\" },\n  previous: { label: \"March\", color: \"var(--chart-2)\" },\n} satisfies ChartConfig;\n\nexport default function ChartRadar01() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Customer survey · scores out of 100</CardDescription>\n        <CardTitle className=\"text-lg\">Product health</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">85.3 / 100</div>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <RadarChart accessibilityLayer data={data} outerRadius=\"70%\">\n            <PolarGrid />\n            <PolarAngleAxis dataKey=\"skill\" tick={{ fontSize: 11 }} />\n            <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />\n            <ChartTooltip content={<ChartTooltipContent />} />\n            <Radar\n              dataKey=\"current\"\n              stroke=\"var(--color-current)\"\n              fill=\"var(--color-current)\"\n              fillOpacity={0.25}\n              strokeWidth={2}\n            />\n          </RadarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        Average across six dimensions from the June survey.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-radar-01/chart-radar-01.tsx"
+    }
+  ],
+  "meta": {
+    "height": 520
+  },
+  "categories": ["charts", "radar"],
+  "type": "registry:component"
+}

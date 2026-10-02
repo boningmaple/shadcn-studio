@@ -21,7 +21,9 @@
       "target": "@components/vibe-ui/table-03/table-03.tsx"
     }
   ],
-  "categories": ["table"],
-  "type": "registry:component",
-  "height": 640
+  "meta": {
+    "height": 640
+  },
+  "categories": ["components", "table"],
+  "type": "registry:component"
 }

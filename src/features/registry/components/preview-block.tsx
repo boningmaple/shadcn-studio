@@ -81,7 +81,7 @@ export function PreviewBlock(props: PreviewBlockProps) {
             panelRef={previewPanelRef}
             href={previewUrl}
             title={`${props.item.title} Preview`}
-            height={props.item.height}
+            height={props.item.meta.height}
             selectedPreviewSize={selectedPreviewSize}
             onPreviewPanelResize={onPreviewPanelResize}
           />

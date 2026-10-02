@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-line-03",
+  "title": "chart-line-03",
+  "description": "Choose a reporting window. Switch between the full half-year and the latest quarter.",
+  "dependencies": ["recharts"],
+  "registryDependencies": ["card", "chart", "button"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-line-03/chart-line-03.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { LineChart, Line, CartesianGrid, XAxis, YAxis } from \"recharts\";\n\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { month: \"Jan\", current: 186, previous: 140 },\n  { month: \"Feb\", current: 225, previous: 178 },\n  { month: \"Mar\", current: 208, previous: 190 },\n  { month: \"Apr\", current: 284, previous: 210 },\n  { month: \"May\", current: 312, previous: 245 },\n  { month: \"Jun\", current: 368, previous: 272 },\n];\nconst config = {\n  current: { label: \"This year\", color: \"var(--chart-1)\" },\n  previous: { label: \"Last year\", color: \"var(--chart-2)\" },\n} satisfies ChartConfig;\n\nexport default function ChartLine03() {\n  const [range, setRange] = useState<3 | 6>(6);\n  const visibleData = data.slice(-range);\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Choose a reporting window</CardDescription>\n        <CardTitle className=\"text-lg\">Explore subscriber growth</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">{`${visibleData.at(-1)?.current} subscribers`}</div>\n      </CardHeader>\n      <CardContent>\n        <fieldset aria-label=\"Reporting window\" className=\"mb-4 flex gap-2\">\n          <Button\n            aria-pressed={range === 6}\n            variant={range === 6 ? \"default\" : \"outline\"}\n            size=\"sm\"\n            onClick={() => setRange(6)}\n          >\n            6 months\n          </Button>\n          <Button\n            aria-pressed={range === 3}\n            variant={range === 3 ? \"default\" : \"outline\"}\n            size=\"sm\"\n            onClick={() => setRange(3)}\n          >\n            3 months\n          </Button>\n        </fieldset>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <LineChart accessibilityLayer data={visibleData}>\n            <CartesianGrid vertical={false} strokeDasharray=\"3 3\" />\n            <XAxis dataKey=\"month\" tickLine={false} axisLine={false} tickMargin={12} />\n            <YAxis tickLine={false} axisLine={false} width={42} />\n            <ChartTooltip content={<ChartTooltipContent />} />\n            <Line\n              dataKey=\"current\"\n              type=\"monotone\"\n              stroke=\"var(--color-current)\"\n              strokeWidth={3}\n              dot={{ r: 4 }}\n            />\n          </LineChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        Switch between the full half-year and the latest quarter.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-line-03/chart-line-03.tsx"
+    }
+  ],
+  "meta": {
+    "height": 570
+  },
+  "categories": ["charts", "line"],
+  "type": "registry:component"
+}

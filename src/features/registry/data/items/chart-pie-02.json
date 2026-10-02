@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-pie-02",
+  "title": "chart-pie-02",
+  "description": "Acquisition breakdown · June 2026. Organic search accounts for 42% of all visits.",
+  "dependencies": ["recharts"],
+  "registryDependencies": ["card", "chart"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-pie-02/chart-pie-02.tsx",
+      "content": "\"use client\";\n\nimport { PieChart, Pie } from \"recharts\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  ChartLegend,\n  ChartLegendContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { channel: \"organic\", visitors: 420, fill: \"var(--color-organic)\" },\n  { channel: \"direct\", visitors: 280, fill: \"var(--color-direct)\" },\n  { channel: \"referral\", visitors: 180, fill: \"var(--color-referral)\" },\n  { channel: \"social\", visitors: 120, fill: \"var(--color-social)\" },\n];\nconst config = {\n  organic: { label: \"Organic\", color: \"var(--chart-1)\" },\n  direct: { label: \"Direct\", color: \"var(--chart-2)\" },\n  referral: { label: \"Referral\", color: \"var(--chart-3)\" },\n  social: { label: \"Social\", color: \"var(--chart-4)\" },\n} satisfies ChartConfig;\n\nexport default function ChartPie02() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Acquisition breakdown · June 2026</CardDescription>\n        <CardTitle className=\"text-lg\">How visitors find you</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">1,000 visits</div>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <PieChart accessibilityLayer>\n            <ChartTooltip content={<ChartTooltipContent />} />\n            <Pie\n              data={data}\n              dataKey=\"visitors\"\n              nameKey=\"channel\"\n              innerRadius={68}\n              outerRadius={95}\n              paddingAngle={3}\n              strokeWidth={2}\n            />\n            <ChartLegend content={<ChartLegendContent />} />\n          </PieChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        Organic search accounts for 42% of all visits.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-pie-02/chart-pie-02.tsx"
+    }
+  ],
+  "meta": {
+    "height": 520
+  },
+  "categories": ["charts", "pie"],
+  "type": "registry:component"
+}

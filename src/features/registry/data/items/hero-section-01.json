@@ -12,7 +12,9 @@
       "target": "@components/vibe-ui/hero-section-01/hero-section-01.tsx"
     }
   ],
-  "categories": ["hero-section"],
-  "type": "registry:block",
-  "height": 600
+  "meta": {
+    "height": 600
+  },
+  "categories": ["blocks", "hero-section"],
+  "type": "registry:component"
 }

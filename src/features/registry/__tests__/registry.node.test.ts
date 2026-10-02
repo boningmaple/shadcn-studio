@@ -13,19 +13,23 @@ describe("vibeRegistryItemSchema", () => {
   });
 
   it.each([
-    ["missing height", { height: undefined }],
-    ["zero height", { height: 0 }],
-    ["negative height", { height: -1 }],
-    ["fractional height", { height: 1.5 }],
-    ["string height", { height: "120" }],
+    ["missing meta", { meta: undefined }],
+    ["missing height", { meta: { height: undefined } }],
+    ["zero height", { meta: { height: 0 } }],
+    ["negative height", { meta: { height: -1 } }],
+    ["fractional height", { meta: { height: 1.5 } }],
+    ["string height", { meta: { height: "120" } }],
     ["unsafe item name", { name: "Button 01" }],
     ["reserved item name", { name: "index" }],
     ["unsupported item type", { type: "registry:ui" }],
     ["blank title", { title: " " }],
     ["blank description", { description: " " }],
-    ["multiple categories", { categories: ["button", "action"] }],
-    ["unsafe category", { categories: ["Button"] }],
-    ["reserved category", { categories: ["route"] }],
+    ["missing collection", { categories: ["components"] }],
+    ["extra category", { categories: ["components", "button", "action"] }],
+    ["unknown section", { categories: ["unknown", "button"] }],
+    ["legacy item type", { type: "registry:block" }],
+    ["unsafe category", { categories: ["components", "Button"] }],
+    ["reserved category", { categories: ["components", "route"] }],
     ["missing canonical file declaration", { files: [] }],
   ])("rejects %s", (_label, changes) => {
     expect(() => vibeRegistryItemSchema.parse(registryItem(changes))).toThrow();
@@ -104,7 +108,7 @@ describe("vibeRegistrySchema", () => {
       expect(result.error.issues.map((issue) => issue.message)).toEqual(
         expect.arrayContaining([
           "Duplicate Registry item name: button-01.",
-          "Duplicate route identity: registry:component/button/button-01.",
+          "Duplicate route identity: components/button/button-01.",
         ]),
       );
     }
@@ -124,7 +128,7 @@ function registryItem(changes: Record<string, unknown> = {}) {
   return {
     name,
     title: "Button 01",
-    height: 120,
+    meta: { height: 120 },
     type,
     description: "A button.",
     files: [
@@ -134,7 +138,7 @@ function registryItem(changes: Record<string, unknown> = {}) {
         type,
       },
     ],
-    categories: ["button"],
+    categories: ["components", "button"],
     ...changes,
   };
 }

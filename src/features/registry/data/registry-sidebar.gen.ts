@@ -18,7 +18,7 @@ export const registrySidebarSections = [
       },
     ],
     label: "Components",
-    type: "registry:component",
+    section: "components",
   },
   {
     collections: [
@@ -28,7 +28,41 @@ export const registrySidebarSections = [
       },
     ],
     label: "Blocks",
-    type: "registry:block",
+    section: "blocks",
+  },
+  {
+    collections: [
+      {
+        href: "/charts/area",
+        title: "Area",
+      },
+      {
+        href: "/charts/bar",
+        title: "Bar",
+      },
+      {
+        href: "/charts/composed",
+        title: "Composed",
+      },
+      {
+        href: "/charts/line",
+        title: "Line",
+      },
+      {
+        href: "/charts/pie",
+        title: "Pie",
+      },
+      {
+        href: "/charts/radar",
+        title: "Radar",
+      },
+      {
+        href: "/charts/radial",
+        title: "Radial",
+      },
+    ],
+    label: "Charts",
+    section: "charts",
   },
   {
     collections: [
@@ -38,6 +72,6 @@ export const registrySidebarSections = [
       },
     ],
     label: "Pages",
-    type: "registry:page",
+    section: "pages",
   },
 ] satisfies VibeRegistrySidebarSection[];

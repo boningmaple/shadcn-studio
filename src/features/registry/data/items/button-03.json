@@ -24,7 +24,9 @@
       "target": "@components/vibe-ui/button-03/parts/button-label.tsx"
     }
   ],
-  "categories": ["button"],
-  "type": "registry:component",
-  "height": 120
+  "meta": {
+    "height": 120
+  },
+  "categories": ["components", "button"],
+  "type": "registry:component"
 }

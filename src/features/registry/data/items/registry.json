@@ -16,8 +16,10 @@
           "target": "@components/vibe-ui/button-01/button-01.tsx"
         }
       ],
-      "categories": ["button"],
-      "height": 120
+      "categories": ["components", "button"],
+      "meta": {
+        "height": 120
+      }
     },
     {
       "name": "button-02",
@@ -32,8 +34,10 @@
           "target": "@components/vibe-ui/button-02/button-02.tsx"
         }
       ],
-      "categories": ["button"],
-      "height": 120
+      "categories": ["components", "button"],
+      "meta": {
+        "height": 120
+      }
     },
     {
       "name": "button-03",
@@ -58,8 +62,10 @@
           "target": "@components/vibe-ui/button-03/parts/button-label.tsx"
         }
       ],
-      "categories": ["button"],
-      "height": 120
+      "categories": ["components", "button"],
+      "meta": {
+        "height": 120
+      }
     },
     {
       "name": "form-01",
@@ -75,8 +81,10 @@
           "target": "@components/vibe-ui/form-01/form-01.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-02",
@@ -92,8 +100,10 @@
           "target": "@components/vibe-ui/form-02/form-02.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-03",
@@ -109,8 +119,10 @@
           "target": "@components/vibe-ui/form-03/form-03.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-04",
@@ -126,8 +138,10 @@
           "target": "@components/vibe-ui/form-04/form-04.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-05",
@@ -143,8 +157,10 @@
           "target": "@components/vibe-ui/form-05/form-05.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-06",
@@ -160,8 +176,10 @@
           "target": "@components/vibe-ui/form-06/form-06.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-07",
@@ -177,8 +195,10 @@
           "target": "@components/vibe-ui/form-07/form-07.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-08",
@@ -194,8 +214,10 @@
           "target": "@components/vibe-ui/form-08/form-08.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-09",
@@ -211,8 +233,10 @@
           "target": "@components/vibe-ui/form-09/form-09.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "form-10",
@@ -228,8 +252,10 @@
           "target": "@components/vibe-ui/form-10/form-10.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 280
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 280
+      }
     },
     {
       "name": "form-11",
@@ -245,14 +271,16 @@
           "target": "@components/vibe-ui/form-11/form-11.tsx"
         }
       ],
-      "categories": ["form"],
-      "height": 240
+      "categories": ["components", "form"],
+      "meta": {
+        "height": 240
+      }
     },
     {
       "name": "hero-section-01",
       "title": "Hero Section 01",
       "description": "A centered product hero with a focused call to action.",
-      "type": "registry:block",
+      "type": "registry:component",
       "registryDependencies": ["button"],
       "files": [
         {
@@ -261,14 +289,16 @@
           "target": "@components/vibe-ui/hero-section-01/hero-section-01.tsx"
         }
       ],
-      "categories": ["hero-section"],
-      "height": 600
+      "categories": ["blocks", "hero-section"],
+      "meta": {
+        "height": 600
+      }
     },
     {
       "name": "landing-page-01",
       "title": "Landing Page 01",
       "description": "A complete landing page with navigation, hero, and social proof.",
-      "type": "registry:page",
+      "type": "registry:component",
       "registryDependencies": ["button"],
       "files": [
         {
@@ -277,8 +307,10 @@
           "target": "@components/vibe-ui/landing-page-01/landing-page-01.tsx"
         }
       ],
-      "categories": ["landing-pages"],
-      "height": 1000
+      "categories": ["pages", "landing-pages"],
+      "meta": {
+        "height": 1000
+      }
     },
     {
       "name": "table-01",
@@ -302,8 +334,10 @@
           "target": "@components/vibe-ui/table-01/table-01.tsx"
         }
       ],
-      "categories": ["table"],
-      "height": 640
+      "categories": ["components", "table"],
+      "meta": {
+        "height": 640
+      }
     },
     {
       "name": "table-02",
@@ -319,8 +353,10 @@
           "target": "@components/vibe-ui/table-02/table-02.tsx"
         }
       ],
-      "categories": ["table"],
-      "height": 640
+      "categories": ["components", "table"],
+      "meta": {
+        "height": 640
+      }
     },
     {
       "name": "table-03",
@@ -344,8 +380,10 @@
           "target": "@components/vibe-ui/table-03/table-03.tsx"
         }
       ],
-      "categories": ["table"],
-      "height": 640
+      "categories": ["components", "table"],
+      "meta": {
+        "height": 640
+      }
     },
     {
       "name": "table-04",
@@ -369,8 +407,295 @@
           "target": "@components/vibe-ui/table-04/table-04.tsx"
         }
       ],
-      "categories": ["table"],
-      "height": 640
+      "categories": ["components", "table"],
+      "meta": {
+        "height": 640
+      }
+    },
+    {
+      "name": "chart-line-01",
+      "title": "chart-line-01",
+      "description": "Monthly active subscribers \u00b7 Jan\u2013Jun 2026. A steady climb, with 56 new subscribers in June.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-line-01/chart-line-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-line-01/chart-line-01.tsx"
+        }
+      ],
+      "categories": ["charts", "line"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-line-02",
+      "title": "chart-line-02",
+      "description": "Subscriber growth \u00b7 year over year. June subscribers compared with the same month last year.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-line-02/chart-line-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-line-02/chart-line-02.tsx"
+        }
+      ],
+      "categories": ["charts", "line"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-area-01",
+      "title": "chart-area-01",
+      "description": "Monthly revenue \u00b7 USD thousands. June revenue is up 17.9% over May.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-area-01/chart-area-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-area-01/chart-area-01.tsx"
+        }
+      ],
+      "categories": ["charts", "area"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-area-02",
+      "title": "chart-area-02",
+      "description": "Revenue mix \u00b7 USD thousands. Subscriptions and services combined in June.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-area-02/chart-area-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-area-02/chart-area-02.tsx"
+        }
+      ],
+      "categories": ["charts", "area"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-bar-01",
+      "title": "chart-bar-01",
+      "description": "Completed orders \u00b7 first half of 2026. June was the strongest month of the half.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-bar-01/chart-bar-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-bar-01/chart-bar-01.tsx"
+        }
+      ],
+      "categories": ["charts", "bar"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-bar-02",
+      "title": "chart-bar-02",
+      "description": "Monthly orders \u00b7 online and in store. Online contributed 57.5% of June orders.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-bar-02/chart-bar-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-bar-02/chart-bar-02.tsx"
+        }
+      ],
+      "categories": ["charts", "bar"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-pie-01",
+      "title": "chart-pie-01",
+      "description": "Acquisition breakdown \u00b7 June 2026. Organic search accounts for 42% of all visits.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-pie-01/chart-pie-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-pie-01/chart-pie-01.tsx"
+        }
+      ],
+      "categories": ["charts", "pie"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-pie-02",
+      "title": "chart-pie-02",
+      "description": "Acquisition breakdown \u00b7 June 2026. Organic search accounts for 42% of all visits.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-pie-02/chart-pie-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-pie-02/chart-pie-02.tsx"
+        }
+      ],
+      "categories": ["charts", "pie"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-radar-01",
+      "title": "chart-radar-01",
+      "description": "Customer survey \u00b7 scores out of 100. Average across six dimensions from the June survey.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-radar-01/chart-radar-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-radar-01/chart-radar-01.tsx"
+        }
+      ],
+      "categories": ["charts", "radar"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-radar-02",
+      "title": "chart-radar-02",
+      "description": "Customer survey \u00b7 scores out of 100. Average across six dimensions from the June survey.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-radar-02/chart-radar-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-radar-02/chart-radar-02.tsx"
+        }
+      ],
+      "categories": ["charts", "radar"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-radial-01",
+      "title": "chart-radial-01",
+      "description": "Delivery progress \u00b7 Q2 2026. 78 of 100 planned releases shipped this quarter.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-radial-01/chart-radial-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-radial-01/chart-radial-01.tsx"
+        }
+      ],
+      "categories": ["charts", "radial"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-radial-02",
+      "title": "chart-radial-02",
+      "description": "Delivery progress \u00b7 Q2 2026. Completion against each team\u2019s quarterly target.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-radial-02/chart-radial-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-radial-02/chart-radial-02.tsx"
+        }
+      ],
+      "categories": ["charts", "radial"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-composed-01",
+      "title": "chart-composed-01",
+      "description": "Monthly operating performance \u00b7 Jan\u2013Jun 2026. Revenue exceeded the June target by $96k.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-composed-01/chart-composed-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-composed-01/chart-composed-01.tsx"
+        }
+      ],
+      "categories": ["charts", "composed"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-composed-02",
+      "title": "chart-composed-02",
+      "description": "Monthly operating performance \u00b7 Jan\u2013Jun 2026. 368 orders fulfilled against a June capacity of 400.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-composed-02/chart-composed-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-composed-02/chart-composed-02.tsx"
+        }
+      ],
+      "categories": ["charts", "composed"],
+      "meta": {
+        "height": 520
+      }
+    },
+    {
+      "name": "chart-line-03",
+      "title": "chart-line-03",
+      "description": "Choose a reporting window. Switch between the full half-year and the latest quarter.",
+      "type": "registry:component",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["card", "chart", "button"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-line-03/chart-line-03.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-line-03/chart-line-03.tsx"
+        }
+      ],
+      "categories": ["charts", "line"],
+      "meta": {
+        "height": 570
+      }
     }
   ]
 }

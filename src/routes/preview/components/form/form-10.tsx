@@ -9,5 +9,5 @@ export const Route = createFileRoute("/preview/components/form/form-10")({
     meta: [{ title: "Form 10 Preview – VibeUI" }],
   }),
   staticData: { ariaLabel: "Form 10 Preview" },
-  component: () => <PreviewPage Preview={Form10Preview} type="registry:component" />,
+  component: () => <PreviewPage Preview={Form10Preview} section="components" />,
 });

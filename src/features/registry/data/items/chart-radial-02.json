@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-radial-02",
+  "title": "chart-radial-02",
+  "description": "Delivery progress · Q2 2026. Completion against each team’s quarterly target.",
+  "dependencies": ["recharts"],
+  "registryDependencies": ["card", "chart"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-radial-02/chart-radial-02.tsx",
+      "content": "\"use client\";\n\nimport { RadialBarChart, RadialBar, PolarAngleAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  ChartLegend,\n  ChartLegendContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { team: \"platform\", progress: 86, fill: \"var(--color-platform)\" },\n  { team: \"design\", progress: 72, fill: \"var(--color-design)\" },\n  { team: \"product\", progress: 64, fill: \"var(--color-product)\" },\n];\nconst config = {\n  platform: { label: \"Platform\", color: \"var(--chart-1)\" },\n  design: { label: \"Design\", color: \"var(--chart-2)\" },\n  product: { label: \"Product\", color: \"var(--chart-3)\" },\n} satisfies ChartConfig;\n\nexport default function ChartRadial02() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Delivery progress · Q2 2026</CardDescription>\n        <CardTitle className=\"text-lg\">Team goal progress</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">Three teams</div>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <RadialBarChart\n            accessibilityLayer\n            data={data}\n            innerRadius=\"35%\"\n            outerRadius=\"90%\"\n            startAngle={90}\n            endAngle={-270}\n          >\n            <PolarAngleAxis type=\"number\" domain={[0, 100]} tick={false} />\n            <RadialBar dataKey=\"progress\" background cornerRadius={8} />\n            <ChartTooltip content={<ChartTooltipContent nameKey=\"team\" />} />\n            <ChartLegend content={<ChartLegendContent nameKey=\"team\" />} />\n          </RadialBarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        Completion against each team’s quarterly target.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-radial-02/chart-radial-02.tsx"
+    }
+  ],
+  "meta": {
+    "height": 520
+  },
+  "categories": ["charts", "radial"],
+  "type": "registry:component"
+}

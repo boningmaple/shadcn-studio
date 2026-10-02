@@ -12,7 +12,9 @@
       "target": "@components/vibe-ui/landing-page-01/landing-page-01.tsx"
     }
   ],
-  "categories": ["landing-pages"],
-  "type": "registry:page",
-  "height": 1000
+  "meta": {
+    "height": 1000
+  },
+  "categories": ["pages", "landing-pages"],
+  "type": "registry:component"
 }

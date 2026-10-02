@@ -40,7 +40,7 @@ export async function buildSearchRecords(): Promise<SearchRecord[]> {
     ...collections.map((collection) => ({
       description: collection.description,
       href: collection.href,
-      id: `collection:${collection.type}:${collection.category}`,
+      id: `collection:${collection.section}:${collection.category}`,
       kind: "collection" as const,
       name: collection.category,
       title: collection.title,
@@ -48,9 +48,9 @@ export async function buildSearchRecords(): Promise<SearchRecord[]> {
     ...sections.map((section) => ({
       description: section.description,
       href: section.href,
-      id: `route:${section.type}`,
+      id: `route:${section.section}`,
       kind: "route" as const,
-      name: section.type,
+      name: section.section,
       title: section.title,
     })),
     ...routeMetadata.map((route) => ({

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-bar-01",
+  "title": "chart-bar-01",
+  "description": "Completed orders · first half of 2026. June was the strongest month of the half.",
+  "dependencies": ["recharts"],
+  "registryDependencies": ["card", "chart"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-bar-01/chart-bar-01.tsx",
+      "content": "\"use client\";\n\nimport { BarChart, Bar, CartesianGrid, XAxis, YAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { month: \"Jan\", current: 186, previous: 140 },\n  { month: \"Feb\", current: 225, previous: 178 },\n  { month: \"Mar\", current: 208, previous: 190 },\n  { month: \"Apr\", current: 284, previous: 210 },\n  { month: \"May\", current: 312, previous: 245 },\n  { month: \"Jun\", current: 368, previous: 272 },\n];\nconst config = { current: { label: \"Orders\", color: \"var(--chart-1)\" } } satisfies ChartConfig;\n\nexport default function ChartBar01() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Completed orders · first half of 2026</CardDescription>\n        <CardTitle className=\"text-lg\">Orders on the rise</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">1,583 orders</div>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <BarChart accessibilityLayer data={data}>\n            <CartesianGrid vertical={false} strokeDasharray=\"3 3\" />\n            <XAxis dataKey=\"month\" tickLine={false} axisLine={false} tickMargin={12} />\n            <YAxis tickLine={false} axisLine={false} width={42} />\n            <ChartTooltip content={<ChartTooltipContent />} />\n            <Bar\n              dataKey=\"current\"\n              fill=\"var(--color-current)\"\n              radius={[5, 5, 0, 0]}\n              maxBarSize={40}\n            />\n          </BarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        June was the strongest month of the half.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-bar-01/chart-bar-01.tsx"
+    }
+  ],
+  "meta": {
+    "height": 520
+  },
+  "categories": ["charts", "bar"],
+  "type": "registry:component"
+}

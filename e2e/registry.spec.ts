@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type FrameLocator, type Page } from "@playwright/test";
 
 async function abortScriptRequests(page: Page) {
   await page.route("**/*", async (route) => {
@@ -16,6 +16,18 @@ async function waitForHydration(page: Page) {
   await expect(page.getByRole("button", { name: /^Theme:/ })).toBeEnabled();
 }
 
+async function incrementPreviewWhenHydrated(preview: Page | FrameLocator) {
+  // SSR makes the button visible before it hydrates. Retry only
+  // while the initial count is visible, and require a real event-driven update.
+  await expect
+    .poll(async () => {
+      const initialButton = preview.getByRole("button", { name: "Get started, 0" });
+      if (await initialButton.isVisible()) await initialButton.click();
+      return preview.getByRole("button", { name: "Get started, 1" }).isVisible();
+    })
+    .toBe(true);
+}
+
 async function setInitialTheme(page: Page, theme: "light" | "dark") {
   await page.addInitScript((initialTheme) => {
     if (window === window.top) localStorage.setItem("theme", initialTheme);
@@ -30,6 +42,26 @@ async function expectNoAxeViolations(page: Page) {
 }
 
 test.describe("Preview Rendering", () => {
+  test("hydrates a standalone Preview without errors", async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("console", (message) => {
+      if (message.type() === "error") errors.push(message.text());
+    });
+    await page.goto("/preview/components/button/button-01");
+    await incrementPreviewWhenHydrated(page);
+    await expect(page).toHaveTitle("Button 01 Preview – VibeUI");
+    expect(errors).toEqual([]);
+  });
+
+  test("keeps page Previews full-width without the component inset", async ({ page }) => {
+    await page.goto("/preview/pages/landing-pages/landing-page-01");
+    const preview = page.locator("body > div.min-h-svh");
+    await expect(preview).toHaveCSS("padding", "0px");
+    await expect(preview).toHaveCSS("width", `${page.viewportSize()!.width}px`);
+    await expect(page.getByText("Northstar", { exact: true }).first()).toBeVisible();
+  });
+
   for (const preview of [
     {
       path: "/preview/components/button/button-01",
@@ -137,13 +169,7 @@ test.describe("Preview Theme", () => {
     const item = page.locator("#button-01");
     const preview = page.frameLocator("#button-01 iframe");
     const previewRoot = preview.locator("html");
-    await expect
-      .poll(async () => {
-        const initialButton = preview.getByRole("button", { name: "Get started, 0" });
-        if (await initialButton.isVisible()) await initialButton.click();
-        return preview.getByRole("button", { name: "Get started, 1" }).isVisible();
-      })
-      .toBe(true);
+    await incrementPreviewWhenHydrated(preview);
 
     await page.getByRole("button", { exact: true, name: "Theme: Light. Switch to Dark." }).click();
     await expect(previewRoot).toHaveAttribute("data-theme", "dark");
@@ -218,8 +244,7 @@ test.describe("Preview Reset", () => {
       Object.assign(window, { __previewDocumentIdentity: "original" });
     });
 
-    await preview.getByRole("button", { name: "Get started, 0" }).click();
-    await expect(preview.getByRole("button", { name: "Get started, 1" })).toBeVisible();
+    await incrementPreviewWhenHydrated(preview);
     await item.getByRole("button", { name: "Preview theme: Light. Switch to Dark." }).click();
     await expect(preview.locator("html")).toHaveAttribute("data-theme", "dark");
 
@@ -247,6 +272,18 @@ test.describe("Error Handling", () => {
 
     expect(response?.status()).toBe(404);
   });
+
+  for (const previewPath of [
+    "/preview/charts/button/button-01",
+    "/preview/components/table/button-01",
+    "/preview/unknown/button/button-01",
+  ]) {
+    test(`returns not found for mismatched Preview metadata: ${previewPath}`, async ({ page }) => {
+      const response = await page.goto(previewPath);
+      expect(response?.status()).toBe(404);
+      await expect(page.getByRole("button", { name: "Get started, 0" })).toHaveCount(0);
+    });
+  }
 });
 
 test.describe("A11y", () => {

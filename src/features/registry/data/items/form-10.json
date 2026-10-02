@@ -13,7 +13,9 @@
       "target": "@components/vibe-ui/form-10/form-10.tsx"
     }
   ],
-  "categories": ["form"],
-  "type": "registry:component",
-  "height": 280
+  "meta": {
+    "height": 280
+  },
+  "categories": ["components", "form"],
+  "type": "registry:component"
 }

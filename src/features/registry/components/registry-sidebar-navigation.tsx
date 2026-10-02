@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import {
   BlocksIcon,
+  ChartNoAxesCombinedIcon,
   ChevronRightIcon,
+  ComponentIcon,
   LayoutTemplateIcon,
-  ShapesIcon,
   type LucideIcon,
 } from "lucide-react";
 
@@ -17,7 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 import { registrySidebarSections } from "@/features/registry/data/registry-sidebar.gen";
 import type {
-  VibeRegistryItemType,
+  VibeRegistrySectionName,
   VibeRegistrySidebarSection,
 } from "@/features/registry/types/registry";
 
@@ -34,16 +35,18 @@ type RegistrySidebarGroup = {
   items: RegistrySidebarItem[];
 };
 
-const labelByType: Record<VibeRegistryItemType, string> = {
-  "registry:block": "Blocks",
-  "registry:component": "Components",
-  "registry:page": "Pages",
+const labelBySection: Record<VibeRegistrySectionName, string> = {
+  charts: "Charts",
+  blocks: "Blocks",
+  components: "Components",
+  pages: "Pages",
 };
 
-const iconByType: Record<VibeRegistryItemType, LucideIcon> = {
-  "registry:block": BlocksIcon,
-  "registry:component": ShapesIcon,
-  "registry:page": LayoutTemplateIcon,
+const iconBySection: Record<VibeRegistrySectionName, LucideIcon> = {
+  charts: ChartNoAxesCombinedIcon,
+  blocks: BlocksIcon,
+  components: ComponentIcon,
+  pages: LayoutTemplateIcon,
 };
 
 type RegistrySidebarNavigationProps = {
@@ -135,12 +138,12 @@ function registryGroups(sections: readonly VibeRegistrySidebarSection[]): Regist
   return [
     {
       items: sections.map((section) => ({
-        icon: iconByType[section.type],
+        icon: iconBySection[section.section],
         items: section.collections.map((collection) => ({
           label: collection.title,
           to: collection.href,
         })),
-        label: labelByType[section.type],
+        label: labelBySection[section.section],
       })),
       label: "Registry",
       showLabel: false,

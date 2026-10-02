@@ -12,7 +12,7 @@ _Avoid_: Shadcn Studio (the repository and npm package name only, never the prod
 ## Catalog
 
 **Registry item**:
-A free, open-source component, block, template, or page that VibeUI publishes
+A free, open-source component, block, chart, template, or page that VibeUI publishes
 for installation through its shadcn registry.
 _Avoid_: Demo, Demo artifact, catalog entry
 
@@ -22,13 +22,13 @@ are not Registry items merely because VibeUI uses them internally.
 _Avoid_: Registry item, catalog component
 
 **Collection page**:
-A page that groups related Registry items sharing a type and category, such as
+A page that groups related Registry items sharing a section and collection category, such as
 the Button page containing `button-01` and `button-02`.
 _Avoid_: category route, listing route, page route
 
 **Section page**:
-A top-level catalog page that lists Collection pages of one Registry item type,
-such as Components, Blocks, or Pages.
+A top-level catalog page that lists Collection pages in one catalog section,
+such as Components, Blocks, Charts, or Pages.
 _Avoid_: index route, type route
 
 **Preview**:
@@ -54,3 +54,8 @@ _Avoid_: result, match
 A fixed destination the search palette offers before anything is typed, taken
 from the app's own navigation rather than from the index.
 _Avoid_: shortcut, nav item, suggestion
+
+Registry items use `registry:component` as their installation type. Their ordered
+`categories` tuple is `[section, collection]`, for example `["charts", "line"]`.
+It defines the Collection URL `/charts/line`; item names supply the anchor and
+standalone Preview suffix. Section order is Components, Blocks, Charts, Pages.

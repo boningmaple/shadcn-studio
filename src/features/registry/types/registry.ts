@@ -6,6 +6,7 @@ import {
 } from "shadcn/schema";
 import { z } from "zod";
 
+import { registrySectionNames } from "../lib/registry-sections.ts";
 import { shikiLanguageForPath } from "../lib/shiki-language.ts";
 
 type ShadcnSchema<T> = {
@@ -39,15 +40,17 @@ const vibeRegistryItemNameSchema = z
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Must use lowercase letters, numbers, and single hyphens.")
   .refine((value) => !["index", "route"].includes(value), "Cannot use a reserved route filename.");
 
+const registrySectionNameSchema = z.enum(registrySectionNames);
+
 const vibeRegistryItemRequirementsSchema = z
   .looseObject({
     name: vibeRegistryItemNameSchema,
     title: z.string().trim().min(1),
     description: z.string().trim().min(1),
-    type: z.enum(["registry:block", "registry:component", "registry:page"]),
+    type: z.literal("registry:component"),
     files: z.array(z.looseObject({ path: z.string() })),
-    categories: z.tuple([vibeRegistryItemNameSchema]),
-    height: z.number().int().positive(),
+    categories: z.tuple([registrySectionNameSchema, vibeRegistryItemNameSchema]),
+    meta: z.looseObject({ height: z.number().int().positive() }),
   })
   .refine(
     (item) => {
@@ -118,7 +121,7 @@ const vibeRegistryRequirementsSchema = z
       }
       itemNames.add(item.name);
 
-      const routeKey = `${item.type}/${item.categories[0]}/${item.name}`;
+      const routeKey = `${item.categories.join("/")}/${item.name}`;
       if (routeKeys.has(routeKey)) {
         context.addIssue({
           code: "custom",
@@ -138,7 +141,7 @@ export const vibeRegistrySchema = z.intersection(
 export type VibeRegistry = z.infer<typeof vibeRegistrySchema>;
 export type VibeRegistryItem = z.infer<typeof vibeRegistryItemSchema>;
 export type VibeBuiltRegistryItem = z.infer<typeof vibeBuiltRegistryItemSchema>;
-export type VibeRegistryItemType = VibeRegistryItem["type"];
+export type VibeRegistrySectionName = VibeRegistryItem["categories"][0];
 
 export type VibeRegistryItemSummary = {
   category: string;
@@ -146,7 +149,7 @@ export type VibeRegistryItemSummary = {
   href: string;
   name: string;
   title: string;
-  type: VibeRegistryItemType;
+  section: VibeRegistrySectionName;
 };
 
 export type VibeRegistryCollection = {
@@ -155,7 +158,7 @@ export type VibeRegistryCollection = {
   href: string;
   items: VibeRegistryItemSummary[];
   title: string;
-  type: VibeRegistryItemType;
+  section: VibeRegistrySectionName;
 };
 
 export type VibeRegistrySection = {
@@ -163,7 +166,7 @@ export type VibeRegistrySection = {
   description: string;
   href: string;
   title: string;
-  type: VibeRegistryItemType;
+  section: VibeRegistrySectionName;
 };
 
 export type VibeRegistrySidebarCollection = {
@@ -174,7 +177,7 @@ export type VibeRegistrySidebarCollection = {
 export type VibeRegistrySidebarSection = {
   collections: VibeRegistrySidebarCollection[];
   label: string;
-  type: VibeRegistryItemType;
+  section: VibeRegistrySectionName;
 };
 
 export type VibeRegistryItemFile = VibeBuiltRegistryItem["files"][number];

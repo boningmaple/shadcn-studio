@@ -15,6 +15,14 @@ import { Route as RootLayoutIndexRouteImport } from './routes/_rootLayout/index'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
 import { Route as RootLayoutBlocksIndexRouteImport } from './routes/_rootLayout/blocks/index'
 import { Route as RootLayoutBlocksHeroSectionRouteImport } from './routes/_rootLayout/blocks/hero-section'
+import { Route as RootLayoutChartsIndexRouteImport } from './routes/_rootLayout/charts/index'
+import { Route as RootLayoutChartsAreaRouteImport } from './routes/_rootLayout/charts/area'
+import { Route as RootLayoutChartsBarRouteImport } from './routes/_rootLayout/charts/bar'
+import { Route as RootLayoutChartsComposedRouteImport } from './routes/_rootLayout/charts/composed'
+import { Route as RootLayoutChartsLineRouteImport } from './routes/_rootLayout/charts/line'
+import { Route as RootLayoutChartsPieRouteImport } from './routes/_rootLayout/charts/pie'
+import { Route as RootLayoutChartsRadarRouteImport } from './routes/_rootLayout/charts/radar'
+import { Route as RootLayoutChartsRadialRouteImport } from './routes/_rootLayout/charts/radial'
 import { Route as RootLayoutComponentsIndexRouteImport } from './routes/_rootLayout/components/index'
 import { Route as RootLayoutComponentsButtonRouteImport } from './routes/_rootLayout/components/button'
 import { Route as RootLayoutComponentsFormRouteImport } from './routes/_rootLayout/components/form'
@@ -22,6 +30,21 @@ import { Route as RootLayoutComponentsTableRouteImport } from './routes/_rootLay
 import { Route as RootLayoutPagesIndexRouteImport } from './routes/_rootLayout/pages/index'
 import { Route as RootLayoutPagesLandingPagesRouteImport } from './routes/_rootLayout/pages/landing-pages'
 import { Route as PreviewBlocksHeroSectionHeroSection01RouteImport } from './routes/preview/blocks/hero-section/hero-section-01'
+import { Route as PreviewChartsAreaChartArea01RouteImport } from './routes/preview/charts/area/chart-area-01'
+import { Route as PreviewChartsAreaChartArea02RouteImport } from './routes/preview/charts/area/chart-area-02'
+import { Route as PreviewChartsBarChartBar01RouteImport } from './routes/preview/charts/bar/chart-bar-01'
+import { Route as PreviewChartsBarChartBar02RouteImport } from './routes/preview/charts/bar/chart-bar-02'
+import { Route as PreviewChartsComposedChartComposed01RouteImport } from './routes/preview/charts/composed/chart-composed-01'
+import { Route as PreviewChartsComposedChartComposed02RouteImport } from './routes/preview/charts/composed/chart-composed-02'
+import { Route as PreviewChartsLineChartLine01RouteImport } from './routes/preview/charts/line/chart-line-01'
+import { Route as PreviewChartsLineChartLine02RouteImport } from './routes/preview/charts/line/chart-line-02'
+import { Route as PreviewChartsLineChartLine03RouteImport } from './routes/preview/charts/line/chart-line-03'
+import { Route as PreviewChartsPieChartPie01RouteImport } from './routes/preview/charts/pie/chart-pie-01'
+import { Route as PreviewChartsPieChartPie02RouteImport } from './routes/preview/charts/pie/chart-pie-02'
+import { Route as PreviewChartsRadarChartRadar01RouteImport } from './routes/preview/charts/radar/chart-radar-01'
+import { Route as PreviewChartsRadarChartRadar02RouteImport } from './routes/preview/charts/radar/chart-radar-02'
+import { Route as PreviewChartsRadialChartRadial01RouteImport } from './routes/preview/charts/radial/chart-radial-01'
+import { Route as PreviewChartsRadialChartRadial02RouteImport } from './routes/preview/charts/radial/chart-radial-02'
 import { Route as PreviewComponentsButtonButton01RouteImport } from './routes/preview/components/button/button-01'
 import { Route as PreviewComponentsButtonButton02RouteImport } from './routes/preview/components/button/button-02'
 import { Route as PreviewComponentsButtonButton03RouteImport } from './routes/preview/components/button/button-03'
@@ -72,6 +95,47 @@ const RootLayoutBlocksHeroSectionRoute =
     path: '/blocks/hero-section',
     getParentRoute: () => RootLayoutRouteRoute,
   } as any)
+const RootLayoutChartsIndexRoute = RootLayoutChartsIndexRouteImport.update({
+  id: '/charts/',
+  path: '/charts/',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
+const RootLayoutChartsAreaRoute = RootLayoutChartsAreaRouteImport.update({
+  id: '/charts/area',
+  path: '/charts/area',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
+const RootLayoutChartsBarRoute = RootLayoutChartsBarRouteImport.update({
+  id: '/charts/bar',
+  path: '/charts/bar',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
+const RootLayoutChartsComposedRoute =
+  RootLayoutChartsComposedRouteImport.update({
+    id: '/charts/composed',
+    path: '/charts/composed',
+    getParentRoute: () => RootLayoutRouteRoute,
+  } as any)
+const RootLayoutChartsLineRoute = RootLayoutChartsLineRouteImport.update({
+  id: '/charts/line',
+  path: '/charts/line',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
+const RootLayoutChartsPieRoute = RootLayoutChartsPieRouteImport.update({
+  id: '/charts/pie',
+  path: '/charts/pie',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
+const RootLayoutChartsRadarRoute = RootLayoutChartsRadarRouteImport.update({
+  id: '/charts/radar',
+  path: '/charts/radar',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
+const RootLayoutChartsRadialRoute = RootLayoutChartsRadialRouteImport.update({
+  id: '/charts/radial',
+  path: '/charts/radial',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
 const RootLayoutComponentsIndexRoute =
   RootLayoutComponentsIndexRouteImport.update({
     id: '/components/',
@@ -111,6 +175,96 @@ const PreviewBlocksHeroSectionHeroSection01Route =
   PreviewBlocksHeroSectionHeroSection01RouteImport.update({
     id: '/blocks/hero-section/hero-section-01',
     path: '/blocks/hero-section/hero-section-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsAreaChartArea01Route =
+  PreviewChartsAreaChartArea01RouteImport.update({
+    id: '/charts/area/chart-area-01',
+    path: '/charts/area/chart-area-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsAreaChartArea02Route =
+  PreviewChartsAreaChartArea02RouteImport.update({
+    id: '/charts/area/chart-area-02',
+    path: '/charts/area/chart-area-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsBarChartBar01Route =
+  PreviewChartsBarChartBar01RouteImport.update({
+    id: '/charts/bar/chart-bar-01',
+    path: '/charts/bar/chart-bar-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsBarChartBar02Route =
+  PreviewChartsBarChartBar02RouteImport.update({
+    id: '/charts/bar/chart-bar-02',
+    path: '/charts/bar/chart-bar-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsComposedChartComposed01Route =
+  PreviewChartsComposedChartComposed01RouteImport.update({
+    id: '/charts/composed/chart-composed-01',
+    path: '/charts/composed/chart-composed-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsComposedChartComposed02Route =
+  PreviewChartsComposedChartComposed02RouteImport.update({
+    id: '/charts/composed/chart-composed-02',
+    path: '/charts/composed/chart-composed-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsLineChartLine01Route =
+  PreviewChartsLineChartLine01RouteImport.update({
+    id: '/charts/line/chart-line-01',
+    path: '/charts/line/chart-line-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsLineChartLine02Route =
+  PreviewChartsLineChartLine02RouteImport.update({
+    id: '/charts/line/chart-line-02',
+    path: '/charts/line/chart-line-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsLineChartLine03Route =
+  PreviewChartsLineChartLine03RouteImport.update({
+    id: '/charts/line/chart-line-03',
+    path: '/charts/line/chart-line-03',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsPieChartPie01Route =
+  PreviewChartsPieChartPie01RouteImport.update({
+    id: '/charts/pie/chart-pie-01',
+    path: '/charts/pie/chart-pie-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsPieChartPie02Route =
+  PreviewChartsPieChartPie02RouteImport.update({
+    id: '/charts/pie/chart-pie-02',
+    path: '/charts/pie/chart-pie-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsRadarChartRadar01Route =
+  PreviewChartsRadarChartRadar01RouteImport.update({
+    id: '/charts/radar/chart-radar-01',
+    path: '/charts/radar/chart-radar-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsRadarChartRadar02Route =
+  PreviewChartsRadarChartRadar02RouteImport.update({
+    id: '/charts/radar/chart-radar-02',
+    path: '/charts/radar/chart-radar-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsRadialChartRadial01Route =
+  PreviewChartsRadialChartRadial01RouteImport.update({
+    id: '/charts/radial/chart-radial-01',
+    path: '/charts/radial/chart-radial-01',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsRadialChartRadial02Route =
+  PreviewChartsRadialChartRadial02RouteImport.update({
+    id: '/charts/radial/chart-radial-02',
+    path: '/charts/radial/chart-radial-02',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
 const PreviewComponentsButtonButton01Route =
@@ -233,14 +387,37 @@ export interface FileRoutesByFullPath {
   '/preview': typeof PreviewRouteRouteWithChildren
   '/api/search': typeof ApiSearchRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
+  '/charts/area': typeof RootLayoutChartsAreaRoute
+  '/charts/bar': typeof RootLayoutChartsBarRoute
+  '/charts/composed': typeof RootLayoutChartsComposedRoute
+  '/charts/line': typeof RootLayoutChartsLineRoute
+  '/charts/pie': typeof RootLayoutChartsPieRoute
+  '/charts/radar': typeof RootLayoutChartsRadarRoute
+  '/charts/radial': typeof RootLayoutChartsRadialRoute
   '/components/button': typeof RootLayoutComponentsButtonRoute
   '/components/form': typeof RootLayoutComponentsFormRoute
   '/components/table': typeof RootLayoutComponentsTableRoute
   '/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/blocks/': typeof RootLayoutBlocksIndexRoute
+  '/charts/': typeof RootLayoutChartsIndexRoute
   '/components/': typeof RootLayoutComponentsIndexRoute
   '/pages/': typeof RootLayoutPagesIndexRoute
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
+  '/preview/charts/area/chart-area-01': typeof PreviewChartsAreaChartArea01Route
+  '/preview/charts/area/chart-area-02': typeof PreviewChartsAreaChartArea02Route
+  '/preview/charts/bar/chart-bar-01': typeof PreviewChartsBarChartBar01Route
+  '/preview/charts/bar/chart-bar-02': typeof PreviewChartsBarChartBar02Route
+  '/preview/charts/composed/chart-composed-01': typeof PreviewChartsComposedChartComposed01Route
+  '/preview/charts/composed/chart-composed-02': typeof PreviewChartsComposedChartComposed02Route
+  '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
+  '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
+  '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
+  '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
+  '/preview/charts/radar/chart-radar-01': typeof PreviewChartsRadarChartRadar01Route
+  '/preview/charts/radar/chart-radar-02': typeof PreviewChartsRadarChartRadar02Route
+  '/preview/charts/radial/chart-radial-01': typeof PreviewChartsRadialChartRadial01Route
+  '/preview/charts/radial/chart-radial-02': typeof PreviewChartsRadialChartRadial02Route
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
@@ -266,14 +443,37 @@ export interface FileRoutesByTo {
   '/api/search': typeof ApiSearchRoute
   '/': typeof RootLayoutIndexRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
+  '/charts/area': typeof RootLayoutChartsAreaRoute
+  '/charts/bar': typeof RootLayoutChartsBarRoute
+  '/charts/composed': typeof RootLayoutChartsComposedRoute
+  '/charts/line': typeof RootLayoutChartsLineRoute
+  '/charts/pie': typeof RootLayoutChartsPieRoute
+  '/charts/radar': typeof RootLayoutChartsRadarRoute
+  '/charts/radial': typeof RootLayoutChartsRadialRoute
   '/components/button': typeof RootLayoutComponentsButtonRoute
   '/components/form': typeof RootLayoutComponentsFormRoute
   '/components/table': typeof RootLayoutComponentsTableRoute
   '/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/blocks': typeof RootLayoutBlocksIndexRoute
+  '/charts': typeof RootLayoutChartsIndexRoute
   '/components': typeof RootLayoutComponentsIndexRoute
   '/pages': typeof RootLayoutPagesIndexRoute
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
+  '/preview/charts/area/chart-area-01': typeof PreviewChartsAreaChartArea01Route
+  '/preview/charts/area/chart-area-02': typeof PreviewChartsAreaChartArea02Route
+  '/preview/charts/bar/chart-bar-01': typeof PreviewChartsBarChartBar01Route
+  '/preview/charts/bar/chart-bar-02': typeof PreviewChartsBarChartBar02Route
+  '/preview/charts/composed/chart-composed-01': typeof PreviewChartsComposedChartComposed01Route
+  '/preview/charts/composed/chart-composed-02': typeof PreviewChartsComposedChartComposed02Route
+  '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
+  '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
+  '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
+  '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
+  '/preview/charts/radar/chart-radar-01': typeof PreviewChartsRadarChartRadar01Route
+  '/preview/charts/radar/chart-radar-02': typeof PreviewChartsRadarChartRadar02Route
+  '/preview/charts/radial/chart-radial-01': typeof PreviewChartsRadialChartRadial01Route
+  '/preview/charts/radial/chart-radial-02': typeof PreviewChartsRadialChartRadial02Route
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
@@ -301,14 +501,37 @@ export interface FileRoutesById {
   '/api/search': typeof ApiSearchRoute
   '/_rootLayout/': typeof RootLayoutIndexRoute
   '/_rootLayout/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
+  '/_rootLayout/charts/area': typeof RootLayoutChartsAreaRoute
+  '/_rootLayout/charts/bar': typeof RootLayoutChartsBarRoute
+  '/_rootLayout/charts/composed': typeof RootLayoutChartsComposedRoute
+  '/_rootLayout/charts/line': typeof RootLayoutChartsLineRoute
+  '/_rootLayout/charts/pie': typeof RootLayoutChartsPieRoute
+  '/_rootLayout/charts/radar': typeof RootLayoutChartsRadarRoute
+  '/_rootLayout/charts/radial': typeof RootLayoutChartsRadialRoute
   '/_rootLayout/components/button': typeof RootLayoutComponentsButtonRoute
   '/_rootLayout/components/form': typeof RootLayoutComponentsFormRoute
   '/_rootLayout/components/table': typeof RootLayoutComponentsTableRoute
   '/_rootLayout/pages/landing-pages': typeof RootLayoutPagesLandingPagesRoute
   '/_rootLayout/blocks/': typeof RootLayoutBlocksIndexRoute
+  '/_rootLayout/charts/': typeof RootLayoutChartsIndexRoute
   '/_rootLayout/components/': typeof RootLayoutComponentsIndexRoute
   '/_rootLayout/pages/': typeof RootLayoutPagesIndexRoute
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
+  '/preview/charts/area/chart-area-01': typeof PreviewChartsAreaChartArea01Route
+  '/preview/charts/area/chart-area-02': typeof PreviewChartsAreaChartArea02Route
+  '/preview/charts/bar/chart-bar-01': typeof PreviewChartsBarChartBar01Route
+  '/preview/charts/bar/chart-bar-02': typeof PreviewChartsBarChartBar02Route
+  '/preview/charts/composed/chart-composed-01': typeof PreviewChartsComposedChartComposed01Route
+  '/preview/charts/composed/chart-composed-02': typeof PreviewChartsComposedChartComposed02Route
+  '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
+  '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
+  '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
+  '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
+  '/preview/charts/radar/chart-radar-01': typeof PreviewChartsRadarChartRadar01Route
+  '/preview/charts/radar/chart-radar-02': typeof PreviewChartsRadarChartRadar02Route
+  '/preview/charts/radial/chart-radial-01': typeof PreviewChartsRadialChartRadial01Route
+  '/preview/charts/radial/chart-radial-02': typeof PreviewChartsRadialChartRadial02Route
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
@@ -336,14 +559,37 @@ export interface FileRouteTypes {
     | '/preview'
     | '/api/search'
     | '/blocks/hero-section'
+    | '/charts/area'
+    | '/charts/bar'
+    | '/charts/composed'
+    | '/charts/line'
+    | '/charts/pie'
+    | '/charts/radar'
+    | '/charts/radial'
     | '/components/button'
     | '/components/form'
     | '/components/table'
     | '/pages/landing-pages'
     | '/blocks/'
+    | '/charts/'
     | '/components/'
     | '/pages/'
     | '/preview/blocks/hero-section/hero-section-01'
+    | '/preview/charts/area/chart-area-01'
+    | '/preview/charts/area/chart-area-02'
+    | '/preview/charts/bar/chart-bar-01'
+    | '/preview/charts/bar/chart-bar-02'
+    | '/preview/charts/composed/chart-composed-01'
+    | '/preview/charts/composed/chart-composed-02'
+    | '/preview/charts/line/chart-line-01'
+    | '/preview/charts/line/chart-line-02'
+    | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/pie/chart-pie-01'
+    | '/preview/charts/pie/chart-pie-02'
+    | '/preview/charts/radar/chart-radar-01'
+    | '/preview/charts/radar/chart-radar-02'
+    | '/preview/charts/radial/chart-radial-01'
+    | '/preview/charts/radial/chart-radial-02'
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
@@ -369,14 +615,37 @@ export interface FileRouteTypes {
     | '/api/search'
     | '/'
     | '/blocks/hero-section'
+    | '/charts/area'
+    | '/charts/bar'
+    | '/charts/composed'
+    | '/charts/line'
+    | '/charts/pie'
+    | '/charts/radar'
+    | '/charts/radial'
     | '/components/button'
     | '/components/form'
     | '/components/table'
     | '/pages/landing-pages'
     | '/blocks'
+    | '/charts'
     | '/components'
     | '/pages'
     | '/preview/blocks/hero-section/hero-section-01'
+    | '/preview/charts/area/chart-area-01'
+    | '/preview/charts/area/chart-area-02'
+    | '/preview/charts/bar/chart-bar-01'
+    | '/preview/charts/bar/chart-bar-02'
+    | '/preview/charts/composed/chart-composed-01'
+    | '/preview/charts/composed/chart-composed-02'
+    | '/preview/charts/line/chart-line-01'
+    | '/preview/charts/line/chart-line-02'
+    | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/pie/chart-pie-01'
+    | '/preview/charts/pie/chart-pie-02'
+    | '/preview/charts/radar/chart-radar-01'
+    | '/preview/charts/radar/chart-radar-02'
+    | '/preview/charts/radial/chart-radial-01'
+    | '/preview/charts/radial/chart-radial-02'
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
@@ -403,14 +672,37 @@ export interface FileRouteTypes {
     | '/api/search'
     | '/_rootLayout/'
     | '/_rootLayout/blocks/hero-section'
+    | '/_rootLayout/charts/area'
+    | '/_rootLayout/charts/bar'
+    | '/_rootLayout/charts/composed'
+    | '/_rootLayout/charts/line'
+    | '/_rootLayout/charts/pie'
+    | '/_rootLayout/charts/radar'
+    | '/_rootLayout/charts/radial'
     | '/_rootLayout/components/button'
     | '/_rootLayout/components/form'
     | '/_rootLayout/components/table'
     | '/_rootLayout/pages/landing-pages'
     | '/_rootLayout/blocks/'
+    | '/_rootLayout/charts/'
     | '/_rootLayout/components/'
     | '/_rootLayout/pages/'
     | '/preview/blocks/hero-section/hero-section-01'
+    | '/preview/charts/area/chart-area-01'
+    | '/preview/charts/area/chart-area-02'
+    | '/preview/charts/bar/chart-bar-01'
+    | '/preview/charts/bar/chart-bar-02'
+    | '/preview/charts/composed/chart-composed-01'
+    | '/preview/charts/composed/chart-composed-02'
+    | '/preview/charts/line/chart-line-01'
+    | '/preview/charts/line/chart-line-02'
+    | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/pie/chart-pie-01'
+    | '/preview/charts/pie/chart-pie-02'
+    | '/preview/charts/radar/chart-radar-01'
+    | '/preview/charts/radar/chart-radar-02'
+    | '/preview/charts/radial/chart-radial-01'
+    | '/preview/charts/radial/chart-radial-02'
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
@@ -482,6 +774,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RootLayoutBlocksHeroSectionRouteImport
       parentRoute: typeof RootLayoutRouteRoute
     }
+    '/_rootLayout/charts/': {
+      id: '/_rootLayout/charts/'
+      path: '/charts'
+      fullPath: '/charts/'
+      preLoaderRoute: typeof RootLayoutChartsIndexRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/charts/area': {
+      id: '/_rootLayout/charts/area'
+      path: '/charts/area'
+      fullPath: '/charts/area'
+      preLoaderRoute: typeof RootLayoutChartsAreaRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/charts/bar': {
+      id: '/_rootLayout/charts/bar'
+      path: '/charts/bar'
+      fullPath: '/charts/bar'
+      preLoaderRoute: typeof RootLayoutChartsBarRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/charts/composed': {
+      id: '/_rootLayout/charts/composed'
+      path: '/charts/composed'
+      fullPath: '/charts/composed'
+      preLoaderRoute: typeof RootLayoutChartsComposedRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/charts/line': {
+      id: '/_rootLayout/charts/line'
+      path: '/charts/line'
+      fullPath: '/charts/line'
+      preLoaderRoute: typeof RootLayoutChartsLineRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/charts/pie': {
+      id: '/_rootLayout/charts/pie'
+      path: '/charts/pie'
+      fullPath: '/charts/pie'
+      preLoaderRoute: typeof RootLayoutChartsPieRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/charts/radar': {
+      id: '/_rootLayout/charts/radar'
+      path: '/charts/radar'
+      fullPath: '/charts/radar'
+      preLoaderRoute: typeof RootLayoutChartsRadarRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/charts/radial': {
+      id: '/_rootLayout/charts/radial'
+      path: '/charts/radial'
+      fullPath: '/charts/radial'
+      preLoaderRoute: typeof RootLayoutChartsRadialRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
     '/_rootLayout/components/': {
       id: '/_rootLayout/components/'
       path: '/components'
@@ -529,6 +877,111 @@ declare module '@tanstack/react-router' {
       path: '/blocks/hero-section/hero-section-01'
       fullPath: '/preview/blocks/hero-section/hero-section-01'
       preLoaderRoute: typeof PreviewBlocksHeroSectionHeroSection01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/area/chart-area-01': {
+      id: '/preview/charts/area/chart-area-01'
+      path: '/charts/area/chart-area-01'
+      fullPath: '/preview/charts/area/chart-area-01'
+      preLoaderRoute: typeof PreviewChartsAreaChartArea01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/area/chart-area-02': {
+      id: '/preview/charts/area/chart-area-02'
+      path: '/charts/area/chart-area-02'
+      fullPath: '/preview/charts/area/chart-area-02'
+      preLoaderRoute: typeof PreviewChartsAreaChartArea02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/bar/chart-bar-01': {
+      id: '/preview/charts/bar/chart-bar-01'
+      path: '/charts/bar/chart-bar-01'
+      fullPath: '/preview/charts/bar/chart-bar-01'
+      preLoaderRoute: typeof PreviewChartsBarChartBar01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/bar/chart-bar-02': {
+      id: '/preview/charts/bar/chart-bar-02'
+      path: '/charts/bar/chart-bar-02'
+      fullPath: '/preview/charts/bar/chart-bar-02'
+      preLoaderRoute: typeof PreviewChartsBarChartBar02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/composed/chart-composed-01': {
+      id: '/preview/charts/composed/chart-composed-01'
+      path: '/charts/composed/chart-composed-01'
+      fullPath: '/preview/charts/composed/chart-composed-01'
+      preLoaderRoute: typeof PreviewChartsComposedChartComposed01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/composed/chart-composed-02': {
+      id: '/preview/charts/composed/chart-composed-02'
+      path: '/charts/composed/chart-composed-02'
+      fullPath: '/preview/charts/composed/chart-composed-02'
+      preLoaderRoute: typeof PreviewChartsComposedChartComposed02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/line/chart-line-01': {
+      id: '/preview/charts/line/chart-line-01'
+      path: '/charts/line/chart-line-01'
+      fullPath: '/preview/charts/line/chart-line-01'
+      preLoaderRoute: typeof PreviewChartsLineChartLine01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/line/chart-line-02': {
+      id: '/preview/charts/line/chart-line-02'
+      path: '/charts/line/chart-line-02'
+      fullPath: '/preview/charts/line/chart-line-02'
+      preLoaderRoute: typeof PreviewChartsLineChartLine02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/line/chart-line-03': {
+      id: '/preview/charts/line/chart-line-03'
+      path: '/charts/line/chart-line-03'
+      fullPath: '/preview/charts/line/chart-line-03'
+      preLoaderRoute: typeof PreviewChartsLineChartLine03RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/pie/chart-pie-01': {
+      id: '/preview/charts/pie/chart-pie-01'
+      path: '/charts/pie/chart-pie-01'
+      fullPath: '/preview/charts/pie/chart-pie-01'
+      preLoaderRoute: typeof PreviewChartsPieChartPie01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/pie/chart-pie-02': {
+      id: '/preview/charts/pie/chart-pie-02'
+      path: '/charts/pie/chart-pie-02'
+      fullPath: '/preview/charts/pie/chart-pie-02'
+      preLoaderRoute: typeof PreviewChartsPieChartPie02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/radar/chart-radar-01': {
+      id: '/preview/charts/radar/chart-radar-01'
+      path: '/charts/radar/chart-radar-01'
+      fullPath: '/preview/charts/radar/chart-radar-01'
+      preLoaderRoute: typeof PreviewChartsRadarChartRadar01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/radar/chart-radar-02': {
+      id: '/preview/charts/radar/chart-radar-02'
+      path: '/charts/radar/chart-radar-02'
+      fullPath: '/preview/charts/radar/chart-radar-02'
+      preLoaderRoute: typeof PreviewChartsRadarChartRadar02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/radial/chart-radial-01': {
+      id: '/preview/charts/radial/chart-radial-01'
+      path: '/charts/radial/chart-radial-01'
+      fullPath: '/preview/charts/radial/chart-radial-01'
+      preLoaderRoute: typeof PreviewChartsRadialChartRadial01RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/radial/chart-radial-02': {
+      id: '/preview/charts/radial/chart-radial-02'
+      path: '/charts/radial/chart-radial-02'
+      fullPath: '/preview/charts/radial/chart-radial-02'
+      preLoaderRoute: typeof PreviewChartsRadialChartRadial02RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
     '/preview/components/button/button-01': {
@@ -670,11 +1123,19 @@ declare module '@tanstack/react-router' {
 interface RootLayoutRouteRouteChildren {
   RootLayoutIndexRoute: typeof RootLayoutIndexRoute
   RootLayoutBlocksHeroSectionRoute: typeof RootLayoutBlocksHeroSectionRoute
+  RootLayoutChartsAreaRoute: typeof RootLayoutChartsAreaRoute
+  RootLayoutChartsBarRoute: typeof RootLayoutChartsBarRoute
+  RootLayoutChartsComposedRoute: typeof RootLayoutChartsComposedRoute
+  RootLayoutChartsLineRoute: typeof RootLayoutChartsLineRoute
+  RootLayoutChartsPieRoute: typeof RootLayoutChartsPieRoute
+  RootLayoutChartsRadarRoute: typeof RootLayoutChartsRadarRoute
+  RootLayoutChartsRadialRoute: typeof RootLayoutChartsRadialRoute
   RootLayoutComponentsButtonRoute: typeof RootLayoutComponentsButtonRoute
   RootLayoutComponentsFormRoute: typeof RootLayoutComponentsFormRoute
   RootLayoutComponentsTableRoute: typeof RootLayoutComponentsTableRoute
   RootLayoutPagesLandingPagesRoute: typeof RootLayoutPagesLandingPagesRoute
   RootLayoutBlocksIndexRoute: typeof RootLayoutBlocksIndexRoute
+  RootLayoutChartsIndexRoute: typeof RootLayoutChartsIndexRoute
   RootLayoutComponentsIndexRoute: typeof RootLayoutComponentsIndexRoute
   RootLayoutPagesIndexRoute: typeof RootLayoutPagesIndexRoute
 }
@@ -682,11 +1143,19 @@ interface RootLayoutRouteRouteChildren {
 const RootLayoutRouteRouteChildren: RootLayoutRouteRouteChildren = {
   RootLayoutIndexRoute: RootLayoutIndexRoute,
   RootLayoutBlocksHeroSectionRoute: RootLayoutBlocksHeroSectionRoute,
+  RootLayoutChartsAreaRoute: RootLayoutChartsAreaRoute,
+  RootLayoutChartsBarRoute: RootLayoutChartsBarRoute,
+  RootLayoutChartsComposedRoute: RootLayoutChartsComposedRoute,
+  RootLayoutChartsLineRoute: RootLayoutChartsLineRoute,
+  RootLayoutChartsPieRoute: RootLayoutChartsPieRoute,
+  RootLayoutChartsRadarRoute: RootLayoutChartsRadarRoute,
+  RootLayoutChartsRadialRoute: RootLayoutChartsRadialRoute,
   RootLayoutComponentsButtonRoute: RootLayoutComponentsButtonRoute,
   RootLayoutComponentsFormRoute: RootLayoutComponentsFormRoute,
   RootLayoutComponentsTableRoute: RootLayoutComponentsTableRoute,
   RootLayoutPagesLandingPagesRoute: RootLayoutPagesLandingPagesRoute,
   RootLayoutBlocksIndexRoute: RootLayoutBlocksIndexRoute,
+  RootLayoutChartsIndexRoute: RootLayoutChartsIndexRoute,
   RootLayoutComponentsIndexRoute: RootLayoutComponentsIndexRoute,
   RootLayoutPagesIndexRoute: RootLayoutPagesIndexRoute,
 }
@@ -697,6 +1166,21 @@ const RootLayoutRouteRouteWithChildren = RootLayoutRouteRoute._addFileChildren(
 
 interface PreviewRouteRouteChildren {
   PreviewBlocksHeroSectionHeroSection01Route: typeof PreviewBlocksHeroSectionHeroSection01Route
+  PreviewChartsAreaChartArea01Route: typeof PreviewChartsAreaChartArea01Route
+  PreviewChartsAreaChartArea02Route: typeof PreviewChartsAreaChartArea02Route
+  PreviewChartsBarChartBar01Route: typeof PreviewChartsBarChartBar01Route
+  PreviewChartsBarChartBar02Route: typeof PreviewChartsBarChartBar02Route
+  PreviewChartsComposedChartComposed01Route: typeof PreviewChartsComposedChartComposed01Route
+  PreviewChartsComposedChartComposed02Route: typeof PreviewChartsComposedChartComposed02Route
+  PreviewChartsLineChartLine01Route: typeof PreviewChartsLineChartLine01Route
+  PreviewChartsLineChartLine02Route: typeof PreviewChartsLineChartLine02Route
+  PreviewChartsLineChartLine03Route: typeof PreviewChartsLineChartLine03Route
+  PreviewChartsPieChartPie01Route: typeof PreviewChartsPieChartPie01Route
+  PreviewChartsPieChartPie02Route: typeof PreviewChartsPieChartPie02Route
+  PreviewChartsRadarChartRadar01Route: typeof PreviewChartsRadarChartRadar01Route
+  PreviewChartsRadarChartRadar02Route: typeof PreviewChartsRadarChartRadar02Route
+  PreviewChartsRadialChartRadial01Route: typeof PreviewChartsRadialChartRadial01Route
+  PreviewChartsRadialChartRadial02Route: typeof PreviewChartsRadialChartRadial02Route
   PreviewComponentsButtonButton01Route: typeof PreviewComponentsButtonButton01Route
   PreviewComponentsButtonButton02Route: typeof PreviewComponentsButtonButton02Route
   PreviewComponentsButtonButton03Route: typeof PreviewComponentsButtonButton03Route
@@ -721,6 +1205,23 @@ interface PreviewRouteRouteChildren {
 const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
   PreviewBlocksHeroSectionHeroSection01Route:
     PreviewBlocksHeroSectionHeroSection01Route,
+  PreviewChartsAreaChartArea01Route: PreviewChartsAreaChartArea01Route,
+  PreviewChartsAreaChartArea02Route: PreviewChartsAreaChartArea02Route,
+  PreviewChartsBarChartBar01Route: PreviewChartsBarChartBar01Route,
+  PreviewChartsBarChartBar02Route: PreviewChartsBarChartBar02Route,
+  PreviewChartsComposedChartComposed01Route:
+    PreviewChartsComposedChartComposed01Route,
+  PreviewChartsComposedChartComposed02Route:
+    PreviewChartsComposedChartComposed02Route,
+  PreviewChartsLineChartLine01Route: PreviewChartsLineChartLine01Route,
+  PreviewChartsLineChartLine02Route: PreviewChartsLineChartLine02Route,
+  PreviewChartsLineChartLine03Route: PreviewChartsLineChartLine03Route,
+  PreviewChartsPieChartPie01Route: PreviewChartsPieChartPie01Route,
+  PreviewChartsPieChartPie02Route: PreviewChartsPieChartPie02Route,
+  PreviewChartsRadarChartRadar01Route: PreviewChartsRadarChartRadar01Route,
+  PreviewChartsRadarChartRadar02Route: PreviewChartsRadarChartRadar02Route,
+  PreviewChartsRadialChartRadial01Route: PreviewChartsRadialChartRadial01Route,
+  PreviewChartsRadialChartRadial02Route: PreviewChartsRadialChartRadial02Route,
   PreviewComponentsButtonButton01Route: PreviewComponentsButtonButton01Route,
   PreviewComponentsButtonButton02Route: PreviewComponentsButtonButton02Route,
   PreviewComponentsButtonButton03Route: PreviewComponentsButtonButton03Route,

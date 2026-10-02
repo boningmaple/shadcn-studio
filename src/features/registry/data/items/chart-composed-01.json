@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-composed-01",
+  "title": "chart-composed-01",
+  "description": "Monthly operating performance · Jan–Jun 2026. Revenue exceeded the June target by $96k.",
+  "dependencies": ["recharts"],
+  "registryDependencies": ["card", "chart"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-composed-01/chart-composed-01.tsx",
+      "content": "\"use client\";\n\nimport { ComposedChart, Bar, Line, CartesianGrid, XAxis, YAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  ChartLegend,\n  ChartLegendContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { month: \"Jan\", current: 186, previous: 140 },\n  { month: \"Feb\", current: 225, previous: 178 },\n  { month: \"Mar\", current: 208, previous: 190 },\n  { month: \"Apr\", current: 284, previous: 210 },\n  { month: \"May\", current: 312, previous: 245 },\n  { month: \"Jun\", current: 368, previous: 272 },\n];\nconst config = {\n  current: { label: \"Revenue ($k)\", color: \"var(--chart-1)\" },\n  previous: { label: \"Target ($k)\", color: \"var(--chart-2)\" },\n} satisfies ChartConfig;\n\nexport default function ChartComposed01() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Monthly operating performance · Jan–Jun 2026</CardDescription>\n        <CardTitle className=\"text-lg\">Revenue against target</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">$368k</div>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <ComposedChart accessibilityLayer data={data}>\n            <CartesianGrid vertical={false} strokeDasharray=\"3 3\" />\n            <XAxis dataKey=\"month\" tickLine={false} axisLine={false} tickMargin={12} />\n            <YAxis tickLine={false} axisLine={false} width={42} />\n            <ChartTooltip content={<ChartTooltipContent />} />\n            <ChartLegend content={<ChartLegendContent />} />\n            <Bar\n              dataKey=\"current\"\n              fill=\"var(--color-current)\"\n              fillOpacity={0.7}\n              radius={[4, 4, 0, 0]}\n              maxBarSize={38}\n            />\n            <Line\n              dataKey=\"previous\"\n              type=\"monotone\"\n              stroke=\"var(--color-previous)\"\n              strokeWidth={3}\n              dot={{ r: 3 }}\n            />\n          </ComposedChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        Revenue exceeded the June target by $96k.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-composed-01/chart-composed-01.tsx"
+    }
+  ],
+  "meta": {
+    "height": 520
+  },
+  "categories": ["charts", "composed"],
+  "type": "registry:component"
+}

@@ -10,8 +10,8 @@ import type { VibeRegistryItem } from "@/features/registry/types/registry";
 
 const sourceItems: VibeRegistryItem[] = [
   {
-    height: 120,
-    categories: ["button"],
+    meta: { height: 120 },
+    categories: ["components", "button"],
     description: "A quiet button.",
     files: [],
     name: "button-01",
@@ -20,8 +20,8 @@ const sourceItems: VibeRegistryItem[] = [
     type: "registry:component",
   },
   {
-    height: 120,
-    categories: ["button"],
+    meta: { height: 120 },
+    categories: ["components", "button"],
     description: "A loud button.",
     files: [],
     name: "button-02",
@@ -30,14 +30,14 @@ const sourceItems: VibeRegistryItem[] = [
     type: "registry:component",
   },
   {
-    height: 120,
-    categories: ["authentication"],
+    meta: { height: 120 },
+    categories: ["blocks", "authentication"],
     description: "A login form.",
     files: [],
     name: "login-form-01",
     registryDependencies: ["button"],
     title: "Login Form 01",
-    type: "registry:block",
+    type: "registry:component",
   },
 ];
 
@@ -50,11 +50,11 @@ describe("Registry catalog", () => {
   it("anchors Registry items to their Collection page", () => {
     expect(registryItemSummaries(sourceItems)[0]).toMatchObject({
       href: "/components/button#button-01",
-      type: "registry:component",
+      section: "components",
     });
     expect(registryItemSummaries(sourceItems)[2]).toMatchObject({
       href: "/blocks/authentication#login-form-01",
-      type: "registry:block",
+      section: "blocks",
     });
   });
 

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-area-02",
+  "title": "chart-area-02",
+  "description": "Revenue mix · USD thousands. Subscriptions and services combined in June.",
+  "dependencies": ["recharts"],
+  "registryDependencies": ["card", "chart"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-area-02/chart-area-02.tsx",
+      "content": "\"use client\";\n\nimport { AreaChart, Area, CartesianGrid, XAxis, YAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  ChartLegend,\n  ChartLegendContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { month: \"Jan\", current: 186, previous: 140 },\n  { month: \"Feb\", current: 225, previous: 178 },\n  { month: \"Mar\", current: 208, previous: 190 },\n  { month: \"Apr\", current: 284, previous: 210 },\n  { month: \"May\", current: 312, previous: 245 },\n  { month: \"Jun\", current: 368, previous: 272 },\n];\nconst config = {\n  current: { label: \"Subscriptions ($k)\", color: \"var(--chart-1)\" },\n  previous: { label: \"Services ($k)\", color: \"var(--chart-2)\" },\n} satisfies ChartConfig;\n\nexport default function ChartArea02() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Revenue mix · USD thousands</CardDescription>\n        <CardTitle className=\"text-lg\">Where growth comes from</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">$640k</div>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <AreaChart accessibilityLayer data={data}>\n            <CartesianGrid vertical={false} strokeDasharray=\"3 3\" />\n            <XAxis dataKey=\"month\" tickLine={false} axisLine={false} tickMargin={12} />\n            <YAxis tickLine={false} axisLine={false} width={42} />\n            <ChartTooltip content={<ChartTooltipContent />} />\n            <ChartLegend content={<ChartLegendContent />} />\n            <Area\n              dataKey=\"current\"\n              stackId=\"revenue\"\n              type=\"monotone\"\n              stroke=\"var(--color-current)\"\n              fill=\"var(--color-current)\"\n              fillOpacity={0.65}\n            />\n            <Area\n              dataKey=\"previous\"\n              stackId=\"revenue\"\n              type=\"monotone\"\n              stroke=\"var(--color-previous)\"\n              fill=\"var(--color-previous)\"\n              fillOpacity={0.25}\n            />\n          </AreaChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        Subscriptions and services combined in June.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-area-02/chart-area-02.tsx"
+    }
+  ],
+  "meta": {
+    "height": 520
+  },
+  "categories": ["charts", "area"],
+  "type": "registry:component"
+}

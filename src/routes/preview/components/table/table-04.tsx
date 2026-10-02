@@ -9,5 +9,5 @@ export const Route = createFileRoute("/preview/components/table/table-04")({
     meta: [{ title: "Table 04 Preview – VibeUI" }],
   }),
   staticData: { ariaLabel: "Table 04 Preview" },
-  component: () => <PreviewPage Preview={Table04Preview} type="registry:component" />,
+  component: () => <PreviewPage Preview={Table04Preview} section="components" />,
 });

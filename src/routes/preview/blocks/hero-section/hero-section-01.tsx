@@ -9,5 +9,5 @@ export const Route = createFileRoute("/preview/blocks/hero-section/hero-section-
     meta: [{ title: "Hero Section 01 Preview – VibeUI" }],
   }),
   staticData: { ariaLabel: "Hero Section 01 Preview" },
-  component: () => <PreviewPage Preview={HeroSection01Preview} type="registry:block" />,
+  component: () => <PreviewPage Preview={HeroSection01Preview} section="blocks" />,
 });
