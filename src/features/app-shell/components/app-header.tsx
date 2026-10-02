@@ -12,12 +12,18 @@ import { Route as pagesRoute } from "@/routes/_rootLayout/pages/index";
 
 const headerNavRoutes = [componentsRoute, blocksRoute, chartsRoute, pagesRoute] as const;
 
-export function AppHeader() {
+type AppHeaderProps = {
+  showSidebar: boolean;
+};
+
+export function AppHeader(props: AppHeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full h-(--header-height) border-b border-dashed bg-background flex items-center gap-4 px-4">
-      <SidebarTrigger variant="outline" size="icon" className="lg:hidden transition-none" />
+      {props.showSidebar && (
+        <SidebarTrigger variant="outline" size="icon" className="transition-none" />
+      )}
       <AppBrandLink />
-      <AppHeaderNavigation />
+      {!props.showSidebar && <AppHeaderNavigation />}
       <AppHeaderActions />
     </header>
   );

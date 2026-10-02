@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet, useMatches } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
-import { SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
+import { SidebarProvider, useSidebar } from "@/components/ui/sidebar";
 import { AppHeader } from "@/features/app-shell/components/app-header";
 import { AppSidebar } from "@/features/app-shell/components/app-sidebar";
 import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
@@ -24,15 +24,10 @@ export const Route = createFileRoute("/_rootLayout")({
 });
 
 function RouteComponent() {
-  const hideDesktopSidebar = useMatches({
-    select: (matches) => matches.some((match) => match.staticData.hideDesktopSidebar === true),
-  });
-
   return (
     <ThemeProvider>
-      <SidebarProvider className="flex-col">
-        <AppHeader />
-        <RootLayoutContent hideDesktopSidebar={hideDesktopSidebar} />
+      <SidebarProvider>
+        <RootLayout />
       </SidebarProvider>
       {TanStackDevtools ? (
         <Suspense fallback={null}>
@@ -43,27 +38,22 @@ function RouteComponent() {
   );
 }
 
-function RootLayoutContent({ hideDesktopSidebar }: { hideDesktopSidebar: boolean }) {
+function RootLayout() {
   const { isMobile } = useSidebar();
+  const hideDesktopSidebar = useMatches({
+    select: (matches) => matches.some((match) => match.staticData.hideDesktopSidebar === true),
+  });
   const showSidebar = isMobile || !hideDesktopSidebar;
 
   return (
-    <div className="flex flex-1">
+    <>
       {showSidebar ? <AppSidebar /> : null}
-      <SidebarInset className="min-w-0">
-        {hideDesktopSidebar ? null : (
-          <div
-            aria-label="Workspace controls"
-            role="toolbar"
-            className="hidden h-(--header-height) lg:flex items-center gap-4 px-4"
-          >
-            <SidebarTrigger variant="outline" size="icon" className="transition-none" />
-          </div>
-        )}
-        <div className="flex-1 p-4 prose dark:prose-invert max-w-none">
+      <div className="relative flex min-w-0 flex-1 flex-col bg-background">
+        <AppHeader showSidebar={showSidebar} />
+        <main className="flex-1 p-4 prose dark:prose-invert max-w-none">
           <Outlet />
-        </div>
-      </SidebarInset>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }

@@ -36,7 +36,7 @@ export function AppSidebar() {
   const { setOpenMobile } = useSidebar();
 
   return (
-    <Sidebar className="top-(--header-height) h-[calc(100svh-var(--header-height))] border-dashed">
+    <Sidebar className="border-dashed">
       <SidebarHeader className="w-full h-(--header-height) border-b border-dashed flex-row items-center px-4 py-0 lg:hidden">
         <AppBrandLink onClick={() => setOpenMobile(false)} />
       </SidebarHeader>

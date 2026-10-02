@@ -139,10 +139,13 @@ function registryGroups(sections: readonly VibeRegistrySidebarSection[]): Regist
     {
       items: sections.map((section) => ({
         icon: iconBySection[section.section],
-        items: section.collections.map((collection) => ({
-          label: collection.title,
-          to: collection.href,
-        })),
+        items: [
+          { label: "Overview", to: `/${section.section}` },
+          ...section.collections.map((collection) => ({
+            label: collection.title,
+            to: collection.href,
+          })),
+        ],
         label: labelBySection[section.section],
       })),
       label: "Registry",
