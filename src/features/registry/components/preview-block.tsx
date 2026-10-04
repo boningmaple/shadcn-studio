@@ -1,7 +1,8 @@
-import { AstroidIcon, CodeIcon, EyeIcon } from "lucide-react";
+import { AstroidIcon, CodeIcon, EyeIcon, TerminalIcon } from "lucide-react";
 import { useRef, useState } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CopyButton } from "@/shared/components/copy-button";
 import { OpenNewTabButton } from "@/shared/components/open-new-tab-button";
 
 import { usePreviewSize } from "../hooks/use-preview-size";
@@ -28,6 +29,7 @@ export function PreviewBlock(props: PreviewBlockProps) {
   const previewFrameRef = useRef<HTMLIFrameElement>(null);
   const { previewTheme, isFollowingAppTheme, setPreviewTheme } = usePreviewTheme(previewFrameRef);
   const previewUrl = getPreviewUrl(props.item);
+  const installCommand = `npx shadcn@latest add boningmaple/shadcn-studio/${props.item.name}`;
   const newTabUrl = `${previewUrl}?theme=${previewTheme}`;
 
   return (
@@ -40,26 +42,39 @@ export function PreviewBlock(props: PreviewBlockProps) {
         className="not-prose gap-0"
         onSelectionChange={(key) => setSelectedTab(key as PreviewTab)}
       >
-        <div className="sticky top-(--header-height) lg:top-0 z-20 flex items-center justify-between bg-background py-2">
-          <TabsList
-            aria-label="Preview block tabs"
-            className="group-data-horizontal/tabs:h-fit p-1 gap-1 *:data-[slot=tabs-trigger]:size-7 *:data-[slot=tabs-trigger]:p-0 *:data-[slot=tabs-trigger]:[&_svg]:size-4 *:data-[slot=tabs-trigger]:transition-none"
-          >
-            <TabsTrigger id={"preview" satisfies PreviewTab} aria-label="Preview">
-              <EyeIcon />
-            </TabsTrigger>
-            <TabsTrigger id={"code" satisfies PreviewTab} aria-label="Code">
-              <CodeIcon />
-            </TabsTrigger>
-            <TabsTrigger id={"prompt" satisfies PreviewTab} aria-label="Prompt">
-              <AstroidIcon />
-            </TabsTrigger>
-          </TabsList>
+        <div className="sticky top-(--header-height) lg:top-0 z-20 flex items-center justify-between gap-2 bg-background py-2">
+          <div className="flex min-w-0 items-center gap-2">
+            <TabsList
+              aria-label="Preview block tabs"
+              className="shrink-0 group-data-horizontal/tabs:h-fit p-1 gap-1 *:data-[slot=tabs-trigger]:size-7 *:data-[slot=tabs-trigger]:p-0 *:data-[slot=tabs-trigger]:[&_svg]:size-4 *:data-[slot=tabs-trigger]:transition-none"
+            >
+              <TabsTrigger id={"preview" satisfies PreviewTab} aria-label="Preview">
+                <EyeIcon />
+              </TabsTrigger>
+              <TabsTrigger id={"code" satisfies PreviewTab} aria-label="Code">
+                <CodeIcon />
+              </TabsTrigger>
+              <TabsTrigger id={"prompt" satisfies PreviewTab} aria-label="Prompt">
+                <AstroidIcon />
+              </TabsTrigger>
+            </TabsList>
+            <CopyButton
+              aria-label={`Copy install command for ${props.item.title}`}
+              content={installCommand}
+              icon={<TerminalIcon />}
+              label={`npx shadcn add ${props.item.name}`}
+              errorMessage="Could not copy install command."
+              successMessage="Install command copied."
+              variant="outline"
+              size="default"
+              className="min-w-0 shrink justify-start"
+            />
+          </div>
           {selectedTab === "preview" ? (
             <div
               aria-label="Preview controls"
               role="toolbar"
-              className="flex items-center gap-2 lg:pr-3"
+              className="flex shrink-0 items-center gap-2 lg:pr-3"
             >
               <PreviewSizeToggleGroup
                 selectedPreviewSize={selectedPreviewSize}

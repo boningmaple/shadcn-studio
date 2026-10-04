@@ -10,6 +10,8 @@ const copiedStateDuration = 1_500;
 type CopyButtonProps = React.ComponentPropsWithoutRef<typeof Button> & {
   content: string;
   errorMessage?: string;
+  icon?: React.ReactNode;
+  label?: string;
   successMessage?: string;
 };
 
@@ -18,17 +20,8 @@ type CopyState = {
   status: "copied" | "copying" | "idle";
 };
 
-export function CopyButton({
-  "aria-label": ariaLabel = "Copy current content",
-  className,
-  content,
-  errorMessage = "Could not copy current content.",
-  isDisabled,
-  size = "icon",
-  successMessage = "Copied current content.",
-  variant = "ghost",
-  ...props
-}: CopyButtonProps) {
+export function CopyButton(props: CopyButtonProps) {
+  const { content, errorMessage, icon, label, successMessage, ...buttonProps } = props;
   const [copyState, setCopyState] = useState<CopyState>({ content, status: "idle" });
   const copyStatus = copyState.content === content ? copyState.status : "idle";
   const copied = copyStatus === "copied";
@@ -59,25 +52,30 @@ export function CopyButton({
       if (copyAttempt !== copyAttemptRef.current) return;
 
       setCopyState({ content, status: "idle" });
-      toast.error(errorMessage);
+      toast.error(errorMessage ?? "Could not copy current content.");
     }
   };
 
   return (
     <>
       <Button
-        {...props}
-        aria-label={ariaLabel}
-        isDisabled={isDisabled || copyStatus !== "idle"}
-        variant={variant}
-        size={size}
-        className={cn("disabled:opacity-100", className)}
+        {...buttonProps}
+        aria-label={props["aria-label"] ?? "Copy current content"}
+        isDisabled={props.isDisabled || copyStatus !== "idle"}
+        variant={props.variant ?? "ghost"}
+        size={props.size ?? "icon"}
+        className={cn("disabled:opacity-100", props.className)}
         onPress={copy}
       >
-        {copied ? <CheckIcon className="text-green-600 dark:text-green-400" /> : <CopyIcon />}
+        {copied ? (
+          <CheckIcon className="text-green-600 dark:text-green-400" />
+        ) : (
+          (icon ?? <CopyIcon />)
+        )}
+        {label ?? <span className="min-w-0 truncate">{label}</span>}
       </Button>
       <output aria-live="polite" className="sr-only">
-        {copied ? successMessage : ""}
+        {copied ? (successMessage ?? "Copied current content.") : ""}
       </output>
     </>
   );
