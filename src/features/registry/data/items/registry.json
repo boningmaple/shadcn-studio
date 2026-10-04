@@ -68,6 +68,25 @@
       }
     },
     {
+      "name": "button-04",
+      "title": "Search Button",
+      "description": "A rounded search button with width controls to preview its transition between a full label and an icon.",
+      "type": "registry:component",
+      "registryDependencies": ["button", "kbd"],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/button-04/button-04.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/button-04/button-04.tsx"
+        }
+      ],
+      "categories": ["components", "button"],
+      "meta": {
+        "height": 120
+      }
+    },
+    {
       "name": "form-01",
       "title": "Form 01",
       "description": "A single email field with schema-based validation.",

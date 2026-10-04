@@ -50,9 +50,13 @@ TypeScript:
 - concrete TanStack route files under `src/routes/_rootLayout/{components,blocks,pages}/`;
 - concrete standalone Preview routes under
   `src/routes/preview/{components,blocks,pages}/<category>/<item-name>.tsx`;
-- sidebar data in `src/features/registry/data/registry-sidebar.gen.ts`.
+- section data in `src/features/registry/data/registry-sections.gen.ts`.
 
-The generated route directories, item data, and sidebar module are wholly owned
+The handwritten `src/features/registry/data/registry-data.ts` enriches these sections
+with icons and derives header links, sidebar groups, and search quick links.
+Edit navigation derivations there; regeneration leaves that file untouched.
+
+The generated route directories, item data, and sections module are wholly owned
 by the Registry builder. It deletes and recreates them on every run, so do not
 put handwritten files there. TanStack Start generates `src/routeTree.gen.ts`
 when `dev` or `build` starts; `build:registry` does not generate the route tree
@@ -103,7 +107,7 @@ npm run lint -- --deny-warnings --format=agent
 ```
 
 The production build regenerates and validates the committed Registry item
-data, copies it to `public/r`, refreshes generated Registry routes/sidebar data,
+data, copies it to `public/r`, refreshes generated Registry routes/section data,
 rebuilds the committed Orama artifact, and bundles the application. Pages render
 on the server for each request rather than being prerendered at build time:
 

@@ -49,7 +49,7 @@ function RootLayout() {
     <>
       {showSidebar ? <AppSidebar /> : null}
       <div className="relative flex min-w-0 flex-1 flex-col bg-background">
-        <AppHeader showSidebar={showSidebar} />
+        {isMobile || hideDesktopSidebar ? <AppHeader showSidebar={showSidebar} /> : null}
         <main className="flex-1 p-4 prose dark:prose-invert max-w-none">
           <Outlet />
         </main>

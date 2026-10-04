@@ -188,10 +188,10 @@ describe("SearchDialogOpenButton", () => {
 
       const searchButtons = searchDialogOpenButtons();
 
-      await expect.element(searchButtons).toHaveLength(2);
-      await expect.element(searchButtons.nth(0)).toBeVisible();
-      await expect.element(searchButtons.nth(0)).toHaveAccessibleName("Search");
-      await expect.element(searchButtons.nth(1)).not.toBeVisible();
+      await expect.element(searchButtons).toHaveLength(1);
+      await expect.element(searchButtons).toBeVisible();
+      await expect.element(searchButtons).toHaveAccessibleName("Search");
+      await expect.element(page.getByText("Search", { exact: true })).not.toBeVisible();
     });
 
     it("desktop - exposes the full Search button", async () => {
@@ -200,10 +200,11 @@ describe("SearchDialogOpenButton", () => {
 
       const searchButtons = searchDialogOpenButtons();
 
-      await expect.element(searchButtons).toHaveLength(2);
-      await expect.element(searchButtons.nth(0)).not.toBeVisible();
-      await expect.element(searchButtons.nth(1)).toBeVisible();
-      await expect.element(searchButtons.nth(1)).toHaveAccessibleName("Search");
+      await expect.element(searchButtons).toHaveLength(1);
+      await expect.element(searchButtons).toBeVisible();
+      await expect.element(searchButtons).toHaveAccessibleName("Search");
+      await expect.element(page.getByText("Search", { exact: true })).toBeVisible();
+      await expect.element(page.getByText("K", { exact: true })).toBeVisible();
     });
   });
 

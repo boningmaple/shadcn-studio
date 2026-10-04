@@ -169,13 +169,14 @@ export type VibeRegistrySection = {
   section: VibeRegistrySectionName;
 };
 
-export type VibeRegistrySidebarCollection = {
+export type VibeRegistryCollectionSummary = {
   href: string;
   title: string;
 };
 
-export type VibeRegistrySidebarSection = {
-  collections: VibeRegistrySidebarCollection[];
+export type VibeRegistrySectionSummary = {
+  href: string;
+  collections: VibeRegistryCollectionSummary[];
   label: string;
   section: VibeRegistrySectionName;
 };

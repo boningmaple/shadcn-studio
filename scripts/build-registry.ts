@@ -41,7 +41,7 @@ async function buildRegistry(): Promise<void> {
     await writeRegistryOutputs(
       registry,
       path.join(projectRoot, "src/routes/_rootLayout"),
-      path.join(projectRoot, "src/features/registry/data/registry-sidebar.gen.ts"),
+      path.join(projectRoot, "src/features/registry/data/registry-sections.gen.ts"),
     );
   } finally {
     await rm(temporaryRootPath, { force: true, recursive: true });
@@ -82,9 +82,9 @@ export async function replaceBuiltRegistryData(
 export async function writeRegistryOutputs(
   registry: VibeRegistry,
   routesRootPath: string,
-  sidebarFile: string,
+  sectionsFile: string,
 ): Promise<void> {
-  const [routeFiles, sidebarContent] = renderRegistryOutputs(registry, routesRootPath);
+  const [routeFiles, sectionsContent] = renderRegistryOutputs(registry, routesRootPath);
   const previewRoutesRootPath = path.join(path.dirname(routesRootPath), "preview");
 
   await Promise.all([
@@ -94,7 +94,7 @@ export async function writeRegistryOutputs(
     ...registryRouteSegments.map((segment) =>
       rm(path.join(previewRoutesRootPath, segment), { force: true, recursive: true }),
     ),
-    rm(sidebarFile, { force: true }),
+    rm(sectionsFile, { force: true }),
   ]);
 
   for (const [file, content] of routeFiles) {
@@ -102,8 +102,8 @@ export async function writeRegistryOutputs(
     await writeFile(file, content, "utf8");
   }
 
-  await mkdir(path.dirname(sidebarFile), { recursive: true });
-  await writeFile(sidebarFile, sidebarContent, "utf8");
+  await mkdir(path.dirname(sectionsFile), { recursive: true });
+  await writeFile(sectionsFile, sectionsContent, "utf8");
 }
 
 export function renderRegistryOutputs(registry: VibeRegistry, routesRootPath: string) {
@@ -132,7 +132,7 @@ export function renderRegistryOutputs(registry: VibeRegistry, routesRootPath: st
     }
   }
 
-  return [routeFiles, sidebarContent(sections)] as const;
+  return [routeFiles, sectionsContent(sections)] as const;
 }
 
 function sectionRouteContent(section: VibeRegistrySection): string {
@@ -215,19 +215,20 @@ export const Route = createFileRoute(${JSON.stringify(href)})({
 `;
 }
 
-function sidebarContent(sections: readonly VibeRegistrySection[]): string {
-  const sidebarSections = sections.map(({ collections, title, section }) => ({
+function sectionsContent(sections: readonly VibeRegistrySection[]): string {
+  const sectionSummaries = sections.map(({ collections, title, section, href }) => ({
     collections: collections.map(({ href, title: collectionTitle }) => ({
       href,
       title: collectionTitle,
     })),
     label: title,
+    href,
     section,
   }));
 
-  return `${generatedHeader}import type { VibeRegistrySidebarSection } from "../types/registry";
+  return `${generatedHeader}import type { VibeRegistrySectionSummary } from "../types/registry";
 
-export const registrySidebarSections = ${JSON.stringify(sidebarSections, null, 2)} satisfies VibeRegistrySidebarSection[];
+export const registrySections = ${JSON.stringify(sectionSummaries, null, 2)} satisfies VibeRegistrySectionSummary[];
 `;
 }
 

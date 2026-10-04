@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-04",
+  "title": "Search Button",
+  "description": "A rounded search button with width controls to preview its transition between a full label and an icon.",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["button", "kbd"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/button-04/button-04.tsx",
+      "content": "import { SearchIcon } from \"lucide-react\";\nimport { useState } from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Kbd, KbdGroup } from \"@/components/ui/kbd\";\n\nexport default function Button04() {\n  const [collapsed, setCollapsed] = useState(false);\n\n  return (\n    <div className=\"flex w-64 flex-col items-start gap-4\">\n      <div className=\"flex gap-2\">\n        <Button\n          aria-pressed={!collapsed}\n          variant=\"outline\"\n          size=\"sm\"\n          onPress={() => setCollapsed(false)}\n        >\n          Expand\n        </Button>\n        <Button\n          aria-pressed={collapsed}\n          variant=\"outline\"\n          size=\"sm\"\n          onPress={() => setCollapsed(true)}\n        >\n          Collapse\n        </Button>\n      </div>\n      <Button\n        aria-label=\"Search\"\n        data-collapsed={collapsed}\n        variant=\"outline\"\n        className=\"group/search h-8 w-full min-w-8 rounded-full gap-2 justify-start data-[collapsed=true]:w-8 px-1.75 transition-[width] duration-200 ease-linear overflow-hidden motion-reduce:transition-none\"\n      >\n        <SearchIcon />\n        <span className=\"min-w-0 flex-1 flex items-center gap-2 group-data-[collapsed=true]/search:opacity-0 transition-opacity duration-200 ease-linear overflow-hidden motion-reduce:transition-none\">\n          <span className=\"min-w-0 truncate\">Search</span>\n          <KbdGroup aria-hidden className=\"ml-auto shrink-0\">\n            <Kbd>⌘</Kbd>\n            <Kbd>K</Kbd>\n          </KbdGroup>\n        </span>\n      </Button>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/button-04/button-04.tsx"
+    }
+  ],
+  "meta": {
+    "height": 120
+  },
+  "categories": ["components", "button"],
+  "type": "registry:component"
+}

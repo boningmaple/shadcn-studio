@@ -1,16 +1,11 @@
 import { Link } from "@tanstack/react-router";
 
-import { SidebarTrigger } from "@/components/ui/sidebar";
 import { AppBrandLink } from "@/features/app-shell/components/app-brand-link";
-import { appQuickLinks } from "@/features/app-shell/components/app-sidebar";
+import { appHeaderNavLinks, appQuickLinks } from "@/features/registry/data/registry-data";
 import { SearchDialogTrigger } from "@/features/search/components/search-dialog-trigger";
 import { ThemeSwitchButton } from "@/features/theme-switch/components/theme-switch-button";
-import { Route as blocksRoute } from "@/routes/_rootLayout/blocks/index";
-import { Route as chartsRoute } from "@/routes/_rootLayout/charts/index";
-import { Route as componentsRoute } from "@/routes/_rootLayout/components/index";
-import { Route as pagesRoute } from "@/routes/_rootLayout/pages/index";
 
-const headerNavRoutes = [componentsRoute, blocksRoute, chartsRoute, pagesRoute] as const;
+import AppSidebarTrigger from "./app-sidebar-trigger";
 
 type AppHeaderProps = {
   showSidebar: boolean;
@@ -19,9 +14,7 @@ type AppHeaderProps = {
 export function AppHeader(props: AppHeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full h-(--header-height) border-b border-dashed bg-background flex items-center gap-4 px-4">
-      {props.showSidebar && (
-        <SidebarTrigger variant="outline" size="icon" className="transition-none" />
-      )}
+      {props.showSidebar && <AppSidebarTrigger />}
       <AppBrandLink />
       {!props.showSidebar && <AppHeaderNavigation />}
       <AppHeaderActions />
@@ -32,13 +25,13 @@ export function AppHeader(props: AppHeaderProps) {
 function AppHeaderNavigation() {
   return (
     <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 mx-4">
-      {headerNavRoutes.map((route) => (
+      {appHeaderNavLinks.map((link) => (
         <Link
-          key={route.id}
-          to={route.to}
+          key={link.to}
+          to={link.to}
           className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground data-status:text-foreground data-status:underline data-status:underline-offset-3"
         >
-          {route.options.staticData.ariaLabel}
+          {link.label}
         </Link>
       ))}
     </nav>

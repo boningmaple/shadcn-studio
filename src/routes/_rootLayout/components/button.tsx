@@ -5,12 +5,14 @@ import { RegistryCollectionPage } from "@/features/registry/components/registry-
 import registryItemButton01 from "@/features/registry/data/items/button-01.json";
 import registryItemButton02 from "@/features/registry/data/items/button-02.json";
 import registryItemButton03 from "@/features/registry/data/items/button-03.json";
+import registryItemButton04 from "@/features/registry/data/items/button-04.json";
 import type { VibeBuiltRegistryItem } from "@/features/registry/types/registry";
 
 const items = [
   registryItemButton01,
   registryItemButton02,
   registryItemButton03,
+  registryItemButton04,
 ] as VibeBuiltRegistryItem[];
 
 export const Route = createFileRoute("/_rootLayout/components/button")({

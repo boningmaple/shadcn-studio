@@ -1,49 +1,45 @@
-import { HomeIcon, type LucideIcon } from "lucide-react";
-
-import { Sidebar, SidebarContent, SidebarHeader, useSidebar } from "@/components/ui/sidebar";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  useSidebar,
+} from "@/components/ui/sidebar";
 import { AppBrandLink } from "@/features/app-shell/components/app-brand-link";
 import { RegistrySidebarNavigation } from "@/features/registry/components/registry-sidebar-navigation";
-import type { QuickLink } from "@/features/search/types/quick-links";
+import { appQuickLinks } from "@/features/registry/data/registry-data";
+import { SearchDialogTrigger } from "@/features/search/components/search-dialog-trigger";
+import { ThemeSwitchButton } from "@/features/theme-switch/components/theme-switch-button";
 
-export type AppSidebarItem = {
-  icon?: LucideIcon;
-  items?: AppSidebarItem[];
-  label: string;
-  to?: string;
-};
-
-type AppSidebarGroup = {
-  label: string;
-  showLabel: boolean;
-  items: AppSidebarItem[];
-};
-
-const fixedGroups: AppSidebarGroup[] = [
-  {
-    label: "Workspace",
-    showLabel: false,
-    items: [{ icon: HomeIcon, label: "Home", to: "/" }],
-  },
-];
-
-export const appQuickLinks: QuickLink[] = fixedGroups
-  .flatMap((group) => group.items)
-  .flatMap((item) =>
-    item.to === undefined ? [] : [{ icon: item.icon, label: item.label, to: item.to }],
-  );
+import AppSidebarTrigger from "./app-sidebar-trigger";
 
 export function AppSidebar() {
-  const { setOpenMobile } = useSidebar();
+  const { isMobile, state, setOpenMobile } = useSidebar();
 
   return (
-    <Sidebar className="border-dashed">
-      <SidebarHeader className="w-full h-(--header-height) border-b border-dashed flex-row items-center px-4 py-0 lg:hidden">
-        <AppBrandLink onClick={() => setOpenMobile(false)} />
+    <Sidebar collapsible="icon" className="border-dashed">
+      <SidebarHeader className="h-(--header-height) border-b border-dashed flex-row items-center lg:justify-end overflow-hidden">
+        <div className="w-[calc(var(--sidebar-width)-1rem)] shrink-0 flex items-center justify-between">
+          <AppBrandLink
+            inert={!isMobile && state === "collapsed"}
+            className="pl-2"
+            onClick={() => setOpenMobile(false)}
+          />
+          <AppSidebarTrigger className="hidden lg:inline-flex" />
+        </div>
       </SidebarHeader>
+
+      <div className="hidden lg:block px-2 pt-4 pb-2">
+        <SearchDialogTrigger quickLinks={appQuickLinks} />
+      </div>
 
       <SidebarContent>
         <RegistrySidebarNavigation onNavigate={() => setOpenMobile(false)} />
       </SidebarContent>
+
+      <SidebarFooter className="h-(--header-height) border-t border-dashed flex-row items-center justify-end hidden lg:flex">
+        <ThemeSwitchButton />
+      </SidebarFooter>
     </Sidebar>
   );
 }

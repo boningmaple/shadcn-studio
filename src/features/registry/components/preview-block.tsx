@@ -39,7 +39,7 @@ export function PreviewBlock(props: PreviewBlockProps) {
         className="not-prose gap-0"
         onSelectionChange={(key) => setSelectedTab(key as PreviewTab)}
       >
-        <div className="sticky top-(--header-height) z-20 flex items-center justify-between bg-background py-2">
+        <div className="sticky top-(--header-height) lg:top-0 z-20 flex items-center justify-between bg-background py-2">
           <TabsList
             aria-label="Preview block tabs"
             className="group-data-horizontal/tabs:h-fit p-1 gap-1 *:data-[slot=tabs-trigger]:size-7 *:data-[slot=tabs-trigger]:p-0 *:data-[slot=tabs-trigger]:[&_svg]:size-4 *:data-[slot=tabs-trigger]:transition-none"

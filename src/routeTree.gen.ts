@@ -48,6 +48,7 @@ import { Route as PreviewChartsRadialChartRadial02RouteImport } from './routes/p
 import { Route as PreviewComponentsButtonButton01RouteImport } from './routes/preview/components/button/button-01'
 import { Route as PreviewComponentsButtonButton02RouteImport } from './routes/preview/components/button/button-02'
 import { Route as PreviewComponentsButtonButton03RouteImport } from './routes/preview/components/button/button-03'
+import { Route as PreviewComponentsButtonButton04RouteImport } from './routes/preview/components/button/button-04'
 import { Route as PreviewComponentsFormForm01RouteImport } from './routes/preview/components/form/form-01'
 import { Route as PreviewComponentsFormForm02RouteImport } from './routes/preview/components/form/form-02'
 import { Route as PreviewComponentsFormForm03RouteImport } from './routes/preview/components/form/form-03'
@@ -285,6 +286,12 @@ const PreviewComponentsButtonButton03Route =
     path: '/components/button/button-03',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
+const PreviewComponentsButtonButton04Route =
+  PreviewComponentsButtonButton04RouteImport.update({
+    id: '/components/button/button-04',
+    path: '/components/button/button-04',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
 const PreviewComponentsFormForm01Route =
   PreviewComponentsFormForm01RouteImport.update({
     id: '/components/form/form-01',
@@ -421,6 +428,7 @@ export interface FileRoutesByFullPath {
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
+  '/preview/components/button/button-04': typeof PreviewComponentsButtonButton04Route
   '/preview/components/form/form-01': typeof PreviewComponentsFormForm01Route
   '/preview/components/form/form-02': typeof PreviewComponentsFormForm02Route
   '/preview/components/form/form-03': typeof PreviewComponentsFormForm03Route
@@ -477,6 +485,7 @@ export interface FileRoutesByTo {
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
+  '/preview/components/button/button-04': typeof PreviewComponentsButtonButton04Route
   '/preview/components/form/form-01': typeof PreviewComponentsFormForm01Route
   '/preview/components/form/form-02': typeof PreviewComponentsFormForm02Route
   '/preview/components/form/form-03': typeof PreviewComponentsFormForm03Route
@@ -535,6 +544,7 @@ export interface FileRoutesById {
   '/preview/components/button/button-01': typeof PreviewComponentsButtonButton01Route
   '/preview/components/button/button-02': typeof PreviewComponentsButtonButton02Route
   '/preview/components/button/button-03': typeof PreviewComponentsButtonButton03Route
+  '/preview/components/button/button-04': typeof PreviewComponentsButtonButton04Route
   '/preview/components/form/form-01': typeof PreviewComponentsFormForm01Route
   '/preview/components/form/form-02': typeof PreviewComponentsFormForm02Route
   '/preview/components/form/form-03': typeof PreviewComponentsFormForm03Route
@@ -593,6 +603,7 @@ export interface FileRouteTypes {
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
+    | '/preview/components/button/button-04'
     | '/preview/components/form/form-01'
     | '/preview/components/form/form-02'
     | '/preview/components/form/form-03'
@@ -649,6 +660,7 @@ export interface FileRouteTypes {
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
+    | '/preview/components/button/button-04'
     | '/preview/components/form/form-01'
     | '/preview/components/form/form-02'
     | '/preview/components/form/form-03'
@@ -706,6 +718,7 @@ export interface FileRouteTypes {
     | '/preview/components/button/button-01'
     | '/preview/components/button/button-02'
     | '/preview/components/button/button-03'
+    | '/preview/components/button/button-04'
     | '/preview/components/form/form-01'
     | '/preview/components/form/form-02'
     | '/preview/components/form/form-03'
@@ -1005,6 +1018,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PreviewComponentsButtonButton03RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
+    '/preview/components/button/button-04': {
+      id: '/preview/components/button/button-04'
+      path: '/components/button/button-04'
+      fullPath: '/preview/components/button/button-04'
+      preLoaderRoute: typeof PreviewComponentsButtonButton04RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
     '/preview/components/form/form-01': {
       id: '/preview/components/form/form-01'
       path: '/components/form/form-01'
@@ -1184,6 +1204,7 @@ interface PreviewRouteRouteChildren {
   PreviewComponentsButtonButton01Route: typeof PreviewComponentsButtonButton01Route
   PreviewComponentsButtonButton02Route: typeof PreviewComponentsButtonButton02Route
   PreviewComponentsButtonButton03Route: typeof PreviewComponentsButtonButton03Route
+  PreviewComponentsButtonButton04Route: typeof PreviewComponentsButtonButton04Route
   PreviewComponentsFormForm01Route: typeof PreviewComponentsFormForm01Route
   PreviewComponentsFormForm02Route: typeof PreviewComponentsFormForm02Route
   PreviewComponentsFormForm03Route: typeof PreviewComponentsFormForm03Route
@@ -1225,6 +1246,7 @@ const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
   PreviewComponentsButtonButton01Route: PreviewComponentsButtonButton01Route,
   PreviewComponentsButtonButton02Route: PreviewComponentsButtonButton02Route,
   PreviewComponentsButtonButton03Route: PreviewComponentsButtonButton03Route,
+  PreviewComponentsButtonButton04Route: PreviewComponentsButtonButton04Route,
   PreviewComponentsFormForm01Route: PreviewComponentsFormForm01Route,
   PreviewComponentsFormForm02Route: PreviewComponentsFormForm02Route,
   PreviewComponentsFormForm03Route: PreviewComponentsFormForm03Route,
