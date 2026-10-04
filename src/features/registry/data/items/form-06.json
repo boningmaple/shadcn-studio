@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 240
+    "height": 240,
+    "prompt": "Create a minimal single-field form for date of birth, filling available width up to 384px. Stack the “Date of birth” label, a native date input with birthday autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire a real calendar date and an age between 18 and 120 inclusive, accounting for whether the birthday has occurred this year. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
   },
   "categories": ["components", "form"],
   "type": "registry:component"

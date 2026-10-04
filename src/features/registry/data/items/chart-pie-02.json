@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “How visitors find you” with the muted eyebrow “Acquisition breakdown · June 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a donut with a 68px inner radius, 95px outer radius, 3-degree gaps, and subtle slice outlines. Represent Organic 420, Direct 280, Referral 180, and Social 120 with four theme chart colors. Leave the center empty. Include a color legend and tooltips, a 1,000 visits headline, and a footer explaining organic search accounts for 42% of visits.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
   },
   "categories": ["charts", "pie"],
   "type": "registry:component"

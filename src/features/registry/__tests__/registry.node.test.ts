@@ -13,12 +13,16 @@ describe("vibeRegistryItemSchema", () => {
   });
 
   it.each([
+    ["missing prompt", { meta: { height: 120 } }],
+    ["empty prompt", { meta: { height: 120, prompt: "" } }],
+    ["blank prompt", { meta: { height: 120, prompt: " \n\t " } }],
+    ["non-string prompt", { meta: { height: 120, prompt: 42 } }],
     ["missing meta", { meta: undefined }],
-    ["missing height", { meta: { height: undefined } }],
-    ["zero height", { meta: { height: 0 } }],
-    ["negative height", { meta: { height: -1 } }],
-    ["fractional height", { meta: { height: 1.5 } }],
-    ["string height", { meta: { height: "120" } }],
+    ["missing height", { meta: { height: undefined, prompt: "Create a button." } }],
+    ["zero height", { meta: { height: 0, prompt: "Create a button." } }],
+    ["negative height", { meta: { height: -1, prompt: "Create a button." } }],
+    ["fractional height", { meta: { height: 1.5, prompt: "Create a button." } }],
+    ["string height", { meta: { height: "120", prompt: "Create a button." } }],
     ["unsafe item name", { name: "Button 01" }],
     ["reserved item name", { name: "index" }],
     ["unsupported item type", { type: "registry:ui" }],
@@ -33,6 +37,11 @@ describe("vibeRegistryItemSchema", () => {
     ["missing canonical file declaration", { files: [] }],
   ])("rejects %s", (_label, changes) => {
     expect(() => vibeRegistryItemSchema.parse(registryItem(changes))).toThrow();
+  });
+
+  it("preserves prompt whitespace verbatim", () => {
+    const item = registryItem();
+    expect(vibeRegistryItemSchema.parse(item).meta.prompt).toBe(item.meta.prompt);
   });
 
   it("retains shadcn Registry item validation", () => {
@@ -128,7 +137,7 @@ function registryItem(changes: Record<string, unknown> = {}) {
   return {
     name,
     title: "Button 01",
-    meta: { height: 120 },
+    meta: { height: 120, prompt: "  Create a button.\n\nKeep <details> as plain text.  " },
     type,
     description: "A button.",
     files: [

@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 570
+    "height": 570,
+    "prompt": "Create a responsive analytics card titled “Explore subscriber growth” with the muted eyebrow “Choose a reporting window”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot subscriber values 186, 225, 208, 284, 312, 368 from Jan–Jun with a monotone 3px line and 4px dots. Above the plot, provide small 6 months and 3 months buttons in a Reporting window group. Start with six months selected; switching to three months shows Apr–Jun. Indicate selection through filled versus outlined styling and accessible pressed states. Show 368 subscribers and a footer explaining the window switch.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
   },
   "categories": ["charts", "line"],
   "type": "registry:component"

@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “A stronger first half” with the muted eyebrow “Subscriber growth · year over year”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCompare Jan–Jun subscriber counts: This year at 186, 225, 208, 284, 312, 368 as a solid 3px line with 4px dots; Last year at 140, 178, 190, 210, 245, 272 as a dashed 2px line without dots. Use distinct colors and a legend. Show +35.3% and explain the June year-over-year comparison in the footer.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
   },
   "categories": ["charts", "line"],
   "type": "registry:component"

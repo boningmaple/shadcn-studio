@@ -13,7 +13,8 @@
     }
   ],
   "meta": {
-    "height": 1000
+    "height": 1000,
+    "prompt": "Create a minimal Northstar landing page occupying at least the small viewport height. Use a centered navigation row up to 1152px wide with 24px horizontal padding, the Northstar wordmark on the left, and a small outlined Sign in button on the right.\n\nCenter a hero up to 1024px wide with 96px vertical padding. Show a bordered pill reading Now in public beta, then the balanced headline “Turn your next big idea into momentum” in tightly tracked semibold type, 48px on small screens and 72px on larger screens. Follow with muted 18px copy: “Northstar gives modern teams one beautiful place to plan, build, and learn together.” Add a primary Start for free button with a trailing right arrow.\n\nAfter an 80px gap, show three equal, left-aligned statistic columns between horizontal borders: 12k+ teams, 42% faster delivery, and 99.99% uptime. Use 24px semibold values and smaller muted labels. Keep theme-aware colors, semantic navigation and main content, and keyboard-accessible buttons. Sign in and Start for free are presentational actions."
   },
   "categories": ["pages", "landing-pages"],
   "type": "registry:component"

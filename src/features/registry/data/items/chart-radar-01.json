@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Product health” with the muted eyebrow “Customer survey · scores out of 100”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a six-axis radar for Reliability, Speed, Usability, Support, Value, and Features, with June scores 92, 78, 88, 84, 80, 90. Use a polar grid, small category labels, a hidden numeric scale from 0 to 100, and a 70% outer radius. Draw one 2px outlined polygon with 25% fill. Show 85.3 / 100 and explain the six-dimension June survey average in the footer.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
   },
   "categories": ["charts", "radar"],
   "type": "registry:component"

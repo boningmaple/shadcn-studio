@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Demand and capacity” with the muted eyebrow “Monthly operating performance · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCombine Jan–Jun Orders bars at 186, 225, 208, 284, 312, 368 with a Capacity monotone line at 220, 250, 250, 300, 350, 400. Use distinct colors, 70% opacity rounded bars up to 38px wide, a 3px line with 3px dots, and a legend. Show 92% utilization and explain 368 orders against June capacity of 400.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
   },
   "categories": ["charts", "composed"],
   "type": "registry:component"

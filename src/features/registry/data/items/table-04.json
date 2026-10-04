@@ -22,7 +22,8 @@
     }
   ],
   "meta": {
-    "height": 640
+    "height": 640,
+    "prompt": "Create a product inventory titled Products with 12 sample products, the eyebrow THE EVERYDAY EDIT, and the subtitle “Thoughtful essentials. All in one place.” Use an amber package icon. Display Product with a category-colored icon tile and monospaced SKU, Category, Price in whole USD, Stock, and Sold. Right-align numeric columns.\n\nColor Workspace badges violet, Accessories emerald, and Lifestyle amber. Show stock text with a colored dot: rose Out of stock at zero, amber below ten, otherwise muted. Search product names or SKUs and filter by category. Include a Columns popover with labeled checkboxes to toggle Category, Price, Stock, and Sold while keeping Product visible.\n\nUse a full-width card up to 1024px with a rounded 16px border, subtle shadow, theme-aware surfaces, muted table header, generous row padding, and a compact icon tile beside the heading. Wrap toolbar and footer controls on narrow screens and retain a horizontally scrollable table at least 680px wide. Include labeled search and filter controls, keyboard-accessible sortable headings with direction indicators, five rows per page, result counts, page numbers, and Previous page / Next page buttons disabled at the boundaries. Search, filter, and sorting changes return to page one. Show a contextual empty state with Reset filters, and show Clear filters when filters are active."
   },
   "categories": ["components", "table"],
   "type": "registry:component"

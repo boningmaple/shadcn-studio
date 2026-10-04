@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Closing the experience gap” with the muted eyebrow “Customer survey · scores out of 100”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCompare March scores 72, 65, 74, 70, 82, 68 with June scores 92, 78, 88, 84, 80, 90 across Reliability, Speed, Usability, Support, Value, and Features. Use a polar grid, small category labels, a hidden 0–100 scale, and 70% outer radius. Overlay distinct March and June polygons with 12% and 25% fill; give June a 2px outline. Include a legend, 85.3 / 100 headline, and footer describing the June survey average.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
   },
   "categories": ["charts", "radar"],
   "type": "registry:component"

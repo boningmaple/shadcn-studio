@@ -13,7 +13,8 @@
     }
   ],
   "meta": {
-    "height": 600
+    "height": 600,
+    "prompt": "Create a centered, text-only product hero with a maximum width of 896px, 24px horizontal padding, and 96px vertical padding. Place the primary-colored eyebrow “Ship with confidence” above the headline “A calmer way to build ambitious products”. Use a tightly tracked semibold headline at 48px, increasing to 60px on larger screens, with balanced wrapping.\n\nAdd muted 18px supporting text: “Bring planning, design, and delivery into one focused workspace your whole team can use.” Limit it to 672px. Below, place a primary Start building button with a trailing right arrow and an outlined See how it works button, centered with wrapping and a 12px gap. Use theme-aware surfaces and accessible button focus states. Both actions are presentational."
   },
   "categories": ["blocks", "hero-section"],
   "type": "registry:component"

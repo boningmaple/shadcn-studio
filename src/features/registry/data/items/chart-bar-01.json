@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Orders on the rise” with the muted eyebrow “Completed orders · first half of 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun order counts 186, 225, 208, 284, 312, 368 as single-color vertical bars with rounded top corners and a maximum width of 40px. Show 1,583 orders and a footer identifying June as the strongest month.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
   },
   "categories": ["charts", "bar"],
   "type": "registry:component"

@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Sales by channel” with the muted eyebrow “Monthly orders · online and in store”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot grouped bars for Online and In store orders from Jan–Jun, respectively 186, 225, 208, 284, 312, 368 and 140, 178, 190, 210, 245, 272. Use distinct chart colors, rounded top corners, and a legend. Show 640 orders and note that online contributed 57.5% of June orders.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
   },
   "categories": ["charts", "bar"],
   "type": "registry:component"

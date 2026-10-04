@@ -1,4 +1,4 @@
-import { CodeIcon, EyeIcon } from "lucide-react";
+import { AstroidIcon, CodeIcon, EyeIcon } from "lucide-react";
 import { useRef, useState } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -12,9 +12,10 @@ import { CodePanel } from "./code-panel";
 import { PreviewPanel } from "./preview-panel";
 import { PreviewSizeToggleGroup } from "./preview-size-toggle-group";
 import { PreviewThemeSwitchButton } from "./preview-theme-switch-button";
+import { PromptPanel } from "./prompt-panel";
 import ResetPreviewButton from "./reset-preview-button";
 
-export type PreviewTab = "code" | "preview";
+export type PreviewTab = "code" | "preview" | "prompt";
 
 type PreviewBlockProps = {
   item: VibeBuiltRegistryItem;
@@ -49,6 +50,9 @@ export function PreviewBlock(props: PreviewBlockProps) {
             </TabsTrigger>
             <TabsTrigger id={"code" satisfies PreviewTab} aria-label="Code">
               <CodeIcon />
+            </TabsTrigger>
+            <TabsTrigger id={"prompt" satisfies PreviewTab} aria-label="Prompt">
+              <AstroidIcon />
             </TabsTrigger>
           </TabsList>
           {selectedTab === "preview" ? (
@@ -92,6 +96,9 @@ export function PreviewBlock(props: PreviewBlockProps) {
           className="data-inert:hidden"
         >
           <CodePanel item={props.item} />
+        </TabsContent>
+        <TabsContent id={"prompt" satisfies PreviewTab}>
+          <PromptPanel prompt={props.item.meta.prompt} />
         </TabsContent>
       </Tabs>
     </article>

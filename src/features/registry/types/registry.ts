@@ -50,7 +50,12 @@ const vibeRegistryItemRequirementsSchema = z
     type: z.literal("registry:component"),
     files: z.array(z.looseObject({ path: z.string() })),
     categories: z.tuple([registrySectionNameSchema, vibeRegistryItemNameSchema]),
-    meta: z.looseObject({ height: z.number().int().positive() }),
+    meta: z.looseObject({
+      height: z.number().int().positive(),
+      prompt: z
+        .string()
+        .refine((value) => value.trim().length > 0, "Must contain a design prompt."),
+    }),
   })
   .refine(
     (item) => {

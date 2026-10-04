@@ -22,7 +22,8 @@
     }
   ],
   "meta": {
-    "height": 640
+    "height": 640,
+    "prompt": "Create a project tracker titled Projects with 12 sample projects, the eyebrow WORK IN MOTION, and the subtitle “Big ideas, moving forward together.” Use violet accents and a layers icon. Display Project with its category beneath, Status, Progress, Team, Priority, and Due date.\n\nUse violet In progress, amber In review, and emerald Completed badges. Show a labeled violet progress bar and percentage, overlapping initials avatars with team names available accessibly, and colored priority dots (orange High, violet Medium, slate Low). Search project names and filter by status. Allow sorting except on the Team column.\n\nUse a full-width card up to 1024px with a rounded 16px border, subtle shadow, theme-aware surfaces, muted table header, generous row padding, and a compact icon tile beside the heading. Wrap toolbar and footer controls on narrow screens and retain a horizontally scrollable table at least 680px wide. Include labeled search and filter controls, keyboard-accessible sortable headings with direction indicators, five rows per page, result counts, page numbers, and Previous page / Next page buttons disabled at the boundaries. Search, filter, and sorting changes return to page one. Show a contextual empty state with Reset filters, and show Clear filters when filters are active."
   },
   "categories": ["components", "table"],
   "type": "registry:component"

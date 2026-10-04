@@ -18,7 +18,8 @@
       ],
       "categories": ["components", "button"],
       "meta": {
-        "height": 120
+        "height": 120,
+        "prompt": "Create a compact primary button labeled “Get started, 0” with a trailing right arrow. Increment the visible count by one on each activation, starting at zero. Use rounded corners, theme-aware primary colors, and keyboard-accessible button focus and activation."
       }
     },
     {
@@ -36,7 +37,8 @@
       ],
       "categories": ["components", "button"],
       "meta": {
-        "height": 120
+        "height": 120,
+        "prompt": "Create a compact outlined button labeled “Open search” with a small inset ⌘ K keycap after the label. Use a subtle border, rounded corners, and theme-aware hover and keyboard focus styles. The shortcut is a visual hint; this standalone button has no search-opening behavior."
       }
     },
     {
@@ -64,7 +66,8 @@
       ],
       "categories": ["components", "button"],
       "meta": {
-        "height": 120
+        "height": 120,
+        "prompt": "Create a compact primary button labeled “Explore components” with a trailing right arrow. Align the text and decorative arrow horizontally with a small gap. Use rounded corners, theme-aware primary colors, and keyboard-accessible focus and activation. This is a static action presentation with no navigation behavior."
       }
     },
     {
@@ -83,7 +86,8 @@
       ],
       "categories": ["components", "button"],
       "meta": {
-        "height": 120
+        "height": 120,
+        "prompt": "Create a 256px-wide vertical group with small outlined Expand and Collapse buttons above an outlined Search pill. Start expanded. The pill is 32px tall, fills the group width, and contains a search icon, Search text, and separate ⌘ and K keycaps.\n\nExpand and Collapse select the corresponding state and expose their pressed states. Collapse the pill to a 32px circle, hide overflowing contents, and fade the text and keycaps out; expand reverses this. Animate width and opacity over 200ms with linear timing and disable transitions for reduced motion. Keep the Search accessible name in both states and hide decorative keycaps from assistive technology. The search action itself is presentational."
       }
     },
     {
@@ -102,7 +106,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for email, filling available width up to 384px. Stack the “Email” label, an email input, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire a nonempty valid email address. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -121,7 +126,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for password, filling available width up to 384px. Stack the “Password” label, a masked password input with new-password autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire 8–128 characters including a lowercase letter, uppercase letter, number, and symbol. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -140,7 +146,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for full name, filling available width up to 384px. Stack the “Full name” label, a text input with name autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nTrim surrounding whitespace and require a name of 2–100 characters. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -159,7 +166,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for cvv, filling available width up to 384px. Stack the “CVV” label, a text input with a numeric keyboard and card-security-code autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire exactly three or four digits. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -178,7 +186,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for card number, filling available width up to 384px. Stack the “Card number” label, a text input with a numeric keyboard and card-number autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nAccept digits, spaces, and hyphens. Validate 13–19 digits after removing spaces and hyphens and require a valid Luhn checksum. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -197,7 +206,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for date of birth, filling available width up to 384px. Stack the “Date of birth” label, a native date input with birthday autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire a real calendar date and an age between 18 and 120 inclusive, accounting for whether the birthday has occurred this year. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -216,7 +226,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for time, filling available width up to 384px. Stack the “Time” label, a native time input, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire a valid 24-hour time in HH:MM format. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -235,7 +246,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for phone number, filling available width up to 384px. Stack the “Phone number” label, a telephone input with telephone autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire 8–15 digits, starting with a nonzero digit, with an optional leading plus sign. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -254,7 +266,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for website url, filling available width up to 384px. Stack the “Website URL” label, a URL input with URL autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire a valid absolute HTTP or HTTPS URL. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -273,7 +286,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 280
+        "height": 280,
+        "prompt": "Create a minimal single-field form for bio, filling available width up to 384px. Stack the “Bio” label, a multiline textarea, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nTrim surrounding whitespace and require 20–160 characters. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -292,7 +306,8 @@
       ],
       "categories": ["components", "form"],
       "meta": {
-        "height": 240
+        "height": 240,
+        "prompt": "Create a minimal single-field form for country, filling available width up to 384px. Stack the “Country” label, a keyboard-accessible select with Australia, Canada, France, Germany, Japan, United Kingdom, and United States, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nStart without a selection and require one of the listed countries. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
       }
     },
     {
@@ -310,7 +325,8 @@
       ],
       "categories": ["blocks", "hero-section"],
       "meta": {
-        "height": 600
+        "height": 600,
+        "prompt": "Create a centered, text-only product hero with a maximum width of 896px, 24px horizontal padding, and 96px vertical padding. Place the primary-colored eyebrow “Ship with confidence” above the headline “A calmer way to build ambitious products”. Use a tightly tracked semibold headline at 48px, increasing to 60px on larger screens, with balanced wrapping.\n\nAdd muted 18px supporting text: “Bring planning, design, and delivery into one focused workspace your whole team can use.” Limit it to 672px. Below, place a primary Start building button with a trailing right arrow and an outlined See how it works button, centered with wrapping and a 12px gap. Use theme-aware surfaces and accessible button focus states. Both actions are presentational."
       }
     },
     {
@@ -328,7 +344,8 @@
       ],
       "categories": ["pages", "landing-pages"],
       "meta": {
-        "height": 1000
+        "height": 1000,
+        "prompt": "Create a minimal Northstar landing page occupying at least the small viewport height. Use a centered navigation row up to 1152px wide with 24px horizontal padding, the Northstar wordmark on the left, and a small outlined Sign in button on the right.\n\nCenter a hero up to 1024px wide with 96px vertical padding. Show a bordered pill reading Now in public beta, then the balanced headline “Turn your next big idea into momentum” in tightly tracked semibold type, 48px on small screens and 72px on larger screens. Follow with muted 18px copy: “Northstar gives modern teams one beautiful place to plan, build, and learn together.” Add a primary Start for free button with a trailing right arrow.\n\nAfter an 80px gap, show three equal, left-aligned statistic columns between horizontal borders: 12k+ teams, 42% faster delivery, and 99.99% uptime. Use 24px semibold values and smaller muted labels. Keep theme-aware colors, semantic navigation and main content, and keyboard-accessible buttons. Sign in and Start for free are presentational actions."
       }
     },
     {
@@ -355,7 +372,8 @@
       ],
       "categories": ["components", "table"],
       "meta": {
-        "height": 640
+        "height": 640,
+        "prompt": "Create a customer directory titled Customers with 12 sample customers, the eyebrow YOUR PEOPLE, and the subtitle “A little closer to every customer.” Use violet accents and initials avatars. Display Customer (name and email), Company, Plan, Total spent in whole USD, and Joined date. Color Starter badges violet, Pro emerald, and Enterprise amber.\n\nSearch names or emails and filter by Starter, Pro, or Enterprise. Support multiple selection with row checkboxes and a current-page select-all checkbox with an indeterminate state.\n\nUse a full-width card up to 1024px with a rounded 16px border, subtle shadow, theme-aware surfaces, muted table header, generous row padding, and a compact icon tile beside the heading. Wrap toolbar and footer controls on narrow screens and retain a horizontally scrollable table at least 680px wide. Include labeled search and filter controls, keyboard-accessible sortable headings with direction indicators, five rows per page, result counts, page numbers, and Previous page / Next page buttons disabled at the boundaries. Search, filter, and sorting changes return to page one. Show a contextual empty state with Reset filters, and show Clear filters when filters are active."
       }
     },
     {
@@ -374,7 +392,8 @@
       ],
       "categories": ["components", "table"],
       "meta": {
-        "height": 640
+        "height": 640,
+        "prompt": "Create an invoice dashboard titled Invoices with 12 sample invoices, the eyebrow BILLING OVERVIEW, and the subtitle “Good work. Paid on time.” Use an emerald receipt icon. Above the toolbar, show Collected, Awaiting payment, and Overdue summary cards computed from the complete dataset; stack them on small screens and place them in three columns on larger screens.\n\nDisplay Invoice, Customer with email, Status, right-aligned Amount in whole USD, and Due date. Color Paid badges emerald, Pending amber, and Overdue rose. Search invoice IDs or customer names and filter by these statuses.\n\nUse a full-width card up to 1024px with a rounded 16px border, subtle shadow, theme-aware surfaces, muted table header, generous row padding, and a compact icon tile beside the heading. Wrap toolbar and footer controls on narrow screens and retain a horizontally scrollable table at least 680px wide. Include labeled search and filter controls, keyboard-accessible sortable headings with direction indicators, five rows per page, result counts, page numbers, and Previous page / Next page buttons disabled at the boundaries. Search, filter, and sorting changes return to page one. Show a contextual empty state with Reset filters, and show Clear filters when filters are active."
       }
     },
     {
@@ -401,7 +420,8 @@
       ],
       "categories": ["components", "table"],
       "meta": {
-        "height": 640
+        "height": 640,
+        "prompt": "Create a project tracker titled Projects with 12 sample projects, the eyebrow WORK IN MOTION, and the subtitle “Big ideas, moving forward together.” Use violet accents and a layers icon. Display Project with its category beneath, Status, Progress, Team, Priority, and Due date.\n\nUse violet In progress, amber In review, and emerald Completed badges. Show a labeled violet progress bar and percentage, overlapping initials avatars with team names available accessibly, and colored priority dots (orange High, violet Medium, slate Low). Search project names and filter by status. Allow sorting except on the Team column.\n\nUse a full-width card up to 1024px with a rounded 16px border, subtle shadow, theme-aware surfaces, muted table header, generous row padding, and a compact icon tile beside the heading. Wrap toolbar and footer controls on narrow screens and retain a horizontally scrollable table at least 680px wide. Include labeled search and filter controls, keyboard-accessible sortable headings with direction indicators, five rows per page, result counts, page numbers, and Previous page / Next page buttons disabled at the boundaries. Search, filter, and sorting changes return to page one. Show a contextual empty state with Reset filters, and show Clear filters when filters are active."
       }
     },
     {
@@ -428,13 +448,14 @@
       ],
       "categories": ["components", "table"],
       "meta": {
-        "height": 640
+        "height": 640,
+        "prompt": "Create a product inventory titled Products with 12 sample products, the eyebrow THE EVERYDAY EDIT, and the subtitle “Thoughtful essentials. All in one place.” Use an amber package icon. Display Product with a category-colored icon tile and monospaced SKU, Category, Price in whole USD, Stock, and Sold. Right-align numeric columns.\n\nColor Workspace badges violet, Accessories emerald, and Lifestyle amber. Show stock text with a colored dot: rose Out of stock at zero, amber below ten, otherwise muted. Search product names or SKUs and filter by category. Include a Columns popover with labeled checkboxes to toggle Category, Price, Stock, and Sold while keeping Product visible.\n\nUse a full-width card up to 1024px with a rounded 16px border, subtle shadow, theme-aware surfaces, muted table header, generous row padding, and a compact icon tile beside the heading. Wrap toolbar and footer controls on narrow screens and retain a horizontally scrollable table at least 680px wide. Include labeled search and filter controls, keyboard-accessible sortable headings with direction indicators, five rows per page, result counts, page numbers, and Previous page / Next page buttons disabled at the boundaries. Search, filter, and sorting changes return to page one. Show a contextual empty state with Reset filters, and show Clear filters when filters are active."
       }
     },
     {
       "name": "chart-line-01",
       "title": "chart-line-01",
-      "description": "Monthly active subscribers \u00b7 Jan\u2013Jun 2026. A steady climb, with 56 new subscribers in June.",
+      "description": "Monthly active subscribers · Jan–Jun 2026. A steady climb, with 56 new subscribers in June.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -447,13 +468,14 @@
       ],
       "categories": ["charts", "line"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Subscriber growth” with the muted eyebrow “Monthly active subscribers · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun subscribers 186, 225, 208, 284, 312, 368 as a single monotone 3px line without point dots. Label the tooltip series This year. Show 368 subscribers and a footer noting 56 new subscribers in June.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     },
     {
       "name": "chart-line-02",
       "title": "chart-line-02",
-      "description": "Subscriber growth \u00b7 year over year. June subscribers compared with the same month last year.",
+      "description": "Subscriber growth · year over year. June subscribers compared with the same month last year.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -466,13 +488,14 @@
       ],
       "categories": ["charts", "line"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “A stronger first half” with the muted eyebrow “Subscriber growth · year over year”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCompare Jan–Jun subscriber counts: This year at 186, 225, 208, 284, 312, 368 as a solid 3px line with 4px dots; Last year at 140, 178, 190, 210, 245, 272 as a dashed 2px line without dots. Use distinct colors and a legend. Show +35.3% and explain the June year-over-year comparison in the footer.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     },
     {
       "name": "chart-area-01",
       "title": "chart-area-01",
-      "description": "Monthly revenue \u00b7 USD thousands. June revenue is up 17.9% over May.",
+      "description": "Monthly revenue · USD thousands. June revenue is up 17.9% over May.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -485,13 +508,14 @@
       ],
       "categories": ["charts", "area"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Revenue momentum” with the muted eyebrow “Monthly revenue · USD thousands”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun revenue values 186, 225, 208, 284, 312, and 368 in USD thousands as a smooth natural curve with a 2px stroke and a faint 16% area fill. Show $368k as the headline and a footer noting June revenue is up 17.9% over May.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     },
     {
       "name": "chart-area-02",
       "title": "chart-area-02",
-      "description": "Revenue mix \u00b7 USD thousands. Subscriptions and services combined in June.",
+      "description": "Revenue mix · USD thousands. Subscriptions and services combined in June.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -504,13 +528,14 @@
       ],
       "categories": ["charts", "area"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Where growth comes from” with the muted eyebrow “Revenue mix · USD thousands”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nStack two monotone areas for Jan–Jun: Subscriptions ($k) at 186, 225, 208, 284, 312, 368 and Services ($k) at 140, 178, 190, 210, 245, 272. Use two chart colors with 65% and 25% fill opacity and a legend. Show $640k and a footer explaining the combined June revenue.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     },
     {
       "name": "chart-bar-01",
       "title": "chart-bar-01",
-      "description": "Completed orders \u00b7 first half of 2026. June was the strongest month of the half.",
+      "description": "Completed orders · first half of 2026. June was the strongest month of the half.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -523,13 +548,14 @@
       ],
       "categories": ["charts", "bar"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Orders on the rise” with the muted eyebrow “Completed orders · first half of 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun order counts 186, 225, 208, 284, 312, 368 as single-color vertical bars with rounded top corners and a maximum width of 40px. Show 1,583 orders and a footer identifying June as the strongest month.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     },
     {
       "name": "chart-bar-02",
       "title": "chart-bar-02",
-      "description": "Monthly orders \u00b7 online and in store. Online contributed 57.5% of June orders.",
+      "description": "Monthly orders · online and in store. Online contributed 57.5% of June orders.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -542,13 +568,14 @@
       ],
       "categories": ["charts", "bar"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Sales by channel” with the muted eyebrow “Monthly orders · online and in store”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot grouped bars for Online and In store orders from Jan–Jun, respectively 186, 225, 208, 284, 312, 368 and 140, 178, 190, 210, 245, 272. Use distinct chart colors, rounded top corners, and a legend. Show 640 orders and note that online contributed 57.5% of June orders.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     },
     {
       "name": "chart-pie-01",
       "title": "chart-pie-01",
-      "description": "Acquisition breakdown \u00b7 June 2026. Organic search accounts for 42% of all visits.",
+      "description": "Acquisition breakdown · June 2026. Organic search accounts for 42% of all visits.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -561,13 +588,14 @@
       ],
       "categories": ["charts", "pie"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Traffic by channel” with the muted eyebrow “Acquisition breakdown · June 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a solid pie with a 95px radius, 3-degree gaps, and subtle slice outlines. Represent Organic 420, Direct 280, Referral 180, and Social 120 with four theme chart colors. Include a color legend and tooltips, a 1,000 visits headline, and a footer explaining organic search accounts for 42% of visits.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
       }
     },
     {
       "name": "chart-pie-02",
       "title": "chart-pie-02",
-      "description": "Acquisition breakdown \u00b7 June 2026. Organic search accounts for 42% of all visits.",
+      "description": "Acquisition breakdown · June 2026. Organic search accounts for 42% of all visits.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -580,13 +608,14 @@
       ],
       "categories": ["charts", "pie"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “How visitors find you” with the muted eyebrow “Acquisition breakdown · June 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a donut with a 68px inner radius, 95px outer radius, 3-degree gaps, and subtle slice outlines. Represent Organic 420, Direct 280, Referral 180, and Social 120 with four theme chart colors. Leave the center empty. Include a color legend and tooltips, a 1,000 visits headline, and a footer explaining organic search accounts for 42% of visits.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
       }
     },
     {
       "name": "chart-radar-01",
       "title": "chart-radar-01",
-      "description": "Customer survey \u00b7 scores out of 100. Average across six dimensions from the June survey.",
+      "description": "Customer survey · scores out of 100. Average across six dimensions from the June survey.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -599,13 +628,14 @@
       ],
       "categories": ["charts", "radar"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Product health” with the muted eyebrow “Customer survey · scores out of 100”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a six-axis radar for Reliability, Speed, Usability, Support, Value, and Features, with June scores 92, 78, 88, 84, 80, 90. Use a polar grid, small category labels, a hidden numeric scale from 0 to 100, and a 70% outer radius. Draw one 2px outlined polygon with 25% fill. Show 85.3 / 100 and explain the six-dimension June survey average in the footer.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
       }
     },
     {
       "name": "chart-radar-02",
       "title": "chart-radar-02",
-      "description": "Customer survey \u00b7 scores out of 100. Average across six dimensions from the June survey.",
+      "description": "Customer survey · scores out of 100. Average across six dimensions from the June survey.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -618,13 +648,14 @@
       ],
       "categories": ["charts", "radar"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Closing the experience gap” with the muted eyebrow “Customer survey · scores out of 100”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCompare March scores 72, 65, 74, 70, 82, 68 with June scores 92, 78, 88, 84, 80, 90 across Reliability, Speed, Usability, Support, Value, and Features. Use a polar grid, small category labels, a hidden 0–100 scale, and 70% outer radius. Overlay distinct March and June polygons with 12% and 25% fill; give June a 2px outline. Include a legend, 85.3 / 100 headline, and footer describing the June survey average.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
       }
     },
     {
       "name": "chart-radial-01",
       "title": "chart-radial-01",
-      "description": "Delivery progress \u00b7 Q2 2026. 78 of 100 planned releases shipped this quarter.",
+      "description": "Delivery progress · Q2 2026. 78 of 100 planned releases shipped this quarter.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -637,13 +668,14 @@
       ],
       "categories": ["charts", "radial"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Quarterly goal” with the muted eyebrow “Delivery progress · Q2 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a clockwise circular progress arc starting at the top on a full-circle background track, with rounded ends and a hidden 0–100 scale. Use a 35% inner radius and 90% outer radius. Show Platform at 78%, a Platform legend and tooltip, a 78% headline, and a footer stating 78 of 100 planned releases shipped this quarter.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
       }
     },
     {
       "name": "chart-radial-02",
       "title": "chart-radial-02",
-      "description": "Delivery progress \u00b7 Q2 2026. Completion against each team\u2019s quarterly target.",
+      "description": "Delivery progress · Q2 2026. Completion against each team’s quarterly target.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -656,13 +688,14 @@
       ],
       "categories": ["charts", "radial"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Team goal progress” with the muted eyebrow “Delivery progress · Q2 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow three concentric clockwise circular progress arcs starting at the top on full-circle background tracks, with rounded ends, a hidden 0–100 scale, and radii spanning 35% to 90%. Represent Platform at 86%, Design at 72%, and Product at 64% in three distinct colors. Include team legends and tooltips, the headline Three teams, and a footer explaining completion against quarterly targets.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
       }
     },
     {
       "name": "chart-composed-01",
       "title": "chart-composed-01",
-      "description": "Monthly operating performance \u00b7 Jan\u2013Jun 2026. Revenue exceeded the June target by $96k.",
+      "description": "Monthly operating performance · Jan–Jun 2026. Revenue exceeded the June target by $96k.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -675,13 +708,14 @@
       ],
       "categories": ["charts", "composed"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Revenue against target” with the muted eyebrow “Monthly operating performance · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCombine Jan–Jun Revenue ($k) bars at 186, 225, 208, 284, 312, 368 with a Target ($k) monotone line at 140, 178, 190, 210, 245, 272. Use distinct colors, 70% opacity rounded bars up to 38px wide, a 3px line with 3px dots, and a legend. Show $368k and note revenue exceeded the June target by $96k.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     },
     {
       "name": "chart-composed-02",
       "title": "chart-composed-02",
-      "description": "Monthly operating performance \u00b7 Jan\u2013Jun 2026. 368 orders fulfilled against a June capacity of 400.",
+      "description": "Monthly operating performance · Jan–Jun 2026. 368 orders fulfilled against a June capacity of 400.",
       "type": "registry:component",
       "dependencies": ["recharts"],
       "registryDependencies": ["card", "chart"],
@@ -694,7 +728,8 @@
       ],
       "categories": ["charts", "composed"],
       "meta": {
-        "height": 520
+        "height": 520,
+        "prompt": "Create a responsive analytics card titled “Demand and capacity” with the muted eyebrow “Monthly operating performance · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCombine Jan–Jun Orders bars at 186, 225, 208, 284, 312, 368 with a Capacity monotone line at 220, 250, 250, 300, 350, 400. Use distinct colors, 70% opacity rounded bars up to 38px wide, a 3px line with 3px dots, and a legend. Show 92% utilization and explain 368 orders against June capacity of 400.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     },
     {
@@ -713,7 +748,8 @@
       ],
       "categories": ["charts", "line"],
       "meta": {
-        "height": 570
+        "height": 570,
+        "prompt": "Create a responsive analytics card titled “Explore subscriber growth” with the muted eyebrow “Choose a reporting window”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot subscriber values 186, 225, 208, 284, 312, 368 from Jan–Jun with a monotone 3px line and 4px dots. Above the plot, provide small 6 months and 3 months buttons in a Reporting window group. Start with six months selected; switching to three months shows Apr–Jun. Indicate selection through filled versus outlined styling and accessible pressed states. Show 368 subscribers and a footer explaining the window switch.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
     }
   ]

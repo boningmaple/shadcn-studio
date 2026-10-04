@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Where growth comes from” with the muted eyebrow “Revenue mix · USD thousands”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nStack two monotone areas for Jan–Jun: Subscriptions ($k) at 186, 225, 208, 284, 312, 368 and Services ($k) at 140, 178, 190, 210, 245, 272. Use two chart colors with 65% and 25% fill opacity and a legend. Show $640k and a footer explaining the combined June revenue.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
   },
   "categories": ["charts", "area"],
   "type": "registry:component"

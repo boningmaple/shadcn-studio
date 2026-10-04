@@ -1,0 +1,6 @@
+# Registry item authoring
+
+1. Write a self-contained, reusable design prompt before registering or implementing a new Registry item. Describe its layout, visual hierarchy, styling, content, interactions, accessibility, and responsive behavior with enough detail to recreate its distinctive design. Keep repository paths, commands, and source-code prescriptions in authoring instructions.
+2. Register the item in the root `registry.json`, storing the exact prompt text in `meta.prompt`. Every item requires a string containing non-whitespace content. Plain text may contain paragraphs and line breaks; the Prompt tab displays and copies it verbatim.
+3. Implement the registered item against its prompt. When the intended design changes, update the prompt to match the resulting design and observable behavior. For existing items, inspect their implementation and describe only behavior they provide; these prompts are reconstruction specifications, not historical creation prompts.
+4. Regenerate registry outputs with `npm run build:registry`. Author metadata in the root registry and let the build propagate it to application data and public installation metadata. Verify the Prompt tab and exact-text copying, then run the repository's required checks.

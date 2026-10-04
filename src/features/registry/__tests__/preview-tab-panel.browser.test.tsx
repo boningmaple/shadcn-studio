@@ -7,6 +7,7 @@ import {
   previewFrameElement,
   mockPreviewHighlighting,
   cleanupPreview,
+  registryItem,
 } from "./preview-test-utils";
 
 vi.mock("@/features/registry/lib/highlight-code", { spy: true });
@@ -16,6 +17,31 @@ beforeEach(mockPreviewHighlighting);
 afterEach(cleanupPreview);
 
 describe("Preview tab panel", () => {
+  it("shows the plain-text design prompt and copies it verbatim", async () => {
+    const writeText = vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue();
+    await page.viewport(390, 844);
+    await renderPreviewBlock();
+    const frame = previewFrameElement();
+    await page.getByRole("tab", { name: "Prompt", exact: true }).click();
+
+    const panel = page.getByRole("tabpanel", { name: "Prompt", exact: true });
+    await expect.element(panel).toBeVisible();
+    const prompt = panel.element().querySelector(".whitespace-pre-wrap")!;
+    expect(prompt.textContent).toBe(registryItem.meta.prompt);
+    expect(prompt.querySelector("details")).toBeNull();
+    expect(prompt.scrollWidth).toBeLessThanOrEqual(prompt.clientWidth);
+    await expect
+      .element(page.getByRole("toolbar", { name: "Preview controls" }))
+      .not.toBeInTheDocument();
+    await page.getByRole("button", { name: "Copy prompt", exact: true }).click();
+    expect(writeText).toHaveBeenCalledWith(registryItem.meta.prompt);
+    await expect.element(panel.getByRole("status")).toHaveTextContent("Copied prompt.");
+
+    await page.getByRole("tab", { name: "Preview", exact: true }).click();
+    expect(previewFrameElement()).toBe(frame);
+    await expect.element(page.getByRole("toolbar", { name: "Preview controls" })).toBeVisible();
+  });
+
   it("renders canonical, lazy, accessibly named Preview frames", async () => {
     await renderPreviewBlock();
     const frame = previewFrame();

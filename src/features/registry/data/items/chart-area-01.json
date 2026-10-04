@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Revenue momentum” with the muted eyebrow “Monthly revenue · USD thousands”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun revenue values 186, 225, 208, 284, 312, and 368 in USD thousands as a smooth natural curve with a 2px stroke and a faint 16% area fill. Show $368k as the headline and a footer noting June revenue is up 17.9% over May.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
   },
   "categories": ["charts", "area"],
   "type": "registry:component"

@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Quarterly goal” with the muted eyebrow “Delivery progress · Q2 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a clockwise circular progress arc starting at the top on a full-circle background track, with rounded ends and a hidden 0–100 scale. Use a 35% inner radius and 90% outer radius. Show Platform at 78%, a Platform legend and tooltip, a 78% headline, and a footer stating 78 of 100 planned releases shipped this quarter.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
   },
   "categories": ["charts", "radial"],
   "type": "registry:component"

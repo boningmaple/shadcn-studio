@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Team goal progress” with the muted eyebrow “Delivery progress · Q2 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow three concentric clockwise circular progress arcs starting at the top on full-circle background tracks, with rounded ends, a hidden 0–100 scale, and radii spanning 35% to 90%. Represent Platform at 86%, Design at 72%, and Product at 64% in three distinct colors. Include team legends and tooltips, the headline Three teams, and a footer explaining completion against quarterly targets.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
   },
   "categories": ["charts", "radial"],
   "type": "registry:component"

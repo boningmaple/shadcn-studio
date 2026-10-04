@@ -13,7 +13,8 @@
     }
   ],
   "meta": {
-    "height": 120
+    "height": 120,
+    "prompt": "Create a compact primary button labeled “Get started, 0” with a trailing right arrow. Increment the visible count by one on each activation, starting at zero. Use rounded corners, theme-aware primary colors, and keyboard-accessible button focus and activation."
   },
   "categories": ["components", "button"],
   "type": "registry:component"

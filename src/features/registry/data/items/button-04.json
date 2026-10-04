@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 120
+    "height": 120,
+    "prompt": "Create a 256px-wide vertical group with small outlined Expand and Collapse buttons above an outlined Search pill. Start expanded. The pill is 32px tall, fills the group width, and contains a search icon, Search text, and separate ⌘ and K keycaps.\n\nExpand and Collapse select the corresponding state and expose their pressed states. Collapse the pill to a 32px circle, hide overflowing contents, and fade the text and keycaps out; expand reverses this. Animate width and opacity over 200ms with linear timing and disable transitions for reduced motion. Keep the Search accessible name in both states and hide decorative keycaps from assistive technology. The search action itself is presentational."
   },
   "categories": ["components", "button"],
   "type": "registry:component"

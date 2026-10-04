@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 240
+    "height": 240,
+    "prompt": "Create a minimal single-field form for password, filling available width up to 384px. Stack the “Password” label, a masked password input with new-password autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nRequire 8–128 characters including a lowercase letter, uppercase letter, number, and symbol. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
   },
   "categories": ["components", "form"],
   "type": "registry:component"

@@ -15,6 +15,10 @@
 
 - Before adding or changing frontend component/browser or E2E tests, read `docs/agents/frontend-testing.md`.
 
+## Registry item authoring
+
+- Before creating or changing a Registry item's design, read `docs/agents/registry-authoring.md` for the prompt-first workflow and metadata requirements.
+
 ## Agent skills
 
 ### Issue tracker

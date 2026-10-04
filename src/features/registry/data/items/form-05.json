@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 240
+    "height": 240,
+    "prompt": "Create a minimal single-field form for card number, filling available width up to 384px. Stack the “Card number” label, a text input with a numeric keyboard and card-number autofill, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nAccept digits, spaces, and hyphens. Validate 13–19 digits after removing spaces and hyphens and require a valid Luhn checksum. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
   },
   "categories": ["components", "form"],
   "type": "registry:component"

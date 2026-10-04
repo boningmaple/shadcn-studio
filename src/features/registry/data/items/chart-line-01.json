@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 520
+    "height": 520,
+    "prompt": "Create a responsive analytics card titled “Subscriber growth” with the muted eyebrow “Monthly active subscribers · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun subscribers 186, 225, 208, 284, 312, 368 as a single monotone 3px line without point dots. Label the tooltip series This year. Show 368 subscribers and a footer noting 56 new subscribers in June.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
   },
   "categories": ["charts", "line"],
   "type": "registry:component"

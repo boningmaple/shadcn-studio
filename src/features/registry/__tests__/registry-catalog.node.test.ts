@@ -10,7 +10,7 @@ import type { VibeRegistryItem } from "@/features/registry/types/registry";
 
 const sourceItems: VibeRegistryItem[] = [
   {
-    meta: { height: 120 },
+    meta: { height: 120, prompt: "  Create a button.\n\nKeep <details> as plain text.  " },
     categories: ["components", "button"],
     description: "A quiet button.",
     files: [],
@@ -20,7 +20,7 @@ const sourceItems: VibeRegistryItem[] = [
     type: "registry:component",
   },
   {
-    meta: { height: 120 },
+    meta: { height: 120, prompt: "  Create a button.\n\nKeep <details> as plain text.  " },
     categories: ["components", "button"],
     description: "A loud button.",
     files: [],
@@ -30,7 +30,7 @@ const sourceItems: VibeRegistryItem[] = [
     type: "registry:component",
   },
   {
-    meta: { height: 120 },
+    meta: { height: 120, prompt: "  Create a button.\n\nKeep <details> as plain text.  " },
     categories: ["blocks", "authentication"],
     description: "A login form.",
     files: [],

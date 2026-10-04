@@ -13,7 +13,8 @@
     }
   ],
   "meta": {
-    "height": 120
+    "height": 120,
+    "prompt": "Create a compact outlined button labeled “Open search” with a small inset ⌘ K keycap after the label. Use a subtle border, rounded corners, and theme-aware hover and keyboard focus styles. The shortcut is a visual hint; this standalone button has no search-opening behavior."
   },
   "categories": ["components", "button"],
   "type": "registry:component"

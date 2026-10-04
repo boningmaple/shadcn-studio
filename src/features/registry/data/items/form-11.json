@@ -14,7 +14,8 @@
     }
   ],
   "meta": {
-    "height": 240
+    "height": 240,
+    "prompt": "Create a minimal single-field form for country, filling available width up to 384px. Stack the “Country” label, a keyboard-accessible select with Australia, Canada, France, Germany, Japan, United Kingdom, and United States, and a compact primary Submit button with 16px spacing between the field and button. Use neutral theme-aware borders, rounded controls, and visible keyboard focus.\n\nStart without a selection and require one of the listed countries. Start with an empty value, validate on submission, and show field errors beneath the control with invalid styling and an accessible invalid state. Associate the label with the control. A valid submission stays on the form without a success screen or external action."
   },
   "categories": ["components", "form"],
   "type": "registry:component"

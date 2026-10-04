@@ -25,7 +25,8 @@
     }
   ],
   "meta": {
-    "height": 120
+    "height": 120,
+    "prompt": "Create a compact primary button labeled “Explore components” with a trailing right arrow. Align the text and decorative arrow horizontally with a small gap. Use rounded corners, theme-aware primary colors, and keyboard-accessible focus and activation. This is a static action presentation with no navigation behavior."
   },
   "categories": ["components", "button"],
   "type": "registry:component"
