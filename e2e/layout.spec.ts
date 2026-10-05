@@ -1,7 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
 const sidebar = (page: Page) => page.locator('[data-slot="sidebar"]').first();
-const workspaceControls = (page: Page) => page.getByRole("toolbar", { name: "Workspace controls" });
+const registryNavigation = (page: Page) => page.getByRole("navigation", { name: "Registry" });
 
 async function waitForHydration(page: Page) {
   await expect(page.getByRole("button", { name: /^Theme:/ })).toBeEnabled();
@@ -13,7 +13,7 @@ test.describe("route-controlled sidebar", () => {
     await waitForHydration(page);
 
     await expect(sidebar(page)).toHaveCount(0);
-    await expect(workspaceControls(page)).toHaveCount(0);
+    await expect(registryNavigation(page)).toHaveCount(0);
   });
 
   test("keeps the desktop sidebar on registry routes and restores it after navigation", async ({
@@ -23,17 +23,17 @@ test.describe("route-controlled sidebar", () => {
     await waitForHydration(page);
 
     await expect(sidebar(page)).toBeVisible();
-    await expect(workspaceControls(page)).toBeVisible();
+    await expect(registryNavigation(page)).toBeVisible();
 
     await page.getByRole("link", { name: "Home", exact: true }).click();
     await expect(page).toHaveURL("/");
     await expect(sidebar(page)).toHaveCount(0);
-    await expect(workspaceControls(page)).toHaveCount(0);
+    await expect(registryNavigation(page)).toHaveCount(0);
 
     await page.getByRole("link", { name: "Components", exact: true }).click();
     await expect(page).toHaveURL("/components");
     await expect(sidebar(page)).toBeVisible();
-    await expect(workspaceControls(page)).toBeVisible();
+    await expect(registryNavigation(page)).toBeVisible();
   });
 
   test("opens the sidebar sheet from the home page below lg", async ({ page }) => {
@@ -52,8 +52,11 @@ test.describe("route-controlled sidebar", () => {
     await page.goto("/components");
     await waitForHydration(page);
 
-    await page.getByRole("button", { name: "Components", exact: true }).click();
-    await page.getByRole("link", { name: "Button", exact: true }).click();
+    const navigation = registryNavigation(page);
+    await expect(
+      navigation.getByRole("button", { name: "Components", exact: true }),
+    ).toHaveAttribute("aria-expanded", "true");
+    await navigation.getByRole("link", { name: "Button", exact: true }).click();
 
     await expect(page).toHaveURL("/components/button");
     await expect(page.getByRole("heading", { name: "Button", exact: true })).toBeVisible();

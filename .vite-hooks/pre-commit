@@ -1,1 +1,9 @@
+set -e
+
+npm run build
 vp staged
+npm run lint
+npm run check
+npm run check:search-index
+npm run test
+npm run test:e2e

@@ -6,7 +6,7 @@
     "predev": "npm run build:registry",
     "dev": "vp dev --port 3000",
     "format": "vp fmt",
-    "lint": "vp lint",
+    "lint": "vp lint --deny-warnings --format=agent",
     "check": "vp check --fix",
     "test": "vp test",
     "test:watch": "vp test watch",

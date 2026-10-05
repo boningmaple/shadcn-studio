@@ -9,7 +9,7 @@ import {
   codeTab,
   previewTab,
   sourceCode,
-  codeStatus,
+  codePanel,
   explorerEntry,
   explorerToggle,
   explorerSidebar,
@@ -191,7 +191,8 @@ describe("Code panel", () => {
         await expect.poll(() => highlightSpy.mock.calls.length).toBe(1);
         await userEvent.click(codeTab());
 
-        await expect.element(codeStatus()).not.toBeInTheDocument();
+        await expect.element(codePanel()).toBeInTheDocument();
+        await expect.element(codePanel()).toBeEmptyDOMElement();
         await expect.element(sourceCode()).not.toBeInTheDocument();
       });
 
@@ -204,7 +205,8 @@ describe("Code panel", () => {
         await expect.poll(() => highlightSpy.mock.calls.length).toBe(1);
         await userEvent.click(codeTab());
 
-        await expect.element(codeStatus()).not.toBeInTheDocument();
+        await expect.element(codePanel()).toBeInTheDocument();
+        await expect.element(codePanel()).toBeEmptyDOMElement();
         await expect.element(sourceCode()).not.toBeInTheDocument();
         expect(highlightSpy).toHaveBeenCalledTimes(1);
         expect(document.body.textContent).not.toContain("First item source");

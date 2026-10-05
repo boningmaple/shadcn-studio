@@ -106,6 +106,12 @@ npm run check
 npm run lint -- --deny-warnings --format=agent
 ```
 
+`npm install` installs the repository’s pre-commit hook. Each commit runs the
+production build first, then staged-file checks, formatting and type checks,
+zero-warning lint, search-index freshness, unit/browser tests, and E2E tests.
+The commands are listed directly in `.vite-hooks/pre-commit`; any failed command
+stops the commit. Install Chromium with the command above before committing.
+
 The production build regenerates and validates the committed Registry item
 data, copies it to `public/r`, refreshes generated Registry routes/section data,
 rebuilds the committed Orama artifact, and bundles the application. Pages render

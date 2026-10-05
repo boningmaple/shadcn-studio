@@ -105,7 +105,7 @@ export const focusResetPreviewButton = () =>
 export const openPreviewLink = () => page.getByRole("link", { name: "Open in a new tab" });
 
 export const sourceCode = () => page.getByRole("region", { name: /^Source code for/ });
-export const codeStatus = () => page.getByRole("status");
+export const codePanel = () => page.getByRole("tabpanel", { name: "Code", exact: true });
 export const explorerEntry = (name: string) => page.getByRole("button", { exact: true, name });
 export const explorerToggle = () => page.getByRole("button", { name: "Toggle file explorer" });
 export const explorerSidebar = () =>
