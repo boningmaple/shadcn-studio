@@ -1,11 +1,13 @@
 import { createFileRoute, Outlet, useMatches } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 
 import { SidebarProvider, useSidebar } from "@/components/ui/sidebar";
 import { AppHeader } from "@/features/app-shell/components/app-header";
 import { AppSidebar } from "@/features/app-shell/components/app-sidebar";
 import { ThemeProvider } from "@/features/theme-switch/components/theme-provider";
 import { themeHydrationScript } from "@/features/theme-switch/script/theme-hydration-script";
+
+import { SiteNotFound } from "./-site-not-found";
 
 const TanStackDevtools = import.meta.env.DEV
   ? lazy(() =>
@@ -21,13 +23,24 @@ export const Route = createFileRoute("/_rootLayout")({
   }),
   staticData: { ariaLabel: "" },
   component: RouteComponent,
+  notFoundComponent: RouteNotFound,
 });
 
 function RouteComponent() {
   return (
+    <SiteLayout>
+      <Outlet />
+    </SiteLayout>
+  );
+}
+
+type SiteLayoutProps = { children: ReactNode };
+
+function SiteLayout(props: SiteLayoutProps) {
+  return (
     <ThemeProvider>
       <SidebarProvider>
-        <RootLayout />
+        <RootLayout>{props.children}</RootLayout>
       </SidebarProvider>
       {TanStackDevtools ? (
         <Suspense fallback={null}>
@@ -38,7 +51,9 @@ function RouteComponent() {
   );
 }
 
-function RootLayout() {
+type RootLayoutProps = { children: ReactNode };
+
+function RootLayout(props: RootLayoutProps) {
   const { isMobile } = useSidebar();
   const hideDesktopSidebar = useMatches({
     select: (matches) => matches.some((match) => match.staticData.hideDesktopSidebar === true),
@@ -50,10 +65,16 @@ function RootLayout() {
       {showSidebar ? <AppSidebar /> : null}
       <div className="relative flex min-w-0 flex-1 flex-col bg-background">
         {isMobile || hideDesktopSidebar ? <AppHeader showSidebar={showSidebar} /> : null}
-        <main className="flex-1 p-4 prose dark:prose-invert max-w-none">
-          <Outlet />
-        </main>
+        <main className="flex-1 p-4 prose dark:prose-invert max-w-none">{props.children}</main>
       </div>
     </>
+  );
+}
+
+function RouteNotFound() {
+  return (
+    <SiteLayout>
+      <SiteNotFound />
+    </SiteLayout>
   );
 }

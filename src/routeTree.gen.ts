@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RootLayoutRouteRouteImport } from './routes/_rootLayout/route'
 import { Route as PreviewRouteRouteImport } from './routes/preview/route'
 import { Route as RootLayoutIndexRouteImport } from './routes/_rootLayout/index'
+import { Route as RootLayoutSplatRouteImport } from './routes/_rootLayout/$'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
+import { Route as PreviewSplatRouteImport } from './routes/preview/$'
 import { Route as RootLayoutBlocksIndexRouteImport } from './routes/_rootLayout/blocks/index'
 import { Route as RootLayoutBlocksHeroSectionRouteImport } from './routes/_rootLayout/blocks/hero-section'
 import { Route as RootLayoutChartsIndexRouteImport } from './routes/_rootLayout/charts/index'
@@ -82,10 +84,20 @@ const RootLayoutIndexRoute = RootLayoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => RootLayoutRouteRoute,
 } as any)
+const RootLayoutSplatRoute = RootLayoutSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
 const ApiSearchRoute = ApiSearchRouteImport.update({
   id: '/api/search',
   path: '/api/search',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PreviewSplatRoute = PreviewSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => PreviewRouteRoute,
 } as any)
 const RootLayoutBlocksIndexRoute = RootLayoutBlocksIndexRouteImport.update({
   id: '/blocks/',
@@ -405,7 +417,9 @@ const PreviewPagesLandingPagesLandingPage01Route =
 export interface FileRoutesByFullPath {
   '/': typeof RootLayoutIndexRoute
   '/preview': typeof PreviewRouteRouteWithChildren
+  '/$': typeof RootLayoutSplatRoute
   '/api/search': typeof ApiSearchRoute
+  '/preview/$': typeof PreviewSplatRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/charts/area': typeof RootLayoutChartsAreaRoute
   '/charts/bar': typeof RootLayoutChartsBarRoute
@@ -463,7 +477,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/preview': typeof PreviewRouteRouteWithChildren
+  '/$': typeof RootLayoutSplatRoute
   '/api/search': typeof ApiSearchRoute
+  '/preview/$': typeof PreviewSplatRoute
   '/': typeof RootLayoutIndexRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/charts/area': typeof RootLayoutChartsAreaRoute
@@ -524,7 +540,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_rootLayout': typeof RootLayoutRouteRouteWithChildren
   '/preview': typeof PreviewRouteRouteWithChildren
+  '/_rootLayout/$': typeof RootLayoutSplatRoute
   '/api/search': typeof ApiSearchRoute
+  '/preview/$': typeof PreviewSplatRoute
   '/_rootLayout/': typeof RootLayoutIndexRoute
   '/_rootLayout/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/_rootLayout/charts/area': typeof RootLayoutChartsAreaRoute
@@ -586,7 +604,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/preview'
+    | '/$'
     | '/api/search'
+    | '/preview/$'
     | '/blocks/hero-section'
     | '/charts/area'
     | '/charts/bar'
@@ -644,7 +664,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/preview'
+    | '/$'
     | '/api/search'
+    | '/preview/$'
     | '/'
     | '/blocks/hero-section'
     | '/charts/area'
@@ -704,7 +726,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_rootLayout'
     | '/preview'
+    | '/_rootLayout/$'
     | '/api/search'
+    | '/preview/$'
     | '/_rootLayout/'
     | '/_rootLayout/blocks/hero-section'
     | '/_rootLayout/charts/area'
@@ -791,12 +815,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RootLayoutIndexRouteImport
       parentRoute: typeof RootLayoutRouteRoute
     }
+    '/_rootLayout/$': {
+      id: '/_rootLayout/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof RootLayoutSplatRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
     '/api/search': {
       id: '/api/search'
       path: '/api/search'
       fullPath: '/api/search'
       preLoaderRoute: typeof ApiSearchRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/preview/$': {
+      id: '/preview/$'
+      path: '/$'
+      fullPath: '/preview/$'
+      preLoaderRoute: typeof PreviewSplatRouteImport
+      parentRoute: typeof PreviewRouteRoute
     }
     '/_rootLayout/blocks/': {
       id: '/_rootLayout/blocks/'
@@ -1180,6 +1218,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface RootLayoutRouteRouteChildren {
+  RootLayoutSplatRoute: typeof RootLayoutSplatRoute
   RootLayoutIndexRoute: typeof RootLayoutIndexRoute
   RootLayoutBlocksHeroSectionRoute: typeof RootLayoutBlocksHeroSectionRoute
   RootLayoutChartsAreaRoute: typeof RootLayoutChartsAreaRoute
@@ -1201,6 +1240,7 @@ interface RootLayoutRouteRouteChildren {
 }
 
 const RootLayoutRouteRouteChildren: RootLayoutRouteRouteChildren = {
+  RootLayoutSplatRoute: RootLayoutSplatRoute,
   RootLayoutIndexRoute: RootLayoutIndexRoute,
   RootLayoutBlocksHeroSectionRoute: RootLayoutBlocksHeroSectionRoute,
   RootLayoutChartsAreaRoute: RootLayoutChartsAreaRoute,
@@ -1226,6 +1266,7 @@ const RootLayoutRouteRouteWithChildren = RootLayoutRouteRoute._addFileChildren(
 )
 
 interface PreviewRouteRouteChildren {
+  PreviewSplatRoute: typeof PreviewSplatRoute
   PreviewBlocksHeroSectionHeroSection01Route: typeof PreviewBlocksHeroSectionHeroSection01Route
   PreviewChartsAreaChartArea01Route: typeof PreviewChartsAreaChartArea01Route
   PreviewChartsAreaChartArea02Route: typeof PreviewChartsAreaChartArea02Route
@@ -1266,6 +1307,7 @@ interface PreviewRouteRouteChildren {
 }
 
 const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
+  PreviewSplatRoute: PreviewSplatRoute,
   PreviewBlocksHeroSectionHeroSection01Route:
     PreviewBlocksHeroSectionHeroSection01Route,
   PreviewChartsAreaChartArea01Route: PreviewChartsAreaChartArea01Route,
