@@ -20,6 +20,7 @@ import { Route as RootLayoutChartsAreaRouteImport } from './routes/_rootLayout/c
 import { Route as RootLayoutChartsBarRouteImport } from './routes/_rootLayout/charts/bar'
 import { Route as RootLayoutChartsComposedRouteImport } from './routes/_rootLayout/charts/composed'
 import { Route as RootLayoutChartsLineRouteImport } from './routes/_rootLayout/charts/line'
+import { Route as RootLayoutChartsMapRouteImport } from './routes/_rootLayout/charts/map'
 import { Route as RootLayoutChartsPieRouteImport } from './routes/_rootLayout/charts/pie'
 import { Route as RootLayoutChartsRadarRouteImport } from './routes/_rootLayout/charts/radar'
 import { Route as RootLayoutChartsRadialRouteImport } from './routes/_rootLayout/charts/radial'
@@ -39,6 +40,7 @@ import { Route as PreviewChartsComposedChartComposed02RouteImport } from './rout
 import { Route as PreviewChartsLineChartLine01RouteImport } from './routes/preview/charts/line/chart-line-01'
 import { Route as PreviewChartsLineChartLine02RouteImport } from './routes/preview/charts/line/chart-line-02'
 import { Route as PreviewChartsLineChartLine03RouteImport } from './routes/preview/charts/line/chart-line-03'
+import { Route as PreviewChartsMapChartMap01RouteImport } from './routes/preview/charts/map/chart-map-01'
 import { Route as PreviewChartsPieChartPie01RouteImport } from './routes/preview/charts/pie/chart-pie-01'
 import { Route as PreviewChartsPieChartPie02RouteImport } from './routes/preview/charts/pie/chart-pie-02'
 import { Route as PreviewChartsRadarChartRadar01RouteImport } from './routes/preview/charts/radar/chart-radar-01'
@@ -120,6 +122,11 @@ const RootLayoutChartsComposedRoute =
 const RootLayoutChartsLineRoute = RootLayoutChartsLineRouteImport.update({
   id: '/charts/line',
   path: '/charts/line',
+  getParentRoute: () => RootLayoutRouteRoute,
+} as any)
+const RootLayoutChartsMapRoute = RootLayoutChartsMapRouteImport.update({
+  id: '/charts/map',
+  path: '/charts/map',
   getParentRoute: () => RootLayoutRouteRoute,
 } as any)
 const RootLayoutChartsPieRoute = RootLayoutChartsPieRouteImport.update({
@@ -230,6 +237,12 @@ const PreviewChartsLineChartLine03Route =
   PreviewChartsLineChartLine03RouteImport.update({
     id: '/charts/line/chart-line-03',
     path: '/charts/line/chart-line-03',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsMapChartMap01Route =
+  PreviewChartsMapChartMap01RouteImport.update({
+    id: '/charts/map/chart-map-01',
+    path: '/charts/map/chart-map-01',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
 const PreviewChartsPieChartPie01Route =
@@ -398,6 +411,7 @@ export interface FileRoutesByFullPath {
   '/charts/bar': typeof RootLayoutChartsBarRoute
   '/charts/composed': typeof RootLayoutChartsComposedRoute
   '/charts/line': typeof RootLayoutChartsLineRoute
+  '/charts/map': typeof RootLayoutChartsMapRoute
   '/charts/pie': typeof RootLayoutChartsPieRoute
   '/charts/radar': typeof RootLayoutChartsRadarRoute
   '/charts/radial': typeof RootLayoutChartsRadialRoute
@@ -419,6 +433,7 @@ export interface FileRoutesByFullPath {
   '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
   '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
   '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/map/chart-map-01': typeof PreviewChartsMapChartMap01Route
   '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
   '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
   '/preview/charts/radar/chart-radar-01': typeof PreviewChartsRadarChartRadar01Route
@@ -455,6 +470,7 @@ export interface FileRoutesByTo {
   '/charts/bar': typeof RootLayoutChartsBarRoute
   '/charts/composed': typeof RootLayoutChartsComposedRoute
   '/charts/line': typeof RootLayoutChartsLineRoute
+  '/charts/map': typeof RootLayoutChartsMapRoute
   '/charts/pie': typeof RootLayoutChartsPieRoute
   '/charts/radar': typeof RootLayoutChartsRadarRoute
   '/charts/radial': typeof RootLayoutChartsRadialRoute
@@ -476,6 +492,7 @@ export interface FileRoutesByTo {
   '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
   '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
   '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/map/chart-map-01': typeof PreviewChartsMapChartMap01Route
   '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
   '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
   '/preview/charts/radar/chart-radar-01': typeof PreviewChartsRadarChartRadar01Route
@@ -514,6 +531,7 @@ export interface FileRoutesById {
   '/_rootLayout/charts/bar': typeof RootLayoutChartsBarRoute
   '/_rootLayout/charts/composed': typeof RootLayoutChartsComposedRoute
   '/_rootLayout/charts/line': typeof RootLayoutChartsLineRoute
+  '/_rootLayout/charts/map': typeof RootLayoutChartsMapRoute
   '/_rootLayout/charts/pie': typeof RootLayoutChartsPieRoute
   '/_rootLayout/charts/radar': typeof RootLayoutChartsRadarRoute
   '/_rootLayout/charts/radial': typeof RootLayoutChartsRadialRoute
@@ -535,6 +553,7 @@ export interface FileRoutesById {
   '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
   '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
   '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/map/chart-map-01': typeof PreviewChartsMapChartMap01Route
   '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
   '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
   '/preview/charts/radar/chart-radar-01': typeof PreviewChartsRadarChartRadar01Route
@@ -573,6 +592,7 @@ export interface FileRouteTypes {
     | '/charts/bar'
     | '/charts/composed'
     | '/charts/line'
+    | '/charts/map'
     | '/charts/pie'
     | '/charts/radar'
     | '/charts/radial'
@@ -594,6 +614,7 @@ export interface FileRouteTypes {
     | '/preview/charts/line/chart-line-01'
     | '/preview/charts/line/chart-line-02'
     | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/map/chart-map-01'
     | '/preview/charts/pie/chart-pie-01'
     | '/preview/charts/pie/chart-pie-02'
     | '/preview/charts/radar/chart-radar-01'
@@ -630,6 +651,7 @@ export interface FileRouteTypes {
     | '/charts/bar'
     | '/charts/composed'
     | '/charts/line'
+    | '/charts/map'
     | '/charts/pie'
     | '/charts/radar'
     | '/charts/radial'
@@ -651,6 +673,7 @@ export interface FileRouteTypes {
     | '/preview/charts/line/chart-line-01'
     | '/preview/charts/line/chart-line-02'
     | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/map/chart-map-01'
     | '/preview/charts/pie/chart-pie-01'
     | '/preview/charts/pie/chart-pie-02'
     | '/preview/charts/radar/chart-radar-01'
@@ -688,6 +711,7 @@ export interface FileRouteTypes {
     | '/_rootLayout/charts/bar'
     | '/_rootLayout/charts/composed'
     | '/_rootLayout/charts/line'
+    | '/_rootLayout/charts/map'
     | '/_rootLayout/charts/pie'
     | '/_rootLayout/charts/radar'
     | '/_rootLayout/charts/radial'
@@ -709,6 +733,7 @@ export interface FileRouteTypes {
     | '/preview/charts/line/chart-line-01'
     | '/preview/charts/line/chart-line-02'
     | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/map/chart-map-01'
     | '/preview/charts/pie/chart-pie-01'
     | '/preview/charts/pie/chart-pie-02'
     | '/preview/charts/radar/chart-radar-01'
@@ -820,6 +845,13 @@ declare module '@tanstack/react-router' {
       path: '/charts/line'
       fullPath: '/charts/line'
       preLoaderRoute: typeof RootLayoutChartsLineRouteImport
+      parentRoute: typeof RootLayoutRouteRoute
+    }
+    '/_rootLayout/charts/map': {
+      id: '/_rootLayout/charts/map'
+      path: '/charts/map'
+      fullPath: '/charts/map'
+      preLoaderRoute: typeof RootLayoutChartsMapRouteImport
       parentRoute: typeof RootLayoutRouteRoute
     }
     '/_rootLayout/charts/pie': {
@@ -953,6 +985,13 @@ declare module '@tanstack/react-router' {
       path: '/charts/line/chart-line-03'
       fullPath: '/preview/charts/line/chart-line-03'
       preLoaderRoute: typeof PreviewChartsLineChartLine03RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/map/chart-map-01': {
+      id: '/preview/charts/map/chart-map-01'
+      path: '/charts/map/chart-map-01'
+      fullPath: '/preview/charts/map/chart-map-01'
+      preLoaderRoute: typeof PreviewChartsMapChartMap01RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
     '/preview/charts/pie/chart-pie-01': {
@@ -1147,6 +1186,7 @@ interface RootLayoutRouteRouteChildren {
   RootLayoutChartsBarRoute: typeof RootLayoutChartsBarRoute
   RootLayoutChartsComposedRoute: typeof RootLayoutChartsComposedRoute
   RootLayoutChartsLineRoute: typeof RootLayoutChartsLineRoute
+  RootLayoutChartsMapRoute: typeof RootLayoutChartsMapRoute
   RootLayoutChartsPieRoute: typeof RootLayoutChartsPieRoute
   RootLayoutChartsRadarRoute: typeof RootLayoutChartsRadarRoute
   RootLayoutChartsRadialRoute: typeof RootLayoutChartsRadialRoute
@@ -1167,6 +1207,7 @@ const RootLayoutRouteRouteChildren: RootLayoutRouteRouteChildren = {
   RootLayoutChartsBarRoute: RootLayoutChartsBarRoute,
   RootLayoutChartsComposedRoute: RootLayoutChartsComposedRoute,
   RootLayoutChartsLineRoute: RootLayoutChartsLineRoute,
+  RootLayoutChartsMapRoute: RootLayoutChartsMapRoute,
   RootLayoutChartsPieRoute: RootLayoutChartsPieRoute,
   RootLayoutChartsRadarRoute: RootLayoutChartsRadarRoute,
   RootLayoutChartsRadialRoute: RootLayoutChartsRadialRoute,
@@ -1195,6 +1236,7 @@ interface PreviewRouteRouteChildren {
   PreviewChartsLineChartLine01Route: typeof PreviewChartsLineChartLine01Route
   PreviewChartsLineChartLine02Route: typeof PreviewChartsLineChartLine02Route
   PreviewChartsLineChartLine03Route: typeof PreviewChartsLineChartLine03Route
+  PreviewChartsMapChartMap01Route: typeof PreviewChartsMapChartMap01Route
   PreviewChartsPieChartPie01Route: typeof PreviewChartsPieChartPie01Route
   PreviewChartsPieChartPie02Route: typeof PreviewChartsPieChartPie02Route
   PreviewChartsRadarChartRadar01Route: typeof PreviewChartsRadarChartRadar01Route
@@ -1237,6 +1279,7 @@ const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
   PreviewChartsLineChartLine01Route: PreviewChartsLineChartLine01Route,
   PreviewChartsLineChartLine02Route: PreviewChartsLineChartLine02Route,
   PreviewChartsLineChartLine03Route: PreviewChartsLineChartLine03Route,
+  PreviewChartsMapChartMap01Route: PreviewChartsMapChartMap01Route,
   PreviewChartsPieChartPie01Route: PreviewChartsPieChartPie01Route,
   PreviewChartsPieChartPie02Route: PreviewChartsPieChartPie02Route,
   PreviewChartsRadarChartRadar01Route: PreviewChartsRadarChartRadar01Route,

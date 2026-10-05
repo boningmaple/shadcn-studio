@@ -51,6 +51,10 @@ export const registrySections = [
         title: "Line",
       },
       {
+        href: "/charts/map",
+        title: "Map",
+      },
+      {
         href: "/charts/pie",
         title: "Pie",
       },

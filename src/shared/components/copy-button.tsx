@@ -72,7 +72,7 @@ export function CopyButton(props: CopyButtonProps) {
         ) : (
           (icon ?? <CopyIcon />)
         )}
-        {label ?? <span className="min-w-0 truncate">{label}</span>}
+        {label && <span className="min-w-0 truncate">{label}</span>}
       </Button>
       <output aria-live="polite" className="sr-only">
         {copied ? (successMessage ?? "Copied current content.") : ""}

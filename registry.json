@@ -751,6 +751,35 @@
         "height": 570,
         "prompt": "Create a responsive analytics card titled “Explore subscriber growth” with the muted eyebrow “Choose a reporting window”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot subscriber values 186, 225, 208, 284, 312, 368 from Jan–Jun with a monotone 3px line and 4px dots. Above the plot, provide small 6 months and 3 months buttons in a Reporting window group. Start with six months selected; switching to three months shows Apr–Jun. Indicate selection through filled versus outlined styling and accessible pressed states. Show 368 subscribers and a footer explaining the window switch.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
       }
+    },
+    {
+      "name": "chart-map-01",
+      "title": "Population map",
+      "description": "A world population choropleth with country details and theme-aware teal colors.",
+      "type": "registry:component",
+      "dependencies": ["react-simple-maps"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-map-01/chart-map-01.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-map-01/chart-map-01.tsx"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-01/population-data.ts",
+          "type": "registry:lib",
+          "target": "@components/vibe-ui/chart-map-01/population-data.ts"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-01/world.json",
+          "type": "registry:file",
+          "target": "@components/vibe-ui/chart-map-01/world.json"
+        }
+      ],
+      "categories": ["charts", "map"],
+      "meta": {
+        "height": 760,
+        "prompt": "Create a responsive population choropleth in an understated editorial card. Use a large world map on a clean theme-aware background, a small Population / 2024 eyebrow, the title “A world of people”, and a brief explanation. Shade countries using seven ordered teal bands, from under one million to one billion or more, with a separate neutral no-data color. Use distinct Tailwind light and dark palettes and fine contrasting borders. Hovering, focusing, or tapping a country reveals its name and formatted population in a stable detail panel above the map. Provide a labeled country select so small countries are accessible. Show a wrapping color legend below the map, World Bank population attribution and Natural Earth boundary attribution. Keep the map responsive without horizontal overflow, provide accessible country names and population values, and visible keyboard focus. Use a fixed 2024 snapshot; omit playback and timeline controls. Missing values must be explicitly labeled “No data”."
+      }
     }
   ]
 }
