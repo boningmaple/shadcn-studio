@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-area-03",
+  "title": "Monthly revenue · TanStack Charts",
+  "description": "Revenue momentum across the first half of the year. Built with TanStack Charts.",
+  "dependencies": ["@tanstack/charts"],
+  "registryDependencies": ["card"],
+  "files": [
+    {
+      "path": "registry/vibe-ui/chart-area-03/chart-area-03.tsx",
+      "content": "\"use client\";\n\nimport { defineChart, areaY, lineY } from \"@tanstack/charts\";\nimport { Chart } from \"@tanstack/charts/react\";\nimport { scaleLinear } from \"@tanstack/charts/scales/linear\";\nimport { scalePoint } from \"@tanstack/charts/scales/point\";\nimport { tooltip } from \"@tanstack/charts/tooltip\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nconst data = [\n  { month: \"Jan\", current: 186, previous: 140 },\n  { month: \"Feb\", current: 225, previous: 178 },\n  { month: \"Mar\", current: 208, previous: 190 },\n  { month: \"Apr\", current: 284, previous: 210 },\n  { month: \"May\", current: 312, previous: 245 },\n  { month: \"Jun\", current: 368, previous: 272 },\n];\n\nconst definition = defineChart({\n  marks: [\n    areaY(data, {\n      x: \"month\",\n      y: (row) => row.current * 100,\n      fill: \"var(--chart-1)\",\n      fillOpacity: 0.18,\n    }),\n    lineY(data, { x: \"month\", y: (row) => row.current * 100, stroke: \"var(--chart-1)\" }),\n  ],\n  scales: {\n    x: { scale: () => scalePoint<string>().padding(0.4) },\n    y: {\n      scale: scaleLinear().domain([0, 40000]),\n      grid: true,\n      axis: { ticks: { format: (value: number) => `$${value / 1000}k` } },\n    },\n  },\n  theme: {\n    foreground: \"var(--foreground)\",\n    muted: \"var(--muted-foreground)\",\n    grid: \"var(--border)\",\n    background: \"var(--card)\",\n  },\n  tooltip,\n});\nexport default function ChartArea03() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <p className=\"text-xs font-medium uppercase tracking-wider text-muted-foreground\">\n          TanStack Charts\n        </p>\n        <CardTitle className=\"text-lg\">Monthly revenue</CardTitle>\n        <CardDescription>Revenue momentum across the first half of the year.</CardDescription>\n        <p className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">$36,800</p>\n      </CardHeader>\n      <CardContent>\n        <Chart ariaLabel=\"Monthly revenue\" definition={definition} height={260} />\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        Illustrative data for a sample analytics report.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/vibe-ui/chart-area-03/chart-area-03.tsx"
+    }
+  ],
+  "meta": {
+    "height": 560,
+    "prompt": "Create a responsive monthly revenue card with a subtle border, rounded corners, and theme-aware colors. Show a small TanStack Charts label, a Monthly revenue heading, a subtitle describing first-half revenue momentum, and a prominent $36,800 metric. Plot January through June revenue as a translucent filled area with a matching crisp line, monthly axis labels, dollar-formatted zero-based numeric ticks, and horizontal grid lines. Provide pointer and keyboard tooltips. Include a muted footer stating that the data is illustrative."
+  },
+  "categories": ["charts", "area"],
+  "type": "registry:component"
+}

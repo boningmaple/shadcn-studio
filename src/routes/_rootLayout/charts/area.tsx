@@ -4,9 +4,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { RegistryCollectionPage } from "@/features/registry/components/registry-collection-page";
 import registryItemChartArea01 from "@/features/registry/data/items/chart-area-01.json";
 import registryItemChartArea02 from "@/features/registry/data/items/chart-area-02.json";
+import registryItemChartArea03 from "@/features/registry/data/items/chart-area-03.json";
 import type { VibeBuiltRegistryItem } from "@/features/registry/types/registry";
 
-const items = [registryItemChartArea01, registryItemChartArea02] as VibeBuiltRegistryItem[];
+const items = [
+  registryItemChartArea01,
+  registryItemChartArea02,
+  registryItemChartArea03,
+] as VibeBuiltRegistryItem[];
 
 export const Route = createFileRoute("/_rootLayout/charts/area")({
   staticData: { ariaLabel: "Area" },

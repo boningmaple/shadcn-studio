@@ -5,12 +5,14 @@ import { RegistryCollectionPage } from "@/features/registry/components/registry-
 import registryItemChartLine01 from "@/features/registry/data/items/chart-line-01.json";
 import registryItemChartLine02 from "@/features/registry/data/items/chart-line-02.json";
 import registryItemChartLine03 from "@/features/registry/data/items/chart-line-03.json";
+import registryItemChartLine04 from "@/features/registry/data/items/chart-line-04.json";
 import type { VibeBuiltRegistryItem } from "@/features/registry/types/registry";
 
 const items = [
   registryItemChartLine01,
   registryItemChartLine02,
   registryItemChartLine03,
+  registryItemChartLine04,
 ] as VibeBuiltRegistryItem[];
 
 export const Route = createFileRoute("/_rootLayout/charts/line")({

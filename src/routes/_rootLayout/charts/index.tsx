@@ -4,10 +4,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { RegistrySectionPage } from "@/features/registry/components/registry-section-page";
 
 const collections = [
-  { title: "Area", href: "/charts/area", itemCount: 2 },
-  { title: "Bar", href: "/charts/bar", itemCount: 2 },
+  { title: "Area", href: "/charts/area", itemCount: 3 },
+  { title: "Bar", href: "/charts/bar", itemCount: 3 },
   { title: "Composed", href: "/charts/composed", itemCount: 2 },
-  { title: "Line", href: "/charts/line", itemCount: 3 },
+  { title: "Line", href: "/charts/line", itemCount: 4 },
   { title: "Map", href: "/charts/map", itemCount: 1 },
   { title: "Pie", href: "/charts/pie", itemCount: 2 },
   { title: "Radar", href: "/charts/radar", itemCount: 2 },

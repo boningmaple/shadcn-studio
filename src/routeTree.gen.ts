@@ -35,13 +35,16 @@ import { Route as RootLayoutPagesLandingPagesRouteImport } from './routes/_rootL
 import { Route as PreviewBlocksHeroSectionHeroSection01RouteImport } from './routes/preview/blocks/hero-section/hero-section-01'
 import { Route as PreviewChartsAreaChartArea01RouteImport } from './routes/preview/charts/area/chart-area-01'
 import { Route as PreviewChartsAreaChartArea02RouteImport } from './routes/preview/charts/area/chart-area-02'
+import { Route as PreviewChartsAreaChartArea03RouteImport } from './routes/preview/charts/area/chart-area-03'
 import { Route as PreviewChartsBarChartBar01RouteImport } from './routes/preview/charts/bar/chart-bar-01'
 import { Route as PreviewChartsBarChartBar02RouteImport } from './routes/preview/charts/bar/chart-bar-02'
+import { Route as PreviewChartsBarChartBar03RouteImport } from './routes/preview/charts/bar/chart-bar-03'
 import { Route as PreviewChartsComposedChartComposed01RouteImport } from './routes/preview/charts/composed/chart-composed-01'
 import { Route as PreviewChartsComposedChartComposed02RouteImport } from './routes/preview/charts/composed/chart-composed-02'
 import { Route as PreviewChartsLineChartLine01RouteImport } from './routes/preview/charts/line/chart-line-01'
 import { Route as PreviewChartsLineChartLine02RouteImport } from './routes/preview/charts/line/chart-line-02'
 import { Route as PreviewChartsLineChartLine03RouteImport } from './routes/preview/charts/line/chart-line-03'
+import { Route as PreviewChartsLineChartLine04RouteImport } from './routes/preview/charts/line/chart-line-04'
 import { Route as PreviewChartsMapChartMap01RouteImport } from './routes/preview/charts/map/chart-map-01'
 import { Route as PreviewChartsPieChartPie01RouteImport } from './routes/preview/charts/pie/chart-pie-01'
 import { Route as PreviewChartsPieChartPie02RouteImport } from './routes/preview/charts/pie/chart-pie-02'
@@ -209,6 +212,12 @@ const PreviewChartsAreaChartArea02Route =
     path: '/charts/area/chart-area-02',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
+const PreviewChartsAreaChartArea03Route =
+  PreviewChartsAreaChartArea03RouteImport.update({
+    id: '/charts/area/chart-area-03',
+    path: '/charts/area/chart-area-03',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
 const PreviewChartsBarChartBar01Route =
   PreviewChartsBarChartBar01RouteImport.update({
     id: '/charts/bar/chart-bar-01',
@@ -219,6 +228,12 @@ const PreviewChartsBarChartBar02Route =
   PreviewChartsBarChartBar02RouteImport.update({
     id: '/charts/bar/chart-bar-02',
     path: '/charts/bar/chart-bar-02',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsBarChartBar03Route =
+  PreviewChartsBarChartBar03RouteImport.update({
+    id: '/charts/bar/chart-bar-03',
+    path: '/charts/bar/chart-bar-03',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
 const PreviewChartsComposedChartComposed01Route =
@@ -249,6 +264,12 @@ const PreviewChartsLineChartLine03Route =
   PreviewChartsLineChartLine03RouteImport.update({
     id: '/charts/line/chart-line-03',
     path: '/charts/line/chart-line-03',
+    getParentRoute: () => PreviewRouteRoute,
+  } as any)
+const PreviewChartsLineChartLine04Route =
+  PreviewChartsLineChartLine04RouteImport.update({
+    id: '/charts/line/chart-line-04',
+    path: '/charts/line/chart-line-04',
     getParentRoute: () => PreviewRouteRoute,
   } as any)
 const PreviewChartsMapChartMap01Route =
@@ -440,13 +461,16 @@ export interface FileRoutesByFullPath {
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
   '/preview/charts/area/chart-area-01': typeof PreviewChartsAreaChartArea01Route
   '/preview/charts/area/chart-area-02': typeof PreviewChartsAreaChartArea02Route
+  '/preview/charts/area/chart-area-03': typeof PreviewChartsAreaChartArea03Route
   '/preview/charts/bar/chart-bar-01': typeof PreviewChartsBarChartBar01Route
   '/preview/charts/bar/chart-bar-02': typeof PreviewChartsBarChartBar02Route
+  '/preview/charts/bar/chart-bar-03': typeof PreviewChartsBarChartBar03Route
   '/preview/charts/composed/chart-composed-01': typeof PreviewChartsComposedChartComposed01Route
   '/preview/charts/composed/chart-composed-02': typeof PreviewChartsComposedChartComposed02Route
   '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
   '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
   '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/line/chart-line-04': typeof PreviewChartsLineChartLine04Route
   '/preview/charts/map/chart-map-01': typeof PreviewChartsMapChartMap01Route
   '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
   '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
@@ -501,13 +525,16 @@ export interface FileRoutesByTo {
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
   '/preview/charts/area/chart-area-01': typeof PreviewChartsAreaChartArea01Route
   '/preview/charts/area/chart-area-02': typeof PreviewChartsAreaChartArea02Route
+  '/preview/charts/area/chart-area-03': typeof PreviewChartsAreaChartArea03Route
   '/preview/charts/bar/chart-bar-01': typeof PreviewChartsBarChartBar01Route
   '/preview/charts/bar/chart-bar-02': typeof PreviewChartsBarChartBar02Route
+  '/preview/charts/bar/chart-bar-03': typeof PreviewChartsBarChartBar03Route
   '/preview/charts/composed/chart-composed-01': typeof PreviewChartsComposedChartComposed01Route
   '/preview/charts/composed/chart-composed-02': typeof PreviewChartsComposedChartComposed02Route
   '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
   '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
   '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/line/chart-line-04': typeof PreviewChartsLineChartLine04Route
   '/preview/charts/map/chart-map-01': typeof PreviewChartsMapChartMap01Route
   '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
   '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
@@ -564,13 +591,16 @@ export interface FileRoutesById {
   '/preview/blocks/hero-section/hero-section-01': typeof PreviewBlocksHeroSectionHeroSection01Route
   '/preview/charts/area/chart-area-01': typeof PreviewChartsAreaChartArea01Route
   '/preview/charts/area/chart-area-02': typeof PreviewChartsAreaChartArea02Route
+  '/preview/charts/area/chart-area-03': typeof PreviewChartsAreaChartArea03Route
   '/preview/charts/bar/chart-bar-01': typeof PreviewChartsBarChartBar01Route
   '/preview/charts/bar/chart-bar-02': typeof PreviewChartsBarChartBar02Route
+  '/preview/charts/bar/chart-bar-03': typeof PreviewChartsBarChartBar03Route
   '/preview/charts/composed/chart-composed-01': typeof PreviewChartsComposedChartComposed01Route
   '/preview/charts/composed/chart-composed-02': typeof PreviewChartsComposedChartComposed02Route
   '/preview/charts/line/chart-line-01': typeof PreviewChartsLineChartLine01Route
   '/preview/charts/line/chart-line-02': typeof PreviewChartsLineChartLine02Route
   '/preview/charts/line/chart-line-03': typeof PreviewChartsLineChartLine03Route
+  '/preview/charts/line/chart-line-04': typeof PreviewChartsLineChartLine04Route
   '/preview/charts/map/chart-map-01': typeof PreviewChartsMapChartMap01Route
   '/preview/charts/pie/chart-pie-01': typeof PreviewChartsPieChartPie01Route
   '/preview/charts/pie/chart-pie-02': typeof PreviewChartsPieChartPie02Route
@@ -627,13 +657,16 @@ export interface FileRouteTypes {
     | '/preview/blocks/hero-section/hero-section-01'
     | '/preview/charts/area/chart-area-01'
     | '/preview/charts/area/chart-area-02'
+    | '/preview/charts/area/chart-area-03'
     | '/preview/charts/bar/chart-bar-01'
     | '/preview/charts/bar/chart-bar-02'
+    | '/preview/charts/bar/chart-bar-03'
     | '/preview/charts/composed/chart-composed-01'
     | '/preview/charts/composed/chart-composed-02'
     | '/preview/charts/line/chart-line-01'
     | '/preview/charts/line/chart-line-02'
     | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/line/chart-line-04'
     | '/preview/charts/map/chart-map-01'
     | '/preview/charts/pie/chart-pie-01'
     | '/preview/charts/pie/chart-pie-02'
@@ -688,13 +721,16 @@ export interface FileRouteTypes {
     | '/preview/blocks/hero-section/hero-section-01'
     | '/preview/charts/area/chart-area-01'
     | '/preview/charts/area/chart-area-02'
+    | '/preview/charts/area/chart-area-03'
     | '/preview/charts/bar/chart-bar-01'
     | '/preview/charts/bar/chart-bar-02'
+    | '/preview/charts/bar/chart-bar-03'
     | '/preview/charts/composed/chart-composed-01'
     | '/preview/charts/composed/chart-composed-02'
     | '/preview/charts/line/chart-line-01'
     | '/preview/charts/line/chart-line-02'
     | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/line/chart-line-04'
     | '/preview/charts/map/chart-map-01'
     | '/preview/charts/pie/chart-pie-01'
     | '/preview/charts/pie/chart-pie-02'
@@ -750,13 +786,16 @@ export interface FileRouteTypes {
     | '/preview/blocks/hero-section/hero-section-01'
     | '/preview/charts/area/chart-area-01'
     | '/preview/charts/area/chart-area-02'
+    | '/preview/charts/area/chart-area-03'
     | '/preview/charts/bar/chart-bar-01'
     | '/preview/charts/bar/chart-bar-02'
+    | '/preview/charts/bar/chart-bar-03'
     | '/preview/charts/composed/chart-composed-01'
     | '/preview/charts/composed/chart-composed-02'
     | '/preview/charts/line/chart-line-01'
     | '/preview/charts/line/chart-line-02'
     | '/preview/charts/line/chart-line-03'
+    | '/preview/charts/line/chart-line-04'
     | '/preview/charts/map/chart-map-01'
     | '/preview/charts/pie/chart-pie-01'
     | '/preview/charts/pie/chart-pie-02'
@@ -976,6 +1015,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PreviewChartsAreaChartArea02RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
+    '/preview/charts/area/chart-area-03': {
+      id: '/preview/charts/area/chart-area-03'
+      path: '/charts/area/chart-area-03'
+      fullPath: '/preview/charts/area/chart-area-03'
+      preLoaderRoute: typeof PreviewChartsAreaChartArea03RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
     '/preview/charts/bar/chart-bar-01': {
       id: '/preview/charts/bar/chart-bar-01'
       path: '/charts/bar/chart-bar-01'
@@ -988,6 +1034,13 @@ declare module '@tanstack/react-router' {
       path: '/charts/bar/chart-bar-02'
       fullPath: '/preview/charts/bar/chart-bar-02'
       preLoaderRoute: typeof PreviewChartsBarChartBar02RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/bar/chart-bar-03': {
+      id: '/preview/charts/bar/chart-bar-03'
+      path: '/charts/bar/chart-bar-03'
+      fullPath: '/preview/charts/bar/chart-bar-03'
+      preLoaderRoute: typeof PreviewChartsBarChartBar03RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
     '/preview/charts/composed/chart-composed-01': {
@@ -1023,6 +1076,13 @@ declare module '@tanstack/react-router' {
       path: '/charts/line/chart-line-03'
       fullPath: '/preview/charts/line/chart-line-03'
       preLoaderRoute: typeof PreviewChartsLineChartLine03RouteImport
+      parentRoute: typeof PreviewRouteRoute
+    }
+    '/preview/charts/line/chart-line-04': {
+      id: '/preview/charts/line/chart-line-04'
+      path: '/charts/line/chart-line-04'
+      fullPath: '/preview/charts/line/chart-line-04'
+      preLoaderRoute: typeof PreviewChartsLineChartLine04RouteImport
       parentRoute: typeof PreviewRouteRoute
     }
     '/preview/charts/map/chart-map-01': {
@@ -1270,13 +1330,16 @@ interface PreviewRouteRouteChildren {
   PreviewBlocksHeroSectionHeroSection01Route: typeof PreviewBlocksHeroSectionHeroSection01Route
   PreviewChartsAreaChartArea01Route: typeof PreviewChartsAreaChartArea01Route
   PreviewChartsAreaChartArea02Route: typeof PreviewChartsAreaChartArea02Route
+  PreviewChartsAreaChartArea03Route: typeof PreviewChartsAreaChartArea03Route
   PreviewChartsBarChartBar01Route: typeof PreviewChartsBarChartBar01Route
   PreviewChartsBarChartBar02Route: typeof PreviewChartsBarChartBar02Route
+  PreviewChartsBarChartBar03Route: typeof PreviewChartsBarChartBar03Route
   PreviewChartsComposedChartComposed01Route: typeof PreviewChartsComposedChartComposed01Route
   PreviewChartsComposedChartComposed02Route: typeof PreviewChartsComposedChartComposed02Route
   PreviewChartsLineChartLine01Route: typeof PreviewChartsLineChartLine01Route
   PreviewChartsLineChartLine02Route: typeof PreviewChartsLineChartLine02Route
   PreviewChartsLineChartLine03Route: typeof PreviewChartsLineChartLine03Route
+  PreviewChartsLineChartLine04Route: typeof PreviewChartsLineChartLine04Route
   PreviewChartsMapChartMap01Route: typeof PreviewChartsMapChartMap01Route
   PreviewChartsPieChartPie01Route: typeof PreviewChartsPieChartPie01Route
   PreviewChartsPieChartPie02Route: typeof PreviewChartsPieChartPie02Route
@@ -1312,8 +1375,10 @@ const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
     PreviewBlocksHeroSectionHeroSection01Route,
   PreviewChartsAreaChartArea01Route: PreviewChartsAreaChartArea01Route,
   PreviewChartsAreaChartArea02Route: PreviewChartsAreaChartArea02Route,
+  PreviewChartsAreaChartArea03Route: PreviewChartsAreaChartArea03Route,
   PreviewChartsBarChartBar01Route: PreviewChartsBarChartBar01Route,
   PreviewChartsBarChartBar02Route: PreviewChartsBarChartBar02Route,
+  PreviewChartsBarChartBar03Route: PreviewChartsBarChartBar03Route,
   PreviewChartsComposedChartComposed01Route:
     PreviewChartsComposedChartComposed01Route,
   PreviewChartsComposedChartComposed02Route:
@@ -1321,6 +1386,7 @@ const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
   PreviewChartsLineChartLine01Route: PreviewChartsLineChartLine01Route,
   PreviewChartsLineChartLine02Route: PreviewChartsLineChartLine02Route,
   PreviewChartsLineChartLine03Route: PreviewChartsLineChartLine03Route,
+  PreviewChartsLineChartLine04Route: PreviewChartsLineChartLine04Route,
   PreviewChartsMapChartMap01Route: PreviewChartsMapChartMap01Route,
   PreviewChartsPieChartPie01Route: PreviewChartsPieChartPie01Route,
   PreviewChartsPieChartPie02Route: PreviewChartsPieChartPie02Route,
