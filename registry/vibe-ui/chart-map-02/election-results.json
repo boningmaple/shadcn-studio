@@ -1,0 +1,1977 @@
+{
+  "source": {
+    "name": "Wikipedia",
+    "url": "https://en.wikipedia.org/w/index.php?title=2026_Brazilian_general_election&oldid=1378844298#First_round_results_by_federative_unit",
+    "revisionId": "1378844298",
+    "retrievedAt": "2026-10-07",
+    "percentageBasis": "valid_votes",
+    "attribution": "Wikipedia contributors",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "candidates": [
+    {
+      "id": 1,
+      "name": "Flávio Bolsonaro"
+    },
+    {
+      "id": 2,
+      "name": "Luiz Inácio Lula da Silva"
+    },
+    {
+      "id": 3,
+      "name": "Augusto Cury"
+    },
+    {
+      "id": 4,
+      "name": "Renan Santos"
+    },
+    {
+      "id": 5,
+      "name": "Ronaldo Caiado"
+    },
+    {
+      "id": 6,
+      "name": "Romeu Zema"
+    },
+    {
+      "id": 7,
+      "name": "Samara Martins"
+    },
+    {
+      "id": 8,
+      "name": "Hertz Dias"
+    },
+    {
+      "id": 9,
+      "name": "Clariana Barão"
+    },
+    {
+      "id": 10,
+      "name": "Edmilson Costa"
+    },
+    {
+      "id": 11,
+      "name": "Wilson Grassi"
+    },
+    {
+      "id": 12,
+      "name": "Rui Costa Pimenta"
+    }
+  ],
+  "regionVotes": [
+    {
+      "code": "AC",
+      "name": "Acre",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 302807,
+          "percent": 64.56
+        },
+        {
+          "candidateId": 2,
+          "votes": 134770,
+          "percent": 28.73
+        },
+        {
+          "candidateId": 3,
+          "votes": 13523,
+          "percent": 2.88
+        },
+        {
+          "candidateId": 4,
+          "votes": 7980,
+          "percent": 1.7
+        },
+        {
+          "candidateId": 5,
+          "votes": 8594,
+          "percent": 1.83
+        },
+        {
+          "candidateId": 6,
+          "votes": 573,
+          "percent": 0.12
+        },
+        {
+          "candidateId": 7,
+          "votes": 314,
+          "percent": 0.07
+        },
+        {
+          "candidateId": 8,
+          "votes": 71,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 215,
+          "percent": 0.05
+        },
+        {
+          "candidateId": 10,
+          "votes": 140,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 11,
+          "votes": 39,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 40,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "AL",
+      "name": "Alagoas",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 735718,
+          "percent": 40.45
+        },
+        {
+          "candidateId": 2,
+          "votes": 995459,
+          "percent": 54.73
+        },
+        {
+          "candidateId": 3,
+          "votes": 42427,
+          "percent": 2.33
+        },
+        {
+          "candidateId": 4,
+          "votes": 26851,
+          "percent": 1.48
+        },
+        {
+          "candidateId": 5,
+          "votes": 14198,
+          "percent": 0.78
+        },
+        {
+          "candidateId": 6,
+          "votes": 1168,
+          "percent": 0.06
+        },
+        {
+          "candidateId": 7,
+          "votes": 1345,
+          "percent": 0.07
+        },
+        {
+          "candidateId": 8,
+          "votes": 431,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 636,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 10,
+          "votes": 267,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 246,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 110,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "AP",
+      "name": "Amapá",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 212278,
+          "percent": 45.67
+        },
+        {
+          "candidateId": 2,
+          "votes": 212503,
+          "percent": 45.71
+        },
+        {
+          "candidateId": 3,
+          "votes": 19057,
+          "percent": 4.1
+        },
+        {
+          "candidateId": 4,
+          "votes": 11342,
+          "percent": 2.44
+        },
+        {
+          "candidateId": 5,
+          "votes": 8304,
+          "percent": 1.79
+        },
+        {
+          "candidateId": 6,
+          "votes": 341,
+          "percent": 0.07
+        },
+        {
+          "candidateId": 7,
+          "votes": 508,
+          "percent": 0.11
+        },
+        {
+          "candidateId": 8,
+          "votes": 132,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 9,
+          "votes": 229,
+          "percent": 0.05
+        },
+        {
+          "candidateId": 10,
+          "votes": 62,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 49,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 53,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "AM",
+      "name": "Amazonas",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 976764,
+          "percent": 45.0
+        },
+        {
+          "candidateId": 2,
+          "votes": 1046996,
+          "percent": 48.23
+        },
+        {
+          "candidateId": 3,
+          "votes": 77531,
+          "percent": 3.57
+        },
+        {
+          "candidateId": 4,
+          "votes": 35411,
+          "percent": 1.63
+        },
+        {
+          "candidateId": 5,
+          "votes": 28310,
+          "percent": 1.3
+        },
+        {
+          "candidateId": 6,
+          "votes": 1781,
+          "percent": 0.08
+        },
+        {
+          "candidateId": 7,
+          "votes": 1867,
+          "percent": 0.09
+        },
+        {
+          "candidateId": 8,
+          "votes": 457,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 929,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 10,
+          "votes": 265,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 291,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 161,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "BA",
+      "name": "Bahia",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 2442585,
+          "percent": 28.53
+        },
+        {
+          "candidateId": 2,
+          "votes": 5664771,
+          "percent": 66.17
+        },
+        {
+          "candidateId": 3,
+          "votes": 195451,
+          "percent": 2.28
+        },
+        {
+          "candidateId": 4,
+          "votes": 117518,
+          "percent": 1.37
+        },
+        {
+          "candidateId": 5,
+          "votes": 122705,
+          "percent": 1.43
+        },
+        {
+          "candidateId": 6,
+          "votes": 6497,
+          "percent": 0.08
+        },
+        {
+          "candidateId": 7,
+          "votes": 4649,
+          "percent": 0.05
+        },
+        {
+          "candidateId": 8,
+          "votes": 1791,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 1676,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 10,
+          "votes": 1299,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 625,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 724,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "CE",
+      "name": "Ceará",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 1756850,
+          "percent": 31.27
+        },
+        {
+          "candidateId": 2,
+          "votes": 3555263,
+          "percent": 63.29
+        },
+        {
+          "candidateId": 3,
+          "votes": 140524,
+          "percent": 2.5
+        },
+        {
+          "candidateId": 4,
+          "votes": 107587,
+          "percent": 1.92
+        },
+        {
+          "candidateId": 5,
+          "votes": 45604,
+          "percent": 0.81
+        },
+        {
+          "candidateId": 6,
+          "votes": 4310,
+          "percent": 0.08
+        },
+        {
+          "candidateId": 7,
+          "votes": 3352,
+          "percent": 0.06
+        },
+        {
+          "candidateId": 8,
+          "votes": 1491,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 9,
+          "votes": 1071,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 10,
+          "votes": 783,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 481,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 498,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "ES",
+      "name": "Espírito Santo",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 1233194,
+          "percent": 54.78
+        },
+        {
+          "candidateId": 2,
+          "votes": 850028,
+          "percent": 37.76
+        },
+        {
+          "candidateId": 3,
+          "votes": 65121,
+          "percent": 2.89
+        },
+        {
+          "candidateId": 4,
+          "votes": 53236,
+          "percent": 2.36
+        },
+        {
+          "candidateId": 5,
+          "votes": 39097,
+          "percent": 1.74
+        },
+        {
+          "candidateId": 6,
+          "votes": 5873,
+          "percent": 0.26
+        },
+        {
+          "candidateId": 7,
+          "votes": 1973,
+          "percent": 0.09
+        },
+        {
+          "candidateId": 8,
+          "votes": 638,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 9,
+          "votes": 974,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 10,
+          "votes": 388,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 311,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 245,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "DF",
+      "name": "Federal District",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 909616,
+          "percent": 51.31
+        },
+        {
+          "candidateId": 2,
+          "votes": 675627,
+          "percent": 38.11
+        },
+        {
+          "candidateId": 3,
+          "votes": 45979,
+          "percent": 2.59
+        },
+        {
+          "candidateId": 4,
+          "votes": 46714,
+          "percent": 2.64
+        },
+        {
+          "candidateId": 5,
+          "votes": 85076,
+          "percent": 4.8
+        },
+        {
+          "candidateId": 6,
+          "votes": 4915,
+          "percent": 0.28
+        },
+        {
+          "candidateId": 7,
+          "votes": 2297,
+          "percent": 0.13
+        },
+        {
+          "candidateId": 8,
+          "votes": 828,
+          "percent": 0.05
+        },
+        {
+          "candidateId": 9,
+          "votes": 716,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 10,
+          "votes": 334,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 324,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 12,
+          "votes": 382,
+          "percent": 0.02
+        }
+      ]
+    },
+    {
+      "code": "GO",
+      "name": "Goiás",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 2051888,
+          "percent": 53.6
+        },
+        {
+          "candidateId": 2,
+          "votes": 1188880,
+          "percent": 31.06
+        },
+        {
+          "candidateId": 3,
+          "votes": 53849,
+          "percent": 1.41
+        },
+        {
+          "candidateId": 4,
+          "votes": 54105,
+          "percent": 1.41
+        },
+        {
+          "candidateId": 5,
+          "votes": 472041,
+          "percent": 12.33
+        },
+        {
+          "candidateId": 6,
+          "votes": 2672,
+          "percent": 0.07
+        },
+        {
+          "candidateId": 7,
+          "votes": 2087,
+          "percent": 0.05
+        },
+        {
+          "candidateId": 8,
+          "votes": 668,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 559,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 10,
+          "votes": 468,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 346,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 260,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "MA",
+      "name": "Maranhão",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 1239040,
+          "percent": 30.9
+        },
+        {
+          "candidateId": 2,
+          "votes": 2566301,
+          "percent": 63.99
+        },
+        {
+          "candidateId": 3,
+          "votes": 84830,
+          "percent": 2.12
+        },
+        {
+          "candidateId": 4,
+          "votes": 60387,
+          "percent": 1.51
+        },
+        {
+          "candidateId": 5,
+          "votes": 50155,
+          "percent": 1.25
+        },
+        {
+          "candidateId": 6,
+          "votes": 4584,
+          "percent": 0.11
+        },
+        {
+          "candidateId": 7,
+          "votes": 1795,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 8,
+          "votes": 1459,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 9,
+          "votes": 895,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 10,
+          "votes": 475,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 307,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 211,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "MT",
+      "name": "Mato Grosso",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 1298581,
+          "percent": 65.15
+        },
+        {
+          "candidateId": 2,
+          "votes": 581681,
+          "percent": 29.18
+        },
+        {
+          "candidateId": 3,
+          "votes": 40019,
+          "percent": 2.01
+        },
+        {
+          "candidateId": 4,
+          "votes": 33170,
+          "percent": 1.66
+        },
+        {
+          "candidateId": 5,
+          "votes": 33079,
+          "percent": 1.66
+        },
+        {
+          "candidateId": 6,
+          "votes": 2424,
+          "percent": 0.12
+        },
+        {
+          "candidateId": 7,
+          "votes": 1584,
+          "percent": 0.08
+        },
+        {
+          "candidateId": 8,
+          "votes": 340,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 1869,
+          "percent": 0.09
+        },
+        {
+          "candidateId": 10,
+          "votes": 239,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 172,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 130,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "MS",
+      "name": "Mato Grosso do Sul",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 873351,
+          "percent": 58.6
+        },
+        {
+          "candidateId": 2,
+          "votes": 516855,
+          "percent": 34.68
+        },
+        {
+          "candidateId": 3,
+          "votes": 39148,
+          "percent": 2.63
+        },
+        {
+          "candidateId": 4,
+          "votes": 31847,
+          "percent": 2.14
+        },
+        {
+          "candidateId": 5,
+          "votes": 23291,
+          "percent": 1.56
+        },
+        {
+          "candidateId": 6,
+          "votes": 2792,
+          "percent": 0.19
+        },
+        {
+          "candidateId": 7,
+          "votes": 1291,
+          "percent": 0.09
+        },
+        {
+          "candidateId": 8,
+          "votes": 353,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 626,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 10,
+          "votes": 332,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 209,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 183,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "MG",
+      "name": "Minas Gerais",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 5777548,
+          "percent": 48.24
+        },
+        {
+          "candidateId": 2,
+          "votes": 5188936,
+          "percent": 43.33
+        },
+        {
+          "candidateId": 3,
+          "votes": 409737,
+          "percent": 3.42
+        },
+        {
+          "candidateId": 4,
+          "votes": 247209,
+          "percent": 2.06
+        },
+        {
+          "candidateId": 5,
+          "votes": 230423,
+          "percent": 1.92
+        },
+        {
+          "candidateId": 6,
+          "votes": 98407,
+          "percent": 0.82
+        },
+        {
+          "candidateId": 7,
+          "votes": 11026,
+          "percent": 0.09
+        },
+        {
+          "candidateId": 8,
+          "votes": 4085,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 9,
+          "votes": 3411,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 10,
+          "votes": 2300,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 1732,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 1421,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "PA",
+      "name": "Pará",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 2163957,
+          "percent": 44.5
+        },
+        {
+          "candidateId": 2,
+          "votes": 2427237,
+          "percent": 49.91
+        },
+        {
+          "candidateId": 3,
+          "votes": 125172,
+          "percent": 2.57
+        },
+        {
+          "candidateId": 4,
+          "votes": 84165,
+          "percent": 1.73
+        },
+        {
+          "candidateId": 5,
+          "votes": 51991,
+          "percent": 1.07
+        },
+        {
+          "candidateId": 6,
+          "votes": 3064,
+          "percent": 0.06
+        },
+        {
+          "candidateId": 7,
+          "votes": 3824,
+          "percent": 0.08
+        },
+        {
+          "candidateId": 8,
+          "votes": 1045,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 1293,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 10,
+          "votes": 674,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 442,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 308,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "PB",
+      "name": "Paraíba",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 831377,
+          "percent": 33.07
+        },
+        {
+          "candidateId": 2,
+          "votes": 1541127,
+          "percent": 61.31
+        },
+        {
+          "candidateId": 3,
+          "votes": 73831,
+          "percent": 2.94
+        },
+        {
+          "candidateId": 4,
+          "votes": 42247,
+          "percent": 1.68
+        },
+        {
+          "candidateId": 5,
+          "votes": 19511,
+          "percent": 0.78
+        },
+        {
+          "candidateId": 6,
+          "votes": 1988,
+          "percent": 0.08
+        },
+        {
+          "candidateId": 7,
+          "votes": 1593,
+          "percent": 0.06
+        },
+        {
+          "candidateId": 8,
+          "votes": 627,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 604,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 10,
+          "votes": 347,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 221,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 274,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "PR",
+      "name": "Paraná",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 3945345,
+          "percent": 59.91
+        },
+        {
+          "candidateId": 2,
+          "votes": 2054597,
+          "percent": 31.2
+        },
+        {
+          "candidateId": 3,
+          "votes": 205095,
+          "percent": 3.11
+        },
+        {
+          "candidateId": 4,
+          "votes": 177434,
+          "percent": 2.69
+        },
+        {
+          "candidateId": 5,
+          "votes": 171294,
+          "percent": 2.6
+        },
+        {
+          "candidateId": 6,
+          "votes": 17172,
+          "percent": 0.26
+        },
+        {
+          "candidateId": 7,
+          "votes": 6731,
+          "percent": 0.1
+        },
+        {
+          "candidateId": 8,
+          "votes": 2056,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 9,
+          "votes": 2445,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 10,
+          "votes": 1195,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 962,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 917,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "PE",
+      "name": "Pernambuco",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 1738043,
+          "percent": 31.03
+        },
+        {
+          "candidateId": 2,
+          "votes": 3553971,
+          "percent": 63.45
+        },
+        {
+          "candidateId": 3,
+          "votes": 137960,
+          "percent": 2.46
+        },
+        {
+          "candidateId": 4,
+          "votes": 85865,
+          "percent": 1.53
+        },
+        {
+          "candidateId": 5,
+          "votes": 73176,
+          "percent": 1.31
+        },
+        {
+          "candidateId": 6,
+          "votes": 6060,
+          "percent": 0.11
+        },
+        {
+          "candidateId": 7,
+          "votes": 2387,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 8,
+          "votes": 1114,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 869,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 10,
+          "votes": 705,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 457,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 410,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "PI",
+      "name": "Piauí",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 517028,
+          "percent": 24.09
+        },
+        {
+          "candidateId": 2,
+          "votes": 1523710,
+          "percent": 70.99
+        },
+        {
+          "candidateId": 3,
+          "votes": 47692,
+          "percent": 2.22
+        },
+        {
+          "candidateId": 4,
+          "votes": 32274,
+          "percent": 1.5
+        },
+        {
+          "candidateId": 5,
+          "votes": 21629,
+          "percent": 1.01
+        },
+        {
+          "candidateId": 6,
+          "votes": 1357,
+          "percent": 0.06
+        },
+        {
+          "candidateId": 7,
+          "votes": 1099,
+          "percent": 0.05
+        },
+        {
+          "candidateId": 8,
+          "votes": 443,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 504,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 10,
+          "votes": 319,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 193,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 146,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "RJ",
+      "name": "Rio de Janeiro",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 4966844,
+          "percent": 53.01
+        },
+        {
+          "candidateId": 2,
+          "votes": 3693021,
+          "percent": 39.41
+        },
+        {
+          "candidateId": 3,
+          "votes": 247397,
+          "percent": 2.64
+        },
+        {
+          "candidateId": 4,
+          "votes": 211843,
+          "percent": 2.26
+        },
+        {
+          "candidateId": 5,
+          "votes": 199844,
+          "percent": 2.13
+        },
+        {
+          "candidateId": 6,
+          "votes": 21907,
+          "percent": 0.23
+        },
+        {
+          "candidateId": 7,
+          "votes": 14186,
+          "percent": 0.15
+        },
+        {
+          "candidateId": 8,
+          "votes": 3999,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 9,
+          "votes": 4082,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 10,
+          "votes": 2854,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 11,
+          "votes": 1930,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 12,
+          "votes": 1793,
+          "percent": 0.02
+        }
+      ]
+    },
+    {
+      "code": "RN",
+      "name": "Rio Grande do Norte",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 720493,
+          "percent": 34.77
+        },
+        {
+          "candidateId": 2,
+          "votes": 1237963,
+          "percent": 59.75
+        },
+        {
+          "candidateId": 3,
+          "votes": 57367,
+          "percent": 2.77
+        },
+        {
+          "candidateId": 4,
+          "votes": 35261,
+          "percent": 1.7
+        },
+        {
+          "candidateId": 5,
+          "votes": 16407,
+          "percent": 0.79
+        },
+        {
+          "candidateId": 6,
+          "votes": 1525,
+          "percent": 0.07
+        },
+        {
+          "candidateId": 7,
+          "votes": 1228,
+          "percent": 0.06
+        },
+        {
+          "candidateId": 8,
+          "votes": 572,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 9,
+          "votes": 405,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 10,
+          "votes": 315,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 185,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 177,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "RS",
+      "name": "Rio Grande do Sul",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 3573783,
+          "percent": 55.64
+        },
+        {
+          "candidateId": 2,
+          "votes": 2294759,
+          "percent": 35.73
+        },
+        {
+          "candidateId": 3,
+          "votes": 195296,
+          "percent": 3.04
+        },
+        {
+          "candidateId": 4,
+          "votes": 167558,
+          "percent": 2.61
+        },
+        {
+          "candidateId": 5,
+          "votes": 158821,
+          "percent": 2.47
+        },
+        {
+          "candidateId": 6,
+          "votes": 18988,
+          "percent": 0.3
+        },
+        {
+          "candidateId": 7,
+          "votes": 6632,
+          "percent": 0.1
+        },
+        {
+          "candidateId": 8,
+          "votes": 2146,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 9,
+          "votes": 2066,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 10,
+          "votes": 1031,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 923,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 1043,
+          "percent": 0.02
+        }
+      ]
+    },
+    {
+      "code": "RO",
+      "name": "Rondônia",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 652988,
+          "percent": 67.45
+        },
+        {
+          "candidateId": 2,
+          "votes": 250667,
+          "percent": 25.89
+        },
+        {
+          "candidateId": 3,
+          "votes": 25280,
+          "percent": 2.61
+        },
+        {
+          "candidateId": 4,
+          "votes": 19187,
+          "percent": 1.98
+        },
+        {
+          "candidateId": 5,
+          "votes": 16929,
+          "percent": 1.75
+        },
+        {
+          "candidateId": 6,
+          "votes": 1318,
+          "percent": 0.14
+        },
+        {
+          "candidateId": 7,
+          "votes": 843,
+          "percent": 0.09
+        },
+        {
+          "candidateId": 8,
+          "votes": 174,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 356,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 10,
+          "votes": 160,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 97,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 60,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "RR",
+      "name": "Roraima",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 231322,
+          "percent": 71.06
+        },
+        {
+          "candidateId": 2,
+          "votes": 74420,
+          "percent": 22.86
+        },
+        {
+          "candidateId": 3,
+          "votes": 8579,
+          "percent": 2.64
+        },
+        {
+          "candidateId": 4,
+          "votes": 6623,
+          "percent": 2.03
+        },
+        {
+          "candidateId": 5,
+          "votes": 3639,
+          "percent": 1.12
+        },
+        {
+          "candidateId": 6,
+          "votes": 337,
+          "percent": 0.1
+        },
+        {
+          "candidateId": 7,
+          "votes": 280,
+          "percent": 0.09
+        },
+        {
+          "candidateId": 8,
+          "votes": 60,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 168,
+          "percent": 0.05
+        },
+        {
+          "candidateId": 10,
+          "votes": 42,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 41,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 34,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "SC",
+      "name": "Santa Catarina",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 3000020,
+          "percent": 66.65
+        },
+        {
+          "candidateId": 2,
+          "votes": 1127168,
+          "percent": 25.04
+        },
+        {
+          "candidateId": 3,
+          "votes": 134273,
+          "percent": 2.98
+        },
+        {
+          "candidateId": 4,
+          "votes": 132795,
+          "percent": 2.95
+        },
+        {
+          "candidateId": 5,
+          "votes": 79911,
+          "percent": 1.78
+        },
+        {
+          "candidateId": 6,
+          "votes": 16718,
+          "percent": 0.37
+        },
+        {
+          "candidateId": 7,
+          "votes": 5049,
+          "percent": 0.11
+        },
+        {
+          "candidateId": 8,
+          "votes": 1503,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 9,
+          "votes": 1429,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 10,
+          "votes": 828,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 560,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 643,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "SP",
+      "name": "São Paulo",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 12922023,
+          "percent": 51.93
+        },
+        {
+          "candidateId": 2,
+          "votes": 9505413,
+          "percent": 38.2
+        },
+        {
+          "candidateId": 3,
+          "votes": 892368,
+          "percent": 3.59
+        },
+        {
+          "candidateId": 4,
+          "votes": 804310,
+          "percent": 3.23
+        },
+        {
+          "candidateId": 5,
+          "votes": 579571,
+          "percent": 2.33
+        },
+        {
+          "candidateId": 6,
+          "votes": 94635,
+          "percent": 0.38
+        },
+        {
+          "candidateId": 7,
+          "votes": 42532,
+          "percent": 0.17
+        },
+        {
+          "candidateId": 8,
+          "votes": 15815,
+          "percent": 0.06
+        },
+        {
+          "candidateId": 9,
+          "votes": 10563,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 10,
+          "votes": 6129,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 5160,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 12,
+          "votes": 4429,
+          "percent": 0.02
+        }
+      ]
+    },
+    {
+      "code": "SE",
+      "name": "Sergipe",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 417839,
+          "percent": 30.63
+        },
+        {
+          "candidateId": 2,
+          "votes": 856019,
+          "percent": 62.75
+        },
+        {
+          "candidateId": 3,
+          "votes": 38895,
+          "percent": 2.85
+        },
+        {
+          "candidateId": 4,
+          "votes": 21405,
+          "percent": 1.57
+        },
+        {
+          "candidateId": 5,
+          "votes": 26651,
+          "percent": 1.95
+        },
+        {
+          "candidateId": 6,
+          "votes": 1158,
+          "percent": 0.08
+        },
+        {
+          "candidateId": 7,
+          "votes": 991,
+          "percent": 0.07
+        },
+        {
+          "candidateId": 8,
+          "votes": 331,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 9,
+          "votes": 457,
+          "percent": 0.03
+        },
+        {
+          "candidateId": 10,
+          "votes": 204,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 138,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 108,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "TO",
+      "name": "Tocantins",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 469321,
+          "percent": 50.44
+        },
+        {
+          "candidateId": 2,
+          "votes": 404009,
+          "percent": 43.42
+        },
+        {
+          "candidateId": 3,
+          "votes": 22434,
+          "percent": 2.41
+        },
+        {
+          "candidateId": 4,
+          "votes": 12983,
+          "percent": 1.4
+        },
+        {
+          "candidateId": 5,
+          "votes": 20189,
+          "percent": 2.17
+        },
+        {
+          "candidateId": 6,
+          "votes": 595,
+          "percent": 0.06
+        },
+        {
+          "candidateId": 7,
+          "votes": 395,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 8,
+          "votes": 101,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 9,
+          "votes": 171,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 10,
+          "votes": 117,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 11,
+          "votes": 67,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 65,
+          "percent": 0.01
+        }
+      ]
+    },
+    {
+      "code": "EX",
+      "name": "Abroad",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 143900,
+          "percent": 43.49
+        },
+        {
+          "candidateId": 2,
+          "votes": 157387,
+          "percent": 47.57
+        },
+        {
+          "candidateId": 3,
+          "votes": 9734,
+          "percent": 2.94
+        },
+        {
+          "candidateId": 4,
+          "votes": 8580,
+          "percent": 2.59
+        },
+        {
+          "candidateId": 5,
+          "votes": 4708,
+          "percent": 1.42
+        },
+        {
+          "candidateId": 6,
+          "votes": 3329,
+          "percent": 1.01
+        },
+        {
+          "candidateId": 7,
+          "votes": 1053,
+          "percent": 0.32
+        },
+        {
+          "candidateId": 8,
+          "votes": 373,
+          "percent": 0.11
+        },
+        {
+          "candidateId": 9,
+          "votes": 825,
+          "percent": 0.25
+        },
+        {
+          "candidateId": 10,
+          "votes": 421,
+          "percent": 0.13
+        },
+        {
+          "candidateId": 11,
+          "votes": 373,
+          "percent": 0.11
+        },
+        {
+          "candidateId": 12,
+          "votes": 199,
+          "percent": 0.06
+        }
+      ]
+    },
+    {
+      "code": "BR",
+      "name": "Total",
+      "results": [
+        {
+          "candidateId": 1,
+          "votes": 56104503,
+          "percent": 47.03
+        },
+        {
+          "candidateId": 2,
+          "votes": 53879538,
+          "percent": 45.16
+        },
+        {
+          "candidateId": 3,
+          "votes": 3448569,
+          "percent": 2.89
+        },
+        {
+          "candidateId": 4,
+          "votes": 2675887,
+          "percent": 2.24
+        },
+        {
+          "candidateId": 5,
+          "votes": 2605148,
+          "percent": 2.18
+        },
+        {
+          "candidateId": 6,
+          "votes": 326488,
+          "percent": 0.27
+        },
+        {
+          "candidateId": 7,
+          "votes": 122911,
+          "percent": 0.1
+        },
+        {
+          "candidateId": 8,
+          "votes": 43103,
+          "percent": 0.04
+        },
+        {
+          "candidateId": 9,
+          "votes": 40043,
+          "percent": 0.1
+        },
+        {
+          "candidateId": 10,
+          "votes": 22693,
+          "percent": 0.02
+        },
+        {
+          "candidateId": 11,
+          "votes": 16881,
+          "percent": 0.01
+        },
+        {
+          "candidateId": 12,
+          "votes": 15024,
+          "percent": 0.01
+        }
+      ]
+    }
+  ]
+}

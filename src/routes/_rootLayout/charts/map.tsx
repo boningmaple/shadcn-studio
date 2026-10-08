@@ -3,9 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { RegistryCollectionPage } from "@/features/registry/components/registry-collection-page";
 import registryItemChartMap01 from "@/features/registry/data/items/chart-map-01.json";
+import registryItemChartMap02 from "@/features/registry/data/items/chart-map-02.json";
 import type { VibeBuiltRegistryItem } from "@/features/registry/types/registry";
 
-const items = [registryItemChartMap01] as VibeBuiltRegistryItem[];
+const items = [registryItemChartMap01, registryItemChartMap02] as VibeBuiltRegistryItem[];
 
 export const Route = createFileRoute("/_rootLayout/charts/map")({
   staticData: { ariaLabel: "Map" },

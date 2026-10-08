@@ -782,6 +782,65 @@
       }
     },
     {
+      "name": "chart-map-02",
+      "title": "Brazil election 2026",
+      "description": "First-round presidential results by state, with winning vote-share colours and accessible interactive details. Built with TanStack Charts.",
+      "type": "registry:component",
+      "dependencies": ["@tanstack/charts", "d3-geo"],
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-map-02/chart-map-02.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-map-02/chart-map-02.tsx"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-02/national-results-chart.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-map-02/national-results-chart.tsx"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-02/election-map.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-map-02/election-map.tsx"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-02/election-result-card.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-map-02/election-result-card.tsx"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-02/election-legend.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-map-02/election-legend.tsx"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-02/map-model.ts",
+          "type": "registry:lib",
+          "target": "@components/vibe-ui/chart-map-02/map-model.ts"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-02/election-data.ts",
+          "type": "registry:lib",
+          "target": "@components/vibe-ui/chart-map-02/election-data.ts"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-02/election-results.json",
+          "type": "registry:file",
+          "target": "@components/vibe-ui/chart-map-02/election-results.json"
+        },
+        {
+          "path": "registry/vibe-ui/chart-map-02/brazil.json",
+          "type": "registry:file",
+          "target": "@components/vibe-ui/chart-map-02/brazil.json"
+        }
+      ],
+      "categories": ["charts", "map"],
+      "meta": {
+        "height": 1100,
+        "prompt": "Create a responsive editorial election map titled “Brazil election 2026”, with a centered heading in a header and generous white space. Between the heading and map show a responsive national horizontal bar chart: Lula first in red, Flávio Bolsonaro second in blue, percentage and compact million-vote count columns, a 0–75% axis with ticks at 0, 25 and 75, and a prominent 50% “TO WIN” reference line. Show Other separately beneath a divider. Add hatched Reporting and solid Final results squares as a reference key, not a claim of verified reporting status; omit counted-sections figures. Use a shared three-row, four-column grid for axis headings, candidate results and the final Other/key row. Place the wrapping status key in column two of row three on desktop, aligned left with the plot. On mobile place it in column one of row three, with its labels and squares aligned right with the candidate names. Keep Other aligned with the 75% endpoint and its percentage and count in the same columns as the candidate results. Explain: “Colour shows the leading candidate. Darker shades show a higher share of valid votes.” Use a bundled, dated Wikipedia first-round election snapshot and official IBGE state boundaries. Show source links and retrieval dates visibly in a footer below the overseas paragraph. All source and licence links open in a new tab.\n\nRender Brazil’s 26 states and Federal District as a choropleth, with fine white borders. Use blue for Bolsonaro and red for Lula. Colour intensity follows the leading candidate’s share of valid votes in three discrete bands: below 50%, 50–60% inclusive, and above 60%. Show each candidate name above a horizontal row of three square swatches labelled Below 50%, 50–60%, Above 60%. Position these legends in the vacant lower-left area of the map on desktop and below the map on mobile. Add state abbreviations; use external labels with leader lines for small states. Below the map and legends show overseas voting in a single paragraph with the two candidates and Other, their percentages and vote counts.\n\nStart with no selected state. When no state is selected, hovering a state slightly increases its brightness and shows a non-interactive floating statistics card beside the pointer, following movement immediately with a 12px gap. Choose the roomier side, preferring right on a tie, and keep the card within the visible map area. Leaving the state hides the preview. Clicking or keyboard-focusing a state selects it, draws a black boundary and shows an interactive card with a small Close button at the bottom. Click selection freezes the card beside the click position; keyboard selection anchors it beside the state’s visual centre. While selected, hovering other states still highlights them but never changes the selected card. Clicking another state transfers selection. Tab visits each state, then that state’s Close button, then the next state; Shift+Tab reverses the sequence. The state and card form one focus area. Leaving that area, clicking empty space, pressing Escape or using Close clears selection without immediately reopening the card. Use a 120ms fade and 4px entrance movement, immediate pointer tracking for previews, and a short position transition when switching selected states. Content changes without replaying the entrance; respect reduced-motion preferences. Do not add an animation library.\n\nStyle the floating card like an editorial results tooltip: white surface, subtle shadow and rounded corners, prominent state name, colour-coded vote lead and percentage-point lead, then three rows for the two leading national candidates and Other, with percentages and vote counts. Sort the two candidates by their state result and keep Other last. Do not invent counting-progress statistics. Keep the same floating behaviour on desktop and mobile, anchor it near the state and reposition within the map to avoid clipping. When the map is narrower than 640px, use a compact floating card no wider than 220px, with 10px padding, a 16px state heading, 12px candidate rows, 10px vote-count labels and tighter row spacing. Display Lula’s short name while preserving his full name in the title attribute. Retain both candidate percentages and exact vote counts, the vote and percentage-point lead, and a full-width Close button at least 40px tall. Keep the smaller card within the visible map and preserve desktop sizing. Support light and dark surrounding themes while preserving the candidate colour semantics."
+      }
+    },
+    {
       "name": "chart-line-04",
       "title": "Subscriber growth · TanStack Charts",
       "description": "Compare this year with last year. Built with TanStack Charts.",
