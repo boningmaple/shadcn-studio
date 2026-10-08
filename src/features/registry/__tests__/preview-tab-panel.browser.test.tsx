@@ -17,7 +17,7 @@ beforeEach(mockPreviewHighlighting);
 afterEach(cleanupPreview);
 
 describe("Preview tab panel", () => {
-  it("shows the plain-text design prompt and copies it verbatim", async () => {
+  it("renders the Markdown design prompt and copies its raw source verbatim", async () => {
     const writeText = vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue();
     await page.viewport(390, 844);
     await renderPreviewBlock();
@@ -26,9 +26,21 @@ describe("Preview tab panel", () => {
 
     const panel = page.getByRole("tabpanel", { name: "Prompt", exact: true });
     await expect.element(panel).toBeVisible();
-    const prompt = panel.element().querySelector(".whitespace-pre-wrap")!;
-    expect(prompt.textContent).toBe(registryItem.meta.prompt);
-    expect(prompt.querySelector("details")).toBeNull();
+    const prompt = panel.element().querySelector(".prose")!;
+    await expect.element(panel.getByRole("heading", { name: "Objective" })).toBeVisible();
+    await expect
+      .element(panel.getByRole("link", { name: "Source" }))
+      .toHaveAttribute("href", "https://tanstack.com/markdown");
+    await expect.element(panel.getByRole("table")).toBeVisible();
+    expect(prompt.querySelector("strong")?.textContent).toBe("button");
+    expect(prompt.querySelector("code")?.textContent).toBe("React");
+    expect(prompt.querySelector("li")?.textContent).toBe("Support keyboard activation.");
+    const headingStyle = getComputedStyle(prompt.querySelector("h1")!);
+    const paragraphStyle = getComputedStyle(prompt.querySelector("p")!);
+    expect(Number.parseFloat(headingStyle.fontSize)).toBeGreaterThan(
+      Number.parseFloat(paragraphStyle.fontSize),
+    );
+    expect(getComputedStyle(prompt.querySelector("ul")!).listStyleType).toBe("disc");
     expect(prompt.scrollWidth).toBeLessThanOrEqual(prompt.clientWidth);
     await expect
       .element(page.getByRole("toolbar", { name: "Preview controls" }))

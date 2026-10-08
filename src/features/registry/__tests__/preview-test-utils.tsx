@@ -16,7 +16,11 @@ import { ThemeProvider } from "@/features/theme-switch/components/theme-provider
 import { ThemeSwitchButton } from "@/features/theme-switch/components/theme-switch-button";
 
 export const registryItem: VibeBuiltRegistryItem = {
-  meta: { height: 120, prompt: "  Create a button.\n\nKeep <details> as plain text.  " },
+  meta: {
+    height: 120,
+    prompt:
+      "# Objective\n\nCreate a **button** with `React`.\n\n- Support keyboard activation.\n\n[Source](https://tanstack.com/markdown)\n\n| Dependency | Purpose |\n| --- | --- |\n| React | Rendering |",
+  },
   categories: ["components", "button"],
   description: "The first Preview.",
   files: [

@@ -39,10 +39,10 @@ export function PreviewBlock(props: PreviewBlockProps) {
 
       <Tabs
         selectedKey={selectedTab}
-        className="not-prose gap-0"
+        className="gap-0"
         onSelectionChange={(key) => setSelectedTab(key as PreviewTab)}
       >
-        <div className="sticky top-(--header-height) lg:top-0 z-20 flex items-center justify-between gap-2 bg-background py-2">
+        <div className="not-prose sticky top-(--header-height) lg:top-0 z-20 flex items-center justify-between gap-2 bg-background py-2">
           <div className="flex min-w-0 items-center gap-2">
             <TabsList
               aria-label="Preview block tabs"
@@ -93,7 +93,7 @@ export function PreviewBlock(props: PreviewBlockProps) {
         <TabsContent
           id={"preview" satisfies PreviewTab}
           shouldForceMount
-          className="data-inert:hidden"
+          className="not-prose data-inert:hidden"
         >
           <PreviewPanel
             frameRef={previewFrameRef}
@@ -108,7 +108,7 @@ export function PreviewBlock(props: PreviewBlockProps) {
         <TabsContent
           id={"code" satisfies PreviewTab}
           shouldForceMount
-          className="data-inert:hidden"
+          className="not-prose data-inert:hidden"
         >
           <CodePanel item={props.item} />
         </TabsContent>
