@@ -14,7 +14,6 @@ import { Route as PreviewRouteRouteImport } from './routes/preview/route'
 import { Route as RootLayoutIndexRouteImport } from './routes/_rootLayout/index'
 import { Route as RootLayoutSplatRouteImport } from './routes/_rootLayout/$'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
-import { Route as DemosBrazilElectionRouteImport } from './routes/demos/brazil-election'
 import { Route as PreviewSplatRouteImport } from './routes/preview/$'
 import { Route as RootLayoutBlocksIndexRouteImport } from './routes/_rootLayout/blocks/index'
 import { Route as RootLayoutBlocksHeroSectionRouteImport } from './routes/_rootLayout/blocks/hero-section'
@@ -97,11 +96,6 @@ const RootLayoutSplatRoute = RootLayoutSplatRouteImport.update({
 const ApiSearchRoute = ApiSearchRouteImport.update({
   id: '/api/search',
   path: '/api/search',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemosBrazilElectionRoute = DemosBrazilElectionRouteImport.update({
-  id: '/demos/brazil-election',
-  path: '/demos/brazil-election',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PreviewSplatRoute = PreviewSplatRouteImport.update({
@@ -453,7 +447,6 @@ export interface FileRoutesByFullPath {
   '/preview': typeof PreviewRouteRouteWithChildren
   '/$': typeof RootLayoutSplatRoute
   '/api/search': typeof ApiSearchRoute
-  '/demos/brazil-election': typeof DemosBrazilElectionRoute
   '/preview/$': typeof PreviewSplatRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
   '/charts/area': typeof RootLayoutChartsAreaRoute
@@ -518,7 +511,6 @@ export interface FileRoutesByTo {
   '/preview': typeof PreviewRouteRouteWithChildren
   '/$': typeof RootLayoutSplatRoute
   '/api/search': typeof ApiSearchRoute
-  '/demos/brazil-election': typeof DemosBrazilElectionRoute
   '/preview/$': typeof PreviewSplatRoute
   '/': typeof RootLayoutIndexRoute
   '/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
@@ -586,7 +578,6 @@ export interface FileRoutesById {
   '/preview': typeof PreviewRouteRouteWithChildren
   '/_rootLayout/$': typeof RootLayoutSplatRoute
   '/api/search': typeof ApiSearchRoute
-  '/demos/brazil-election': typeof DemosBrazilElectionRoute
   '/preview/$': typeof PreviewSplatRoute
   '/_rootLayout/': typeof RootLayoutIndexRoute
   '/_rootLayout/blocks/hero-section': typeof RootLayoutBlocksHeroSectionRoute
@@ -655,7 +646,6 @@ export interface FileRouteTypes {
     | '/preview'
     | '/$'
     | '/api/search'
-    | '/demos/brazil-election'
     | '/preview/$'
     | '/blocks/hero-section'
     | '/charts/area'
@@ -720,7 +710,6 @@ export interface FileRouteTypes {
     | '/preview'
     | '/$'
     | '/api/search'
-    | '/demos/brazil-election'
     | '/preview/$'
     | '/'
     | '/blocks/hero-section'
@@ -787,7 +776,6 @@ export interface FileRouteTypes {
     | '/preview'
     | '/_rootLayout/$'
     | '/api/search'
-    | '/demos/brazil-election'
     | '/preview/$'
     | '/_rootLayout/'
     | '/_rootLayout/blocks/hero-section'
@@ -854,7 +842,6 @@ export interface RootRouteChildren {
   RootLayoutRouteRoute: typeof RootLayoutRouteRouteWithChildren
   PreviewRouteRoute: typeof PreviewRouteRouteWithChildren
   ApiSearchRoute: typeof ApiSearchRoute
-  DemosBrazilElectionRoute: typeof DemosBrazilElectionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -892,13 +879,6 @@ declare module '@tanstack/react-router' {
       path: '/api/search'
       fullPath: '/api/search'
       preLoaderRoute: typeof ApiSearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demos/brazil-election': {
-      id: '/demos/brazil-election'
-      path: '/demos/brazil-election'
-      fullPath: '/demos/brazil-election'
-      preLoaderRoute: typeof DemosBrazilElectionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/preview/$': {
@@ -1467,7 +1447,6 @@ const rootRouteChildren: RootRouteChildren = {
   RootLayoutRouteRoute: RootLayoutRouteRouteWithChildren,
   PreviewRouteRoute: PreviewRouteRouteWithChildren,
   ApiSearchRoute: ApiSearchRoute,
-  DemosBrazilElectionRoute: DemosBrazilElectionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
