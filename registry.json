@@ -861,6 +861,25 @@
       }
     },
     {
+      "name": "chart-line-05",
+      "title": "NSW fuel prices",
+      "description": "Monthly average E10, P95, P98 and diesel prices from NSW FuelCheck.",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/vibe-ui/chart-line-05/chart-line-05.tsx",
+          "type": "registry:component",
+          "target": "@components/vibe-ui/chart-line-05/chart-line-05.tsx"
+        }
+      ],
+      "categories": ["charts", "line"],
+      "meta": {
+        "height": 640,
+        "prompt": "# Objective\n\nCreate a responsive NSW fuel price comparison chart titled “NSW Road Fuel Prices 2025–2026”. Use monthly average prices in cents per litre from the bundled NSW FuelCheck snapshot retrieved on 9 October 2026, covering October 2025 through October 2026. October 2026 is a partial month.\n\n# Layout and styling\n\nUse a full-width panel with a subtle border, rounded corners, a theme-aware card background and foreground, and comfortable padding. Centre the semibold title above the plot. Position a compact, bordered, rounded legend in the top-right corner; on small screens, place it below the title and allow its entries to wrap.\n\nUse these fixed colours consistently for the lines, legend and tooltip:\n\n- E10: blue (#3b82f6).\n- P95: purple (#8b5cf6).\n- P98: green (#10b981).\n- DL: orange (#f97316).\n\nShow a short line with a circular marker beside each fuel tag in the static legend. Include no checkboxes or filtering controls.\n\n# Chart and axes\n\nDraw four straight lines with small circular point markers in a 420-pixel-high plot. Label the horizontal axis “Month”, show three-letter month ticks in chronological order, and draw its baseline. Label the vertical axis “Price (cents per litre)”; use a range of 150 to 300 with ticks every 25, formatted to one decimal place. Omit the vertical axis baseline and use subtle dashed horizontal grid lines. Keep surrounding colours compatible with light and dark themes.\n\n# Interaction and tooltip\n\nWhen a fuel series is hovered or keyboard-focused, keep it fully visible and dim the other three series to 30% opacity. Restore all series when focus clears.\n\nShow a hollow focus ring only around the active point, never around every fuel point at the same month. Use a radius of 5 pixels, a 2-pixel border matching that fuel’s colour, and a fill matching the card background. Suppress the browser outline around the plot for pointer clicks while retaining the keyboard focus indicator.\n\nShow a tooltip headed by the full month and year. Under the date, list E10, P95, P98 and DL in that order, each with its matching colour swatch and price formatted to one decimal place followed by “c/L”. Emphasise the active fuel row while retaining all four prices.\n\n# Source and accessibility\n\nCentre a small, muted source footer below the plot. Link “NSW FuelCheck” to https://www.fuelcheck.nsw.gov.au/app/FuelPrice/Trend?fuelTypeCode=P95 and include “Snapshot: 9 October 2026. October 2026 is a partial month. DL = diesel.”\n\nGive the panel and chart accessible names. Describe the reporting period, price units and partial final month, and support arrow-key exploration of the data. Keep decorative legend swatches hidden from assistive technology."
+      },
+      "dependencies": ["@tanstack/charts"]
+    },
+    {
       "name": "chart-area-03",
       "title": "Monthly revenue · TanStack Charts",
       "description": "Revenue momentum across the first half of the year. Built with TanStack Charts.",
