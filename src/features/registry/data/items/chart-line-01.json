@@ -1,21 +1,19 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart-line-01",
-  "title": "chart-line-01",
-  "description": "Monthly active subscribers · Jan–Jun 2026. A steady climb, with 56 new subscribers in June.",
-  "dependencies": ["recharts"],
-  "registryDependencies": ["card", "chart"],
+  "title": "Line Chart 01",
+  "description": "An empty line chart placeholder.",
   "files": [
     {
       "path": "registry/vibe-ui/chart-line-01/chart-line-01.tsx",
-      "content": "\"use client\";\n\nimport { LineChart, Line, CartesianGrid, XAxis, YAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardHeader,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  CardFooter,\n} from \"@/components/ui/card\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  type ChartConfig,\n} from \"@/components/ui/chart\";\n\nconst data = [\n  { month: \"Jan\", current: 186, previous: 140 },\n  { month: \"Feb\", current: 225, previous: 178 },\n  { month: \"Mar\", current: 208, previous: 190 },\n  { month: \"Apr\", current: 284, previous: 210 },\n  { month: \"May\", current: 312, previous: 245 },\n  { month: \"Jun\", current: 368, previous: 272 },\n];\nconst config = {\n  current: { label: \"This year\", color: \"var(--chart-1)\" },\n  previous: { label: \"Last year\", color: \"var(--chart-2)\" },\n} satisfies ChartConfig;\n\nexport default function ChartLine01() {\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardDescription>Monthly active subscribers · Jan–Jun 2026</CardDescription>\n        <CardTitle className=\"text-lg\">Subscriber growth</CardTitle>\n        <div className=\"pt-2 text-3xl font-semibold tracking-tight tabular-nums\">\n          368 subscribers\n        </div>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={config} className=\"aspect-auto h-[260px] w-full\">\n          <LineChart accessibilityLayer data={data} margin={{ left: 0, right: 12 }}>\n            <CartesianGrid vertical={false} strokeDasharray=\"3 3\" />\n            <XAxis dataKey=\"month\" tickLine={false} axisLine={false} tickMargin={12} />\n            <YAxis tickLine={false} axisLine={false} width={42} />\n            <ChartTooltip content={<ChartTooltipContent />} />\n            <Line\n              dataKey=\"current\"\n              type=\"monotone\"\n              stroke=\"var(--color-current)\"\n              strokeWidth={3}\n              dot={false}\n            />\n          </LineChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"border-t pt-4 text-sm text-muted-foreground\">\n        A steady climb, with 56 new subscribers in June.\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "content": "export default function ChartLine01() {\n  return null;\n}\n",
       "type": "registry:component",
       "target": "@components/vibe-ui/chart-line-01/chart-line-01.tsx"
     }
   ],
   "meta": {
     "height": 520,
-    "prompt": "Create a responsive analytics card titled “Subscriber growth” with the muted eyebrow “Monthly active subscribers · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun subscribers 186, 225, 208, 284, 312, 368 as a single monotone 3px line without point dots. Label the tooltip series This year. Show 368 subscribers and a footer noting 56 new subscribers in June.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
+    "prompt": "Create an empty Line Chart 01 placeholder. Render no visible content, layout, styling, controls, or interactive elements at any viewport size. Expose no additional accessibility elements."
   },
   "categories": ["charts", "line"],
   "type": "registry:component"

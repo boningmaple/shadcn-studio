@@ -1,6 +1,12 @@
 "use client";
 
-import { ComposedChart, Bar, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import { defineChart, barY, lineY, colorLegend } from "@tanstack/charts";
+import { d3Curve } from "@tanstack/charts/d3/shape";
+import { Chart } from "@tanstack/charts/react";
+import { scaleBand } from "@tanstack/charts/scales/band";
+import { scaleLinear } from "@tanstack/charts/scales/linear";
+import { tooltip } from "@tanstack/charts/tooltip";
+import { curveMonotoneX } from "d3-shape";
 
 import {
   Card,
@@ -10,14 +16,6 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
-  type ChartConfig,
-} from "@/components/ui/chart";
 
 const data = [
   { month: "Jan", current: 186, previous: 220 },
@@ -27,10 +25,49 @@ const data = [
   { month: "May", current: 312, previous: 350 },
   { month: "Jun", current: 368, previous: 400 },
 ];
-const config = {
-  current: { label: "Orders", color: "var(--chart-1)" },
-  previous: { label: "Capacity", color: "var(--chart-2)" },
-} satisfies ChartConfig;
+
+const definition = defineChart({
+  marks: [
+    barY(data, {
+      x: "month",
+      y: "current",
+      z: () => "Orders",
+      radius: { end: 4 },
+      maxThickness: 38,
+      fillOpacity: 0.7,
+    }),
+    lineY(data, {
+      x: "month",
+      y: "previous",
+      z: () => "Capacity",
+      strokeWidth: 3,
+      points: true,
+      curve: d3Curve(curveMonotoneX),
+    }),
+  ],
+  scales: {
+    x: { scale: () => scaleBand<string>().padding(0.35) },
+    y: { scale: scaleLinear().domain([0, 400]), grid: true },
+  },
+  color: {
+    domain: ["Orders", "Capacity"],
+    range: ["var(--chart-1)", "var(--chart-2)"],
+    legend: colorLegend({ placement: "bottom" }),
+  },
+  theme: {
+    foreground: "var(--foreground)",
+    muted: "var(--muted-foreground)",
+    grid: "var(--border)",
+    background: "var(--card)",
+  },
+  tooltip: {
+    use: tooltip,
+    items: [
+      { field: "current", label: "Orders" },
+      { field: "previous", label: "Capacity" },
+    ],
+  },
+});
 
 export default function ChartComposed02() {
   return (
@@ -43,29 +80,7 @@ export default function ChartComposed02() {
         </div>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={config} className="aspect-auto h-[260px] w-full">
-          <ComposedChart accessibilityLayer data={data}>
-            <CartesianGrid vertical={false} strokeDasharray="3 3" />
-            <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={12} />
-            <YAxis tickLine={false} axisLine={false} width={42} />
-            <ChartTooltip content={<ChartTooltipContent />} />
-            <ChartLegend content={<ChartLegendContent />} />
-            <Bar
-              dataKey="current"
-              fill="var(--color-current)"
-              fillOpacity={0.7}
-              radius={[4, 4, 0, 0]}
-              maxBarSize={38}
-            />
-            <Line
-              dataKey="previous"
-              type="monotone"
-              stroke="var(--color-previous)"
-              strokeWidth={3}
-              dot={{ r: 3 }}
-            />
-          </ComposedChart>
-        </ChartContainer>
+        <Chart ariaLabel="Demand and capacity" definition={definition} height={260} />
       </CardContent>
       <CardFooter className="border-t pt-4 text-sm text-muted-foreground">
         368 orders fulfilled against a June capacity of 400.

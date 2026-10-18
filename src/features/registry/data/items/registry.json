@@ -454,11 +454,9 @@
     },
     {
       "name": "chart-line-01",
-      "title": "chart-line-01",
-      "description": "Monthly active subscribers · Jan–Jun 2026. A steady climb, with 56 new subscribers in June.",
+      "title": "Line Chart 01",
+      "description": "An empty line chart placeholder.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-line-01/chart-line-01.tsx",
@@ -469,27 +467,7 @@
       "categories": ["charts", "line"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Subscriber growth” with the muted eyebrow “Monthly active subscribers · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun subscribers 186, 225, 208, 284, 312, 368 as a single monotone 3px line without point dots. Label the tooltip series This year. Show 368 subscribers and a footer noting 56 new subscribers in June.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
-      }
-    },
-    {
-      "name": "chart-line-02",
-      "title": "chart-line-02",
-      "description": "Subscriber growth · year over year. June subscribers compared with the same month last year.",
-      "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
-      "files": [
-        {
-          "path": "registry/vibe-ui/chart-line-02/chart-line-02.tsx",
-          "type": "registry:component",
-          "target": "@components/vibe-ui/chart-line-02/chart-line-02.tsx"
-        }
-      ],
-      "categories": ["charts", "line"],
-      "meta": {
-        "height": 520,
-        "prompt": "Create a responsive analytics card titled “A stronger first half” with the muted eyebrow “Subscriber growth · year over year”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCompare Jan–Jun subscriber counts: This year at 186, 225, 208, 284, 312, 368 as a solid 3px line with 4px dots; Last year at 140, 178, 190, 210, 245, 272 as a dashed 2px line without dots. Use distinct colors and a legend. Show +35.3% and explain the June year-over-year comparison in the footer.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
+        "prompt": "Create an empty Line Chart 01 placeholder. Render no visible content, layout, styling, controls, or interactive elements at any viewport size. Expose no additional accessibility elements."
       }
     },
     {
@@ -497,8 +475,8 @@
       "title": "chart-area-01",
       "description": "Monthly revenue · USD thousands. June revenue is up 17.9% over May.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts", "d3-shape"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-area-01/chart-area-01.tsx",
@@ -509,7 +487,7 @@
       "categories": ["charts", "area"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Revenue momentum” with the muted eyebrow “Monthly revenue · USD thousands”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun revenue values 186, 225, 208, 284, 312, and 368 in USD thousands as a smooth natural curve with a 2px stroke and a faint 16% area fill. Show $368k as the headline and a footer noting June revenue is up 17.9% over May.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
+        "prompt": "Create a responsive analytics card titled “Revenue momentum” with the muted eyebrow “Monthly revenue · USD thousands”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun revenue values 186, 225, 208, 284, 312, and 368 in USD thousands as a smooth natural curve with a 2px stroke and a faint 16% area fill. Show $368k as the headline and a footer noting June revenue is up 17.9% over May.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, subtle horizontal grid lines, and muted axis labels and baselines.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -517,8 +495,8 @@
       "title": "chart-area-02",
       "description": "Revenue mix · USD thousands. Subscriptions and services combined in June.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts", "d3-shape"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-area-02/chart-area-02.tsx",
@@ -529,7 +507,7 @@
       "categories": ["charts", "area"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Where growth comes from” with the muted eyebrow “Revenue mix · USD thousands”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nStack two monotone areas for Jan–Jun: Subscriptions ($k) at 186, 225, 208, 284, 312, 368 and Services ($k) at 140, 178, 190, 210, 245, 272. Use two chart colors with 65% and 25% fill opacity and a legend. Show $640k and a footer explaining the combined June revenue.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
+        "prompt": "Create a responsive analytics card titled “Where growth comes from” with the muted eyebrow “Revenue mix · USD thousands”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nStack two monotone areas for Jan–Jun: Subscriptions ($k) at 186, 225, 208, 284, 312, 368 and Services ($k) at 140, 178, 190, 210, 245, 272. Use two chart colors with 65% and 25% fill opacity and a legend. Show $640k and a footer explaining the combined June revenue.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, subtle horizontal grid lines, and muted axis labels and baselines.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -537,8 +515,8 @@
       "title": "chart-bar-01",
       "description": "Completed orders · first half of 2026. June was the strongest month of the half.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-bar-01/chart-bar-01.tsx",
@@ -549,7 +527,7 @@
       "categories": ["charts", "bar"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Orders on the rise” with the muted eyebrow “Completed orders · first half of 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun order counts 186, 225, 208, 284, 312, 368 as single-color vertical bars with rounded top corners and a maximum width of 40px. Show 1,583 orders and a footer identifying June as the strongest month.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
+        "prompt": "Create a responsive analytics card titled “Orders on the rise” with the muted eyebrow “Completed orders · first half of 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot Jan–Jun order counts 186, 225, 208, 284, 312, 368 as single-color vertical bars with rounded top corners and a maximum width of 40px. Show 1,583 orders and a footer identifying June as the strongest month.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, subtle horizontal grid lines, and muted axis labels and baselines.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -557,8 +535,8 @@
       "title": "chart-bar-02",
       "description": "Monthly orders · online and in store. Online contributed 57.5% of June orders.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-bar-02/chart-bar-02.tsx",
@@ -569,7 +547,7 @@
       "categories": ["charts", "bar"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Sales by channel” with the muted eyebrow “Monthly orders · online and in store”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot grouped bars for Online and In store orders from Jan–Jun, respectively 186, 225, 208, 284, 312, 368 and 140, 178, 190, 210, 245, 272. Use distinct chart colors, rounded top corners, and a legend. Show 640 orders and note that online contributed 57.5% of June orders.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
+        "prompt": "Create a responsive analytics card titled “Sales by channel” with the muted eyebrow “Monthly orders · online and in store”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot grouped bars for Online and In store orders from Jan–Jun, respectively 186, 225, 208, 284, 312, 368 and 140, 178, 190, 210, 245, 272. Use distinct chart colors, rounded top corners, and a legend. Show 640 orders and note that online contributed 57.5% of June orders.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, subtle horizontal grid lines, and muted axis labels and baselines.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -577,8 +555,8 @@
       "title": "chart-pie-01",
       "description": "Acquisition breakdown · June 2026. Organic search accounts for 42% of all visits.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-pie-01/chart-pie-01.tsx",
@@ -589,7 +567,7 @@
       "categories": ["charts", "pie"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Traffic by channel” with the muted eyebrow “Acquisition breakdown · June 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a solid pie with a 95px radius, 3-degree gaps, and subtle slice outlines. Represent Organic 420, Direct 280, Referral 180, and Social 120 with four theme chart colors. Include a color legend and tooltips, a 1,000 visits headline, and a footer explaining organic search accounts for 42% of visits.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
+        "prompt": "Create a responsive analytics card titled “Traffic by channel” with the muted eyebrow “Acquisition breakdown · June 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a solid pie with a 95px radius, 3-degree gaps, and subtle slice outlines. Represent Organic 420, Direct 280, Referral 180, and Social 120 with four theme chart colors. Include a color legend and tooltips, a 1,000 visits headline, and a footer explaining organic search accounts for 42% of visits.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -597,8 +575,8 @@
       "title": "chart-pie-02",
       "description": "Acquisition breakdown · June 2026. Organic search accounts for 42% of all visits.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-pie-02/chart-pie-02.tsx",
@@ -609,7 +587,7 @@
       "categories": ["charts", "pie"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “How visitors find you” with the muted eyebrow “Acquisition breakdown · June 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a donut with a 68px inner radius, 95px outer radius, 3-degree gaps, and subtle slice outlines. Represent Organic 420, Direct 280, Referral 180, and Social 120 with four theme chart colors. Leave the center empty. Include a color legend and tooltips, a 1,000 visits headline, and a footer explaining organic search accounts for 42% of visits.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
+        "prompt": "Create a responsive analytics card titled “How visitors find you” with the muted eyebrow “Acquisition breakdown · June 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a donut with a 68px inner radius, 95px outer radius, 3-degree gaps, and subtle slice outlines. Represent Organic 420, Direct 280, Referral 180, and Social 120 with four theme chart colors. Leave the center empty. Include a color legend and tooltips, a 1,000 visits headline, and a footer explaining organic search accounts for 42% of visits.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -617,8 +595,8 @@
       "title": "chart-radar-01",
       "description": "Customer survey · scores out of 100. Average across six dimensions from the June survey.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts", "d3-shape"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-radar-01/chart-radar-01.tsx",
@@ -629,7 +607,7 @@
       "categories": ["charts", "radar"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Product health” with the muted eyebrow “Customer survey · scores out of 100”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a six-axis radar for Reliability, Speed, Usability, Support, Value, and Features, with June scores 92, 78, 88, 84, 80, 90. Use a polar grid, small category labels, a hidden numeric scale from 0 to 100, and a 70% outer radius. Draw one 2px outlined polygon with 25% fill. Show 85.3 / 100 and explain the six-dimension June survey average in the footer.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
+        "prompt": "Create a responsive analytics card titled “Product health” with the muted eyebrow “Customer survey · scores out of 100”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a six-axis radar for Reliability, Speed, Usability, Support, Value, and Features, with June scores 92, 78, 88, 84, 80, 90. Use a polar grid, small category labels, a hidden numeric scale from 0 to 100, and a 70% outer radius. Draw one 2px outlined polygon with 25% fill. Show 85.3 / 100 and explain the six-dimension June survey average in the footer.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -637,8 +615,8 @@
       "title": "chart-radar-02",
       "description": "Customer survey · scores out of 100. Average across six dimensions from the June survey.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts", "d3-shape"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-radar-02/chart-radar-02.tsx",
@@ -649,7 +627,7 @@
       "categories": ["charts", "radar"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Closing the experience gap” with the muted eyebrow “Customer survey · scores out of 100”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCompare March scores 72, 65, 74, 70, 82, 68 with June scores 92, 78, 88, 84, 80, 90 across Reliability, Speed, Usability, Support, Value, and Features. Use a polar grid, small category labels, a hidden 0–100 scale, and 70% outer radius. Overlay distinct March and June polygons with 12% and 25% fill; give June a 2px outline. Include a legend, 85.3 / 100 headline, and footer describing the June survey average.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
+        "prompt": "Create a responsive analytics card titled “Closing the experience gap” with the muted eyebrow “Customer survey · scores out of 100”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCompare March scores 72, 65, 74, 70, 82, 68 with June scores 92, 78, 88, 84, 80, 90 across Reliability, Speed, Usability, Support, Value, and Features. Use a polar grid, small category labels, a hidden 0–100 scale, and 70% outer radius. Overlay distinct March and June polygons with 12% and 25% fill; give June a 2px outline. Include a legend, 85.3 / 100 headline, and footer describing the June survey average.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -657,8 +635,8 @@
       "title": "chart-radial-01",
       "description": "Delivery progress · Q2 2026. 78 of 100 planned releases shipped this quarter.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-radial-01/chart-radial-01.tsx",
@@ -669,7 +647,7 @@
       "categories": ["charts", "radial"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Quarterly goal” with the muted eyebrow “Delivery progress · Q2 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a clockwise circular progress arc starting at the top on a full-circle background track, with rounded ends and a hidden 0–100 scale. Use a 35% inner radius and 90% outer radius. Show Platform at 78%, a Platform legend and tooltip, a 78% headline, and a footer stating 78 of 100 planned releases shipped this quarter.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
+        "prompt": "Create a responsive analytics card titled “Quarterly goal” with the muted eyebrow “Delivery progress · Q2 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow a clockwise circular progress arc starting at the top on a full-circle background track, with rounded ends and a hidden 0–100 scale. Use a 35% inner radius and 90% outer radius. Show Platform at 78%, a Platform legend and tooltip, a 78% headline, and a footer stating 78 of 100 planned releases shipped this quarter.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -677,8 +655,8 @@
       "title": "chart-radial-02",
       "description": "Delivery progress · Q2 2026. Completion against each team’s quarterly target.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-radial-02/chart-radial-02.tsx",
@@ -689,7 +667,7 @@
       "categories": ["charts", "radial"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Team goal progress” with the muted eyebrow “Delivery progress · Q2 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow three concentric clockwise circular progress arcs starting at the top on full-circle background tracks, with rounded ends, a hidden 0–100 scale, and radii spanning 35% to 90%. Represent Platform at 86%, Design at 72%, and Product at 64% in three distinct colors. Include team legends and tooltips, the headline Three teams, and a footer explaining completion against quarterly targets.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips."
+        "prompt": "Create a responsive analytics card titled “Team goal progress” with the muted eyebrow “Delivery progress · Q2 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nShow three concentric clockwise circular progress arcs starting at the top on full-circle background tracks, with rounded ends, a hidden 0–100 scale, and radii spanning 35% to 90%. Represent Platform at 86%, Design at 72%, and Product at 64% in three distinct colors. Include team legends and tooltips, the headline Three teams, and a footer explaining completion against quarterly targets.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -697,8 +675,8 @@
       "title": "chart-composed-01",
       "description": "Monthly operating performance · Jan–Jun 2026. Revenue exceeded the June target by $96k.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts", "d3-shape"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-composed-01/chart-composed-01.tsx",
@@ -709,7 +687,7 @@
       "categories": ["charts", "composed"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Revenue against target” with the muted eyebrow “Monthly operating performance · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCombine Jan–Jun Revenue ($k) bars at 186, 225, 208, 284, 312, 368 with a Target ($k) monotone line at 140, 178, 190, 210, 245, 272. Use distinct colors, 70% opacity rounded bars up to 38px wide, a 3px line with 3px dots, and a legend. Show $368k and note revenue exceeded the June target by $96k.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
+        "prompt": "Create a responsive analytics card titled “Revenue against target” with the muted eyebrow “Monthly operating performance · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCombine Jan–Jun Revenue ($k) bars at 186, 225, 208, 284, 312, 368 with a Target ($k) monotone line at 140, 178, 190, 210, 245, 272. Use distinct colors, 70% opacity rounded bars up to 38px wide, a 3px line with 3px dots, and a legend. Show $368k and note revenue exceeded the June target by $96k.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, subtle horizontal grid lines, and muted axis labels and baselines.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -717,8 +695,8 @@
       "title": "chart-composed-02",
       "description": "Monthly operating performance · Jan–Jun 2026. 368 orders fulfilled against a June capacity of 400.",
       "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart"],
+      "dependencies": ["@tanstack/charts", "d3-shape"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-composed-02/chart-composed-02.tsx",
@@ -729,27 +707,7 @@
       "categories": ["charts", "composed"],
       "meta": {
         "height": 520,
-        "prompt": "Create a responsive analytics card titled “Demand and capacity” with the muted eyebrow “Monthly operating performance · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCombine Jan–Jun Orders bars at 186, 225, 208, 284, 312, 368 with a Capacity monotone line at 220, 250, 250, 300, 350, 400. Use distinct colors, 70% opacity rounded bars up to 38px wide, a 3px line with 3px dots, and a legend. Show 92% utilization and explain 368 orders against June capacity of 400.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
-      }
-    },
-    {
-      "name": "chart-line-03",
-      "title": "chart-line-03",
-      "description": "Choose a reporting window. Switch between the full half-year and the latest quarter.",
-      "type": "registry:component",
-      "dependencies": ["recharts"],
-      "registryDependencies": ["card", "chart", "button"],
-      "files": [
-        {
-          "path": "registry/vibe-ui/chart-line-03/chart-line-03.tsx",
-          "type": "registry:component",
-          "target": "@components/vibe-ui/chart-line-03/chart-line-03.tsx"
-        }
-      ],
-      "categories": ["charts", "line"],
-      "meta": {
-        "height": 570,
-        "prompt": "Create a responsive analytics card titled “Explore subscriber growth” with the muted eyebrow “Choose a reporting window”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nPlot subscriber values 186, 225, 208, 284, 312, 368 from Jan–Jun with a monotone 3px line and 4px dots. Above the plot, provide small 6 months and 3 months buttons in a Reporting window group. Start with six months selected; switching to three months shows Apr–Jun. Indicate selection through filled versus outlined styling and accessible pressed states. Show 368 subscribers and a footer explaining the window switch.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use month labels, a numeric vertical axis, dashed horizontal grid lines, and clean axes without tick marks or axis lines."
+        "prompt": "Create a responsive analytics card titled “Demand and capacity” with the muted eyebrow “Monthly operating performance · Jan–Jun 2026”. Fill available width up to 576px. Use a theme-aware card surface, rounded border, an 18px title, a prominent 30px semibold metric with tabular numerals, and a separated muted footer.\n\nCombine Jan–Jun Orders bars at 186, 225, 208, 284, 312, 368 with a Capacity monotone line at 220, 250, 250, 300, 350, 400. Use distinct colors, 70% opacity rounded bars up to 38px wide, a 3px line with 3px dots, and a legend. Show 92% utilization and explain 368 orders against June capacity of 400.\n\nKeep the plot 260px tall and responsive to the card width. Provide accessible chart navigation and value tooltips. Use Jan–Jun month labels, a numeric vertical axis, subtle horizontal grid lines, and muted axis labels and baselines.\n\nBuild the chart with TanStack Charts. Use responsive chart geometry, theme-aware chart colors, a labeled legend, and pointer and keyboard value tooltips."
       }
     },
     {
@@ -757,7 +715,7 @@
       "title": "Population map",
       "description": "A world population choropleth with country details and theme-aware teal colors.",
       "type": "registry:component",
-      "dependencies": ["react-simple-maps"],
+      "dependencies": ["@tanstack/charts", "d3-geo"],
       "files": [
         {
           "path": "registry/vibe-ui/chart-map-01/chart-map-01.tsx",
@@ -778,7 +736,7 @@
       "categories": ["charts", "map"],
       "meta": {
         "height": 760,
-        "prompt": "Create a responsive population choropleth in an understated editorial card. Use a large world map on a clean theme-aware background, a small Population / 2024 eyebrow, the title “A world of people”, and a brief explanation. Shade countries using seven ordered teal bands, from under one million to one billion or more, with a separate neutral no-data color. Use distinct Tailwind light and dark palettes and fine contrasting borders. Hovering, focusing, or tapping a country reveals its name and formatted population in a stable detail panel above the map. Provide a labeled country select so small countries are accessible. Show a wrapping color legend below the map, World Bank population attribution and Natural Earth boundary attribution. Keep the map responsive without horizontal overflow, provide accessible country names and population values, and visible keyboard focus. Use a fixed 2024 snapshot; omit playback and timeline controls. Missing values must be explicitly labeled “No data”."
+        "prompt": "Create a responsive population choropleth in an understated editorial card. Use a large world map on a clean theme-aware background, a small Population / 2024 eyebrow, the title “A world of people”, and a brief explanation. Shade countries using seven ordered teal bands, from under one million to one billion or more, with a separate neutral no-data color. Use distinct Tailwind light and dark palettes and fine contrasting borders. Hovering, focusing, or tapping a country reveals its name and formatted population in a stable detail panel above the map. Provide a labeled country select so small countries are accessible. Show a wrapping color legend below the map, World Bank population attribution and Natural Earth boundary attribution. Keep the map responsive without horizontal overflow, provide accessible country names and population values, and visible keyboard focus. Use a fixed 2024 snapshot; omit playback and timeline controls. Missing values must be explicitly labeled “No data”.\n\nUse TanStack Charts geographic geometry with an Equal Earth projection and bundled GeoJSON boundaries. Exclude Antarctica. Fit the complete map into a responsive 2:1 viewport. Each country supports pointer hover, click or tap selection, and keyboard focus; Enter and Space select the focused country."
       }
     },
     {
@@ -839,45 +797,6 @@
         "height": 1100,
         "prompt": "# Objective\n\nBuild `chart-map-02`, titled “Brazil election 2026”: a responsive, interactive choropleth map of Brazil’s 2026 first-round presidential election results.\n\nDisplay the heading “Brazil Election 2026”. State colours identify the leading candidate; colour intensity represents that candidate’s share of valid votes. Include a national results chart, state statistics cards, candidate legends, overseas results, and source attribution.\n\n# Dependencies\n\n- React and TypeScript: components, typed election data, and interaction state.\n- TanStack Charts: generate geographic shapes and horizontal bar geometry.\n- d3-geo: a Mercator projection fitted to Brazil’s boundaries.\n- Tailwind CSS: responsive layout, theme tokens, and styling.\n- Native CSS transitions: card entrance, exit, selected-card movement, and hover highlighting.\n\nKeep the map, national chart, statistics card, and legends as separate components. Derive display data separately from interaction state.\n\n# Layout and visual design\n\nArrange the interface in this order:\n\n1. Centred heading.\n2. National results chart.\n3. Brazil choropleth map.\n4. Candidate legends, explanatory text, and overseas results.\n5. Source attribution footer.\n\nUse a clean, unboxed layout with generous whitespace. Use theme tokens for surrounding text, borders, and backgrounds. Preserve election colours across light and dark themes.\n\n## National results chart\n\nShow Lula first in red and Flávio Bolsonaro second in blue, followed by a separate Other summary beneath a divider.\n\nUse four aligned columns: candidate name, horizontal bar, vote percentage, and vote count. On small screens, use `100px minmax(0,1fr) 48px 48px` with an 8px gap. From the small breakpoint upwards, use `180px minmax(0,1fr) 72px 72px` with a 16px gap. Use three shared rows for axis headings, candidate results, and the Other/reference-key row.\n\nUse a linear percentage scale from 0% to 75%. Label 0%, 25%, 50%, and 75%. Mark 50% with a vertical line, downward triangle, and TO WIN label. Display compact percentages and million-vote counts to one decimal place. Right-align numeric columns and use tabular numerals. Align Other with the 75% endpoint while preserving its percentage and count columns.\n\nInclude REPORTING and FINAL RESULTS reference keys. Use diagonal hatching for reporting swatches and solid candidate colours for final-result swatches. These explain the visual treatment without claiming verified reporting status. Place the wrapping key in column two on desktop, aligned left with the plot; on mobile, place it in column one, aligned right with candidate names.\n\n## Geographic map\n\nRender all 26 states and the Federal District using a shared Mercator projection. Preserve geographic proportions as the map resizes. Use thin white state boundaries, no bubbles, and no Cartesian axes.\n\nPlace bold state abbreviations inside large states. Use external labels and leader lines for small or narrow states. External labels activate the same state as its geographic shape.\n\n## Legends and context\n\nShow each leading candidate’s full name above three square swatches labelled Below 50%, 50–60%, and Above 60%.\n\nDisplay: “Colour shows the leading candidate. Darker shades show a higher share of valid votes.”\n\nShow overseas voting separately in a paragraph beginning with a bold Overseas voting label. Include both main candidates and Other, their percentages, and exact vote counts, separated by semicolons.\n\nOn wide screens, position this context block in the open lower-left area of the map. On smaller screens, place it below the map in normal document flow.\n\n# Content and data\n\nUse bundled snapshots without runtime scraping or election-data requests. Join geographic features and election results using stable state identifiers.\n\n- [Wikipedia first-round results, revision 1378844298](https://en.wikipedia.org/w/index.php?title=2026_Brazilian_general_election&oldid=1378844298#First_round_results_by_federative_unit), retrieved 2026-10-07.\n- [Official IBGE state boundaries](https://servicodados.ibge.gov.br/api/v3/malhas/paises/BR?formato=application/vnd.geo%2Bjson&qualidade=minima&intrarregiao=UF), retrieved 2026-10-07.\n\nDisplay both source links and retrieval dates in a footer below overseas results. Attribute Wikipedia contributors and link to [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Source and licence links open in a new tab.\n\nUse the national top two candidates consistently across national, state, and overseas summaries. Aggregate all remaining candidates into Other. Calculate Other’s share from combined votes rather than rounded percentage sums.\n\nNational results:\n\n- Flávio Bolsonaro: 47.03%, 56,104,503 votes.\n- Luiz Inácio Lula da Silva: 45.16%, 53,879,538 votes.\n- Other: 7.81%, 9,316,747 votes.\n\nUse these palettes:\n\n| Candidate | Below 50% | 50–60% | Above 60% |\n| --- | --- | --- | --- |\n| Flávio Bolsonaro | `#a6cdf5` | `#2184d9` | `#154d83` |\n| Lula | `#f4a4af` | `#e31837` | `#861225` |\n\nExactly 50% and 60% belong to the middle band. Determine each state’s leader from all candidates; use neutral grey without a unique leader. Intensity represents the leader’s valid-vote share, not total votes or winning margin. Do not invent reporting percentages or counted-sections figures.\n\n# States and interactions\n\nMaintain separate hovered and selected states. Selection takes precedence over hover preview.\n\n## Initial state\n\nStart with no selected state and no statistics card. Display the complete map and contextual information.\n\n## Hover preview\n\nWhen no state is selected:\n\n- Pointer entry subtly increases the state’s brightness while preserving its election colour.\n- Show its statistics card beside the pointer and track movement immediately.\n- Pointer exit removes the highlight and hides the card.\n- Do not add a black boundary.\n\nThe preview card is non-interactive, uses tooltip semantics, and has no Close button.\n\n## Selection\n\nClicking, tapping, or keyboard-focusing a state selects it. Enter and Space activate the focused state.\n\nSelection draws a visible black boundary and shows an interactive statistics card with a bottom Close button. Clicking another state transfers selection. While selected, hovering other states still highlights them but never replaces the selected statistics or moves the card.\n\n## Dismissal and keyboard navigation\n\nClear selection and hide the card on Close, Escape, an empty-area click, or keyboard focus leaving the map and card. Preserve selection while focus moves between a state and its Close button.\n\nUse the forward tab sequence `state → its Close button → next state`, with corresponding reverse navigation through Shift+Tab. Do not trap focus. After Close or Escape, focus a stable map container without immediately reselecting the dismissed state.\n\n# Responsive behaviour\n\nUse a floating card on desktop and mobile. Place it beside its anchor with a 12px horizontal gap. Choose the roomier side, favouring right on a tie. Keep the card inside the intersection of the visible map area and viewport, with an 8px inset. Adjust vertical position and clamp horizontally. Recalculate after scrolling or resizing.\n\nHover previews anchor to the current pointer position. Click selection freezes the clicked position. Keyboard selection anchors to the state’s visual centre.\n\nUse a maximum width of 220px when the map container is narrower than 640px and 320px otherwise. Constrain width further when necessary. Allow internal scrolling if content exceeds the available height.\n\n## Statistics card\n\nUse a white surface, dark text, subtle border, rounded corners, and soft shadow. Show:\n\n- State name.\n- Exact vote lead in the leading candidate’s colour.\n- Leading candidate and percentage-point lead.\n- The national top two candidates ordered by local votes, followed by Other.\n- A colour dot, name, percentage, and exact vote count for each row.\n- A full-width bottom Close button only when selected.\n\nDisplay percentages and point differences to two decimals, and exact counts with thousands separators. On desktop, use approximately 20px padding and a 24px state heading. On mobile, use approximately 10px padding, a 16px state heading, 12px candidate labels, and 10–11px secondary text. Shorten Lula’s visible mobile label to Lula while retaining his full name in its title attribute. Keep Close at least 40px tall.\n\n# Motion and accessibility\n\nUse a 120ms fade and a 4px upward entrance movement. Reverse these for exit. Keep preview pointer tracking immediate without a position transition. When selection transfers between states, animate card position over 120ms. Update content without replaying entrance. Animate hover brightness over 120ms. Disable transitions for reduced-motion preferences.\n\nExpose every state as an individually focusable button with an accessible name, selection information through `aria-pressed`, and a relationship to its statistics card. Use black selection outlines independently of colour.\n\nGive selected cards group semantics and Close a visible keyboard focus indicator. Hidden cards must not remain interactive or exposed to assistive technology. Provide a screen-reader table of exact national percentages and vote counts; hide its duplicate decorative chart from assistive technology.\n\n# Acceptance criteria\n\n- All 27 federative units render and are individually keyboard-accessible.\n- Results join to boundaries by stable identifiers.\n- No selection or card appears initially.\n- Hover previews appear only without selection.\n- Hovering another state highlights it while preserving selected statistics.\n- Click, tap, and keyboard focus select a state and draw its black boundary.\n- Close, Escape, blank-area clicks, and focus leaving dismiss selection.\n- Tab follows `state → Close → next state` without trapping focus.\n- Cards remain usable within the visible map area on narrow screens.\n- Legends match the map’s palettes and thresholds.\n- Summaries contain only the top two candidates and Other.\n- Sources, retrieval dates, and attribution are visible.\n- Reduced-motion preferences disable transitions.\n\n# Keywords\n\nChoropleth map, Mercator projection, GeoJSON, TanStack Charts, SVG, horizontal bar chart, linear scale, categorical band scale, valid-vote share, threshold colour encoding, hover preview, persistent selection, pointer tracking, floating panel, viewport clamping, keyboard navigation, focus management, tooltip, aria-pressed, tabular numerals, opacity transition, translate transition, position transition, reduced motion, responsive layout, bundled snapshot, source attribution."
       }
-    },
-    {
-      "name": "chart-line-04",
-      "title": "Subscriber growth · TanStack Charts",
-      "description": "Compare this year with last year. Built with TanStack Charts.",
-      "type": "registry:component",
-      "dependencies": ["@tanstack/charts"],
-      "registryDependencies": ["card", "button"],
-      "files": [
-        {
-          "path": "registry/vibe-ui/chart-line-04/chart-line-04.tsx",
-          "type": "registry:component",
-          "target": "@components/vibe-ui/chart-line-04/chart-line-04.tsx"
-        }
-      ],
-      "categories": ["charts", "line"],
-      "meta": {
-        "height": 560,
-        "prompt": "Create a responsive subscriber growth card with a subtle border, rounded corners, and theme-aware colors. Show a small TanStack Charts label, a Subscriber growth heading, a comparison subtitle, and a prominent 368 subscribers metric. Include accessible 6 months and 3 months buttons with pressed states, initially showing January through June; the shorter window shows April through June. Plot two lines with point markers for this year and last year using distinct chart colors, a shared zero-based numeric axis, monthly labels, horizontal grid lines, and a visible labeled legend. Provide pointer and keyboard tooltips. Finish with a muted footer explaining the window controls."
-      }
-    },
-    {
-      "name": "chart-line-05",
-      "title": "NSW fuel prices",
-      "description": "Monthly average E10, P95, P98 and diesel prices from NSW FuelCheck.",
-      "type": "registry:component",
-      "files": [
-        {
-          "path": "registry/vibe-ui/chart-line-05/chart-line-05.tsx",
-          "type": "registry:component",
-          "target": "@components/vibe-ui/chart-line-05/chart-line-05.tsx"
-        }
-      ],
-      "categories": ["charts", "line"],
-      "meta": {
-        "height": 640,
-        "prompt": "# Objective\n\nCreate a responsive NSW fuel price comparison chart titled “NSW Road Fuel Prices 2025–2026”. Use monthly average prices in cents per litre from the bundled NSW FuelCheck snapshot retrieved on 9 October 2026, covering October 2025 through October 2026. October 2026 is a partial month.\n\n# Layout and styling\n\nUse a full-width panel with a subtle border, rounded corners, a theme-aware card background and foreground, and comfortable padding. Centre the semibold title above the plot. Position a compact, bordered, rounded legend in the top-right corner; on small screens, place it below the title and allow its entries to wrap.\n\nUse these fixed colours consistently for the lines, legend and tooltip:\n\n- E10: blue (#3b82f6).\n- P95: purple (#8b5cf6).\n- P98: green (#10b981).\n- DL: orange (#f97316).\n\nShow a short line with a circular marker beside each fuel tag in the static legend. Include no checkboxes or filtering controls.\n\n# Chart and axes\n\nDraw four straight lines with small circular point markers in a 420-pixel-high plot. Label the horizontal axis “Month”, show three-letter month ticks in chronological order, and draw its baseline. Label the vertical axis “Price (cents per litre)”; use a range of 150 to 300 with ticks every 25, formatted to one decimal place. Omit the vertical axis baseline and use subtle dashed horizontal grid lines. Keep surrounding colours compatible with light and dark themes.\n\n# Interaction and tooltip\n\nWhen a fuel series is hovered or keyboard-focused, keep it fully visible and dim the other three series to 30% opacity. Restore all series when focus clears.\n\nShow a hollow focus ring only around the active point, never around every fuel point at the same month. Use a radius of 5 pixels, a 2-pixel border matching that fuel’s colour, and a fill matching the card background. Suppress the browser outline around the plot for pointer clicks while retaining the keyboard focus indicator.\n\nShow a tooltip headed by the full month and year. Under the date, list E10, P95, P98 and DL in that order, each with its matching colour swatch and price formatted to one decimal place followed by “c/L”. Emphasise the active fuel row while retaining all four prices.\n\n# Source and accessibility\n\nCentre a small, muted source footer below the plot. Link “NSW FuelCheck” to https://www.fuelcheck.nsw.gov.au/app/FuelPrice/Trend?fuelTypeCode=P95 and include “Snapshot: 9 October 2026. October 2026 is a partial month. DL = diesel.”\n\nGive the panel and chart accessible names. Describe the reporting period, price units and partial final month, and support arrow-key exploration of the data. Keep decorative legend swatches hidden from assistive technology."
-      },
-      "dependencies": ["@tanstack/charts"]
     },
     {
       "name": "chart-area-03",

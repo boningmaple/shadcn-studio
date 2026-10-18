@@ -7,7 +7,7 @@ const collections = [
   { title: "Area", href: "/charts/area", itemCount: 3 },
   { title: "Bar", href: "/charts/bar", itemCount: 3 },
   { title: "Composed", href: "/charts/composed", itemCount: 2 },
-  { title: "Line", href: "/charts/line", itemCount: 5 },
+  { title: "Line", href: "/charts/line", itemCount: 1 },
   { title: "Map", href: "/charts/map", itemCount: 2 },
   { title: "Pie", href: "/charts/pie", itemCount: 2 },
   { title: "Radar", href: "/charts/radar", itemCount: 2 },

@@ -1,6 +1,12 @@
 "use client";
 
-import { AreaChart, Area, CartesianGrid, XAxis, YAxis } from "recharts";
+import { defineChart, areaY, lineY, colorLegend } from "@tanstack/charts";
+import { d3Curve } from "@tanstack/charts/d3/shape";
+import { Chart } from "@tanstack/charts/react";
+import { scaleLinear } from "@tanstack/charts/scales/linear";
+import { scalePoint } from "@tanstack/charts/scales/point";
+import { tooltip } from "@tanstack/charts/tooltip";
+import { curveMonotoneX } from "d3-shape";
 
 import {
   Card,
@@ -10,14 +16,6 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
-  type ChartConfig,
-} from "@/components/ui/chart";
 
 const data = [
   { month: "Jan", current: 186, previous: 140 },
@@ -27,10 +25,63 @@ const data = [
   { month: "May", current: 312, previous: 245 },
   { month: "Jun", current: 368, previous: 272 },
 ];
-const config = {
-  current: { label: "Subscriptions ($k)", color: "var(--chart-1)" },
-  previous: { label: "Services ($k)", color: "var(--chart-2)" },
-} satisfies ChartConfig;
+
+const definition = defineChart({
+  marks: [
+    areaY(data, {
+      x: "month",
+      y1: 0,
+      y: "current",
+      z: () => "Subscriptions ($k)",
+      fillOpacity: 0.65,
+      curve: d3Curve(curveMonotoneX),
+    }),
+    lineY(data, {
+      x: "month",
+      y: "current",
+      z: () => "Subscriptions ($k)",
+      strokeWidth: 2,
+      curve: d3Curve(curveMonotoneX),
+    }),
+    areaY(data, {
+      x: "month",
+      y1: "current",
+      y2: (row) => row.current + row.previous,
+      z: () => "Services ($k)",
+      fillOpacity: 0.25,
+      curve: d3Curve(curveMonotoneX),
+    }),
+    lineY(data, {
+      x: "month",
+      y: (row) => row.current + row.previous,
+      z: () => "Services ($k)",
+      strokeWidth: 2,
+      curve: d3Curve(curveMonotoneX),
+    }),
+  ],
+  scales: {
+    x: { scale: () => scalePoint<string>().padding(0.4) },
+    y: { scale: scaleLinear().domain([0, 700]), grid: true },
+  },
+  color: {
+    domain: ["Subscriptions ($k)", "Services ($k)"],
+    range: ["var(--chart-1)", "var(--chart-2)"],
+    legend: colorLegend({ placement: "bottom" }),
+  },
+  theme: {
+    foreground: "var(--foreground)",
+    muted: "var(--muted-foreground)",
+    grid: "var(--border)",
+    background: "var(--card)",
+  },
+  tooltip: {
+    use: tooltip,
+    items: [
+      { field: "current", label: "Subscriptions ($k)" },
+      { field: "previous", label: "Services ($k)" },
+    ],
+  },
+});
 
 export default function ChartArea02() {
   return (
@@ -41,31 +92,7 @@ export default function ChartArea02() {
         <div className="pt-2 text-3xl font-semibold tracking-tight tabular-nums">$640k</div>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={config} className="aspect-auto h-[260px] w-full">
-          <AreaChart accessibilityLayer data={data}>
-            <CartesianGrid vertical={false} strokeDasharray="3 3" />
-            <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={12} />
-            <YAxis tickLine={false} axisLine={false} width={42} />
-            <ChartTooltip content={<ChartTooltipContent />} />
-            <ChartLegend content={<ChartLegendContent />} />
-            <Area
-              dataKey="current"
-              stackId="revenue"
-              type="monotone"
-              stroke="var(--color-current)"
-              fill="var(--color-current)"
-              fillOpacity={0.65}
-            />
-            <Area
-              dataKey="previous"
-              stackId="revenue"
-              type="monotone"
-              stroke="var(--color-previous)"
-              fill="var(--color-previous)"
-              fillOpacity={0.25}
-            />
-          </AreaChart>
-        </ChartContainer>
+        <Chart ariaLabel="Where growth comes from" definition={definition} height={260} />
       </CardContent>
       <CardFooter className="border-t pt-4 text-sm text-muted-foreground">
         Subscriptions and services combined in June.

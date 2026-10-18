@@ -6,8 +6,8 @@ import ChartLine01Preview from "@/registry/vibe-ui/chart-line-01/chart-line-01.t
 
 export const Route = createFileRoute("/preview/charts/line/chart-line-01")({
   head: () => ({
-    meta: [{ title: "chart-line-01 Preview – VibeUI" }],
+    meta: [{ title: "Line Chart 01 Preview – VibeUI" }],
   }),
-  staticData: { ariaLabel: "chart-line-01 Preview" },
+  staticData: { ariaLabel: "Line Chart 01 Preview" },
   component: () => <PreviewPage Preview={ChartLine01Preview} section="charts" />,
 });
